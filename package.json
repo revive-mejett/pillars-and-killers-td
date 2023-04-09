@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/revive-mejett/pillars-and-killers-td#readme",
   "dependencies": {
+    "http-server": "^14.1.1",
     "pixi.js": "^7.2.4"
   }
 }
