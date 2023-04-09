@@ -1,0 +1,23 @@
+{
+  "name": "pillars-and-killers-td",
+  "version": "1.0.0",
+  "description": "Pillars and Killers tower defence",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revive-mejett/pillars-and-killers-td.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/revive-mejett/pillars-and-killers-td/issues"
+  },
+  "homepage": "https://github.com/revive-mejett/pillars-and-killers-td#readme",
+  "dependencies": {
+    "pixi.js": "^7.2.4"
+  }
+}
