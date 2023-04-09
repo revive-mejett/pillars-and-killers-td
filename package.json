@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "pillars-and-killers-td",
   "version": "1.0.0",
   "description": "Pillars and Killers tower defence",
