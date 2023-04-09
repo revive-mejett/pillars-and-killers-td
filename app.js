@@ -9,4 +9,10 @@ document.body.appendChild(app.view)
 let chocolateHeliMeme = PIXI.Sprite.from('./assets/textures/chocolate_helicopter.jpg')
 
 app.stage.addChild(chocolateHeliMeme)
-console.log(chocolateHeliMeme)
+console.log(chocolateHeliMeme.position)
+
+
+
+app.ticker.add(() => {
+    chocolateHeliMeme.x += 0.1
+})
