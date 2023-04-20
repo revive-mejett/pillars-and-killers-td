@@ -7,37 +7,21 @@ const dimensions = 40
 const tileSize = mapSize / dimensions
 
 const app = new Application({width: mapSize, height: mapSize})
-
 document.body.appendChild(app.view)
 
 
 let chocolateHeliMeme = PIXI.Sprite.from('./assets/textures/chocolate_helicopter.jpg')
-let sprite = new PIXI.Sprite()
-import Hi from "./src/TdMap.js"
+// let sprite = new PIXI.Sprite()
+import { TdMap, displayTiles } from "./src/TdMap.js"
 
-
+let myMap = new TdMap(mapSize, mapSize, dimensions)
 
 chocolateHeliMeme.height = tileSize
 chocolateHeliMeme.width = tileSize
 chocolateHeliMeme.zIndex = 3
-let graphics = new PIXI.Graphics()
-graphics.lineStyle(2, 0xAAAAAA)
-for (let i = 0; i < dimensions; i++) {
-    for (let j = 0; j < dimensions; j++) {
-        graphics.drawRect(i * tileSize, j * tileSize, tileSize, tileSize)
-        if (i === 0 && j === 0) {
-            console.log(chocolateHeliMeme.position)
-            console.log(chocolateHeliMeme.position.scope)
-            console.log(chocolateHeliMeme.pivot)
-            console.log(Hi)
-        }
-        chocolateHeliMeme.anchor.set(0)
-    }
-}
-app.stage.addChild(graphics)
-app.stage.addChild(chocolateHeliMeme)
-let t = 0;
-app.ticker.add(() => {
-    chocolateHeliMeme.x += 0.1
-})
+
+displayTiles(app, myMap)
+// app.ticker.add(() => {
+//     chocolateHeliMeme.x += 0.1
+// })
 
