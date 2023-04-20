@@ -29,11 +29,12 @@ class TdMap {
 }
 
 function displayTiles(app, map) {
-    let graphics = new PIXI.Graphics()
-    graphics.lineStyle(2, 0xAAAAAA)
+
     for (let i = 0; i < map.dimensions; i++) {
         for (let j = 0; j < map.dimensions; j++) {
-            graphics.drawRect(i * map.tileSize, j * map.tileSize, map.tileSize, map.tileSize)
+            let tile = new PIXI.Graphics()
+            tile.lineStyle(2, 0xAAAAAA)
+            tile.drawRect(i * map.tileSize, j * map.tileSize, map.tileSize, map.tileSize)
             // if (i === 0 && j === 0) {
             //     console.log(chocolateHeliMeme.position)
             //     console.log(chocolateHeliMeme.position.scope)
@@ -41,9 +42,14 @@ function displayTiles(app, map) {
             //     console.log(Hi)
             // }
             // chocolateHeliMeme.anchor.set(0)
+            app.stage.addChild(tile)
+            app.stage.setChildIndex(tile, i)
         }
+        
     }
-    app.stage.addChild(graphics)
+    let ex = app.stage.removeChildren(1400,1500)
+    // console.log(ex)
+    console.log(app.stage.children)
     // app.stage.addChild(chocolateHeliMeme)
 }
 
