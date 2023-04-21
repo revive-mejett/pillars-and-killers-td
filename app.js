@@ -12,7 +12,7 @@ document.body.appendChild(app.view)
 
 let chocolateHeliMeme = PIXI.Sprite.from('./assets/textures/chocolate_helicopter.jpg')
 // let sprite = new PIXI.Sprite()
-import { TdMap, displayTiles } from "./src/TdMap.js"
+import { TdMap, displayPath, displayTiles } from "./src/TdMap.js"
 
 let myMap = new TdMap(mapSize, mapSize, dimensions)
 
@@ -21,6 +21,7 @@ chocolateHeliMeme.width = tileSize
 chocolateHeliMeme.zIndex = 3
 
 displayTiles(app, myMap)
+displayPath(app, myMap)
 // app.ticker.add(() => {
 //     chocolateHeliMeme.x += 0.1
 // })
