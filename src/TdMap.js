@@ -33,8 +33,10 @@ function displayTiles(app, map) {
     for (let i = 0; i < map.dimensions; i++) {
         for (let j = 0; j < map.dimensions; j++) {
             let tile = new PIXI.Graphics()
-            tile.lineStyle(1, 0xAAAAAA)
+            tile.beginFill(0x001100)
+            tile.lineStyle(1, 0x005500)
             tile.drawRect(i * map.tileSize, j * map.tileSize, map.tileSize, map.tileSize)
+            tile.endFill()
             // if (i === 0 && j === 0) {
             //     console.log(chocolateHeliMeme.position)
             //     console.log(chocolateHeliMeme.position.scope)
@@ -43,7 +45,7 @@ function displayTiles(app, map) {
             // }
             // chocolateHeliMeme.anchor.set(0)
             app.stage.addChild(tile)
-            app.stage.setChildIndex(tile, i)
+            // app.stage.setChildIndex(tile, i)
         }
         
     }
@@ -54,19 +56,43 @@ function displayTiles(app, map) {
 }
 
 function displayPath(app, map) {
-    for (let i = 0; i < map.dimensions; i++) {
-        for (let j = 0; j < 2; j++) {
-            let tile = new PIXI.Graphics()
-            tile.beginFill(0x0000FF)
-            tile.drawRect(i * map.tileSize, j * map.tileSize, map.tileSize, map.tileSize)
-            tile.endFill()
-            app.stage.addChild(tile)
-            // app.stage.setChildIndex(tile, i)
+    let currWayPtNum = 0
+    const waypoints = map.waypoints
+
+    let x = map.waypoints[currWayPtNum].x
+    let y = map.waypoints[currWayPtNum].y
+
+    let its = 0
+    while (currWayPtNum < map.waypoints.length - 1 && its < 20) {
+        console.log(currWayPtNum)
+        console.log(x)
+        console.log(y)
+        x = map.waypoints[currWayPtNum].x
+        let pathTile = new PIXI.Graphics()
+        pathTile.beginFill(0x111111)
+        pathTile.drawRect(x * map.tileSize, y * map.tileSize, map.tileSize, map.tileSize)
+        pathTile.endFill()
+        app.stage.addChild(pathTile)
+
+        if (map.waypoints[currWayPtNum + 1].x > x) {
+            x++
         }
-        
+        if (map.waypoints[currWayPtNum + 1].x < x) {
+            x--
+        }
+
+        if (map.waypoints[currWayPtNum + 1].y > y) {
+            y++
+        }
+        if (map.waypoints[currWayPtNum + 1].y < y) {
+            y--
+        }
+        if (map.waypoints[currWayPtNum + 1].x === x && map.waypoints[currWayPtNum + 1].y === y) {
+            currWayPtNum++;
+        }
+        its++
     }
-    console.log(app.stage.children)
-    // app.stage.addChild(chocolateHeliMeme)
+
 }
 
 export { TdMap, displayTiles, displayPath }
