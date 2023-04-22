@@ -19,9 +19,34 @@ class TdMap {
                 y: 5
             },
             {
-                type: "end",
-                x: 3,
+                type: "point",
+                x: 10,
                 y: 5
+            },
+            {
+                type: "point",
+                x: 10,
+                y: 10
+            },
+            {
+                type: "point",
+                x: 5,
+                y: 10
+            },
+            {
+                type: "point",
+                x: 5,
+                y: 20
+            },
+            {
+                type: "point",
+                x: 20,
+                y: 20
+            },
+            {
+                type: "point",
+                x: 20,
+                y: 0
             },
         ]
     }
@@ -34,7 +59,7 @@ function displayTiles(app, map) {
         for (let j = 0; j < map.dimensions; j++) {
             let tile = new PIXI.Graphics()
             tile.beginFill(0x001100)
-            tile.lineStyle(1, 0x005500)
+            tile.lineStyle(2, 0x005500)
             tile.drawRect(i * map.tileSize, j * map.tileSize, map.tileSize, map.tileSize)
             tile.endFill()
             // if (i === 0 && j === 0) {
@@ -59,15 +84,14 @@ function displayPath(app, map) {
     let currWayPtNum = 0
     const waypoints = map.waypoints
 
-    let x = map.waypoints[currWayPtNum].x
+    let x = waypoints[currWayPtNum].x
     let y = map.waypoints[currWayPtNum].y
 
-    let its = 0
-    while (currWayPtNum < map.waypoints.length - 1 && its < 20) {
+    
+    while (currWayPtNum < map.waypoints.length - 1) {
         console.log(currWayPtNum)
         console.log(x)
         console.log(y)
-        x = map.waypoints[currWayPtNum].x
         let pathTile = new PIXI.Graphics()
         pathTile.beginFill(0x111111)
         pathTile.drawRect(x * map.tileSize, y * map.tileSize, map.tileSize, map.tileSize)
@@ -90,7 +114,6 @@ function displayPath(app, map) {
         if (map.waypoints[currWayPtNum + 1].x === x && map.waypoints[currWayPtNum + 1].y === y) {
             currWayPtNum++;
         }
-        its++
     }
 
 }

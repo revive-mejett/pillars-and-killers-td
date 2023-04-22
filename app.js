@@ -3,7 +3,7 @@
 
 const Application = PIXI.Application
 const mapSize = 1100
-const dimensions = 40
+const dimensions = 25
 const tileSize = mapSize / dimensions
 
 const app = new Application({width: mapSize, height: mapSize})
