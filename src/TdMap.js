@@ -62,22 +62,9 @@ function displayTiles(app, map) {
             tile.lineStyle(2, 0x005500)
             tile.drawRect(i * map.tileSize, j * map.tileSize, map.tileSize, map.tileSize)
             tile.endFill()
-            // if (i === 0 && j === 0) {
-            //     console.log(chocolateHeliMeme.position)
-            //     console.log(chocolateHeliMeme.position.scope)
-            //     console.log(chocolateHeliMeme.pivot)
-            //     console.log(Hi)
-            // }
-            // chocolateHeliMeme.anchor.set(0)
             app.stage.addChild(tile)
-            // app.stage.setChildIndex(tile, i)
         }
-        
     }
-    // let ex = app.stage.removeChildren(1400,1500)
-    // console.log(ex)
-    console.log(app.stage.children)
-    // app.stage.addChild(chocolateHeliMeme)
 }
 
 function displayPath(app, map) {
@@ -85,9 +72,11 @@ function displayPath(app, map) {
     const waypoints = map.waypoints
 
     let x = waypoints[currWayPtNum].x
-    let y = map.waypoints[currWayPtNum].y
+    let y = waypoints[currWayPtNum].y
 
     
+
+
     while (currWayPtNum < map.waypoints.length - 1) {
         console.log(currWayPtNum)
         console.log(x)
@@ -115,6 +104,18 @@ function displayPath(app, map) {
             currWayPtNum++;
         }
     }
+
+    //mark start and end tiles
+    let startTile = new PIXI.Graphics()
+    startTile.beginFill(0x005500)
+    startTile.drawRect(waypoints[0].x * map.tileSize, waypoints[0].y * map.tileSize, map.tileSize, map.tileSize)
+    startTile.endFill()
+    app.stage.addChild(startTile)
+    let endTile = new PIXI.Graphics()
+    endTile.beginFill(0x550000)
+    endTile.drawRect(x * map.tileSize, y * map.tileSize, map.tileSize, map.tileSize)
+    endTile.endFill()
+    app.stage.addChild(endTile)
 
 }
 
