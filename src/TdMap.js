@@ -78,9 +78,6 @@ function displayPath(app, map) {
 
 
     while (currWayPtNum < map.waypoints.length - 1) {
-        console.log(currWayPtNum)
-        console.log(x)
-        console.log(y)
         let pathTile = new PIXI.Graphics()
         pathTile.beginFill(0x111111)
         pathTile.drawRect(x * map.tileSize, y * map.tileSize, map.tileSize, map.tileSize)
