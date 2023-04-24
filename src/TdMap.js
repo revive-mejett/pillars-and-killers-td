@@ -1,7 +1,7 @@
 
 
 class TdMap {
-    constructor(mapWidth,mapHeight, dimensions) {
+    constructor(mapWidth, mapHeight, dimensions) {
         this.mapWidth = mapWidth
         this.mapHeight = mapHeight
         this.dimensions = dimensions
@@ -74,9 +74,6 @@ function displayPath(app, map) {
     let x = waypoints[currWayPtNum].x
     let y = waypoints[currWayPtNum].y
 
-    
-
-
     while (currWayPtNum < map.waypoints.length - 1) {
         let pathTile = new PIXI.Graphics()
         pathTile.beginFill(0x111111)
@@ -116,4 +113,21 @@ function displayPath(app, map) {
 
 }
 
-export { TdMap, displayTiles, displayPath }
+function walkPath(app, map) {
+    let chocolateHeliMeme = PIXI.Sprite.from('./assets/textures/chocolate_helicopter.jpg')
+    chocolateHeliMeme.height = map.tileSize
+    chocolateHeliMeme.width = map.tileSize
+    chocolateHeliMeme.zIndex = 3
+
+
+    app.stage.addChild(chocolateHeliMeme)
+    app.ticker.add(() => {
+        console.log()
+        chocolateHeliMeme.x += 1 * app.ticker.deltaTime
+    })
+
+    
+    
+}
+
+export { TdMap, displayTiles, displayPath, walkPath }
