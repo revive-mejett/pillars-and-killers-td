@@ -123,7 +123,7 @@ function walkPath(app, map) {
     let xToNextWaypoint = 0
     let yToNextWaypoint = 0
     let nextWayPointIndex = 1
-    let speed = 1
+    let speed = 11
     
     let setDistancesToNext = () => {
         
@@ -131,8 +131,8 @@ function walkPath(app, map) {
         chocolateHeliMeme.y = waypoints[nextWayPointIndex - 1].y * map.tileSize
         xToNextWaypoint = (waypoints[nextWayPointIndex].x * map.tileSize - chocolateHeliMeme.x)
         yToNextWaypoint = (waypoints[nextWayPointIndex].y * map.tileSize - chocolateHeliMeme.y)
-        console.log(xToNextWaypoint)
-        console.log(yToNextWaypoint)
+        // console.log(xToNextWaypoint)
+        // console.log(yToNextWaypoint)
     }
 
 
@@ -150,9 +150,14 @@ function walkPath(app, map) {
         yToNextWaypoint = (waypoints[nextWayPointIndex].y * map.tileSize - chocolateHeliMeme.y)
         if (Math.abs(xToNextWaypoint) < 1 && Math.abs(yToNextWaypoint) < 1 && nextWayPointIndex < waypoints.length) {
             nextWayPointIndex++
-            setDistancesToNext()
+            if (nextWayPointIndex === waypoints.length) {
+                console.log("reached end")
+                chocolateHeliMeme.destroy()
+            } else {
+                setDistancesToNext()
+            }
+            
         }
-        console.log(nextWayPointIndex)
     })
 
     
