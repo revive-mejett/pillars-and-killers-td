@@ -114,45 +114,45 @@ function displayPath(app, map) {
 }
 
 function walkPath(app, map) {
-    let chocolateHeliMeme = PIXI.Sprite.from('./assets/textures/chocolate_helicopter.jpg')
+    let enemySprite = PIXI.Sprite.from('./assets/textures/chocolate_helicopter.jpg')
     let waypoints = map.waypoints
-    chocolateHeliMeme.height = map.tileSize
-    chocolateHeliMeme.width = map.tileSize
-    chocolateHeliMeme.zIndex = 3
+    enemySprite.height = map.tileSize
+    enemySprite.width = map.tileSize
+    enemySprite.zIndex = 3
 
     let xToNextWaypoint = 0
     let yToNextWaypoint = 0
     let nextWayPointIndex = 1
-    let speed = 11
+    let speed = 2
     
     let setDistancesToNext = () => {
         
-        chocolateHeliMeme.x = waypoints[nextWayPointIndex - 1].x * map.tileSize
-        chocolateHeliMeme.y = waypoints[nextWayPointIndex - 1].y * map.tileSize
-        xToNextWaypoint = (waypoints[nextWayPointIndex].x * map.tileSize - chocolateHeliMeme.x)
-        yToNextWaypoint = (waypoints[nextWayPointIndex].y * map.tileSize - chocolateHeliMeme.y)
+        enemySprite.x = waypoints[nextWayPointIndex - 1].x * map.tileSize
+        enemySprite.y = waypoints[nextWayPointIndex - 1].y * map.tileSize
+        xToNextWaypoint = (waypoints[nextWayPointIndex].x * map.tileSize - enemySprite.x)
+        yToNextWaypoint = (waypoints[nextWayPointIndex].y * map.tileSize - enemySprite.y)
         // console.log(xToNextWaypoint)
         // console.log(yToNextWaypoint)
     }
 
 
-    app.stage.addChild(chocolateHeliMeme)
+    app.stage.addChild(enemySprite)
     setDistancesToNext()
     app.ticker.add(() => {
 
         if (xToNextWaypoint !== 0) {
-            chocolateHeliMeme.x += speed * (xToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
+            enemySprite.x += speed * (xToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
         }
         else if (yToNextWaypoint !== 0) {
-            chocolateHeliMeme.y += speed * (yToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
+            enemySprite.y += speed * (yToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
         }
-        xToNextWaypoint = (waypoints[nextWayPointIndex].x * map.tileSize - chocolateHeliMeme.x)
-        yToNextWaypoint = (waypoints[nextWayPointIndex].y * map.tileSize - chocolateHeliMeme.y)
+        xToNextWaypoint = (waypoints[nextWayPointIndex].x * map.tileSize - enemySprite.x)
+        yToNextWaypoint = (waypoints[nextWayPointIndex].y * map.tileSize - enemySprite.y)
         if (Math.abs(xToNextWaypoint) < 1 && Math.abs(yToNextWaypoint) < 1 && nextWayPointIndex < waypoints.length) {
             nextWayPointIndex++
             if (nextWayPointIndex === waypoints.length) {
                 console.log("reached end")
-                chocolateHeliMeme.destroy()
+                enemySprite.destroy()
             } else {
                 setDistancesToNext()
             }

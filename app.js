@@ -15,5 +15,22 @@ let myMap = new TdMap(mapSize, mapSize, dimensions)
 
 displayTiles(app, myMap)
 displayPath(app, myMap)
-walkPath(app, myMap)
+
+const appTicker = new PIXI.Ticker();
+appTicker.autoStart = false
+
+let elapsedMS = 0
+function onTick() {
+    elapsedMS += appTicker.deltaMS
+    if (elapsedMS >= 1000) {
+        console.log("spawned");
+        elapsedMS = 0
+        
+        walkPath(app, myMap)
+    }
+}
+
+appTicker.add(onTick)
+appTicker.start()
+
 
