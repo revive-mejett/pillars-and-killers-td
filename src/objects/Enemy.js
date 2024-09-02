@@ -3,22 +3,25 @@ export class Enemy {
     /**
      *
      */
-    constructor(health, speed, xPosition, yPosition, textureFilePath) {
-        super();
+    constructor(health, speed, textureFilePath, map) {
         this.health = health
         this.speed = speed
         this.textureFilePath = textureFilePath
-        this.position = { x: xPosition, y: yPosition }
+        this.position = { x: map.waypoints[0].x, y: map.waypoints[0].y }
 
         this.xToNextWaypoint = 0
         this.yToNextWaypoint = 0
         this.nextWayPointIndex = 1
-        this.sprite = PIXI.Sprite.from('./assets/textures/chocolate_helicopter.jpg')
-
+        this.sprite = PIXI.Sprite.from(textureFilePath)
+        this.sprite.height = map.tileSize
+        this.sprite.width = map.tileSize
+        console.log(map.waypoints[0]);
+        
     }
 
-    updatePos() {
-
+    updateSpritePosition() {
+        this.sprite.x = this.position.x
+        this.sprite.y = this.position.y
     }
 
     setDistancesToNext(map) {
@@ -31,4 +34,42 @@ export class Enemy {
         console.log(this.yToNextWaypoint)
     }
 
+    
+
 }
+
+function walkPath2(app, map) {
+    let testEnemy = new Enemy(100, 2, '../../assets/textures/chocolate_helicopter.jpg', map)
+    let speed = testEnemy.speed
+    let waypoints = map.waypoints
+    testEnemy.zIndex = 3
+
+
+    app.stage.addChild(testEnemy.sprite)
+    
+    
+    app.ticker.add(() => {
+
+        if (testEnemy.xToNextWaypoint !== 0) {
+            testEnemy.position.x += speed * (testEnemy.xToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
+        }
+        else if (testEnemy.yToNextWaypoint !== 0) {
+            testEnemy.position.y += speed * (testEnemy.yToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
+        }
+        testEnemy.xToNextWaypoint = (waypoints[testEnemy.nextWayPointIndex].x * map.tileSize - testEnemy.position.x)
+        testEnemy.yToNextWaypoint = (waypoints[testEnemy.nextWayPointIndex].y * map.tileSize - testEnemy.position.y)
+        testEnemy.updateSpritePosition()
+        if (Math.abs(testEnemy.xToNextWaypoint) < 1 && Math.abs(testEnemy.yToNextWaypoint) < 1 && testEnemy.nextWayPointIndex < waypoints.length) {
+            testEnemy.nextWayPointIndex++
+            if (testEnemy.nextWayPointIndex === waypoints.length) {
+                console.log("reached end")
+                testEnemy.destroy()
+            } else {
+                testEnemy.setDistancesToNext(map)
+            }
+            
+        }
+    })
+}
+
+export { walkPath2 }
