@@ -8,7 +8,7 @@ const dimensions = 25
 const app = new Application({width: mapSize, height: mapSize})
 document.body.appendChild(app.view)
 
-import { TdMap, displayPath, displayTiles, walkPath } from "./src/TdMap.js"
+import { TdMap, displayPath, displayTiles } from "./src/TdMap.js"
 let myMap = new TdMap(mapSize, mapSize, dimensions)
 
 

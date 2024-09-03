@@ -114,4 +114,5 @@ function displayPath(app, map) {
 }
 
 
-export { TdMap, displayTiles, displayPath, walkPath }
+
+export { TdMap, displayTiles, displayPath }
