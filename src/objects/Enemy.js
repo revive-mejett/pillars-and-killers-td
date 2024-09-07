@@ -15,8 +15,11 @@ export class Enemy {
         this.sprite = PIXI.Sprite.from(textureFilePath)
         this.sprite.height = map.tileSize
         this.sprite.width = map.tileSize
-        this.sprite.x = 0
-        this.sprite.y = 1
+
+        //set to start of the path
+        this.position.x = map.waypoints[0].x * map.tileSize
+        this.position.y = map.waypoints[0].y * map.tileSize
+        
         console.log("map start ", map.waypoints[0]);
         console.log("enemy pos", this.sprite);
         
@@ -25,14 +28,10 @@ export class Enemy {
     updateSpritePosition() {
         this.sprite.x = this.position.x
         this.sprite.y = this.position.y
+        console.log(this.sprite.x);
+        console.log(this.sprite.y);
     }
 
-    setSpritePosition(map) {
-        console.log("set pos to start");
-        
-        this.sprite.x = map.waypoints[0].x
-        this.sprite.y = map.waypoints[0].y
-    }
 
     setDistancesToNext(map) {
         
@@ -56,7 +55,6 @@ function walkPath2(app, map) {
 
 
     app.stage.addChild(testEnemy.sprite)
-    testEnemy.setSpritePosition(map)
     
     app.ticker.add(() => {
 
@@ -77,7 +75,6 @@ function walkPath2(app, map) {
             } else {
                 testEnemy.setDistancesToNext(map)
             }
-            
         }
     })
 }
