@@ -28,8 +28,6 @@ export class Enemy {
     updateSpritePosition() {
         this.sprite.x = this.position.x
         this.sprite.y = this.position.y
-        console.log(this.sprite.x);
-        console.log(this.sprite.y);
     }
 
 

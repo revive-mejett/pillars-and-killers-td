@@ -15,5 +15,4 @@ let myMap = new TdMap(mapSize, mapSize, dimensions)
 
 displayTiles(app, myMap)
 displayPath(app, myMap)
-walkPath2(app, myMap)
 
