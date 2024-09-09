@@ -38,6 +38,10 @@ export class Enemy {
         this.yToNextWaypoint = (map.waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
     }
 
+    destroy() {
+        this.sprite.destroy()
+    }
+
     
 
 }
@@ -50,8 +54,10 @@ function walkPath2(app, map) {
 
 
     app.stage.addChild(testEnemy.sprite)
+    let enemyWalkTicker = new PIXI.Ticker()
+
     
-    app.ticker.add(() => {
+    let enemyWalkTickerUpdate = () => {
 
         if (testEnemy.xToNextWaypoint !== 0) {
             testEnemy.position.x += speed * (testEnemy.xToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
@@ -67,11 +73,16 @@ function walkPath2(app, map) {
             if (testEnemy.nextWayPointIndex === waypoints.length) {
                 console.log("reached end")
                 testEnemy.destroy()
+                enemyWalkTicker.stop()
             } else {
                 testEnemy.setDistancesToNext(map)
+                
             }
         }
-    })
+    }
+
+    enemyWalkTicker.add(enemyWalkTickerUpdate)
+    enemyWalkTicker.start()
 }
 
 export { walkPath2 }
