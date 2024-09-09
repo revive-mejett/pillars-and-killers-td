@@ -32,13 +32,10 @@ export class Enemy {
 
 
     setDistancesToNext(map) {
-        
         this.position.x = map.waypoints[this.nextWayPointIndex - 1].x * map.tileSize
         this.position.y = map.waypoints[this.nextWayPointIndex - 1].y * map.tileSize
         this.xToNextWaypoint = (map.waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (map.waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
-        console.log(this.xToNextWaypoint)
-        console.log(this.yToNextWaypoint)
     }
 
     
@@ -46,7 +43,7 @@ export class Enemy {
 }
 
 function walkPath2(app, map) {
-    let testEnemy = new Enemy(100, 0.2, '../../assets/textures/chocolate_helicopter.jpg', map)
+    let testEnemy = new Enemy(100, 5, '../../assets/textures/chocolate_helicopter.jpg', map)
     let speed = testEnemy.speed
     let waypoints = map.waypoints
     testEnemy.zIndex = 3
