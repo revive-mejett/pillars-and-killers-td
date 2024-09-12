@@ -8,7 +8,9 @@ export class Game {
         this.app = new PIXI.Application({width: this.mapSize, height: this.mapSize})
         this.towerMapScene = new TdMap(this.mapSize, this.mapSize, this.dimensions)
 
-        
+        //game states
+        this.lives = 100
+        this.money = 300
 
         // add to DOM
         document.body.appendChild(this.app.view)
