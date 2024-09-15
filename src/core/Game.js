@@ -1,7 +1,6 @@
 import { WaveManager } from "../objects/WaveManager.js"
 import { displayPath, displayTiles, TdMap } from "../TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
-import * as PIXI from 'pixi.js';
 
 export class Game {
     constructor() {

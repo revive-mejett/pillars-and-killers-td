@@ -1,5 +1,4 @@
 import { walkPath2 } from "./Enemy.js"
-import * as PIXI from "pixi.js"
 export class WaveManager {
     /**
      *

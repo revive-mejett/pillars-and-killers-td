@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/app.js', // Your entry point file
@@ -24,6 +25,11 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       PIXI: 'pixi.js',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/assets/', to: 'assets/' },
+      ],
     }),
   ],
   devServer: {
