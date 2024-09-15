@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/app.js', // Your entry point file
@@ -20,9 +21,14 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      PIXI: 'pixi.js',
+    }),
+  ],
   devServer: {
     static: path.resolve(__dirname, 'dist'), // Directory to serve
-    port: 9000, // Development server port
+    port: 6969, // Development server port
   },
-  mode: 'development', // Set mode to development
+  mode: 'development', // Set mode to development, change 'production' once ready
 };
