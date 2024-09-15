@@ -1,5 +1,6 @@
 import { WaveManager } from "../objects/WaveManager.js"
 import { displayPath, displayTiles, TdMap } from "../TdMap.js"
+import { AssetLoader } from "./AssetLoader.js"
 
 export class Game {
     constructor() {
@@ -11,6 +12,8 @@ export class Game {
         //game states
         this.lives = 100
         this.money = 300
+
+        this.assetLoader = new AssetLoader()
 
         // add to DOM
         document.body.appendChild(this.app.view)
