@@ -1,5 +1,6 @@
 import { WaveManager } from "../objects/WaveManager.js"
 import { displayPath, displayTiles, TdMap } from "../TdMap.js"
+import { AssetLoader } from "./AssetLoader.js"
 
 export class Game {
     constructor() {
@@ -12,6 +13,19 @@ export class Game {
         this.lives = 100
         this.money = 300
 
+        this.assetLoader = new AssetLoader()
+
+
+
+        this.setup().then(() => this.playtest())
+
+    }
+
+    async setup() {
+        await this.assetLoader.loadAssets()
+    }
+
+    playtest() {
         // add to DOM
         document.body.appendChild(this.app.view)
 
@@ -22,6 +36,5 @@ export class Game {
         displayTiles(this.app, this.towerMapScene)
         displayPath(this.app, this.towerMapScene)
         this.testWaveManager.sendWave(this.app, this.towerMapScene)
-
     }
 }

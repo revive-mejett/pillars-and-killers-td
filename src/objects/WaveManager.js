@@ -1,5 +1,4 @@
 import { walkPath2 } from "./Enemy.js"
-
 export class WaveManager {
     /**
      *
@@ -22,7 +21,7 @@ export class WaveManager {
 
         console.log(`Wave ${this.currentWave} of ${this.waves.length} sent!`);
         this.currentWave++
-        const waveTicker = new PIXI.Ticker();
+        const waveTicker = new PIXI.Ticker()
         waveTicker.autoStart = false
 
         let elapsedMS = 0
