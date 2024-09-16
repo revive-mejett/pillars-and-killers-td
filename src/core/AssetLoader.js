@@ -23,14 +23,8 @@ export class AssetLoader {
     async loadAssets() {
         this.resources = Assets.addBundle("enemies", {
             "greenCircle" : "assets/images/killer_green_circle.png",
-            "blueCircle" : "assets/images/killer_green_circle.png",
+            "blueCircle" : "assets/images/killer_blue_circle.png",
         })
-        console.log(Assets.get("enemies"))
-
-        this.resources = await Assets.loadBundle("enemies")
-        console.log(this.resources);
-        
-
     }
     
 }

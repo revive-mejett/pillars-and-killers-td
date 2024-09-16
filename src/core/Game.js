@@ -1,3 +1,5 @@
+import { Assets } from "pixi.js"
+import { Enemy } from "../objects/Enemy.js"
 import { WaveManager } from "../objects/WaveManager.js"
 import { displayPath, displayTiles, TdMap } from "../TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
@@ -31,8 +33,7 @@ export class Game {
 
         this.testWaveManager = new WaveManager()
 
-        this.testWaveManager.sendWave(this.app, this.towerMapScene)
-
+        
         displayTiles(this.app, this.towerMapScene)
         displayPath(this.app, this.towerMapScene)
         this.testWaveManager.sendWave(this.app, this.towerMapScene)

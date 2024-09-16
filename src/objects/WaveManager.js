@@ -14,7 +14,8 @@ export class WaveManager {
 
     sendWave(app, map) {
         console.log("send wave")
-        if (this.currentWave === this.waves.length) throw new Error("Already at last wave")
+        //throw error if all the waves are already sent
+        if (this.currentWave === this.waves.length + 1) throw new Error("Already at last wave")
 
         let waveIndex = this.currentWave - 1
         
@@ -27,7 +28,7 @@ export class WaveManager {
         let elapsedMS = 0
         console.log(this.waves[waveIndex].length)
         let enemiesSpawned = 0
-        //[1,1,1,1,1]
+
         let onTick = () => {
             elapsedMS += waveTicker.deltaMS
             if (elapsedMS >= 500) {
