@@ -47,7 +47,7 @@ export class Enemy {
 }
 
 function walkPath2(app, map) {
-    let testEnemy = new Enemy(100, 5, 'assets/images/killer_purple_circle.png', map)
+    let testEnemy = new Enemy(100, 5, 'assets/images/killer_green_circle.png', map)
     let speed = testEnemy.speed
     let waypoints = map.waypoints
     testEnemy.zIndex = 3
