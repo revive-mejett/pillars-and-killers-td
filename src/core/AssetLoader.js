@@ -1,3 +1,4 @@
+import { Assets } from "pixi.js"
 
 
 let instance = null
@@ -13,18 +14,23 @@ export class AssetLoader {
         if (!instance) {
             instance = this
             this.resources = {}
-            this.loader = new PIXI.loader.shared
         }
 
 
         return instance
     }
 
-    loadAssets() {
-        this.loader.add({
-            name : "greenEnemy",
-            url: "assets/images/killer_green_circle.png"
+    async loadAssets() {
+        this.resources = Assets.addBundle("enemies", {
+            "greenCircle" : "assets/images/killer_green_circle.png",
+            "blueCircle" : "assets/images/killer_green_circle.png",
         })
+        console.log(Assets.get("enemies"))
+
+        this.resources = await Assets.loadBundle("enemies")
+        console.log(this.resources);
+        
+
     }
     
 }

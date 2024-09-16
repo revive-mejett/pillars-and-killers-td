@@ -15,6 +15,17 @@ export class Game {
 
         this.assetLoader = new AssetLoader()
 
+
+
+        this.setup().then(() => this.playtest())
+
+    }
+
+    async setup() {
+        await this.assetLoader.loadAssets()
+    }
+
+    playtest() {
         // add to DOM
         document.body.appendChild(this.app.view)
 
@@ -25,6 +36,5 @@ export class Game {
         displayTiles(this.app, this.towerMapScene)
         displayPath(this.app, this.towerMapScene)
         this.testWaveManager.sendWave(this.app, this.towerMapScene)
-
     }
 }
