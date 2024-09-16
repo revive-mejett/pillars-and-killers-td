@@ -1,3 +1,5 @@
+import { Assets } from "pixi.js"
+
 export class Enemy {
 
     /**
@@ -20,8 +22,8 @@ export class Enemy {
         this.position.x = map.waypoints[0].x * map.tileSize
         this.position.y = map.waypoints[0].y * map.tileSize
         
-        console.log("map start ", map.waypoints[0]);
-        console.log("enemy pos", this.sprite);
+        // console.log("map start ", map.waypoints[0]);
+        // console.log("enemy pos", this.sprite);
         
     }
 
@@ -46,8 +48,9 @@ export class Enemy {
 
 }
 
-function walkPath2(app, map) {
-    let testEnemy = new Enemy(100, 5, 'assets/images/killer_green_circle.png', map)
+async function walkPath2(app, map) {
+    let testEnemyBundle = await Assets.loadBundle("enemies")
+    let testEnemy = new Enemy(100, 5, testEnemyBundle.blueCircle, map)
     let speed = testEnemy.speed
     let waypoints = map.waypoints
     testEnemy.zIndex = 3
