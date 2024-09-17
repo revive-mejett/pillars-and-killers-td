@@ -1,4 +1,4 @@
-import { walkPath2 } from "./Enemy.js"
+import { walkPath } from "./Enemy.js"
 export class WaveManager {
     /**
      *
@@ -35,7 +35,7 @@ export class WaveManager {
                 elapsedMS = 0
                 enemiesSpawned++
 
-                walkPath2(app, map)
+                walkPath(app, map)
 
                 if (enemiesSpawned >= this.waves[waveIndex].length) {
                     console.log("all enemies spawned in wave")

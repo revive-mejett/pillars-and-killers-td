@@ -18,12 +18,8 @@ export class Enemy {
         this.sprite.height = map.tileSize
         this.sprite.width = map.tileSize
 
-        //set to start of the path
         this.position.x = map.waypoints[0].x * map.tileSize
         this.position.y = map.waypoints[0].y * map.tileSize
-        
-        // console.log("map start ", map.waypoints[0]);
-        // console.log("enemy pos", this.sprite);
         
     }
 
@@ -44,15 +40,35 @@ export class Enemy {
         this.sprite.destroy()
     }
 
-    
+    update(speed, map, enemyWalkTicker, delta) {
+        const waypoints = map.waypoints
 
+        if (this.xToNextWaypoint !== 0) {
+            this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta
+        }
+        else if (this.yToNextWaypoint !== 0) {
+            this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta
+        }
+        this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
+        this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
+        this.updateSpritePosition()
+        if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
+            this.nextWayPointIndex++
+            if (this.nextWayPointIndex === waypoints.length) {
+                console.log("reached end")
+                this.destroy()
+                enemyWalkTicker.stop()
+            } else {
+                this.setDistancesToNext(map)
+                
+            }
+        }
+    }
 }
 
-async function walkPath2(app, map) {
+async function walkPath(app, map) {
     let testEnemyBundle = await Assets.loadBundle("enemies")
     let testEnemy = new Enemy(100, 5, testEnemyBundle.blueCircle, map)
-    let speed = testEnemy.speed
-    let waypoints = map.waypoints
     testEnemy.zIndex = 3
 
 
@@ -60,32 +76,10 @@ async function walkPath2(app, map) {
     let enemyWalkTicker = new PIXI.Ticker()
 
     
-    let enemyWalkTickerUpdate = () => {
-
-        if (testEnemy.xToNextWaypoint !== 0) {
-            testEnemy.position.x += speed * (testEnemy.xToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
-        }
-        else if (testEnemy.yToNextWaypoint !== 0) {
-            testEnemy.position.y += speed * (testEnemy.yToNextWaypoint > 0 ? 1 : -1) * app.ticker.deltaTime
-        }
-        testEnemy.xToNextWaypoint = (waypoints[testEnemy.nextWayPointIndex].x * map.tileSize - testEnemy.position.x)
-        testEnemy.yToNextWaypoint = (waypoints[testEnemy.nextWayPointIndex].y * map.tileSize - testEnemy.position.y)
-        testEnemy.updateSpritePosition()
-        if (Math.abs(testEnemy.xToNextWaypoint) < 1 && Math.abs(testEnemy.yToNextWaypoint) < 1 && testEnemy.nextWayPointIndex < waypoints.length) {
-            testEnemy.nextWayPointIndex++
-            if (testEnemy.nextWayPointIndex === waypoints.length) {
-                console.log("reached end")
-                testEnemy.destroy()
-                enemyWalkTicker.stop()
-            } else {
-                testEnemy.setDistancesToNext(map)
-                
-            }
-        }
-    }
+    let enemyWalkTickerUpdate = () => testEnemy.update(testEnemy.speed, map, enemyWalkTicker, app.ticker.deltaTime)
 
     enemyWalkTicker.add(enemyWalkTickerUpdate)
     enemyWalkTicker.start()
 }
 
-export { walkPath2 }
+export { walkPath }
