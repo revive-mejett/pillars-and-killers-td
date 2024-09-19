@@ -1,7 +1,7 @@
 
 import { WaveManager } from "../objects/WaveManager.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
-import { displayPath, displayTiles, TdMap } from "../TdMap.js"
+import { TdMap } from "../TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
 
 export class Game {
