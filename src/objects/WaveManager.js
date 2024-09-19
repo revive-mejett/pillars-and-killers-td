@@ -1,4 +1,4 @@
-import { walkPath2 } from "./Enemy.js"
+import { walkPath } from "./Enemy.js"
 export class WaveManager {
     /**
      *
@@ -13,12 +13,10 @@ export class WaveManager {
     }
 
     sendWave(app, map) {
-        console.log("send wave")
         //throw error if all the waves are already sent
         if (this.currentWave === this.waves.length + 1) throw new Error("Already at last wave")
 
         let waveIndex = this.currentWave - 1
-        
 
         console.log(`Wave ${this.currentWave} of ${this.waves.length} sent!`);
         this.currentWave++
@@ -26,7 +24,6 @@ export class WaveManager {
         waveTicker.autoStart = false
 
         let elapsedMS = 0
-        console.log(this.waves[waveIndex].length)
         let enemiesSpawned = 0
 
         let onTick = () => {
@@ -35,10 +32,9 @@ export class WaveManager {
                 elapsedMS = 0
                 enemiesSpawned++
 
-                walkPath2(app, map)
+                walkPath(app, map)
 
                 if (enemiesSpawned >= this.waves[waveIndex].length) {
-                    console.log("all enemies spawned in wave")
                     waveTicker.stop()
                 }
             }
