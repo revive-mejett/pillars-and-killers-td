@@ -1,5 +1,6 @@
 
 import { WaveManager } from "../objects/WaveManager.js"
+import { GameplayScene } from "../scenes/GameplayScene.js"
 import { displayPath, displayTiles, TdMap } from "../TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
 
@@ -17,27 +18,27 @@ export class Game {
 
         this.assetLoader = new AssetLoader()
 
-        // this.setup().then(() => this.playtest())
+        this.setup().then(() => this.playtest())
 
     }
 
     async setup() {
+        
+        this.gameplayScene = new GameplayScene()
+        this.gameplayScene.buildMap()
+        // let gameplayScene = this.gameplayScene
         await this.assetLoader.loadAssets()
-        let gameplayScene = this.gameplayScene
 
         
 
     }
 
-    // playtest() {
-    //     // add to DOM
-    //     document.body.appendChild(this.app.view)
+    playtest() {
+        //add to DOM
+        document.body.appendChild(this.app.view)
+        this.app.stage.addChild(this.gameplayScene.container)
 
-    //     this.testWaveManager = new WaveManager()
-
-        
-    //     displayTiles(this.app, this.towerMapScene)
-    //     displayPath(this.app, this.towerMapScene)
-    //     this.testWaveManager.sendWave(this.app, this.towerMapScene)
-    // }
+        this.testWaveManager = new WaveManager()
+        this.testWaveManager.sendWave(this.app, this.gameplayScene.tdMap)
+    }
 }
