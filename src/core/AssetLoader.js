@@ -24,6 +24,8 @@ export class AssetLoader {
         this.resources = Assets.addBundle("enemies", {
             "greenCircle" : "assets/images/killer_green_circle.png",
             "blueCircle" : "assets/images/killer_blue_circle.png",
+            "blueCircle" : "assets/images/killer_purple_circle.png",
+            "blueCircle" : "assets/images/killer_yellow_circle.png",
         })
     }
     
