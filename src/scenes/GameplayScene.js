@@ -1,4 +1,4 @@
-import { TdMap } from "../TdMap.js"
+import { TdMap } from "../objects/TdMap.js"
 
 export class GameplayScene {
 

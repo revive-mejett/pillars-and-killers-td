@@ -1,7 +1,7 @@
 
 import { WaveManager } from "../objects/WaveManager.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
-import { TdMap } from "../TdMap.js"
+import { TdMap } from "../objects/TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
 
 export class Game {
@@ -10,6 +10,7 @@ export class Game {
         this.dimensions = 25
         this.app = new PIXI.Application({width: this.mapSize + 3000, height: this.mapSize+ 3000})
         this.towerMapScene = new TdMap(this.mapSize, this.mapSize, this.dimensions)
+        this.testWaveManager = new WaveManager()
         this.gameplayScene = undefined
 
         //game states
@@ -38,7 +39,7 @@ export class Game {
         document.body.appendChild(this.app.view)
         this.app.stage.addChild(this.gameplayScene.container)
 
-        this.testWaveManager = new WaveManager()
+        
         this.testWaveManager.sendWave(this.app, this.gameplayScene.tdMap)
     }
 }
