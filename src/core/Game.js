@@ -29,7 +29,9 @@ export class Game {
         this.gameplayScene.buildMap()
         // let gameplayScene = this.gameplayScene
         await this.assetLoader.loadAssets()
-
+        
+        // stached code
+        console.log('this is stashed')
         
 
     }
