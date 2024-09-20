@@ -9,9 +9,9 @@ export class HUD {
         this.container.y = 0
     }
 
+
     async setup(container) {
         container.addChild(this.container)
-
         const bgColor = new PIXI.Graphics()
         bgColor.beginFill(0x002222)
         bgColor.drawRect(0,0,1100*0.2,1100)
