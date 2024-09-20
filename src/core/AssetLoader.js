@@ -14,6 +14,7 @@ export class AssetLoader {
         if (!instance) {
             instance = this
             this.resources = {}
+            this.icons = {}
         }
 
 
@@ -26,6 +27,10 @@ export class AssetLoader {
             "blueCircle" : "assets/images/killer_blue_circle.png",
             "blueCircle" : "assets/images/killer_purple_circle.png",
             "blueCircle" : "assets/images/killer_yellow_circle.png",
+        })
+        this.icons = Assets.addBundle("icons", {
+            "money" : "assets/images/money_icon.png",
+            "lives" : "assets/images/couple.png",
         })
     }
     
