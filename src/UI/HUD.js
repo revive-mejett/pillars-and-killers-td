@@ -15,7 +15,7 @@ export class HUD {
         container.addChild(this.container)
 
         const bgColor = new PIXI.Graphics()
-        bgColor.beginFill(0x002222)
+        bgColor.beginFill(0x000011)
         bgColor.drawRect(0,0,1100 * 0.25,1100)
         bgColor.endFill()
         container.zIndex = 99999
@@ -81,7 +81,69 @@ export class HUD {
         livesText.y = (livesContainer.height - livesText.height) / 2;
         livesContainer.addChild(livesText)
 
-        
+        //wave number ui
+        const waveNumContainer = new PIXI.Container()
+        waveNumContainer.x = 0
+        waveNumContainer.y = 200
+        waveNumContainer.width = 100
+        waveNumContainer.height = 50
+        this.container.addChild(waveNumContainer)
+
+        const waveNumContainerbg = new PIXI.Graphics()
+        waveNumContainer.addChild(waveNumContainerbg)
+        waveNumContainerbg.beginFill(0x003333)
+        waveNumContainerbg.drawRect(0,0, this.container.width, 50)
+        waveNumContainerbg.endFill()
+
+        const waveNumText = new Text("Wave 1", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: 'center'}))
+        waveNumText.x = (waveNumContainer.width - waveNumText.width) / 2;
+        waveNumText.y = (waveNumContainer.height - waveNumText.height) / 2;
+        waveNumContainer.addChild(waveNumText)
+
+
+        //buttons
+        const nextWaveButtonContainer = new PIXI.Container()
+        nextWaveButtonContainer.eventMode = "static"
+        nextWaveButtonContainer.x = 0
+        nextWaveButtonContainer.y = 1000 - 50
+        nextWaveButtonContainer.width = 1100 * 0.25
+        nextWaveButtonContainer.height = 50
+        this.container.addChild(nextWaveButtonContainer)
+
+        const nextWaveButtonContainerbg = new PIXI.Graphics()
+        nextWaveButtonContainer.addChild(nextWaveButtonContainerbg)
+        nextWaveButtonContainerbg.beginFill(0x003300)
+        nextWaveButtonContainerbg.drawRect(0,0, this.container.width, 50)
+        nextWaveButtonContainerbg.endFill()
+
+        const nextWaveButtonText = new Text("Next Wave", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: 'center'}))
+        nextWaveButtonText.x = (nextWaveButtonContainer.width - nextWaveButtonText.width) / 2;
+        nextWaveButtonText.y = (nextWaveButtonContainer.height - nextWaveButtonText.height) / 2;
+        nextWaveButtonContainer.addChild(nextWaveButtonText)
+
+        nextWaveButtonContainer.on('pointerdown', () => console.log("next wave button clicked - not yet implemented"))
+
+        const exitButtonContainer = new PIXI.Container()
+        exitButtonContainer.eventMode = "static"
+        exitButtonContainer.x = 0
+        exitButtonContainer.y = 1000
+        exitButtonContainer.width = 1100 * 0.25
+        exitButtonContainer.height = 50
+        this.container.addChild(exitButtonContainer)
+
+        const exitButtonContainerbg = new PIXI.Graphics()
+        exitButtonContainer.addChild(exitButtonContainerbg)
+        exitButtonContainerbg.beginFill(0x330000)
+        exitButtonContainerbg.drawRect(0,0, this.container.width, 50)
+        exitButtonContainerbg.endFill()
+
+        const exitButtonText = new Text("Exit", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: 'center'}))
+        exitButtonText.x = (exitButtonContainer.width - exitButtonText.width) / 2;
+        exitButtonText.y = (exitButtonContainer.height - exitButtonText.height) / 2;
+        exitButtonContainer.addChild(exitButtonText)
+
+        exitButtonContainer.on('pointerdown', () => console.log("exit button clicked - not yet implemented"))
+
 
     }
 }

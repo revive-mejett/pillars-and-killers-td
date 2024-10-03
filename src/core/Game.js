@@ -8,7 +8,7 @@ export class Game {
     constructor() {
         this.mapSize = 1100
         this.dimensions = 25
-        this.app = new PIXI.Application({width: this.mapSize + 3000, height: this.mapSize+ 3000})
+        this.app = new PIXI.Application({width: this.mapSize + 3000, height: this.mapSize})
         this.towerMapScene = new TdMap(this.mapSize, this.mapSize, this.dimensions)
         this.testWaveManager = new WaveManager()
         this.gameplayScene = undefined
@@ -29,11 +29,6 @@ export class Game {
         this.gameplayScene.buildMap()
         // let gameplayScene = this.gameplayScene
         await this.assetLoader.loadAssets()
-        
-        // stached code
-        console.log('this is stashed')
-        
-
     }
 
     playtest() {
