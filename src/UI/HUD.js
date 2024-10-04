@@ -23,7 +23,7 @@ export class HUD {
         bgColor.zIndex = 99999
         this.container.addChild(bgColor)
 
-        let iconBundle = await Assets.loadBundle("icons")
+        const iconBundle = await Assets.loadBundle("icons")
 
 
         //add money ui
@@ -145,5 +145,7 @@ export class HUD {
         exitButtonContainer.on('pointerdown', () => console.log("exit button clicked - not yet implemented"))
 
 
+        //set up tower sprites
+        // const towerSpriteBundle = await 
     }
 }

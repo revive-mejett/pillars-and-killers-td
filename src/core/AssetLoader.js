@@ -15,6 +15,7 @@ export class AssetLoader {
             instance = this
             this.resources = {}
             this.icons = {}
+            this.towerSprites = {}
         }
 
 
@@ -25,12 +26,22 @@ export class AssetLoader {
         this.resources = Assets.addBundle("enemies", {
             "greenCircle" : "assets/images/killer_green_circle.png",
             "blueCircle" : "assets/images/killer_blue_circle.png",
-            "blueCircle" : "assets/images/killer_purple_circle.png",
-            "blueCircle" : "assets/images/killer_yellow_circle.png",
+            "purpleCircle" : "assets/images/killer_purple_circle.png",
+            "yellowCircle" : "assets/images/killer_yellow_circle.png",
         })
         this.icons = Assets.addBundle("icons", {
             "money" : "assets/images/money_icon.png",
             "lives" : "assets/images/couple.png",
+        })
+        this.towerSprites = Assets.addBundle("towerSprites", {
+            "basicPillarIcon" : "assets/images/basic_pillar.png",
+            "basicPillarTop" : "assets/images/basic_pillar_top.png",
+            "frozenPillar" : "assets/images/frozen_pillar_icon.png",
+            "frozenPillarTop" : "assets/images/frozen_pillar_top.png",
+            "advancedPillar" : "assets/images/advanced_pillar_icon.png",
+            "advancedPillarTop" : "assets/images/advanced_pillar_top.png",
+            "ultimatePillar" : "assets/images/ultimate_pillar.png",
+            "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png",
         })
     }
     
