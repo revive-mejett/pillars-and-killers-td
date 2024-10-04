@@ -5,9 +5,9 @@ export class HUD {
 
     constructor() {
         this.container = new PIXI.Container()
-        this.container.width = 1100 * 0.25
+        this.container.width = 1000 * 0.25
         this.container.height = 1000
-        this.container.x = 1100
+        this.container.x = 1000
         this.container.y = 0
     }
 
@@ -16,7 +16,7 @@ export class HUD {
 
         const bgColor = new PIXI.Graphics()
         bgColor.beginFill(0x000011)
-        bgColor.drawRect(0,0,1100 * 0.25,1100)
+        bgColor.drawRect(0,0,1000 * 0.25,1000)
         bgColor.endFill()
         container.zIndex = 99999
         this.container.zIndex = 99999
@@ -105,8 +105,8 @@ export class HUD {
         const nextWaveButtonContainer = new PIXI.Container()
         nextWaveButtonContainer.eventMode = "static"
         nextWaveButtonContainer.x = 0
-        nextWaveButtonContainer.y = 1000 - 50
-        nextWaveButtonContainer.width = 1100 * 0.25
+        nextWaveButtonContainer.y = 1000 - 100
+        nextWaveButtonContainer.width = 1000 * 0.25
         nextWaveButtonContainer.height = 50
         this.container.addChild(nextWaveButtonContainer)
 
@@ -126,8 +126,8 @@ export class HUD {
         const exitButtonContainer = new PIXI.Container()
         exitButtonContainer.eventMode = "static"
         exitButtonContainer.x = 0
-        exitButtonContainer.y = 1000
-        exitButtonContainer.width = 1100 * 0.25
+        exitButtonContainer.y = 1000 - 50
+        exitButtonContainer.width = 1000 * 0.25
         exitButtonContainer.height = 50
         this.container.addChild(exitButtonContainer)
 

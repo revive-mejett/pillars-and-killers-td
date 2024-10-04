@@ -6,10 +6,10 @@ import { AssetLoader } from "./AssetLoader.js"
 
 export class Game {
     constructor() {
-        this.mapSize = 1100
+        this.mapSize = 1000
         this.dimensions = 25
-        this.app = new PIXI.Application({width: this.mapSize + 3000, height: this.mapSize})
-        this.towerMapScene = new TdMap(this.mapSize, this.mapSize, this.dimensions)
+        this.app = new PIXI.Application({width: this.mapSize + 250, height: this.mapSize})
+        // this.towerMapScene = new TdMap(this.mapSize, this.mapSize, this.dimensions)
         this.testWaveManager = new WaveManager()
         this.gameplayScene = undefined
 

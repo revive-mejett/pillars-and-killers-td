@@ -5,7 +5,7 @@ export class GameplayScene {
 
     constructor() {
         this.container = new PIXI.Container()
-        this.tdMap = new TdMap(1100, 1100, 25)
+        this.tdMap = new TdMap(1000, 1000, 25)
         this.hud = new HUD()
         this.setUpHUD()
 
