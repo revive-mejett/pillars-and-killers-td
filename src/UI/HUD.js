@@ -145,7 +145,38 @@ export class HUD {
         exitButtonContainer.on('pointerdown', () => console.log("exit button clicked - not yet implemented"))
 
 
-        //set up tower sprites
-        // const towerSpriteBundle = await 
+        //tower selection menu
+        const towerSpriteBundle = await Assets.loadBundle("towerSprites")
+
+        const towerSelectMenu = new PIXI.Container()
+        towerSelectMenu.x = 0
+        towerSelectMenu.y = 400
+        towerSelectMenu.width = 1000 * 0.25
+        this.container.addChild(towerSelectMenu)
+
+        const basicPillarButton = new PIXI.Container()
+        basicPillarButton.eventMode = "static"
+        basicPillarButton.width = 80
+        basicPillarButton.height = 80
+        basicPillarButton.x = 0
+        basicPillarButton.y = 0
+        towerSelectMenu.addChild(basicPillarButton)
+        
+
+        const basicPillarIconbg = new PIXI.Graphics()
+        basicPillarIconbg.beginFill(0x111111)
+        basicPillarIconbg.drawRect(0,0, 80, 80)
+        basicPillarIconbg.endFill()
+        basicPillarButton.addChild(basicPillarIconbg)
+        
+        const basicPillarIcon = PIXI.Sprite.from(towerSpriteBundle.basicPillarIcon)
+        basicPillarIcon.width = 80
+        basicPillarIcon.height = 80
+
+        basicPillarButton.addChild(basicPillarIcon)
+        
+
+
+
     }
 }

@@ -13,9 +13,6 @@ export class AssetLoader {
         //singleton
         if (!instance) {
             instance = this
-            this.resources = {}
-            this.icons = {}
-            this.towerSprites = {}
         }
 
 
@@ -23,17 +20,17 @@ export class AssetLoader {
     }
 
     async loadAssets() {
-        this.resources = Assets.addBundle("enemies", {
+        Assets.addBundle("enemies", {
             "greenCircle" : "assets/images/killer_green_circle.png",
             "blueCircle" : "assets/images/killer_blue_circle.png",
             "purpleCircle" : "assets/images/killer_purple_circle.png",
             "yellowCircle" : "assets/images/killer_yellow_circle.png",
         })
-        this.icons = Assets.addBundle("icons", {
+        Assets.addBundle("icons", {
             "money" : "assets/images/money_icon.png",
             "lives" : "assets/images/couple.png",
         })
-        this.towerSprites = Assets.addBundle("towerSprites", {
+        Assets.addBundle("towerSprites", {
             "basicPillarIcon" : "assets/images/basic_pillar.png",
             "basicPillarTop" : "assets/images/basic_pillar_top.png",
             "frozenPillar" : "assets/images/frozen_pillar_icon.png",
