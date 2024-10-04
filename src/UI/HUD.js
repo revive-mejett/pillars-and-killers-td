@@ -154,29 +154,39 @@ export class HUD {
         towerSelectMenu.width = 1000 * 0.25
         this.container.addChild(towerSelectMenu)
 
-        const basicPillarButton = new PIXI.Container()
-        basicPillarButton.eventMode = "static"
-        basicPillarButton.width = 80
-        basicPillarButton.height = 80
-        basicPillarButton.x = 0
-        basicPillarButton.y = 0
+        
+        const basicPillarButton = this.createTowerButton(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111)
         towerSelectMenu.addChild(basicPillarButton)
+        const frozenPillarButton = this.createTowerButton(towerSpriteBundle.frozenPillar, 80, 0, 0x001122)
+        towerSelectMenu.addChild(frozenPillarButton)
+        const advancedPillarButton = this.createTowerButton(towerSpriteBundle.advancedPillar, 160, 0, 0x221100)
+        towerSelectMenu.addChild(advancedPillarButton)
+        const ultimatePillarButton = this.createTowerButton(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011)
+        towerSelectMenu.addChild(ultimatePillarButton)
+        
+    }
+
+    createTowerButton(spriteAsset, xPosition, yPosition, hexBackground) {
+        const towerButton = new PIXI.Container()
+        towerButton.eventMode = "static"
+        towerButton.width = 80
+        towerButton.height = 80
+        towerButton.x = xPosition
+        towerButton.y = yPosition
         
 
-        const basicPillarIconbg = new PIXI.Graphics()
-        basicPillarIconbg.beginFill(0x111111)
-        basicPillarIconbg.drawRect(0,0, 80, 80)
-        basicPillarIconbg.endFill()
-        basicPillarButton.addChild(basicPillarIconbg)
+        const iconBackground = new PIXI.Graphics()
+        iconBackground.beginFill(hexBackground)
+        iconBackground.drawRect(0,0, 80, 80)
+        iconBackground.endFill()
+        towerButton.addChild(iconBackground)
         
-        const basicPillarIcon = PIXI.Sprite.from(towerSpriteBundle.basicPillarIcon)
-        basicPillarIcon.width = 80
-        basicPillarIcon.height = 80
+        const towerIcon = PIXI.Sprite.from(spriteAsset)
+        towerIcon.width = 80
+        towerIcon.height = 80
+        towerButton.addChild(towerIcon)
 
-        basicPillarButton.addChild(basicPillarIcon)
-        
-
-
-
+        return towerButton
     }
 }
+
