@@ -5,8 +5,6 @@ export class HUD {
 
     constructor() {
         this.container = new PIXI.Container()
-        this.container.width = 1000 * 0.25
-        this.container.height = 1000
         this.container.x = 1000
         this.container.y = 0
     }
@@ -30,8 +28,6 @@ export class HUD {
         const moneyContainer = new PIXI.Container()
         moneyContainer.x = 0
         moneyContainer.y = 0
-        moneyContainer.width = 200
-        moneyContainer.height = 100
         this.container.addChild(moneyContainer)
 
         const moneyContainerbg = new PIXI.Graphics()
@@ -58,8 +54,6 @@ export class HUD {
         const livesContainer = new PIXI.Container()
         livesContainer.x = 0
         livesContainer.y = 100
-        livesContainer.width = 200
-        livesContainer.height = 100
         this.container.addChild(livesContainer)
 
         const livesContainerbg = new PIXI.Graphics()
@@ -85,8 +79,6 @@ export class HUD {
         const waveNumContainer = new PIXI.Container()
         waveNumContainer.x = 0
         waveNumContainer.y = 200
-        waveNumContainer.width = 100
-        waveNumContainer.height = 50
         this.container.addChild(waveNumContainer)
 
         const waveNumContainerbg = new PIXI.Graphics()
@@ -106,8 +98,6 @@ export class HUD {
         nextWaveButtonContainer.eventMode = "static"
         nextWaveButtonContainer.x = 0
         nextWaveButtonContainer.y = 1000 - 100
-        nextWaveButtonContainer.width = 1000 * 0.25
-        nextWaveButtonContainer.height = 50
         this.container.addChild(nextWaveButtonContainer)
 
         const nextWaveButtonContainerbg = new PIXI.Graphics()
@@ -127,8 +117,6 @@ export class HUD {
         exitButtonContainer.eventMode = "static"
         exitButtonContainer.x = 0
         exitButtonContainer.y = 1000 - 50
-        exitButtonContainer.width = 1000 * 0.25
-        exitButtonContainer.height = 50
         this.container.addChild(exitButtonContainer)
 
         const exitButtonContainerbg = new PIXI.Graphics()
@@ -149,11 +137,9 @@ export class HUD {
 
         // tower description pane
         const towerInfoPanel = new PIXI.Container()
-        
         towerInfoPanel.x = 1
         towerInfoPanel.y = 600
 
-        towerInfoPanel.width = 1000 * 0.25
         this.container.addChild(towerInfoPanel)
 
         const infoPanelOutline = new PIXI.Graphics()
