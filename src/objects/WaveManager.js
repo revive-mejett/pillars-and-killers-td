@@ -6,8 +6,8 @@ export class WaveManager {
 
     constructor() {
         this.waves = [
-         [1,1,1,1,1],
-         [1,1,1,1,1,1,1,1,1,1,1,1]   
+         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] 
         ]
         this.currentWave = 1
     }
@@ -28,7 +28,7 @@ export class WaveManager {
 
         let onTick = () => {
             elapsedMS += waveTicker.deltaMS
-            if (elapsedMS >= 500) {
+            if (elapsedMS >= 160 * (400 + Math.random() * 800) / 800) {
                 elapsedMS = 0
                 enemiesSpawned++
 
