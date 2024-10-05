@@ -3,19 +3,17 @@ import { WaveManager } from "../objects/WaveManager.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
 import { TdMap } from "../objects/TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
+import { GameState } from "./GameState.js"
 
 export class Game {
     constructor() {
         this.mapSize = 1000
         this.dimensions = 25
         this.app = new PIXI.Application({width: this.mapSize + 250, height: this.mapSize})
+        this.gameState = new GameState()
         // this.towerMapScene = new TdMap(this.mapSize, this.mapSize, this.dimensions)
         this.testWaveManager = new WaveManager()
         this.gameplayScene = undefined
-
-        //game states
-        this.lives = 100
-        this.money = 300
 
         this.assetLoader = new AssetLoader()
 
