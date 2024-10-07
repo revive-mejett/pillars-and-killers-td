@@ -1,4 +1,5 @@
 
+let instance = null
 
 export class EventDispatcher {
 
@@ -38,7 +39,7 @@ export class EventDispatcher {
             return
         }
         //call all event handlers for that event
-        this.listeners.event.forEach(callback => callback())
+        this.listeners[event].forEach(callback => callback(data))
     }
 
 }

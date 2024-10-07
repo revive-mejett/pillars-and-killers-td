@@ -10,6 +10,7 @@ export class GameplayScene {
         this.gamestate = gamestate
         this.hud = new HUD(this.gamestate)
         this.uiManager = new UIManager(this.gamestate, this.hud)
+        this.gamestate.linkUiManager(this.uiManager)
         this.setUpHUD()
 
     }
