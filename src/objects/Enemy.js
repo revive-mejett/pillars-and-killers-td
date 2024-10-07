@@ -1,5 +1,5 @@
 import { Assets } from "pixi.js"
-
+import { EventDispatcher } from "../utils/EventDispatcher.js"
 export class Enemy {
 
     /**
@@ -55,14 +55,20 @@ export class Enemy {
         if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
             this.nextWayPointIndex++
             if (this.nextWayPointIndex === waypoints.length) {
-                console.log("reached end")
-                this.destroy()
+                
+                
                 enemyWalkTicker.stop()
+                this.reachEnd()
             } else {
                 this.setDistancesToNext(map)
                 
             }
         }
+    }
+
+    reachEnd() {
+        new EventDispatcher().fireEvent("enemyReachEnd", 2)
+        this.destroy()
     }
 }
 

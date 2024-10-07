@@ -3,10 +3,14 @@ import { Assets, Text, TextStyle } from "pixi.js"
 export class HUD {
 
 
-    constructor() {
+    constructor(gamestate) {
         this.container = new PIXI.Container()
         this.container.x = 1000
         this.container.y = 0
+
+        this.gamestate = gamestate
+        this.moneyText = undefined
+        this.livesText = undefined
     }
 
     async setup(container) {
@@ -49,6 +53,7 @@ export class HUD {
         moneyText.x = 0 + moneySprite.width
         moneyText.y = (moneyContainer.height - moneyText.height) / 2;
         moneyContainer.addChild(moneyText)
+        this.moneyText = moneyText
 
         //add lives ui
         const livesContainer = new PIXI.Container()
@@ -70,10 +75,11 @@ export class HUD {
         livesSprite.y = 0
         livesContainer.addChild(livesSprite)
 
-        const livesText = new Text("258", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFF00, align: 'center'}))
+        const livesText = new Text(this.gamestate.lives, new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFF00, align: 'center'}))
         livesText.x = 0 + livesSprite.width
         livesText.y = (livesContainer.height - livesText.height) / 2;
         livesContainer.addChild(livesText)
+        this.livesText = livesText
 
         //wave number ui
         const waveNumContainer = new PIXI.Container()
