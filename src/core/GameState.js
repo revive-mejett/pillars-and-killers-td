@@ -1,6 +1,6 @@
 export class GameState {
     constructor() {
-        this.lives = 300
+        this.lives = 200
         this.money = 500
     }
 

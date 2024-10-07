@@ -1,7 +1,6 @@
 
 import { WaveManager } from "../managers/WaveManager.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
-import { TdMap } from "../objects/TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
 import { GameState } from "./GameState.js"
 
@@ -23,7 +22,7 @@ export class Game {
 
     async setup() {
         
-        this.gameplayScene = new GameplayScene()
+        this.gameplayScene = new GameplayScene(this.gameState)
         this.gameplayScene.buildMap()
         // let gameplayScene = this.gameplayScene
         await this.assetLoader.loadAssets()
