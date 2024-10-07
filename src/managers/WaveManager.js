@@ -1,4 +1,4 @@
-import { walkPath } from "./Enemy.js"
+import { walkPath } from "../objects/Enemy.js"
 export class WaveManager {
     /**
      *

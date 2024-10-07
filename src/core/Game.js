@@ -1,5 +1,5 @@
 
-import { WaveManager } from "../objects/WaveManager.js"
+import { WaveManager } from "../managers/WaveManager.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
 import { TdMap } from "../objects/TdMap.js"
 import { AssetLoader } from "./AssetLoader.js"
