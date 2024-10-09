@@ -11,8 +11,6 @@ export class GameState {
 
     loseLives(damage) {
         this.lives -= damage
-        console.log(this.lives)
-        console.log("damage: ", damage)
         if (this.lives <= 0) {
             this.lives = 0
             console.log("game over!!!")

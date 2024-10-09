@@ -10,30 +10,26 @@ export class Game {
         this.dimensions = 25
         this.app = new PIXI.Application({width: this.mapSize + 250, height: this.mapSize})
         this.gameState = new GameState()
-        // this.towerMapScene = new TdMap(this.mapSize, this.mapSize, this.dimensions)
-        this.testWaveManager = new WaveManager()
         this.gameplayScene = undefined
 
         this.assetLoader = new AssetLoader()
 
-        this.setup().then(() => this.playtest())
+        this.setup().then(() => this.run())
 
     }
 
     async setup() {
         
-        this.gameplayScene = new GameplayScene(this.gameState)
+        this.gameplayScene = new GameplayScene(this.gameState, this.app)
         this.gameplayScene.buildMap()
         // let gameplayScene = this.gameplayScene
         await this.assetLoader.loadAssets()
     }
 
-    playtest() {
+    run() {
         //add to DOM
         document.body.appendChild(this.app.view)
         this.app.stage.addChild(this.gameplayScene.container)
-
-        
-        this.testWaveManager.sendWave(this.app, this.gameplayScene.tdMap)
+        this.gameplayScene.playTest()
     }
 }
