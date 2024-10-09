@@ -1,5 +1,6 @@
 import { Assets } from "pixi.js"
 import { Enemy } from "../objects/Enemy.js"
+import { EventDispatcher } from "../utils/EventDispatcher.js"
 
 export class WaveManager {
     /**
@@ -28,16 +29,16 @@ export class WaveManager {
         let elapsedMS = 0
         let enemiesSpawned = 0
 
+        //spawns an enemy
         let onTick = () => {
             elapsedMS += waveTicker.deltaMS
             if (elapsedMS >= 160 * (400 + Math.random() * 800) / 800) {
                 elapsedMS = 0
                 enemiesSpawned++
-                let testEnemy = new Enemy(100, 5, testEnemyBundle.blueCircle, map)
-                testEnemy.zIndex = 3
-                app.stage.addChild(testEnemy.sprite)
-
-                testEnemy.walkPath(app, map)
+                let spawnedEnemy = new Enemy(100, 5, testEnemyBundle.blueCircle, map)
+                spawnedEnemy.zIndex = 3
+                app.stage.addChild(spawnedEnemy.sprite)
+                new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
 
                 if (enemiesSpawned >= this.waves[waveIndex].length) {
                     waveTicker.stop()

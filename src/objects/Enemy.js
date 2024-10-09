@@ -5,6 +5,7 @@ export class Enemy {
      *
      */
     constructor(health, speed, textureFilePath, map) {
+        this.map = map
         this.health = health
         this.speed = speed
         this.textureFilePath = textureFilePath
@@ -19,7 +20,7 @@ export class Enemy {
 
         this.position.x = map.waypoints[0].x * map.tileSize
         this.position.y = map.waypoints[0].y * map.tileSize
-        
+        this.isAlive = true
     }
 
     updateSpritePosition() {
@@ -48,14 +49,15 @@ export class Enemy {
         else if (this.yToNextWaypoint !== 0) {
             this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta
         }
+
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
+        
         this.updateSpritePosition()
+
         if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
             this.nextWayPointIndex++
             if (this.nextWayPointIndex === waypoints.length) {
-                
-                
                 enemyWalkTicker.stop()
                 this.reachEnd()
             } else {
@@ -65,20 +67,56 @@ export class Enemy {
         }
     }
 
-    reachEnd() {
-        new EventDispatcher().fireEvent("enemyReachEnd", 1)
-        this.destroy()
+    updateMovement(delta) {
+        
+        const waypoints = this.map.waypoints
+        const speed = this.speed
+        const map = this.map
+
+        if (this.nextWayPointIndex >= waypoints.length) return
+
+        if (this.xToNextWaypoint !== 0) {
+            this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta
+        }
+        else if (this.yToNextWaypoint !== 0) {
+            this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta
+        }
+
+
+        this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
+        this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
+        
+        this.updateSpritePosition()
+
+        if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
+            this.nextWayPointIndex++
+            if (this.nextWayPointIndex === waypoints.length) {
+                reachEnd(this)
+            } else {
+                this.setDistancesToNext(map)
+            }
+        }
     }
 
-    async walkPath(app, map) {
+    
+
+    // async walkPath(app, map) {
         
-        let enemyWalkTicker = new PIXI.Ticker()
+    //     let enemyWalkTicker = new PIXI.Ticker()
     
         
-        let enemyWalkTickerUpdate = () => this.update(this.speed, map, enemyWalkTicker, app.ticker.deltaTime)
+    //     let enemyWalkTickerUpdate = () => this.update(this.speed, map, enemyWalkTicker, app.ticker.deltaTime)
     
-        enemyWalkTicker.add(enemyWalkTickerUpdate)
-        enemyWalkTicker.start()
-    }
+    //     enemyWalkTicker.add(enemyWalkTickerUpdate)
+    //     enemyWalkTicker.start()
+    // }
+}
+
+function reachEnd(enemy) {
+    const eventDispatcher = new EventDispatcher()
+    enemy.isAlive = false
+    enemy.destroy()
+    eventDispatcher.fireEvent("enemyReachEnd", 1)
+    eventDispatcher.fireEvent("enemyDied")
 }
 
