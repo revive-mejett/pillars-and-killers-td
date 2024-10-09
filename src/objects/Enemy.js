@@ -40,32 +40,6 @@ export class Enemy {
         this.sprite.destroy()
     }
 
-    update(speed, map, enemyWalkTicker, delta) {
-        const waypoints = map.waypoints
-
-        if (this.xToNextWaypoint !== 0) {
-            this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta
-        }
-        else if (this.yToNextWaypoint !== 0) {
-            this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta
-        }
-
-        this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
-        this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
-        
-        this.updateSpritePosition()
-
-        if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
-            this.nextWayPointIndex++
-            if (this.nextWayPointIndex === waypoints.length) {
-                enemyWalkTicker.stop()
-                this.reachEnd()
-            } else {
-                this.setDistancesToNext(map)
-                
-            }
-        }
-    }
 
     updateMovement(delta) {
         
@@ -99,17 +73,6 @@ export class Enemy {
     }
 
     
-
-    // async walkPath(app, map) {
-        
-    //     let enemyWalkTicker = new PIXI.Ticker()
-    
-        
-    //     let enemyWalkTickerUpdate = () => this.update(this.speed, map, enemyWalkTicker, app.ticker.deltaTime)
-    
-    //     enemyWalkTicker.add(enemyWalkTickerUpdate)
-    //     enemyWalkTicker.start()
-    // }
 }
 
 function reachEnd(enemy) {
