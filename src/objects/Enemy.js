@@ -1,4 +1,3 @@
-import { Assets } from "pixi.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 export class Enemy {
 
@@ -67,25 +66,19 @@ export class Enemy {
     }
 
     reachEnd() {
-        new EventDispatcher().fireEvent("enemyReachEnd", 2)
+        new EventDispatcher().fireEvent("enemyReachEnd", 1)
         this.destroy()
+    }
+
+    async walkPath(app, map) {
+        
+        let enemyWalkTicker = new PIXI.Ticker()
+    
+        
+        let enemyWalkTickerUpdate = () => this.update(this.speed, map, enemyWalkTicker, app.ticker.deltaTime)
+    
+        enemyWalkTicker.add(enemyWalkTickerUpdate)
+        enemyWalkTicker.start()
     }
 }
 
-async function walkPath(app, map) {
-    let testEnemyBundle = await Assets.loadBundle("enemies")
-    let testEnemy = new Enemy(100, 5, testEnemyBundle.blueCircle, map)
-    testEnemy.zIndex = 3
-
-
-    app.stage.addChild(testEnemy.sprite)
-    let enemyWalkTicker = new PIXI.Ticker()
-
-    
-    let enemyWalkTickerUpdate = () => testEnemy.update(testEnemy.speed, map, enemyWalkTicker, app.ticker.deltaTime)
-
-    enemyWalkTicker.add(enemyWalkTickerUpdate)
-    enemyWalkTicker.start()
-}
-
-export { walkPath }
