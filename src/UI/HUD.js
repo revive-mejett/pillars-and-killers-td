@@ -1,4 +1,7 @@
 import { Assets, Text, TextStyle } from "pixi.js"
+import { AssetLoader } from "../core/AssetLoader.js"
+
+const assetLoader = new AssetLoader()
 
 export class HUD {
 
@@ -25,7 +28,7 @@ export class HUD {
         bgColor.zIndex = 99999
         this.container.addChild(bgColor)
 
-        const iconBundle = await Assets.loadBundle("icons")
+        const iconBundle = assetLoader.icons
 
 
         //add money ui
@@ -139,7 +142,7 @@ export class HUD {
         exitButtonContainer.on('pointerdown', () => console.log("exit button clicked - not yet implemented"))
 
 
-        const towerSpriteBundle = await Assets.loadBundle("towerSprites")
+        const towerSpriteBundle = assetLoader.towers
 
         // tower description pane
         const towerInfoPanel = new PIXI.Container()

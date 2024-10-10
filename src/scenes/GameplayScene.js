@@ -49,6 +49,7 @@ export class GameplayScene {
 
     //temp function
     playTest() {
+        // this.waveManager.sendWave(this.app, this.tdMap)
         this.waveManager.sendWave(this.app, this.tdMap)
     }
 

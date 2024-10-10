@@ -1,6 +1,10 @@
 import { Assets } from "pixi.js"
 import { Enemy } from "../objects/Enemy.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { Wave } from "../objects/Wave.js"
+import { AssetLoader } from "../core/AssetLoader.js"
+
+const assetLoader = new AssetLoader()
 
 export class WaveManager {
     /**
@@ -8,19 +12,64 @@ export class WaveManager {
      */
 
     constructor() {
-        this.waves = [
-         [1,1,1,1,1],
-         [1,1,1,1,1,1,1,1,1,1,1,1,1,1] 
-        ]
+        this.waves = []
+        
         this.currentWave = 1
+        this.loadWaves()
     }
 
+    loadWaves() {
+
+        const waves = [
+
+            //TODO later move enemy data to game data json
+            new Wave(
+                [
+                    {
+                        enemy: "greenCircle",
+                        count: 15,
+                        spacingMillis: 500
+                    },
+                    {
+                        enemy: "blueCircle",
+                        count: 10,
+                        spacingMillis: 700
+                    },
+                    {
+                        enemy: "purpleCircle",
+                        count: 20,
+                        spacingMillis: 333
+                    },
+                    {
+                        enemy: "yellowCircle",
+                        count: 5,
+                        spacingMillis: 2000
+                    }
+                ]
+            )
+        ]
+
+        this.waves = waves
+    }
+
+
+
     async sendWave(app, map) {
+        const enemyAssets = assetLoader.enemies
+
+        //TODO later move enemy data to game data json
+        const enemyDataMap = new Map([
+            ["greenCircle", {health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle}],
+            ["blueCircle", {health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle}],
+            ["purpleCircle", {health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle}],
+            ["yellowCircle", {health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle}],
+        ])
+
+
         //throw error if all the waves are already sent
-        if (this.currentWave === this.waves.length + 1) throw new Error("Already at last wave")
+        if (this.currentWave === this.waves.length + 1) throw new Error("Already at last wave (using advanced wave sturcture)")
 
         let waveIndex = this.currentWave - 1
-        let testEnemyBundle = await Assets.loadBundle("enemies")
         console.log(`Wave ${this.currentWave} of ${this.waves.length} sent!`);
         this.currentWave++
         const waveTicker = new PIXI.Ticker()
@@ -29,19 +78,35 @@ export class WaveManager {
         let elapsedMS = 0
         let enemiesSpawned = 0
 
+        
+        let waveArray = this.waves[0]
+
+        let currentWavePartIndex = 0
+        let wavePart = waveArray.waveParts[currentWavePartIndex]
+        let enemyData = enemyDataMap.get(wavePart.enemy)
+
+
         //spawns an enemy
         let onTick = () => {
+
             elapsedMS += waveTicker.deltaMS
-            if (elapsedMS >= 160 * (400 + Math.random() * 800) / 800) {
+            if (elapsedMS >= wavePart.spacingMillis) {
                 elapsedMS = 0
                 enemiesSpawned++
-                let spawnedEnemy = new Enemy(100, 5, testEnemyBundle.blueCircle, map)
+                let spawnedEnemy = new Enemy(map, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
-
-                if (enemiesSpawned >= this.waves[waveIndex].length) {
-                    waveTicker.stop()
+                if (enemiesSpawned >= wavePart.count) {
+                    currentWavePartIndex++
+                    enemiesSpawned = 0
+                    console.log(currentWavePartIndex)
+                    if (currentWavePartIndex >= waveArray.waveParts.length) {             
+                        waveTicker.stop()
+                    } else {
+                        wavePart = waveArray.waveParts[currentWavePartIndex]
+                        enemyData = enemyDataMap.get(wavePart.enemy)
+                    }
                 }
             }
         }
@@ -50,9 +115,7 @@ export class WaveManager {
         waveTicker.start()
         return this.waves[waveIndex]
 
-        
     }
-
 
 
 

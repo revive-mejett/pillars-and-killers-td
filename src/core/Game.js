@@ -1,5 +1,4 @@
 
-import { WaveManager } from "../managers/WaveManager.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
 import { AssetLoader } from "./AssetLoader.js"
 import { GameState } from "./GameState.js"
@@ -19,11 +18,15 @@ export class Game {
     }
 
     async setup() {
+        await this.assetLoader.bundleAssets()
+        await this.assetLoader.loadEnemySprites()
+        await this.assetLoader.loadIconSprites()
+        await this.assetLoader.loadTowerSprites()
         
         this.gameplayScene = new GameplayScene(this.gameState, this.app)
         this.gameplayScene.buildMap()
         // let gameplayScene = this.gameplayScene
-        await this.assetLoader.loadAssets()
+
     }
 
     run() {
