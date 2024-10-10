@@ -1,8 +1,8 @@
 export class Wave {
 
     constructor(waveParts) {
-        this.waveParts = []
+        this.waveParts = waveParts
     }
-    
+
 
 }

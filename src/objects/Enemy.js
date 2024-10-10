@@ -4,17 +4,18 @@ export class Enemy {
     /**
      *
      */
-    constructor(health, speed, textureFilePath, map) {
+    constructor(map, health, speed, damage, asset) {
         this.map = map
         this.health = health
         this.speed = speed
-        this.textureFilePath = textureFilePath
+        this.damage = damage
+        this.asset = asset
         this.position = { x: map.waypoints[0].x, y: map.waypoints[0].y }
 
         this.xToNextWaypoint = 0
         this.yToNextWaypoint = 0
         this.nextWayPointIndex = 1
-        this.sprite = PIXI.Sprite.from(textureFilePath)
+        this.sprite = PIXI.Sprite.from(asset)
         this.sprite.height = map.tileSize
         this.sprite.width = map.tileSize
 
