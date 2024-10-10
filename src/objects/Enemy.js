@@ -80,7 +80,7 @@ function reachEnd(enemy) {
     const eventDispatcher = new EventDispatcher()
     enemy.isAlive = false
     enemy.destroy()
-    eventDispatcher.fireEvent("enemyReachEnd", 1)
+    eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
     eventDispatcher.fireEvent("enemyDied")
 }
 

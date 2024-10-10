@@ -21,12 +21,29 @@ export class WaveManager {
     loadWaves() {
 
         const waves = [
+
+            //TODO later move enemy data to game data json
             new Wave(
                 [
                     {
                         enemy: "greenCircle",
-                        count: 10,
+                        count: 15,
                         spacingMillis: 500
+                    },
+                    {
+                        enemy: "blueCircle",
+                        count: 10,
+                        spacingMillis: 700
+                    },
+                    {
+                        enemy: "purpleCircle",
+                        count: 20,
+                        spacingMillis: 333
+                    },
+                    {
+                        enemy: "yellowCircle",
+                        count: 5,
+                        spacingMillis: 2000
                     }
                 ]
             )
@@ -44,8 +61,8 @@ export class WaveManager {
         const enemyDataMap = new Map([
             ["greenCircle", {health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle}],
             ["blueCircle", {health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle}],
-            ["purpleCircle", {health: 400, speed: 3, damage: 10, asset: enemyAssets.purpleCircle}],
-            ["yellowCircle", {health: 1200, speed: 0.25, damage: 30, asset: enemyAssets.yellowCircle}],
+            ["purpleCircle", {health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle}],
+            ["yellowCircle", {health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle}],
         ])
 
 
@@ -60,14 +77,18 @@ export class WaveManager {
 
         let elapsedMS = 0
         let enemiesSpawned = 0
-        const waveArray = this.waves[0]
-        const wavePart = waveArray.waveParts[0]
-        let enemyData = enemyDataMap.get("greenCircle")
-        console.log(assetLoader.greenCircle)
+
+        
+        let waveArray = this.waves[0]
+
+        let currentWavePartIndex = 0
+        let wavePart = waveArray.waveParts[currentWavePartIndex]
+        let enemyData = enemyDataMap.get(wavePart.enemy)
 
 
         //spawns an enemy
         let onTick = () => {
+
             elapsedMS += waveTicker.deltaMS
             if (elapsedMS >= wavePart.spacingMillis) {
                 elapsedMS = 0
@@ -77,7 +98,15 @@ export class WaveManager {
                 app.stage.addChild(spawnedEnemy.sprite)
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
                 if (enemiesSpawned >= wavePart.count) {
-                    waveTicker.stop()
+                    currentWavePartIndex++
+                    enemiesSpawned = 0
+                    console.log(currentWavePartIndex)
+                    if (currentWavePartIndex >= waveArray.waveParts.length) {             
+                        waveTicker.stop()
+                    } else {
+                        wavePart = waveArray.waveParts[currentWavePartIndex]
+                        enemyData = enemyDataMap.get(wavePart.enemy)
+                    }
                 }
             }
         }
