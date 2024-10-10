@@ -50,7 +50,7 @@ export class GameplayScene {
     //temp function
     playTest() {
         // this.waveManager.sendWave(this.app, this.tdMap)
-        this.waveManager.sendWaveAdvanced(this.app, this.tdMap)
+        this.waveManager.sendWave(this.app, this.tdMap)
     }
 
     addEnemyToPresent(enemy) {
