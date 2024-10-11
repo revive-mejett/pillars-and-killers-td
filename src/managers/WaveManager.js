@@ -14,7 +14,7 @@ export class WaveManager {
     constructor(map) {
         this.map = map
         this.waves = []
-        
+
         this.currentWave = 0
         this.loadWaves()
     }
@@ -32,16 +32,18 @@ export class WaveManager {
                 ]
             ),
             new Wave(
-                {
-                    enemy: "blueCircle",
-                    count: 12,
-                    spacingMillis: 777
-                },
-                {
-                    enemy: "purpleCircle",
-                    count: 5,
-                    spacingMillis: 2000
-                },
+                [
+                    {
+                        enemy: "blueCircle",
+                        count: 12,
+                        spacingMillis: 777
+                    },
+                    {
+                        enemy: "purpleCircle",
+                        count: 5,
+                        spacingMillis: 2000
+                    },
+                ]
             ),
             new Wave(
                 [
@@ -67,7 +69,7 @@ export class WaveManager {
                     }
                 ]
             ),
-            
+
             //TODO later move enemy data to game data json
             new Wave(
                 [
@@ -107,10 +109,10 @@ export class WaveManager {
 
         //TODO later move enemy data to game data json
         const enemyDataMap = new Map([
-            ["greenCircle", {health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle}],
-            ["blueCircle", {health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle}],
-            ["purpleCircle", {health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle}],
-            ["yellowCircle", {health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle}],
+            ["greenCircle", { health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle }],
+            ["blueCircle", { health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle }],
+            ["purpleCircle", { health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle }],
+            ["yellowCircle", { health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }],
         ])
 
 
@@ -125,10 +127,10 @@ export class WaveManager {
         let elapsedMS = 0
         let enemiesSpawned = 0
 
-        
+
         let waveArray = this.waves[waveIndex]
         console.log(waveArray);
-        
+
 
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
@@ -143,7 +145,6 @@ export class WaveManager {
                 elapsedMS = 0
                 enemiesSpawned++
                 let spawnedEnemy = new Enemy(map, ...Object.values(enemyData))
-                console.log(map)
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
@@ -151,7 +152,7 @@ export class WaveManager {
                     currentWavePartIndex++
                     enemiesSpawned = 0
                     console.log(currentWavePartIndex)
-                    if (currentWavePartIndex >= waveArray.waveParts.length) {             
+                    if (currentWavePartIndex >= waveArray.waveParts.length) {
                         waveTicker.stop()
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
