@@ -1,7 +1,9 @@
-import { Assets, Text, TextStyle } from "pixi.js"
+import { Text, TextStyle } from "pixi.js"
 import { AssetLoader } from "../core/AssetLoader.js"
+import { EventDispatcher } from "../utils/EventDispatcher.js"
 
 const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
 
 export class HUD {
 
@@ -14,6 +16,8 @@ export class HUD {
         this.gamestate = gamestate
         this.moneyText = undefined
         this.livesText = undefined
+        this.waveNumText = undefined
+        this.nextWaveButton = undefined
     }
 
     async setup(container) {
@@ -96,10 +100,11 @@ export class HUD {
         waveNumContainerbg.drawRect(0,0, this.container.width, 50)
         waveNumContainerbg.endFill()
 
-        const waveNumText = new Text("Wave 1", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: 'center'}))
+        const waveNumText = new Text("Next Wave to begin!", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: 'center'}))
         waveNumText.x = (waveNumContainer.width - waveNumText.width) / 2;
         waveNumText.y = (waveNumContainer.height - waveNumText.height) / 2;
         waveNumContainer.addChild(waveNumText)
+        this.waveNumText = waveNumText
 
 
         //buttons
@@ -120,7 +125,8 @@ export class HUD {
         nextWaveButtonText.y = (nextWaveButtonContainer.height - nextWaveButtonText.height) / 2;
         nextWaveButtonContainer.addChild(nextWaveButtonText)
 
-        nextWaveButtonContainer.on('pointerdown', () => console.log("next wave button clicked - not yet implemented"))
+        nextWaveButtonContainer.on('pointerdown', () => eventDispatcher.fireEvent("nextWaveBtnClick"))
+        this.nextWaveButton = nextWaveButtonContainer
 
         const exitButtonContainer = new PIXI.Container()
         exitButtonContainer.eventMode = "static"
@@ -181,7 +187,6 @@ export class HUD {
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
         towerSelectMenu.y = 400
-        console.log(towerSelectMenu)
         this.container.addChild(towerSelectMenu)
         
 

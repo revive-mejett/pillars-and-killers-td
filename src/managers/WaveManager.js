@@ -11,17 +11,63 @@ export class WaveManager {
      *
      */
 
-    constructor() {
+    constructor(map) {
+        this.map = map
         this.waves = []
         
-        this.currentWave = 1
+        this.currentWave = 0
         this.loadWaves()
     }
 
     loadWaves() {
 
         const waves = [
-
+            new Wave(
+                [
+                    {
+                        enemy: "greenCircle",
+                        count: 8,
+                        spacingMillis: 800
+                    },
+                ]
+            ),
+            new Wave(
+                {
+                    enemy: "blueCircle",
+                    count: 12,
+                    spacingMillis: 777
+                },
+                {
+                    enemy: "purpleCircle",
+                    count: 5,
+                    spacingMillis: 2000
+                },
+            ),
+            new Wave(
+                [
+                    {
+                        enemy: "greenCircle",
+                        count: 15,
+                        spacingMillis: 500
+                    },
+                    {
+                        enemy: "blueCircle",
+                        count: 10,
+                        spacingMillis: 700
+                    },
+                    {
+                        enemy: "purpleCircle",
+                        count: 20,
+                        spacingMillis: 333
+                    },
+                    {
+                        enemy: "yellowCircle",
+                        count: 5,
+                        spacingMillis: 2000
+                    }
+                ]
+            ),
+            
             //TODO later move enemy data to game data json
             new Wave(
                 [
@@ -54,7 +100,9 @@ export class WaveManager {
 
 
 
-    async sendWave(app, map) {
+    async sendWave(app) {
+        this.currentWave++
+        const map = this.map
         const enemyAssets = assetLoader.enemies
 
         //TODO later move enemy data to game data json
@@ -71,7 +119,6 @@ export class WaveManager {
 
         let waveIndex = this.currentWave - 1
         console.log(`Wave ${this.currentWave} of ${this.waves.length} sent!`);
-        this.currentWave++
         const waveTicker = new PIXI.Ticker()
         waveTicker.autoStart = false
 
@@ -79,7 +126,9 @@ export class WaveManager {
         let enemiesSpawned = 0
 
         
-        let waveArray = this.waves[0]
+        let waveArray = this.waves[waveIndex]
+        console.log(waveArray);
+        
 
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
@@ -94,6 +143,7 @@ export class WaveManager {
                 elapsedMS = 0
                 enemiesSpawned++
                 let spawnedEnemy = new Enemy(map, ...Object.values(enemyData))
+                console.log(map)
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)

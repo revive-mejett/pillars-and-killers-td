@@ -13,8 +13,8 @@ export class GameplayScene {
         this.tdMap = new TdMap(1000, 1000, 25)
         this.gamestate = gamestate
         this.hud = new HUD(this.gamestate)
-        this.waveManager = new WaveManager()
-        this.uiManager = new UIManager(this.gamestate, this.hud)
+        this.waveManager = new WaveManager(this.tdMap)
+        this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
         this.gamestate.linkUiManager(this.uiManager)
         this.setUpHUD()
         this.enemiesPresent = []
@@ -36,10 +36,7 @@ export class GameplayScene {
 
     update() {
         this.enemiesPresent.forEach(enemy => {
-            if (enemy !== null) {
-                enemy?.updateMovement(this.app.ticker.deltaTime)
-            }
-            
+            enemy?.updateMovement(this.app.ticker.deltaTime)
         })
     }
 
@@ -50,7 +47,7 @@ export class GameplayScene {
     //temp function
     playTest() {
         // this.waveManager.sendWave(this.app, this.tdMap)
-        this.waveManager.sendWave(this.app, this.tdMap)
+        // this.waveManager.sendWave(this.app, this.tdMap)
     }
 
     addEnemyToPresent(enemy) {
