@@ -16,6 +16,7 @@ export class WaveManager {
         this.waves = []
 
         this.currentWave = 0
+        this.waveInProgress = false
         this.loadWaves()
     }
 
@@ -103,6 +104,9 @@ export class WaveManager {
 
 
     async sendWave(app) {
+        if (this.waveInProgress) return
+
+        this.waveInProgress = true
         this.currentWave++
         const map = this.map
         const enemyAssets = assetLoader.enemies
@@ -154,6 +158,7 @@ export class WaveManager {
                     console.log(currentWavePartIndex)
                     if (currentWavePartIndex >= waveArray.waveParts.length) {
                         waveTicker.stop()
+                        this.waveInProgress = false
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
                         enemyData = enemyDataMap.get(wavePart.enemy)
