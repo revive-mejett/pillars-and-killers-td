@@ -36,7 +36,7 @@ export class GameplayScene {
 
     update() {
         this.enemiesPresent.forEach(enemy => {
-            enemy?.updateMovement(this.app.ticker.deltaTime)
+            enemy?.updateMovement(this.tdMap, this.app.ticker.deltaTime)
         })
     }
 

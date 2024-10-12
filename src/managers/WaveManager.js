@@ -148,14 +148,18 @@ export class WaveManager {
             if (elapsedMS >= wavePart.spacingMillis) {
                 elapsedMS = 0
                 enemiesSpawned++
-                let spawnedEnemy = new Enemy(map, ...Object.values(enemyData))
+
+                
+
+                let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
+
                 if (enemiesSpawned >= wavePart.count) {
                     currentWavePartIndex++
                     enemiesSpawned = 0
-                    console.log(currentWavePartIndex)
+                    
                     if (currentWavePartIndex >= waveArray.waveParts.length) {
                         waveTicker.stop()
                         this.waveInProgress = false
