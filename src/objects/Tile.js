@@ -12,7 +12,7 @@ export class Tile extends Entity {
     }
 
     markTowerOccupied(hasTower) {
-        if (this.tileType != "grassTile") {
+        if (this.tileType !== "grassTile") {
             throw new Error("Must be a grass tile")
         }
         this.hasTower = hasTower

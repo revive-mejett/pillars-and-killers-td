@@ -23,11 +23,11 @@ export class AssetLoader {
             "greenCircle" : "assets/images/killer_green_circle.png",
             "blueCircle" : "assets/images/killer_blue_circle.png",
             "purpleCircle" : "assets/images/killer_purple_circle.png",
-            "yellowCircle" : "assets/images/killer_yellow_circle.png",
+            "yellowCircle" : "assets/images/killer_yellow_circle.png"
         })
         Assets.addBundle("icons", {
             "money" : "assets/images/money_icon.png",
-            "lives" : "assets/images/couple.png",
+            "lives" : "assets/images/couple.png"
         })
         Assets.addBundle("towers", {
             "basicPillarIcon" : "assets/images/basic_pillar.png",
@@ -37,7 +37,7 @@ export class AssetLoader {
             "advancedPillar" : "assets/images/advanced_pillar_icon.png",
             "advancedPillarTop" : "assets/images/advanced_pillar_top.png",
             "ultimatePillar" : "assets/images/ultimate_pillar.png",
-            "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png",
+            "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png"
         })
     }
 
@@ -55,5 +55,5 @@ export class AssetLoader {
     }
 
 
-    
+
 }

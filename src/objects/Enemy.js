@@ -25,7 +25,7 @@ export class Enemy extends Entity {
         this.position.y = y * height
         this.isAlive = true
     }
-    
+
 
 
     updateSpritePosition() {
@@ -47,11 +47,11 @@ export class Enemy extends Entity {
 
 
     updateMovement(map, delta) {
-        
+
         const waypoints = map.waypoints
         const speed = this.speed
 
-        if (this.nextWayPointIndex >= waypoints.length) return
+        if (this.nextWayPointIndex >= waypoints.length) {return}
 
         if (this.xToNextWaypoint !== 0) {
             this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta
@@ -63,7 +63,7 @@ export class Enemy extends Entity {
 
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
-        
+
         this.updateSpritePosition()
 
         if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
@@ -76,7 +76,7 @@ export class Enemy extends Entity {
         }
     }
 
-    
+
 }
 
 function reachEnd(enemy) {

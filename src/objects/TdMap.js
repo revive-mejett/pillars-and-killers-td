@@ -47,7 +47,7 @@ class TdMap {
                 type: "point",
                 x: 20,
                 y: 0
-            },
+            }
         ]
     }
 
@@ -68,24 +68,24 @@ class TdMap {
     displayPath(container) {
         let currWayPtNum = 0
         const waypoints = this.waypoints
-    
+
         let x = waypoints[currWayPtNum].x
         let y = waypoints[currWayPtNum].y
-    
+
         while (currWayPtNum < this.waypoints.length - 1) {
             let pathTile = new PIXI.Graphics()
             pathTile.beginFill(0x111111)
             pathTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
             pathTile.endFill()
             container.addChild(pathTile)
-    
+
             if (this.waypoints[currWayPtNum + 1].x > x) {
                 x++
             }
             if (this.waypoints[currWayPtNum + 1].x < x) {
                 x--
             }
-    
+
             if (this.waypoints[currWayPtNum + 1].y > y) {
                 y++
             }
@@ -96,7 +96,7 @@ class TdMap {
                 currWayPtNum++;
             }
         }
-    
+
         //mark start and end tiles
         let startTile = new PIXI.Graphics()
         startTile.beginFill(0x005500)
@@ -108,7 +108,7 @@ class TdMap {
         endTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
         endTile.endFill()
         container.addChild(endTile)
-    
+
     }
 }
 

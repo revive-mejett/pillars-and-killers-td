@@ -1,4 +1,3 @@
-import { Assets } from "pixi.js"
 import { Enemy } from "../objects/Enemy.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { Wave } from "../objects/Wave.js"
@@ -29,7 +28,7 @@ export class WaveManager {
                         enemy: "greenCircle",
                         count: 8,
                         spacingMillis: 800
-                    },
+                    }
                 ]
             ),
             new Wave(
@@ -43,7 +42,7 @@ export class WaveManager {
                         enemy: "purpleCircle",
                         count: 5,
                         spacingMillis: 2000
-                    },
+                    }
                 ]
             ),
             new Wave(
@@ -104,7 +103,7 @@ export class WaveManager {
 
 
     async sendWave(app) {
-        if (this.waveInProgress) return
+        if (this.waveInProgress) {return}
 
         this.waveInProgress = true
         this.currentWave++
@@ -116,17 +115,16 @@ export class WaveManager {
             ["greenCircle", { health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle }],
             ["blueCircle", { health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle }],
             ["purpleCircle", { health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle }],
-            ["yellowCircle", { health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }],
+            ["yellowCircle", { health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }]
         ])
 
         console.log(this.map.tiles)
 
 
         //throw error if all the waves are already sent
-        if (this.currentWave === this.waves.length + 1) throw new Error("Already at last wave (using advanced wave sturcture)")
+        if (this.currentWave === this.waves.length + 1) {throw new Error("Already at last wave (using advanced wave sturcture)")}
 
         let waveIndex = this.currentWave - 1
-        console.log(`Wave ${this.currentWave} of ${this.waves.length} sent!`);
         const waveTicker = new PIXI.Ticker()
         waveTicker.autoStart = false
 
@@ -151,7 +149,7 @@ export class WaveManager {
                 elapsedMS = 0
                 enemiesSpawned++
 
-                
+
 
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
@@ -162,7 +160,7 @@ export class WaveManager {
                 if (enemiesSpawned >= wavePart.count) {
                     currentWavePartIndex++
                     enemiesSpawned = 0
-                    
+
                     if (currentWavePartIndex >= waveArray.waveParts.length) {
                         waveTicker.stop()
                         this.waveInProgress = false
