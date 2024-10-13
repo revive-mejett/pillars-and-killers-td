@@ -119,6 +119,8 @@ export class WaveManager {
             ["yellowCircle", { health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }],
         ])
 
+        console.log(this.map.tiles)
+
 
         //throw error if all the waves are already sent
         if (this.currentWave === this.waves.length + 1) throw new Error("Already at last wave (using advanced wave sturcture)")
@@ -154,6 +156,7 @@ export class WaveManager {
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
+
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
 
                 if (enemiesSpawned >= wavePart.count) {
