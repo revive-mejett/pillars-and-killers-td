@@ -43,7 +43,6 @@ export class AssetLoader {
 
     async loadEnemySprites() {
         this.enemies = await Assets.loadBundle("enemies")
-        console.log(this.enemyAssets)
     }
 
     async loadIconSprites() {

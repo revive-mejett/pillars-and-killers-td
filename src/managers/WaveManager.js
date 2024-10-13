@@ -157,6 +157,7 @@ export class WaveManager {
 
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
 
+
                 if (enemiesSpawned >= wavePart.count) {
                     currentWavePartIndex++
                     enemiesSpawned = 0
