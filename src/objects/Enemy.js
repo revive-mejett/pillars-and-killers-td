@@ -1,28 +1,32 @@
 import { EventDispatcher } from "../utils/EventDispatcher.js"
-export class Enemy {
+import { Entity } from "./Entity.js"
+
+export class Enemy extends Entity {
 
     /**
      *
      */
-    constructor(map, health, speed, damage, asset) {
-        this.map = map
+    constructor(x, y, width, height, health, speed, damage, asset) {
+        super(x, y, width, height);
         this.health = health
         this.speed = speed
         this.damage = damage
         this.asset = asset
-        this.position = { x: map.waypoints[0].x, y: map.waypoints[0].y }
+        this.position = { x: x, y: y }
 
         this.xToNextWaypoint = 0
         this.yToNextWaypoint = 0
         this.nextWayPointIndex = 1
         this.sprite = PIXI.Sprite.from(asset)
-        this.sprite.height = map.tileSize
-        this.sprite.width = map.tileSize
+        this.sprite.height = height
+        this.sprite.width = width
 
-        this.position.x = map.waypoints[0].x * map.tileSize
-        this.position.y = map.waypoints[0].y * map.tileSize
+        this.position.x = x * width
+        this.position.y = y * height
         this.isAlive = true
     }
+
+
 
     updateSpritePosition() {
         this.sprite.x = this.position.x
@@ -42,13 +46,12 @@ export class Enemy {
     }
 
 
-    updateMovement(delta) {
-        
-        const waypoints = this.map.waypoints
-        const speed = this.speed
-        const map = this.map
+    updateMovement(map, delta) {
 
-        if (this.nextWayPointIndex >= waypoints.length) return
+        const waypoints = map.waypoints
+        const speed = this.speed
+
+        if (this.nextWayPointIndex >= waypoints.length) {return}
 
         if (this.xToNextWaypoint !== 0) {
             this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta
@@ -60,7 +63,7 @@ export class Enemy {
 
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
-        
+
         this.updateSpritePosition()
 
         if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
@@ -73,7 +76,7 @@ export class Enemy {
         }
     }
 
-    
+
 }
 
 function reachEnd(enemy) {

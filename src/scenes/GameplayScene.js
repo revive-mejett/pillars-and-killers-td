@@ -28,6 +28,10 @@ export class GameplayScene {
     buildMap() {
         this.tdMap.displayTiles(this.container)
         this.tdMap.displayPath(this.container)
+
+        console.log("verifying akshan")
+        console.log(this.tdMap.tiles);
+        
     }
 
     setUpHUD() {
@@ -36,7 +40,7 @@ export class GameplayScene {
 
     update() {
         this.enemiesPresent.forEach(enemy => {
-            enemy?.updateMovement(this.app.ticker.deltaTime)
+            enemy?.updateMovement(this.tdMap, this.app.ticker.deltaTime)
         })
     }
 
