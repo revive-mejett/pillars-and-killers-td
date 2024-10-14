@@ -26,7 +26,7 @@ export class WaveManager {
                 [
                     {
                         enemy: "greenCircle",
-                        count: 8,
+                        count: 1, //todo revert back to more than 1 after testing the healthbars
                         spacingMillis: 800
                     }
                 ]
