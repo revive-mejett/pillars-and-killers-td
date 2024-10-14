@@ -31,9 +31,19 @@ export class HealthBar extends Entity {
         healthBarBackground.x = this.enemy.position.x
         healthBarBackground.y = this.enemy.position.y + yOffset
         healthBarBackground.beginFill(0x0000FF)
-        healthBarBackground.drawRect(0, 0, this.enemy.sprite.width, 4)// todo change to w/ respect to enemy width
+        healthBarBackground.drawRect(0, 0, this.enemy.sprite.width, 4)
         healthBarBackground.endFill()
         this.healthBarContainer.addChild(healthBarBackground)
+
+        //actual health bar representation
+        const healthBarHealthy = new Graphics()
+        healthBarHealthy.x = this.enemy.position.x
+        healthBarHealthy.y = this.enemy.position.y + yOffset
+        healthBarHealthy.beginFill(0x00FF00)
+        healthBarHealthy.drawRect(0, 0, this.enemy.health / this.enemy.totalHealth * this.enemy.sprite.width, 4)
+        healthBarHealthy.endFill()
+        this.healthBarContainer.addChild(healthBarHealthy)
+
         parentContainer.addChild(this.healthBarContainer)
     }
 }

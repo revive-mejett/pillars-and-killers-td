@@ -9,6 +9,7 @@ export class Enemy extends Entity {
     constructor(x, y, width, height, health, speed, damage, asset) {
         super(x, y, width, height);
         this.health = health
+        this.totalHealth = health
         this.speed = speed
         this.damage = damage
         this.asset = asset
