@@ -47,12 +47,6 @@ export class GameplayScene {
         this.enemiesPresent = this.enemiesPresent.filter(enemy => enemy.isAlive)
     }
 
-    //temp function
-    playTest() {
-        // this.waveManager.sendWave(this.app, this.tdMap)
-        // this.waveManager.sendWave(this.app, this.tdMap)
-    }
-
     addEnemyToPresent(enemy) {
         this.enemiesPresent.push(enemy)
     }

@@ -71,7 +71,6 @@ export class HealthBar extends Entity {
         }
 
         const colour = new Color({r : red, g: green, b: blue})
-        console.log(colour.toHex());
 
         return colour.toHex()
 

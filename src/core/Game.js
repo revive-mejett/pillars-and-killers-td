@@ -30,6 +30,5 @@ export class Game {
         //add to DOM
         document.body.appendChild(this.app.view)
         this.app.stage.addChild(this.gameplayScene.container)
-        this.gameplayScene.playTest()
     }
 }
