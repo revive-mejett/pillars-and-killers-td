@@ -154,6 +154,10 @@ export class WaveManager {
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
 
+                setInterval(() => {
+                    spawnedEnemy.takeDamage(3)
+                }, 140);
+
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
 
                 if (enemiesSpawned >= wavePart.count) {

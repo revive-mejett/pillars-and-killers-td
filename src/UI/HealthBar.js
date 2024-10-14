@@ -46,4 +46,8 @@ export class HealthBar extends Entity {
 
         parentContainer.addChild(this.healthBarContainer)
     }
+
+    deleteBar() {
+        this.healthBarContainer.destroy()
+    }
 }
