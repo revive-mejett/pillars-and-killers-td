@@ -21,12 +21,13 @@ export class HealthBarManager {
     }
 
     updateAllHealthBars(parentContainer) {
-        console.log(this.healthBars)
+        console.log(this.healthBars);
+        
+        this.healthBars = this.healthBars.filter(healthBar => healthBar.enemy.isAlive)
         this.healthBars.forEach(healthBar => {
             if (healthBar !== null) {
                 healthBar?.renderBar(parentContainer)
             }
-            
         })
     }
 

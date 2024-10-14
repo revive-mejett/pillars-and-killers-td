@@ -13,14 +13,9 @@ export class HealthBar extends Entity {
         this.healthBarContainer = undefined
     }
 
-    // updateSpritePosition(){
-    //     this.healthBarContainer.x = this.enemy.position.x
-    //     this.healthBarContainer.y = this.enemy.position.y
-    // }
-
     renderBar(parentContainer) {
 
-        if (this.enemy === null || !this.enemy.isAlive) {
+        if (this.enemy === null) {
             return
         }
 

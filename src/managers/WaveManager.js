@@ -26,8 +26,8 @@ export class WaveManager {
                 [
                     //todo revert back to more than 1 after testing the healthbars and green circlr
                     {
-                        enemy: "purpleCircle",
-                        count: 1, 
+                        enemy: "greenCircle",
+                        count: 8,
                         spacingMillis: 800
                     }
                 ]
