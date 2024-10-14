@@ -1,6 +1,8 @@
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { Entity } from "./Entity.js"
 
+const eventDispatcher = new EventDispatcher()
+
 export class Enemy extends Entity {
 
     /**
@@ -9,6 +11,7 @@ export class Enemy extends Entity {
     constructor(x, y, width, height, health, speed, damage, asset) {
         super(x, y, width, height);
         this.health = health
+        this.totalHealth = health
         this.speed = speed
         this.damage = damage
         this.asset = asset
@@ -76,11 +79,29 @@ export class Enemy extends Entity {
         }
     }
 
+    takeDamage(damage) {
+
+        if (!this.isAlive) {
+            return
+        }
+        this.health -= damage
+
+        if (this.health <= 0) {
+            this.health = 0
+            enemyDied(this)
+        }
+    }
+
 
 }
 
+function enemyDied(enemy) {
+    enemy.isAlive = false
+    enemy.destroy()
+    eventDispatcher.fireEvent("enemyDied")
+}
+
 function reachEnd(enemy) {
-    const eventDispatcher = new EventDispatcher()
     enemy.isAlive = false
     enemy.destroy()
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
