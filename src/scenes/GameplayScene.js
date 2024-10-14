@@ -1,3 +1,4 @@
+import { HealthBarManager } from "../managers/HealthBarManager.js"
 import { UIManager } from "../managers/UIManager.js"
 import { WaveManager } from "../managers/WaveManager.js"
 import { TdMap } from "../objects/TdMap.js"
@@ -18,6 +19,7 @@ export class GameplayScene {
         this.gamestate.linkUiManager(this.uiManager)
         this.setUpHUD()
         this.enemiesPresent = []
+        this.healthBarManager = new HealthBarManager()
 
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
@@ -36,18 +38,13 @@ export class GameplayScene {
 
     update() {
         this.enemiesPresent.forEach(enemy => {
-            enemy?.updateMovement(this.app.ticker.deltaTime)
+            enemy?.updateMovement(this.tdMap, this.app.ticker.deltaTime)
         })
+        this.healthBarManager.updateAllHealthBars(this.container)
     }
 
     updateEnemiesPresentList() {
         this.enemiesPresent = this.enemiesPresent.filter(enemy => enemy.isAlive)
-    }
-
-    //temp function
-    playTest() {
-        // this.waveManager.sendWave(this.app, this.tdMap)
-        // this.waveManager.sendWave(this.app, this.tdMap)
     }
 
     addEnemyToPresent(enemy) {

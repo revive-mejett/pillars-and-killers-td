@@ -10,11 +10,11 @@ export class Game {
         this.app = new PIXI.Application({width: this.mapSize + 250, height: this.mapSize})
         this.gameState = new GameState()
         this.gameplayScene = undefined
-
         this.assetLoader = new AssetLoader()
+    }
 
+    start() {
         this.setup().then(() => this.run())
-
     }
 
     async setup() {
@@ -22,17 +22,13 @@ export class Game {
         await this.assetLoader.loadEnemySprites()
         await this.assetLoader.loadIconSprites()
         await this.assetLoader.loadTowerSprites()
-        
         this.gameplayScene = new GameplayScene(this.gameState, this.app)
         this.gameplayScene.buildMap()
-        // let gameplayScene = this.gameplayScene
-
     }
 
     run() {
         //add to DOM
         document.body.appendChild(this.app.view)
         this.app.stage.addChild(this.gameplayScene.container)
-        this.gameplayScene.playTest()
     }
 }

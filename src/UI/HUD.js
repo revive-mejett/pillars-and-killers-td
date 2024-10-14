@@ -12,7 +12,6 @@ export class HUD {
         this.container = new PIXI.Container()
         this.container.x = 1000
         this.container.y = 0
-
         this.gamestate = gamestate
         this.moneyText = undefined
         this.livesText = undefined
@@ -46,7 +45,7 @@ export class HUD {
         moneyContainerbg.beginFill(0x003300)
         moneyContainerbg.drawRect(0,0, this.container.width, 100)
         moneyContainerbg.endFill()
-        
+
 
         const moneySprite = PIXI.Sprite.from(iconBundle.money)
         moneySprite.height = 100
@@ -56,7 +55,7 @@ export class HUD {
         moneyContainer.addChild(moneySprite)
 
 
-        const moneyText = new Text("1337", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFF00, align: 'center'}))
+        const moneyText = new Text("1337", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFF00, align: "center"}))
         moneyText.x = 0 + moneySprite.width
         moneyText.y = (moneyContainer.height - moneyText.height) / 2;
         moneyContainer.addChild(moneyText)
@@ -82,7 +81,7 @@ export class HUD {
         livesSprite.y = 0
         livesContainer.addChild(livesSprite)
 
-        const livesText = new Text(this.gamestate.lives, new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFF00, align: 'center'}))
+        const livesText = new Text(this.gamestate.lives, new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFF00, align: "center"}))
         livesText.x = 0 + livesSprite.width
         livesText.y = (livesContainer.height - livesText.height) / 2;
         livesContainer.addChild(livesText)
@@ -100,7 +99,7 @@ export class HUD {
         waveNumContainerbg.drawRect(0,0, this.container.width, 50)
         waveNumContainerbg.endFill()
 
-        const waveNumText = new Text("Next Wave to begin!", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: 'center'}))
+        const waveNumText = new Text("Next Wave to begin!", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center"}))
         waveNumText.x = (waveNumContainer.width - waveNumText.width) / 2;
         waveNumText.y = (waveNumContainer.height - waveNumText.height) / 2;
         waveNumContainer.addChild(waveNumText)
@@ -120,12 +119,12 @@ export class HUD {
         nextWaveButtonContainerbg.drawRect(0,0, this.container.width, 50)
         nextWaveButtonContainerbg.endFill()
 
-        const nextWaveButtonText = new Text("Next Wave", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: 'center'}))
+        const nextWaveButtonText = new Text("Next Wave", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: "center"}))
         nextWaveButtonText.x = (nextWaveButtonContainer.width - nextWaveButtonText.width) / 2;
         nextWaveButtonText.y = (nextWaveButtonContainer.height - nextWaveButtonText.height) / 2;
         nextWaveButtonContainer.addChild(nextWaveButtonText)
 
-        nextWaveButtonContainer.on('pointerdown', () => eventDispatcher.fireEvent("nextWaveBtnClick"))
+        nextWaveButtonContainer.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
         this.nextWaveButton = nextWaveButtonContainer
 
         const exitButtonContainer = new PIXI.Container()
@@ -140,12 +139,12 @@ export class HUD {
         exitButtonContainerbg.drawRect(0,0, this.container.width, 50)
         exitButtonContainerbg.endFill()
 
-        const exitButtonText = new Text("Exit", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: 'center'}))
+        const exitButtonText = new Text("Exit", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: "center"}))
         exitButtonText.x = (exitButtonContainer.width - exitButtonText.width) / 2;
         exitButtonText.y = (exitButtonContainer.height - exitButtonText.height) / 2;
         exitButtonContainer.addChild(exitButtonText)
 
-        exitButtonContainer.on('pointerdown', () => console.log("exit button clicked - not yet implemented"))
+        exitButtonContainer.on("pointerdown", () => console.log("exit button clicked - not yet implemented"))
 
 
         const towerSpriteBundle = assetLoader.towers
@@ -163,34 +162,34 @@ export class HUD {
         towerInfoPanel.addChild(infoPanelOutline)
 
         const padding = 5
-        
+
         const currentTowerIcon = createTowerIcon(towerSpriteBundle.basicPillarIcon, padding, padding, 0x000000, false)
         towerInfoPanel.addChild(currentTowerIcon)
-        const towerNameText = new Text("basic pillar", new TextStyle({fontFamily: "Times New Roman", fontSize: 30, fill: 0xFFFFFF, align: 'center'}))
+        const towerNameText = new Text("basic pillar", new TextStyle({fontFamily: "Times New Roman", fontSize: 30, fill: 0xFFFFFF, align: "center"}))
         towerNameText.x = 90 + padding;
         towerNameText.y = 0 + padding;
         towerInfoPanel.addChild(towerNameText)
-        const towerPriceText = new Text("$220", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFF00, align: 'center', wordWrap: true, wordWrapWidth: 1000 * 0.25}))
+        const towerPriceText = new Text("$220", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFF00, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25}))
         towerPriceText.x = 90 + padding;
         towerPriceText.y = 40 + padding;
         towerInfoPanel.addChild(towerPriceText)
-        const towerDescriptionText = new Text("Cheap pillar for weak killers. Decent hand pick for the early rounds", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: 'center', wordWrap: true, wordWrapWidth: 1000 * 0.25}))
+        const towerDescriptionText = new Text("Cheap pillar for weak killers. Decent hand pick for the early rounds", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25}))
         towerDescriptionText.x = padding;
         towerDescriptionText.y = 100;
         towerInfoPanel.addChild(towerDescriptionText)
 
         ///
-        
-        
+
+
 
         //tower selection menu
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
         towerSelectMenu.y = 400
         this.container.addChild(towerSelectMenu)
-        
 
-        
+
+
         const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111, true)
         towerSelectMenu.addChild(basicPillarButton)
         const frozenPillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122, true)
@@ -199,10 +198,10 @@ export class HUD {
         towerSelectMenu.addChild(advancedPillarButton)
         const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011, true)
         towerSelectMenu.addChild(ultimatePillarButton)
-        
+
     }
 
-    
+
 }
 
 
@@ -214,18 +213,22 @@ function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground, isBut
     towerButton.height = 80
     towerButton.x = xPosition
     towerButton.y = yPosition
-    
+
 
     const iconBackground = new PIXI.Graphics()
     iconBackground.beginFill(hexBackground)
     iconBackground.drawRect(0,0, 80, 80)
     iconBackground.endFill()
     towerButton.addChild(iconBackground)
-    
+
     const towerIcon = PIXI.Sprite.from(spriteAsset)
     towerIcon.width = 80
     towerIcon.height = 80
     towerButton.addChild(towerIcon)
+
+    if (isButton) {
+        //todo set up event listener once tower building funct. is coded
+    }
 
     return towerButton
 }
