@@ -9,6 +9,7 @@ export class Tile extends Entity {
         super(x, y, width, height);
         this.tileType = tileType
         this.graphics = graphics
+        this.hasTower = false
     }
 
     markTowerOccupied(hasTower) {
