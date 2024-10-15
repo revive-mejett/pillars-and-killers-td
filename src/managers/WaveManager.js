@@ -139,6 +139,8 @@ export class WaveManager {
         let enemyData = enemyDataMap.get(wavePart.enemy)
 
 
+
+
         //spawns an enemy
         let onTick = () => {
 
@@ -152,6 +154,10 @@ export class WaveManager {
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
+
+                // setInterval(() => {
+                //     spawnedEnemy.takeDamage(17)
+                // }, 200);
 
 
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)

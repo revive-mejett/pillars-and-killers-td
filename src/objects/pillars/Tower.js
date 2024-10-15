@@ -11,8 +11,8 @@ export class Tower extends Entity {
         this.asset = asset
     }
 
-    //todo not implemented
     fire() {
-        
+        //todo not implemented
     }
+
 }
