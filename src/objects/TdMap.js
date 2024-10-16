@@ -60,12 +60,6 @@ class TdMap {
             this.tiles.push([])
             for (let j = 0; j < this.dimensions; j++) {
 
-                let tileGraphics = new PIXI.Graphics()
-                tileGraphics.beginFill(0x001100)
-                tileGraphics.lineStyle(2, 0x005500)
-                tileGraphics.drawRect(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize)
-                tileGraphics.endFill()
-
                 let tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container)
                 tile.paveGrass()
                 this.tiles[i].push(tile)
