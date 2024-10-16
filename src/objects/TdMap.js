@@ -66,7 +66,8 @@ class TdMap {
                 tileGraphics.drawRect(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize)
                 tileGraphics.endFill()
 
-                let tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container, tileGraphics)
+                let tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container)
+                tile.paveGrass()
                 this.tiles[i].push(tile)
             }
         }
@@ -85,7 +86,7 @@ class TdMap {
             pathTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
             pathTile.endFill()
 
-            this.tiles[x][y].setTileContainer(container, pathTile)
+            this.tiles[x][y].setTileContainer(pathTile)
             this.tiles[x][y].changeTileType("path")
 
             if (this.waypoints[currWayPtNum + 1].x > x) {
@@ -112,7 +113,7 @@ class TdMap {
         startTile.beginFill(0x999900)
         startTile.drawRect(waypoints[0].x * this.tileSize, waypoints[0].y * this.tileSize, this.tileSize, this.tileSize)
         startTile.endFill()
-        this.tiles[waypoints[0].x][waypoints[0].y].setTileContainer(container, startTile)
+        this.tiles[waypoints[0].x][waypoints[0].y].setTileContainer(startTile)
         this.tiles[waypoints[0].x][waypoints[0].y].changeTileType("start")
 
 
@@ -120,7 +121,7 @@ class TdMap {
         endTile.beginFill(0x220000)
         endTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
         endTile.endFill()
-        this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].setTileContainer(container, endTile)
+        this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].setTileContainer(endTile)
         this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].changeTileType("end")
 
 
