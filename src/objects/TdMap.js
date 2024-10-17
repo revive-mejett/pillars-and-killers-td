@@ -67,7 +67,7 @@ class TdMap {
         }
     }
 
-    displayPath(container) {
+    displayPath() {
         let currWayPtNum = 0
         const waypoints = this.waypoints
 
