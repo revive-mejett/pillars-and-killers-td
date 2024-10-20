@@ -34,13 +34,13 @@ export class Tile extends Entity {
         this.tileType = tileType
     }
 
+    //developer function
     getTileInfo() {
         console.log(this)
     }
 
-    // setTower(towerGraphics) {
+    
 
-    // }
 
     paveGrass() {
         let grass = new PIXI.Graphics()
