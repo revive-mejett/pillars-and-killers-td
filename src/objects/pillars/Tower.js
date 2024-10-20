@@ -9,10 +9,23 @@ export class Tower extends Entity {
         this.fireRate = fireRate,
         this.cost = cost,
         this.asset = asset
+        this.position = { x: x, y: y }
+
+        this.sprite = PIXI.Sprite.from(asset)
+        this.sprite.height = height
+        this.sprite.width = width
+        this.sprite.x = this.position.x
+        this.sprite.y = this.position.y
+
+
     }
 
     fire() {
         //todo not implemented
+    }
+
+    renderOnTile(tile) {
+        tile.container.addChild(this.sprite)
     }
 
 }
