@@ -30,6 +30,7 @@ export class GameplayScene {
     buildMap() {
         this.tdMap.displayTiles(this.container)
         this.tdMap.displayPath(this.container)
+        this.tdMap.repaveGrass()
     }
 
     setUpHUD() {

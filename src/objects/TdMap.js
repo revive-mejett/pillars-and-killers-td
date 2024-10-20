@@ -117,8 +117,17 @@ class TdMap {
         endTile.endFill()
         this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].setTileContainer(endTile)
         this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].changeTileType("end")
+    }
 
-
+    repaveGrass() {
+        this.tiles.forEach(row => {
+            row.forEach(tile => {
+                if (tile.tileType === "grass") {
+                    console.log("repave grass");
+                    tile.paveGrass()
+                }
+            })
+        })
     }
 }
 

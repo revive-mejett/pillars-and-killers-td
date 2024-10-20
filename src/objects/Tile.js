@@ -1,5 +1,9 @@
 import { Container } from "pixi.js";
 import { Entity } from "./Entity.js";
+import { Tower } from "./pillars/Tower.js";
+import { AssetLoader } from "../core/AssetLoader.js";
+
+const assetLoader = new AssetLoader()
 
 export class Tile extends Entity {
 
@@ -12,11 +16,12 @@ export class Tile extends Entity {
         this.hasTower = false
         this.container = undefined
         this.parentContainer = parentContainer
+        this.tower = null
     }
 
 
     markTowerOccupied(hasTower) {
-        if (this.tileType !== "grassTile") {
+        if (this.tileType !== "grass") {
             throw new Error("Must be a grass tile")
         }
         this.hasTower = hasTower
@@ -26,7 +31,7 @@ export class Tile extends Entity {
         this.container = new Container()
         this.container.eventMode = "static"
         this.container.addChild(graphics)
-        this.container.on("pointerdown", () => this.getTileInfo())
+        this.container.on("pointerdown", () => this.placeTowerTest())
         this.parentContainer.addChild(this.container)
     }
 
@@ -37,9 +42,31 @@ export class Tile extends Entity {
     //developer function
     getTileInfo() {
         console.log(this)
+
     }
 
-    
+    placeTowerTest() {
+        if (this.hasTower) {
+            console.log("already have tower... selling");
+
+            //todo move sell tower logic somewhere else...
+            this.tower = null
+            this.markTowerOccupied(false)
+            this.paveGrass()
+            return
+        }
+
+        if (this.tileType !== "grass") {
+            console.log("tile type must be grass");
+            return
+        }
+
+        const testTower = new Tower(this.x, this.y, this.width, this.height, 10, 10, 1, 10, assetLoader.towers.basicPillarTop)
+        testTower.renderOnTile(this)
+        this.tower = testTower
+        this.markTowerOccupied(true)
+        console.log(this)
+    }
 
 
     paveGrass() {
