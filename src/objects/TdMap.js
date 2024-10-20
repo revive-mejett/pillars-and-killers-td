@@ -60,20 +60,14 @@ class TdMap {
             this.tiles.push([])
             for (let j = 0; j < this.dimensions; j++) {
 
-                let tileGraphics = new PIXI.Graphics()
-                tileGraphics.beginFill(0x001100)
-                tileGraphics.lineStyle(2, 0x005500)
-                tileGraphics.drawRect(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize)
-                tileGraphics.endFill()
-
-                let tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", tileGraphics)
+                let tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container)
+                tile.paveGrass()
                 this.tiles[i].push(tile)
-                container.addChild(tileGraphics)
             }
         }
     }
 
-    displayPath(container) {
+    displayPath() {
         let currWayPtNum = 0
         const waypoints = this.waypoints
 
@@ -86,7 +80,7 @@ class TdMap {
             pathTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
             pathTile.endFill()
 
-            this.tiles[x][y].changeGraphics(container, pathTile)
+            this.tiles[x][y].setTileContainer(pathTile)
             this.tiles[x][y].changeTileType("path")
 
             if (this.waypoints[currWayPtNum + 1].x > x) {
@@ -113,7 +107,7 @@ class TdMap {
         startTile.beginFill(0x999900)
         startTile.drawRect(waypoints[0].x * this.tileSize, waypoints[0].y * this.tileSize, this.tileSize, this.tileSize)
         startTile.endFill()
-        this.tiles[waypoints[0].x][waypoints[0].y].changeGraphics(container, startTile)
+        this.tiles[waypoints[0].x][waypoints[0].y].setTileContainer(startTile)
         this.tiles[waypoints[0].x][waypoints[0].y].changeTileType("start")
 
 
@@ -121,7 +115,7 @@ class TdMap {
         endTile.beginFill(0x220000)
         endTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
         endTile.endFill()
-        this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].changeGraphics(container, endTile)
+        this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].setTileContainer(endTile)
         this.tiles[waypoints[waypoints.length - 1].x][waypoints[waypoints.length - 1].y].changeTileType("end")
 
 

@@ -37,6 +37,8 @@ export class GameplayScene {
     }
 
     update() {
+        // console.log(new PIXI.interaction.InteractionManager())
+
         this.enemiesPresent.forEach(enemy => {
             enemy?.updateMovement(this.tdMap, this.app.ticker.deltaTime)
         })
