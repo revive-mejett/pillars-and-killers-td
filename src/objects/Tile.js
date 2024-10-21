@@ -39,15 +39,10 @@ export class Tile extends Entity {
         this.tileType = tileType
     }
 
-    //developer function
-    getTileInfo() {
-        console.log(this)
-
-    }
 
     placeTowerTest() {
         if (this.hasTower) {
-            console.log("already have tower... selling");
+            console.log("already have tower... selling TODO will be coded once sell button is added");
 
             //todo move sell tower logic somewhere else...
             this.tower = null
@@ -68,7 +63,6 @@ export class Tile extends Entity {
         testTower.renderOnTile(this)
         this.tower = testTower
         this.markTowerOccupied(true)
-        console.log(this)
     }
 
 

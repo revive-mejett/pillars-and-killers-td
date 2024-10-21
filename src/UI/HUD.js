@@ -19,9 +19,10 @@ export class HUD {
         this.nextWaveButton = undefined
 
         this.towerInfoPanel = undefined
+        this.towerSelectionButtons = undefined
     }
 
-    async setup(container) {
+    setup(container) {
         container.addChild(this.container)
 
         const bgColor = new PIXI.Graphics()
@@ -188,6 +189,7 @@ export class HUD {
 
     //tower selection menu
     setUpTowerSelections() {
+        this.towerSelectionButtons = {}
         const towerSpriteBundle = assetLoader.towers
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
@@ -198,12 +200,17 @@ export class HUD {
 
         const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111, "basic", true)
         towerSelectMenu.addChild(basicPillarButton)
-        const frozenPillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122, "ice", true)
-        towerSelectMenu.addChild(frozenPillarButton)
-        const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100, "Advanced", true)
+        const icePillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122, "ice", true)
+        towerSelectMenu.addChild(icePillarButton)
+        const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100, "advanced", true)
         towerSelectMenu.addChild(advancedPillarButton)
-        const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011, "Ultimate", true)
+        const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011, "ultimate", true)
         towerSelectMenu.addChild(ultimatePillarButton)
+
+        this.towerSelectionButtons.basic = basicPillarButton
+        this.towerSelectionButtons.ice = icePillarButton
+        this.towerSelectionButtons.advanced = advancedPillarButton
+        this.towerSelectionButtons.ultimate = ultimatePillarButton
     }
 }
 

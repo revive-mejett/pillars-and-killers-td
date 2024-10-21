@@ -15,6 +15,9 @@ export class UIManager {
             this.gameplayScene.waveManager.sendWave(app)
             this.updateWaveNumber()
         })
+
+        this.setTowerButtonClickListeners()
+
     }
 
     updateMoney() {
@@ -27,5 +30,17 @@ export class UIManager {
 
     updateWaveNumber() {
         this.hud.waveNumText.text = `Wave ${this.gameplayScene.waveManager.currentWave}/${this.gameplayScene.waveManager.waves.length}`
+    }
+
+    setSelectedTowerType(towerType) {
+        this.selectedTowerType = towerType
+    }
+
+    setTowerButtonClickListeners() {
+        Object.entries(this.hud.towerSelectionButtons).forEach(buttonEntry => {
+            const towerTypeKey = buttonEntry[0]
+            const towerButton = buttonEntry[1]
+            towerButton.on("pointerdown", () => this.setSelectedTowerType(towerTypeKey))
+        })
     }
 }

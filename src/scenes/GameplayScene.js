@@ -15,9 +15,9 @@ export class GameplayScene {
         this.gamestate = gamestate
         this.hud = new HUD(this.gamestate)
         this.waveManager = new WaveManager(this.tdMap)
+        this.setUpHUD()
         this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
         this.gamestate.linkUiManager(this.uiManager)
-        this.setUpHUD()
         this.enemiesPresent = []
         this.healthBarManager = new HealthBarManager()
 
