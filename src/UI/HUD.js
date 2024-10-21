@@ -171,9 +171,9 @@ export class HUD {
 
         const padding = 5
 
-        const currentTowerIcon = createTowerIcon(towerSpriteBundle.basicPillarIcon, padding, padding, 0x000000, false)
+        const currentTowerIcon = createTowerIcon(towerSpriteBundle.basicPillarIcon, padding, padding)
         towerInfoPanel.addChild(currentTowerIcon)
-        const towerNameText = new Text("basic pillar", new TextStyle({ fontFamily: "Times New Roman", fontSize: 30, fill: 0xFFFFFF, align: "center" }))
+        const towerNameText = new Text("basic pillar", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
         towerNameText.x = 90 + padding
         towerNameText.y = 0 + padding
         towerInfoPanel.addChild(towerNameText)
@@ -198,13 +198,13 @@ export class HUD {
 
 
 
-        const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111, "basic", true)
+        const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111)
         towerSelectMenu.addChild(basicPillarButton)
-        const icePillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122, "ice", true)
+        const icePillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122)
         towerSelectMenu.addChild(icePillarButton)
-        const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100, "advanced", true)
+        const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100)
         towerSelectMenu.addChild(advancedPillarButton)
-        const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011, "ultimate", true)
+        const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011)
         towerSelectMenu.addChild(ultimatePillarButton)
 
         this.towerSelectionButtons.basic = basicPillarButton
@@ -212,11 +212,28 @@ export class HUD {
         this.towerSelectionButtons.advanced = advancedPillarButton
         this.towerSelectionButtons.ultimate = ultimatePillarButton
     }
+
+    updateTowerDescriptionUI(towerStats) {
+
+        const towerNameText = this.towerInfoPanel.children[2]
+        towerNameText.text = towerStats.info.title
+
+        const towerCostText = this.towerInfoPanel.children[3]
+        towerCostText.text = `$${towerStats.cost}`
+
+        const towerDescriptionText = this.towerInfoPanel.children[4]
+        towerDescriptionText.text = towerStats.info.description
+        let ticon = createTowerIcon(towerStats.asset, 5, 5, 0x000000)
+        this.towerInfoPanel.addChild(ticon)
+    }
+
+
+
 }
 
 
 //helper function to create a tower button
-function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground, towerType, isButton) {
+function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground) {
     const towerButton = new PIXI.Container()
     towerButton.eventMode = "static"
     towerButton.width = 80
@@ -236,10 +253,8 @@ function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground, tower
     towerIcon.height = 80
     towerButton.addChild(towerIcon)
 
-    if (isButton) {
-        //todo set up event listener once tower building funct. is coded
-    }
-
     return towerButton
 }
+
+
 

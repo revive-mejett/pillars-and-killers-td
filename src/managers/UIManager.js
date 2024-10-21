@@ -1,4 +1,5 @@
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { TowerFactory } from "./TowerFactory.js"
 
 const eventDispatcher = new EventDispatcher()
 
@@ -40,7 +41,10 @@ export class UIManager {
         Object.entries(this.hud.towerSelectionButtons).forEach(buttonEntry => {
             const towerTypeKey = buttonEntry[0]
             const towerButton = buttonEntry[1]
-            towerButton.on("pointerdown", () => this.setSelectedTowerType(towerTypeKey))
+            towerButton.on("pointerdown", () => {
+                this.setSelectedTowerType(towerTypeKey)
+                this.hud.updateTowerDescriptionUI(TowerFactory.getTowerStats(towerTypeKey))
+            })
         })
     }
 }

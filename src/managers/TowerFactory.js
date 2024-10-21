@@ -11,8 +11,26 @@ const assetLoader = new AssetLoader()
 
 export class TowerFactory {
 
+
     static createTower(x, y, width, height, towerType) {
 
+
+        const towerStats = this.getTowerStats(towerType)
+        switch (towerType) {
+        case "basic":
+            return new BasicPillar(x, y, width, height, towerStats)
+        case "ice":
+            return new IcePillar(x, y, width, height, towerStats)
+        case "advanced":
+            return new AdvancedPillar(x, y, width, height, towerStats)
+        case "ultimate":
+            return new UltimatePillar(x, y, width, height, towerStats)
+        default:
+            return new BasicPillar(x, y, width, height, towerStats)
+        }
+    }
+
+    static getTowerStats(towerType) {
         const towerIcons = assetLoader.towers
         const towerTypeStatMap = new Map([
             [
@@ -74,19 +92,6 @@ export class TowerFactory {
             ]
         ])
 
-
-        const towerStats = towerTypeStatMap.get(towerType)
-        switch (towerType) {
-        case "basic":
-            return new BasicPillar(x, y, width, height, towerStats)
-        case "ice":
-            return new IcePillar(x, y, width, height, towerStats)
-        case "advanced":
-            return new AdvancedPillar(x, y, width, height, towerStats)
-        case "ultimate":
-            return new UltimatePillar(x, y, width, height, towerStats)
-        default:
-            return new BasicPillar(x, y, width, height, towerStats)
-        }
+        return towerTypeStatMap.get(towerType)
     }
 }

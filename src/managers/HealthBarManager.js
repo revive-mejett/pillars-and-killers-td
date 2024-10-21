@@ -21,7 +21,7 @@ export class HealthBarManager {
 
     updateAllHealthBars(parentContainer) {
         const healthBarsToDelete = this.healthBars.filter(healthBar => !healthBar.enemy.isAlive)
-        healthBarsToDelete.forEach(healthBar => healthBar.deleteBar()) 
+        healthBarsToDelete.forEach(healthBar => healthBar.deleteBar())
         this.healthBars = this.healthBars.filter(healthBar => healthBar.enemy.isAlive)
         this.healthBars.forEach(healthBar => {
             healthBar?.renderBar(parentContainer)
