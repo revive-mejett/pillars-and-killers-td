@@ -1,9 +1,9 @@
 import { Container } from "pixi.js";
 import { Entity } from "./Entity.js";
-import { Tower } from "./pillars/Tower.js";
-import { AssetLoader } from "../core/AssetLoader.js";
+import { TowerFactory } from "../managers/TowerFactory.js";
 
-const assetLoader = new AssetLoader()
+
+
 
 export class Tile extends Entity {
 
@@ -61,7 +61,10 @@ export class Tile extends Entity {
             return
         }
 
-        const testTower = new Tower(this.x, this.y, this.width, this.height, 10, 10, 1, 10, assetLoader.towers.basicPillarTop)
+        const towerTypesArr = ["basic", "ice", "advanced", "ultimate"]
+
+
+        const testTower = TowerFactory.createTower(this.x, this.y, this.width, this.height, towerTypesArr[Math.floor(Math.random() * 4)])
         testTower.renderOnTile(this)
         this.tower = testTower
         this.markTowerOccupied(true)
