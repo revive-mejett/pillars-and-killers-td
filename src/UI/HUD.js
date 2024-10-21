@@ -148,6 +148,7 @@ export class HUD {
 
         exitButtonContainer.on("pointerdown", () => console.log("exit button clicked - not yet implemented"))
         this.setUpInfoPanel()
+        this.setUpTowerSelections()
 
     }
 
@@ -156,6 +157,7 @@ export class HUD {
     setUpInfoPanel() {
         const towerSpriteBundle = assetLoader.towers
         const towerInfoPanel = new PIXI.Container()
+        this.towerInfoPanel = towerInfoPanel
         towerInfoPanel.x = 1
         towerInfoPanel.y = 600
 
@@ -182,9 +184,11 @@ export class HUD {
         towerDescriptionText.x = padding
         towerDescriptionText.y = 100
         towerInfoPanel.addChild(towerDescriptionText)
+    }
 
-        ///
-        //tower selection menu
+    //tower selection menu
+    setUpTowerSelections() {
+        const towerSpriteBundle = assetLoader.towers
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
         towerSelectMenu.y = 400
@@ -192,20 +196,20 @@ export class HUD {
 
 
 
-        const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111, true)
+        const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111, "basic", true)
         towerSelectMenu.addChild(basicPillarButton)
-        const frozenPillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122, true)
+        const frozenPillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122, "ice", true)
         towerSelectMenu.addChild(frozenPillarButton)
-        const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100, true)
+        const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100, "Advanced", true)
         towerSelectMenu.addChild(advancedPillarButton)
-        const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011, true)
+        const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011, "Ultimate", true)
         towerSelectMenu.addChild(ultimatePillarButton)
     }
 }
 
 
 //helper function to create a tower button
-function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground, isButton) {
+function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground, towerType, isButton) {
     const towerButton = new PIXI.Container()
     towerButton.eventMode = "static"
     towerButton.width = 80
