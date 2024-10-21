@@ -1,5 +1,8 @@
 import { AssetLoader } from "../core/AssetLoader.js";
+import { AdvancedPillar } from "../objects/pillars/AdvancedPillar.js";
 import { BasicPillar } from "../objects/pillars/BasicPillar.js";
+import { IcePillar } from "../objects/pillars/IcePillar.js";
+import { UltimatePillar } from "../objects/pillars/UltimatePillar.js";
 
 
 const assetLoader = new AssetLoader()
@@ -60,13 +63,14 @@ export class TowerFactory {
         switch (towerType) {
         case "basic":
             return new BasicPillar(x, y, width, height, towerStats)
-            //break;
-        // case "ice":
-        //     return new Froz(x, y, width, height, towerStats)
-        //     //break;
-        // default:
-        //     return new Tower(x, y, width, height, towerStats)
-        //     //break;
+        case "ice":
+            return new IcePillar(x, y, width, height, towerStats)
+        case "advanced":
+            return new AdvancedPillar(x, y, width, height, towerStats)
+        case "ultimate":
+            return new UltimatePillar(x, y, width, height, towerStats)
+        default:
+            return new BasicPillar(x, y, width, height, towerStats)
         }
     }
 }

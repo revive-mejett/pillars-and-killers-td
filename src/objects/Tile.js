@@ -61,7 +61,10 @@ export class Tile extends Entity {
             return
         }
 
-        const testTower = TowerFactory.createTower(this.x, this.y, this.width, this.height, "basic")
+        const towerTypesArr = ["basic", "ice", "advanced", "ultimate"]
+
+
+        const testTower = TowerFactory.createTower(this.x, this.y, this.width, this.height, towerTypesArr[Math.floor(Math.random() * 4)])
         testTower.renderOnTile(this)
         this.tower = testTower
         this.markTowerOccupied(true)
