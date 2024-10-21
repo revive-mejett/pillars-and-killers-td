@@ -7,8 +7,9 @@ export class BasicPillar extends Tower {
     /**
      *
      */
-    constructor(x, y, width, height, range, damage, fireRate, cost, asset) {
-        super(x, y, width, height, range, damage, fireRate, cost, asset);
+    constructor(x, y, width, height, towerstats) {
+        super(x, y, width, height, towerstats);
+        console.log(towerstats);
     }
 
     fire() {
