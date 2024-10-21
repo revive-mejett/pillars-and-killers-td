@@ -17,6 +17,8 @@ export class HUD {
         this.livesText = undefined
         this.waveNumText = undefined
         this.nextWaveButton = undefined
+
+        this.towerInfoPanel = undefined
     }
 
     async setup(container) {
@@ -145,11 +147,14 @@ export class HUD {
         exitButtonContainer.addChild(exitButtonText)
 
         exitButtonContainer.on("pointerdown", () => console.log("exit button clicked - not yet implemented"))
+        this.setUpInfoPanel()
+
+    }
 
 
+    // setup tower description pane
+    setUpInfoPanel() {
         const towerSpriteBundle = assetLoader.towers
-
-        // tower description pane
         const towerInfoPanel = new PIXI.Container()
         towerInfoPanel.x = 1
         towerInfoPanel.y = 600
@@ -158,30 +163,27 @@ export class HUD {
 
         const infoPanelOutline = new PIXI.Graphics()
         infoPanelOutline.lineStyle(3, 0x000077)
-        infoPanelOutline.drawRect(0,0, 1000 * 0.25, 300)
+        infoPanelOutline.drawRect(0, 0, 1000 * 0.25, 300)
         towerInfoPanel.addChild(infoPanelOutline)
 
         const padding = 5
 
         const currentTowerIcon = createTowerIcon(towerSpriteBundle.basicPillarIcon, padding, padding, 0x000000, false)
         towerInfoPanel.addChild(currentTowerIcon)
-        const towerNameText = new Text("basic pillar", new TextStyle({fontFamily: "Times New Roman", fontSize: 30, fill: 0xFFFFFF, align: "center"}))
-        towerNameText.x = 90 + padding;
-        towerNameText.y = 0 + padding;
+        const towerNameText = new Text("basic pillar", new TextStyle({ fontFamily: "Times New Roman", fontSize: 30, fill: 0xFFFFFF, align: "center" }))
+        towerNameText.x = 90 + padding
+        towerNameText.y = 0 + padding
         towerInfoPanel.addChild(towerNameText)
-        const towerPriceText = new Text("$220", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFF00, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25}))
-        towerPriceText.x = 90 + padding;
-        towerPriceText.y = 40 + padding;
+        const towerPriceText = new Text("$220", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFF00, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25 }))
+        towerPriceText.x = 90 + padding
+        towerPriceText.y = 40 + padding
         towerInfoPanel.addChild(towerPriceText)
-        const towerDescriptionText = new Text("Cheap pillar for weak killers. Decent hand pick for the early rounds", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25}))
-        towerDescriptionText.x = padding;
-        towerDescriptionText.y = 100;
+        const towerDescriptionText = new Text("Cheap pillar for weak killers. Decent hand pick for the early rounds", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25 }))
+        towerDescriptionText.x = padding
+        towerDescriptionText.y = 100
         towerInfoPanel.addChild(towerDescriptionText)
 
         ///
-
-
-
         //tower selection menu
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
@@ -198,10 +200,7 @@ export class HUD {
         towerSelectMenu.addChild(advancedPillarButton)
         const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011, true)
         towerSelectMenu.addChild(ultimatePillarButton)
-
     }
-
-
 }
 
 
