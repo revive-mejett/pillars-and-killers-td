@@ -8,7 +8,7 @@ export class GameState {
         this.uiManager = undefined
 
         eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
-        eventDispatcher.on("purchaseMade", this.debitMoney.bind(this))
+        eventDispatcher.on("purchaseSuccessful1", this.debitMoney.bind(this))
     }
 
     loseLives(damage) {

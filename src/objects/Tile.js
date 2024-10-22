@@ -41,16 +41,6 @@ export class Tile extends Entity {
 
 
     placeTowerOnTile(tower) {
-        if (this.hasTower) {
-            console.log("already have tower... selling TODO will be coded once sell button is added");
-
-            //todo move sell tower logic somewhere else...
-            // this.tower = null
-            // this.markTowerOccupied(false)
-            // this.paveGrass()
-            return
-        }
-
         this.tower = tower
         this.renderTower()
         this.markTowerOccupied(true)

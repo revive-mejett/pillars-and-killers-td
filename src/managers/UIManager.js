@@ -61,11 +61,17 @@ export class UIManager {
         if (this.gamestate.money < towerCost) {
             return
         }
-        eventDispatcher.fireEvent("purchaseMade", towerCost)
+        
         if (selectedTile.tileType !== "grass") {
             console.log("tile type must be grass");
             return
         }
+        if (this.hasTower) {
+            console.log("already have tower... selling TODO will be coded once sell button is added");
+            return
+        }
+
+        eventDispatcher.fireEvent("purchaseSuccessful1", towerCost)
         const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
         selectedTile.placeTowerOnTile(tower)
     }
