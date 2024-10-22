@@ -36,6 +36,7 @@ export class TowerFactory {
             [
                 "basic",
                 {
+                    assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     info: {
                         title: "Basic Pillar",
@@ -44,13 +45,14 @@ export class TowerFactory {
                     range: 250,
                     damage: 10,
                     fireRate: 1,
-                    cost: 1
+                    cost: 70
                 }
             ],
             [
                 "ice",
                 {
-                    asset: towerIcons.frozenPillarTop,
+                    assetIcon: towerIcons.icePillar,
+                    asset: towerIcons.icePillarTop,
                     info: {
                         title: "Ice Pillar",
                         description: "Fires chily ice bolts that slows down killers."
@@ -58,27 +60,29 @@ export class TowerFactory {
                     range: 220,
                     damage: 10,
                     fireRate: 1,
-                    cost: 1,
+                    cost: 150,
                     speedMultiplier: 0.8
                 }
             ],
             [
                 "advanced",
                 {
+                    assetIcon: towerIcons.advancedPillar,
                     asset: towerIcons.advancedPillarTop,
                     info: {
                         title: "Advanced Pillar",
                         description: "This pillar is made with advanced material and can deal great damage to the strongest killers."
                     },
                     range: 300,
-                    damage: 10,
-                    fireRate: 1,
-                    cost: 1
+                    damage: 275,
+                    fireRate: 2,
+                    cost: 850
                 }
             ],
             [
                 "ultimate",
                 {
+                    assetIcon: towerIcons.ultimatePillar,
                     asset: towerIcons.ultimatePillarTop,
                     info: {
                         title: "Ultimate Pillar",

@@ -19,6 +19,9 @@ export class HUD {
         this.nextWaveButton = undefined
 
         this.towerInfoPanel = undefined
+        //current icon
+        this.currentTowerSelectedIcon = undefined
+
         this.towerSelectionButtons = undefined
     }
 
@@ -148,7 +151,6 @@ export class HUD {
         exitButtonContainer.addChild(exitButtonText)
 
         exitButtonContainer.on("pointerdown", () => console.log("exit button clicked - not yet implemented"))
-        this.setUpInfoPanel()
         this.setUpTowerSelections()
 
     }
@@ -200,7 +202,7 @@ export class HUD {
 
         const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111)
         towerSelectMenu.addChild(basicPillarButton)
-        const icePillarButton = createTowerIcon(towerSpriteBundle.frozenPillar, 80, 0, 0x001122)
+        const icePillarButton = createTowerIcon(towerSpriteBundle.icePillar, 80, 0, 0x001122)
         towerSelectMenu.addChild(icePillarButton)
         const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100)
         towerSelectMenu.addChild(advancedPillarButton)
@@ -214,7 +216,9 @@ export class HUD {
     }
 
     updateTowerDescriptionUI(towerStats) {
-
+        if (!this.towerInfoPanel) {
+            this.setUpInfoPanel()
+        }
         const towerNameText = this.towerInfoPanel.children[2]
         towerNameText.text = towerStats.info.title
 
@@ -223,8 +227,15 @@ export class HUD {
 
         const towerDescriptionText = this.towerInfoPanel.children[4]
         towerDescriptionText.text = towerStats.info.description
-        let ticon = createTowerIcon(towerStats.asset, 5, 5, 0x000000)
-        this.towerInfoPanel.addChild(ticon)
+
+        if (this.currentTowerSelectedIcon) {
+            console.log("existing removing...");
+            this.towerInfoPanel.removeChild(this.currentTowerSelectedIcon)
+        }
+
+        let icon = createTowerIcon(towerStats.assetIcon, 5, 5, 0x000000)
+        this.towerInfoPanel.addChild(icon)
+        this.currentTowerSelectedIcon = icon
     }
 
 
