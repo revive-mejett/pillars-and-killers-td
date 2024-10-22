@@ -1,9 +1,9 @@
 import { Container } from "pixi.js";
 import { Entity } from "./Entity.js";
-import { TowerFactory } from "../managers/TowerFactory.js";
+import { EventDispatcher } from "../utils/EventDispatcher.js";
 
 
-
+const eventDispatcher = new EventDispatcher()
 
 export class Tile extends Entity {
 
@@ -31,7 +31,7 @@ export class Tile extends Entity {
         this.container = new Container()
         this.container.eventMode = "static"
         this.container.addChild(graphics)
-        this.container.on("pointerdown", () => this.placeTowerTest())
+        this.container.on("pointerdown", () => eventDispatcher.fireEvent("towerPlaceAction", this))
         this.parentContainer.addChild(this.container)
     }
 
@@ -39,36 +39,11 @@ export class Tile extends Entity {
         this.tileType = tileType
     }
 
-    //developer function
-    getTileInfo() {
-        console.log(this)
 
-    }
-
-    placeTowerTest() {
-        if (this.hasTower) {
-            console.log("already have tower... selling");
-
-            //todo move sell tower logic somewhere else...
-            this.tower = null
-            this.markTowerOccupied(false)
-            this.paveGrass()
-            return
-        }
-
-        if (this.tileType !== "grass") {
-            console.log("tile type must be grass");
-            return
-        }
-
-        const towerTypesArr = ["basic", "ice", "advanced", "ultimate"]
-
-
-        const testTower = TowerFactory.createTower(this.x, this.y, this.width, this.height, towerTypesArr[Math.floor(Math.random() * 4)])
-        testTower.renderOnTile(this)
-        this.tower = testTower
+    placeTowerOnTile(tower) {
+        this.tower = tower
+        this.renderTower()
         this.markTowerOccupied(true)
-        console.log(this)
     }
 
 
@@ -79,6 +54,12 @@ export class Tile extends Entity {
         grass.drawRect(this.x, this.y, this.width, this.height)
         grass.endFill()
         this.setTileContainer(grass)
+    }
+
+    renderTower() {
+        if (this.tower) {
+            this.container.addChild(this.tower.sprite)
+        }
     }
 
 }

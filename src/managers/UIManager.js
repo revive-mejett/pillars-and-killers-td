@@ -1,4 +1,5 @@
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { TowerFactory } from "./TowerFactory.js"
 
 const eventDispatcher = new EventDispatcher()
 
@@ -8,6 +9,7 @@ export class UIManager {
         this.gamestate = gamestate
         this.hud = hud
         this.gameplayScene = gameplayScene
+        this.selectedTowerType = undefined
 
         this.hud.nextWaveButton
 
@@ -15,6 +17,11 @@ export class UIManager {
             this.gameplayScene.waveManager.sendWave(app)
             this.updateWaveNumber()
         })
+
+        eventDispatcher.on("towerPlaceAction", this.handleTowerPurchase.bind(this))
+
+        this.setTowerButtonClickListeners()
+
     }
 
     updateMoney() {
@@ -27,5 +34,45 @@ export class UIManager {
 
     updateWaveNumber() {
         this.hud.waveNumText.text = `Wave ${this.gameplayScene.waveManager.currentWave}/${this.gameplayScene.waveManager.waves.length}`
+        this.hud.waveNumText.x = (this.hud.waveNumText.parent.width - this.hud.waveNumText.width) / 2;
+    }
+
+    setSelectedTowerType(towerType) {
+        this.selectedTowerType = towerType
+    }
+
+    setTowerButtonClickListeners() {
+        Object.entries(this.hud.towerSelectionButtons).forEach(buttonEntry => {
+            const towerTypeKey = buttonEntry[0]
+            const towerButton = buttonEntry[1]
+            towerButton.on("pointerdown", () => {
+                this.setSelectedTowerType(towerTypeKey)
+                this.hud.updateTowerDescriptionUI(TowerFactory.getTowerStats(towerTypeKey))
+            })
+        })
+    }
+
+    handleTowerPurchase(selectedTile) {
+        if (!this.selectedTowerType) {
+            return
+        }
+
+        const towerCost = TowerFactory.getTowerStats(this.selectedTowerType).cost
+        if (this.gamestate.money < towerCost) {
+            return
+        }
+        
+        if (selectedTile.tileType !== "grass") {
+            console.log("tile type must be grass");
+            return
+        }
+        if (this.hasTower) {
+            console.log("already have tower... selling TODO will be coded once sell button is added");
+            return
+        }
+
+        eventDispatcher.fireEvent("purchaseSuccessful1", towerCost)
+        const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
+        selectedTile.placeTowerOnTile(tower)
     }
 }

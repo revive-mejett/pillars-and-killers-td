@@ -155,9 +155,10 @@ export class WaveManager {
                 spawnedEnemy.zIndex = 3
                 app.stage.addChild(spawnedEnemy.sprite)
 
-                setInterval(() => {
-                    spawnedEnemy.takeDamage(1)
-                }, 200);
+                // developer enemy damage code
+                // setInterval(() => {
+                //     spawnedEnemy.takeDamage(1)
+                // }, 200);
 
 
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)

@@ -9,7 +9,6 @@ export class IcePillar extends Tower {
      */
     constructor(x, y, width, height, towerstats) {
         super(x, y, width, height, towerstats);
-        console.log(towerstats);
     }
 
     fire() {
