@@ -14,7 +14,7 @@ export class UIManager {
         this.hud.nextWaveButton
 
         eventDispatcher.on("nextWaveBtnClick", () => {
-            this.gameplayScene.waveManager.sendWave(app)
+            this.gameplayScene.waveManager.sendWave(app, this.gameplayScene)
             this.updateWaveNumber()
         })
 
