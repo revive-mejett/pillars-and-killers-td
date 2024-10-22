@@ -183,7 +183,7 @@ export class HUD {
         towerPriceText.x = 90 + padding
         towerPriceText.y = 40 + padding
         towerInfoPanel.addChild(towerPriceText)
-        const towerDescriptionText = new Text("Cheap pillar for weak killers. Decent hand pick for the early rounds", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25 }))
+        const towerDescriptionText = new Text("Cheap pillar for weak killers. Decent hand pick for the early rounds", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: this.towerInfoPanel.width * 0.95 }))
         towerDescriptionText.x = padding
         towerDescriptionText.y = 100
         towerInfoPanel.addChild(towerDescriptionText)
@@ -229,7 +229,6 @@ export class HUD {
         towerDescriptionText.text = towerStats.info.description
 
         if (this.currentTowerSelectedIcon) {
-            console.log("existing removing...");
             this.towerInfoPanel.removeChild(this.currentTowerSelectedIcon)
         }
 

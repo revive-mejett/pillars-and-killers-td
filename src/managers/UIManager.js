@@ -9,6 +9,7 @@ export class UIManager {
         this.gamestate = gamestate
         this.hud = hud
         this.gameplayScene = gameplayScene
+        this.selectedTowerType = undefined
 
         this.hud.nextWaveButton
 
@@ -16,6 +17,8 @@ export class UIManager {
             this.gameplayScene.waveManager.sendWave(app)
             this.updateWaveNumber()
         })
+
+        eventDispatcher.on("towerPlaceAction", this.handleTowerPlacementEvent.bind(this))
 
         this.setTowerButtonClickListeners()
 
@@ -31,6 +34,7 @@ export class UIManager {
 
     updateWaveNumber() {
         this.hud.waveNumText.text = `Wave ${this.gameplayScene.waveManager.currentWave}/${this.gameplayScene.waveManager.waves.length}`
+        this.hud.waveNumText.x = (this.hud.waveNumText.parent.width - this.hud.waveNumText.width) / 2;
     }
 
     setSelectedTowerType(towerType) {
@@ -46,5 +50,25 @@ export class UIManager {
                 this.hud.updateTowerDescriptionUI(TowerFactory.getTowerStats(towerTypeKey))
             })
         })
+    }
+
+    handleTowerPlacementEvent(selectedTile) {
+
+        console.log(selectedTile)
+
+        if (!this.selectedTowerType) {
+            return
+        }
+
+        const towerCost = TowerFactory.getTowerStats(this.selectedTowerType).cost
+        if (this.gamestate.money < towerCost) {
+            return
+        }
+        if (selectedTile.tileType !== "grass") {
+            console.log("tile type must be grass");
+            return
+        }
+        const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
+        selectedTile.placeTowerOnTile(tower)
     }
 }
