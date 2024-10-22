@@ -1,6 +1,5 @@
 import { Container } from "pixi.js";
 import { Entity } from "./Entity.js";
-import { TowerFactory } from "../managers/TowerFactory.js";
 import { EventDispatcher } from "../utils/EventDispatcher.js";
 
 
@@ -49,11 +48,6 @@ export class Tile extends Entity {
             // this.tower = null
             // this.markTowerOccupied(false)
             // this.paveGrass()
-            return
-        }
-
-        if (this.tileType !== "grass") {
-            console.log("tile type must be grass");
             return
         }
 

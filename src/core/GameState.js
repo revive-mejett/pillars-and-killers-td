@@ -1,12 +1,14 @@
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 
+const eventDispatcher = new EventDispatcher()
 export class GameState {
     constructor() {
-        this.lives = 200
-        this.money = 500
+        this.lives = 300
+        this.money = 20000
         this.uiManager = undefined
 
-        new EventDispatcher().on("enemyReachEnd", this.loseLives.bind(this))
+        eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
+        eventDispatcher.on("purchaseMade", this.debitMoney.bind(this))
     }
 
     loseLives(damage) {
@@ -17,6 +19,16 @@ export class GameState {
             //TODO Implement game over logic once game over screen is implemented
         }
         this.uiManager.updateLives()
+    }
+
+    debitMoney(money) {
+        this.money -= money
+        this.uiManager.updateMoney()
+    }
+
+    gainMoney(money) {
+        this.money += money
+        this.uiManager.updateMoney()
     }
 
     linkUiManager(uiManager) {

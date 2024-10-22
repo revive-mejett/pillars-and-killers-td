@@ -18,7 +18,7 @@ export class UIManager {
             this.updateWaveNumber()
         })
 
-        eventDispatcher.on("towerPlaceAction", this.handleTowerPlacementEvent.bind(this))
+        eventDispatcher.on("towerPlaceAction", this.handleTowerPurchase.bind(this))
 
         this.setTowerButtonClickListeners()
 
@@ -52,10 +52,7 @@ export class UIManager {
         })
     }
 
-    handleTowerPlacementEvent(selectedTile) {
-
-        console.log(selectedTile)
-
+    handleTowerPurchase(selectedTile) {
         if (!this.selectedTowerType) {
             return
         }
@@ -64,6 +61,7 @@ export class UIManager {
         if (this.gamestate.money < towerCost) {
             return
         }
+        eventDispatcher.fireEvent("purchaseMade", towerCost)
         if (selectedTile.tileType !== "grass") {
             console.log("tile type must be grass");
             return
