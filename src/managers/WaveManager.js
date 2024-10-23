@@ -103,7 +103,7 @@ export class WaveManager {
 
 
 
-    async sendWave(app) {
+    async sendWave(app, gameplayScene) {
         if (this.waveInProgress) {return}
 
         this.waveInProgress = true
@@ -153,7 +153,7 @@ export class WaveManager {
 
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
-                app.stage.addChild(spawnedEnemy.sprite)
+                gameplayScene.container.addChild(spawnedEnemy.sprite)
 
                 // developer enemy damage code
                 // setInterval(() => {

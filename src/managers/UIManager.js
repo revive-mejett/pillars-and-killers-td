@@ -14,7 +14,7 @@ export class UIManager {
         this.hud.nextWaveButton
 
         eventDispatcher.on("nextWaveBtnClick", () => {
-            this.gameplayScene.waveManager.sendWave(app)
+            this.gameplayScene.waveManager.sendWave(app, this.gameplayScene)
             this.updateWaveNumber()
         })
 
@@ -61,7 +61,6 @@ export class UIManager {
         if (this.gamestate.money < towerCost) {
             return
         }
-        
         if (selectedTile.tileType !== "grass") {
             console.log("tile type must be grass");
             return

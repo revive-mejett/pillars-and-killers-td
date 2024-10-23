@@ -1,3 +1,4 @@
+import { GameState } from "../core/GameState.js"
 import { HealthBarManager } from "../managers/HealthBarManager.js"
 import { UIManager } from "../managers/UIManager.js"
 import { WaveManager } from "../managers/WaveManager.js"
@@ -8,11 +9,11 @@ import { EventDispatcher } from "../utils/EventDispatcher.js"
 const eventDispatcher = new EventDispatcher()
 export class GameplayScene {
 
-    constructor(gamestate, app) {
+    constructor(app) {
         this.app = app
         this.container = new PIXI.Container()
         this.tdMap = new TdMap(1000, 1000, 25)
-        this.gamestate = gamestate
+        this.gamestate = new GameState()
         this.hud = new HUD(this.gamestate)
         this.waveManager = new WaveManager(this.tdMap)
         this.setUpHUD()

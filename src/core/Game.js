@@ -1,16 +1,22 @@
 
 import { GameplayScene } from "../scenes/GameplayScene.js"
+import { MainMenu } from "../scenes/MainMenu.js"
 import { AssetLoader } from "./AssetLoader.js"
-import { GameState } from "./GameState.js"
 
+const assetLoader = new AssetLoader()
+
+const sceneContainerWidth = 1000 + 250
+const sceneContainerHeight = 1000
 export class Game {
     constructor() {
         this.mapSize = 1000
         this.dimensions = 25
-        this.app = new PIXI.Application({width: this.mapSize + 250, height: this.mapSize})
-        this.gameState = new GameState()
-        this.gameplayScene = undefined
-        this.assetLoader = new AssetLoader()
+        this.app = new PIXI.Application({width: window.outerWidth, height: window.outerHeight})
+        this.baseContainer = new PIXI.Container()
+        this.sceneContainer = undefined
+        console.log(window);
+        //add to DOM
+        document.body.appendChild(this.app.view)
     }
 
     start() {
@@ -18,17 +24,39 @@ export class Game {
     }
 
     async setup() {
-        await this.assetLoader.bundleAssets()
-        await this.assetLoader.loadEnemySprites()
-        await this.assetLoader.loadIconSprites()
-        await this.assetLoader.loadTowerSprites()
-        this.gameplayScene = new GameplayScene(this.gameState, this.app)
-        this.gameplayScene.buildMap()
+        assetLoader.bundleAssets()
+        await assetLoader.loadEnemySprites()
+        await assetLoader.loadIconSprites()
+        await assetLoader.loadTowerSprites()
+
+        this.app.stage.addChild(this.baseContainer)
+        const frame = new PIXI.Graphics()
+        frame.beginFill(0x000005)
+        frame.drawRect(0,0,window.outerWidth, window.outerHeight)
+        frame.endFill()
+
+        this.baseContainer.addChild(frame)
+
+        this.sceneContainer = new PIXI.Container()
+        const innerFrame = new PIXI.Graphics()
+        innerFrame.beginFill(0x000000)
+        innerFrame.drawRect(0, 0, sceneContainerWidth, sceneContainerHeight)
+        innerFrame.endFill()
+        this.sceneContainer.addChild(innerFrame)
+
+        this.baseContainer.addChild(this.sceneContainer)
+        console.log(this.baseContainer.width)
+        console.log(this.sceneContainer.width)
+        this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width)/2
     }
 
     run() {
-        //add to DOM
-        document.body.appendChild(this.app.view)
-        this.app.stage.addChild(this.gameplayScene.container)
+
+        const mainMenu = new MainMenu(this.app)
+        mainMenu.setupUI(this.sceneContainer)
+        this.sceneContainer.addChild(mainMenu.container)
+        // const gameplayScene = new GameplayScene(this.app)
+        // gameplayScene.buildMap()
+        // this.sceneContainer.addChild(gameplayScene.container)
     }
 }
