@@ -61,7 +61,6 @@ export class UIManager {
         if (this.gamestate.money < towerCost) {
             return
         }
-        
         if (selectedTile.tileType !== "grass") {
             console.log("tile type must be grass");
             return

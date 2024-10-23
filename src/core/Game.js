@@ -1,10 +1,12 @@
 
 import { GameplayScene } from "../scenes/GameplayScene.js"
+import { MainMenu } from "../scenes/MainMenu.js"
 import { AssetLoader } from "./AssetLoader.js"
-import { GameState } from "./GameState.js"
 
 const assetLoader = new AssetLoader()
 
+const sceneContainerWidth = 1000 + 250
+const sceneContainerHeight = 1000
 export class Game {
     constructor() {
         this.mapSize = 1000
@@ -29,27 +31,32 @@ export class Game {
 
         this.app.stage.addChild(this.baseContainer)
         const frame = new PIXI.Graphics()
-        frame.beginFill(0x000011)
-        frame.drawRect(0,0,3000,3000)
+        frame.beginFill(0x000005)
+        frame.drawRect(0,0,window.outerWidth, window.outerHeight)
         frame.endFill()
 
         this.baseContainer.addChild(frame)
 
         this.sceneContainer = new PIXI.Container()
-        // const innerFrame = new PIXI.Graphics()
-        // innerFrame.beginFill(0x000000)
-        // innerFrame.drawRect(0,0,400, 400)
-        // innerFrame.endFill()
-        // this.sceneContainer.addChild(innerFrame)
+        const innerFrame = new PIXI.Graphics()
+        innerFrame.beginFill(0x000000)
+        innerFrame.drawRect(0, 0, sceneContainerWidth, sceneContainerHeight)
+        innerFrame.endFill()
+        this.sceneContainer.addChild(innerFrame)
 
         this.baseContainer.addChild(this.sceneContainer)
-        this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width)/8
-        // this.sceneContainer.y = (this.baseContainer.height - this.sceneContainer.height)/2
+        console.log(this.baseContainer.width)
+        console.log(this.sceneContainer.width)
+        this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width)/2
     }
 
     run() {
-        const gameplayScene = new GameplayScene(this.app)
-        gameplayScene.buildMap()
-        this.sceneContainer.addChild(gameplayScene.container)
+
+        const mainMenu = new MainMenu(this.app)
+        mainMenu.setupUI(this.sceneContainer)
+        this.sceneContainer.addChild(mainMenu.container)
+        // const gameplayScene = new GameplayScene(this.app)
+        // gameplayScene.buildMap()
+        // this.sceneContainer.addChild(gameplayScene.container)
     }
 }
