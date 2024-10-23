@@ -49,5 +49,9 @@ export class MainMenu {
         const settingsButton = UIHelper.createButton(450,700,400,50, "Settings")
         settingsButton.zIndex = 1
         this.container.addChild(settingsButton)
+
+        const tutorialButton = UIHelper.createButton(450,800,400,50, "Tutorial")
+        tutorialButton.zIndex = 1
+        this.container.addChild(tutorialButton)
     }
 }
