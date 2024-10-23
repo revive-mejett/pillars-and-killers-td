@@ -14,7 +14,6 @@ export class Game {
         this.app = new PIXI.Application({width: window.outerWidth, height: window.outerHeight})
         this.baseContainer = new PIXI.Container()
         this.sceneContainer = undefined
-        console.log(window);
         //add to DOM
         document.body.appendChild(this.app.view)
     }
@@ -28,6 +27,7 @@ export class Game {
         await assetLoader.loadEnemySprites()
         await assetLoader.loadIconSprites()
         await assetLoader.loadTowerSprites()
+        await assetLoader.loadOtherImagesSprites()
 
         this.app.stage.addChild(this.baseContainer)
         const frame = new PIXI.Graphics()
@@ -45,8 +45,6 @@ export class Game {
         this.sceneContainer.addChild(innerFrame)
 
         this.baseContainer.addChild(this.sceneContainer)
-        console.log(this.baseContainer.width)
-        console.log(this.sceneContainer.width)
         this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width)/2
     }
 

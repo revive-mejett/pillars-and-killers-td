@@ -14,6 +14,7 @@ export class AssetLoader {
             this.enemies = {}
             this.icons = {}
             this.towers = {}
+            this.otherImages = {}
         }
         return instance
     }
@@ -39,6 +40,11 @@ export class AssetLoader {
             "ultimatePillar" : "assets/images/ultimate_pillar.png",
             "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png"
         })
+
+        Assets.addBundle("otherImages", {
+            "mainTitle" : "assets/images/td_title.png",
+            "mainTitleImage" : "assets/images/pillars_killers_title_pic.png",
+        })
     }
 
     async loadEnemySprites() {
@@ -51,6 +57,10 @@ export class AssetLoader {
 
     async loadTowerSprites() {
         this.towers = await Assets.loadBundle("towers")
+    }
+
+    async loadOtherImagesSprites() {
+        this.otherImages = await Assets.loadBundle("otherImages")
     }
 
 
