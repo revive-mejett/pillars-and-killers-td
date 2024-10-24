@@ -13,4 +13,8 @@ export class Projectile extends Entity {
             throw new Error("Projectile is an abstract class. Cannot instantiate a Projectile instance")
         }
     }
+
+    setEnemy(enemy) {
+        this.targetEnemy = enemy
+    }
 }
