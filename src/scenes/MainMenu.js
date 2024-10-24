@@ -12,7 +12,6 @@ export class MainMenu {
         this.app = app
         this.container = new PIXI.Container()
         this.container.sortableChildren = true
-
     }
 
     setupUI(sceneContainer) {
@@ -32,7 +31,7 @@ export class MainMenu {
         pillarsKillersVisual.x = 300
         pillarsKillersVisual.y = 300
         pillarsKillersVisual.zIndex = 1
-        
+
         this.container.addChild(pillarsKillersVisual)
 
         const startButton = UIHelper.createButton(450,600,400,50, "Start Game")
