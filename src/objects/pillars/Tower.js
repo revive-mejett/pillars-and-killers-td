@@ -1,4 +1,5 @@
 import { Entity } from "../Entity.js"
+import { Bullet } from "../projectile/Bullet.js"
 
 //base class for tower
 export class Tower extends Entity {
@@ -18,6 +19,7 @@ export class Tower extends Entity {
         this.sprite.x = this.position.x
         this.sprite.y = this.position.y
 
+        this.targetedEnemy = null
         this.isSold = false
 
         if (new.target === Tower) {
@@ -26,8 +28,35 @@ export class Tower extends Entity {
 
     }
 
-    fire() {
-        //todo not implemented
+    executeFiring() {
+
+        const towerRef = this
+
+        const towerFireCycleTicker = new PIXI.Ticker()
+        towerFireCycleTicker.autoStart = false
+
+        let elapsedMS = 0
+
+        //spawns an enemy
+        let onTick = () => {
+
+            elapsedMS += towerFireCycleTicker.deltaMS
+            if (elapsedMS >= 1000) {
+                elapsedMS = 0
+                if (!towerRef.targetedEnemy) {
+                    console.log("toer has no targeted enemy")
+                    return
+                }
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5)
+            }
+        }
+
+        towerFireCycleTicker.add(onTick)
+        towerFireCycleTicker.start()
+    }
+
+    lockInEnemy(enemy) {
+        this.targetedEnemy = enemy
     }
 
     renderOnTile(tile) {

@@ -103,7 +103,7 @@ export class WaveManager {
 
 
 
-    async sendWave(app, gameplayScene) {
+    async sendWave(gameplayScene) {
         if (this.waveInProgress) {return}
 
         this.waveInProgress = true
