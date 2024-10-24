@@ -16,4 +16,12 @@ export class Entity {
         }
     }
 
+    //retrieves the coordinates of the top left corner of the entity
+    getTopLeftCoordinates(centerPos) {
+        return {
+            x : centerPos.x - this.width / 2,
+            y : centerPos.y - this.height / 2
+        }
+    }
+
 }

@@ -18,6 +18,8 @@ export class Tower extends Entity {
         this.sprite.x = this.position.x
         this.sprite.y = this.position.y
 
+        this.isSold = false
+
         if (new.target === Tower) {
             throw new Error("Cant instantiate Tower base class")
         }

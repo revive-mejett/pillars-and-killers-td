@@ -19,11 +19,22 @@ export class GameplayScene {
         this.setUpHUD()
         this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
         this.gamestate.linkUiManager(this.uiManager)
+
         this.enemiesPresent = []
+        this.projectilesPresent = []
+        this.towersPresent = []
+
         this.healthBarManager = new HealthBarManager()
 
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
+
+        eventDispatcher.on("projectileSpawn", this.addEnemyToPresent.bind(this))
+        eventDispatcher.on("projectileImpact", this.updateProjectilesPresent.bind(this))
+
+        eventDispatcher.on("towerPlaced", this.addTowerToPresent.bind(this))
+        eventDispatcher.on("towerSold", this.updateTowersPresent.bind(this))
+
         this.app.ticker.add(() => this.update())
 
     }
@@ -51,7 +62,23 @@ export class GameplayScene {
         this.enemiesPresent = this.enemiesPresent.filter(enemy => enemy.isAlive)
     }
 
+    updateProjectilesPresent() {
+        this.projectilesPresent = this.projectilesPresent.filter(projectile => !projectile.hasHit)
+    }
+
     addEnemyToPresent(enemy) {
         this.enemiesPresent.push(enemy)
+    }
+
+    addProjectileToPresent(projectile) {
+        this.projectilesPresent.push(projectile)
+    }
+
+    addTowerToPresent(tower) {
+        this.towersPresent.push(tower)
+    }
+
+    updateTowersPresent() {
+        this.towersPresent = this.towersPresent.filter(tower => !tower.isSold)
     }
 }
