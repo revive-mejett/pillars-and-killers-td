@@ -23,10 +23,11 @@ export class Bullet extends Projectile {
 
         if (bulletEnemyVector.magnitude() < 5) {
             this.targetEnemy.takeDamage(5)
+            this.hasHit = true
         }
         //move the bullet towards enemy in a tickwise fashion
         this.x += bulletEnemyVector.unitVector().x * deltaTime
-        this.x += bulletEnemyVector.unitVector().y * deltaTime
+        this.y += bulletEnemyVector.unitVector().y * deltaTime
 
     }
 }
