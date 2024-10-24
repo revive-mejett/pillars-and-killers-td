@@ -8,5 +8,9 @@ export class Projectile extends Entity {
     constructor(x, y, width, height) {
         super(x, y, width, height);
         this.targetEnemy = null
+
+        if (new.target === Projectile) {
+            throw new Error("Projectile is an abstract class. Cannot instantiate a Projectile instance")
+        }
     }
 }
