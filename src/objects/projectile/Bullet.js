@@ -30,7 +30,7 @@ export class Bullet extends Projectile {
         const bulletEnemyVector = new Vector(enemyCenterPosition.x - bulletCenterPosition.x, enemyCenterPosition.y - bulletCenterPosition.y)
 
         if (bulletEnemyVector.magnitude() < 5) {
-            this.targetEnemy.takeDamage(20)
+            this.targetEnemy.takeDamage(0.25)
             this.hasHit = true
             this.graphics.clear()
         }

@@ -74,7 +74,7 @@ export class UIManager {
         eventDispatcher.fireEvent("purchaseSuccessful1", towerCost)
         const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
         selectedTile.placeTowerOnTile(tower)
-        tower.executeFiring(this.gameplayScene.container)
+        tower.runTower(this.gameplayScene.container)
         eventDispatcher.fireEvent("towerPlaced", tower)
 
     }

@@ -24,7 +24,6 @@ export class WaveManager {
         const testWaves = [
             new Wave(
                 [
-                    //todo revert back to more than 1 after testing the healthbars and green circlr
                     {
                         enemy: "yellowCircle",
                         count: 1,
@@ -37,7 +36,6 @@ export class WaveManager {
         const prodWaves = [
             new Wave(
                 [
-                    //todo revert back to more than 1 after testing the healthbars and green circlr
                     {
                         enemy: "greenCircle",
                         count: 8,

@@ -26,6 +26,8 @@ export class Enemy extends Entity {
 
         this.position.x = x * width
         this.position.y = y * height
+
+        this.distanceTravelled = 0
         this.isAlive = true
     }
 
@@ -60,15 +62,17 @@ export class Enemy extends Entity {
         const waypoints = map.waypoints
         const speed = this.speed
 
+
         if (this.nextWayPointIndex >= waypoints.length) {return}
 
         if (this.xToNextWaypoint !== 0) {
             this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta
+            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta)
         }
         else if (this.yToNextWaypoint !== 0) {
             this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta
+            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta)
         }
-
 
 
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)

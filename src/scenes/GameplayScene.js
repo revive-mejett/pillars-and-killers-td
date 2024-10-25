@@ -62,7 +62,7 @@ export class GameplayScene {
         this.towersPresent.forEach(tower => {
             if (this.enemiesPresent.length > 0) {
                 if (!tower.targetedEnemy) {
-                    tower.lockInEnemy(this.enemiesPresent[0])
+                    tower.findEnemy(this.enemiesPresent)
                 }
             }
         })

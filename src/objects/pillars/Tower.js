@@ -1,4 +1,5 @@
 import { EventDispatcher } from "../../utils/EventDispatcher.js"
+import { Vector } from "../../utils/Vector.js"
 import { Entity } from "../Entity.js"
 import { Bullet } from "../projectile/Bullet.js"
 
@@ -30,7 +31,7 @@ export class Tower extends Entity {
 
     }
 
-    executeFiring(gameplaySceneContainer) {
+    runTower(gameplaySceneContainer) {
 
         const towerRef = this
 
@@ -45,16 +46,22 @@ export class Tower extends Entity {
 
             cooldown -= towerFireCycleTicker.deltaMS
             if (cooldown <= 0) {
-                cooldown = 1000
+                cooldown = 10
 
 
                 if (!towerRef.targetedEnemy) {
-                    console.log("toer has no targeted enemy")
                     cooldown = 0 //reset cooldown
                     return
                 }
 
                 if (!towerRef.targetedEnemy.isAlive) {
+                    this.targetedEnemy = null
+                    cooldown = 0 //reset cooldown
+                    return
+                }
+
+                //check if enemy is no longer in range
+                if (!this.checkEnemyInRange(towerRef.targetedEnemy)) {
                     this.targetedEnemy = null
                     cooldown = 0 //reset cooldown
                     return
@@ -79,4 +86,25 @@ export class Tower extends Entity {
         tile.container.addChild(this.sprite)
     }
 
+    findEnemy(enemies) {
+        let enemiesInRange = this.checkEnemiesInRange(enemies)
+        enemiesInRange = enemiesInRange.sort((e1, e2)=> e2.distanceTravelled-e1.distanceTravelled)
+        if (enemiesInRange.length > 0 && enemiesInRange[0].isAlive) {
+            this.lockInEnemy(enemiesInRange[0])
+        }
+    }
+
+    checkEnemiesInRange(enemies) {
+        const enemiesInRange = enemies.filter(enemy => {
+            return this.checkEnemyInRange(enemy)
+        })
+        return enemiesInRange
+    }
+
+    checkEnemyInRange(enemy) {
+        const towerCenterPosition = this.getCenterPosition()
+        const enemyCenterPosition = enemy.getCenterPosition()
+        const towerEnemyVector = new Vector(enemyCenterPosition.x - towerCenterPosition.x, enemyCenterPosition.y - towerCenterPosition.y)
+        return towerEnemyVector.magnitude() <= this.range
+    }
 }
