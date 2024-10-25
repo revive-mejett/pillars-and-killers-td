@@ -31,7 +31,9 @@ export class Tower extends Entity {
 
     }
 
-    runTower(gameplaySceneContainer) {
+    runTower(gameplayScene) {
+
+        const gameplaySceneContainer = gameplayScene.container
 
         const towerRef = this
 
@@ -49,6 +51,9 @@ export class Tower extends Entity {
                 cooldown = 10
 
 
+                // Find the best enemy before firing
+                this.findEnemy(gameplayScene.enemiesPresent);
+            
                 if (!towerRef.targetedEnemy) {
                     cooldown = 0 //reset cooldown
                     return
@@ -87,10 +92,20 @@ export class Tower extends Entity {
     }
 
     findEnemy(enemies) {
-        let enemiesInRange = this.checkEnemiesInRange(enemies)
-        enemiesInRange = enemiesInRange.sort((e1, e2)=> e2.distanceTravelled-e1.distanceTravelled)
-        if (enemiesInRange.length > 0 && enemiesInRange[0].isAlive) {
-            this.lockInEnemy(enemiesInRange[0])
+        let bestEnemy = this.targetedEnemy; // Start with current target, if it exists
+        enemies.forEach(enemy => {
+            // Check if the enemy is alive and within range
+            if (enemy.isAlive && this.checkEnemyInRange(enemy)) {
+                // If we don't have a target or this enemy has traveled further, update the target
+                if (!bestEnemy || enemy.distanceTravelled > bestEnemy.distanceTravelled) {
+                    bestEnemy = enemy;
+                }
+            }
+        });
+
+        // If we found a better target, lock it in
+        if (bestEnemy && bestEnemy !== this.targetedEnemy) {
+            this.lockInEnemy(bestEnemy);
         }
     }
 

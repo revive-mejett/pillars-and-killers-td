@@ -35,8 +35,8 @@ export class Bullet extends Projectile {
             this.graphics.clear()
         }
         //move the bullet towards enemy in a tickwise fashion
-        this.x += bulletEnemyVector.unitVector().x * deltaTime * 5
-        this.y += bulletEnemyVector.unitVector().y * deltaTime * 5
+        this.x += bulletEnemyVector.normalize().x * deltaTime * 5
+        this.y += bulletEnemyVector.normalize().y * deltaTime * 5
         this.updateSpritePosition()
 
     }

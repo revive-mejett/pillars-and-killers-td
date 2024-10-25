@@ -25,8 +25,22 @@ export class WaveManager {
             new Wave(
                 [
                     {
-                        enemy: "yellowCircle",
-                        count: 1,
+                        enemy: "greenCircle",
+                        count: 3,
+                        spacingMillis: 800
+                    },
+                    {
+                        enemy: "blueCircle",
+                        count: 7,
+                        spacingMillis: 800
+                    }
+                ]
+            ),
+            new Wave(
+                [
+                    {
+                        enemy: "blueCircle",
+                        count: 7,
                         spacingMillis: 800
                     }
                 ]
@@ -109,7 +123,7 @@ export class WaveManager {
             )
         ]
 
-        const waves = prodWaves //set it to the waves you want to send, devWaves for testing purposes
+        const waves = testWaves //set it to the waves you want to send, devWaves for testing purposes
 
         this.waves = waves
     }
