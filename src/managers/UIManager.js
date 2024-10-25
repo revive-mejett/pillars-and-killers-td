@@ -3,6 +3,7 @@ import { TowerFactory } from "./TowerFactory.js"
 
 const eventDispatcher = new EventDispatcher()
 
+
 export class UIManager {
     constructor(app, gamestate, gameplayScene, hud) {
         this.app = app
@@ -14,7 +15,7 @@ export class UIManager {
         this.hud.nextWaveButton
 
         eventDispatcher.on("nextWaveBtnClick", () => {
-            this.gameplayScene.waveManager.sendWave(app, this.gameplayScene)
+            this.gameplayScene.waveManager.sendWave(this.gameplayScene)
             this.updateWaveNumber()
         })
 
@@ -65,7 +66,7 @@ export class UIManager {
             console.log("tile type must be grass");
             return
         }
-        if (this.hasTower) {
+        if (selectedTile.hasTower) {
             console.log("already have tower... selling TODO will be coded once sell button is added");
             return
         }
@@ -73,5 +74,8 @@ export class UIManager {
         eventDispatcher.fireEvent("purchaseSuccessful1", towerCost)
         const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
         selectedTile.placeTowerOnTile(tower)
+        tower.executeFiring(this.gameplayScene.container)
+        eventDispatcher.fireEvent("towerPlaced", tower)
+
     }
 }

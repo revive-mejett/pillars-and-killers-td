@@ -1,5 +1,4 @@
 
-import { GameplayScene } from "../scenes/GameplayScene.js"
 import { MainMenu } from "../scenes/MainMenu.js"
 import { AssetLoader } from "./AssetLoader.js"
 
@@ -49,12 +48,8 @@ export class Game {
     }
 
     run() {
-
         const mainMenu = new MainMenu(this.app)
         mainMenu.setupUI(this.sceneContainer)
         this.sceneContainer.addChild(mainMenu.container)
-        // const gameplayScene = new GameplayScene(this.app)
-        // gameplayScene.buildMap()
-        // this.sceneContainer.addChild(gameplayScene.container)
     }
 }

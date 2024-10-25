@@ -21,7 +21,20 @@ export class WaveManager {
 
     loadWaves() {
 
-        const waves = [
+        const testWaves = [
+            new Wave(
+                [
+                    //todo revert back to more than 1 after testing the healthbars and green circlr
+                    {
+                        enemy: "yellowCircle",
+                        count: 1,
+                        spacingMillis: 800
+                    }
+                ]
+            )
+        ]
+
+        const prodWaves = [
             new Wave(
                 [
                     //todo revert back to more than 1 after testing the healthbars and green circlr
@@ -98,12 +111,14 @@ export class WaveManager {
             )
         ]
 
+        const waves = prodWaves //set it to the waves you want to send, devWaves for testing purposes
+
         this.waves = waves
     }
 
 
 
-    async sendWave(app, gameplayScene) {
+    async sendWave(gameplayScene) {
         if (this.waveInProgress) {return}
 
         this.waveInProgress = true
@@ -116,7 +131,7 @@ export class WaveManager {
             ["greenCircle", { health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle }],
             ["blueCircle", { health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle }],
             ["purpleCircle", { health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle }],
-            ["yellowCircle", { health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }]
+            ["yellowCircle", { health: 1300000, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }]
         ])
 
 
@@ -154,11 +169,6 @@ export class WaveManager {
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
-
-                // developer enemy damage code
-                // setInterval(() => {
-                //     spawnedEnemy.takeDamage(1)
-                // }, 200);
 
 
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)

@@ -29,7 +29,7 @@ export class GameplayScene {
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
 
-        eventDispatcher.on("projectileSpawn", this.addEnemyToPresent.bind(this))
+        eventDispatcher.on("projectileSpawn", this.addProjectileToPresent.bind(this))
         eventDispatcher.on("projectileImpact", this.updateProjectilesPresent.bind(this))
 
         eventDispatcher.on("towerPlaced", this.addTowerToPresent.bind(this))
@@ -51,9 +51,26 @@ export class GameplayScene {
 
     update() {
         // console.log(new PIXI.interaction.InteractionManager())
+        // console.log(this.enemiesPresent);
 
         this.enemiesPresent.forEach(enemy => {
+
             enemy?.updateMovement(this.tdMap, this.app.ticker.deltaTime)
+
+        })
+
+        this.towersPresent.forEach(tower => {
+            if (this.enemiesPresent.length > 0) {
+                if (!tower.targetedEnemy) {
+                    tower.lockInEnemy(this.enemiesPresent[0])
+                }
+            }
+        })
+
+        this.projectilesPresent.forEach(projectile => {
+            if (!projectile.hasHit) {
+                projectile.flyBullet(this.app.ticker.deltaTime)
+            }
         })
         this.healthBarManager.updateAllHealthBars(this.container)
     }
