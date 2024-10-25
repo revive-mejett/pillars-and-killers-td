@@ -37,24 +37,26 @@ export class Tower extends Entity {
         const towerFireCycleTicker = new PIXI.Ticker()
         towerFireCycleTicker.autoStart = false
 
-        let elapsedMS = 0
+
+        let cooldown = 0
 
         //spawns an enemy
         let onTick = () => {
 
-            elapsedMS += towerFireCycleTicker.deltaMS
-            if (elapsedMS >= 1000) {
-
-                elapsedMS = 0
+            cooldown -= towerFireCycleTicker.deltaMS
+            if (cooldown <= 0) {
+                cooldown = 1000
 
 
                 if (!towerRef.targetedEnemy) {
                     console.log("toer has no targeted enemy")
+                    cooldown = 0 //reset cooldown
                     return
                 }
 
                 if (!towerRef.targetedEnemy.isAlive) {
                     this.targetedEnemy = null
+                    cooldown = 0 //reset cooldown
                     return
                 }
 

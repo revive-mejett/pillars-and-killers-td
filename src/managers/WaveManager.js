@@ -26,8 +26,8 @@ export class WaveManager {
                 [
                     //todo revert back to more than 1 after testing the healthbars and green circlr
                     {
-                        enemy: "greenCircle",
-                        count: 2,
+                        enemy: "yellowCircle",
+                        count: 1,
                         spacingMillis: 800
                     }
                 ]
@@ -131,7 +131,7 @@ export class WaveManager {
             ["greenCircle", { health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle }],
             ["blueCircle", { health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle }],
             ["purpleCircle", { health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle }],
-            ["yellowCircle", { health: 1200, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }]
+            ["yellowCircle", { health: 1300000, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }]
         ])
 
 
