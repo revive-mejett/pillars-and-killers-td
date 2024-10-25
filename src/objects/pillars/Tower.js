@@ -1,6 +1,8 @@
+import { EventDispatcher } from "../../utils/EventDispatcher.js"
 import { Entity } from "../Entity.js"
 import { Bullet } from "../projectile/Bullet.js"
 
+const eventDispatcher = new EventDispatcher()
 //base class for tower
 export class Tower extends Entity {
     constructor(x, y, width, height, towerstats) {
@@ -28,7 +30,7 @@ export class Tower extends Entity {
 
     }
 
-    executeFiring() {
+    executeFiring(gameplaySceneContainer) {
 
         const towerRef = this
 
@@ -42,12 +44,24 @@ export class Tower extends Entity {
 
             elapsedMS += towerFireCycleTicker.deltaMS
             if (elapsedMS >= 1000) {
+
                 elapsedMS = 0
+
+
                 if (!towerRef.targetedEnemy) {
                     console.log("toer has no targeted enemy")
                     return
                 }
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5)
+
+                if (!towerRef.targetedEnemy.isAlive) {
+                    this.targetedEnemy = null
+                    return
+                }
+
+                //spawn a bullet
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, 0xFF0000, this.targetedEnemy)
+                bullet.render(gameplaySceneContainer)
+                eventDispatcher.fireEvent("projectileSpawn", bullet)
             }
         }
 

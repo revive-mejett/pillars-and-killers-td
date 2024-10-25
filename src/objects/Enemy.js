@@ -29,7 +29,13 @@ export class Enemy extends Entity {
         this.isAlive = true
     }
 
-
+    //overridden
+    getCenterPosition() {
+        return {
+            x : this.position.x + this.width / 2,
+            y : this.position.y + this.height / 2
+        }
+    }
 
     updateSpritePosition() {
         this.sprite.x = this.position.x

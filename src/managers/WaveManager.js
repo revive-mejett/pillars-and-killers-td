@@ -21,7 +21,20 @@ export class WaveManager {
 
     loadWaves() {
 
-        const waves = [
+        const testWaves = [
+            new Wave(
+                [
+                    //todo revert back to more than 1 after testing the healthbars and green circlr
+                    {
+                        enemy: "greenCircle",
+                        count: 2,
+                        spacingMillis: 800
+                    }
+                ]
+            )
+        ]
+
+        const prodWaves = [
             new Wave(
                 [
                     //todo revert back to more than 1 after testing the healthbars and green circlr
@@ -98,6 +111,8 @@ export class WaveManager {
             )
         ]
 
+        const waves = prodWaves //set it to the waves you want to send, devWaves for testing purposes
+
         this.waves = waves
     }
 
@@ -154,11 +169,6 @@ export class WaveManager {
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
                 spawnedEnemy.zIndex = 3
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
-
-                // developer enemy damage code
-                // setInterval(() => {
-                //     spawnedEnemy.takeDamage(1)
-                // }, 200);
 
 
                 new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
