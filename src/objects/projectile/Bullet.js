@@ -23,31 +23,6 @@ export class Bullet extends Projectile {
     }
 
     flyBullet(deltaTime) {
-        if (!this.targetEnemy) {
-            this.graphics?.clear()
-            return
-        }
-
-        const bulletCenterPosition = this.getCenterPosition()
-        const enemyCenterPosition = this.targetEnemy.getCenterPosition()
-
-
-        const bulletEnemyVector = new Vector(enemyCenterPosition.x - bulletCenterPosition.x, enemyCenterPosition.y - bulletCenterPosition.y)
-
-        if (bulletEnemyVector.magnitude() < 5) {
-            this.targetEnemy.takeDamage(0.25)
-            this.hasHit = true
-            this.graphics.clear()
-            eventDispatcher.fireEvent("projectileImpact")
-        }
-        //move the bullet towards enemy in a tickwise fashion
-        this.x += bulletEnemyVector.normalize().x * deltaTime * 10
-        this.y += bulletEnemyVector.normalize().y * deltaTime * 10
-        this.updateSpritePosition()
-
-    }
-
-    flyBulletTicker(deltaTime) {
 
 
         let onTick = () => {
@@ -71,8 +46,6 @@ export class Bullet extends Projectile {
                 this.targetEnemy.takeDamage(0.25)
                 this.hasHit = true
                 this.cleanUpResources()
-                // this?.destroy()
-                // eventDispatcher.fireEvent("projectileImpact")
             }
         }
 
