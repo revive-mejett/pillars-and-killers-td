@@ -1,5 +1,8 @@
+import { EventDispatcher } from "../../utils/EventDispatcher.js";
 import { Vector } from "../../utils/Vector.js";
 import { Projectile } from "./Projectile.js";
+
+const eventDispatcher = new EventDispatcher()
 
 export class Bullet extends Projectile {
 
@@ -30,13 +33,14 @@ export class Bullet extends Projectile {
         const bulletEnemyVector = new Vector(enemyCenterPosition.x - bulletCenterPosition.x, enemyCenterPosition.y - bulletCenterPosition.y)
 
         if (bulletEnemyVector.magnitude() < 5) {
-            this.targetEnemy.takeDamage(20)
+            this.targetEnemy.takeDamage(0.25)
             this.hasHit = true
             this.graphics.clear()
+            eventDispatcher.fireEvent("projectileImpact")
         }
         //move the bullet towards enemy in a tickwise fashion
-        this.x += bulletEnemyVector.unitVector().x * deltaTime * 5
-        this.y += bulletEnemyVector.unitVector().y * deltaTime * 5
+        this.x += bulletEnemyVector.normalize().x * deltaTime * 10
+        this.y += bulletEnemyVector.normalize().y * deltaTime * 10
         this.updateSpritePosition()
 
     }

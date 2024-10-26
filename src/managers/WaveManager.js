@@ -24,10 +24,23 @@ export class WaveManager {
         const testWaves = [
             new Wave(
                 [
-                    //todo revert back to more than 1 after testing the healthbars and green circlr
                     {
-                        enemy: "yellowCircle",
-                        count: 1,
+                        enemy: "blueCircle",
+                        count: 55,
+                        spacingMillis: 100
+                    },
+                    {
+                        enemy: "purpleCircle",
+                        count: 40,
+                        spacingMillis: 500
+                    }
+                ]
+            ),
+            new Wave(
+                [
+                    {
+                        enemy: "blueCircle",
+                        count: 7,
                         spacingMillis: 800
                     }
                 ]
@@ -37,7 +50,6 @@ export class WaveManager {
         const prodWaves = [
             new Wave(
                 [
-                    //todo revert back to more than 1 after testing the healthbars and green circlr
                     {
                         enemy: "greenCircle",
                         count: 8,
@@ -111,7 +123,7 @@ export class WaveManager {
             )
         ]
 
-        const waves = prodWaves //set it to the waves you want to send, devWaves for testing purposes
+        const waves = testWaves //set it to the waves you want to send, devWaves for testing purposes
 
         this.waves = waves
     }

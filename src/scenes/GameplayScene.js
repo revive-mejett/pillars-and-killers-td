@@ -51,7 +51,8 @@ export class GameplayScene {
 
     update() {
         // console.log(new PIXI.interaction.InteractionManager())
-        // console.log(this.enemiesPresent);
+        console.log(this.projectilesPresent);
+
 
         this.enemiesPresent.forEach(enemy => {
 
@@ -62,7 +63,7 @@ export class GameplayScene {
         this.towersPresent.forEach(tower => {
             if (this.enemiesPresent.length > 0) {
                 if (!tower.targetedEnemy) {
-                    tower.lockInEnemy(this.enemiesPresent[0])
+                    tower.findEnemy(this.enemiesPresent)
                 }
             }
         })

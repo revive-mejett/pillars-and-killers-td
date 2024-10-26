@@ -88,7 +88,7 @@ export class TowerFactory {
                         title: "Ultimate Pillar",
                         description: "The next generation using power currently being experimented..."
                     },
-                    range: 450,
+                    range: 700,
                     damage: 220,
                     fireRate: 5,
                     cost: 5800
