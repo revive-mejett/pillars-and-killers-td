@@ -21,7 +21,6 @@ export class GameplayScene {
         this.gamestate.linkUiManager(this.uiManager)
 
         this.enemiesPresent = []
-        this.projectilesPresent = []
         this.towersPresent = []
 
         this.healthBarManager = new HealthBarManager()
@@ -29,8 +28,6 @@ export class GameplayScene {
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
 
-        eventDispatcher.on("projectileSpawn", this.addProjectileToPresent.bind(this))
-        eventDispatcher.on("projectileImpact", this.updateProjectilesPresent.bind(this))
 
         eventDispatcher.on("towerPlaced", this.addTowerToPresent.bind(this))
         eventDispatcher.on("towerSold", this.updateTowersPresent.bind(this))
@@ -51,7 +48,7 @@ export class GameplayScene {
 
     update() {
         // console.log(new PIXI.interaction.InteractionManager())
-        console.log(this.projectilesPresent);
+        // console.log(this.projectilesPresent);
 
 
         this.enemiesPresent.forEach(enemy => {
@@ -68,11 +65,6 @@ export class GameplayScene {
             }
         })
 
-        this.projectilesPresent.forEach(projectile => {
-            if (!projectile.hasHit) {
-                projectile.flyBullet(this.app.ticker.deltaTime)
-            }
-        })
         this.healthBarManager.updateAllHealthBars(this.container)
     }
 

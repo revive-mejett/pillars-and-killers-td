@@ -1,9 +1,9 @@
-import { EventDispatcher } from "../../utils/EventDispatcher.js"
+
 import { Vector } from "../../utils/Vector.js"
 import { Entity } from "../Entity.js"
 import { Bullet } from "../projectile/Bullet.js"
 
-const eventDispatcher = new EventDispatcher()
+
 //base class for tower
 export class Tower extends Entity {
     constructor(x, y, width, height, towerstats) {
@@ -53,7 +53,6 @@ export class Tower extends Entity {
 
                 // Find the best enemy before firing
                 this.findEnemy(gameplayScene.enemiesPresent);
-            
                 if (!towerRef.targetedEnemy) {
                     cooldown = 0 //reset cooldown
                     return
@@ -75,7 +74,7 @@ export class Tower extends Entity {
                 //spawn a bullet
                 const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, 0xFF0000, this.targetedEnemy)
                 bullet.render(gameplaySceneContainer)
-                eventDispatcher.fireEvent("projectileSpawn", bullet)
+                bullet.flyBullet(gameplayScene.app.ticker.deltaTime)
             }
         }
 
