@@ -51,7 +51,8 @@ export class GameplayScene {
 
     update() {
         // console.log(new PIXI.interaction.InteractionManager())
-        // console.log(this.enemiesPresent);
+        console.log(this.projectilesPresent);
+
 
         this.enemiesPresent.forEach(enemy => {
 

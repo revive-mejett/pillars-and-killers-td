@@ -25,14 +25,14 @@ export class WaveManager {
             new Wave(
                 [
                     {
-                        enemy: "greenCircle",
-                        count: 3,
-                        spacingMillis: 800
+                        enemy: "blueCircle",
+                        count: 55,
+                        spacingMillis: 100
                     },
                     {
-                        enemy: "blueCircle",
-                        count: 7,
-                        spacingMillis: 800
+                        enemy: "purpleCircle",
+                        count: 40,
+                        spacingMillis: 500
                     }
                 ]
             ),
