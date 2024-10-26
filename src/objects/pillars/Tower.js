@@ -53,7 +53,6 @@ export class Tower extends Entity {
 
                 // Find the best enemy before firing
                 this.findEnemy(gameplayScene.enemiesPresent);
-            
                 if (!towerRef.targetedEnemy) {
                     cooldown = 0 //reset cooldown
                     return
@@ -75,7 +74,8 @@ export class Tower extends Entity {
                 //spawn a bullet
                 const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, 0xFF0000, this.targetedEnemy)
                 bullet.render(gameplaySceneContainer)
-                eventDispatcher.fireEvent("projectileSpawn", bullet)
+                bullet.flyBulletTicker(gameplayScene.app.ticker.deltaTime)
+                // eventDispatcher.fireEvent("projectileSpawn", bullet)
             }
         }
 

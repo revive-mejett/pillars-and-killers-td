@@ -51,7 +51,7 @@ export class GameplayScene {
 
     update() {
         // console.log(new PIXI.interaction.InteractionManager())
-        console.log(this.projectilesPresent);
+        // console.log(this.projectilesPresent);
 
 
         this.enemiesPresent.forEach(enemy => {
@@ -68,11 +68,11 @@ export class GameplayScene {
             }
         })
 
-        this.projectilesPresent.forEach(projectile => {
-            if (!projectile.hasHit) {
-                projectile.flyBullet(this.app.ticker.deltaTime)
-            }
-        })
+        // this.projectilesPresent.forEach(projectile => {
+        //     if (!projectile.hasHit) {
+        //         projectile.flyBullet(this.app.ticker.deltaTime)
+        //     }
+        // })
         this.healthBarManager.updateAllHealthBars(this.container)
     }
 
