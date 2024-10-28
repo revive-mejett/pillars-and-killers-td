@@ -74,8 +74,106 @@ const testWaves2 = [
             }
         ]
     ),
+    new Wave(
+        [
+            {
+                enemy: "greenCircle",
+                count: 30,
+                spacingMillis: 250
+            },
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "purpleCircle",
+                count: 3,
+                spacingMillis: 250
+            },
+            {
+                enemy: "blueCircle",
+                count: 8,
+                spacingMillis: 500
+            },
+            {
+                enemy: "greenCircle",
+                count: 8,
+                spacingMillis: 400
+            }
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "greenCircle",
+                count: 20,
+                spacingMillis: 400
+            },
+            {
+                enemy: "blueCircle",
+                count: 15,
+                spacingMillis: 1500
+            },
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "greenCircle",
+                count: 5,
+                spacingMillis: 600
+            },
+            {
+                enemy: "blueCircle",
+                count: 8,
+                spacingMillis: 600
+            },
+            {
+                enemy: "purpleCircle",
+                count: 5,
+                spacingMillis: 1500
+            },
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "blueCircle",
+                count: 14,
+                spacingMillis: 400
+            },
+            {
+                enemy: "purpleCircle",
+                count: 16,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "yellowCircle",
+                count: 1,
+                spacingMillis: 1000
+            },
+        ]
+    ),
 
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
