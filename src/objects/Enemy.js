@@ -8,12 +8,13 @@ export class Enemy extends Entity {
     /**
      *
      */
-    constructor(x, y, width, height, health, speed, damage, asset) {
+    constructor(x, y, width, height, health, speed, damage, killValue, asset) {
         super(x, y, width, height);
         this.health = health
         this.totalHealth = health
         this.speed = speed
         this.damage = damage
+        this.killValue = killValue
         this.asset = asset
         this.position = { x: x, y: y }
 
@@ -100,6 +101,7 @@ export class Enemy extends Entity {
         if (this.health <= 0) {
             this.health = 0
             enemyDied(this)
+            eventDispatcher.fireEvent("moneyEarned", this.killValue)
         }
     }
 

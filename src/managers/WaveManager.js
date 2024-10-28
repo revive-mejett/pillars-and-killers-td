@@ -140,10 +140,10 @@ export class WaveManager {
 
         //TODO later move enemy data to game data json
         const enemyDataMap = new Map([
-            ["greenCircle", { health: 100, speed: 1, damage: 10, asset: enemyAssets.greenCircle }],
-            ["blueCircle", { health: 300, speed: 1.5, damage: 40, asset: enemyAssets.blueCircle }],
-            ["purpleCircle", { health: 400, speed: 5, damage: 10, asset: enemyAssets.purpleCircle }],
-            ["yellowCircle", { health: 1300000, speed: 0.6, damage: 30, asset: enemyAssets.yellowCircle }]
+            ["greenCircle", { health: 100, speed: 1, damage: 10, killValue: 5, asset: enemyAssets.greenCircle }],
+            ["blueCircle", { health: 300, speed: 1.5, damage: 40, killValue: 16, asset: enemyAssets.blueCircle }],
+            ["purpleCircle", { health: 400, speed: 5, damage: 10, killValue: 16, asset: enemyAssets.purpleCircle }],
+            ["yellowCircle", { health: 1300000, speed: 0.6, damage: 30, killValue: 16, asset: enemyAssets.yellowCircle }]
         ])
 
 
