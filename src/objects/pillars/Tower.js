@@ -48,7 +48,7 @@ export class Tower extends Entity {
 
             cooldown -= towerFireCycleTicker.deltaMS
             if (cooldown <= 0) {
-                cooldown = 10
+                cooldown = 1000 * 1/this.fireRate
 
 
                 // Find the best enemy before firing
@@ -72,7 +72,7 @@ export class Tower extends Entity {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, 0xFF0000, this.targetedEnemy)
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage)
                 bullet.render(gameplaySceneContainer)
                 bullet.flyBullet(gameplayScene.app.ticker.deltaTime)
             }

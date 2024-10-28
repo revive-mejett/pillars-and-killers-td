@@ -1,7 +1,7 @@
 import { Enemy } from "../objects/Enemy.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
-import { Wave } from "../objects/Wave.js"
 import { AssetLoader } from "../core/AssetLoader.js"
+import { testWaves2 } from "../utils/WaveData.js"
 
 const assetLoader = new AssetLoader()
 
@@ -21,109 +21,9 @@ export class WaveManager {
 
     loadWaves() {
 
-        const testWaves = [
-            new Wave(
-                [
-                    {
-                        enemy: "blueCircle",
-                        count: 55,
-                        spacingMillis: 100
-                    },
-                    {
-                        enemy: "purpleCircle",
-                        count: 40,
-                        spacingMillis: 500
-                    }
-                ]
-            ),
-            new Wave(
-                [
-                    {
-                        enemy: "blueCircle",
-                        count: 7,
-                        spacingMillis: 800
-                    }
-                ]
-            )
-        ]
 
-        const prodWaves = [
-            new Wave(
-                [
-                    {
-                        enemy: "greenCircle",
-                        count: 8,
-                        spacingMillis: 800
-                    }
-                ]
-            ),
-            new Wave(
-                [
-                    {
-                        enemy: "blueCircle",
-                        count: 12,
-                        spacingMillis: 777
-                    },
-                    {
-                        enemy: "purpleCircle",
-                        count: 5,
-                        spacingMillis: 2000
-                    }
-                ]
-            ),
-            new Wave(
-                [
-                    {
-                        enemy: "greenCircle",
-                        count: 15,
-                        spacingMillis: 500
-                    },
-                    {
-                        enemy: "blueCircle",
-                        count: 10,
-                        spacingMillis: 700
-                    },
-                    {
-                        enemy: "purpleCircle",
-                        count: 20,
-                        spacingMillis: 333
-                    },
-                    {
-                        enemy: "yellowCircle",
-                        count: 5,
-                        spacingMillis: 2000
-                    }
-                ]
-            ),
 
-            //TODO later move enemy data to game data json
-            new Wave(
-                [
-                    {
-                        enemy: "greenCircle",
-                        count: 15,
-                        spacingMillis: 500
-                    },
-                    {
-                        enemy: "blueCircle",
-                        count: 10,
-                        spacingMillis: 700
-                    },
-                    {
-                        enemy: "purpleCircle",
-                        count: 20,
-                        spacingMillis: 333
-                    },
-                    {
-                        enemy: "yellowCircle",
-                        count: 5,
-                        spacingMillis: 2000
-                    }
-                ]
-            )
-        ]
-
-        const waves = testWaves //set it to the waves you want to send, devWaves for testing purposes
+        const waves = testWaves2
 
         this.waves = waves
     }
