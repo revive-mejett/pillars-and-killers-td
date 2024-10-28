@@ -9,6 +9,7 @@ export class GameState {
 
         eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
         eventDispatcher.on("purchaseSuccessful1", this.debitMoney.bind(this))
+        eventDispatcher.on("moneyEarned", this.gainMoney.bind(this))
     }
 
     loseLives(damage) {
