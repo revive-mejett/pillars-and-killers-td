@@ -4,7 +4,7 @@ const eventDispatcher = new EventDispatcher()
 export class GameState {
     constructor() {
         this.lives = 300
-        this.money = 20000
+        this.money = 500
         this.uiManager = undefined
 
         eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))

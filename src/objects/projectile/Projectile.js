@@ -5,9 +5,10 @@ export class Projectile extends Entity {
     /**
      *
      */
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, targetEnemy, damage) {
         super(x, y, width, height);
-        this.targetEnemy = null
+        this.damage = damage
+        this.targetEnemy = targetEnemy
         this.hasHit = false
 
         if (new.target === Projectile) {

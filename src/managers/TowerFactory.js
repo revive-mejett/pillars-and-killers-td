@@ -42,10 +42,10 @@ export class TowerFactory {
                         title: "Basic Pillar",
                         description: "Cheap pillar good against weak killers. Decent hand pick for the early rounds."
                     },
-                    range: 250,
+                    range: 150,
                     damage: 10,
                     fireRate: 1,
-                    cost: 70
+                    cost: 50
                 }
             ],
             [
