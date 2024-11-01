@@ -2,6 +2,7 @@ import { Text, TextStyle } from "pixi.js"
 import { AssetLoader } from "../core/AssetLoader.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { UIHelper } from "./UIHelper.js"
+import { InfoPanel } from "./InfoPanel.js"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -19,7 +20,7 @@ export class HUD {
         this.waveNumText = undefined
         this.nextWaveButton = undefined
 
-        this.towerInfoPanel = undefined
+        this.infoPanel = undefined
         //current icon
         this.currentTowerSelectedIcon = undefined
 
@@ -157,39 +158,6 @@ export class HUD {
     }
 
 
-    // setup tower description pane
-    setUpInfoPanel() {
-        const towerSpriteBundle = assetLoader.towers
-        const towerInfoPanel = new PIXI.Container()
-        this.towerInfoPanel = towerInfoPanel
-        towerInfoPanel.x = 1
-        towerInfoPanel.y = 600
-
-        this.container.addChild(towerInfoPanel)
-
-        const infoPanelOutline = new PIXI.Graphics()
-        infoPanelOutline.lineStyle(3, 0x000077)
-        infoPanelOutline.drawRect(0, 0, 1000 * 0.25, 300)
-        towerInfoPanel.addChild(infoPanelOutline)
-
-        const padding = 5
-
-        const currentTowerIcon = createTowerIcon(towerSpriteBundle.basicPillarIcon, padding, padding)
-        towerInfoPanel.addChild(currentTowerIcon)
-        const towerNameText = new Text("basic pillar", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
-        towerNameText.x = 90 + padding
-        towerNameText.y = 0 + padding
-        towerInfoPanel.addChild(towerNameText)
-        const towerPriceText = new Text("$220", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFF00, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25 }))
-        towerPriceText.x = 90 + padding
-        towerPriceText.y = 40 + padding
-        towerInfoPanel.addChild(towerPriceText)
-        const towerDescriptionText = new Text("Cheap pillar for weak killers. Decent hand pick for the early rounds", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: this.towerInfoPanel.width * 0.95 }))
-        towerDescriptionText.x = padding
-        towerDescriptionText.y = 100
-        towerInfoPanel.addChild(towerDescriptionText)
-    }
-
     //tower selection menu
     setUpTowerSelections() {
         this.towerSelectionButtons = {}
@@ -201,13 +169,13 @@ export class HUD {
 
 
 
-        const basicPillarButton = createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111)
+        const basicPillarButton = UIHelper.createTowerIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111)
         towerSelectMenu.addChild(basicPillarButton)
-        const icePillarButton = createTowerIcon(towerSpriteBundle.icePillar, 80, 0, 0x001122)
+        const icePillarButton = UIHelper.createTowerIcon(towerSpriteBundle.icePillar, 80, 0, 0x001122)
         towerSelectMenu.addChild(icePillarButton)
-        const advancedPillarButton = createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100)
+        const advancedPillarButton = UIHelper.createTowerIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100)
         towerSelectMenu.addChild(advancedPillarButton)
-        const ultimatePillarButton = createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011)
+        const ultimatePillarButton = UIHelper.createTowerIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011)
         towerSelectMenu.addChild(ultimatePillarButton)
 
         this.towerSelectionButtons.basic = basicPillarButton
@@ -217,55 +185,22 @@ export class HUD {
     }
 
     updateTowerDescriptionUI(towerStats) {
-        if (!this.towerInfoPanel) {
-            this.setUpInfoPanel()
-        }
-        const towerNameText = this.towerInfoPanel.children[2]
-        towerNameText.text = towerStats.info.title
 
-        const towerCostText = this.towerInfoPanel.children[3]
-        towerCostText.text = `$${towerStats.cost}`
-
-        const towerDescriptionText = this.towerInfoPanel.children[4]
-        towerDescriptionText.text = towerStats.info.description
-
-        if (this.currentTowerSelectedIcon) {
-            this.towerInfoPanel.removeChild(this.currentTowerSelectedIcon)
+        if (!this.infoPanel) {
+            this.infoPanel = new PIXI.Container()
+            this.container.addChild(this.infoPanel)
+            this.infoPanel.x = 1
+            this.infoPanel.y = 600
         }
 
-        let icon = UIHelper.createTowerIcon(towerStats.assetIcon, 5, 5, 0x000000)
-        this.towerInfoPanel.addChild(icon)
-        this.currentTowerSelectedIcon = icon
+        this.infoPanel?.removeChildren()
+
+        const towerInfoPanel = InfoPanel.createTowerGeneralInfoPanel(towerStats)
+        this.infoPanel.addChild(towerInfoPanel)
     }
 
 
 
 }
-
-
-
-function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground) {
-    const towerButton = new PIXI.Container()
-    towerButton.eventMode = "static"
-    towerButton.width = 80
-    towerButton.height = 80
-    towerButton.x = xPosition
-    towerButton.y = yPosition
-
-
-    const iconBackground = new PIXI.Graphics()
-    iconBackground.beginFill(hexBackground)
-    iconBackground.drawRect(0,0, 80, 80)
-    iconBackground.endFill()
-    towerButton.addChild(iconBackground)
-
-    const towerIcon = PIXI.Sprite.from(spriteAsset)
-    towerIcon.width = 80
-    towerIcon.height = 80
-    towerButton.addChild(towerIcon)
-
-    return towerButton
-}
-
 
 
