@@ -35,6 +35,7 @@ export class UIHelper {
         return textContainer
     }
 
+    //helper function to create a tower button
     static createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground) {
         const towerButton = new PIXI.Container()
         towerButton.eventMode = "static"
@@ -42,21 +43,20 @@ export class UIHelper {
         towerButton.height = 80
         towerButton.x = xPosition
         towerButton.y = yPosition
-    
-    
+
         const iconBackground = new PIXI.Graphics()
         iconBackground.beginFill(hexBackground)
         iconBackground.drawRect(0,0, 80, 80)
         iconBackground.endFill()
         towerButton.addChild(iconBackground)
-    
+
         const towerIcon = PIXI.Sprite.from(spriteAsset)
         towerIcon.width = 80
         towerIcon.height = 80
         towerButton.addChild(towerIcon)
-    
+
         return towerButton
     }
-    
+
 
 }

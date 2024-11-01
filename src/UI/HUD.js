@@ -1,6 +1,7 @@
 import { Text, TextStyle } from "pixi.js"
 import { AssetLoader } from "../core/AssetLoader.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { UIHelper } from "./UIHelper.js"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -232,7 +233,7 @@ export class HUD {
             this.towerInfoPanel.removeChild(this.currentTowerSelectedIcon)
         }
 
-        let icon = createTowerIcon(towerStats.assetIcon, 5, 5, 0x000000)
+        let icon = UIHelper.createTowerIcon(towerStats.assetIcon, 5, 5, 0x000000)
         this.towerInfoPanel.addChild(icon)
         this.currentTowerSelectedIcon = icon
     }
@@ -242,7 +243,7 @@ export class HUD {
 }
 
 
-//helper function to create a tower button
+
 function createTowerIcon(spriteAsset, xPosition, yPosition, hexBackground) {
     const towerButton = new PIXI.Container()
     towerButton.eventMode = "static"
