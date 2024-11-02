@@ -31,8 +31,16 @@ export class Tile extends Entity {
         this.container = new Container()
         this.container.eventMode = "static"
         this.container.addChild(graphics)
-        this.container.on("pointerdown", () => eventDispatcher.fireEvent("towerPlaceAction", this))
+        this.container.on("pointerdown", this.onTileSelect.bind(this))
         this.parentContainer.addChild(this.container)
+    }
+
+    onTileSelect() {
+        if (this.hasTower) {
+            eventDispatcher.fireEvent("towerSelectAction", this.tower)
+        } else {
+            eventDispatcher.fireEvent("towerPlaceAction", this)
+        }
     }
 
     changeTileType(tileType) {

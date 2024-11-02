@@ -1,30 +1,52 @@
 import { Text, TextStyle } from "pixi.js"
-import { AssetLoader } from "../core/AssetLoader.js"
 import { UIHelper } from "./UIHelper.js"
 
-const assetLoader = new AssetLoader()
 
 export class InfoPanel {
-    /**
-     *
-     */
-    constructor() {
+
+    static createTowerStatsInfoPanel(tower) {
+        const padding = 5
+
+        const infoPanel = new PIXI.Container()
+        const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)
+        infoPanel.addChild(infoPanelOutline)
+
+        const currentTowerIcon = UIHelper.createTowerIcon(tower.assetIcon, padding, padding)
+        currentTowerIcon.x = 160
+
+        infoPanel.addChild(currentTowerIcon)
+
+        const towerTitleText = UIHelper.createText(0 + padding, 0 + padding,`${tower.towerName}`, 20, "0xFFFFFF")
+        infoPanel.addChild(towerTitleText)
+        const towerLevelText = UIHelper.createText(0 + padding, 50 + padding,`Lv. ${tower.level}`, 20, "0xC7C7FF")
+        infoPanel.addChild(towerLevelText)
+        const towerDamageText = UIHelper.createText(0 + padding, 70 + padding,`damage/shot: ${tower.damage}`, 20, "0xFFC7C7")
+        infoPanel.addChild(towerDamageText)
+        const towerRangeText = UIHelper.createText(0 + padding, 90 + padding,`range: ${tower.range}`, 20, "0xC7FFFF")
+        infoPanel.addChild(towerRangeText)
+        const towerFireRateText = UIHelper.createText(0 + padding, 110 + padding,`fire rate: ${tower.fireRate}`, 20, "0xFFC7FF")
+        infoPanel.addChild(towerFireRateText)
+
+
+        const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $9999999${padding}`, 20, "0xFFFF00")
+        infoPanel.addChild(upgradeCostText)
+
+        const sellValueText = UIHelper.createText(0 + padding, 230 + padding,`sell value: $9999999${padding}`, 20, "0x777777")
+        infoPanel.addChild(sellValueText)
+
+        //upgrade/sell btns
+        const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, "0x33FF33")
+        infoPanel.addChild(upgradeButton)
+        const sellButton = UIHelper.createButton(80 + padding, 260, 150, 30, "Sell", 20, "0xFF3333")
+        infoPanel.addChild(sellButton)
+
+        return infoPanel
     }
 
-
-    createTowerStatsInfoPanel(towerstats) {
-
-    }
 
     static createTowerGeneralInfoPanel(towerStats) {
         const infoPanel = new PIXI.Container()
-        infoPanel.x = 0
-        infoPanel.y = 0
-
-        const infoPanelOutline = new PIXI.Graphics()
-        // infoPanelOutline.lineStyle(3, 0x000077)
-        infoPanelOutline.lineStyle(3, 0xFF0000)
-        infoPanelOutline.drawRect(0, 0, 1000 * 0.25, 300)
+        const infoPanelOutline = UIHelper.createInfoPanelOutline(0x000077)
         infoPanel.addChild(infoPanelOutline)
 
         const padding = 5

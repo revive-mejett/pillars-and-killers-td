@@ -186,21 +186,19 @@ export class HUD {
 
     updateTowerDescriptionUI(towerStats) {
 
-        if (!this.infoPanel) {
-            this.infoPanel = new PIXI.Container()
-            this.container.addChild(this.infoPanel)
-            this.infoPanel.x = 1
-            this.infoPanel.y = 600
-        }
-
-        this.infoPanel?.removeChildren()
+        this.clearInfoPanel()
 
         const towerInfoPanel = InfoPanel.createTowerGeneralInfoPanel(towerStats)
         this.infoPanel.addChild(towerInfoPanel)
     }
 
-
-
+    clearInfoPanel() {
+        this.infoPanel?.removeChildren()
+        this.infoPanel = new PIXI.Container()
+        this.container.addChild(this.infoPanel)
+        this.infoPanel.x = 1
+        this.infoPanel.y = 600
+    }
 }
 
 

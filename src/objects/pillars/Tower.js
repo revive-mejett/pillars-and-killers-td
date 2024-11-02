@@ -13,7 +13,11 @@ export class Tower extends Entity {
         this.damage = towerstats.damage
         this.fireRate = towerstats.fireRate,
         this.cost = towerstats.cost,
+        this.level = 1,
+
         this.asset = towerstats.asset,
+        this.assetIcon = towerstats.assetIcon
+
         this.position = { x: x, y: y },
 
         this.sprite = PIXI.Sprite.from(this.asset)
@@ -24,6 +28,7 @@ export class Tower extends Entity {
 
         this.targetedEnemy = null
         this.isSold = false
+
 
         if (new.target === Tower) {
             throw new Error("Cant instantiate Tower base class")
