@@ -9,6 +9,7 @@ export class BasicPillar extends Tower {
      */
     constructor(x, y, width, height, towerstats) {
         super(x, y, width, height, towerstats);
+        this.towerName = "Basic Pillar"
     }
 
     fire() {
