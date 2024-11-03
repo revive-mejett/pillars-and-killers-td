@@ -19,6 +19,23 @@ export class Tile extends Entity {
         this.tower = null
     }
 
+    sellTower() {
+
+        const sellValuePercentage = 60
+        if (!this.tower) {
+            return
+        }
+
+        this.tower.isSold = true
+        const sellValue = Math.floor(this.tower.cost * sellValuePercentage/100)
+
+        eventDispatcher.fireEvent("moneyEarned", sellValue)
+        eventDispatcher.fireEvent("towerSold")
+        this.tower = null
+        this.markTowerOccupied(false)
+        this.paveGrass()
+    }
+
 
     markTowerOccupied(hasTower) {
         if (this.tileType !== "grass") {

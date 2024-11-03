@@ -1,6 +1,8 @@
 import { Text, TextStyle } from "pixi.js"
 import { UIHelper } from "./UIHelper.js"
+import { EventDispatcher } from "../utils/EventDispatcher.js"
 
+const eventDispatcher = new EventDispatcher()
 
 export class InfoPanel {
 
@@ -39,6 +41,13 @@ export class InfoPanel {
         infoPanel.addChild(upgradeButton)
         const sellButton = UIHelper.createButton(80 + padding, 260, 150, 30, "Sell", 20, "0xFF3333")
         infoPanel.addChild(sellButton)
+
+
+        //register event listener on sell btn
+        sellButton.on("pointerdown", () => {
+            tower.tile.sellTower()
+            eventDispatcher.fireEvent("towerSellAction")
+        })
 
         return infoPanel
     }
