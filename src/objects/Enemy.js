@@ -1,4 +1,5 @@
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { all1st } from "../utils/Nicknames.js";
 import { Entity } from "./Entity.js"
 
 const eventDispatcher = new EventDispatcher()
@@ -15,7 +16,9 @@ export class Enemy extends Entity {
         this.speed = speed
         this.damage = damage
         this.killValue = killValue
+        this.nick = all1st[Math.floor(Math.random() * all1st.length)]
         this.asset = asset
+
         this.position = { x: x, y: y }
 
         this.xToNextWaypoint = 0

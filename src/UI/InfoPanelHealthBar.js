@@ -1,7 +1,6 @@
 import { Container, Graphics } from "pixi.js";
 import { HealthBar } from "./HealthBar.js";
 
-const yOffset = 0
 
 export class InfoPanelHealthBar extends HealthBar {
 

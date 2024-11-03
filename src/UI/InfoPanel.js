@@ -94,6 +94,10 @@ export class InfoPanel {
         infoPanel.addChild(currentEnemyIcon)
         currentEnemyIcon.x = 160
 
+        const enemyNickText = UIHelper.createText(0 + padding, 5 + padding,`${enemy.nick}`, 20, "0xFFFFFF")
+        infoPanel.addChild(enemyNickText)
+
+
         const heartIcon = UIHelper.createIcon(assetLoader.icons.heart, padding, 70 + padding, "0x000000", 40, 40)
         infoPanel.addChild(heartIcon)
         const enemyHealthText = UIHelper.createText(40 + padding, 80 + padding,`${enemy.health} / ${enemy.totalHealth}`, 20, "FFFFFF")
