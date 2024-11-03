@@ -27,6 +27,8 @@ export class UIManager {
 
         eventDispatcher.on("towerSellAction", () => this.hud.clearInfoPanel())
 
+        eventDispatcher.on("enemySelectAction", this.displaySelectedEnemyInfo.bind(this))
+
         this.setTowerButtonClickListeners()
 
     }
@@ -91,13 +93,19 @@ export class UIManager {
     }
 
     displaySelectedTowerInfo(tower) {
-
         const hud = this.hud
         hud.clearInfoPanel()
 
         const selectedTowerPanel = InfoPanel.createTowerStatsInfoPanel(tower)
         hud.infoPanel.addChild(selectedTowerPanel)
+    }
 
+    displaySelectedEnemyInfo(enemy) {
+        const hud = this.hud
+        hud.clearInfoPanel()
 
+        console.log("akshan enemy selected", enemy)
+        const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud)
+        hud.infoPanel.addChild(selectedEnemyPanel)
     }
 }

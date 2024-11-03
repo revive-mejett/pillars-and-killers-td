@@ -24,12 +24,19 @@ export class Enemy extends Entity {
         this.sprite = PIXI.Sprite.from(asset)
         this.sprite.height = height
         this.sprite.width = width
+        this.sprite.eventMode = "static"
 
         this.position.x = x * width
         this.position.y = y * height
 
         this.distanceTravelled = 0
         this.isAlive = true
+
+        this.sprite.on("pointerdown", () => this.onEnemySelect())
+    }
+
+    onEnemySelect() {
+        eventDispatcher.fireEvent("enemySelectAction", this)
     }
 
     //overridden
