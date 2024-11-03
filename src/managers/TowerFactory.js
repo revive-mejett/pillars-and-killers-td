@@ -89,7 +89,7 @@ export class TowerFactory {
                         description: "The next generation using power currently being experimented..."
                     },
                     range: 700,
-                    damage: 220,
+                    damage: 1024,
                     fireRate: 5,
                     cost: 5800
                 }
