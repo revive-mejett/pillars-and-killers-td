@@ -28,12 +28,17 @@ export class Tower extends Entity {
 
         this.targetedEnemy = null
         this.isSold = false
+        this.tile = undefined
 
 
         if (new.target === Tower) {
             throw new Error("Cant instantiate Tower base class")
         }
 
+    }
+
+    setTileRef(tile) {
+        this.tile = tile
     }
 
     runTower(gameplayScene) {
@@ -50,6 +55,11 @@ export class Tower extends Entity {
 
         //spawns an enemy
         let onTick = () => {
+
+            if (this.isSold) {
+                console.log("tower sold, sitkcer stop fire")
+                towerFireCycleTicker.stop()
+            }
 
             cooldown -= towerFireCycleTicker.deltaMS
             if (cooldown <= 0) {
@@ -91,9 +101,9 @@ export class Tower extends Entity {
         this.targetedEnemy = enemy
     }
 
-    renderOnTile(tile) {
-        tile.container.addChild(this.sprite)
-    }
+    // renderOnTile(tile) {
+    //     tile.container.addChild(this.sprite)
+    // }
 
     findEnemy(enemies) {
         let bestEnemy = this.targetedEnemy; // Start with current target, if it exists

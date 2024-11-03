@@ -1,6 +1,5 @@
 
 import { InfoPanel } from "../UI/InfoPanel.js"
-import { UIHelper } from "../UI/UIHelper.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { TowerFactory } from "./TowerFactory.js"
 
@@ -25,6 +24,8 @@ export class UIManager {
         eventDispatcher.on("towerPlaceAction", this.handleTowerPurchase.bind(this))
 
         eventDispatcher.on("towerSelectAction", this.displaySelectedTowerInfo.bind(this))
+
+        eventDispatcher.on("towerSellAction", () => this.hud.clearInfoPanel())
 
         this.setTowerButtonClickListeners()
 
@@ -79,24 +80,15 @@ export class UIManager {
         eventDispatcher.fireEvent("purchaseSuccessful1", towerCost)
         const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
         selectedTile.placeTowerOnTile(tower)
+        tower.setTileRef(selectedTile)
         tower.runTower(this.gameplayScene)
         eventDispatcher.fireEvent("towerPlaced", tower)
-
     }
 
     displaySelectedTowerInfo(tower) {
-        /**
-         * 
-         *         this.range = towerstats.range
-                    this.damage = towerstats.damage
-                    this.fireRate = towerstats.fireRate,
-                    this.cost = towerstats.cost,
-                    this.asset = towerstats.asset,
-         */
+
         const hud = this.hud
         hud.clearInfoPanel()
-
-        const padding = 5
 
         const selectedTowerPanel = InfoPanel.createTowerStatsInfoPanel(tower)
         hud.infoPanel.addChild(selectedTowerPanel)
