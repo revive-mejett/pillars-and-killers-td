@@ -40,7 +40,12 @@ export class UIManager {
     }
 
     updateWaveNumber() {
-        this.hud.waveNumText.text = `Wave ${this.gameplayScene.waveManager.currentWave}/${this.gameplayScene.waveManager.waves.length}`
+        const waveManager = this.gameplayScene.waveManager
+        if (this.gameplayScene.waveManager.currentWave > waveManager.waves.length) {
+            this.hud.waveNumText.text = `Wave ${waveManager.currentWave}`
+        } else {
+            this.hud.waveNumText.text = `Wave ${waveManager.currentWave}/${waveManager.waves.length}`
+        }
         this.hud.waveNumText.x = (this.hud.waveNumText.parent.width - this.hud.waveNumText.width) / 2;
     }
 
