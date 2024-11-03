@@ -28,7 +28,10 @@ export class AssetLoader {
         })
         Assets.addBundle("icons", {
             "money" : "assets/images/money_icon.png",
-            "lives" : "assets/images/couple.png"
+            "lives" : "assets/images/couple.png",
+            "heart" : "assets/images/heart_icon.png",
+            "speedArrow" : "assets/images/speed_icon.png",
+            "slowed" : "assets/images/slowed_icon.png"
         })
         Assets.addBundle("towers", {
             "basicPillarIcon" : "assets/images/basic_pillar.png",

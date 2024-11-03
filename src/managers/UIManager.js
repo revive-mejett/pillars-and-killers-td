@@ -1,4 +1,5 @@
 
+import { Ticker } from "pixi.js"
 import { InfoPanel } from "../UI/InfoPanel.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { TowerFactory } from "./TowerFactory.js"
@@ -14,7 +15,7 @@ export class UIManager {
         this.gameplayScene = gameplayScene
         this.selectedTowerType = undefined
 
-        this.hud.nextWaveButton
+        this.selectedEnemyUpdateTicker = undefined
 
         eventDispatcher.on("nextWaveBtnClick", () => {
             this.gameplayScene.waveManager.sendWave(this.gameplayScene)
@@ -27,8 +28,11 @@ export class UIManager {
 
         eventDispatcher.on("towerSellAction", () => this.hud.clearInfoPanel())
 
+        eventDispatcher.on("enemySelectAction", this.displaySelectedEnemyInfo.bind(this))
+
         this.setTowerButtonClickListeners()
 
+        
     }
 
     updateMoney() {
@@ -91,13 +95,22 @@ export class UIManager {
     }
 
     displaySelectedTowerInfo(tower) {
-
         const hud = this.hud
         hud.clearInfoPanel()
 
         const selectedTowerPanel = InfoPanel.createTowerStatsInfoPanel(tower)
         hud.infoPanel.addChild(selectedTowerPanel)
+    }
 
+    displaySelectedEnemyInfo(enemy) {
+        const hud = this.hud
+        hud.clearInfoPanel()
 
+        this.selectedEnemyUpdateTicker?.stop()
+        this.selectedEnemyUpdateTicker?.destroy()
+        this.selectedEnemyUpdateTicker = new Ticker()
+        this.selectedEnemyUpdateTicker.autoStart = false
+        const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud, this.selectedEnemyUpdateTicker)
+        hud.infoPanel.addChild(selectedEnemyPanel)
     }
 }

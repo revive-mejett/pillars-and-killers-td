@@ -1,9 +1,11 @@
 import { Text, TextStyle } from "pixi.js"
 import { UIHelper } from "./UIHelper.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { AssetLoader } from "../core/AssetLoader.js"
+import { InfoPanelHealthBar } from "./InfoPanelHealthBar.js"
 
 const eventDispatcher = new EventDispatcher()
-
+const assetLoader = new AssetLoader()
 export class InfoPanel {
 
     static createTowerStatsInfoPanel(tower) {
@@ -13,7 +15,7 @@ export class InfoPanel {
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)
         infoPanel.addChild(infoPanelOutline)
 
-        const currentTowerIcon = UIHelper.createTowerIcon(tower.assetIcon, padding, padding)
+        const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding)
         currentTowerIcon.x = 160
 
         infoPanel.addChild(currentTowerIcon)
@@ -61,7 +63,7 @@ export class InfoPanel {
         const padding = 5
 
 
-        const currentTowerIcon = UIHelper.createTowerIcon(towerStats.assetIcon, padding, padding)
+        const currentTowerIcon = UIHelper.createIcon(towerStats.assetIcon, padding, padding)
         infoPanel.addChild(currentTowerIcon)
         const towerNameText = new Text(towerStats.info.title, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
         towerNameText.x = 90 + padding
@@ -75,6 +77,60 @@ export class InfoPanel {
         towerDescriptionText.x = padding
         towerDescriptionText.y = 100
         infoPanel.addChild(towerDescriptionText)
+
+        return infoPanel
+    }
+
+
+    static createEnemyStatsInfoPanel(enemy, hud, updateTicker) {
+
+        const padding = 5
+
+        const infoPanel = new PIXI.Container()
+        const infoPanelOutline = UIHelper.createInfoPanelOutline(0xFF0000)
+        infoPanel.addChild(infoPanelOutline)
+
+        const currentEnemyIcon = UIHelper.createIcon(enemy.asset, padding, padding)
+        infoPanel.addChild(currentEnemyIcon)
+        currentEnemyIcon.x = 160
+
+        const heartIcon = UIHelper.createIcon(assetLoader.icons.heart, padding, 70 + padding, "0x000000", 40, 40)
+        infoPanel.addChild(heartIcon)
+        const enemyHealthText = UIHelper.createText(40 + padding, 80 + padding,`${enemy.health} / ${enemy.totalHealth}`, 20, "FFFFFF")
+        infoPanel.addChild(enemyHealthText)
+
+        const speedIcon = UIHelper.createIcon(assetLoader.icons.speedArrow, padding, 110 + padding, "0x000000", 40, 40)
+        infoPanel.addChild(speedIcon)
+        const enemySpeedText = UIHelper.createText(40 + padding, 120 + padding,`${enemy.speed}`, 20, "0xFFFFFF")
+        infoPanel.addChild(enemySpeedText)
+
+        const damageIcon = UIHelper.createIcon(assetLoader.icons.lives, padding, 150 + padding, "0x000000", 40, 40)
+        infoPanel.addChild(damageIcon)
+        const damageText = UIHelper.createText(40 + padding, 160 + padding,`${enemy.damage}`, 20, "0xFF0000")
+        infoPanel.addChild(damageText)
+
+        const killValueIcon = UIHelper.createIcon(assetLoader.icons.money, padding, 190 + padding, "0x000000", 40, 40)
+        infoPanel.addChild(killValueIcon)
+        const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${enemy.damage}`, 20, "0xFFFF00")
+        infoPanel.addChild(killValueText)
+
+
+        const healthBar = new InfoPanelHealthBar(40, 110, 200, 5, enemy)
+
+        const onTick = () => {
+            if (!enemy.isAlive) {
+                healthBar.deleteBar()
+                updateTicker.stop()
+                hud.clearInfoPanel()
+            }
+            UIHelper.updateText(enemyHealthText.children[0], `${enemy.health} / ${enemy.totalHealth}`)
+            healthBar.renderBar(infoPanel)
+        }
+
+        updateTicker.add(onTick)
+
+        updateTicker.start()
+
 
         return infoPanel
     }
