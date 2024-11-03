@@ -82,7 +82,7 @@ export class InfoPanel {
     }
 
 
-    static createEnemyStatsInfoPanel(enemy, hud) {
+    static createEnemyStatsInfoPanel(enemy, hud, updateTicker) {
 
         const padding = 5
 
@@ -116,9 +116,6 @@ export class InfoPanel {
 
 
         const healthBar = new InfoPanelHealthBar(40, 110, 200, 5, enemy)
-
-        let updateTicker = new PIXI.Ticker()
-        updateTicker.autoStart = false
 
         const onTick = () => {
             if (!enemy.isAlive) {

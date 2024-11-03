@@ -15,7 +15,7 @@ export class WaveManager {
         this.map = map
         this.waves = []
 
-        this.currentWave = 1
+        this.currentWave = 0
         this.waveInProgress = false
         this.loadWaves()
     }
@@ -52,10 +52,10 @@ export class WaveManager {
 
         if (this.currentWave >= this.waves.length + 1) {
             enemyDataMap = new Map([
-                ["greenCircle", { health: 100 * 1.05 ** (this.currentWave - this.waves.length), speed: 1, damage: 10, killValue: 15, asset: enemyAssets.greenCircle }],
-                ["blueCircle", { health: 280 * 1.05 ** (this.currentWave - this.waves.length), speed: 1.2, damage: 40, killValue: 30, asset: enemyAssets.blueCircle }],
-                ["purpleCircle", { health: 700 * 1.05 ** (this.currentWave - this.waves.length), speed: 1.6, damage: 10, killValue: 50, asset: enemyAssets.purpleCircle }],
-                ["yellowCircle", { health: 2000 * 1.05 ** (this.currentWave - this.waves.length), speed: 0.6, damage: 30, killValue: 16, asset: enemyAssets.yellowCircle }]
+                ["greenCircle", { health: Math.floor(100 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1, damage: 10, killValue: 15, asset: enemyAssets.greenCircle }],
+                ["blueCircle", { health: Math.floor(280 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1.2, damage: 40, killValue: 30, asset: enemyAssets.blueCircle }],
+                ["purpleCircle", { health: Math.floor(700 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1.6, damage: 10, killValue: 50, asset: enemyAssets.purpleCircle }],
+                ["yellowCircle", { health: Math.floor(2000 * 1.05 ** (this.currentWave - this.waves.length)), speed: 0.6, damage: 30, killValue: 16, asset: enemyAssets.yellowCircle }]
             ])
         }
 
