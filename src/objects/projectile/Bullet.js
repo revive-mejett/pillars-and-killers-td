@@ -8,20 +8,11 @@ export class Bullet extends Projectile {
      *
      */
     constructor(x, y, width, height, targetEnemy, damage, colour) {
-        super(x, y, width, height, targetEnemy, damage);
-        this.colour = colour || "0xffffff"
-        this.graphics = new PIXI.Graphics()
-        this.graphics.beginFill(this.colour)
-        this.graphics.drawRect(0, 0, this.width, this.height)
-        this.graphics.endFill()
-
+        super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 5
-
-        this.bulletTicker = new PIXI.Ticker()
-        this.autoStart = false
     }
 
-    flyBullet(deltaTime) {
+    fire(deltaTime) {
 
 
         let onTick = () => {
@@ -48,8 +39,8 @@ export class Bullet extends Projectile {
             }
         }
 
-        this.bulletTicker.add(onTick)
-        this.bulletTicker.start()
+        this.updateTicker.add(onTick)
+        this.updateTicker.start()
     }
 
     updateSpritePosition() {
@@ -57,21 +48,5 @@ export class Bullet extends Projectile {
         this.graphics.y = this.y
     }
 
-    render(parentContainer) {
-        parentContainer.addChild(this.graphics)
-    }
 
-    cleanUpResources() {
-        this.bulletTicker.stop()
-        this.bulletTicker.destroy()
-
-        if (this.graphics?.parent) {
-            this.graphics.parent.removeChild(this.graphics);
-        }
-
-        this.graphics?.clear()
-        this.graphics = null;
-        this.targetEnemy = null;
-        this.bulletTicker = null;
-    }
 }

@@ -89,7 +89,7 @@ export class Tower extends Entity {
                 //spawn a bullet
                 const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage)
                 bullet.render(gameplaySceneContainer)
-                bullet.flyBullet(gameplayScene.app.ticker.deltaTime)
+                bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
         }
 
