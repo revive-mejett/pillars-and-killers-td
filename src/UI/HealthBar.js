@@ -28,12 +28,17 @@ export class HealthBar extends Entity {
 
         //health bar background
         const healthBarBackground = new Graphics()
+        if (this.enemy.slowDebuffStats.timeLeft > 0) {
+            healthBarBackground.lineStyle(1, 0x0000FF)
+        }
         healthBarBackground.x = this.enemy.position.x
         healthBarBackground.y = this.enemy.position.y + yOffset
         healthBarBackground.beginFill(0x000000)
         healthBarBackground.drawRect(0, 0, this.enemy.sprite.width, 4)
         healthBarBackground.endFill()
         this.healthBarContainer.addChild(healthBarBackground)
+
+
 
         //actual health bar representation
         const healthBarHealthy = new Graphics()
