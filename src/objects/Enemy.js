@@ -19,6 +19,8 @@ export class Enemy extends Entity {
         this.nick = all1st[Math.floor(Math.random() * all1st.length)]
         this.asset = asset
 
+        this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
+
         this.position = { x: x, y: y }
 
         this.xToNextWaypoint = 0
@@ -77,14 +79,15 @@ export class Enemy extends Entity {
         if (this.nextWayPointIndex >= waypoints.length) {return}
 
         if (this.xToNextWaypoint !== 0) {
-            this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta
-            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta)
+            this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
+            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
         else if (this.yToNextWaypoint !== 0) {
-            this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta
-            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta)
+            this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
+            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
 
+        this.tickDebuffs(delta)
 
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
@@ -101,6 +104,20 @@ export class Enemy extends Entity {
         }
     }
 
+    tickDebuffs(deltaTime) {
+
+        if (this.slowDebuffStats.timeLeft === 0) {
+            return
+        }
+
+        this.slowDebuffStats.timeLeft -= deltaTime
+
+        if (this.slowDebuffStats.timeLeft <= 0) {
+            this.slowDebuffStats.timeLeft = 0
+            this.slowDebuffStats.speedMultiplier = 1
+        }
+    }
+
     takeDamage(damage) {
 
         if (!this.isAlive) {
@@ -114,8 +131,6 @@ export class Enemy extends Entity {
             eventDispatcher.fireEvent("moneyEarned", this.killValue)
         }
     }
-
-
 }
 
 function enemyDied(enemy) {

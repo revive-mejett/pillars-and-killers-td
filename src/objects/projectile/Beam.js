@@ -17,6 +17,7 @@ export class Beam extends Projectile {
         let elapsedTime = 0
 
         this.targetEnemy.takeDamage(this.damage)
+        this.slowEnemy(0.5, 200) //apply the slow
 
         let onTick = () => {
             elapsedTime += deltaTime
@@ -47,5 +48,10 @@ export class Beam extends Projectile {
         this.graphics.lineStyle(1, this.colour)
         this.graphics.moveTo(beamOriginPosition.x, beamOriginPosition.y)
         this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
+    }
+
+    slowEnemy(speedMultiplier, duration) {
+        this.targetEnemy.slowDebuffStats.speedMultiplier = speedMultiplier
+        this.targetEnemy.slowDebuffStats.timeLeft = duration
     }
 }

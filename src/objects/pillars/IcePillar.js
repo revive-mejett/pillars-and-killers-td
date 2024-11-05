@@ -59,7 +59,7 @@ export class IcePillar extends Tower {
                 }
 
                 //spawn a beam
-                const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, 0xFAFAFF)
+                const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, 0xC7C7FF)
                 beam.render(gameplaySceneContainer)
                 beam.fire(gameplayScene.app.ticker.deltaTime)
             }
