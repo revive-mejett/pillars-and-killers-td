@@ -14,10 +14,6 @@ export class Projectile extends Entity {
         this.autoStart = false
         this.colour = colour || "0xffffff"
 
-        this.graphics = new PIXI.Graphics()
-        this.graphics.beginFill(this.colour)
-        this.graphics.drawRect(0, 0, this.width, this.height)
-        this.graphics.endFill()
 
         if (new.target === Projectile) {
             throw new Error("Projectile is an abstract class. Cannot instantiate a Projectile instance")
@@ -49,4 +45,5 @@ export class Projectile extends Entity {
         this.targetEnemy = null;
         this.updateTicker = null;
     }
+
 }

@@ -1,3 +1,4 @@
+import { Beam } from "../projectile/Beam.js";
 import { Tower } from "./Tower.js";
 
 
@@ -57,10 +58,10 @@ export class IcePillar extends Tower {
                     return
                 }
 
-                //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage)
-                bullet.render(gameplaySceneContainer)
-                bullet.flyBullet(gameplayScene.app.ticker.deltaTime)
+                //spawn a beam
+                const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, 0xFAFAFF)
+                beam.render(gameplaySceneContainer)
+                beam.fire(gameplayScene.app.ticker.deltaTime)
             }
         }
 

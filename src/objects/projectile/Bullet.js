@@ -10,6 +10,11 @@ export class Bullet extends Projectile {
     constructor(x, y, width, height, targetEnemy, damage, colour) {
         super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 5
+
+        this.graphics = new PIXI.Graphics()
+        this.graphics.beginFill(this.colour)
+        this.graphics.drawRect(0, 0, this.width, this.height)
+        this.graphics.endFill()
     }
 
     fire(deltaTime) {
