@@ -1,6 +1,16 @@
 import { Wave } from "../objects/Wave.js"
 
-
+const oneEnemy = [
+    new Wave(
+        [
+            {
+                enemy: "yellowCircle",
+                count: 1,
+                spacingMillis: 800
+            }
+        ]
+    )
+]
 const testWaves1 = [
     new Wave(
         [
@@ -255,6 +265,6 @@ const prodWaves = [
     )
 ]
 
-export { testWaves1, testWaves2, prodWaves }
+export { oneEnemy, testWaves1, testWaves2, prodWaves }
 
 

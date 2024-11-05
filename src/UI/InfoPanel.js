@@ -118,6 +118,10 @@ export class InfoPanel {
         const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${enemy.damage}`, 20, "0xFFFF00")
         infoPanel.addChild(killValueText)
 
+        const slowedIndicator = UIHelper.createIcon(assetLoader.icons.slowed, padding, 250 + padding, "0x000000", 40, 40)
+        infoPanel.addChild(slowedIndicator)
+        slowedIndicator.visible = false
+
 
         const healthBar = new InfoPanelHealthBar(40, 110, 200, 5, enemy)
 
@@ -128,6 +132,7 @@ export class InfoPanel {
                 hud.clearInfoPanel()
             }
             UIHelper.updateText(enemyHealthText.children[0], `${enemy.health} / ${enemy.totalHealth}`)
+            slowedIndicator.visible = enemy.slowDebuffStats.timeLeft > 0
             healthBar.renderBar(infoPanel)
         }
 

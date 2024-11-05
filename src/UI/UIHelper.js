@@ -38,7 +38,6 @@ export class UIHelper {
 
     static updateText(textObject, newtText) {
         textObject.text = newtText
-        console.log(typeof textObject)
         textObject.x = (textObject.parent.width - textObject.width) / 2;
         textObject.y = (textObject.parent.height - textObject.height) / 2;
     }
