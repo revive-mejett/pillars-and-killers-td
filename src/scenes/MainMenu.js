@@ -1,17 +1,17 @@
 import { AssetLoader } from "../core/AssetLoader.js"
 import { UIHelper } from "../UI/UIHelper.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { Scene } from "./Scene.js"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 
-export class MainMenu {
+export class MainMenu extends Scene {
     /**
      *
      */
     constructor(app) {
-        this.app = app
-        this.container = new PIXI.Container()
+        super(app)
         this.container.sortableChildren = true
     }
 

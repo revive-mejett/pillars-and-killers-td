@@ -5,23 +5,30 @@ import { WaveManager } from "../managers/WaveManager.js"
 import { TdMap } from "../objects/TdMap.js"
 import { HUD } from "../UI/HUD.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { Scene } from "./Scene.js"
 
 const eventDispatcher = new EventDispatcher()
-export class GameplayScene {
+export class GameplayScene extends Scene {
 
     constructor(app) {
-        this.app = app
-        this.container = new PIXI.Container()
+        super(app)
+        this.tdMap = undefined
+        this.gamestate = undefined
+        this.hud = undefined
+        this.waveManager = undefined
+        this.uiManager = undefined
+        this.enemiesPresent = []
+        this.towersPresent = []
+    }
+
+    constructScene() {
         this.tdMap = new TdMap(1000, 1000, 25)
         this.gamestate = new GameState()
         this.hud = new HUD(this.gamestate)
         this.waveManager = new WaveManager(this.tdMap)
-        this.setUpHUD()
+        this.hud.setup(this.container)
         this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
         this.gamestate.linkUiManager(this.uiManager)
-
-        this.enemiesPresent = []
-        this.towersPresent = []
 
         this.healthBarManager = new HealthBarManager()
 
@@ -33,17 +40,13 @@ export class GameplayScene {
         eventDispatcher.on("towerSold", this.updateTowersPresent.bind(this))
 
         this.app.ticker.add(() => this.update())
-
+        this.buildMap()
     }
 
     buildMap() {
         this.tdMap.displayTiles(this.container)
         this.tdMap.displayPath(this.container)
         this.tdMap.repaveGrass()
-    }
-
-    setUpHUD() {
-        this.hud.setup(this.container)
     }
 
     update() {
