@@ -1,9 +1,14 @@
 
 import { SceneManager } from "../managers/SceneManager.js"
+<<<<<<< HEAD
 import { Projectile } from "../objects/projectile/Projectile.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
 import { MainMenu } from "../scenes/MainMenu.js"
 import { Scene } from "../scenes/Scene.js"
+=======
+import { GameplayScene } from "../scenes/GameplayScene.js"
+import { MainMenu } from "../scenes/MainMenu.js"
+>>>>>>> 412ab1cc618714d9e801205d48068b64f2f3e01b
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { AssetLoader } from "./AssetLoader.js"
 
@@ -68,7 +73,11 @@ export class Game {
 
     initGameplay() {
         const gameplayScene = new GameplayScene(this.app)
+<<<<<<< HEAD
         gameplayScene.constructScene()
+=======
+        gameplayScene.buildMap()
+>>>>>>> 412ab1cc618714d9e801205d48068b64f2f3e01b
         this.sceneManager.transitionScene(gameplayScene)
     }
 }
