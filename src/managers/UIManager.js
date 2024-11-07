@@ -32,7 +32,6 @@ export class UIManager {
 
         this.setTowerButtonClickListeners()
 
-        
     }
 
     updateMoney() {
