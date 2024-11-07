@@ -1,9 +1,7 @@
 
 import { SceneManager } from "../managers/SceneManager.js"
-import { Projectile } from "../objects/projectile/Projectile.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
 import { MainMenu } from "../scenes/MainMenu.js"
-import { Scene } from "../scenes/Scene.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { AssetLoader } from "./AssetLoader.js"
 
