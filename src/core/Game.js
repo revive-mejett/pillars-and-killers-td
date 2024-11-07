@@ -1,8 +1,12 @@
 
+import { SceneManager } from "../managers/SceneManager.js"
+import { GameplayScene } from "../scenes/GameplayScene.js"
 import { MainMenu } from "../scenes/MainMenu.js"
+import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { AssetLoader } from "./AssetLoader.js"
 
 const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
 
 const sceneContainerWidth = 1000 + 250
 const sceneContainerHeight = 1000
@@ -13,8 +17,11 @@ export class Game {
         this.app = new PIXI.Application({width: window.outerWidth, height: window.outerHeight})
         this.baseContainer = new PIXI.Container()
         this.sceneContainer = undefined
+        this.sceneManager = undefined
         //add to DOM
         document.body.appendChild(this.app.view)
+
+        eventDispatcher.on("gameStarted", () => this.initGameplay())
     }
 
     start() {
@@ -37,6 +44,8 @@ export class Game {
         this.baseContainer.addChild(frame)
 
         this.sceneContainer = new PIXI.Container()
+        this.sceneManager = new SceneManager(this.sceneContainer)
+
         const innerFrame = new PIXI.Graphics()
         innerFrame.beginFill(0x000000)
         innerFrame.drawRect(0, 0, sceneContainerWidth, sceneContainerHeight)
@@ -49,7 +58,15 @@ export class Game {
 
     run() {
         const mainMenu = new MainMenu(this.app)
-        mainMenu.setupUI(this.sceneContainer)
-        this.sceneContainer.addChild(mainMenu.container)
+        mainMenu.constructScene(this.sceneContainer)
+
+        this.sceneManager.transitionScene(mainMenu)
+    }
+
+
+    initGameplay() {
+        const gameplayScene = new GameplayScene(this.app)
+        gameplayScene.buildMap()
+        this.sceneManager.transitionScene(gameplayScene)
     }
 }

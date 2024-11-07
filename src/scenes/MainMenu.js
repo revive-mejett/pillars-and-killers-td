@@ -1,8 +1,9 @@
 import { AssetLoader } from "../core/AssetLoader.js"
 import { UIHelper } from "../UI/UIHelper.js"
-import { GameplayScene } from "./GameplayScene.js"
+import { EventDispatcher } from "../utils/EventDispatcher.js"
 
 const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
 
 export class MainMenu {
     /**
@@ -14,8 +15,7 @@ export class MainMenu {
         this.container.sortableChildren = true
     }
 
-    setupUI(sceneContainer) {
-        console.log(assetLoader.otherImages);
+    constructScene() {
         const titleImage = PIXI.Sprite.from(assetLoader.otherImages.mainTitle)
         titleImage.width = 700
         titleImage.height = 400
@@ -39,10 +39,7 @@ export class MainMenu {
         startButton.zIndex = 1
 
         startButton.on("pointerdown", () => {
-            const gameplayScene = new GameplayScene(this.app)
-            gameplayScene.buildMap()
-            sceneContainer.removeChildren()
-            sceneContainer.addChild(gameplayScene.container)
+            eventDispatcher.fireEvent("gameStarted")
         })
 
         const settingsButton = UIHelper.createButton(450,700,400,50, "Settings")

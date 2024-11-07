@@ -35,17 +35,17 @@ export class Beam extends Projectile {
             const enemyCenterPosition = this.targetEnemy.getCenterPosition()
 
 
-            this.beamPosition(beamOriginPosition, enemyCenterPosition)
+            this.beamPosition(beamOriginPosition, enemyCenterPosition, 3 * (10 - elapsedTime)/10)
         }
 
         this.updateTicker.add(onTick)
         this.updateTicker.start()
     }
 
-    beamPosition(beamOriginPosition, enemyCenterPosition) {
+    beamPosition(beamOriginPosition, enemyCenterPosition, beamSize) {
 
         this.graphics.clear()
-        this.graphics.lineStyle(1, this.colour)
+        this.graphics.lineStyle(beamSize, this.colour)
         this.graphics.moveTo(beamOriginPosition.x, beamOriginPosition.y)
         this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
     }
