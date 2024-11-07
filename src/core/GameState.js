@@ -3,7 +3,7 @@ import { EventDispatcher } from "../utils/EventDispatcher.js"
 const eventDispatcher = new EventDispatcher()
 export class GameState {
     constructor() {
-        this.lives = 300
+        this.lives = 5
         this.money = 500
         this.uiManager = undefined
 
@@ -16,8 +16,7 @@ export class GameState {
         this.lives -= damage
         if (this.lives <= 0) {
             this.lives = 0
-            console.log("game over!!!")
-            //TODO Implement game over logic once game over screen is implemented
+            eventDispatcher.fireEvent("defeat")
         }
         this.uiManager.updateLives()
     }

@@ -1,4 +1,4 @@
-import { easy1 } from "../utils/MapData.js"
+import { blons, easy1 } from "../utils/MapData.js"
 import { Tile } from "./Tile.js"
 
 
@@ -9,7 +9,7 @@ class TdMap {
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
-        this.waypoints = easy1
+        this.waypoints = blons
     }
 
     displayTiles(container) {

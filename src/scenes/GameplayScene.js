@@ -1,3 +1,4 @@
+import { Ticker } from "pixi.js"
 import { GameState } from "../core/GameState.js"
 import { HealthBarManager } from "../managers/HealthBarManager.js"
 import { UIManager } from "../managers/UIManager.js"
@@ -32,14 +33,26 @@ export class GameplayScene extends Scene {
 
         this.healthBarManager = new HealthBarManager()
 
+
+
+        let gameplaySceneTicker = new Ticker()
+        gameplaySceneTicker.autoStart = false
+        gameplaySceneTicker.add(() => this.update())
+        gameplaySceneTicker.start()
+
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
 
 
         eventDispatcher.on("towerPlaced", this.addTowerToPresent.bind(this))
         eventDispatcher.on("towerSold", this.updateTowersPresent.bind(this))
+        eventDispatcher.on("defeat", () => {
+            gameplaySceneTicker.stop()
+            this.waveManager.waveInProgress = false
+        })
 
-        this.app.ticker.add(() => this.update())
+
+
         this.buildMap()
     }
 
