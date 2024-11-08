@@ -32,7 +32,6 @@ export class UIManager {
 
         this.setTowerButtonClickListeners()
 
-        
     }
 
     updateMoney() {
@@ -112,5 +111,13 @@ export class UIManager {
         this.selectedEnemyUpdateTicker.autoStart = false
         const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud, this.selectedEnemyUpdateTicker)
         hud.infoPanel.addChild(selectedEnemyPanel)
+    }
+
+    cleanUpResources() {
+        eventDispatcher.clearListenersOfEvent("nextWaveBtnClick")
+        eventDispatcher.clearListenersOfEvent("towerPlaceAction")
+        eventDispatcher.clearListenersOfEvent("towerSelectAction")
+        eventDispatcher.clearListenersOfEvent("towerSellAction")
+        eventDispatcher.clearListenersOfEvent("enemySelectAction")
     }
 }

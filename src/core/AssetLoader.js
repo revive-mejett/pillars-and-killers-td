@@ -47,6 +47,7 @@ export class AssetLoader {
         Assets.addBundle("otherImages", {
             "mainTitle" : "assets/images/td_title.png",
             "mainTitleImage" : "assets/images/pillars_killers_title_pic.png",
+            "gameoverGraveyard" : "assets/images/gameover_rip.png"
         })
     }
 

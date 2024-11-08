@@ -5,6 +5,7 @@ import { testWaves2 } from "../utils/WaveData.js"
 import { Wave } from "../objects/Wave.js"
 
 const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
 
 export class WaveManager {
     /**
@@ -18,6 +19,8 @@ export class WaveManager {
         this.currentWave = 0
         this.waveInProgress = false
         this.loadWaves()
+
+        this.waveTicker = undefined
     }
 
     loadWaves() {
@@ -31,7 +34,7 @@ export class WaveManager {
 
 
 
-    async sendWave(gameplayScene) {
+    sendWave(gameplayScene) {
         if (this.waveInProgress) {return}
 
         this.waveInProgress = true
@@ -61,8 +64,8 @@ export class WaveManager {
 
 
         let waveIndex = this.currentWave - 1
-        const waveTicker = new PIXI.Ticker()
-        waveTicker.autoStart = false
+        this.waveTicker = new PIXI.Ticker()
+        this.waveTicker.autoStart = false
 
         if (this.currentWave >= this.waves.length + 1) {
             waveArray = this.generateWave()
@@ -81,7 +84,7 @@ export class WaveManager {
         //spawns an enemy
         let onTick = () => {
 
-            elapsedMS += waveTicker.deltaMS
+            elapsedMS += this.waveTicker.deltaMS
             if (elapsedMS >= wavePart.spacingMillis) {
                 elapsedMS = 0
                 enemiesSpawned++
@@ -92,14 +95,14 @@ export class WaveManager {
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
 
 
-                new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
+                eventDispatcher.fireEvent("enemySpawn", spawnedEnemy)
 
                 if (enemiesSpawned >= wavePart.count) {
                     currentWavePartIndex++
                     enemiesSpawned = 0
 
                     if (currentWavePartIndex >= waveArray.waveParts.length) {
-                        waveTicker.stop()
+                        this.waveTicker.stop()
                         this.waveInProgress = false
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
@@ -109,8 +112,8 @@ export class WaveManager {
             }
         }
 
-        waveTicker.add(onTick)
-        waveTicker.start()
+        this.waveTicker.add(onTick)
+        this.waveTicker.start()
         return this.waves[waveIndex]
 
     }
@@ -135,4 +138,9 @@ export class WaveManager {
     }
 
 
+    cleanUpResources() {
+        this.waveTicker?.stop()
+        this.waveTicker?.destroy()
+        this.waves = []
+    }
 }

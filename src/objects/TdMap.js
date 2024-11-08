@@ -1,3 +1,4 @@
+import { blons, easy1 } from "../utils/MapData.js"
 import { Tile } from "./Tile.js"
 
 
@@ -8,48 +9,7 @@ class TdMap {
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
-        this.waypoints = [
-            {
-                type: "start",
-                x: 0,
-                y: 1
-            },
-            {
-                type: "point",
-                x: 0,
-                y: 5
-            },
-            {
-                type: "point",
-                x: 10,
-                y: 5
-            },
-            {
-                type: "point",
-                x: 10,
-                y: 10
-            },
-            {
-                type: "point",
-                x: 5,
-                y: 10
-            },
-            {
-                type: "point",
-                x: 5,
-                y: 20
-            },
-            {
-                type: "point",
-                x: 20,
-                y: 20
-            },
-            {
-                type: "point",
-                x: 20,
-                y: 0
-            }
-        ]
+        this.waypoints = easy1
     }
 
     displayTiles(container) {
@@ -123,7 +83,6 @@ class TdMap {
         this.tiles.forEach(row => {
             row.forEach(tile => {
                 if (tile.tileType === "grass") {
-                    console.log("repave grass");
                     tile.paveGrass()
                 }
             })

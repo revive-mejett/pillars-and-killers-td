@@ -35,11 +35,17 @@ export class EventDispatcher {
 
     fireEvent(event, data) {
         if (!this.listeners[event]) {
-            console.warn("no such event is registered -- ", event)
-            return
+            throw new Error("no such event is registered -- ", event)
         }
         //call all event handlers for that event
         this.listeners[event].forEach(callback => callback(data))
+    }
+
+    clearListenersOfEvent(event) {
+        if (!this.listeners[event]) {
+            return
+        }
+        this.listeners[event] = []
     }
 
 }

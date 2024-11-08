@@ -115,7 +115,7 @@ export class InfoPanel {
 
         const killValueIcon = UIHelper.createIcon(assetLoader.icons.money, padding, 190 + padding, "0x000000", 40, 40)
         infoPanel.addChild(killValueIcon)
-        const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${enemy.damage}`, 20, "0xFFFF00")
+        const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${enemy.killValue}`, 20, "0xFFFF00")
         infoPanel.addChild(killValueText)
 
         const slowedIndicator = UIHelper.createIcon(assetLoader.icons.slowed, padding, 250 + padding, "0x000000", 40, 40)
