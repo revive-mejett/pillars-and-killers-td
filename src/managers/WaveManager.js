@@ -19,6 +19,8 @@ export class WaveManager {
         this.currentWave = 0
         this.waveInProgress = false
         this.loadWaves()
+
+        this.waveTicker = undefined
     }
 
     loadWaves() {
@@ -62,8 +64,8 @@ export class WaveManager {
 
 
         let waveIndex = this.currentWave - 1
-        const waveTicker = new PIXI.Ticker()
-        waveTicker.autoStart = false
+        this.waveTicker = new PIXI.Ticker()
+        this.waveTicker.autoStart = false
 
         if (this.currentWave >= this.waves.length + 1) {
             waveArray = this.generateWave()
@@ -82,11 +84,10 @@ export class WaveManager {
         //spawns an enemy
         let onTick = () => {
 
-            elapsedMS += waveTicker.deltaMS
+            elapsedMS += this.waveTicker.deltaMS
             if (elapsedMS >= wavePart.spacingMillis) {
                 elapsedMS = 0
                 enemiesSpawned++
-                console.log("spawn")
 
 
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
@@ -101,7 +102,7 @@ export class WaveManager {
                     enemiesSpawned = 0
 
                     if (currentWavePartIndex >= waveArray.waveParts.length) {
-                        waveTicker.stop()
+                        this.waveTicker.stop()
                         this.waveInProgress = false
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
@@ -111,11 +112,8 @@ export class WaveManager {
             }
         }
 
-        waveTicker.add(onTick)
-        waveTicker.start()
-        eventDispatcher.on("defeat", () => {
-            waveTicker.stop()
-        })
+        this.waveTicker.add(onTick)
+        this.waveTicker.start()
         return this.waves[waveIndex]
 
     }
@@ -140,4 +138,9 @@ export class WaveManager {
     }
 
 
+    cleanUpResources() {
+        this.waveTicker?.stop()
+        this.waveTicker?.destroy()
+        this.waves = []
+    }
 }

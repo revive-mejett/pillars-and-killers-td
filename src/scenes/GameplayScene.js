@@ -112,8 +112,12 @@ export class GameplayScene extends Scene {
     cleanUpResources() {
         this.towersPresent = []
         this.enemiesPresent = []
+
+        this.uiManager.cleanUpResources()
         this.uiManager = null
-        this.waveManager = undefined
+
+        this.waveManager.cleanUpResources()
+        this.waveManager = null
         // this.tdMap = null
         this.hud = null
 

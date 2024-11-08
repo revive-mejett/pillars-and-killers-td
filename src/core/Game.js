@@ -77,7 +77,4 @@ export class Game {
             this.sceneManager.transitionScene(mainMenu)
         })
     }
-
-    defeated() {
-    }
 }
