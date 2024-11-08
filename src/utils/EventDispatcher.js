@@ -41,4 +41,11 @@ export class EventDispatcher {
         this.listeners[event].forEach(callback => callback(data))
     }
 
+    clearListenersOfEvent(event) {
+        if (!this.listeners[event]) {
+            return
+        }
+        this.listeners[event] = []
+    }
+
 }

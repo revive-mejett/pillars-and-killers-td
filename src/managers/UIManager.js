@@ -112,4 +112,12 @@ export class UIManager {
         const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud, this.selectedEnemyUpdateTicker)
         hud.infoPanel.addChild(selectedEnemyPanel)
     }
+
+    cleanUpResources() {
+        eventDispatcher.clearListenersOfEvent("nextWaveBtnClick")
+        eventDispatcher.clearListenersOfEvent("towerPlaceAction")
+        eventDispatcher.clearListenersOfEvent("towerSelectAction")
+        eventDispatcher.clearListenersOfEvent("towerSellAction")
+        eventDispatcher.clearListenersOfEvent("enemySelectAction")
+    }
 }

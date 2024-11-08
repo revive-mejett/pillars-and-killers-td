@@ -108,4 +108,23 @@ export class GameplayScene extends Scene {
     updateTowersPresent() {
         this.towersPresent = this.towersPresent.filter(tower => !tower.isSold)
     }
+
+    cleanUpResources() {
+        this.towersPresent = []
+        this.enemiesPresent = []
+        this.uiManager = null
+        this.waveManager = undefined
+        // this.tdMap = null
+        this.hud = null
+
+        this.gamestate.cleanUpResources()
+        this.gamestate = null
+
+        //clean up event listeners akshan
+        eventDispatcher.clearListenersOfEvent("enemySpawn")
+        eventDispatcher.clearListenersOfEvent("enemyDied")
+        eventDispatcher.clearListenersOfEvent("towerPlaced")
+        eventDispatcher.clearListenersOfEvent("towerSold")
+        eventDispatcher.clearListenersOfEvent("defeat")
+    }
 }

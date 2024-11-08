@@ -13,7 +13,9 @@ export class GameState {
     }
 
     loseLives(damage) {
+        console.log("before ", this.lives, this.money)
         this.lives -= damage
+        console.log("after ", this.lives, this.money)
         if (this.lives <= 0) {
             this.lives = 0
             eventDispatcher.fireEvent("defeat")
@@ -35,5 +37,10 @@ export class GameState {
         this.uiManager = uiManager
     }
 
+    cleanUpResources() {
+        eventDispatcher.clearListenersOfEvent("enemyReachEnd")
+        eventDispatcher.clearListenersOfEvent("purchaseSuccessful1")
+        eventDispatcher.clearListenersOfEvent("moneyEarned")
+    }
 
 }
