@@ -27,6 +27,5 @@ export class HealthBarManager {
             healthBar?.renderBar(parentContainer)
         })
     }
-
 }
 

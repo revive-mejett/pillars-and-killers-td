@@ -72,6 +72,7 @@ export class Game {
     }
 
     defeated() {
+        this.sceneContainer = null
         const mainMenu = new MainMenu(this.app)
         mainMenu.constructScene(this.sceneContainer)
 
