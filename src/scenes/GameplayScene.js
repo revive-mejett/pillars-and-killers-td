@@ -18,7 +18,6 @@ export class GameplayScene extends Scene {
         this.hud = undefined
         this.waveManager = undefined
         this.uiManager = undefined
-        this.healthBarManager = undefined
         this.enemiesPresent = []
         this.towersPresent = []
     }
@@ -49,7 +48,7 @@ export class GameplayScene extends Scene {
         eventDispatcher.on("towerSold", this.updateTowersPresent.bind(this))
         eventDispatcher.on("defeat", () => {
             gameplaySceneTicker.stop()
-            this.cleanUpResources()
+            this.waveManager.waveInProgress = false
         })
 
 
@@ -82,7 +81,7 @@ export class GameplayScene extends Scene {
             }
         })
 
-        this.healthBarManager?.updateAllHealthBars(this.container)
+        this.healthBarManager.updateAllHealthBars(this.container)
     }
 
     updateEnemiesPresentList() {
@@ -107,12 +106,5 @@ export class GameplayScene extends Scene {
 
     updateTowersPresent() {
         this.towersPresent = this.towersPresent.filter(tower => !tower.isSold)
-    }
-
-    cleanUpResources() {
-        this.waveManager.waveInProgress = false
-        this.enemiesPresent = []
-        this.towersPresent = []
-        this.healthBarManager = undefined
     }
 }

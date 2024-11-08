@@ -5,7 +5,6 @@ import { testWaves2 } from "../utils/WaveData.js"
 import { Wave } from "../objects/Wave.js"
 
 const assetLoader = new AssetLoader()
-const eventDispatcher = new EventDispatcher()
 
 export class WaveManager {
     /**
@@ -32,7 +31,7 @@ export class WaveManager {
 
 
 
-    sendWave(gameplayScene) {
+    async sendWave(gameplayScene) {
         if (this.waveInProgress) {return}
 
         this.waveInProgress = true
@@ -64,10 +63,6 @@ export class WaveManager {
         let waveIndex = this.currentWave - 1
         const waveTicker = new PIXI.Ticker()
         waveTicker.autoStart = false
-        eventDispatcher.on("defeat", () => {
-            console.log("stopping waves")
-            this.cleanUpResources()
-        })
 
         if (this.currentWave >= this.waves.length + 1) {
             waveArray = this.generateWave()
@@ -86,13 +81,10 @@ export class WaveManager {
         //spawns an enemy
         let onTick = () => {
 
-
             elapsedMS += waveTicker.deltaMS
             if (elapsedMS >= wavePart.spacingMillis) {
                 elapsedMS = 0
                 enemiesSpawned++
-                console.log("enemy spawned", this.waves);
-                
 
 
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
@@ -100,7 +92,7 @@ export class WaveManager {
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
 
 
-                eventDispatcher.fireEvent("enemySpawn", spawnedEnemy)
+                new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
 
                 if (enemiesSpawned >= wavePart.count) {
                     currentWavePartIndex++
@@ -142,9 +134,5 @@ export class WaveManager {
         return new Wave(waveArray)
     }
 
-
-    cleanUpResources() {
-        this.waves = []
-    }
 
 }

@@ -83,6 +83,7 @@ class TdMap {
         this.tiles.forEach(row => {
             row.forEach(tile => {
                 if (tile.tileType === "grass") {
+                    console.log("repave grass");
                     tile.paveGrass()
                 }
             })
