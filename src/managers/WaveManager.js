@@ -5,6 +5,7 @@ import { testWaves2 } from "../utils/WaveData.js"
 import { Wave } from "../objects/Wave.js"
 
 const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
 
 export class WaveManager {
     /**
@@ -31,7 +32,7 @@ export class WaveManager {
 
 
 
-    async sendWave(gameplayScene) {
+    sendWave(gameplayScene) {
         if (this.waveInProgress) {return}
 
         this.waveInProgress = true
@@ -85,6 +86,7 @@ export class WaveManager {
             if (elapsedMS >= wavePart.spacingMillis) {
                 elapsedMS = 0
                 enemiesSpawned++
+                console.log("spawn")
 
 
                 let spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, ...Object.values(enemyData))
@@ -92,7 +94,7 @@ export class WaveManager {
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
 
 
-                new EventDispatcher().fireEvent("enemySpawn", spawnedEnemy)
+                eventDispatcher.fireEvent("enemySpawn", spawnedEnemy)
 
                 if (enemiesSpawned >= wavePart.count) {
                     currentWavePartIndex++
@@ -111,6 +113,9 @@ export class WaveManager {
 
         waveTicker.add(onTick)
         waveTicker.start()
+        eventDispatcher.on("defeat", () => {
+            waveTicker.stop()
+        })
         return this.waves[waveIndex]
 
     }

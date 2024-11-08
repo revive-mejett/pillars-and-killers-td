@@ -40,6 +40,7 @@ export class GameplayScene extends Scene {
         gameplaySceneTicker.add(() => this.update())
         gameplaySceneTicker.start()
 
+
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
 
@@ -64,7 +65,7 @@ export class GameplayScene extends Scene {
 
     update() {
         // console.log(new PIXI.interaction.InteractionManager())
-        // console.log(this.projectilesPresent);
+        // console.log(this.enemiesPresent);
 
 
         this.enemiesPresent.forEach(enemy => {

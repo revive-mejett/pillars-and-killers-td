@@ -3,7 +3,7 @@ import { EventDispatcher } from "../utils/EventDispatcher.js"
 const eventDispatcher = new EventDispatcher()
 export class GameState {
     constructor() {
-        this.lives = 5
+        this.lives = 30
         this.money = 500
         this.uiManager = undefined
 
