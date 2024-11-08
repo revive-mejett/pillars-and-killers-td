@@ -9,7 +9,7 @@ class TdMap {
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
-        this.waypoints = blons
+        this.waypoints = easy1
     }
 
     displayTiles(container) {

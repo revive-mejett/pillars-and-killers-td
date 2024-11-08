@@ -1,4 +1,11 @@
-import { Scene } from "./Scene";
+import { AssetLoader } from "../core/AssetLoader.js";
+import { UIHelper } from "../UI/UIHelper.js";
+import { EventDispatcher } from "../utils/EventDispatcher.js";
+import { Scene } from "./Scene.js";
+
+const assetLoader = new AssetLoader()
+
+const eventDispatcher = new EventDispatcher()
 
 export class GameOver extends Scene {
     /**
@@ -9,39 +16,45 @@ export class GameOver extends Scene {
     }
 
     constructScene() {
-        const titleImage = PIXI.Sprite.from(assetLoader.otherImages.mainTitle)
-        titleImage.width = 700
-        titleImage.height = 400
-        titleImage.x = 300
-        titleImage.y = 0
-        titleImage.zIndex = 2
 
-        this.container.addChild(titleImage)
+        const today = new Date()
+        const graveyard = PIXI.Sprite.from(assetLoader.otherImages.gameoverGraveyard)
+        graveyard.width = 700
+        graveyard.height = 500
+        graveyard.x = 300
+        graveyard.y = 100
+        graveyard.zIndex = 1
 
-        const pillarsKillersVisual = PIXI.Sprite.from(assetLoader.otherImages.mainTitleImage)
-        pillarsKillersVisual.width = 700
-        pillarsKillersVisual.height = 400
-        pillarsKillersVisual.x = 300
-        pillarsKillersVisual.y = 300
-        pillarsKillersVisual.zIndex = 1
+        this.container.addChild(graveyard)
 
-        this.container.addChild(pillarsKillersVisual)
+        const txtRip = UIHelper.createText(580,270,"R.I.P.", 70, "0x000077")
+        this.container.addChild(txtRip)
+        const txtDate = UIHelper.createText(580,350,`10/13/24 - ${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`, 20, "0x000077")
+        this.container.addChild(txtDate)
 
-        const startButton = UIHelper.createButton(450,600,400,50, "Start Game")
-        this.container.addChild(startButton)
-        startButton.zIndex = 1
 
-        startButton.on("pointerdown", () => {
+        const txtGameOver = UIHelper.createText(400,600,"Here lies the defenders...", 60, "0x7777FF")
+        this.container.addChild(txtGameOver)
+
+
+        const btnRestart = UIHelper.createButton(450,700,400,50, "Restart")
+        this.container.addChild(btnRestart)
+        btnRestart.zIndex = 1
+
+        btnRestart.on("pointerdown", () => {
             eventDispatcher.fireEvent("gameStarted")
         })
 
-        const settingsButton = UIHelper.createButton(450,700,400,50, "Settings")
-        settingsButton.zIndex = 1
-        this.container.addChild(settingsButton)
+        const btnMainMenu = UIHelper.createButton(450,800,400,50, "Main Menu")
+        btnMainMenu.zIndex = 1
+        this.container.addChild(btnMainMenu)
 
-        const tutorialButton = UIHelper.createButton(450,800,400,50, "Tutorial")
-        tutorialButton.zIndex = 1
-        this.container.addChild(tutorialButton)
+        btnMainMenu.on("pointerdown", () => {
+            eventDispatcher.fireEvent("mainMenuReturn")
+        })
+        eventDispatcher
+
+
     }
 
 }

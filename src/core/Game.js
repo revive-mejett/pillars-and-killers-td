@@ -1,5 +1,6 @@
 
 import { SceneManager } from "../managers/SceneManager.js"
+import { GameOver } from "../scenes/GameOver.js"
 import { GameplayScene } from "../scenes/GameplayScene.js"
 import { MainMenu } from "../scenes/MainMenu.js"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
@@ -22,6 +23,7 @@ export class Game {
         document.body.appendChild(this.app.view)
 
         eventDispatcher.on("gameStarted", () => this.initGameplay())
+        eventDispatcher.on("mainMenuReturn", () => this.run())
     }
 
     start() {
@@ -70,7 +72,7 @@ export class Game {
         this.sceneManager.transitionScene(gameplayScene)
 
         eventDispatcher.on("defeat", () => {
-            const mainMenu = new MainMenu(this.app)
+            const mainMenu = new GameOver(this.app)
             mainMenu.constructScene(this.sceneContainer)
             gameplayScene.uiManager.cleanUpResources()
             gameplayScene.cleanUpResources()
