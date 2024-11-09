@@ -52,7 +52,6 @@ export class GameOver extends Scene {
         btnMainMenu.on("pointerdown", () => {
             eventDispatcher.fireEvent("mainMenuReturn")
         })
-        eventDispatcher
 
 
     }
