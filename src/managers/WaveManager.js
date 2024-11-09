@@ -47,7 +47,7 @@ export class WaveManager {
             ["greenCircle", { health: 100, speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
             ["blueCircle", { health: 280, speed: 1.2, damage: 1, killValue: 30, asset: enemyAssets.blueCircle }],
             ["purpleCircle", { health: 700, speed: 1.6, damage: 3, killValue: 50, asset: enemyAssets.purpleCircle }],
-            ["yellowCircle", { health: 2000, speed: 0.6, damage: 5, killValue: 16, asset: enemyAssets.yellowCircle }]
+            ["yellowCircle", { health: 2000, speed: 0.6, damage: 5, killValue: 100, asset: enemyAssets.yellowCircle }]
         ])
 
 
@@ -58,7 +58,7 @@ export class WaveManager {
                 ["greenCircle", { health: Math.floor(100 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
                 ["blueCircle", { health: Math.floor(280 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1.2, damage: 1, killValue: 30, asset: enemyAssets.blueCircle }],
                 ["purpleCircle", { health: Math.floor(700 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1.6, damage: 3, killValue: 50, asset: enemyAssets.purpleCircle }],
-                ["yellowCircle", { health: Math.floor(2000 * 1.05 ** (this.currentWave - this.waves.length)), speed: 0.6, damage: 5, killValue: 16, asset: enemyAssets.yellowCircle }]
+                ["yellowCircle", { health: Math.floor(2000 * 1.05 ** (this.currentWave - this.waves.length)), speed: 0.6, damage: 5, killValue: 100, asset: enemyAssets.yellowCircle }]
             ])
         }
 
