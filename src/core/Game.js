@@ -23,7 +23,6 @@ export class Game {
         document.body.appendChild(this.app.view)
 
         eventDispatcher.on("gameStarted", () => this.initGameplay())
-        eventDispatcher.on("mainMenuReturn", () => this.run())
     }
 
     start() {
@@ -71,12 +70,21 @@ export class Game {
         gameplayScene.constructScene()
         this.sceneManager.transitionScene(gameplayScene)
 
+        eventDispatcher.on("mainMenuReturn", () => {
+            console.log(gameplayScene)
+            this.resetGameplayScene(gameplayScene)
+            this.run()
+        })
+
         eventDispatcher.on("defeat", () => {
             const mainMenu = new GameOver(this.app)
             mainMenu.constructScene(this.sceneContainer)
-            gameplayScene.uiManager.cleanUpResources()
-            gameplayScene.cleanUpResources()
+            this.resetGameplayScene(gameplayScene)
             this.sceneManager.transitionScene(mainMenu)
         })
+    }
+
+    resetGameplayScene(gameplayScene) {
+        gameplayScene?.cleanUpResources()
     }
 }

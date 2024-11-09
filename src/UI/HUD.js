@@ -152,7 +152,10 @@ export class HUD {
         exitButtonText.y = (exitButtonContainer.height - exitButtonText.height) / 2;
         exitButtonContainer.addChild(exitButtonText)
 
-        exitButtonContainer.on("pointerdown", () => console.log("exit button clicked - not yet implemented"))
+
+        exitButtonContainer.on("pointerdown", () => {
+            eventDispatcher.fireEvent("mainMenuReturn")
+        })
         this.setUpTowerSelections()
 
     }
