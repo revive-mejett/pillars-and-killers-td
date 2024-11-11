@@ -1,4 +1,4 @@
-import { blons, easy1 } from "../utils/MapData.js"
+import { easy1 } from "../utils/MapData.js"
 import { Tile } from "./Tile.js"
 
 

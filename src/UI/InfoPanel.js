@@ -35,7 +35,10 @@ export class InfoPanel {
         const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $9999999${padding}`, 20, "0xFFFF00")
         infoPanel.addChild(upgradeCostText)
 
-        const sellValueText = UIHelper.createText(0 + padding, 230 + padding,`sell value: $9999999${padding}`, 20, "0x777777")
+        const sellValuePercentage = 60
+        const sellValue = Math.floor(tower.cost * sellValuePercentage/100)
+
+        const sellValueText = UIHelper.createText(0 + padding, 230 + padding,`sell value: $${sellValue}`, 20, "0x777777")
         infoPanel.addChild(sellValueText)
 
         //upgrade/sell btns
