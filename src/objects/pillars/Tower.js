@@ -1,6 +1,6 @@
 
 import { Vector } from "../../utils/Vector.js"
-import { Entity } from "../Entity.js"
+import { Entity } from "../Entity.ts"
 import { Bullet } from "../projectile/Bullet.js"
 
 
@@ -11,14 +11,14 @@ export class Tower extends Entity {
 
         this.range = towerstats.range
         this.damage = towerstats.damage
-        this.fireRate = towerstats.fireRate,
-        this.cost = towerstats.cost,
-        this.level = 1,
+        this.fireRate = towerstats.fireRate
+        this.cost = towerstats.cost
+        this.level = 1
 
-        this.asset = towerstats.asset,
+        this.asset = towerstats.asset
         this.assetIcon = towerstats.assetIcon
 
-        this.position = { x: x, y: y },
+        this.position = { x: x, y: y }
 
         this.sprite = PIXI.Sprite.from(this.asset)
         this.sprite.height = height
@@ -31,9 +31,9 @@ export class Tower extends Entity {
         this.tile = undefined
 
 
-        if (new.target === Tower) {
-            throw new Error("Cant instantiate Tower base class")
-        }
+        // if (new.target === Tower) {
+        //     throw new Error("Cant instantiate Tower base class")
+        // }
 
     }
 
@@ -45,7 +45,6 @@ export class Tower extends Entity {
 
         const gameplaySceneContainer = gameplayScene.container
 
-        const towerRef = this
 
         const towerFireCycleTicker = new PIXI.Ticker()
         towerFireCycleTicker.autoStart = false
@@ -68,19 +67,19 @@ export class Tower extends Entity {
 
                 // Find the best enemy before firing
                 this.findEnemy(gameplayScene.enemiesPresent);
-                if (!towerRef.targetedEnemy) {
+                if (!this.targetedEnemy) {
                     cooldown = 0 //reset cooldown
                     return
                 }
 
-                if (!towerRef.targetedEnemy.isAlive) {
+                if (!this.targetedEnemy.isAlive) {
                     this.targetedEnemy = null
                     cooldown = 0 //reset cooldown
                     return
                 }
 
                 //check if enemy is no longer in range
-                if (!this.checkEnemyInRange(towerRef.targetedEnemy)) {
+                if (!this.checkEnemyInRange(this.targetedEnemy)) {
                     this.targetedEnemy = null
                     cooldown = 0 //reset cooldown
                     return
