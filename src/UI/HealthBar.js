@@ -1,5 +1,5 @@
 import { Color, Container, Graphics } from "pixi.js";
-import { Entity } from "../objects/Entity.js";
+import { Entity } from "../objects/Entity.ts";
 
 const yOffset = -5
 

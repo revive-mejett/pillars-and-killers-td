@@ -1,4 +1,4 @@
-import { Entity } from "../Entity.js"
+import { Entity } from "../Entity.ts"
 
 export class Projectile extends Entity {
 

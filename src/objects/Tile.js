@@ -1,5 +1,5 @@
 import { Container } from "pixi.js";
-import { Entity } from "./Entity.js";
+import { Entity } from "./Entity.ts";
 import { EventDispatcher } from "../utils/EventDispatcher.js";
 
 

@@ -1,7 +1,13 @@
+import Position from "../ts/types/Position"
 
 //base class for representing objects in the game
 export class Entity {
-    constructor(x, y, width, height) {
+    x: number
+    y: number
+    width: number
+    height: number
+
+    constructor(x : number, y : number, width : number, height : number) {
         this.x = x
         this.y = y
         this.width = width
@@ -17,7 +23,7 @@ export class Entity {
     }
 
     //retrieves the coordinates of the top left corner of the entity
-    getTopLeftCoordinates(centerPos) {
+    getTopLeftCoordinates(centerPos : Position) {
         return {
             x : centerPos.x - this.width / 2,
             y : centerPos.y - this.height / 2

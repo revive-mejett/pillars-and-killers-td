@@ -1,6 +1,6 @@
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { all1st } from "../utils/Nicknames.js";
-import { Entity } from "./Entity.js"
+import { Entity } from "./Entity.ts"
 
 const eventDispatcher = new EventDispatcher()
 
