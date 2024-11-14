@@ -1,9 +1,16 @@
-import { easy1 } from "../utils/MapData.js"
+import { easy1 } from "../utils/MapData"
 import { Tile } from "./Tile.js"
+import * as PIXI from "pixi.js";
 
 
 class TdMap {
-    constructor(mapWidth, mapHeight, dimensions) {
+    mapWidth: number
+    mapHeight: number
+    dimensions: number
+    tileSize: number
+    tiles: 
+    waypoints = easy1
+    constructor(mapWidth : number, mapHeight : number, dimensions : number) {
         this.mapWidth = mapWidth
         this.mapHeight = mapHeight
         this.dimensions = dimensions
@@ -12,7 +19,7 @@ class TdMap {
         this.waypoints = easy1
     }
 
-    displayTiles(container) {
+    displayTiles(container : PIXI.Container) {
 
         //init array with array of 0
 

@@ -1,16 +1,23 @@
 import { Container } from "pixi.js";
-import { Entity } from "./Entity.ts";
+import { Entity } from "./Entity.js";
 import { EventDispatcher } from "../utils/EventDispatcher.js";
+import TileType from "src/ts/types/TileType.js";
+import * as PIXI from "pixi.js";
 
 
 const eventDispatcher = new EventDispatcher()
 
 export class Tile extends Entity {
+    tileType: string;
+    hasTower: boolean;
+    container?: PIXI.Container;
+    parentContainer: Container<PIXI.DisplayObject>;
+    tower: object | null;
 
     /**
      * tileType can be either "start", "end", "path", "grass"
      */
-    constructor(x, y, width, height, tileType, parentContainer) {
+    constructor(x : number, y : number, width : number, height : number, tileType: TileType, parentContainer : PIXI.Container) {
         super(x, y, width, height);
         this.tileType = tileType
         this.hasTower = false
@@ -37,14 +44,14 @@ export class Tile extends Entity {
     }
 
 
-    markTowerOccupied(hasTower) {
+    markTowerOccupied(hasTower : boolean) {
         if (this.tileType !== "grass") {
             throw new Error("Must be a grass tile")
         }
         this.hasTower = hasTower
     }
 
-    setTileContainer(graphics) {
+    setTileContainer(graphics : PIXI.Graphics) {
         this.container = new Container()
         this.container.eventMode = "static"
         this.container.addChild(graphics)
@@ -60,12 +67,12 @@ export class Tile extends Entity {
         }
     }
 
-    changeTileType(tileType) {
+    changeTileType(tileType : TileType) {
         this.tileType = tileType
     }
 
 
-    placeTowerOnTile(tower) {
+    placeTowerOnTile(tower : object) {
         this.tower = tower
         this.renderTower()
         this.markTowerOccupied(true)
@@ -73,7 +80,7 @@ export class Tile extends Entity {
 
 
     paveGrass() {
-        let grass = new PIXI.Graphics()
+        const grass = new PIXI.Graphics()
         grass.beginFill(0x001100)
         grass.lineStyle(2, 0x005500)
         grass.drawRect(this.x, this.y, this.width, this.height)
@@ -83,7 +90,7 @@ export class Tile extends Entity {
 
     renderTower() {
         if (this.tower) {
-            this.container.addChild(this.tower.sprite)
+            this.container?.addChild(this.tower.sprite)
         }
     }
 
