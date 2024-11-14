@@ -29,7 +29,7 @@ export class Projectile extends Entity {
         }
     }
 
-    setEnemy(enemy) {
+    setEnemy(enemy : any) {
         this.targetEnemy = enemy
     }
 
@@ -44,8 +44,8 @@ export class Projectile extends Entity {
     }
 
     cleanUpResources() {
-        this.updateTicker.stop()
-        this.updateTicker.destroy()
+        this.updateTicker?.stop()
+        this.updateTicker?.destroy()
 
         if (this.graphics?.parent) {
             this.graphics.parent.removeChild(this.graphics);
