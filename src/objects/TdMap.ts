@@ -1,5 +1,5 @@
 import { easy1 } from "../utils/MapData"
-import { Tile } from "./Tile.js"
+import { Tile } from "./Tile"
 import * as PIXI from "pixi.js";
 
 
@@ -8,7 +8,7 @@ class TdMap {
     mapHeight: number
     dimensions: number
     tileSize: number
-    tiles: 
+    tiles: Tile[][]
     waypoints = easy1
     constructor(mapWidth : number, mapHeight : number, dimensions : number) {
         this.mapWidth = mapWidth
@@ -27,7 +27,7 @@ class TdMap {
             this.tiles.push([])
             for (let j = 0; j < this.dimensions; j++) {
 
-                let tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container)
+                const tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container)
                 tile.paveGrass()
                 this.tiles[i].push(tile)
             }
@@ -42,7 +42,7 @@ class TdMap {
         let y = waypoints[currWayPtNum].y
 
         while (currWayPtNum < this.waypoints.length - 1) {
-            let pathTile = new PIXI.Graphics()
+            const pathTile = new PIXI.Graphics()
             pathTile.beginFill(0x070707)
             pathTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
             pathTile.endFill()
@@ -70,7 +70,7 @@ class TdMap {
         }
 
         //mark start and end tiles
-        let startTile = new PIXI.Graphics()
+        const startTile = new PIXI.Graphics()
         startTile.beginFill(0x999900)
         startTile.drawRect(waypoints[0].x * this.tileSize, waypoints[0].y * this.tileSize, this.tileSize, this.tileSize)
         startTile.endFill()
@@ -78,7 +78,7 @@ class TdMap {
         this.tiles[waypoints[0].x][waypoints[0].y].changeTileType("start")
 
 
-        let endTile = new PIXI.Graphics()
+        const endTile = new PIXI.Graphics()
         endTile.beginFill(0x220000)
         endTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
         endTile.endFill()
