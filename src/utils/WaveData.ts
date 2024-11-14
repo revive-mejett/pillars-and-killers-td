@@ -1,4 +1,4 @@
-import { Wave } from "../objects/Wave.js"
+import { Wave } from "../objects/Wave"
 
 const oneEnemy = [
     new Wave(

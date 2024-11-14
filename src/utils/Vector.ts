@@ -1,17 +1,19 @@
 export class Vector {
+    x: number
+    y: number
     /**
      *
      */
-    constructor(x, y) {
+    constructor(x : number, y : number) {
         this.x = x
         this.y = y
     }
 
-    magnitude() {
+    magnitude() : number {
         return Math.sqrt(this.x ** 2 + this.y ** 2)
     }
 
-    normalize() {
+    normalize() : Vector {
         return new Vector(this.x/this.magnitude(), this.y/this.magnitude())
     }
 }
