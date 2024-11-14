@@ -1,4 +1,4 @@
-import { Enemy } from "../objects/Enemy.js"
+import { Enemy } from "../objects/Enemy.ts"
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { AssetLoader } from "../core/AssetLoader.js"
 import { testWaves2 } from "../utils/WaveData.js"

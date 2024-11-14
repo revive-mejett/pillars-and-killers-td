@@ -1,15 +1,38 @@
+import Position from "src/ts/types/Position.js";
 import { EventDispatcher } from "../utils/EventDispatcher.js"
-import { all1st } from "../utils/Nicknames.js";
-import { Entity } from "./Entity.ts"
+import { all1st } from "../utils/Nicknames";
+import { Entity } from "./Entity"
+import * as PIXI from "pixi.js";
 
 const eventDispatcher = new EventDispatcher()
 
+type SlowDebuffStats = {
+    speedMultiplier: number,
+    timeLeft : number
+}
+
 export class Enemy extends Entity {
+    health: number
+    totalHealth: number
+    speed: number
+    damage: number
+    killValue: number
+    nick: string
+    position : Position
+    xToNextWaypoint: number;
+    yToNextWaypoint: number;
+    nextWayPointIndex: number;
+    sprite: PIXI.Sprite;
+    asset: PIXI.SpriteSource;
+    distanceTravelled: number;
+    isAlive: boolean;
+
+    slowDebuffStats : SlowDebuffStats
 
     /**
      *
      */
-    constructor(x, y, width, height, health, speed, damage, killValue, asset) {
+    constructor(x : number, y : number, width : number , height : number, health : number, speed : number, damage : number, killValue : number, asset : PIXI.SpriteSource) {
         super(x, y, width, height);
         this.health = health
         this.totalHealth = health
@@ -104,7 +127,7 @@ export class Enemy extends Entity {
         }
     }
 
-    tickDebuffs(deltaTime) {
+    tickDebuffs(deltaTime : number) {
 
         if (this.slowDebuffStats.timeLeft === 0) {
             return
@@ -118,7 +141,7 @@ export class Enemy extends Entity {
         }
     }
 
-    takeDamage(damage) {
+    takeDamage(damage : number) {
 
         if (!this.isAlive) {
             return
@@ -133,13 +156,13 @@ export class Enemy extends Entity {
     }
 }
 
-function enemyDied(enemy) {
+function enemyDied(enemy : Enemy) {
     enemy.isAlive = false
     enemy.destroy()
     eventDispatcher.fireEvent("enemyDied")
 }
 
-function reachEnd(enemy) {
+function reachEnd(enemy : Enemy) {
     enemy.isAlive = false
     enemy.destroy()
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)

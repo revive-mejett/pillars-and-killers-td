@@ -7,6 +7,7 @@ export class EventDispatcher {
     constructor() {
         //singleton
         if (!instance) {
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
             instance = this
             this.listeners = {}
         }
