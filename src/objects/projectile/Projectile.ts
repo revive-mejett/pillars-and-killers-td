@@ -1,11 +1,20 @@
-import { Entity } from "../Entity.ts"
+import { Entity } from "../Entity"
+import * as PIXI from "pixi.js";
+
 
 export class Projectile extends Entity {
+    damage: number;
+    targetEnemy: any;
+    hasHit: boolean;
+    updateTicker?: PIXI.Ticker;
+    autoStart: boolean;
+    colour: string;
+    graphics?: PIXI.Graphics;
 
     /**
      *
      */
-    constructor(x, y, width, height, targetEnemy, damage, colour) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : any, damage : number, colour : string) {
         super(x, y, width, height);
         this.damage = damage
         this.targetEnemy = targetEnemy
@@ -24,12 +33,14 @@ export class Projectile extends Entity {
         this.targetEnemy = enemy
     }
 
-    fire(deltaTime) {
-        throw new Error("abstract method", deltaTime)
+    fire(deltaTime : number) {
+        throw new Error("abstract method " + deltaTime)
     }
 
-    render(parentContainer) {
-        parentContainer.addChild(this.graphics)
+    render(parentContainer : PIXI.Container) {
+        if (this.graphics) {
+            parentContainer.addChild(this.graphics)
+        }
     }
 
     cleanUpResources() {
@@ -41,9 +52,9 @@ export class Projectile extends Entity {
         }
 
         this.graphics?.clear()
-        this.graphics = null;
-        this.targetEnemy = null;
-        this.updateTicker = null;
+        this.graphics = undefined;
+        this.targetEnemy = undefined;
+        this.updateTicker = undefined;
     }
 
 }

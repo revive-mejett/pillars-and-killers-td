@@ -1,5 +1,5 @@
 import { Vector } from "../../utils/Vector.js";
-import { Projectile } from "./Projectile.js";
+import { Projectile } from "./Projectile.ts";
 
 
 export class Bullet extends Projectile {
