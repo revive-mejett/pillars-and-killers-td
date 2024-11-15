@@ -7,6 +7,7 @@ import { Tower } from "src/objects/pillars/Tower"
 import * as PIXI from "pixi.js";
 import TowerStats from "src/ts/types/TowerStats"
 import { Enemy } from "src/objects/Enemy"
+import { HUD } from "./HUD"
 
 const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
@@ -16,10 +17,10 @@ export class InfoPanel {
         const padding = 5
 
         const infoPanel = new PIXI.Container()
-        const infoPanelOutline = UIHelper.createInfoPanelOutline("0x00FF00")
+        const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)
         infoPanel.addChild(infoPanelOutline)
 
-        const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding, "0x00FF00")
+        const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding, 0x000000)
         currentTowerIcon.x = 160
 
         infoPanel.addChild(currentTowerIcon)
@@ -46,9 +47,9 @@ export class InfoPanel {
         infoPanel.addChild(sellValueText)
 
         //upgrade/sell btns
-        const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, "0x33FF33")
+        const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, 0x33FF33)
         infoPanel.addChild(upgradeButton)
-        const sellButton = UIHelper.createButton(80 + padding, 260, 150, 30, "Sell", 20, "0xFF3333")
+        const sellButton = UIHelper.createButton(80 + padding, 260, 150, 30, "Sell", 20, 0xFF3333)
         infoPanel.addChild(sellButton)
 
 
@@ -64,7 +65,7 @@ export class InfoPanel {
 
     static createTowerGeneralInfoPanel(towerStats : TowerStats) {
         const infoPanel = new PIXI.Container()
-        const infoPanelOutline = UIHelper.createInfoPanelOutline("0x000077")
+        const infoPanelOutline = UIHelper.createInfoPanelOutline(0x000077)
         infoPanel.addChild(infoPanelOutline)
 
         const padding = 5
@@ -74,7 +75,7 @@ export class InfoPanel {
         }
 
 
-        const currentTowerIcon = UIHelper.createIcon(towerStats.assetIcon, padding, padding, "0X00FF00")
+        const currentTowerIcon = UIHelper.createIcon(towerStats.assetIcon, padding, padding, 0X000000)
         infoPanel.addChild(currentTowerIcon)
         const towerNameText = new Text(towerStats.info.title, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
         towerNameText.x = 90 + padding
@@ -93,7 +94,7 @@ export class InfoPanel {
     }
 
 
-    static createEnemyStatsInfoPanel(enemy : Enemy, hud : PIXI.Container, updateTicker : PIXI.Ticker) {
+    static createEnemyStatsInfoPanel(enemy : Enemy, hud : HUD, updateTicker : PIXI.Ticker) {
 
         if (!assetLoader.icons) {
             throw new Error("Assetloader icons is not defined - something went wrong")
@@ -103,10 +104,10 @@ export class InfoPanel {
         const padding = 5
 
         const infoPanel = new PIXI.Container()
-        const infoPanelOutline = UIHelper.createInfoPanelOutline("0xFF0000")
+        const infoPanelOutline = UIHelper.createInfoPanelOutline(0xFF0000)
         infoPanel.addChild(infoPanelOutline)
 
-        const currentEnemyIcon = UIHelper.createIcon(enemy.asset, padding, padding, "0x00FF00")
+        const currentEnemyIcon = UIHelper.createIcon(enemy.asset, padding, padding, 0x000000)
         infoPanel.addChild(currentEnemyIcon)
         currentEnemyIcon.x = 160
 
@@ -114,27 +115,27 @@ export class InfoPanel {
         infoPanel.addChild(enemyNickText)
 
 
-        const heartIcon = UIHelper.createIcon(assetLoader.icons.heart, padding, 70 + padding, "0x000000", 40, 40)
+        const heartIcon = UIHelper.createIcon(assetLoader.icons.heart, padding, 70 + padding, 0x000000, 40, 40)
         infoPanel.addChild(heartIcon)
         const enemyHealthText = UIHelper.createText(40 + padding, 80 + padding,`${enemy.health} / ${enemy.totalHealth}`, 20, "FFFFFF")
         infoPanel.addChild(enemyHealthText)
 
-        const speedIcon = UIHelper.createIcon(assetLoader.icons.speedArrow, padding, 110 + padding, "0x000000", 40, 40)
+        const speedIcon = UIHelper.createIcon(assetLoader.icons.speedArrow, padding, 110 + padding, 0x000000, 40, 40)
         infoPanel.addChild(speedIcon)
         const enemySpeedText = UIHelper.createText(40 + padding, 120 + padding,`${enemy.speed}`, 20, "0xFFFFFF")
         infoPanel.addChild(enemySpeedText)
 
-        const damageIcon = UIHelper.createIcon(assetLoader.icons.lives, padding, 150 + padding, "0x000000", 40, 40)
+        const damageIcon = UIHelper.createIcon(assetLoader.icons.lives, padding, 150 + padding, 0x000000, 40, 40)
         infoPanel.addChild(damageIcon)
         const damageText = UIHelper.createText(40 + padding, 160 + padding,`${enemy.damage}`, 20, "0xFF0000")
         infoPanel.addChild(damageText)
 
-        const killValueIcon = UIHelper.createIcon(assetLoader.icons.money, padding, 190 + padding, "0x000000", 40, 40)
+        const killValueIcon = UIHelper.createIcon(assetLoader.icons.money, padding, 190 + padding, 0x000000, 40, 40)
         infoPanel.addChild(killValueIcon)
         const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${enemy.killValue}`, 20, "0xFFFF00")
         infoPanel.addChild(killValueText)
 
-        const slowedIndicator = UIHelper.createIcon(assetLoader.icons.slowed, padding, 250 + padding, "0x000000", 40, 40)
+        const slowedIndicator = UIHelper.createIcon(assetLoader.icons.slowed, padding, 250 + padding, 0x000000, 40, 40)
         infoPanel.addChild(slowedIndicator)
         slowedIndicator.visible = false
 

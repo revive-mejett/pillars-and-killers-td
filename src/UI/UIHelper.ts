@@ -4,7 +4,7 @@ import * as PIXI from "pixi.js";
 export class UIHelper {
 
 
-    static createButton(x : number, y : number, width : number, height : number, text : string, fontSize : number, bgColour : string) : PIXI.Container {
+    static createButton(x : number, y : number, width : number, height : number, text : string, fontSize? : number, bgColour? : number) : PIXI.Container {
         const buttonContainer = new PIXI.Container()
         buttonContainer.eventMode = "static"
         buttonContainer.x = x
@@ -44,7 +44,7 @@ export class UIHelper {
     }
 
     //helper function to create an icon
-    static createIcon(spriteAsset : PIXI.SpriteSource, xPosition : number, yPosition : number, hexBackground : string, width? : number, height? : number) : PIXI.Container {
+    static createIcon(spriteAsset : PIXI.SpriteSource, xPosition : number, yPosition : number, hexBackground : number, width? : number, height? : number) : PIXI.Container {
         const iconContainer = new PIXI.Container()
         iconContainer.eventMode = "static"
         iconContainer.x = xPosition
@@ -64,7 +64,7 @@ export class UIHelper {
         return iconContainer
     }
 
-    static createInfoPanelOutline(hexColour : string) : PIXI.Graphics {
+    static createInfoPanelOutline(hexColour : number) : PIXI.Graphics {
         const infoPanelOutline = new PIXI.Graphics()
         infoPanelOutline.lineStyle(3, hexColour)
         infoPanelOutline.drawRect(0, 0, 1000 * 0.25, 300)

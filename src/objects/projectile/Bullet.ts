@@ -1,6 +1,6 @@
-import { Vector } from "../../utils/Vector.js";
-import { Enemy } from "../Enemy.js";
-import { Projectile } from "./Projectile.js";
+import { Vector } from "../../utils/Vector";
+import { Enemy } from "../Enemy";
+import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 
 export class Bullet extends Projectile {

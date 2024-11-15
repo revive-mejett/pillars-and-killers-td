@@ -7,6 +7,7 @@ import * as PIXI from "pixi.js";
 import { Enemy } from "../Enemy";
 import { Tile } from "../Tile";
 import TowerStats from "src/ts/types/TowerStats";
+import { GameplayScene } from "src/scenes/GameplayScene";
 
 
 //base class for tower
@@ -62,7 +63,7 @@ export class Tower extends Entity {
         this.tile = tile
     }
 
-    runTower(gameplayScene : any) {
+    runTower(gameplayScene : GameplayScene) {
 
         const gameplaySceneContainer = gameplayScene.container
 

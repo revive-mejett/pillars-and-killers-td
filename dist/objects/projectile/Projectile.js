@@ -28,13 +28,13 @@ export class Projectile extends Entity {
         }
     }
     cleanUpResources() {
-        var _a, _b;
-        this.updateTicker.stop();
-        this.updateTicker.destroy();
-        if ((_a = this.graphics) === null || _a === void 0 ? void 0 : _a.parent) {
+        var _a, _b, _c, _d;
+        (_a = this.updateTicker) === null || _a === void 0 ? void 0 : _a.stop();
+        (_b = this.updateTicker) === null || _b === void 0 ? void 0 : _b.destroy();
+        if ((_c = this.graphics) === null || _c === void 0 ? void 0 : _c.parent) {
             this.graphics.parent.removeChild(this.graphics);
         }
-        (_b = this.graphics) === null || _b === void 0 ? void 0 : _b.clear();
+        (_d = this.graphics) === null || _d === void 0 ? void 0 : _d.clear();
         this.graphics = undefined;
         this.targetEnemy = undefined;
         this.updateTicker = undefined;

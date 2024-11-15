@@ -2,6 +2,7 @@ import TowerStats from "src/ts/types/TowerStats";
 import { Beam } from "../projectile/Beam";
 import { Tower } from "./Tower";
 import * as PIXI from "pixi.js";
+import { GameplayScene } from "src/scenes/GameplayScene";
 
 export class IcePillar extends Tower {
     towerName: string;
@@ -15,8 +16,7 @@ export class IcePillar extends Tower {
         this.towerName = "Ice Pillar"
     }
 
-    runTower(gameplayScene) {
-        console.log("ice pillar")
+    runTower(gameplayScene : GameplayScene) {
         const gameplaySceneContainer = gameplayScene.container
 
         // eslint-disable-next-line @typescript-eslint/no-this-alias
