@@ -68,7 +68,6 @@ export class UIManager {
         if (!waveManager || ! this.hud.waveNumText) {
             return
         }
-        
         if (waveManager.currentWave > waveManager.waves.length) {
             this.hud.waveNumText.text = `Wave ${waveManager.currentWave}`
         } else {

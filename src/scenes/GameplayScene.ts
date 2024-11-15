@@ -86,7 +86,6 @@ export class GameplayScene extends Scene {
             if (this.tdMap) {
                 enemy?.updateMovement(this.tdMap, this.app.ticker.deltaTime)
             }
-            
 
         })
 

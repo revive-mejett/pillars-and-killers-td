@@ -8,7 +8,7 @@ export class GameState {
     uiManager?: UIManager
 
     constructor() {
-        this.lives = 30
+        this.lives = 50
         this.money = 500
         this.uiManager = undefined
 
