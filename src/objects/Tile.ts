@@ -1,8 +1,9 @@
 import { Container } from "pixi.js";
-import { Entity } from "./Entity.js";
+import { Entity } from "./Entity";
 import { EventDispatcher } from "../utils/EventDispatcher.js";
-import TileType from "src/ts/types/TileType.js";
+import TileType from "src/ts/types/TileType";
 import * as PIXI from "pixi.js";
+import { Tower } from "./pillars/Tower";
 
 
 const eventDispatcher = new EventDispatcher()
@@ -12,7 +13,7 @@ export class Tile extends Entity {
     hasTower: boolean;
     container?: PIXI.Container;
     parentContainer: Container<PIXI.DisplayObject>;
-    tower: object | null;
+    tower?: Tower;
 
     /**
      * tileType can be either "start", "end", "path", "grass"
@@ -23,7 +24,7 @@ export class Tile extends Entity {
         this.hasTower = false
         this.container = undefined
         this.parentContainer = parentContainer
-        this.tower = null
+        this.tower = undefined
     }
 
     sellTower() {
@@ -38,7 +39,7 @@ export class Tile extends Entity {
 
         eventDispatcher.fireEvent("moneyEarned", sellValue)
         eventDispatcher.fireEvent("towerSold")
-        this.tower = null
+        this.tower = undefined
         this.markTowerOccupied(false)
         this.paveGrass()
     }
@@ -72,7 +73,7 @@ export class Tile extends Entity {
     }
 
 
-    placeTowerOnTile(tower : object) {
+    placeTowerOnTile(tower : Tower) {
         this.tower = tower
         this.renderTower()
         this.markTowerOccupied(true)

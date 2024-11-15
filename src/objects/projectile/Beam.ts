@@ -19,7 +19,7 @@ export class Beam extends Projectile {
 
         let elapsedTime = 0
 
-        this.targetEnemy.takeDamage(this.damage)
+        this.targetEnemy?.takeDamage(this.damage)
         this.slowEnemy(0.5, 200) //apply the slow
 
         const onTick = () => {
@@ -57,7 +57,10 @@ export class Beam extends Projectile {
     }
 
     slowEnemy(speedMultiplier : number, duration : number) {
-        this.targetEnemy.slowDebuffStats.speedMultiplier = speedMultiplier
-        this.targetEnemy.slowDebuffStats.timeLeft = duration
+        if (this.targetEnemy) {
+            this.targetEnemy.slowDebuffStats.speedMultiplier = speedMultiplier
+            this.targetEnemy.slowDebuffStats.timeLeft = duration
+        }
+
     }
 }

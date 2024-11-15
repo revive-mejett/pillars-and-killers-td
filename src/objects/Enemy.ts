@@ -1,8 +1,9 @@
-import Position from "src/ts/types/Position.js";
+import Position from "src/ts/types/Position";
 import { EventDispatcher } from "../utils/EventDispatcher.js"
 import { all1st } from "../utils/Nicknames";
 import { Entity } from "./Entity"
 import * as PIXI from "pixi.js";
+import { TdMap } from "./TdMap";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -81,7 +82,7 @@ export class Enemy extends Entity {
     }
 
 
-    setDistancesToNext(map) {
+    setDistancesToNext(map : TdMap) {
         this.position.x = map.waypoints[this.nextWayPointIndex - 1].x * map.tileSize
         this.position.y = map.waypoints[this.nextWayPointIndex - 1].y * map.tileSize
         this.xToNextWaypoint = (map.waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
@@ -93,7 +94,7 @@ export class Enemy extends Entity {
     }
 
 
-    updateMovement(map, delta) {
+    updateMovement(map : TdMap, delta : number) {
 
         const waypoints = map.waypoints
         const speed = this.speed

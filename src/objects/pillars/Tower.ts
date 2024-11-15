@@ -1,12 +1,13 @@
 
-import Position from "src/ts/types/Position.js";
-import { Vector } from "../../utils/Vector.js"
-import { Entity } from "../Entity.js"
-import { Bullet } from "../projectile/Bullet.js"
+import Position from "src/ts/types/Position";
+import { Vector } from "../../utils/Vector"
+import { Entity } from "../Entity"
+import { Bullet } from "../projectile/Bullet"
 import * as PIXI from "pixi.js";
-import { Enemy } from "../Enemy.js";
-import { Tile } from "../Tile.js";
-import TowerStats from "src/ts/types/TowerStats.js";
+import { Enemy } from "../Enemy";
+import { Tile } from "../Tile";
+import TowerStats from "src/ts/types/TowerStats";
+
 
 //base class for tower
 export class Tower extends Entity {

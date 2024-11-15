@@ -1,8 +1,10 @@
-import TowerStats from "src/ts/types/TowerStats.js";
-import { Tower } from "./Tower.js";
+
+import TowerStats from "src/ts/types/TowerStats";
+import { Tower } from "./Tower";
 
 
 export class BasicPillar extends Tower {
+    towerName: string;
 
 
     /**

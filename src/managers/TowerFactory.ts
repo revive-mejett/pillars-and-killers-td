@@ -1,7 +1,8 @@
+import TowerStats from "src/ts/types/TowerStats.js";
 import { AssetLoader } from "../core/AssetLoader.js";
-import { AdvancedPillar } from "../objects/pillars/AdvancedPillar.js";
-import { BasicPillar } from "../objects/pillars/BasicPillar.js";
-import { IcePillar } from "../objects/pillars/IcePillar.js";
+import { AdvancedPillar } from "../objects/pillars/AdvancedPillar";
+import { BasicPillar } from "../objects/pillars/BasicPillar";
+import { IcePillar } from "../objects/pillars/IcePillar";
 import { UltimatePillar } from "../objects/pillars/UltimatePillar.js";
 
 
@@ -12,7 +13,7 @@ const assetLoader = new AssetLoader()
 export class TowerFactory {
 
 
-    static createTower(x, y, width, height, towerType) {
+    static createTower(x : number, y : number, width : number, height : number, towerType : string) {
 
 
         const towerStats = this.getTowerStats(towerType)
@@ -30,7 +31,7 @@ export class TowerFactory {
         }
     }
 
-    static getTowerStats(towerType) {
+    static getTowerStats(towerType : string) : TowerStats {
         const towerIcons = assetLoader.towers
         const towerTypeStatMap = new Map([
             [
@@ -96,6 +97,6 @@ export class TowerFactory {
             ]
         ])
 
-        return towerTypeStatMap.get(towerType)
+        return towerTypeStatMap.get(towerType) as TowerStats
     }
 }
