@@ -1,10 +1,11 @@
+import { Enemy } from "../Enemy";
 import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
 
 
 export class Projectile extends Entity {
     damage: number;
-    targetEnemy: any;
+    targetEnemy?: Enemy;
     hasHit: boolean;
     updateTicker?: PIXI.Ticker;
     autoStart: boolean;
@@ -14,7 +15,7 @@ export class Projectile extends Entity {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : any, damage : number, colour : string) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : string) {
         super(x, y, width, height);
         this.damage = damage
         this.targetEnemy = targetEnemy
@@ -29,7 +30,7 @@ export class Projectile extends Entity {
         }
     }
 
-    setEnemy(enemy : any) {
+    setEnemy(enemy : Enemy) {
         this.targetEnemy = enemy
     }
 

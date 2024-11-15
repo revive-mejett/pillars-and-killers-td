@@ -1,14 +1,16 @@
-import { Beam } from "../projectile/Beam.js";
-import { Tower } from "./Tower.js";
-
+import TowerStats from "src/ts/types/TowerStats";
+import { Beam } from "../projectile/Beam";
+import { Tower } from "./Tower";
+import * as PIXI from "pixi.js";
 
 export class IcePillar extends Tower {
+    towerName: string;
 
 
     /**
      *
      */
-    constructor(x, y, width, height, towerstats) {
+    constructor(x : number, y : number, width : number, height :number, towerstats : TowerStats) {
         super(x, y, width, height, towerstats);
         this.towerName = "Ice Pillar"
     }
@@ -17,6 +19,7 @@ export class IcePillar extends Tower {
         console.log("ice pillar")
         const gameplaySceneContainer = gameplayScene.container
 
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const towerRef = this
 
         const towerFireCycleTicker = new PIXI.Ticker()
@@ -26,7 +29,7 @@ export class IcePillar extends Tower {
         let cooldown = 0
 
         //spawns an enemy
-        let onTick = () => {
+        const onTick = () => {
 
             if (this.isSold) {
                 console.log("tower sold, sitkcer stop fire")
@@ -45,15 +48,15 @@ export class IcePillar extends Tower {
                     return
                 }
 
-                if (!towerRef.targetedEnemy.isAlive) {
-                    this.targetedEnemy = null
+                if (this.targetedEnemy && !towerRef.targetedEnemy.isAlive) {
+                    this.targetedEnemy = undefined
                     cooldown = 0 //reset cooldown
                     return
                 }
 
                 //check if enemy is no longer in range
                 if (!this.checkEnemyInRange(towerRef.targetedEnemy)) {
-                    this.targetedEnemy = null
+                    this.targetedEnemy = undefined
                     cooldown = 0 //reset cooldown
                     return
                 }
