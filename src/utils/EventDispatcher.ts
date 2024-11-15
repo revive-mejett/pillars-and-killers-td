@@ -1,7 +1,9 @@
 
-let instance = null
+let instance : EventDispatcher | undefined = undefined
 
 export class EventDispatcher {
+    // eslint-disable-next-line no-unused-vars
+    private listeners: { [event: string]: Array<(...args: unknown[]) => unknown> } = {};
 
 
     constructor() {
@@ -15,7 +17,8 @@ export class EventDispatcher {
     }
 
     //register an event handler
-    on(event, callback) {
+    // eslint-disable-next-line no-unused-vars
+    on(event : string, callback : (...args : unknown[]) => unknown) {
         //register handler
         if (!this.listeners[event]) {
             this.listeners[event] = []
@@ -25,7 +28,8 @@ export class EventDispatcher {
     }
 
     //remove an event handler function from the event
-    off(event, callbackToRemove) {
+    // eslint-disable-next-line no-unused-vars
+    off(event : string, callbackToRemove : (...args : unknown[]) => unknown) {
         //if no such event is register
         if (!this.listeners[event]) {
             return
@@ -34,15 +38,15 @@ export class EventDispatcher {
         this.listeners[event].filter(callback => callback !== callbackToRemove)
     }
 
-    fireEvent(event, data) {
+    fireEvent(event : string, data? : unknown) {
         if (!this.listeners[event]) {
-            throw new Error("no such event is registered -- ", event)
+            throw new Error("no such event is registered -- " + event)
         }
         //call all event handlers for that event
         this.listeners[event].forEach(callback => callback(data))
     }
 
-    clearListenersOfEvent(event) {
+    clearListenersOfEvent(event : string) {
         if (!this.listeners[event]) {
             return
         }

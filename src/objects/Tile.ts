@@ -1,6 +1,6 @@
 import { Container } from "pixi.js";
 import { Entity } from "./Entity";
-import { EventDispatcher } from "../utils/EventDispatcher.js";
+import { EventDispatcher } from "../utils/EventDispatcher";
 import TileType from "src/ts/types/TileType";
 import * as PIXI from "pixi.js";
 import { Tower } from "./pillars/Tower";

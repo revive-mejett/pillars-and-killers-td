@@ -1,5 +1,5 @@
 import Position from "src/ts/types/Position";
-import { EventDispatcher } from "../utils/EventDispatcher.js"
+import { EventDispatcher } from "../utils/EventDispatcher"
 import { all1st } from "../utils/Nicknames";
 import { Entity } from "./Entity"
 import * as PIXI from "pixi.js";

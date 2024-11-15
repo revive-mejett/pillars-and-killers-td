@@ -1,15 +1,20 @@
 import { Assets } from "pixi.js"
 
 
-let instance = null
+let instance : AssetLoader | null = null
 
 export class AssetLoader {
+    enemies: {[key: string] : string } | undefined
+    icons: {[key: string] : string } | undefined
+    towers: {[key: string] : string } | undefined
+    otherImages: {[key: string] : string } | undefined
 
 
 
     constructor() {
         //singleton
         if (!instance) {
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
             instance = this
             this.enemies = {}
             this.icons = {}

@@ -1,21 +1,25 @@
 import { Text, TextStyle } from "pixi.js"
-import { UIHelper } from "./UIHelper.js"
-import { EventDispatcher } from "../utils/EventDispatcher.js"
-import { AssetLoader } from "../core/AssetLoader.js"
-import { InfoPanelHealthBar } from "./InfoPanelHealthBar.js"
+import { UIHelper } from "./UIHelper"
+import { EventDispatcher } from "../utils/EventDispatcher"
+import { AssetLoader } from "../core/AssetLoader"
+import { InfoPanelHealthBar } from "./InfoPanelHealthBar"
+import { Tower } from "src/objects/pillars/Tower"
+import * as PIXI from "pixi.js";
+import TowerStats from "src/ts/types/TowerStats"
+import { Enemy } from "src/objects/Enemy"
 
 const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
 export class InfoPanel {
 
-    static createTowerStatsInfoPanel(tower) {
+    static createTowerStatsInfoPanel(tower : Tower) {
         const padding = 5
 
         const infoPanel = new PIXI.Container()
-        const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)
+        const infoPanelOutline = UIHelper.createInfoPanelOutline("0x00FF00")
         infoPanel.addChild(infoPanelOutline)
 
-        const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding)
+        const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding, "0x00FF00")
         currentTowerIcon.x = 160
 
         infoPanel.addChild(currentTowerIcon)
@@ -50,7 +54,7 @@ export class InfoPanel {
 
         //register event listener on sell btn
         sellButton.on("pointerdown", () => {
-            tower.tile.sellTower()
+            tower.tile?.sellTower()
             eventDispatcher.fireEvent("towerSellAction")
         })
 
@@ -58,15 +62,19 @@ export class InfoPanel {
     }
 
 
-    static createTowerGeneralInfoPanel(towerStats) {
+    static createTowerGeneralInfoPanel(towerStats : TowerStats) {
         const infoPanel = new PIXI.Container()
-        const infoPanelOutline = UIHelper.createInfoPanelOutline(0x000077)
+        const infoPanelOutline = UIHelper.createInfoPanelOutline("0x000077")
         infoPanel.addChild(infoPanelOutline)
 
         const padding = 5
 
+        if (!towerStats.info) {
+            throw new Error("No info provided in tower stats")
+        }
 
-        const currentTowerIcon = UIHelper.createIcon(towerStats.assetIcon, padding, padding)
+
+        const currentTowerIcon = UIHelper.createIcon(towerStats.assetIcon, padding, padding, "0X00FF00")
         infoPanel.addChild(currentTowerIcon)
         const towerNameText = new Text(towerStats.info.title, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
         towerNameText.x = 90 + padding
@@ -85,15 +93,20 @@ export class InfoPanel {
     }
 
 
-    static createEnemyStatsInfoPanel(enemy, hud, updateTicker) {
+    static createEnemyStatsInfoPanel(enemy : Enemy, hud : PIXI.Container, updateTicker : PIXI.Ticker) {
+
+        if (!assetLoader.icons) {
+            throw new Error("Assetloader icons is not defined - something went wrong")
+        }
+
 
         const padding = 5
 
         const infoPanel = new PIXI.Container()
-        const infoPanelOutline = UIHelper.createInfoPanelOutline(0xFF0000)
+        const infoPanelOutline = UIHelper.createInfoPanelOutline("0xFF0000")
         infoPanel.addChild(infoPanelOutline)
 
-        const currentEnemyIcon = UIHelper.createIcon(enemy.asset, padding, padding)
+        const currentEnemyIcon = UIHelper.createIcon(enemy.asset, padding, padding, "0x00FF00")
         infoPanel.addChild(currentEnemyIcon)
         currentEnemyIcon.x = 160
 
@@ -134,7 +147,7 @@ export class InfoPanel {
                 updateTicker.stop()
                 hud.clearInfoPanel()
             }
-            UIHelper.updateText(enemyHealthText.children[0], `${enemy.health} / ${enemy.totalHealth}`)
+            UIHelper.updateText(enemyHealthText.children[0] as PIXI.Text, `${enemy.health} / ${enemy.totalHealth}`)
             slowedIndicator.visible = enemy.slowDebuffStats.timeLeft > 0
             healthBar.renderBar(infoPanel)
         }

@@ -1,19 +1,23 @@
 import { Color, Container, Graphics } from "pixi.js";
-import { Entity } from "../objects/Entity.ts";
+import { Entity } from "../objects/Entity";
+import { Enemy } from "src/objects/Enemy";
+import * as PIXI from "pixi.js";
 
 const yOffset = -5
 
 export class HealthBar extends Entity {
+    enemy: Enemy;
+    healthBarContainer: PIXI.Container | undefined;
     /**
      *
      */
-    constructor(x, y, width, height, enemy) {
+    constructor(x : number, y : number, width : number, height : number, enemy : Enemy) {
         super(x, y, width, height);
         this.enemy = enemy
         this.healthBarContainer = undefined
     }
 
-    renderBar(parentContainer) {
+    renderBar(parentContainer : PIXI.Container) {
 
         if (this.enemy === null) {
             return
@@ -53,7 +57,7 @@ export class HealthBar extends Entity {
     }
 
     deleteBar() {
-        this.healthBarContainer.destroy()
+        this.healthBarContainer?.destroy()
     }
 
     getBarColour() {
@@ -61,7 +65,7 @@ export class HealthBar extends Entity {
 
         let red = 0
         let green = 0
-        let blue = 0
+        const blue = 0 //not changing
 
         //ex: if health is 50/100 red must be 255 and green must be 255
         //ex: if health is 100/100 red must be 0 and green must be 255

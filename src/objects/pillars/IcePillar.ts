@@ -48,7 +48,7 @@ export class IcePillar extends Tower {
                     return
                 }
 
-                if (this.targetedEnemy && !towerRef.targetedEnemy.isAlive) {
+                if (!towerRef.targetedEnemy.isAlive) {
                     this.targetedEnemy = undefined
                     cooldown = 0 //reset cooldown
                     return
@@ -62,9 +62,12 @@ export class IcePillar extends Tower {
                 }
 
                 //spawn a beam
-                const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, 0xC7C7FF)
-                beam.render(gameplaySceneContainer)
-                beam.fire(gameplayScene.app.ticker.deltaTime)
+                if (this.targetedEnemy) {
+                    const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, "0xC7C7FF")
+                    beam.render(gameplaySceneContainer)
+                    beam.fire(gameplayScene.app.ticker.deltaTime)
+                }
+
             }
         }
 

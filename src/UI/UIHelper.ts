@@ -1,9 +1,10 @@
 import { Text, TextStyle } from "pixi.js"
+import * as PIXI from "pixi.js";
 
 export class UIHelper {
 
 
-    static createButton(x, y, width, height, text, fontSize, bgColour) {
+    static createButton(x : number, y : number, width : number, height : number, text : string, fontSize : number, bgColour : string) : PIXI.Container {
         const buttonContainer = new PIXI.Container()
         buttonContainer.eventMode = "static"
         buttonContainer.x = x
@@ -22,7 +23,7 @@ export class UIHelper {
         return buttonContainer
     }
 
-    static createText(x, y, text, fontSize, textColour) {
+    static createText(x : number, y : number, text : string, fontSize : number, textColour : string) : PIXI.Container {
         const textContainer = new PIXI.Container()
         textContainer.eventMode = "static"
         textContainer.x = x
@@ -36,14 +37,14 @@ export class UIHelper {
         return textContainer
     }
 
-    static updateText(textObject, newtText) {
+    static updateText(textObject : PIXI.Text, newtText : string) {
         textObject.text = newtText
         textObject.x = (textObject.parent.width - textObject.width) / 2;
         textObject.y = (textObject.parent.height - textObject.height) / 2;
     }
 
     //helper function to create an icon
-    static createIcon(spriteAsset, xPosition, yPosition, hexBackground, width, height) {
+    static createIcon(spriteAsset : PIXI.SpriteSource, xPosition : number, yPosition : number, hexBackground : string, width? : number, height? : number) : PIXI.Container {
         const iconContainer = new PIXI.Container()
         iconContainer.eventMode = "static"
         iconContainer.x = xPosition
@@ -63,7 +64,7 @@ export class UIHelper {
         return iconContainer
     }
 
-    static createInfoPanelOutline(hexColour) {
+    static createInfoPanelOutline(hexColour : string) : PIXI.Graphics {
         const infoPanelOutline = new PIXI.Graphics()
         infoPanelOutline.lineStyle(3, hexColour)
         infoPanelOutline.drawRect(0, 0, 1000 * 0.25, 300)

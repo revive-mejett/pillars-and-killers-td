@@ -1,17 +1,18 @@
 import { Container, Graphics } from "pixi.js";
-import { HealthBar } from "./HealthBar.js";
-
+import { HealthBar } from "./HealthBar";
+import * as PIXI from "pixi.js";
+import { Enemy } from "src/objects/Enemy";
 
 export class InfoPanelHealthBar extends HealthBar {
 
     /**
      *
      */
-    constructor(x, y, width, height, enemy) {
+    constructor(x : number, y : number, width : number, height : number, enemy : Enemy) {
         super(x, y, width, height, enemy);
     }
 
-    renderBar(parentContainer) {
+    renderBar(parentContainer : PIXI.Container) {
 
         if (this.enemy === null) {
             return

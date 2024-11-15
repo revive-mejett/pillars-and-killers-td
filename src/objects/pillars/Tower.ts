@@ -22,6 +22,7 @@ export class Tower extends Entity {
     sprite: PIXI.Sprite;
     targetedEnemy?: Enemy;
     isSold : boolean;
+    towerName : string = "Tower";
 
     tile?: Tile;
 
