@@ -43,6 +43,8 @@ export class AssetLoader {
             "basicPillarTop" : "assets/images/basic_pillar_top.png",
             "icePillar" : "assets/images/frozen_pillar_icon.png",
             "icePillarTop" : "assets/images/frozen_pillar_top.png",
+            "emberPillar" : "assets/images/ember_pillar_icon.png",
+            "emberPillarTop" : "assets/images/ember_pillar_top.png",
             "advancedPillar" : "assets/images/advanced_pillar_icon.png",
             "advancedPillarTop" : "assets/images/advanced_pillar_top.png",
             "ultimatePillar" : "assets/images/ultimate_pillar.png",

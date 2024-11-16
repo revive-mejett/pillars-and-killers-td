@@ -18,9 +18,8 @@ export class GameState {
     }
 
     loseLives(damage : number) {
-        // console.log("before ", this.lives, this.money)
+
         this.lives -= damage
-        // console.log("after ", this.lives, this.money)
         if (this.lives <= 0) {
             this.lives = 0
             eventDispatcher.fireEvent("defeat")
