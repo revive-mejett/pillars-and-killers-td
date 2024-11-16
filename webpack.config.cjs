@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: "./src/app.ts", // Your entry point file
@@ -38,6 +40,10 @@ module.exports = {
             patterns: [
                 { from: "src/assets/", to: "assets/" }
             ]
+        }),
+        new HtmlWebpackPlugin({
+            template: "./index.html", // Path to your HTML template
+            filename: "index.html" // Output file name
         })
     ],
     devServer: {

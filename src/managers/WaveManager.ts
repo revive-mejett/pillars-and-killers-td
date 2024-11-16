@@ -17,10 +17,10 @@ export class WaveManager {
     currentWave: number
     waveInProgress: boolean
     waveTicker: PIXI.Ticker | undefined
+
     /**
      *
      */
-
     constructor(map : TdMap) {
         this.map = map
         this.waves = []

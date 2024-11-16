@@ -81,7 +81,7 @@ export class TowerFactory {
                         description: "Puffs out ember fireballs that damages nearby enemies upon impact"
                     },
                     range: 85,
-                    damage: 8,
+                    damage: 15,
                     fireRate: 0.5,
                     cost: 150
                 }
