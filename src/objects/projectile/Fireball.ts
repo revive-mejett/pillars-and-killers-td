@@ -59,13 +59,6 @@ export class Fireball extends Projectile {
         this.updateTicker?.start()
     }
 
-    updateSpritePosition() {
-        if (!this.graphics) {
-            return
-        }
-        this.graphics.x = this.x
-        this.graphics.y = this.y
-    }
 
     onImpact(enemies : Enemy[], impactPosition : Position, impactRadius : number) {
 
@@ -77,6 +70,17 @@ export class Fireball extends Projectile {
                 enemy.takeDamage(Math.floor(this.damage * ((impactRadius - distanceToImpact/2) / impactRadius)))
             }
         })
+    }
+
+    updateSpritePosition() {
+        if (!this.graphics) {
+            return
+        }
+        if (!this.graphics.visible) {
+            this.graphics.visible = true
+        }
+        this.graphics.x = this.x
+        this.graphics.y = this.y
     }
 
 }

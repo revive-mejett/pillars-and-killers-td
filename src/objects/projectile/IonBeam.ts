@@ -66,4 +66,10 @@ export class IonBeam extends Projectile {
             this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
         }
     }
+
+    render(parentContainer: PIXI.Container): void {
+        if (this.graphics) {
+            parentContainer.addChild(this.graphics)
+        }
+    }
 }

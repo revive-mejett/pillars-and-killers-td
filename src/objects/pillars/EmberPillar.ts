@@ -3,6 +3,9 @@ import { Tower } from "./Tower";
 import { Fireball } from "../projectile/Fireball";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
+import { EventDispatcher } from "../../utils/EventDispatcher";
+
+const eventDispatcher = new EventDispatcher()
 
 export class EmberPillar extends Tower {
     towerName: string;
@@ -16,7 +19,7 @@ export class EmberPillar extends Tower {
         this.towerName = "Ember Akshan"
     }
 
-    runTower(gameplayScene : GameplayScene) {
+    runTower(gameplayScene : GameplayScene) : void {
 
         const gameplaySceneContainer = gameplayScene.container
 
@@ -64,6 +67,10 @@ export class EmberPillar extends Tower {
                 const bullet = new Fireball(this.getCenterPosition().x, this.getCenterPosition().y, 10, 10, this.targetedEnemy, this.damage, "0xFFA700")
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime, gameplayScene.enemiesPresent)
+
+                eventDispatcher.on("gameEnd", () => {
+                    towerFireCycleTicker.stop()
+                })
             }
         }
 

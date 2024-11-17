@@ -69,4 +69,10 @@ export class Beam extends Projectile {
         }
 
     }
+
+    render(parentContainer : PIXI.Container) {
+        if (this.graphics) {
+            parentContainer.addChild(this.graphics)
+        }
+    }
 }

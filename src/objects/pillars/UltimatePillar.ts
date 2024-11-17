@@ -3,6 +3,9 @@ import { Tower } from "./Tower";
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import { IonBeam } from "../projectile/IonBeam";
+import { EventDispatcher } from "../../utils/EventDispatcher";
+
+const eventDispatcher = new EventDispatcher()
 
 export class UltimatePillar extends Tower {
     towerName: string;
@@ -16,7 +19,7 @@ export class UltimatePillar extends Tower {
         this.towerName = "Ultimate Pillar"
     }
 
-    runTower(gameplayScene : GameplayScene) {
+    runTower(gameplayScene : GameplayScene) : void {
         const gameplaySceneContainer = gameplayScene.container
 
         // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -73,5 +76,10 @@ export class UltimatePillar extends Tower {
 
         towerFireCycleTicker.add(onTick)
         towerFireCycleTicker.start()
+
+        eventDispatcher.on("gameEnd", () => {
+            towerFireCycleTicker.stop()
+        })
     }
+
 }
