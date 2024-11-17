@@ -1,4 +1,4 @@
-import TowerStats from "src/ts/types/TowerStats";
+import TowerInfo from "src/ts/types/TowerInfo";
 import { AssetLoader } from "../core/AssetLoader";
 import { AdvancedPillar } from "../objects/pillars/AdvancedPillar";
 import { BasicPillar } from "../objects/pillars/BasicPillar";
@@ -34,7 +34,7 @@ export class TowerFactory {
         }
     }
 
-    static getTowerStats(towerType : string) : TowerStats {
+    static getTowerStats(towerType : string) : TowerInfo {
         const towerIcons = assetLoader.towers
         if (!towerIcons) {
             throw new Error("Assets failed to load")
@@ -118,6 +118,6 @@ export class TowerFactory {
             ]
         ])
 
-        return towerTypeStatMap.get(towerType) as TowerStats
+        return towerTypeStatMap.get(towerType) as TowerInfo
     }
 }

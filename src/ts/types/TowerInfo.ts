@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-type TowerStats = {
+type TowerInfo = {
     range : number,
     damage: number,
     fireRate: number,
@@ -13,4 +13,4 @@ type TowerStats = {
     }
 }
 
-export default TowerStats
+export default TowerInfo

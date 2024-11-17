@@ -5,7 +5,7 @@ import { AssetLoader } from "../core/AssetLoader"
 import { InfoPanelHealthBar } from "./InfoPanelHealthBar"
 import { Tower } from "src/objects/pillars/Tower"
 import * as PIXI from "pixi.js";
-import TowerStats from "src/ts/types/TowerStats"
+import TowerInfo from "src/ts/types/TowerInfo"
 import { Enemy } from "src/objects/Enemy"
 import { HUD } from "./HUD"
 
@@ -63,7 +63,7 @@ export class InfoPanel {
     }
 
 
-    static createTowerGeneralInfoPanel(towerStats : TowerStats) {
+    static createTowerGeneralInfoPanel(towerStats : TowerInfo) {
         const infoPanel = new PIXI.Container()
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0x000077)
         infoPanel.addChild(infoPanelOutline)

@@ -1,4 +1,4 @@
-import TowerStats from "src/ts/types/TowerStats";
+import TowerInfo from "src/ts/types/TowerInfo";
 import { Tower } from "./Tower";
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene";
@@ -14,7 +14,7 @@ export class UltimatePillar extends Tower {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerstats : TowerStats) {
+    constructor(x : number, y : number, width : number, height : number, towerstats : TowerInfo) {
         super(x, y, width, height, towerstats);
         this.towerName = "Ultimate Pillar"
     }

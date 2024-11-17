@@ -1,4 +1,4 @@
-import TowerStats from "src/ts/types/TowerStats";
+import TowerInfo from "src/ts/types/TowerInfo";
 import { Beam } from "../projectile/Beam";
 import { Tower } from "./Tower";
 import * as PIXI from "pixi.js";
@@ -14,7 +14,7 @@ export class IcePillar extends Tower {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height :number, towerstats : TowerStats) {
+    constructor(x : number, y : number, width : number, height :number, towerstats : TowerInfo) {
         super(x, y, width, height, towerstats);
         this.towerName = "Ice Pillar"
     }

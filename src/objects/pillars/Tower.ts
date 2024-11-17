@@ -5,7 +5,7 @@ import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
 import { Enemy } from "../Enemy";
 import { Tile } from "../Tile";
-import TowerStats from "src/ts/types/TowerStats";
+import TowerInfo from "src/ts/types/TowerInfo";
 import { GameplayScene } from "src/scenes/GameplayScene";
 
 
@@ -28,7 +28,7 @@ export abstract class Tower extends Entity {
     tile?: Tile;
 
 
-    constructor(x : number, y : number, width : number, height : number, towerstats : TowerStats) {
+    constructor(x : number, y : number, width : number, height : number, towerstats : TowerInfo) {
         super(x, y, width, height)
 
         this.range = towerstats.range
