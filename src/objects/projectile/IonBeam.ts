@@ -54,7 +54,6 @@ export class IonBeam extends Projectile {
     }
 
     beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamSize : number) {
-        console.log("beam position ion")
         if (this.graphics) {
             this.graphics.clear()
             this.graphics.lineStyle(beamSize, "0xFFFFFF")
@@ -62,6 +61,9 @@ export class IonBeam extends Projectile {
             this.graphics.drawRect(beamOriginPosition.x - this.width,0,this.width, beamOriginPosition.y)
             this.graphics.drawRect(enemyCenterPosition.x - this.width,0,this.width, enemyCenterPosition.y)
             this.graphics.endFill()
+            this.graphics.lineStyle(1, "0x770000")
+            this.graphics.moveTo(beamOriginPosition.x, beamOriginPosition.y)
+            this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
         }
     }
 }
