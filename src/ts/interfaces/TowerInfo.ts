@@ -1,10 +1,6 @@
 import * as PIXI from "pixi.js";
 
-type TowerInfo = {
-    range : number,
-    damage: number,
-    fireRate: number,
-    cost: number,
+interface TowerInfo {
     asset: PIXI.SpriteSource
     assetIcon: PIXI.SpriteSource,
     info?: {
