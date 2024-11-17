@@ -25,7 +25,7 @@ export class WaveManager {
         this.map = map
         this.waves = []
 
-        this.currentWave = 750
+        this.currentWave = 0
         this.waveInProgress = false
         this.loadWaves()
 

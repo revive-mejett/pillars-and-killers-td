@@ -1,4 +1,4 @@
-import { blons, easy1 } from "../utils/MapData"
+import { easy1 } from "../utils/MapData"
 import { Tile } from "./Tile"
 import * as PIXI from "pixi.js";
 
@@ -16,7 +16,7 @@ class TdMap {
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
-        this.waypoints = blons
+        this.waypoints = easy1
     }
 
     displayTiles(container : PIXI.Container) {

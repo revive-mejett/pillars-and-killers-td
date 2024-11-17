@@ -106,11 +106,11 @@ export class UIManager {
             return
         }
         if (selectedTile.tileType !== "grass") {
-            console.log("tile type must be grass");
+            // TODO PUT UI MESSAGE
             return
         }
         if (selectedTile.hasTower) {
-            console.log("already have tower... selling TODO will be coded once sell button is added");
+            // TODO PUT UI MESSAGE
             return
         }
 
