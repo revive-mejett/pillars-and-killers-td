@@ -20,43 +20,47 @@ export class IonBeam extends Projectile {
 
         let elapsedTime = 0
         const sfxIceBeamFire = sound.Sound.from({
-            url: "assets/sounds/sfx/ice_beam.mp3",
+            url: "assets/sounds/sfx/ion_cannon.mp3",
             volume: 0.4
         })
         sfxIceBeamFire.play()
 
-        this.targetEnemy?.takeDamage(this.damage)
+        let enemyPosition = this.targetEnemy?.getCenterPosition()
+        const beamOriginPosition = this.getCenterPosition()
+        this.beamPosition(beamOriginPosition, enemyPosition as Position, 2)
+        let elapsedOnDeath : number = 0
 
         const onTick = () => {
             elapsedTime += deltaTime
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
+                elapsedOnDeath += deltaTime
+            }
+
+            if (elapsedTime >= 5 || elapsedOnDeath >= 5) {
                 this.cleanUpResources()
                 return
             }
 
-            if (elapsedTime >= 10) {
-                this.cleanUpResources()
-                return
+
+
+            if (this.targetEnemy) {
+                enemyPosition = this.targetEnemy?.getCenterPosition()
             }
-
-            const beamOriginPosition = this.getCenterPosition()
-            const enemyCenterPosition = this.targetEnemy.getCenterPosition()
-
-
-            this.beamPosition(beamOriginPosition, enemyCenterPosition, 3 * (10 - elapsedTime)/10)
         }
 
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()
+        this.targetEnemy?.takeDamage(this.damage)
     }
 
     beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamSize : number) {
-
+        console.log("beam position ion")
         if (this.graphics) {
             this.graphics.clear()
-            this.graphics.lineStyle(beamSize, this.colour)
-            this.graphics.beginFill(0x003333)
-            this.graphics.drawRect(beamOriginPosition.x,0, this.width, beamOriginPosition.x)
+            this.graphics.lineStyle(beamSize, "0xFFFFFF")
+            this.graphics.beginFill(this.colour)
+            this.graphics.drawRect(beamOriginPosition.x - this.width,0,this.width, beamOriginPosition.y)
+            this.graphics.drawRect(enemyCenterPosition.x - this.width,0,this.width, enemyCenterPosition.y)
             this.graphics.endFill()
         }
     }
