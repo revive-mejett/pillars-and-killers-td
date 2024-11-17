@@ -197,13 +197,16 @@ export class HUD {
         towerSelectMenu.addChild(basicPillarButton)
         const icePillarButton = UIHelper.createIcon(towerSpriteBundle.icePillar, 80, 0, 0x001122)
         towerSelectMenu.addChild(icePillarButton)
-        const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 160, 0, 0x221100)
+        const emberPillarButton = UIHelper.createIcon(towerSpriteBundle.emberPillar, 160, 0, 0x0D110A)
+        towerSelectMenu.addChild(emberPillarButton)
+        const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 0, 80, 0x221100)
         towerSelectMenu.addChild(advancedPillarButton)
-        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 0, 80, 0x110011)
+        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 80, 80, 0x110011)
         towerSelectMenu.addChild(ultimatePillarButton)
 
         this.towerSelectionButtons.basic = basicPillarButton
         this.towerSelectionButtons.ice = icePillarButton
+        this.towerSelectionButtons.ember = emberPillarButton
         this.towerSelectionButtons.advanced = advancedPillarButton
         this.towerSelectionButtons.ultimate = ultimatePillarButton
     }

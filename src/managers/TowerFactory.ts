@@ -4,6 +4,7 @@ import { AdvancedPillar } from "../objects/pillars/AdvancedPillar";
 import { BasicPillar } from "../objects/pillars/BasicPillar";
 import { IcePillar } from "../objects/pillars/IcePillar";
 import { UltimatePillar } from "../objects/pillars/UltimatePillar";
+import { EmberPillar } from "../objects/pillars/EmberPillar";
 
 
 const assetLoader = new AssetLoader()
@@ -22,6 +23,8 @@ export class TowerFactory {
             return new BasicPillar(x, y, width, height, towerStats)
         case "ice":
             return new IcePillar(x, y, width, height, towerStats)
+        case "ember":
+            return new EmberPillar(x, y, width, height, towerStats)
         case "advanced":
             return new AdvancedPillar(x, y, width, height, towerStats)
         case "ultimate":
@@ -64,8 +67,23 @@ export class TowerFactory {
                     range: 220,
                     damage: 10,
                     fireRate: 1,
-                    cost: 150,
+                    cost: 75,
                     speedMultiplier: 0.8
+                }
+            ],
+            [
+                "ember",
+                {
+                    assetIcon: towerIcons.emberPillar,
+                    asset: towerIcons.emberPillarTop,
+                    info: {
+                        title: "Ember Pillar",
+                        description: "Puffs out ember fireballs that damages nearby enemies upon impact"
+                    },
+                    range: 85,
+                    damage: 8,
+                    fireRate: 0.8,
+                    cost: 150
                 }
             ],
             [

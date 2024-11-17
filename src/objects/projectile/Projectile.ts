@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { Enemy } from "../Enemy";
 import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
 
 
-export class Projectile extends Entity {
+export abstract class Projectile extends Entity {
     damage: number;
     targetEnemy?: Enemy;
     hasHit: boolean;
@@ -34,9 +35,8 @@ export class Projectile extends Entity {
         this.targetEnemy = enemy
     }
 
-    fire(deltaTime : number) {
-        throw new Error("abstract method " + deltaTime)
-    }
+    abstract fire(deltaTime : number, enemies? : Enemy[]) : void
+
 
     render(parentContainer : PIXI.Container) {
         if (this.graphics) {

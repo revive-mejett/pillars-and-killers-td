@@ -122,10 +122,6 @@ export class Tower extends Entity {
         this.targetedEnemy = enemy
     }
 
-    // renderOnTile(tile) {
-    //     tile.container.addChild(this.sprite)
-    // }
-
     findEnemy(enemies : Enemy[]) {
         let bestEnemy = this.targetedEnemy; // Start with current target, if it exists
         enemies.forEach(enemy => {

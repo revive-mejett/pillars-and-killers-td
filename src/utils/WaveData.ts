@@ -11,6 +11,46 @@ const oneEnemy = [
         ]
     )
 ]
+
+const grouped = [
+    new Wave(
+        [
+            {
+                enemy: "greenCircle",
+                count: 50,
+                spacingMillis: 25
+            }
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "blueCircle",
+                count: 50,
+                spacingMillis: 25
+            }
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "purpleCircle",
+                count: 50,
+                spacingMillis: 25
+            }
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "yellowCircle",
+                count: 50,
+                spacingMillis: 25
+            }
+        ]
+    )
+]
+
 const testWaves1 = [
     new Wave(
         [
@@ -265,6 +305,6 @@ const prodWaves = [
     )
 ]
 
-export { oneEnemy, testWaves1, testWaves2, prodWaves }
+export { oneEnemy, grouped, testWaves1, testWaves2, prodWaves }
 
 
