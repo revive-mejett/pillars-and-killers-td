@@ -111,9 +111,9 @@ export class TowerFactory {
                         description: "The next generation using power currently being experimented..."
                     },
                     range: 700,
-                    damage: 1024,
-                    fireRate: 5,
-                    cost: 5800
+                    damage: 8225,
+                    fireRate: 0.4,
+                    cost: 1
                 }
             ]
         ])
