@@ -113,7 +113,7 @@ export class TowerFactory {
                     range: 700,
                     damage: 8225,
                     fireRate: 0.4,
-                    cost: 1
+                    cost: 5800
                 }
             ]
         ])
