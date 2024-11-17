@@ -8,6 +8,7 @@ export class AssetLoader {
     icons: {[key: string] : string } | undefined
     towers: {[key: string] : string } | undefined
     otherImages: {[key: string] : string } | undefined
+    sfx: {[key: string] : string } | undefined
 
 
 
@@ -20,6 +21,7 @@ export class AssetLoader {
             this.icons = {}
             this.towers = {}
             this.otherImages = {}
+            this.sfx = {}
         }
         return instance
     }
@@ -56,6 +58,10 @@ export class AssetLoader {
             "mainTitleImage" : "assets/images/pillars_killers_title_pic.png",
             "gameoverGraveyard" : "assets/images/gameover_rip.png"
         })
+
+        // Assets.addBundle("sfx", {
+        //     "towerBuy" : "assets/sounds/sfx/tower_buy.mp3"
+        // })
     }
 
     async loadEnemySprites() {
@@ -74,6 +80,9 @@ export class AssetLoader {
         this.otherImages = await Assets.loadBundle("otherImages")
     }
 
+    // async loadSfx() {
+    //     this.sfx = await Assets.loadBundle("sfx")
+    // }
 
 
 }
