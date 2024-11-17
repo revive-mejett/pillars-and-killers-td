@@ -67,7 +67,7 @@ export class Fireball extends Projectile {
             const distanceToImpact = new Vector(enemyPosition.x - impactPosition.x, enemyPosition.y - impactPosition.y).magnitude()
 
             if (distanceToImpact <= impactRadius) {
-                enemy.takeDamage(Math.floor(this.damage * ((impactRadius - distanceToImpact) / impactRadius)))
+                enemy.takeDamage(Math.floor(this.damage * ((impactRadius - distanceToImpact/2) / impactRadius)))
             }
         })
     }
