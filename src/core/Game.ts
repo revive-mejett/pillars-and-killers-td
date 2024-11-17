@@ -81,14 +81,14 @@ export class Game {
         this.sceneManager?.transitionScene(gameplayScene)
 
         eventDispatcher.on("mainMenuReturn", () => {
-            console.log(gameplayScene)
+            eventDispatcher.fireEvent("gameEnd")
             this.resetGameplayScene(gameplayScene)
             this.run()
         })
 
         eventDispatcher.on("defeat", () => {
             const mainMenu = new GameOver(this.app)
-            // mainMenu.constructScene(this.sceneContainer)
+            eventDispatcher.fireEvent("gameEnd")
             mainMenu.constructScene()
             this.resetGameplayScene(gameplayScene)
             this.sceneManager?.transitionScene(mainMenu)

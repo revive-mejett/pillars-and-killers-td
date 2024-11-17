@@ -3,6 +3,9 @@ import { Beam } from "../projectile/Beam";
 import { Tower } from "./Tower";
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene";
+import { EventDispatcher } from "../../utils/EventDispatcher";
+
+const eventDispatcher = new EventDispatcher()
 
 export class IcePillar extends Tower {
     towerName: string;
@@ -73,5 +76,9 @@ export class IcePillar extends Tower {
 
         towerFireCycleTicker.add(onTick)
         towerFireCycleTicker.start()
+
+        eventDispatcher.on("gameEnd", () => {
+            towerFireCycleTicker.stop()
+        })
     }
 }
