@@ -2,6 +2,7 @@ import { Vector } from "../../utils/Vector";
 import { Enemy } from "../Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
+import sound from "pixi-sound";
 
 export class Bullet extends Projectile {
     speed: number;
@@ -20,7 +21,11 @@ export class Bullet extends Projectile {
     }
 
     fire(deltaTime : number) {
-
+        const sfxStoneThrow = sound.Sound.from({
+            url: "assets/sounds/sfx/stone_throw.mp3",
+            volume: 1
+        })
+        sfxStoneThrow.play()
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {

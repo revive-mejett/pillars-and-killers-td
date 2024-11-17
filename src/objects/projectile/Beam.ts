@@ -2,6 +2,7 @@ import Position from "src/ts/types/Position";
 import { Enemy } from "../Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
+import sound from "pixi-sound";
 
 export class Beam extends Projectile {
 
@@ -18,6 +19,11 @@ export class Beam extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
+        const sfxIceBeamFire = sound.Sound.from({
+            url: "assets/sounds/sfx/ice_beam.mp3",
+            volume: 0.4
+        })
+        sfxIceBeamFire.play()
 
         this.targetEnemy?.takeDamage(this.damage)
         this.slowEnemy(0.5, 200) //apply the slow

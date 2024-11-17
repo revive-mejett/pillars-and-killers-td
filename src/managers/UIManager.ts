@@ -11,6 +11,8 @@ import { GameplayScene } from "src/scenes/GameplayScene";
 import { Tile } from "src/objects/Tile";
 import { Tower } from "src/objects/pillars/Tower";
 import { Enemy } from "src/objects/Enemy";
+import sound from "pixi-sound";
+
 
 
 const eventDispatcher = new EventDispatcher()
@@ -117,6 +119,21 @@ export class UIManager {
         selectedTile.placeTowerOnTile(tower)
         tower.setTileRef(selectedTile)
         tower.runTower(this.gameplayScene)
+
+
+        const sfxBuy = sound.Sound.from({
+            url: "assets/sounds/sfx/tower_buy.mp3",
+            volume: 0.5
+        })
+        sfxBuy.play()
+        const sfxBuild = sound.Sound.from({
+            url: "assets/sounds/sfx/pillar_build.mp3",
+            volume: 0.25
+        })
+        sfxBuild.play()
+
+
+
         eventDispatcher.fireEvent("towerPlaced", tower)
     }
 
