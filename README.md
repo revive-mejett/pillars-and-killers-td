@@ -19,6 +19,7 @@ A 2D minimalistic styled Tower Defence game of Pillars attacking Killers. The ga
 ## To run
 1. Clone the respository.
 2. Navigate to the **pillars-and-killers-td** directory of the project, `npm i`
-3. After, `npm start` to start a local server
+3. `npm run build`
+4. After, `npm start` to start a local server
 
-4. Server should be running at `http://localhost:6969/`
+5. Server should be running at `http://localhost:6969/`
