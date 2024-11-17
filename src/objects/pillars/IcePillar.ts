@@ -16,7 +16,7 @@ export class IcePillar extends Tower {
         this.towerName = "Ice Pillar"
     }
 
-    runTower(gameplayScene : GameplayScene) {
+    runTower(gameplayScene : GameplayScene) : void {
         const gameplaySceneContainer = gameplayScene.container
 
         // eslint-disable-next-line @typescript-eslint/no-this-alias

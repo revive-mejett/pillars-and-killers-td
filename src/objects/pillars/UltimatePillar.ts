@@ -16,7 +16,7 @@ export class UltimatePillar extends Tower {
         this.towerName = "Ultimate Pillar"
     }
 
-    runTower(gameplayScene : GameplayScene) {
+    runTower(gameplayScene : GameplayScene) : void {
         const gameplaySceneContainer = gameplayScene.container
 
         // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -74,4 +74,5 @@ export class UltimatePillar extends Tower {
         towerFireCycleTicker.add(onTick)
         towerFireCycleTicker.start()
     }
+
 }

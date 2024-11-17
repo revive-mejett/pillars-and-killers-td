@@ -16,7 +16,7 @@ export class EmberPillar extends Tower {
         this.towerName = "Ember Akshan"
     }
 
-    runTower(gameplayScene : GameplayScene) {
+    runTower(gameplayScene : GameplayScene) : void {
 
         const gameplaySceneContainer = gameplayScene.container
 

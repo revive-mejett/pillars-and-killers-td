@@ -25,7 +25,7 @@ export class WaveManager {
         this.map = map
         this.waves = []
 
-        this.currentWave = 0
+        this.currentWave = 75
         this.waveInProgress = false
         this.loadWaves()
 
@@ -113,7 +113,7 @@ export class WaveManager {
                 const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData.health, enemyData.speed, enemyData.damage, enemyData.killValue, enemyData.asset)
                 // spawnedEnemy.zIndex = 3
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
-
+                spawnedEnemy.sprite.visible = false //dont render when first init.
 
                 eventDispatcher.fireEvent("enemySpawn", spawnedEnemy)
 

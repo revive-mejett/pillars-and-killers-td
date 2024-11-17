@@ -41,6 +41,7 @@ export abstract class Projectile extends Entity {
     render(parentContainer : PIXI.Container) {
         if (this.graphics) {
             parentContainer.addChild(this.graphics)
+            this.graphics.visible = false
         }
     }
 

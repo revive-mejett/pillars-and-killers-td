@@ -24,7 +24,8 @@ export default [
             "comma-dangle": ["warn", "never"],  // warn trailing commas
             "curly": "warn",                    // Require curly braces for all control statements
             "no-trailing-spaces": "warn" ,      // warm trailing spaces,
-            'no-undef': 'off'                   // Disable the no-undef rule
-        },
+            "no-undef": "off"                   // Disable the no-undef rule
+            // "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+        }
     }
 ];

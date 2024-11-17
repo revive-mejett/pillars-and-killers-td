@@ -2,7 +2,6 @@
 import Position from "src/ts/types/Position";
 import { Vector } from "../../utils/Vector"
 import { Entity } from "../Entity"
-import { Bullet } from "../projectile/Bullet"
 import * as PIXI from "pixi.js";
 import { Enemy } from "../Enemy";
 import { Tile } from "../Tile";
@@ -10,8 +9,9 @@ import TowerStats from "src/ts/types/TowerStats";
 import { GameplayScene } from "src/scenes/GameplayScene";
 
 
+
 //base class for tower
-export class Tower extends Entity {
+export abstract class Tower extends Entity {
     range: number;
     damage: number;
     fireRate: number;
@@ -52,71 +52,16 @@ export class Tower extends Entity {
         this.isSold = false
         this.tile = undefined
 
-
-        // if (new.target === Tower) {
-        //     throw new Error("Cant instantiate Tower base class")
-        // }
-
     }
+
+    // eslint-disable-next-line no-unused-vars
+    abstract runTower(_gameplayScene : GameplayScene) : void
 
     setTileRef(tile : Tile) {
         this.tile = tile
     }
 
-    runTower(gameplayScene : GameplayScene) {
 
-        const gameplaySceneContainer = gameplayScene.container
-
-
-        const towerFireCycleTicker = new PIXI.Ticker()
-        towerFireCycleTicker.autoStart = false
-
-
-        let cooldown = 0
-
-        //spawns an enemy
-        const onTick = () => {
-
-            if (this.isSold) {
-                console.log("tower sold, sitkcer stop fire")
-                towerFireCycleTicker.stop()
-            }
-
-            cooldown -= towerFireCycleTicker.deltaMS
-            if (cooldown <= 0) {
-                cooldown = 1000 * 1/this.fireRate
-
-
-                // Find the best enemy before firing
-                this.findEnemy(gameplayScene.enemiesPresent);
-                if (!this.targetedEnemy) {
-                    cooldown = 0 //reset cooldown
-                    return
-                }
-
-                if (!this.targetedEnemy.isAlive) {
-                    this.targetedEnemy = undefined
-                    cooldown = 0 //reset cooldown
-                    return
-                }
-
-                //check if enemy is no longer in range
-                if (!this.checkEnemyInRange(this.targetedEnemy)) {
-                    this.targetedEnemy = undefined
-                    cooldown = 0 //reset cooldown
-                    return
-                }
-
-                //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, "0xFFFFFF")
-                bullet.render(gameplaySceneContainer)
-                bullet.fire(gameplayScene.app.ticker.deltaTime)
-            }
-        }
-
-        towerFireCycleTicker.add(onTick)
-        towerFireCycleTicker.start()
-    }
 
     lockInEnemy(enemy : Enemy) {
         this.targetedEnemy = enemy

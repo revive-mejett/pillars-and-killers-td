@@ -59,6 +59,9 @@ export class Bullet extends Projectile {
         if (!this.graphics) {
             return
         }
+        if (!this.graphics.visible) {
+            this.graphics.visible = true
+        }
         this.graphics.x = this.x
         this.graphics.y = this.y
     }

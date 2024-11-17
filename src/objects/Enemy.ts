@@ -98,6 +98,7 @@ export class Enemy extends Entity {
 
         const waypoints = map.waypoints
         const speed = this.speed
+        this.sprite.visible = true
 
 
         if (this.nextWayPointIndex >= waypoints.length) {return}
