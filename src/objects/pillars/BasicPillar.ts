@@ -1,10 +1,9 @@
-
-import TowerInfo from "src/ts/types/TowerInfo";
 import { Tower } from "./Tower";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
 import { Bullet } from "../projectile/Bullet";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import TowerData from "src/ts/types/TowerData";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -15,8 +14,8 @@ export class BasicPillar extends Tower {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerstats : TowerInfo) {
-        super(x, y, width, height, towerstats);
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData) {
+        super(x, y, width, height, towerData);
         this.towerName = "Basic Pillar"
     }
 

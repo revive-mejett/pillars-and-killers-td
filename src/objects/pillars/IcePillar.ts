@@ -1,22 +1,26 @@
-import TowerInfo from "src/ts/types/TowerInfo";
 import { Beam } from "../projectile/Beam";
 import { Tower } from "./Tower";
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import TowerData from "src/ts/types/TowerData";
+import { IcePillarStats } from "src/ts/interfaces/TowerStats";
+import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 
 const eventDispatcher = new EventDispatcher()
 
 export class IcePillar extends Tower {
     towerName: string;
+    speedMultiplier: number;
 
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height :number, towerstats : TowerInfo) {
-        super(x, y, width, height, towerstats);
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<IcePillarStats, TowerInfo>) {
+        super(x, y, width, height, towerData);
         this.towerName = "Ice Pillar"
+        this.speedMultiplier = towerData.towerStats.speedMultiplier
     }
 
     runTower(gameplayScene : GameplayScene) : void {

@@ -5,8 +5,10 @@ import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
 import { Enemy } from "../Enemy";
 import { Tile } from "../Tile";
-import TowerInfo from "src/ts/types/TowerInfo";
 import { GameplayScene } from "src/scenes/GameplayScene";
+import TowerData from "src/ts/types/TowerData";
+import { TowerStats } from "src/ts/interfaces/TowerStats";
+import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 
 
 
@@ -28,17 +30,17 @@ export abstract class Tower extends Entity {
     tile?: Tile;
 
 
-    constructor(x : number, y : number, width : number, height : number, towerstats : TowerInfo) {
+    constructor(x : number, y : number, width : number, height : number, towerdata : TowerData<TowerStats, TowerInfo>) {
         super(x, y, width, height)
 
-        this.range = towerstats.range
-        this.damage = towerstats.damage
-        this.fireRate = towerstats.fireRate
-        this.cost = towerstats.cost
+        this.range = towerdata.towerStats.range
+        this.damage = towerdata.towerStats.damage
+        this.fireRate = towerdata.towerStats.fireRate
+        this.cost = towerdata.towerStats.cost
         this.level = 1
 
-        this.asset = towerstats.asset
-        this.assetIcon = towerstats.assetIcon
+        this.asset = towerdata.towerInfo.asset
+        this.assetIcon = towerdata.towerInfo.assetIcon
 
         this.position = { x: x, y: y }
 
