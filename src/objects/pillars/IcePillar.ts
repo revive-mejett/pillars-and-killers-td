@@ -5,7 +5,7 @@ import { GameplayScene } from "src/scenes/GameplayScene";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
 import { IcePillarStats } from "src/ts/interfaces/TowerStats";
-import { TowerInfo } from "src/ts/interfaces/TowerInfo";
+import { IcePillarInfo } from "src/ts/interfaces/TowerInfo";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -17,7 +17,7 @@ export class IcePillar extends Tower {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<IcePillarStats, TowerInfo>) {
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<IcePillarStats, IcePillarInfo>) {
         super(x, y, width, height, towerData);
         this.towerName = "Ice Pillar"
         this.speedMultiplier = towerData.towerStats.speedMultiplier

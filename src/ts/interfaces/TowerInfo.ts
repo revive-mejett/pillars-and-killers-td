@@ -9,4 +9,15 @@ interface TowerInfo {
     }
 }
 
-export default TowerInfo
+interface IcePillarInfo extends TowerInfo {
+    asset: PIXI.SpriteSource
+    assetIcon: PIXI.SpriteSource,
+    info?: {
+        title: string,
+        description: string
+    }
+}
+
+
+
+export { TowerInfo, IcePillarInfo }

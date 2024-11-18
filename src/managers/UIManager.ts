@@ -91,7 +91,7 @@ export class UIManager {
             const towerButton = buttonEntry[1]
             towerButton.on("pointerdown", () => {
                 this.setSelectedTowerType(towerTypeKey)
-                this.hud.updateTowerDescriptionUI(TowerFactory.getTowerStats(towerTypeKey))
+                this.hud.updateTowerDescriptionUI(TowerFactory.getTowerData(towerTypeKey))
             })
         })
     }
@@ -101,7 +101,7 @@ export class UIManager {
             return
         }
 
-        const towerCost = TowerFactory.getTowerStats(this.selectedTowerType).cost
+        const towerCost = TowerFactory.getTowerData(this.selectedTowerType).towerStats.cost
         if (this.gamestate.money < towerCost) {
             return
         }

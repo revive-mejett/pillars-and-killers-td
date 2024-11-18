@@ -1,21 +1,18 @@
-import TowerInfo from "src/ts/interfaces/TowerInfo";
+
 import { AssetLoader } from "../core/AssetLoader";
 import { AdvancedPillar } from "../objects/pillars/AdvancedPillar";
 import { BasicPillar } from "../objects/pillars/BasicPillar";
 import { IcePillar } from "../objects/pillars/IcePillar";
 import { UltimatePillar } from "../objects/pillars/UltimatePillar";
 import { EmberPillar } from "../objects/pillars/EmberPillar";
-import TowerStats from "src/ts/interfaces/TowerStats";
+import TowerData from "src/ts/types/TowerData";
+import { IcePillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
+import { IcePillarInfo, TowerInfo } from "src/ts/interfaces/TowerInfo";
+
 
 
 const assetLoader = new AssetLoader()
 
-type TowerData = {
-    towerStats : TowerStats
-    towerInfo: TowerInfo,
-    upgrades: TowerStats[]
-    visualUpgrades: TowerInfo[]
-}
 
 export class TowerFactory {
 
@@ -23,29 +20,29 @@ export class TowerFactory {
     static createTower(x : number, y : number, width : number, height : number, towerType : string) {
 
 
-        const towerStats = this.getTowerStats(towerType)
+        const towerData = this.getTowerData(towerType)
         switch (towerType) {
         case "basic":
-            return new BasicPillar(x, y, width, height, towerStats)
+            return new BasicPillar(x, y, width, height, towerData)
         case "ice":
-            return new IcePillar(x, y, width, height, towerStats)
+            return new IcePillar(x, y, width, height, towerData as TowerData<IcePillarStats, IcePillarInfo>)
         case "ember":
-            return new EmberPillar(x, y, width, height, towerStats)
+            return new EmberPillar(x, y, width, height, towerData)
         case "advanced":
-            return new AdvancedPillar(x, y, width, height, towerStats)
+            return new AdvancedPillar(x, y, width, height, towerData)
         case "ultimate":
-            return new UltimatePillar(x, y, width, height, towerStats)
+            return new UltimatePillar(x, y, width, height, towerData)
         default:
-            return new BasicPillar(x, y, width, height, towerStats)
+            return new BasicPillar(x, y, width, height, towerData)
         }
     }
 
-    static getTowerStats(towerType : string) : TowerInfo {
+    static getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : string) : TowerData<S, I> {
         const towerIcons = assetLoader.towers
         if (!towerIcons) {
             throw new Error("Assets failed to load")
         }
-        const towerTypeStatMap : Map<string, TowerData>  = new Map([
+        const towerTypeStatMap : Map<string, TowerData<TowerStats, TowerInfo>>  = new Map([
             [
                 "basic",
                 {
@@ -70,7 +67,7 @@ export class TowerFactory {
             [
                 "ice",
                 {
-                    towerStats: {
+                    towerStats : {
                         range: 220,
                         damage : 10,
                         fireRate : 1,
@@ -125,11 +122,11 @@ export class TowerFactory {
                         info: {
                             title: "Advanced Pillar",
                             description: "This pillar is made with advanced material and can deal great damage to the strongest killers."
-                        },
+                        }
                     },
                     upgrades: [],
                     visualUpgrades: []
-                },
+                }
             ],
             [
                 "ultimate",
@@ -154,6 +151,6 @@ export class TowerFactory {
             ]
         ])
 
-        return towerTypeStatMap.get(towerType) as TowerInfo
+        return towerTypeStatMap.get(towerType) as TowerData<S, I>
     }
 }

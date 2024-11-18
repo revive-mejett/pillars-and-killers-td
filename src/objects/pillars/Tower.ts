@@ -25,9 +25,14 @@ export abstract class Tower extends Entity {
     sprite: PIXI.Sprite;
     targetedEnemy?: Enemy;
     isSold : boolean;
+
+    upgrades: TowerStats[];
+    visualUpgrades: TowerInfo[];
+
     towerName : string = "Tower";
 
     tile?: Tile;
+
 
 
     constructor(x : number, y : number, width : number, height : number, towerdata : TowerData<TowerStats, TowerInfo>) {
@@ -38,6 +43,8 @@ export abstract class Tower extends Entity {
         this.fireRate = towerdata.towerStats.fireRate
         this.cost = towerdata.towerStats.cost
         this.level = 1
+        this.upgrades = towerdata.upgrades
+        this.visualUpgrades = towerdata.visualUpgrades
 
         this.asset = towerdata.towerInfo.asset
         this.assetIcon = towerdata.towerInfo.assetIcon
