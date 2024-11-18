@@ -20,10 +20,10 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             "basic",
             {
                 towerStats: {
-                    range: 150,
+                    range: 100,
                     damage: 5,
                     fireRate: 1,
-                    cost: 50
+                    cost: 25
                 },
                 towerInfo: {
                     assetIcon: towerIcons.basicPillarIcon,
@@ -36,28 +36,28 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     bulletSize: 2,
                 },
                 upgrades: [{
-                    range: 175,
+                    range: 125,
                     damage: 10,
                     fireRate: 1,
-                    cost: 100
+                    cost: 25
                 },
                 {
-                    range: 200,
+                    range: 150,
                     damage: 15,
                     fireRate: 1,
-                    cost: 150
+                    cost: 50
                 },
                 {
-                    range: 225,
+                    range: 175,
                     damage: 20,
                     fireRate: 1,
-                    cost: 200
+                    cost: 100
                 },
                 {
                     range: 250,
                     damage: 25,
                     fireRate: 1,
-                    cost: 250
+                    cost: 200
                 }],
                 visualUpgrades: [{
                     assetIcon: towerIcons.basicPillarIcon,
