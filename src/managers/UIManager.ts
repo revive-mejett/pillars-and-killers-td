@@ -154,7 +154,6 @@ export class UIManager {
             // TODO PUT UI MESSAGE
             return
         }
-        console.log(selectedTile)
 
         eventDispatcher.fireEvent("purchaseSuccessful1", upgradeCost)
         selectedTile.tower.upgrade()

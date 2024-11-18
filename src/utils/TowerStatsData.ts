@@ -9,23 +9,23 @@ import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 const assetLoader = new AssetLoader()
 
 
-function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : string) : TowerData<S, I> {
+function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: string): TowerData<S, I> {
     const towerIcons = assetLoader.towers
     if (!towerIcons) {
         throw new Error("Assets failed to load")
     }
 
-    const towerTypeStatMap : Map<string, TowerData<TowerStats, TowerInfo>>  = new Map([
+    const towerTypeStatMap: Map<string, TowerData<TowerStats, TowerInfo>> = new Map([
         [
             "basic",
             {
                 towerStats: {
                     range: 150,
-                    damage : 5,
-                    fireRate : 1,
+                    damage: 5,
+                    fireRate: 1,
                     cost: 50
                 },
-                towerInfo : {
+                towerInfo: {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     info: {
@@ -37,29 +37,66 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
                 },
                 upgrades: [{
                     range: 175,
-                    damage : 10,
-                    fireRate : 1,
+                    damage: 10,
+                    fireRate: 1,
                     cost: 100
+                },
+                {
+                    range: 200,
+                    damage: 15,
+                    fireRate: 1,
+                    cost: 150
+                },
+                {
+                    range: 225,
+                    damage: 20,
+                    fireRate: 1,
+                    cost: 200
+                },
+                {
+                    range: 250,
+                    damage: 25,
+                    fireRate: 1,
+                    cost: 250
                 }],
                 visualUpgrades: [{
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x004400,
+                    bulletSize: 2,
+                },
+                {
+                    assetIcon: towerIcons.basicPillarIcon,
+                    asset: towerIcons.basicPillarTop,
+                    tileColour: 0x000066,
                     bulletSize: 3,
-                }]
+                },
+                {
+                    assetIcon: towerIcons.basicPillarIcon,
+                    asset: towerIcons.basicPillarTop,
+                    tileColour: 0x990000,
+                    bulletSize: 4,
+                },
+                {
+                    assetIcon: towerIcons.basicPillarIcon,
+                    asset: towerIcons.basicPillarTop,
+                    tileColour: 0xE7E7E7,
+                    bulletSize: 5,
+                }
+                ]
             }
         ],
         [
             "ice",
             {
-                towerStats : {
+                towerStats: {
                     range: 220,
-                    damage : 10,
-                    fireRate : 1,
+                    damage: 10,
+                    fireRate: 1,
                     cost: 75,
                     speedMultiplier: 0.8
                 },
-                towerInfo : {
+                towerInfo: {
                     assetIcon: towerIcons.icePillar,
                     asset: towerIcons.icePillarTop,
                     info: {
@@ -77,11 +114,11 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
             {
                 towerStats: {
                     range: 85,
-                    damage : 8,
-                    fireRate : 0.8,
+                    damage: 8,
+                    fireRate: 0.8,
                     cost: 150
                 },
-                towerInfo : {
+                towerInfo: {
                     assetIcon: towerIcons.emberPillar,
                     asset: towerIcons.emberPillarTop,
                     info: {
@@ -99,11 +136,11 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
             {
                 towerStats: {
                     range: 300,
-                    damage : 275,
-                    fireRate : 2,
+                    damage: 275,
+                    fireRate: 2,
                     cost: 850
                 },
-                towerInfo : {
+                towerInfo: {
                     assetIcon: towerIcons.advancedPillar,
                     asset: towerIcons.advancedPillarTop,
                     info: {
@@ -121,11 +158,11 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
             {
                 towerStats: {
                     range: 700,
-                    damage : 8225,
-                    fireRate : 0.4,
+                    damage: 8225,
+                    fireRate: 0.4,
                     cost: 5800
                 },
-                towerInfo : {
+                towerInfo: {
                     assetIcon: towerIcons.ultimatePillar,
                     asset: towerIcons.ultimatePillarTop,
                     info: {

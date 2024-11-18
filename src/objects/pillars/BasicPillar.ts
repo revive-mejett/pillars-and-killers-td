@@ -4,6 +4,8 @@ import * as PIXI from "pixi.js";
 import { Bullet } from "../projectile/Bullet";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
+import { TowerStats } from "src/ts/interfaces/TowerStats";
+import { BasicPillarInfo } from "src/ts/interfaces/TowerInfo";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -14,7 +16,7 @@ export class BasicPillar extends Tower {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerData : TowerData) {
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, BasicPillarInfo>) {
         super(x, y, width, height, towerData);
         this.towerName = "Basic Pillar"
         this.bulletSize = towerData.towerInfo.bulletSize
@@ -80,8 +82,7 @@ export class BasicPillar extends Tower {
     }
 
     upgrade(): void {
-        console.log("upgrade harry")
-        if (this.level < this.upgrades.length - 1) {
+        if (this.level > this.upgrades.length) {
             return
         }
         const index = this.level - 1
@@ -93,7 +94,7 @@ export class BasicPillar extends Tower {
         this.cost += newStats.cost
         this.level++
 
-        const newVisualStats = this.visualUpgrades[index]
+        const newVisualStats = this.visualUpgrades[index] as BasicPillarInfo
         this.tileColour = newVisualStats.tileColour
         this.bulletSize = newVisualStats.bulletSize
     }

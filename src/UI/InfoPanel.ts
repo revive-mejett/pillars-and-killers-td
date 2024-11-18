@@ -16,8 +16,6 @@ export class InfoPanel {
     static createTowerStatsInfoPanel(tower : Tower) {
         const padding = 5
         const isUpgradable = tower.level <= tower.upgrades.length
-        console.log(tower.level)
-        console.log(tower.upgrades.length - 1)
 
         const infoPanel = new PIXI.Container()
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)

@@ -10,10 +10,15 @@ interface TowerInfo {
     tileColour: number,
 }
 
+interface BasicPillarInfo extends TowerInfo {
+    bulletSize: number
+}
+
+
 interface IcePillarInfo extends TowerInfo {
     beamWidth: number
 }
 
 
 
-export { TowerInfo, IcePillarInfo }
+export { TowerInfo, BasicPillarInfo, IcePillarInfo }
