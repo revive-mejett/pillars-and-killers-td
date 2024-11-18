@@ -12,6 +12,7 @@ import { Tile } from "src/objects/Tile";
 import { Tower } from "src/objects/pillars/Tower";
 import { Enemy } from "src/objects/Enemy";
 import sound from "pixi-sound";
+import { getTowerData } from "../utils/TowerStatsData";
 
 
 
@@ -91,7 +92,7 @@ export class UIManager {
             const towerButton = buttonEntry[1]
             towerButton.on("pointerdown", () => {
                 this.setSelectedTowerType(towerTypeKey)
-                this.hud.updateTowerDescriptionUI(TowerFactory.getTowerData(towerTypeKey))
+                this.hud.updateTowerDescriptionUI(getTowerData(towerTypeKey))
             })
         })
     }
@@ -101,7 +102,7 @@ export class UIManager {
             return
         }
 
-        const towerCost = TowerFactory.getTowerData(this.selectedTowerType).towerStats.cost
+        const towerCost = getTowerData(this.selectedTowerType).towerStats.cost
         if (this.gamestate.money < towerCost) {
             return
         }
