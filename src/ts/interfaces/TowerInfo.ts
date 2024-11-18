@@ -7,15 +7,11 @@ interface TowerInfo {
         title: string,
         description: string
     }
+    tileColour: number,
 }
 
 interface IcePillarInfo extends TowerInfo {
-    asset: PIXI.SpriteSource
-    assetIcon: PIXI.SpriteSource,
-    info?: {
-        title: string,
-        description: string
-    }
+    beamWidth: number
 }
 
 

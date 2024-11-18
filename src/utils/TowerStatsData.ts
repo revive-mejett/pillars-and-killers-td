@@ -31,7 +31,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
                     info: {
                         title: "Basic Pillar",
                         description: "Cheap pillar good against weak killers. Decent hand pick for the early rounds."
-                    }
+                    },
+                    tileColour: 0x222222
                 },
                 upgrades: [],
                 visualUpgrades: []
@@ -53,7 +54,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
                     info: {
                         title: "Ice Pillar",
                         description: "Fires chily ice bolts that slows down killers."
-                    }
+                    },
+                    tileColour: 0x222222
                 },
                 upgrades: [],
                 visualUpgrades: []
@@ -74,7 +76,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
                     info: {
                         title: "Ember Pillar",
                         description: "Puffs out ember fireballs that damages nearby enemies upon impact"
-                    }
+                    },
+                    tileColour: 0x222222
                 },
                 upgrades: [],
                 visualUpgrades: []
@@ -95,7 +98,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
                     info: {
                         title: "Advanced Pillar",
                         description: "This pillar is made with advanced material and can deal great damage to the strongest killers."
-                    }
+                    },
+                    tileColour: 0x222222,
                 },
                 upgrades: [],
                 visualUpgrades: []
@@ -116,7 +120,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
                     info: {
                         title: "Ultimate Pillar",
                         description: "The next generation using power currently being experimented..."
-                    }
+                    },
+                    tileColour: 0x222222
                 },
                 upgrades: [],
                 visualUpgrades: []

@@ -32,6 +32,7 @@ export abstract class Tower extends Entity {
     towerName : string = "Tower";
 
     tile?: Tile;
+    tileColour: number;
 
 
 
@@ -48,6 +49,7 @@ export abstract class Tower extends Entity {
 
         this.asset = towerdata.towerInfo.asset
         this.assetIcon = towerdata.towerInfo.assetIcon
+        this.tileColour = towerdata.towerInfo.tileColour
 
         this.position = { x: x, y: y }
 
