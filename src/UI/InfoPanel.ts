@@ -15,6 +15,9 @@ export class InfoPanel {
 
     static createTowerStatsInfoPanel(tower : Tower) {
         const padding = 5
+        const isUpgradable = tower.level <= tower.upgrades.length
+        console.log(tower.level)
+        console.log(tower.upgrades.length - 1)
 
         const infoPanel = new PIXI.Container()
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)
@@ -36,8 +39,7 @@ export class InfoPanel {
         const towerFireRateText = UIHelper.createText(0 + padding, 110 + padding,`fire rate: ${tower.fireRate}`, 20, "0xFFC7FF")
         infoPanel.addChild(towerFireRateText)
 
-
-        const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $9999999${padding}`, 20, "0xFFFF00")
+        const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $${isUpgradable ? tower.upgrades[tower.level - 1].cost : "N/A"}`, 20, "0xFFFF00")
         infoPanel.addChild(upgradeCostText)
 
         const sellValuePercentage = 60
@@ -47,17 +49,28 @@ export class InfoPanel {
         infoPanel.addChild(sellValueText)
 
         //upgrade/sell btns
-        const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, 0x33FF33)
-        infoPanel.addChild(upgradeButton)
+        if (isUpgradable) {
+            const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, 0x33FF33)
+            infoPanel.addChild(upgradeButton)
+            //register event listener on upgrade btn
+            upgradeButton.on("pointerdown", () => {
+                if (isUpgradable) {
+                    eventDispatcher.fireEvent("towerUpgradeAction", tower.tile)
+                }
+            })
+        }
+
+
         const sellButton = UIHelper.createButton(80 + padding, 260, 150, 30, "Sell", 20, 0xFF3333)
         infoPanel.addChild(sellButton)
-
 
         //register event listener on sell btn
         sellButton.on("pointerdown", () => {
             tower.tile?.sellTower()
             eventDispatcher.fireEvent("towerSellAction")
         })
+
+
 
         return infoPanel
     }

@@ -80,6 +80,7 @@ export class BasicPillar extends Tower {
     }
 
     upgrade(): void {
+        console.log("upgrade harry")
         if (this.level < this.upgrades.length - 1) {
             return
         }
@@ -89,7 +90,7 @@ export class BasicPillar extends Tower {
         this.range = newStats.range
         this.damage = newStats.damage
         this.fireRate = newStats.fireRate
-        this.cost = newStats.cost
+        this.cost += newStats.cost
         this.level++
 
         const newVisualStats = this.visualUpgrades[index]

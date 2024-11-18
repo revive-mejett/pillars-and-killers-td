@@ -45,6 +45,8 @@ export class UIManager {
 
         eventDispatcher.on("towerSelectAction", this.displaySelectedTowerInfo.bind(this))
 
+        eventDispatcher.on("towerUpgradeAction", this.handleTowerUpgradePurchase.bind(this))
+
         eventDispatcher.on("towerSellAction", () => this.hud.clearInfoPanel())
 
         eventDispatcher.on("enemySelectAction", this.displaySelectedEnemyInfo.bind(this))
@@ -99,6 +101,7 @@ export class UIManager {
 
     handleTowerPurchase(selectedTile : Tile) {
         if (!this.selectedTowerType) {
+            // TODO PUT UI MESSAGE
             return
         }
 
@@ -136,6 +139,39 @@ export class UIManager {
 
 
         eventDispatcher.fireEvent("towerPlaced", tower)
+    }
+
+    handleTowerUpgradePurchase(selectedTile : Tile) {
+        if (!selectedTile.tower) {
+            return
+        }
+
+        const upgradeCost = selectedTile.tower?.upgrades[selectedTile.tower.level - 1].cost
+        if (this.gamestate.money < upgradeCost) {
+            return
+        }
+        if (!selectedTile.hasTower) {
+            // TODO PUT UI MESSAGE
+            return
+        }
+        console.log(selectedTile)
+
+        eventDispatcher.fireEvent("purchaseSuccessful1", upgradeCost)
+        selectedTile.tower.upgrade()
+
+
+        const sfxBuy = sound.Sound.from({
+            url: "assets/sounds/sfx/tower_buy.mp3",
+            volume: 0.5
+        })
+        sfxBuy.play()
+        const sfxBuild = sound.Sound.from({
+            url: "assets/sounds/sfx/pillar_build.mp3",
+            volume: 0.25
+        })
+        sfxBuild.play()
+        selectedTile.renderTower()
+        this.displaySelectedTowerInfo(selectedTile.tower)
     }
 
     displaySelectedTowerInfo(tower : Tower) {
