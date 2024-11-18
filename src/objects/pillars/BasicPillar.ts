@@ -9,7 +9,7 @@ const eventDispatcher = new EventDispatcher()
 
 export class BasicPillar extends Tower {
     towerName: string;
-
+    bulletSize: number
 
     /**
      *
@@ -17,6 +17,7 @@ export class BasicPillar extends Tower {
     constructor(x : number, y : number, width : number, height : number, towerData : TowerData) {
         super(x, y, width, height, towerData);
         this.towerName = "Basic Pillar"
+        this.bulletSize = towerData.towerInfo.bulletSize
     }
 
     runTower(gameplayScene : GameplayScene) {
@@ -64,7 +65,7 @@ export class BasicPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, "0xFFFFFF")
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, "0xFFFFFF")
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
@@ -77,4 +78,23 @@ export class BasicPillar extends Tower {
             towerFireCycleTicker.stop()
         })
     }
+
+    upgrade(): void {
+        if (this.level < this.upgrades.length - 1) {
+            return
+        }
+        const index = this.level - 1
+        const newStats = this.upgrades[index]
+
+        this.range = newStats.range
+        this.damage = newStats.damage
+        this.fireRate = newStats.fireRate
+        this.cost = newStats.cost
+        this.level++
+
+        const newVisualStats = this.visualUpgrades[index]
+        this.tileColour = newVisualStats.tileColour
+        this.bulletSize = newVisualStats.bulletSize
+    }
+
 }

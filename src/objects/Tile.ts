@@ -9,7 +9,7 @@ import { Tower } from "./pillars/Tower";
 const eventDispatcher = new EventDispatcher()
 
 export class Tile extends Entity {
-    tileType: string;
+    tileType: TileType;
     hasTower: boolean;
     container?: PIXI.Container;
     parentContainer: Container<PIXI.DisplayObject>;

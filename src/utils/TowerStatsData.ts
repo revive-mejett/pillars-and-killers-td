@@ -21,7 +21,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
             {
                 towerStats: {
                     range: 150,
-                    damage : 10,
+                    damage : 5,
                     fireRate : 1,
                     cost: 50
                 },
@@ -32,10 +32,21 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType : str
                         title: "Basic Pillar",
                         description: "Cheap pillar good against weak killers. Decent hand pick for the early rounds."
                     },
-                    tileColour: 0x222222
+                    tileColour: 0x222222,
+                    bulletSize: 2,
                 },
-                upgrades: [],
-                visualUpgrades: []
+                upgrades: [{
+                    range: 175,
+                    damage : 10,
+                    fireRate : 1,
+                    cost: 100
+                }],
+                visualUpgrades: [{
+                    assetIcon: towerIcons.basicPillarIcon,
+                    asset: towerIcons.basicPillarTop,
+                    tileColour: 0x004400,
+                    bulletSize: 3,
+                }]
             }
         ],
         [

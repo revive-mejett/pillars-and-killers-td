@@ -10,6 +10,7 @@ import { IcePillarInfo } from "src/ts/interfaces/TowerInfo";
 const eventDispatcher = new EventDispatcher()
 
 export class IcePillar extends Tower {
+
     towerName: string;
     speedMultiplier: number;
 
@@ -84,5 +85,9 @@ export class IcePillar extends Tower {
         eventDispatcher.on("gameEnd", () => {
             towerFireCycleTicker.stop()
         })
+    }
+
+    upgrade(): void {
+        throw new Error("Method not implemented.");
     }
 }

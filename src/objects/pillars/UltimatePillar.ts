@@ -10,7 +10,6 @@ const eventDispatcher = new EventDispatcher()
 export class UltimatePillar extends Tower {
     towerName: string;
 
-
     /**
      *
      */
@@ -81,5 +80,10 @@ export class UltimatePillar extends Tower {
             towerFireCycleTicker.stop()
         })
     }
+
+    upgrade(): void {
+        throw new Error("Method not implemented.");
+    }
+
 
 }

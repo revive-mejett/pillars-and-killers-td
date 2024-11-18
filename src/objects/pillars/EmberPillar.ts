@@ -8,9 +8,8 @@ import TowerData from "src/ts/types/TowerData";
 const eventDispatcher = new EventDispatcher()
 
 export class EmberPillar extends Tower {
+
     towerName: string;
-
-
     /**
      *
      */
@@ -76,5 +75,9 @@ export class EmberPillar extends Tower {
 
         towerFireCycleTicker.add(onTick)
         towerFireCycleTicker.start()
+    }
+
+    upgrade(): void {
+        throw new Error("Method not implemented.");
     }
 }

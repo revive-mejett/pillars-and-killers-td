@@ -109,4 +109,6 @@ export abstract class Tower extends Entity {
         const towerEnemyVector = new Vector(enemyCenterPosition.x - towerCenterPosition.x, enemyCenterPosition.y - towerCenterPosition.y)
         return towerEnemyVector.magnitude() <= this.range
     }
+
+    abstract upgrade() : void
 }

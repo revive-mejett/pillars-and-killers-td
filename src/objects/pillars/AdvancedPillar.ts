@@ -9,6 +9,7 @@ const eventDispatcher = new EventDispatcher()
 
 export class AdvancedPillar extends Tower {
 
+
     towerName: string;
 
 
@@ -77,5 +78,9 @@ export class AdvancedPillar extends Tower {
         eventDispatcher.on("gameEnd", () => {
             towerFireCycleTicker.stop()
         })
+    }
+
+    upgrade(): void {
+        throw new Error("Method not implemented.");
     }
 }
