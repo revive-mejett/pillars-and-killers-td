@@ -5,9 +5,9 @@ import { AssetLoader } from "../core/AssetLoader"
 import { InfoPanelHealthBar } from "./InfoPanelHealthBar"
 import { Tower } from "src/objects/pillars/Tower"
 import * as PIXI from "pixi.js";
-import TowerStats from "src/ts/types/TowerStats"
 import { Enemy } from "src/objects/Enemy"
 import { HUD } from "./HUD"
+import TowerData from "src/ts/types/TowerData"
 
 const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
@@ -15,6 +15,7 @@ export class InfoPanel {
 
     static createTowerStatsInfoPanel(tower : Tower) {
         const padding = 5
+        const isUpgradable = tower.level <= tower.upgrades.length
 
         const infoPanel = new PIXI.Container()
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)
@@ -36,8 +37,7 @@ export class InfoPanel {
         const towerFireRateText = UIHelper.createText(0 + padding, 110 + padding,`fire rate: ${tower.fireRate}`, 20, "0xFFC7FF")
         infoPanel.addChild(towerFireRateText)
 
-
-        const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $9999999${padding}`, 20, "0xFFFF00")
+        const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $${isUpgradable ? tower.upgrades[tower.level - 1].cost : "N/A"}`, 20, "0xFFFF00")
         infoPanel.addChild(upgradeCostText)
 
         const sellValuePercentage = 60
@@ -47,11 +47,20 @@ export class InfoPanel {
         infoPanel.addChild(sellValueText)
 
         //upgrade/sell btns
-        const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, 0x33FF33)
-        infoPanel.addChild(upgradeButton)
+        if (isUpgradable) {
+            const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, 0x33FF33)
+            infoPanel.addChild(upgradeButton)
+            //register event listener on upgrade btn
+            upgradeButton.on("pointerdown", () => {
+                if (isUpgradable) {
+                    eventDispatcher.fireEvent("towerUpgradeAction", tower.tile)
+                }
+            })
+        }
+
+
         const sellButton = UIHelper.createButton(80 + padding, 260, 150, 30, "Sell", 20, 0xFF3333)
         infoPanel.addChild(sellButton)
-
 
         //register event listener on sell btn
         sellButton.on("pointerdown", () => {
@@ -59,33 +68,35 @@ export class InfoPanel {
             eventDispatcher.fireEvent("towerSellAction")
         })
 
+
+
         return infoPanel
     }
 
 
-    static createTowerGeneralInfoPanel(towerStats : TowerStats) {
+    static createTowerGeneralInfoPanel(towerData : TowerData) {
         const infoPanel = new PIXI.Container()
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0x000077)
         infoPanel.addChild(infoPanelOutline)
 
         const padding = 5
 
-        if (!towerStats.info) {
+        if (!towerData.towerInfo.info) {
             throw new Error("No info provided in tower stats")
         }
 
 
-        const currentTowerIcon = UIHelper.createIcon(towerStats.assetIcon, padding, padding, 0X000000)
+        const currentTowerIcon = UIHelper.createIcon(towerData.towerInfo.assetIcon, padding, padding, 0X000000)
         infoPanel.addChild(currentTowerIcon)
-        const towerNameText = new Text(towerStats.info.title, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
+        const towerNameText = new Text(towerData.towerInfo.info.title, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
         towerNameText.x = 90 + padding
         towerNameText.y = 0 + padding
         infoPanel.addChild(towerNameText)
-        const towerPriceText = new Text(`$${towerStats.cost}`, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFF00, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25 }))
+        const towerPriceText = new Text(`$${towerData.towerStats.cost}`, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFF00, align: "center", wordWrap: true, wordWrapWidth: 1000 * 0.25 }))
         towerPriceText.x = 90 + padding
         towerPriceText.y = 40 + padding
         infoPanel.addChild(towerPriceText)
-        const towerDescriptionText = new Text(towerStats.info.description, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: infoPanel.width * 0.95 }))
+        const towerDescriptionText = new Text(towerData.towerInfo.info.description, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: infoPanel.width * 0.95 }))
         towerDescriptionText.x = padding
         towerDescriptionText.y = 100
         infoPanel.addChild(towerDescriptionText)

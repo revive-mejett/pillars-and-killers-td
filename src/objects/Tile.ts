@@ -9,7 +9,7 @@ import { Tower } from "./pillars/Tower";
 const eventDispatcher = new EventDispatcher()
 
 export class Tile extends Entity {
-    tileType: string;
+    tileType: TileType;
     hasTower: boolean;
     container?: PIXI.Container;
     parentContainer: Container<PIXI.DisplayObject>;
@@ -91,6 +91,14 @@ export class Tile extends Entity {
 
     renderTower() {
         if (this.tower) {
+
+            this.container?.removeChildren()
+            const tileBackground = new PIXI.Graphics()
+            tileBackground.lineStyle(2, 0x005500)
+            tileBackground.beginFill(this.tower.tileColour)
+            tileBackground.drawRect(this.x, this.y, this.width, this.height)
+            tileBackground.endFill()
+            this.setTileContainer(tileBackground)
             this.container?.addChild(this.tower.sprite)
         }
     }

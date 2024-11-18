@@ -1,21 +1,20 @@
-import TowerStats from "src/ts/types/TowerStats";
 import { Tower } from "./Tower";
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import { IonBeam } from "../projectile/IonBeam";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import TowerData from "src/ts/types/TowerData";
 
 const eventDispatcher = new EventDispatcher()
 
 export class UltimatePillar extends Tower {
     towerName: string;
 
-
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerstats : TowerStats) {
-        super(x, y, width, height, towerstats);
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData) {
+        super(x, y, width, height, towerData);
         this.towerName = "Ultimate Pillar"
     }
 
@@ -81,5 +80,10 @@ export class UltimatePillar extends Tower {
             towerFireCycleTicker.stop()
         })
     }
+
+    upgrade(): void {
+        throw new Error("Method not implemented.");
+    }
+
 
 }

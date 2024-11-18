@@ -5,8 +5,10 @@ import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
 import { Enemy } from "../Enemy";
 import { Tile } from "../Tile";
-import TowerStats from "src/ts/types/TowerStats";
 import { GameplayScene } from "src/scenes/GameplayScene";
+import TowerData from "src/ts/types/TowerData";
+import { TowerStats } from "src/ts/interfaces/TowerStats";
+import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 
 
 
@@ -23,22 +25,31 @@ export abstract class Tower extends Entity {
     sprite: PIXI.Sprite;
     targetedEnemy?: Enemy;
     isSold : boolean;
+
+    upgrades: TowerStats[];
+    visualUpgrades: TowerInfo[];
+
     towerName : string = "Tower";
 
     tile?: Tile;
+    tileColour: number;
 
 
-    constructor(x : number, y : number, width : number, height : number, towerstats : TowerStats) {
+
+    constructor(x : number, y : number, width : number, height : number, towerdata : TowerData<TowerStats, TowerInfo>) {
         super(x, y, width, height)
 
-        this.range = towerstats.range
-        this.damage = towerstats.damage
-        this.fireRate = towerstats.fireRate
-        this.cost = towerstats.cost
+        this.range = towerdata.towerStats.range
+        this.damage = towerdata.towerStats.damage
+        this.fireRate = towerdata.towerStats.fireRate
+        this.cost = towerdata.towerStats.cost
         this.level = 1
+        this.upgrades = towerdata.upgrades
+        this.visualUpgrades = towerdata.visualUpgrades
 
-        this.asset = towerstats.asset
-        this.assetIcon = towerstats.assetIcon
+        this.asset = towerdata.towerInfo.asset
+        this.assetIcon = towerdata.towerInfo.assetIcon
+        this.tileColour = towerdata.towerInfo.tileColour
 
         this.position = { x: x, y: y }
 
@@ -98,4 +109,6 @@ export abstract class Tower extends Entity {
         const towerEnemyVector = new Vector(enemyCenterPosition.x - towerCenterPosition.x, enemyCenterPosition.y - towerCenterPosition.y)
         return towerEnemyVector.magnitude() <= this.range
     }
+
+    abstract upgrade() : void
 }

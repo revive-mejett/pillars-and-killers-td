@@ -1,23 +1,25 @@
-
-import TowerStats from "src/ts/types/TowerStats";
 import { Tower } from "./Tower";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
 import { Bullet } from "../projectile/Bullet";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import TowerData from "src/ts/types/TowerData";
+import { TowerStats } from "src/ts/interfaces/TowerStats";
+import { BasicPillarInfo } from "src/ts/interfaces/TowerInfo";
 
 const eventDispatcher = new EventDispatcher()
 
 export class BasicPillar extends Tower {
     towerName: string;
-
+    bulletSize: number
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerstats : TowerStats) {
-        super(x, y, width, height, towerstats);
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, BasicPillarInfo>) {
+        super(x, y, width, height, towerData);
         this.towerName = "Basic Pillar"
+        this.bulletSize = towerData.towerInfo.bulletSize
     }
 
     runTower(gameplayScene : GameplayScene) {
@@ -65,7 +67,7 @@ export class BasicPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, "0xFFFFFF")
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, "0xFFFFFF")
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
@@ -78,4 +80,23 @@ export class BasicPillar extends Tower {
             towerFireCycleTicker.stop()
         })
     }
+
+    upgrade(): void {
+        if (this.level > this.upgrades.length) {
+            return
+        }
+        const index = this.level - 1
+        const newStats = this.upgrades[index]
+
+        this.range = newStats.range
+        this.damage = newStats.damage
+        this.fireRate = newStats.fireRate
+        this.cost += newStats.cost
+        this.level++
+
+        const newVisualStats = this.visualUpgrades[index] as BasicPillarInfo
+        this.tileColour = newVisualStats.tileColour
+        this.bulletSize = newVisualStats.bulletSize
+    }
+
 }

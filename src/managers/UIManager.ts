@@ -12,6 +12,7 @@ import { Tile } from "src/objects/Tile";
 import { Tower } from "src/objects/pillars/Tower";
 import { Enemy } from "src/objects/Enemy";
 import sound from "pixi-sound";
+import { getTowerData } from "../utils/TowerStatsData";
 
 
 
@@ -43,6 +44,8 @@ export class UIManager {
         eventDispatcher.on("towerPlaceAction", this.handleTowerPurchase.bind(this))
 
         eventDispatcher.on("towerSelectAction", this.displaySelectedTowerInfo.bind(this))
+
+        eventDispatcher.on("towerUpgradeAction", this.handleTowerUpgradePurchase.bind(this))
 
         eventDispatcher.on("towerSellAction", () => this.hud.clearInfoPanel())
 
@@ -91,17 +94,18 @@ export class UIManager {
             const towerButton = buttonEntry[1]
             towerButton.on("pointerdown", () => {
                 this.setSelectedTowerType(towerTypeKey)
-                this.hud.updateTowerDescriptionUI(TowerFactory.getTowerStats(towerTypeKey))
+                this.hud.updateTowerDescriptionUI(getTowerData(towerTypeKey))
             })
         })
     }
 
     handleTowerPurchase(selectedTile : Tile) {
         if (!this.selectedTowerType) {
+            // TODO PUT UI MESSAGE
             return
         }
 
-        const towerCost = TowerFactory.getTowerStats(this.selectedTowerType).cost
+        const towerCost = getTowerData(this.selectedTowerType).towerStats.cost
         if (this.gamestate.money < towerCost) {
             return
         }
@@ -135,6 +139,38 @@ export class UIManager {
 
 
         eventDispatcher.fireEvent("towerPlaced", tower)
+    }
+
+    handleTowerUpgradePurchase(selectedTile : Tile) {
+        if (!selectedTile.tower) {
+            return
+        }
+
+        const upgradeCost = selectedTile.tower?.upgrades[selectedTile.tower.level - 1].cost
+        if (this.gamestate.money < upgradeCost) {
+            return
+        }
+        if (!selectedTile.hasTower) {
+            // TODO PUT UI MESSAGE
+            return
+        }
+
+        eventDispatcher.fireEvent("purchaseSuccessful1", upgradeCost)
+        selectedTile.tower.upgrade()
+
+
+        const sfxBuy = sound.Sound.from({
+            url: "assets/sounds/sfx/tower_buy.mp3",
+            volume: 0.5
+        })
+        sfxBuy.play()
+        const sfxBuild = sound.Sound.from({
+            url: "assets/sounds/sfx/pillar_build.mp3",
+            volume: 0.25
+        })
+        sfxBuild.play()
+        selectedTile.renderTower()
+        this.displaySelectedTowerInfo(selectedTile.tower)
     }
 
     displaySelectedTowerInfo(tower : Tower) {

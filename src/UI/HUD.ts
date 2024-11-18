@@ -8,8 +8,8 @@ const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 
 import * as PIXI from "pixi.js";
-import TowerStats from "src/ts/types/TowerStats"
 import { GameState } from "src/core/GameState"
+import TowerData from "src/ts/types/TowerData"
 
 export class HUD {
     container: PIXI.Container
@@ -211,11 +211,11 @@ export class HUD {
         this.towerSelectionButtons.ultimate = ultimatePillarButton
     }
 
-    updateTowerDescriptionUI(towerStats : TowerStats) {
+    updateTowerDescriptionUI(towerData : TowerData) {
 
         this.clearInfoPanel()
 
-        const towerInfoPanel = InfoPanel.createTowerGeneralInfoPanel(towerStats)
+        const towerInfoPanel = InfoPanel.createTowerGeneralInfoPanel(towerData)
         this.infoPanel?.addChild(towerInfoPanel)
     }
 
