@@ -5,5 +5,9 @@ interface TowerStats {
     cost: number,
 }
 
+interface IcePillarStats extends TowerStats {
+    speedMultiplier : number
+}
 
-export default TowerStats
+
+export { TowerStats, IcePillarStats }
