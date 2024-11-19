@@ -66,7 +66,7 @@ export class AdvancedPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, "0xFFFFFF")
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, 0xFFFFFF)
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }

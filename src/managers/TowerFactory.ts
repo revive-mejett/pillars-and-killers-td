@@ -5,7 +5,7 @@ import { UltimatePillar } from "../objects/pillars/UltimatePillar";
 import { EmberPillar } from "../objects/pillars/EmberPillar";
 import TowerData from "src/ts/types/TowerData";
 import { IcePillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
-import { BasicPillarInfo, IcePillarInfo } from "src/ts/interfaces/TowerInfo";
+import { BasicPillarInfo, IcePillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
 import { getTowerData } from "../utils/TowerStatsData";
 
 
@@ -30,7 +30,7 @@ export class TowerFactory {
         case "advanced":
             return new AdvancedPillar(x, y, width, height, towerData)
         case "ultimate":
-            return new UltimatePillar(x, y, width, height, towerData)
+            return new UltimatePillar(x, y, width, height, towerData as TowerData<TowerStats, UltimatePillarInfo>)
         default:
             return new BasicPillar(x, y, width, height, towerData as TowerData<TowerStats, BasicPillarInfo>)
         }

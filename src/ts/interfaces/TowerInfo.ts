@@ -19,6 +19,12 @@ interface IcePillarInfo extends TowerInfo {
     beamWidth: number
 }
 
+interface UltimatePillarInfo extends TowerInfo {
+    beamWidth: number,
+    beamColour: number
+}
 
 
-export { TowerInfo, BasicPillarInfo, IcePillarInfo }
+
+
+export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo }

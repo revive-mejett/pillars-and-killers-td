@@ -33,7 +33,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Cheap pillar good against weak killers. Decent hand pick for the early rounds."
                     },
                     tileColour: 0x222222,
-                    bulletSize: 2,
+                    bulletSize: 2
                 },
                 upgrades: [{
                     range: 125,
@@ -63,25 +63,25 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x004400,
-                    bulletSize: 2,
+                    bulletSize: 2
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x000066,
-                    bulletSize: 3,
+                    bulletSize: 3
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x990000,
-                    bulletSize: 4,
+                    bulletSize: 4
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0xE7E7E7,
-                    bulletSize: 5,
+                    bulletSize: 5
                 }
                 ]
             }
@@ -147,7 +147,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         title: "Advanced Pillar",
                         description: "This pillar is made with advanced material and can deal great damage to the strongest killers."
                     },
-                    tileColour: 0x222222,
+                    tileColour: 0x222222
                 },
                 upgrades: [],
                 visualUpgrades: []
@@ -157,10 +157,10 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             "ultimate",
             {
                 towerStats: {
-                    range: 700,
-                    damage: 8225,
-                    fireRate: 0.4,
-                    cost: 5800
+                    range: 300,
+                    damage: 37000,
+                    fireRate: 0.2,
+                    cost: 30000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.ultimatePillar,
@@ -169,10 +169,25 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         title: "Ultimate Pillar",
                         description: "The next generation using power currently being experimented..."
                     },
-                    tileColour: 0x222222
+                    tileColour: 0x004400,
+                    beamColour: 0xFF7700,
+                    beamWidth: 2
                 },
-                upgrades: [],
-                visualUpgrades: []
+                upgrades: [
+                    {
+                        range: 500,
+                        damage: 60000,
+                        fireRate: 0.4,
+                        cost: 77500
+                    }
+                ],
+                visualUpgrades: [{
+                    assetIcon: towerIcons.ultimatePillar,
+                    asset: towerIcons.ultimatePillarTop,
+                    tileColour: 0xE7E7E7,
+                    beamColour: 0xFF00FF,
+                    beamWidth: 4
+                }]
             }
         ]
     ])

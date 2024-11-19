@@ -10,20 +10,20 @@ export abstract class Projectile extends Entity {
     hasHit: boolean;
     updateTicker?: PIXI.Ticker;
     autoStart: boolean;
-    colour: string;
+    colour: number;
     graphics?: PIXI.Graphics;
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : string) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number) {
         super(x, y, width, height);
         this.damage = damage
         this.targetEnemy = targetEnemy
         this.hasHit = false
         this.updateTicker = new PIXI.Ticker()
         this.autoStart = false
-        this.colour = colour || "0xffffff"
+        this.colour = colour || 0xFFFFFF
 
 
         if (new.target === Projectile) {

@@ -10,7 +10,7 @@ export class Bullet extends Projectile {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : string) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number) {
         super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 5
 

@@ -251,7 +251,7 @@ const blons = [
         type: "end",
         x: 16,
         y: 10
-    },
+    }
 ]
 
 
