@@ -5,14 +5,18 @@ import * as PIXI from "pixi.js";
 import sound from "pixi-sound";
 
 export class Beam extends Projectile {
+    beamWidth: number;
+    slowMultiplier: number;
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, slowMultiplier: number, colour : number, beamWidth : number) {
         super(x, y, width, height, targetEnemy, damage, colour);
 
         this.graphics = new PIXI.Graphics()
+        this.beamWidth = beamWidth
+        this.slowMultiplier = slowMultiplier
 
     }
 
@@ -26,7 +30,7 @@ export class Beam extends Projectile {
         sfxIceBeamFire.play()
 
         this.targetEnemy?.takeDamage(this.damage)
-        this.slowEnemy(0.5, 200) //apply the slow
+        this.slowEnemy(this.slowMultiplier, 200) //apply the slow
 
         const onTick = () => {
             elapsedTime += deltaTime
@@ -44,18 +48,18 @@ export class Beam extends Projectile {
             const enemyCenterPosition = this.targetEnemy.getCenterPosition()
 
 
-            this.beamPosition(beamOriginPosition, enemyCenterPosition, 3 * (10 - elapsedTime)/10)
+            this.beamPosition(beamOriginPosition, enemyCenterPosition, this.beamWidth * (10 - elapsedTime)/10)
         }
 
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()
     }
 
-    beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamSize : number) {
+    beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamWidth : number) {
 
         if (this.graphics) {
             this.graphics.clear()
-            this.graphics.lineStyle(beamSize, this.colour)
+            this.graphics.lineStyle(beamWidth, this.colour)
             this.graphics.moveTo(beamOriginPosition.x, beamOriginPosition.y)
             this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
         }

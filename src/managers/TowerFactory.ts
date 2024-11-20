@@ -4,8 +4,8 @@ import { IcePillar } from "../objects/pillars/IcePillar";
 import { UltimatePillar } from "../objects/pillars/UltimatePillar";
 import { EmberPillar } from "../objects/pillars/EmberPillar";
 import TowerData from "src/ts/types/TowerData";
-import { IcePillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
-import { BasicPillarInfo, IcePillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
+import { EmberPillarStats, IcePillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
+import { BasicPillarInfo, EmberPillarInfo, IcePillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
 import { getTowerData } from "../utils/TowerStatsData";
 
 
@@ -26,7 +26,7 @@ export class TowerFactory {
         case "ice":
             return new IcePillar(x, y, width, height, towerData as TowerData<IcePillarStats, IcePillarInfo>)
         case "ember":
-            return new EmberPillar(x, y, width, height, towerData)
+            return new EmberPillar(x, y, width, height, towerData as TowerData<EmberPillarStats, EmberPillarInfo>)
         case "advanced":
             return new AdvancedPillar(x, y, width, height, towerData)
         case "ultimate":

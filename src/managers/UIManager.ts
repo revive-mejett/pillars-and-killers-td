@@ -158,7 +158,6 @@ export class UIManager {
         eventDispatcher.fireEvent("purchaseSuccessful1", upgradeCost)
         selectedTile.tower.upgrade()
 
-
         const sfxBuy = sound.Sound.from({
             url: "assets/sounds/sfx/tower_buy.mp3",
             volume: 0.5
@@ -199,5 +198,7 @@ export class UIManager {
         eventDispatcher.clearListenersOfEvent("towerSelectAction")
         eventDispatcher.clearListenersOfEvent("towerSellAction")
         eventDispatcher.clearListenersOfEvent("enemySelectAction")
+        eventDispatcher.clearListenersOfEvent("towerUpgradeAction")
+        eventDispatcher.clearListenersOfEvent("towerSellAction")
     }
 }
