@@ -13,6 +13,7 @@ export class IcePillar extends Tower {
 
     towerName: string;
     speedMultiplier: number;
+    beamWidth: number;
 
 
     /**
@@ -22,6 +23,7 @@ export class IcePillar extends Tower {
         super(x, y, width, height, towerData);
         this.towerName = "Ice Pillar"
         this.speedMultiplier = towerData.towerStats.speedMultiplier
+        this.beamWidth = towerData.towerInfo.beamWidth
     }
 
     runTower(gameplayScene : GameplayScene) : void {
@@ -71,7 +73,7 @@ export class IcePillar extends Tower {
 
                 //spawn a beam
                 if (this.targetedEnemy) {
-                    const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, "0xC7C7FF")
+                    const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, this.speedMultiplier, 0xC7C7FF, this.beamWidth)
                     beam.render(gameplaySceneContainer)
                     beam.fire(gameplayScene.app.ticker.deltaTime)
                 }
@@ -88,6 +90,21 @@ export class IcePillar extends Tower {
     }
 
     upgrade(): void {
-        throw new Error("Method not implemented.");
+        if (this.level > this.upgrades.length) {
+            return
+        }
+        const index = this.level - 1
+        const newStats = this.upgrades[index] as IcePillarStats
+
+        this.range = newStats.range
+        this.damage = newStats.damage
+        this.fireRate = newStats.fireRate
+        this.cost += newStats.cost
+        this.speedMultiplier = newStats.speedMultiplier
+        this.level++
+
+        const newVisualStats = this.visualUpgrades[index] as IcePillarInfo
+        this.tileColour = newVisualStats.tileColour
+        this.beamWidth = newVisualStats.beamWidth
     }
 }

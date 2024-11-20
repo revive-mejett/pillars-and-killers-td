@@ -4,18 +4,28 @@ import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
+import { EmberPillarInfo } from "src/ts/interfaces/TowerInfo";
+import { EmberPillarStats } from "src/ts/interfaces/TowerStats";
 
 const eventDispatcher = new EventDispatcher()
 
 export class EmberPillar extends Tower {
 
     towerName: string;
+    fireballWidth: number;
+    flameColour: number;
+    soundPitch: number;
+    impactRadius: number;
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerData : TowerData) {
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<EmberPillarStats, EmberPillarInfo>) {
         super(x, y, width, height, towerData);
         this.towerName = "Ember Akshan"
+        this.fireballWidth = towerData.towerInfo.fireballWidth
+        this.flameColour = towerData.towerInfo.flameColour
+        this.soundPitch = towerData.towerInfo.soundPitch
+        this.impactRadius = towerData.towerStats.impactRadius
     }
 
     runTower(gameplayScene : GameplayScene) : void {
@@ -63,7 +73,8 @@ export class EmberPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Fireball(this.getCenterPosition().x, this.getCenterPosition().y, 10, 10, this.targetedEnemy, this.damage, "0xFFA700")
+                const bullet = new Fireball(this.getCenterPosition().x, this.getCenterPosition().y, this.fireballWidth, this.fireballWidth, this.targetedEnemy, this.damage, this.flameColour, this.soundPitch, this.impactRadius)
+                console.log(this.fireballWidth)
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime, gameplayScene.enemiesPresent)
 
@@ -78,6 +89,23 @@ export class EmberPillar extends Tower {
     }
 
     upgrade(): void {
-        throw new Error("Method not implemented.");
+        if (this.level > this.upgrades.length) {
+            return
+        }
+        const index = this.level - 1
+        const newStats = this.upgrades[index] as EmberPillarStats
+
+        this.range = newStats.range
+        this.damage = newStats.damage
+        this.fireRate = newStats.fireRate
+        this.cost += newStats.cost
+        this.impactRadius = newStats.impactRadius
+        this.level++
+
+        const newVisualStats = this.visualUpgrades[index] as EmberPillarInfo
+        this.tileColour = newVisualStats.tileColour
+        this.flameColour = newVisualStats.flameColour
+        this.fireballWidth = newVisualStats.fireballWidth
+        this.soundPitch = newVisualStats.soundPitch
     }
 }

@@ -9,7 +9,7 @@ export class IonBeam extends Projectile {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : string) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number) {
         super(x, y, width, height, targetEnemy, damage, colour);
 
         this.graphics = new PIXI.Graphics()
@@ -27,7 +27,7 @@ export class IonBeam extends Projectile {
 
         let enemyPosition = this.targetEnemy?.getCenterPosition()
         const beamOriginPosition = this.getCenterPosition()
-        this.beamPosition(beamOriginPosition, enemyPosition as Position, 2)
+        this.beamPosition(beamOriginPosition, enemyPosition as Position)
         let elapsedOnDeath : number = 0
 
         const onTick = () => {
@@ -53,15 +53,15 @@ export class IonBeam extends Projectile {
         this.targetEnemy?.takeDamage(this.damage)
     }
 
-    beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamSize : number) {
+    beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position) {
         if (this.graphics) {
             this.graphics.clear()
-            this.graphics.lineStyle(beamSize, "0xFFFFFF")
-            this.graphics.beginFill(this.colour)
+            this.graphics.lineStyle(1, this.colour)
+            this.graphics.beginFill(0xFFFFFF)
             this.graphics.drawRect(beamOriginPosition.x - this.width,0,this.width, beamOriginPosition.y)
             this.graphics.drawRect(enemyCenterPosition.x - this.width,0,this.width, enemyCenterPosition.y)
             this.graphics.endFill()
-            this.graphics.lineStyle(1, "0x770000")
+            this.graphics.lineStyle(1, 0x770000)
             this.graphics.moveTo(beamOriginPosition.x, beamOriginPosition.y)
             this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
         }

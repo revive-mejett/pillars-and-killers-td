@@ -57,7 +57,7 @@ const testWaves1 = [
             {
                 enemy: "blueCircle",
                 count: 55,
-                spacingMillis: 100,
+                spacingMillis: 100
             },
             {
                 enemy: "purpleCircle",
@@ -130,7 +130,7 @@ const testWaves2 = [
                 enemy: "greenCircle",
                 count: 30,
                 spacingMillis: 250
-            },
+            }
         ]
     ),
     new Wave(
@@ -163,7 +163,7 @@ const testWaves2 = [
                 enemy: "blueCircle",
                 count: 15,
                 spacingMillis: 1500
-            },
+            }
         ]
     ),
     new Wave(
@@ -182,7 +182,7 @@ const testWaves2 = [
                 enemy: "purpleCircle",
                 count: 5,
                 spacingMillis: 1500
-            },
+            }
         ]
     ),
     new Wave(
@@ -201,9 +201,9 @@ const testWaves2 = [
                 enemy: "yellowCircle",
                 count: 1,
                 spacingMillis: 1000
-            },
+            }
         ]
-    ),
+    )
 
 ]
 

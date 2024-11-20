@@ -9,5 +9,9 @@ interface IcePillarStats extends TowerStats {
     speedMultiplier : number
 }
 
+interface EmberPillarStats extends TowerStats {
+    impactRadius : number
+}
 
-export { TowerStats, IcePillarStats }
+
+export { TowerStats, IcePillarStats, EmberPillarStats }

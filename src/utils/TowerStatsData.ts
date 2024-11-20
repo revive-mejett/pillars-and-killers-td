@@ -33,7 +33,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Cheap pillar good against weak killers. Decent hand pick for the early rounds."
                     },
                     tileColour: 0x222222,
-                    bulletSize: 2,
+                    bulletSize: 2
                 },
                 upgrades: [{
                     range: 125,
@@ -63,25 +63,25 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x004400,
-                    bulletSize: 2,
+                    bulletSize: 2
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x000066,
-                    bulletSize: 3,
+                    bulletSize: 3
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x990000,
-                    bulletSize: 4,
+                    bulletSize: 4
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0xE7E7E7,
-                    bulletSize: 5,
+                    bulletSize: 5
                 }
                 ]
             }
@@ -90,8 +90,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             "ice",
             {
                 towerStats: {
-                    range: 220,
-                    damage: 10,
+                    range: 120,
+                    damage: 7,
                     fireRate: 1,
                     cost: 75,
                     speedMultiplier: 0.8
@@ -103,10 +103,65 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         title: "Ice Pillar",
                         description: "Fires chily ice bolts that slows down killers."
                     },
-                    tileColour: 0x222222
+                    tileColour: 0x222222,
+                    beamWidth: 3
                 },
-                upgrades: [],
-                visualUpgrades: []
+                upgrades: [
+                    {
+                        range: 130,
+                        damage: 9,
+                        fireRate: 1,
+                        cost: 100,
+                        speedMultiplier: 0.7
+                    },
+                    {
+                        range: 140,
+                        damage: 13,
+                        fireRate: 1,
+                        cost: 160,
+                        speedMultiplier: 0.55
+                    },
+                    {
+                        range: 150,
+                        damage: 16,
+                        fireRate: 1,
+                        cost: 220,
+                        speedMultiplier: 0.4
+                    },
+                    {
+                        range: 155,
+                        damage: 20,
+                        fireRate: 1,
+                        cost: 300,
+                        speedMultiplier: 0.2
+                    }
+                ],
+                visualUpgrades: [
+                    {
+                        assetIcon: towerIcons.icePillar,
+                        asset: towerIcons.icePillarTop,
+                        tileColour: 0x004400,
+                        beamWidth: 3
+                    },
+                    {
+                        assetIcon: towerIcons.icePillar,
+                        asset: towerIcons.icePillarTop,
+                        tileColour: 0x000066,
+                        beamWidth: 4
+                    },
+                    {
+                        assetIcon: towerIcons.icePillar,
+                        asset: towerIcons.icePillarTop,
+                        tileColour: 0x990000,
+                        beamWidth: 5
+                    },
+                    {
+                        assetIcon: towerIcons.icePillar,
+                        asset: towerIcons.icePillarTop,
+                        tileColour: 0xE7E7E7,
+                        beamWidth: 6
+                    }
+                ]
             }
         ],
         [
@@ -116,7 +171,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 85,
                     damage: 8,
                     fireRate: 0.8,
-                    cost: 150
+                    cost: 150,
+                    impactRadius: 60
                 },
                 towerInfo: {
                     assetIcon: towerIcons.emberPillar,
@@ -125,10 +181,75 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         title: "Ember Pillar",
                         description: "Puffs out ember fireballs that damages nearby enemies upon impact"
                     },
-                    tileColour: 0x222222
+                    tileColour: 0x222222,
+                    flameColour: 0x770000,
+                    fireballWidth: 6,
+                    soundPitch: 0.4
                 },
-                upgrades: [],
-                visualUpgrades: []
+                upgrades: [
+                    {
+                        range: 85,
+                        damage: 14,
+                        fireRate: 0.8,
+                        cost: 200,
+                        impactRadius: 70
+                    },
+                    {
+                        range: 95,
+                        damage: 21,
+                        fireRate: 1,
+                        cost: 300,
+                        impactRadius: 80
+                    },
+                    {
+                        range: 105,
+                        damage: 28,
+                        fireRate: 1.2,
+                        cost: 500,
+                        impactRadius: 90
+                    },
+                    {
+                        range: 115,
+                        damage: 35,
+                        fireRate: 1.4,
+                        cost: 1000,
+                        impactRadius: 100
+                    }
+                ],
+                visualUpgrades: [
+                    {
+                        assetIcon: towerIcons.emberPillar,
+                        asset: towerIcons.emberPillarTop,
+                        tileColour: 0x004400,
+                        flameColour: 0x884400,
+                        fireballWidth: 7,
+                        soundPitch: 0.5
+                    },
+                    {
+                        assetIcon: towerIcons.emberPillar,
+                        asset: towerIcons.emberPillarTop,
+                        tileColour: 0x000066,
+                        flameColour: 0xC77700,
+                        fireballWidth: 8,
+                        soundPitch: 0.6
+                    },
+                    {
+                        assetIcon: towerIcons.emberPillar,
+                        asset: towerIcons.emberPillarTop,
+                        tileColour: 0x990000,
+                        flameColour: 0xD78C00,
+                        fireballWidth: 10,
+                        soundPitch: 0.75
+                    },
+                    {
+                        assetIcon: towerIcons.emberPillar,
+                        asset: towerIcons.emberPillarTop,
+                        tileColour: 0xE7E7E7,
+                        flameColour: 0xFFC700,
+                        fireballWidth: 12,
+                        soundPitch: 0.9
+                    }
+                ]
             }
         ],
         [
@@ -147,7 +268,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         title: "Advanced Pillar",
                         description: "This pillar is made with advanced material and can deal great damage to the strongest killers."
                     },
-                    tileColour: 0x222222,
+                    tileColour: 0x222222
                 },
                 upgrades: [],
                 visualUpgrades: []
@@ -157,10 +278,10 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             "ultimate",
             {
                 towerStats: {
-                    range: 700,
-                    damage: 8225,
-                    fireRate: 0.4,
-                    cost: 5800
+                    range: 300,
+                    damage: 37000,
+                    fireRate: 0.2,
+                    cost: 30000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.ultimatePillar,
@@ -169,10 +290,25 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         title: "Ultimate Pillar",
                         description: "The next generation using power currently being experimented..."
                     },
-                    tileColour: 0x222222
+                    tileColour: 0x004400,
+                    beamColour: 0xFF7700,
+                    beamWidth: 2
                 },
-                upgrades: [],
-                visualUpgrades: []
+                upgrades: [
+                    {
+                        range: 500,
+                        damage: 60000,
+                        fireRate: 0.4,
+                        cost: 77500
+                    }
+                ],
+                visualUpgrades: [{
+                    assetIcon: towerIcons.ultimatePillar,
+                    asset: towerIcons.ultimatePillarTop,
+                    tileColour: 0xE7E7E7,
+                    beamColour: 0xFF00FF,
+                    beamWidth: 4
+                }]
             }
         ]
     ])

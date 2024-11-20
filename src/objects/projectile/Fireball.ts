@@ -8,11 +8,13 @@ import sound from "pixi-sound";
 
 export class Fireball extends Projectile {
     speed: number;
+    impactRadius: number;
+    soundPitch: number;
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : string) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, soundPitch: number, impactRadius: number) {
         super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 5
 
@@ -20,13 +22,17 @@ export class Fireball extends Projectile {
         this.graphics.beginFill(this.colour)
         this.graphics.drawRect(0, 0, this.width, this.height)
         this.graphics.endFill()
+
+        this.impactRadius = impactRadius
+        this.soundPitch = soundPitch
     }
 
     fire(deltaTime : number, enemies :Enemy[]) {
 
         const sfxFireball = sound.Sound.from({
             url: "assets/sounds/sfx/torch_whoosh.mp3",
-            volume: 1
+            volume: 1,
+            speed: this.soundPitch
         })
         sfxFireball.play()
 
@@ -48,8 +54,7 @@ export class Fireball extends Projectile {
 
 
             if (bulletEnemyVector.magnitude() < 5) {
-                this.onImpact(enemies, this.getCenterPosition(), 50)
-                this.targetEnemy.takeDamage(this.damage)
+                this.onImpact(enemies, this.getCenterPosition())
                 this.hasHit = true
                 this.cleanUpResources()
             }
@@ -60,14 +65,14 @@ export class Fireball extends Projectile {
     }
 
 
-    onImpact(enemies : Enemy[], impactPosition : Position, impactRadius : number) {
+    onImpact(enemies : Enemy[], impactPosition : Position) {
 
         enemies.forEach((enemy) => {
             const enemyPosition = enemy.getCenterPosition()
             const distanceToImpact = new Vector(enemyPosition.x - impactPosition.x, enemyPosition.y - impactPosition.y).magnitude()
 
-            if (distanceToImpact <= impactRadius) {
-                enemy.takeDamage(Math.floor(this.damage * ((impactRadius - distanceToImpact/2) / impactRadius)))
+            if (distanceToImpact <= this.impactRadius) {
+                enemy.takeDamage(Math.floor(this.damage * ((this.impactRadius - distanceToImpact/2) / this.impactRadius)))
             }
         })
     }
