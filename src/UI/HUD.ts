@@ -201,13 +201,16 @@ export class HUD {
         towerSelectMenu.addChild(emberPillarButton)
         const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 0, 80, 0x221100)
         towerSelectMenu.addChild(advancedPillarButton)
-        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 80, 80, 0x110011)
+        const lightningPillarButton = UIHelper.createIcon(towerSpriteBundle.lightningPillar, 80, 80, 0x221100)
+        towerSelectMenu.addChild(lightningPillarButton)
+        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 160, 80, 0x110011)
         towerSelectMenu.addChild(ultimatePillarButton)
 
         this.towerSelectionButtons.basic = basicPillarButton
         this.towerSelectionButtons.ice = icePillarButton
         this.towerSelectionButtons.ember = emberPillarButton
         this.towerSelectionButtons.advanced = advancedPillarButton
+        this.towerSelectionButtons.lightning = lightningPillarButton
         this.towerSelectionButtons.ultimate = ultimatePillarButton
     }
 
