@@ -6,6 +6,7 @@ import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
 import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 import { TowerStats } from "src/ts/interfaces/TowerStats";
+import { LightningBolt } from "../projectile/LightningBolt";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -20,7 +21,7 @@ export class LightningPillar extends Tower {
      */
     constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, TowerInfo>) {
         super(x, y, width, height, towerData);
-        this.towerName = "Ice Pillar"
+        this.towerName = "Lightning Pillar"
         // this.beamWidth = towerData.towerInfo.beamWidth
     }
 
@@ -71,9 +72,9 @@ export class LightningPillar extends Tower {
 
                 //spawn a beam
                 if (this.targetedEnemy) {
-                    // const beam = new Beam(this.getCenterPosition().x, this.getCenterPosition().y)
-                    // beam.render(gameplaySceneContainer)
-                    // beam.fire(gameplayScene.app.ticker.deltaTime)
+                    const beam = new LightningBolt(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, 0xFFFFFF, 4)
+                    beam.render(gameplaySceneContainer)
+                    beam.fire(gameplayScene.app.ticker.deltaTime)
                 }
 
             }
