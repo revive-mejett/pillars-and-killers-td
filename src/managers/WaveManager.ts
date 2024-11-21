@@ -1,7 +1,7 @@
 import { Enemy } from "../objects/Enemy"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader"
-import { testWaves2 } from "../utils/WaveData"
+import { grouped, testWaves2 } from "../utils/WaveData"
 import { Wave } from "../objects/Wave"
 import { TdMap } from "src/objects/TdMap"
 
@@ -25,7 +25,7 @@ export class WaveManager {
         this.map = map
         this.waves = []
 
-        this.currentWave = 100
+        this.currentWave = 0
         this.waveInProgress = false
         this.loadWaves()
 
@@ -36,7 +36,7 @@ export class WaveManager {
 
 
 
-        const waves = testWaves2
+        const waves = grouped
 
         this.waves = waves
     }

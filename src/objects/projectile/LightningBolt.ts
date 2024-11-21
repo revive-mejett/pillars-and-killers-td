@@ -27,29 +27,32 @@ export class LightningBolt extends Projectile {
         })
         sfxIceBeamFire.play()
 
-        this.targetEnemy?.takeDamage(this.damage)
+        let enemyCenterPosition = this.targetEnemy?.getCenterPosition()
+        let elapsedOnDeath : number = 0
+        
 
         const onTick = () => {
             elapsedTime += deltaTime
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
-                this.cleanUpResources()
-                return
+                elapsedOnDeath += deltaTime
             }
 
-            if (elapsedTime >= 5) {
+            if (elapsedTime >= 5 || elapsedOnDeath >= 5) {
                 this.cleanUpResources()
                 return
             }
 
             const beamOriginPosition = this.getCenterPosition()
-            const enemyCenterPosition = this.targetEnemy.getCenterPosition()
 
+            if (this.targetEnemy) {
+                enemyCenterPosition = this.targetEnemy.getCenterPosition()
+                this.beamPosition(beamOriginPosition, enemyCenterPosition, this.boltWidth * 1)
+            }
 
-            this.beamPosition(beamOriginPosition, enemyCenterPosition, this.boltWidth * 1)
         }
-
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()
+        this.targetEnemy?.takeDamage(this.damage)
     }
 
     beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamWidth : number) {
