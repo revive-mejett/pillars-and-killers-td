@@ -279,7 +279,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 140,
-                    damage: 70,
+                    damage: 130,
                     fireRate: 2,
                     cost: 1000
                 },
@@ -295,48 +295,48 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 145,
-                        damage: 190,
+                        damage: 370,
                         fireRate: 4,
                         cost: 4200
                     },
                     {
                         range: 150,
-                        damage: 310,
-                        fireRate: 6,
+                        damage: 650,
+                        fireRate: 7,
                         cost: 7700
                     },
                     {
                         range: 155,
-                        damage: 420,
-                        fireRate: 8,
+                        damage: 1225,
+                        fireRate: 9,
                         cost: 10500
                     },
                     {
                         range: 160,
-                        damage: 640,
-                        fireRate: 10,
+                        damage: 1775,
+                        fireRate: 12,
                         cost: 24000
                     },
                 ],
                 visualUpgrades: [
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightning_pillar_top_lv2,
+                        asset: towerIcons.lightningPillarTopLv1,
                         tileColour: 0x004400
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightning_pillar_top_lv3,
+                        asset: towerIcons.lightningPillarTopLv2,
                         tileColour: 0x000066
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightning_pillar_top_lv4,
+                        asset: towerIcons.lightningPillarTopLv3,
                         tileColour: 0x990000
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightning_pillar_top_lv5,
+                        asset: towerIcons.lightningPillarTopLv4,
                         tileColour: 0xE7E7E7
                     }
                 ]

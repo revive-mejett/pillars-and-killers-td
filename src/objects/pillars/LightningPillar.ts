@@ -72,7 +72,7 @@ export class LightningPillar extends Tower {
 
                 //spawn a beam
                 if (this.targetedEnemy) {
-                    const beam = new LightningBolt(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, 0xFFFFFF, 4)
+                    const beam = new LightningBolt(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, 0x77FFFF, 4)
                     beam.render(gameplaySceneContainer)
                     beam.fire(gameplayScene.app.ticker.deltaTime)
                 }
@@ -103,6 +103,14 @@ export class LightningPillar extends Tower {
 
         const newVisualStats = this.visualUpgrades[index]
         this.tileColour = newVisualStats.tileColour
-        // this.beamWidth = newVisualStats.beamWidth
+
+        if (newVisualStats.asset) {
+            this.asset = newVisualStats.asset
+            this.sprite = PIXI.Sprite.from(this.asset)
+            this.sprite.height = this.height
+            this.sprite.width = this.width
+            this.sprite.x = this.position.x
+            this.sprite.y = this.position.y
+        }
     }
 }

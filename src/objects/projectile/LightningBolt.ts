@@ -23,7 +23,7 @@ export class LightningBolt extends Projectile {
         let elapsedTime = 0
         const sfxIceBeamFire = sound.Sound.from({
             url: "assets/sounds/sfx/zap.mp3",
-            volume: 0.4
+            volume: 1
         })
         sfxIceBeamFire.play()
 
@@ -36,7 +36,7 @@ export class LightningBolt extends Projectile {
                 return
             }
 
-            if (elapsedTime >= 10) {
+            if (elapsedTime >= 5) {
                 this.cleanUpResources()
                 return
             }
@@ -57,7 +57,7 @@ export class LightningBolt extends Projectile {
         if (this.graphics) {
             this.graphics.clear()
             this.graphics.lineStyle(beamWidth, this.colour)
-            this.graphics.moveTo(beamOriginPosition.x, beamOriginPosition.y)
+            this.graphics.moveTo(beamOriginPosition.x - beamWidth, beamOriginPosition.y)
             this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
         }
 
