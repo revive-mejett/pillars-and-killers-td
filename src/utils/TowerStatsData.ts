@@ -275,6 +275,74 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             }
         ],
         [
+            "lightning",
+            {
+                towerStats: {
+                    range: 140,
+                    damage: 130,
+                    fireRate: 2,
+                    cost: 1000
+                },
+                towerInfo: {
+                    assetIcon: towerIcons.lightningPillar,
+                    asset: towerIcons.lightningPillarTopLv1,
+                    info: {
+                        title: "Lightning Pillar",
+                        description: "Relentless pillar that zaps \"lightning\" bolts at killers that dare to enter its range"
+                    },
+                    tileColour: 0x222222
+                },
+                upgrades: [
+                    {
+                        range: 145,
+                        damage: 370,
+                        fireRate: 3,
+                        cost: 4200
+                    },
+                    {
+                        range: 150,
+                        damage: 650,
+                        fireRate: 5,
+                        cost: 7700
+                    },
+                    {
+                        range: 155,
+                        damage: 1225,
+                        fireRate: 7,
+                        cost: 10500
+                    },
+                    {
+                        range: 160,
+                        damage: 1775,
+                        fireRate: 12,
+                        cost: 24000
+                    },
+                ],
+                visualUpgrades: [
+                    {
+                        assetIcon: towerIcons.lightning_pillar,
+                        asset: towerIcons.lightningPillarTopLv1,
+                        tileColour: 0x004400
+                    },
+                    {
+                        assetIcon: towerIcons.lightning_pillar,
+                        asset: towerIcons.lightningPillarTopLv2,
+                        tileColour: 0x000066
+                    },
+                    {
+                        assetIcon: towerIcons.lightning_pillar,
+                        asset: towerIcons.lightningPillarTopLv3,
+                        tileColour: 0x990000
+                    },
+                    {
+                        assetIcon: towerIcons.lightning_pillar,
+                        asset: towerIcons.lightningPillarTopLv4,
+                        tileColour: 0xE7E7E7
+                    }
+                ]
+            }
+        ],
+        [
             "ultimate",
             {
                 towerStats: {

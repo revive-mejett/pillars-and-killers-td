@@ -49,6 +49,12 @@ export class AssetLoader {
             "emberPillarTop" : "assets/images/ember_pillar_top.png",
             "advancedPillar" : "assets/images/advanced_pillar_icon.png",
             "advancedPillarTop" : "assets/images/advanced_pillar_top.png",
+            "lightningPillar" : "assets/images/lightning_pillar_icon.png",
+            "lightningPillarTopLv1" : "assets/images/lightning_pillar_top_lv1.png",
+            "lightningPillarTopLv2" : "assets/images/lightning_pillar_top_lv2.png",
+            "lightningPillarTopLv3" : "assets/images/lightning_pillar_top_lv3.png",
+            "lightningPillarTopLv4" : "assets/images/lightning_pillar_top_lv4.png",
+            "lightningPillarTopLv5" : "assets/images/lightning_pillar_top_lv5.png",
             "ultimatePillar" : "assets/images/ultimate_pillar.png",
             "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png"
         })
