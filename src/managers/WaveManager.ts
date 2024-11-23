@@ -1,12 +1,12 @@
 import { Enemy } from "../objects/Enemy"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader"
-import { testWaves2 } from "../utils/WaveData"
 import { Wave } from "../objects/Wave"
 import { TdMap } from "src/objects/TdMap"
 
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
+import { oneEnemy } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -36,7 +36,7 @@ export class WaveManager {
 
 
 
-        const waves = testWaves2
+        const waves = oneEnemy
 
         this.waves = waves
     }
@@ -58,9 +58,6 @@ export class WaveManager {
         //TODO later move enemy data to game data json
         let enemyDataMap = new Map([
             ["greenCircle", { health: 100, speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
-            ["blueCircle", { health: 280, speed: 1.2, damage: 1, killValue: 30, asset: enemyAssets.blueCircle }],
-            ["purpleCircle", { health: 700, speed: 1.6, damage: 3, killValue: 50, asset: enemyAssets.purpleCircle }],
-            ["yellowCircle", { health: 2000, speed: 0.6, damage: 5, killValue: 320, asset: enemyAssets.yellowCircle }]
         ])
 
 
@@ -69,9 +66,6 @@ export class WaveManager {
         if (this.currentWave >= this.waves.length + 1) {
             enemyDataMap = new Map([
                 ["greenCircle", { health: Math.floor(100 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
-                ["blueCircle", { health: Math.floor(280 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1.2, damage: 1, killValue: 30, asset: enemyAssets.blueCircle }],
-                ["purpleCircle", { health: Math.floor(700 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1.6, damage: 3, killValue: 50, asset: enemyAssets.purpleCircle }],
-                ["yellowCircle", { health: Math.floor(2000 * 1.05 ** (this.currentWave - this.waves.length)), speed: 0.6, damage: 5, killValue: 320, asset: enemyAssets.yellowCircle }]
             ])
         }
 
@@ -140,7 +134,7 @@ export class WaveManager {
 
 
     generateWave() {
-        const enemies = ["greenCircle", "blueCircle", "purpleCircle", "yellowCircle"]
+        const enemies = ["greenCircle"]
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1
 
