@@ -1,35 +1,37 @@
 const enemyData = {
 
-    "Infant Circle" : {
-        "frames": {
-            "infantCircle1.png":
-            {
-                "frame": {"x":0,"y":0,"w":250,"h":250},
-                "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
-                "sourceSize": {"w":250,"h":250},
-                "anchor": {"x":0,"y":0}
+    "infantCircle" : {
+        atlasData: {
+            "frames": {
+                "infantCircle1":
+                {
+                    "frame": {"x":0,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250},
+                    "anchor": {"x":0,"y":0}
+                },
+                "infantCircle2":
+                {
+                    "frame": {"x":750,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250},
+                    "anchor": {"x":0,"y":0}
+                }
             },
-            "infantCircle2.png":
-            {
-                "frame": {"x":750,"y":0,"w":250,"h":250},
-                "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
-                "sourceSize": {"w":250,"h":250},
-                "anchor": {"x":0,"y":0}
+
+            "animations": {
+                "enemy": ["infantCircle1","infantCircle2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/InfantCircle.png",
+                "format": "RGBA8888",
+                "size": {"w":1000,"h":250},
+                "scale": "1"
             }
         },
-
-        "animations": {
-            "enemy": ["infantCircle1.png","infantCircle2.png"]
-        },
-
-        "meta": {
-            "image": "src/assets/spritesheets/InfantCircle.png",
-            "format": "RGBA8888",
-            "size": {"w":1000,"h":250},
-            "scale": "1"
-        },
-
-        "enemyData": {
+        "statsData": {
+            className: "Infant Circle",
             type: "Normal",
             health: 100,
             speed: 1,

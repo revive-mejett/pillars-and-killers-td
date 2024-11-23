@@ -10,6 +10,8 @@ export class AssetLoader {
     otherImages: {[key: string] : string } | undefined
     sfx: {[key: string] : string } | undefined
 
+    spriteSheetEnemies: {[key: string] : string } | undefined
+
 
 
     constructor() {
@@ -18,6 +20,7 @@ export class AssetLoader {
             // eslint-disable-next-line @typescript-eslint/no-this-alias
             instance = this
             this.enemies = {}
+            this.spriteSheetEnemies = {}
             this.icons = {}
             this.towers = {}
             this.otherImages = {}
@@ -84,6 +87,11 @@ export class AssetLoader {
 
     async loadOtherImagesSprites() {
         this.otherImages = await Assets.loadBundle("otherImages")
+    }
+
+    async loadEnemySpriteSheets() {
+        // const infantCircle = new Spritesheet()
+        
     }
 
     // async loadSfx() {
