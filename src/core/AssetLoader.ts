@@ -1,4 +1,5 @@
-import { Assets } from "pixi.js"
+import { Assets, Spritesheet, Texture } from "pixi.js"
+import { allEnemyData } from "../utils/EnemyData"
 
 
 let instance : AssetLoader | null = null
@@ -10,7 +11,7 @@ export class AssetLoader {
     otherImages: {[key: string] : string } | undefined
     sfx: {[key: string] : string } | undefined
 
-    spriteSheetEnemies: {[key: string] : string } | undefined
+    spriteSheetEnemies: Map<string, Spritesheet> | undefined
 
 
 
@@ -20,7 +21,7 @@ export class AssetLoader {
             // eslint-disable-next-line @typescript-eslint/no-this-alias
             instance = this
             this.enemies = {}
-            this.spriteSheetEnemies = {}
+            this.spriteSheetEnemies = new Map()
             this.icons = {}
             this.towers = {}
             this.otherImages = {}
@@ -90,10 +91,12 @@ export class AssetLoader {
     }
 
     async loadEnemySpriteSheets() {
-        // const infantCircle = new Spritesheet()
-        
+        const atlasData = allEnemyData.infantCircle.atlasData
+        const enemyInfo = allEnemyData.infantCircle.stats
+        const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
+        await spritesheet.parse()
+        this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
     }
-
     // async loadSfx() {
     //     this.sfx = await Assets.loadBundle("sfx")
     // }

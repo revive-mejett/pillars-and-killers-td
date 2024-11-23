@@ -1,4 +1,4 @@
-import { enemyData } from "../utils/EnemyData";
+import { allEnemyData } from "../utils/EnemyData";
 import { AssetLoader } from "../core/AssetLoader"
 import { UIHelper } from "../UI/UIHelper"
 import { EventDispatcher } from "../utils/EventDispatcher"
@@ -59,7 +59,7 @@ export class MainMenu extends Scene {
         const testAnimation = async () => {
 
             //this code should be done in asset loading class
-            const atlasData = enemyData.infantCircle.atlasData
+            const atlasData = allEnemyData.infantCircle.atlasData
             const spritesheet = new PIXI.Spritesheet(PIXI.Texture.from(atlasData.meta.image), atlasData)
 
             await spritesheet.parse()

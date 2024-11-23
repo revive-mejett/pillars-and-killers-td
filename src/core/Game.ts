@@ -44,6 +44,7 @@ export class Game {
         await assetLoader.loadIconSprites()
         await assetLoader.loadTowerSprites()
         await assetLoader.loadOtherImagesSprites()
+        await assetLoader.loadEnemySpriteSheets()
 
         this.app.stage.addChild(this.baseContainer)
         const frame = new PIXI.Graphics()

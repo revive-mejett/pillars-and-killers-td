@@ -1,4 +1,7 @@
-const enemyData = {
+import { EnemyData } from "src/ts/types/EnemyData"
+
+
+const allEnemyData : EnemyData = {
 
     "infantCircle" : {
         atlasData: {
@@ -7,20 +10,30 @@ const enemyData = {
                 {
                     "frame": {"x":0,"y":0,"w":250,"h":250},
                     "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
-                    "sourceSize": {"w":250,"h":250},
-                    "anchor": {"x":0,"y":0}
+                    "sourceSize": {"w":250,"h":250}
                 },
                 "infantCircle2":
                 {
+                    "frame": {"x":250,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250}
+                },
+                "infantCircle3":
+                {
+                    "frame": {"x":500,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250}
+                },
+                "infantCircle4":
+                {
                     "frame": {"x":750,"y":0,"w":250,"h":250},
                     "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
-                    "sourceSize": {"w":250,"h":250},
-                    "anchor": {"x":0,"y":0}
+                    "sourceSize": {"w":250,"h":250}
                 }
             },
 
             "animations": {
-                "enemy": ["infantCircle1","infantCircle2"]
+                "enemy": ["infantCircle1","infantCircle2","infantCircle3","infantCircle4"]
             },
 
             "meta": {
@@ -30,15 +43,16 @@ const enemyData = {
                 "scale": "1"
             }
         },
-        "statsData": {
+        "stats": {
             className: "Infant Circle",
             type: "Normal",
             health: 100,
             speed: 1,
             damage: 1,
-            killValue: 15
+            killValue: 15,
+            animationSpeed: 0.1
         }
     }
 }
 
-export { enemyData }
+export { allEnemyData }

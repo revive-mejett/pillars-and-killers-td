@@ -4,6 +4,7 @@ import { all1st } from "../utils/Nicknames";
 import { Entity } from "./Entity"
 import * as PIXI from "pixi.js";
 import { TdMap } from "./TdMap";
+import { EnemyStats } from "src/ts/types/EnemyData";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -13,6 +14,7 @@ type SlowDebuffStats = {
 }
 
 export class Enemy extends Entity {
+    enemyClassName : string
     health: number
     totalHealth: number
     speed: number
@@ -20,28 +22,29 @@ export class Enemy extends Entity {
     killValue: number
     nick: string
     position : Position
-    xToNextWaypoint: number;
-    yToNextWaypoint: number;
-    nextWayPointIndex: number;
-    sprite: PIXI.Sprite;
-    asset: PIXI.SpriteSource;
-    distanceTravelled: number;
-    isAlive: boolean;
+    xToNextWaypoint: number
+    yToNextWaypoint: number
+    nextWayPointIndex: number
+    sprite: PIXI.AnimatedSprite
+    spritesheet: PIXI.Spritesheet
+    distanceTravelled: number
+    isAlive: boolean
 
     slowDebuffStats : SlowDebuffStats
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number , height : number, health : number, speed : number, damage : number, killValue : number, asset : PIXI.SpriteSource) {
+    constructor(x : number, y : number, width : number , height : number, stats : EnemyStats, spritesheet: PIXI.Spritesheet) {
         super(x, y, width, height);
-        this.health = health
-        this.totalHealth = health
-        this.speed = speed
-        this.damage = damage
-        this.killValue = killValue
+        this.enemyClassName = stats.className
+        this.health = stats.health
+        this.totalHealth = stats.health
+        this.speed = stats.speed
+        this.damage = stats.damage
+        this.killValue = stats.killValue
         this.nick = all1st[Math.floor(Math.random() * all1st.length)]
-        this.asset = asset
+        this.spritesheet = spritesheet
 
         this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
 
@@ -50,9 +53,10 @@ export class Enemy extends Entity {
         this.xToNextWaypoint = 0
         this.yToNextWaypoint = 0
         this.nextWayPointIndex = 1
-        this.sprite = PIXI.Sprite.from(asset)
+        this.sprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         this.sprite.height = height
         this.sprite.width = width
+        this.sprite.animationSpeed = stats.animationSpeed || 1
         this.sprite.eventMode = "static"
 
         this.position.x = x * width
@@ -99,6 +103,9 @@ export class Enemy extends Entity {
         const waypoints = map.waypoints
         const speed = this.speed
         this.sprite.visible = true
+        if (!this.sprite.playing) {
+            this.sprite.play()
+        }
 
 
         if (this.nextWayPointIndex >= waypoints.length) {return}
@@ -160,6 +167,11 @@ export class Enemy extends Entity {
 
 function enemyDied(enemy : Enemy) {
     enemy.isAlive = false
+
+    if (enemy.sprite.playing) {
+        enemy.sprite.stop()
+    }
+
     enemy.destroy()
     eventDispatcher.fireEvent("enemyDied")
 }

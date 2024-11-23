@@ -10,6 +10,7 @@ import { oneEnemy } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
+import { allEnemyData } from "../utils/EnemyData"
 
 export class WaveManager {
     map: TdMap
@@ -50,14 +51,15 @@ export class WaveManager {
         this.currentWave++
         const map = this.map
         const enemyAssets = assetLoader.enemies
+        const enemySprites = assetLoader.spriteSheetEnemies
 
-        if (!enemyAssets) {
+        if (!enemyAssets || !enemySprites) {
             throw new Error("Enemy assets not properly loaded...")
         }
 
         //TODO later move enemy data to game data json
         let enemyDataMap = new Map([
-            ["greenCircle", { health: 100, speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
+            ["greenCircle", { health: 100, speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }]
         ])
 
 
@@ -103,8 +105,13 @@ export class WaveManager {
                 if (!enemyData) {
                     return
                 }
+                const spritesheet = assetLoader.spriteSheetEnemies?.get("Infant Circle")
 
-                const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData.health, enemyData.speed, enemyData.damage, enemyData.killValue, enemyData.asset)
+                if (!spritesheet) {
+                    throw new Error("spritesheet not loaded")
+                }
+
+                const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, allEnemyData["infantCircle"].stats, spritesheet)
                 // spawnedEnemy.zIndex = 3
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
                 spawnedEnemy.sprite.visible = false //dont render when first init.
