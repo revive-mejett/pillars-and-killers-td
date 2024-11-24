@@ -64,6 +64,29 @@ export class UIHelper {
         return iconContainer
     }
 
+    //helper function to create an animated Sprite
+    static createAnimatedIcon(spritesheet : PIXI.Spritesheet, xPosition : number, yPosition : number, hexBackground : number, width? : number, height? : number, animationSpeed : number = 0.25) : PIXI.Container {
+        const iconContainer = new PIXI.Container()
+        iconContainer.eventMode = "static"
+        iconContainer.x = xPosition
+        iconContainer.y = yPosition
+
+        const iconBackground = new PIXI.Graphics()
+        iconBackground.beginFill(hexBackground)
+        iconBackground.drawRect(0,0, width || 80, height || 80)
+        iconBackground.endFill()
+        iconContainer.addChild(iconBackground)
+
+        const animatedIcon = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
+        animatedIcon.width = width || 80
+        animatedIcon.height = height || 80
+        animatedIcon.animationSpeed = animationSpeed
+        animatedIcon.play()
+        iconContainer.addChild(animatedIcon)
+
+        return iconContainer
+    }
+
     static createInfoPanelOutline(hexColour : number) : PIXI.Graphics {
         const infoPanelOutline = new PIXI.Graphics()
         infoPanelOutline.lineStyle(3, hexColour)

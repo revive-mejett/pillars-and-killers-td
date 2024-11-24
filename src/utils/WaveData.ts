@@ -4,52 +4,50 @@ const oneEnemy = [
     new Wave(
         [
             {
-                enemy: "yellowCircle",
-                count: 1,
+                enemy: "greenCircle",
+                count: 10,
                 spacingMillis: 800
             }
         ]
     )
 ]
 
-// const grouped = [
-//     new Wave(
-//         [
-//             {
-//                 enemy: "greenCircle",
-//                 count: 50,
-//                 spacingMillis: 25
-//             }
-//         ]
-//     ),
-//     new Wave(
-//         [
-//             {
-//                 enemy: "blueCircle",
-//                 count: 50,
-//                 spacingMillis: 25
-//             }
-//         ]
-//     ),
-//     new Wave(
-//         [
-//             {
-//                 enemy: "purpleCircle",
-//                 count: 50,
-//                 spacingMillis: 25
-//             }
-//         ]
-//     ),
-//     new Wave(
-//         [
-//             {
-//                 enemy: "yellowCircle",
-//                 count: 50,
-//                 spacingMillis: 25
-//             }
-//         ]
-//     )
-// ]
+const ten10 = [
+    new Wave(
+        [
+            {
+                enemy: "yellowCircle",
+                count: 10,
+                spacingMillis: 800
+            }
+        ]
+    )
+]
+
+const grouped = [
+    new Wave(
+        [
+            {
+                enemy: "greenCircle",
+                count: 50,
+                spacingMillis: 25
+            }
+        ]
+    ),
+]
+
+const stressTest = [
+    new Wave(
+        [
+            {
+                enemy: "greenCircle",
+                count: 9999,
+                spacingMillis: 25
+            }
+        ]
+    ),
+]
+
 
 // const testWaves1 = [
 //     new Wave(
@@ -305,6 +303,6 @@ const oneEnemy = [
 //     )
 // ]
 
-export { oneEnemy }
+export { oneEnemy, grouped, ten10, stressTest }
 
 

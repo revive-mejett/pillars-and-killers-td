@@ -1,4 +1,3 @@
-import { allEnemyData } from "../utils/EnemyData";
 import { AssetLoader } from "../core/AssetLoader"
 import { UIHelper } from "../UI/UIHelper"
 import { EventDispatcher } from "../utils/EventDispatcher"
@@ -54,24 +53,5 @@ export class MainMenu extends Scene {
         const tutorialButton = UIHelper.createButton(450,800,400,50, "Tutorial")
         tutorialButton.zIndex = 1
         this.container.addChild(tutorialButton)
-
-        //test animation
-        const testAnimation = async () => {
-
-            //this code should be done in asset loading class
-            const atlasData = allEnemyData.infantCircle.atlasData
-            const spritesheet = new PIXI.Spritesheet(PIXI.Texture.from(atlasData.meta.image), atlasData)
-
-            await spritesheet.parse()
-            const anim = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
-            anim.width = 40
-            anim.height = 40
-            anim.animationSpeed = 0.05
-            anim.play()
-            this.container.addChild(anim)
-        }
-
-        testAnimation()
- 
     }
 }

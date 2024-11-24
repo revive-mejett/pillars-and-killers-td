@@ -27,6 +27,7 @@ export class Enemy extends Entity {
     nextWayPointIndex: number
     sprite: PIXI.AnimatedSprite
     spritesheet: PIXI.Spritesheet
+    animationSpeed? : number
     distanceTravelled: number
     isAlive: boolean
 
@@ -56,7 +57,8 @@ export class Enemy extends Entity {
         this.sprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         this.sprite.height = height
         this.sprite.width = width
-        this.sprite.animationSpeed = stats.animationSpeed || 1
+        this.animationSpeed = stats.animationSpeed || 1
+        this.sprite.animationSpeed = this.animationSpeed
         this.sprite.eventMode = "static"
 
         this.position.x = x * width

@@ -6,7 +6,9 @@ import { TdMap } from "src/objects/TdMap"
 
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
-import { oneEnemy } from "../utils/WaveData"
+
+
+import { oneEnemy, stressTest } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -26,7 +28,7 @@ export class WaveManager {
         this.map = map
         this.waves = []
 
-        this.currentWave = 33
+        this.currentWave = 0
         this.waveInProgress = false
         this.loadWaves()
 
@@ -37,7 +39,7 @@ export class WaveManager {
 
 
 
-        const waves = oneEnemy
+        const waves = stressTest
 
         this.waves = waves
     }

@@ -118,9 +118,9 @@ export class InfoPanel {
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0xFF0000)
         infoPanel.addChild(infoPanelOutline)
 
-        // const currentEnemyIcon = UIHelper.createIcon(enemy.spritesheet, padding, padding, 0x000000)
-        // infoPanel.addChild(currentEnemyIcon)
-        // currentEnemyIcon.x = 160
+        const currentEnemyIcon = UIHelper.createAnimatedIcon(enemy.spritesheet, padding, padding, 0x000000, 80, 80, enemy.animationSpeed)
+        infoPanel.addChild(currentEnemyIcon)
+        currentEnemyIcon.x = 160
 
         const enemyNickText = UIHelper.createText(0 + padding, 5 + padding,`${enemy.nick}`, 20, "0xFFFFFF")
         infoPanel.addChild(enemyNickText)
