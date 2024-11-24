@@ -8,7 +8,7 @@ import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 
 
-import { ten10 } from "../utils/WaveData"
+import { ten10, testWaves2 } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -39,7 +39,7 @@ export class WaveManager {
 
 
 
-        const waves = ten10
+        const waves = testWaves2
 
         this.waves = waves
     }
@@ -89,7 +89,8 @@ export class WaveManager {
 
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
-        let enemyData = enemyDataMap.get(wavePart.enemy)
+        console.log(enemyDataMap)
+        let enemyData = allEnemyData[wavePart.enemy].stats
 
 
         //spawns an enemy
@@ -105,15 +106,16 @@ export class WaveManager {
                 enemiesSpawned++
 
                 if (!enemyData) {
-                    return
+                    throw new Error("enemy data not properly loaded")
                 }
-                const spritesheet = assetLoader.spriteSheetEnemies?.get("Infant Circle")
+                const spritesheet = assetLoader.spriteSheetEnemies?.get(wavePart.enemy)
+
 
                 if (!spritesheet) {
                     throw new Error("spritesheet not loaded")
                 }
 
-                const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, allEnemyData["Infant Circle"].stats, spritesheet)
+                const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData, spritesheet)
                 // spawnedEnemy.zIndex = 3
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
                 spawnedEnemy.sprite.visible = false //dont render when first init.
@@ -129,7 +131,7 @@ export class WaveManager {
                         this.waveInProgress = false
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
-                        enemyData = enemyDataMap.get(wavePart.enemy)
+                        enemyData = allEnemyData[wavePart.enemy].stats
                     }
                 }
             }

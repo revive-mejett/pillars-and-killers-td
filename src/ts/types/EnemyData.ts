@@ -3,7 +3,7 @@ import EnemyType from "./EnemyType"
 type EnemyStats = {
     className: string,
     type: EnemyType,
-    health: 100,
+    health: number,
     speed: number,
     damage: number,
     killValue: number,

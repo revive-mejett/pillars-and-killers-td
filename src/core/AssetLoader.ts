@@ -91,11 +91,16 @@ export class AssetLoader {
     }
 
     async loadEnemySpriteSheets() {
-        const atlasData = allEnemyData["Infant Circle"].atlasData
-        const enemyInfo = allEnemyData["Infant Circle"].stats
-        const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
-        await spritesheet.parse()
-        this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
+        const enemyClasses = Object.keys(allEnemyData)
+
+        enemyClasses.forEach(async enemyClass => {
+            const atlasData = allEnemyData[enemyClass].atlasData
+            const enemyInfo = allEnemyData[enemyClass].stats
+            const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
+            await spritesheet.parse()
+            this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
+        })
+        console.log(this.spriteSheetEnemies)
     }
     // async loadSfx() {
     //     this.sfx = await Assets.loadBundle("sfx")

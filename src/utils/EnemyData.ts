@@ -46,12 +46,64 @@ const allEnemyData : EnemyData = {
         "stats": {
             className: "Infant Circle",
             type: "Normal",
-            health: 100,
+            health: 50,
             speed: 1,
             damage: 1,
-            killValue: 15,
-            rotationSpeed: 0,
+            killValue: 5,
+            rotationSpeed: 0.1,
             animationSpeed: 0.1
+        }
+    },
+    "Little Sparrow" : {
+        atlasData: {
+            "frames": {
+                "littleSparrow1":
+                {
+                    "frame": {"x":0,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250}
+                },
+                "littleSparrow2":
+                {
+                    "frame": {"x":250,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250}
+                },
+                "littleSparrow3":
+                {
+                    "frame": {"x":500,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250}
+                },
+                "littleSparrow4":
+                {
+                    "frame": {"x":750,"y":0,"w":250,"h":250},
+                    "spriteSourceSize": {"x":0,"y":0,"w":250,"h":250},
+                    "sourceSize": {"w":250,"h":250}
+                }
+            },
+
+            "animations": {
+                "enemy": ["littleSparrow1","littleSparrow2","littleSparrow3","littleSparrow4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/LittleSparrow.png",
+                "format": "RGBA8888",
+                "size": {"w":1000,"h":250},
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Little Sparrow",
+            type: "Regen",
+            health: 100,
+            speed: 1.1,
+            damage: 1,
+            killValue: 10,
+            rotationSpeed: 0,
+            animationSpeed: 0.1,
+            regen: 0.1
         }
     }
 }
