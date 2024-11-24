@@ -92,8 +92,8 @@ export class Enemy extends Entity {
     }
 
     updateSpritePosition() {
-        this.sprite.x = this.position.x
-        this.sprite.y = this.position.y
+        this.sprite.x = this.getCenterPosition().x
+        this.sprite.y = this.getCenterPosition().y
     }
 
 
@@ -146,7 +146,7 @@ export class Enemy extends Entity {
             this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
 
-        this.updateRotation()
+        this.updateRotation(delta)
 
         this.tickDebuffs(delta)
 
@@ -165,7 +165,7 @@ export class Enemy extends Entity {
         }
     }
 
-    private updateRotation() {
+    private updateRotation(delta? : number) {
         if (this.isLooking && this.xToNextWaypoint > 0) {
             this.sprite.rotation = Math.PI / 2;
             this.sprite.anchor.set(0, 1);
@@ -181,6 +181,11 @@ export class Enemy extends Entity {
         if (this.isLooking && this.yToNextWaypoint < 0) {
             this.sprite.rotation = 0;
             this.sprite.anchor.set(0, 0);
+        }
+
+        if (this.rotationSpeed > 0) {
+            this.sprite.anchor.set(0.5,0.5)
+            this.sprite.rotation += this.rotationSpeed * (delta || 0) * 0.1
         }
     }
 
