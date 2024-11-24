@@ -8,7 +8,7 @@ import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 
 
-import { ten10, testWaves2 } from "../utils/WaveData"
+import { testWaves2 } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -89,7 +89,6 @@ export class WaveManager {
 
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
-        console.log(enemyDataMap)
         let enemyData = allEnemyData[wavePart.enemy].stats
 
 
@@ -115,10 +114,12 @@ export class WaveManager {
                     throw new Error("spritesheet not loaded")
                 }
 
+                //after reaching max waves, buff all enemies expononentially
+
+
                 const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData, spritesheet)
                 // spawnedEnemy.zIndex = 3
-                gameplayScene.container.addChild(spawnedEnemy.sprite)
-                spawnedEnemy.sprite.visible = false //dont render when first init.
+                spawnedEnemy.spawn(gameplayScene.container)
 
                 eventDispatcher.fireEvent("enemySpawn", spawnedEnemy)
 

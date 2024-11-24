@@ -28,6 +28,8 @@ export class Enemy extends Entity {
     sprite: PIXI.AnimatedSprite
     spritesheet: PIXI.Spritesheet
     animationSpeed? : number
+    rotationSpeed : number
+    isLooking: boolean
     distanceTravelled: number
     isAlive: boolean
 
@@ -57,8 +59,15 @@ export class Enemy extends Entity {
         this.sprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         this.sprite.height = height
         this.sprite.width = width
-        this.animationSpeed = stats.animationSpeed || 1
+        this.sprite.anchor.set(0,1)
+        // this.sprite.pivot = new PIXI.Point(this.width/2, this.height/2)
+        this.animationSpeed = stats.animationSpeed || 0.1
         this.sprite.animationSpeed = this.animationSpeed
+        this.sprite.visible = false //dont render when first init.
+
+        this.rotationSpeed = stats.rotationSpeed
+        this.isLooking = stats.isLooking
+
         this.sprite.eventMode = "static"
 
         this.position.x = x * width
@@ -95,8 +104,16 @@ export class Enemy extends Entity {
         this.yToNextWaypoint = (map.waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
     }
 
-    destroy() {
-        this.sprite.destroy()
+
+
+    spawn(sceneContainer : PIXI.Container) {
+        this.updateRotation()
+        sceneContainer.addChild(this.sprite)
+        setTimeout(() => {
+            if (this.isAlive) {
+                this.sprite.visible = true
+            }
+        }, 50)
     }
 
 
@@ -104,7 +121,9 @@ export class Enemy extends Entity {
 
         const waypoints = map.waypoints
         const speed = this.speed
-        this.sprite.visible = true
+
+
+
         if (!this.sprite.playing) {
             this.sprite.play()
         }
@@ -121,6 +140,8 @@ export class Enemy extends Entity {
             this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
 
+        this.updateRotation()
+
         this.tickDebuffs(delta)
 
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
@@ -135,6 +156,25 @@ export class Enemy extends Entity {
             } else {
                 this.setDistancesToNext(map)
             }
+        }
+    }
+
+    private updateRotation() {
+        if (this.isLooking && this.xToNextWaypoint > 0) {
+            this.sprite.rotation = Math.PI / 2;
+            this.sprite.anchor.set(0, 1);
+        }
+        if (this.isLooking && this.xToNextWaypoint < 0) {
+            this.sprite.rotation = -Math.PI / 2;
+            this.sprite.anchor.set(1, 0);
+        }
+        if (this.isLooking && this.yToNextWaypoint > 0) {
+            this.sprite.rotation = Math.PI;
+            this.sprite.anchor.set(1, 1);
+        }
+        if (this.isLooking && this.yToNextWaypoint < 0) {
+            this.sprite.rotation = 0;
+            this.sprite.anchor.set(0, 0);
         }
     }
 
@@ -165,6 +205,10 @@ export class Enemy extends Entity {
             eventDispatcher.fireEvent("moneyEarned", this.killValue)
         }
     }
+
+    destroy() {
+        this.sprite.destroy()
+    }
 }
 
 function enemyDied(enemy : Enemy) {
@@ -184,4 +228,3 @@ function reachEnd(enemy : Enemy) {
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
     eventDispatcher.fireEvent("enemyDied")
 }
-

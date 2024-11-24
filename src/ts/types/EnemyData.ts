@@ -8,6 +8,7 @@ type EnemyStats = {
     damage: number,
     killValue: number,
     rotationSpeed: number,
+    isLooking: boolean,
     regen? : number,
     armour? : number,
     pulseRange? : number,
