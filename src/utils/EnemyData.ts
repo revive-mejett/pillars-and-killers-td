@@ -3,7 +3,7 @@ import { EnemyData } from "src/ts/types/EnemyData"
 
 const allEnemyData : EnemyData = {
 
-    "infantCircle" : {
+    "Infant Circle" : {
         atlasData: {
             "frames": {
                 "infantCircle1":
@@ -50,6 +50,7 @@ const allEnemyData : EnemyData = {
             speed: 1,
             damage: 1,
             killValue: 15,
+            rotationSpeed: 0,
             animationSpeed: 0.1
         }
     }

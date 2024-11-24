@@ -113,7 +113,7 @@ export class WaveManager {
                     throw new Error("spritesheet not loaded")
                 }
 
-                const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, allEnemyData["infantCircle"].stats, spritesheet)
+                const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, allEnemyData["Infant Circle"].stats, spritesheet)
                 // spawnedEnemy.zIndex = 3
                 gameplayScene.container.addChild(spawnedEnemy.sprite)
                 spawnedEnemy.sprite.visible = false //dont render when first init.

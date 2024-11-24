@@ -91,8 +91,8 @@ export class AssetLoader {
     }
 
     async loadEnemySpriteSheets() {
-        const atlasData = allEnemyData.infantCircle.atlasData
-        const enemyInfo = allEnemyData.infantCircle.stats
+        const atlasData = allEnemyData["Infant Circle"].atlasData
+        const enemyInfo = allEnemyData["Infant Circle"].stats
         const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
         await spritesheet.parse()
         this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
