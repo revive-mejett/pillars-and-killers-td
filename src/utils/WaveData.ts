@@ -16,7 +16,7 @@ const ten10 = [
     new Wave(
         [
             {
-                enemy: "yellowCircle",
+                enemy: "greenCircle",
                 count: 10,
                 spacingMillis: 800
             }

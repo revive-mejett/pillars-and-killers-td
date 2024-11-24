@@ -8,7 +8,7 @@ import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 
 
-import { oneEnemy, stressTest } from "../utils/WaveData"
+import { ten10 } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -39,7 +39,7 @@ export class WaveManager {
 
 
 
-        const waves = stressTest
+        const waves = ten10
 
         this.waves = waves
     }
@@ -61,7 +61,7 @@ export class WaveManager {
 
         //TODO later move enemy data to game data json
         let enemyDataMap = new Map([
-            ["greenCircle", { health: 100, speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }]
+            ["greenCircle", { health: 100, speed: 5, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }]
         ])
 
 
@@ -69,7 +69,7 @@ export class WaveManager {
 
         if (this.currentWave >= this.waves.length + 1) {
             enemyDataMap = new Map([
-                ["greenCircle", { health: Math.floor(100 * 1.05 ** (this.currentWave - this.waves.length)), speed: 1, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
+                ["greenCircle", { health: Math.floor(100 * 1.05 ** (this.currentWave - this.waves.length)), speed: 5, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
             ])
         }
 

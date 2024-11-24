@@ -94,6 +94,9 @@ export class Game {
             this.resetGameplayScene(gameplayScene)
             this.sceneManager?.transitionScene(mainMenu)
         })
+
+        eventDispatcher.on("gameEnd", () => {
+        })
     }
 
     resetGameplayScene(gameplayScene : GameplayScene) {
