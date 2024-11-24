@@ -59,7 +59,7 @@ export class Enemy extends Entity {
         this.sprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         this.sprite.height = height
         this.sprite.width = width
-        this.sprite.anchor.set(0,1)
+
         // this.sprite.pivot = new PIXI.Point(this.width/2, this.height/2)
         this.animationSpeed = stats.animationSpeed || 0.1
         this.sprite.animationSpeed = this.animationSpeed
@@ -114,6 +114,12 @@ export class Enemy extends Entity {
                 this.sprite.visible = true
             }
         }, 50)
+
+
+        // if (this.isAlive) {
+        //     this.sprite.visible = true
+        // }
+
     }
 
 

@@ -8,11 +8,12 @@ import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 
 
-import { testWaves2 } from "../utils/WaveData"
+import { oneEnemy, testWaves2 } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 import { allEnemyData } from "../utils/EnemyData"
+import { EnemyStats } from "src/ts/types/EnemyData"
 
 export class WaveManager {
     map: TdMap
@@ -39,7 +40,7 @@ export class WaveManager {
 
 
 
-        const waves = testWaves2
+        const waves = oneEnemy
 
         this.waves = waves
     }
@@ -59,19 +60,9 @@ export class WaveManager {
             throw new Error("Enemy assets not properly loaded...")
         }
 
-        //TODO later move enemy data to game data json
-        let enemyDataMap = new Map([
-            ["greenCircle", { health: 100, speed: 5, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }]
-        ])
-
 
         let waveArray
 
-        if (this.currentWave >= this.waves.length + 1) {
-            enemyDataMap = new Map([
-                ["greenCircle", { health: Math.floor(100 * 1.05 ** (this.currentWave - this.waves.length)), speed: 5, damage: 1, killValue: 15, asset: enemyAssets.greenCircle }],
-            ])
-        }
 
 
         const waveIndex = this.currentWave - 1
@@ -79,6 +70,7 @@ export class WaveManager {
         this.waveTicker.autoStart = false
 
         if (this.currentWave >= this.waves.length + 1) {
+            console.log("gen wave")
             waveArray = this.generateWave()
         } else {
             waveArray = this.waves[waveIndex]
@@ -90,6 +82,10 @@ export class WaveManager {
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
         let enemyData = allEnemyData[wavePart.enemy].stats
+        //after reaching max waves, buff all enemies expononentially
+        if (this.currentWave >= this.waves.length + 1) {
+            this.buffKillerHealth(enemyData)
+        }
 
 
         //spawns an enemy
@@ -114,7 +110,7 @@ export class WaveManager {
                     throw new Error("spritesheet not loaded")
                 }
 
-                //after reaching max waves, buff all enemies expononentially
+
 
 
                 const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData, spritesheet)
@@ -133,6 +129,10 @@ export class WaveManager {
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
                         enemyData = allEnemyData[wavePart.enemy].stats
+                        //after reaching max waves, buff all enemies expononentially
+                        if (this.currentWave >= this.waves.length + 1) {
+                            this.buffKillerHealth(enemyData)
+                        }
                     }
                 }
             }
@@ -145,8 +145,12 @@ export class WaveManager {
     }
 
 
+    private buffKillerHealth(enemyData: EnemyStats) {
+        enemyData.health = Math.floor(enemyData.health * 1.05 ** (this.currentWave - this.waves.length))
+    }
+
     generateWave() {
-        const enemies = ["greenCircle"]
+        const enemies = Object.keys(allEnemyData)
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1
 

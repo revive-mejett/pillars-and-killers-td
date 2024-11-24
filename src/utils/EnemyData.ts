@@ -1,6 +1,6 @@
 import { EnemyData } from "src/ts/types/EnemyData"
 
-
+//TODO later move enemy data to game data json
 const allEnemyData : EnemyData = {
 
     "Infant Circle" : {

@@ -100,7 +100,7 @@ export class AssetLoader {
             await spritesheet.parse()
             this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
         })
-        console.log(this.spriteSheetEnemies)
+        // console.log(this.spriteSheetEnemies)
     }
     // async loadSfx() {
     //     this.sfx = await Assets.loadBundle("sfx")
