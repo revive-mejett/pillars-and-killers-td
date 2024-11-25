@@ -1,5 +1,7 @@
+import { EnemyClass } from "src/ts/types/EnemyData"
+
 type WavePart = {
-    enemy: string,
+    enemy: EnemyClass,
     count: number,
     spacingMillis: number,
 }
@@ -11,3 +13,5 @@ export class Wave {
         this.waveParts = waveParts
     }
 }
+
+export { WavePart }

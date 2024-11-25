@@ -93,7 +93,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 120,
                     damage: 7,
                     fireRate: 1,
-                    cost: 75,
+                    cost: 50,
                     speedMultiplier: 0.8
                 },
                 towerInfo: {
@@ -111,28 +111,28 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 130,
                         damage: 9,
                         fireRate: 1,
-                        cost: 100,
+                        cost: 50,
                         speedMultiplier: 0.7
                     },
                     {
                         range: 140,
                         damage: 13,
                         fireRate: 1,
-                        cost: 160,
+                        cost: 120,
                         speedMultiplier: 0.55
                     },
                     {
                         range: 150,
                         damage: 16,
                         fireRate: 1,
-                        cost: 220,
+                        cost: 260,
                         speedMultiplier: 0.4
                     },
                     {
                         range: 155,
                         damage: 20,
                         fireRate: 1,
-                        cost: 300,
+                        cost: 200,
                         speedMultiplier: 0.2
                     }
                 ],
@@ -171,7 +171,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 85,
                     damage: 8,
                     fireRate: 0.8,
-                    cost: 150,
+                    cost: 100,
                     impactRadius: 60
                 },
                 towerInfo: {
@@ -191,28 +191,28 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 85,
                         damage: 14,
                         fireRate: 0.8,
-                        cost: 200,
+                        cost: 150,
                         impactRadius: 70
                     },
                     {
                         range: 95,
                         damage: 21,
                         fireRate: 1,
-                        cost: 300,
+                        cost: 250,
                         impactRadius: 80
                     },
                     {
                         range: 105,
                         damage: 28,
                         fireRate: 1.2,
-                        cost: 500,
+                        cost: 400,
                         impactRadius: 90
                     },
                     {
                         range: 115,
                         damage: 35,
                         fireRate: 1.4,
-                        cost: 1000,
+                        cost: 800,
                         impactRadius: 100
                     }
                 ],

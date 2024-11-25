@@ -1,7 +1,7 @@
 import { Enemy } from "../objects/Enemy"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader"
-import { Wave } from "../objects/Wave"
+import { Wave, WavePart } from "../objects/Wave"
 import { TdMap } from "src/objects/TdMap"
 
 import * as PIXI from "pixi.js";
@@ -13,7 +13,7 @@ import { testWaves2 } from "../utils/WaveData"
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 import { allEnemyData } from "../utils/EnemyData"
-import { EnemyStats } from "src/ts/types/EnemyData"
+import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
 
 export class WaveManager {
     map: TdMap
@@ -146,15 +146,16 @@ export class WaveManager {
 
 
     private buffKillerHealth(enemyData: EnemyStats) {
-        enemyData.health = Math.floor(enemyData.health * 1.05 ** (this.currentWave - this.waves.length))
+        const exponentialFactor = 1.05
+        enemyData.health = Math.floor(enemyData.health * exponentialFactor ** (this.currentWave - this.waves.length))
     }
 
     generateWave() {
-        const enemies = Object.keys(allEnemyData)
+        const enemies : EnemyClass[] = Object.keys(allEnemyData) as EnemyClass[]
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1
 
-        const waveArray = []
+        const waveArray : WavePart[] = []
 
         for (let i = 0; i < numberWaveParts; i++) {
             waveArray.push({
