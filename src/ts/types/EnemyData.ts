@@ -1,7 +1,9 @@
 import EnemyType from "./EnemyType"
 
+type EnemyClass = "Infant Circle" | "Little Sparrow" | "Earthling Flake" | "Quick Bonhomme" | "Stone Pricker" | "4p 2024" | "Mean Triangle" | "Brave Proxima Centauri"
+
 type EnemyStats = {
-    className: string,
+    className: EnemyClass,
     type: EnemyType,
     health: number,
     speed: number,
@@ -40,4 +42,4 @@ type EnemyData = {
     }
 }
 
-export { EnemyData, EnemyStats }
+export { EnemyData, EnemyStats, EnemyClass }
