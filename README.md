@@ -1,5 +1,3 @@
-![Monday Circle](https://github.com/user-attachments/assets/b38fe62e-da46-416a-a707-dd1aa88cbb0d)# pillars-and-killers-td
-
 ## Overview
 In short, Pillars against Killers.
 A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. The game will require players to beat waves of killers, that travel along a path. To survive, players build `pillars` (towers) that attack `killers` to prevent them from reaching the end.
