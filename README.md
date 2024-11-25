@@ -1,4 +1,4 @@
-# pillars-and-killers-td
+![Monday Circle](https://github.com/user-attachments/assets/b38fe62e-da46-416a-a707-dd1aa88cbb0d)# pillars-and-killers-td
 
 ## Overview
 In short, Pillars against Killers.
@@ -15,14 +15,40 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 - Settings and vfx disabling
 - French translation (THIS IS GOING TO BE A CHALLENGE)
 
+## The Killers
+
+  <table style="border: 1px solid red">
+    <tr>
+      <th></th>
+      <th>Killer Class</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>![Monday Circle](https://github.com/user-attachments/assets/a4bc868a-3bee-4cd9-a444-437243f14fba)</td>
+      <td>Infant Circle</td>
+      <td>Pretty basic. Weakest killer in the entire game. Don't ignore them though! They can deal 1 damage!</td>
+    </tr>
+  </table>
+
+
+## Sources
+- ALL of the Pillars and Killer sprite animations are made by me
+- Most of the sounds are sourced from Unsplash 
+
+
 
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/06ec96ac-bff7-4441-b89f-65506eb2f01e)
 ![Screenshot 2024-11-24 224542](https://github.com/user-attachments/assets/52d32710-f35e-4eaa-9bbb-4e3098e063d3)
 ![Screenshot 2024-11-24 231540](https://github.com/user-attachments/assets/42b1044d-dad9-40cd-8930-1ed9123fc4bc)
 ![Screenshot 2024-11-24 225737](https://github.com/user-attachments/assets/6f28b831-10e1-422f-b66f-47ee9a46063a)
+![Screenshot 2024-11-24 225842](https://github.com/user-attachments/assets/19f98176-b989-4b3e-8e23-0ac63ee8f04f)
 
 ![image](https://github.com/user-attachments/assets/c5db4996-d4d2-4bc8-8fed-095593c775b0)
+
+## Planned Release
+Planned release date: <p style="color: red>December 25, 2024</p>. This is not exact, but a Christmas release would be epic!
+
 
 
 ## To run (NOTE: this is NOT yet officially released; the game is still in development)
