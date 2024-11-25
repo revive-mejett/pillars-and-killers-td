@@ -22,42 +22,42 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
       <th>Description</th>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/a4bc868a-3bee-4cd9-a444-437243f14fba" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/a4bc868a-3bee-4cd9-a444-437243f14fba" witdh="75px" height="75px"></td>
       <td>Infant Circle</td>
       <td>Pretty basic. Weakest killer in the entire game. Don't ignore them though! They can deal 1 damage!</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/3a080627-1114-46b7-b60f-4d78fb09c15b" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/3a080627-1114-46b7-b60f-4d78fb09c15b" witdh="75px" height="75px"></td>
       <td>Little Sparrow</td>
       <td>Cute bird flying around! He's adorable!</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/b65df91f-20c1-4575-b614-5ecc82e0a9a6" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/b65df91f-20c1-4575-b614-5ecc82e0a9a6" witdh="75px" height="75px"></td>
       <td>Earthling Flake</td>
       <td>You see them everyday, well at least in the winter! These can resist the frost as they are present in December, January, and February!</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/47ac8fb6-e12c-404d-960a-b8b0b59fd65d" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/47ac8fb6-e12c-404d-960a-b8b0b59fd65d" witdh="75px" height="75px"></td>
       <td>Quick Bonhomme</td>
       <td>These fast little guys can be a trouble if you don't have a lot of slowing pillars built.</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/e11725b9-51d1-451c-a5b2-848b5e170a6a" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/e11725b9-51d1-451c-a5b2-848b5e170a6a" witdh="75px" height="75px"></td>
       <td>Stone Pricker</td>
       <td>These can be tough although they are a bit slow due to their armour.</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/681bf136-70f5-4768-8e22-8ea1b7c58d14" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/681bf136-70f5-4768-8e22-8ea1b7c58d14" witdh="75px" height="75px"></td>
       <td>4p 2024</td>
       <td>A 4-pointed star just twinking around. They aren't too big for a threat. However, you haven't meant their older brothers yet!</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/7a1bcf04-6f78-4109-8bfd-673391c6c6ac" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/7a1bcf04-6f78-4109-8bfd-673391c6c6ac" witdh="75px" height="75px"></td>
       <td>Mean Triangle</td>
       <td>They are just mean. They need to be focused down upon to kick them off the Earth.</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="50px" height="50px"></td>
+      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="75px" height="75px"></td>
       <td>Brave Proxima Centauri</td>
       <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
     </tr>
@@ -81,7 +81,7 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 ![image](https://github.com/user-attachments/assets/c5db4996-d4d2-4bc8-8fed-095593c775b0)
 
 ## Planned Release
-Planned release date: <p style="color: red">December 25, 2024</p>. This is not exact, but a Christmas release would be epic!
+Planned release date: <p style="color: red;">December 25, 2024</p>. This is not exact, but a Christmas release would be epic!
 
 
 
