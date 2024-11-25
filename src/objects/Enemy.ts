@@ -5,6 +5,7 @@ import { Entity } from "./Entity"
 import * as PIXI from "pixi.js";
 import { TdMap } from "./TdMap";
 import { EnemyStats } from "src/ts/types/EnemyData";
+import sound from "pixi-sound";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -64,6 +65,7 @@ export class Enemy extends Entity {
         this.animationSpeed = stats.animationSpeed || 0.1
         this.sprite.animationSpeed = this.animationSpeed
         this.sprite.visible = false //dont render when first init.
+        this.sprite.anchor.set(0.5,0.5)
 
         this.rotationSpeed = stats.rotationSpeed
         this.isLooking = stats.isLooking
@@ -168,23 +170,22 @@ export class Enemy extends Entity {
     private updateRotation(delta? : number) {
         if (this.isLooking && this.xToNextWaypoint > 0) {
             this.sprite.rotation = Math.PI / 2;
-            this.sprite.anchor.set(0, 1);
+            // this.sprite.anchor.set(0, 1);
         }
         if (this.isLooking && this.xToNextWaypoint < 0) {
             this.sprite.rotation = -Math.PI / 2;
-            this.sprite.anchor.set(1, 0);
+            // this.sprite.anchor.set(1, 0);
         }
         if (this.isLooking && this.yToNextWaypoint > 0) {
             this.sprite.rotation = Math.PI;
-            this.sprite.anchor.set(1, 1);
+            // this.sprite.anchor.set(1, 1);
         }
         if (this.isLooking && this.yToNextWaypoint < 0) {
             this.sprite.rotation = 0;
-            this.sprite.anchor.set(0, 0);
+            // this.sprite.anchor.set(0, 0);
         }
 
         if (this.rotationSpeed > 0) {
-            this.sprite.anchor.set(0.5,0.5)
             this.sprite.rotation += this.rotationSpeed * (delta || 0) * 0.1
         }
     }
@@ -224,6 +225,12 @@ export class Enemy extends Entity {
 
 function enemyDied(enemy : Enemy) {
     enemy.isAlive = false
+
+    const sfxEnemyDied = sound.Sound.from({
+        url: "assets/sounds/sfx/killerKilled1.mp3",
+        volume: 0.25
+    })
+    sfxEnemyDied.play()
 
     if (enemy.sprite.playing) {
         enemy.sprite.stop()

@@ -4,7 +4,7 @@ const oneEnemy = [
     new Wave(
         [
             {
-                enemy: "Quick Bonhomme",
+                enemy: "Brave Proxima Centauri",
                 count: 1,
                 spacingMillis: 800
             }
