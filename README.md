@@ -24,7 +24,7 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
       <th>Description</th>
     </tr>
     <tr>
-      <td>!<img src="https://github.com/user-attachments/assets/a4bc868a-3bee-4cd9-a444-437243f14fba)"></td>
+      <td>!<img src="https://github.com/user-attachments/assets/a4bc868a-3bee-4cd9-a444-437243f14fba"></td>
       <td>Infant Circle</td>
       <td>Pretty basic. Weakest killer in the entire game. Don't ignore them though! They can deal 1 damage!</td>
     </tr>
