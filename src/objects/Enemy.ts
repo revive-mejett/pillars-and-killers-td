@@ -4,6 +4,8 @@ import { all1st } from "../utils/Nicknames";
 import { Entity } from "./Entity"
 import * as PIXI from "pixi.js";
 import { TdMap } from "./TdMap";
+import { EnemyStats } from "src/ts/types/EnemyData";
+import sound from "pixi-sound";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -13,6 +15,7 @@ type SlowDebuffStats = {
 }
 
 export class Enemy extends Entity {
+    enemyClassName : string
     health: number
     totalHealth: number
     speed: number
@@ -20,28 +23,32 @@ export class Enemy extends Entity {
     killValue: number
     nick: string
     position : Position
-    xToNextWaypoint: number;
-    yToNextWaypoint: number;
-    nextWayPointIndex: number;
-    sprite: PIXI.Sprite;
-    asset: PIXI.SpriteSource;
-    distanceTravelled: number;
-    isAlive: boolean;
+    xToNextWaypoint: number
+    yToNextWaypoint: number
+    nextWayPointIndex: number
+    sprite: PIXI.AnimatedSprite
+    spritesheet: PIXI.Spritesheet
+    animationSpeed? : number
+    rotationSpeed : number
+    isLooking: boolean
+    distanceTravelled: number
+    isAlive: boolean
 
     slowDebuffStats : SlowDebuffStats
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number , height : number, health : number, speed : number, damage : number, killValue : number, asset : PIXI.SpriteSource) {
+    constructor(x : number, y : number, width : number , height : number, stats : EnemyStats, spritesheet: PIXI.Spritesheet) {
         super(x, y, width, height);
-        this.health = health
-        this.totalHealth = health
-        this.speed = speed
-        this.damage = damage
-        this.killValue = killValue
+        this.enemyClassName = stats.className
+        this.health = stats.health
+        this.totalHealth = stats.health
+        this.speed = stats.speed
+        this.damage = stats.damage
+        this.killValue = stats.killValue
         this.nick = all1st[Math.floor(Math.random() * all1st.length)]
-        this.asset = asset
+        this.spritesheet = spritesheet
 
         this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
 
@@ -50,9 +57,19 @@ export class Enemy extends Entity {
         this.xToNextWaypoint = 0
         this.yToNextWaypoint = 0
         this.nextWayPointIndex = 1
-        this.sprite = PIXI.Sprite.from(asset)
+        this.sprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         this.sprite.height = height
         this.sprite.width = width
+
+        // this.sprite.pivot = new PIXI.Point(this.width/2, this.height/2)
+        this.animationSpeed = stats.animationSpeed || 0.1
+        this.sprite.animationSpeed = this.animationSpeed
+        this.sprite.visible = false //dont render when first init.
+        this.sprite.anchor.set(0.5,0.5)
+
+        this.rotationSpeed = stats.rotationSpeed
+        this.isLooking = stats.isLooking
+
         this.sprite.eventMode = "static"
 
         this.position.x = x * width
@@ -77,8 +94,8 @@ export class Enemy extends Entity {
     }
 
     updateSpritePosition() {
-        this.sprite.x = this.position.x
-        this.sprite.y = this.position.y
+        this.sprite.x = this.getCenterPosition().x
+        this.sprite.y = this.getCenterPosition().y
     }
 
 
@@ -89,8 +106,22 @@ export class Enemy extends Entity {
         this.yToNextWaypoint = (map.waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
     }
 
-    destroy() {
-        this.sprite.destroy()
+
+
+    spawn(sceneContainer : PIXI.Container) {
+        this.updateRotation()
+        sceneContainer.addChild(this.sprite)
+        setTimeout(() => {
+            if (this.isAlive) {
+                this.sprite.visible = true
+            }
+        }, 50)
+
+
+        // if (this.isAlive) {
+        //     this.sprite.visible = true
+        // }
+
     }
 
 
@@ -98,7 +129,12 @@ export class Enemy extends Entity {
 
         const waypoints = map.waypoints
         const speed = this.speed
-        this.sprite.visible = true
+
+
+
+        if (!this.sprite.playing) {
+            this.sprite.play()
+        }
 
 
         if (this.nextWayPointIndex >= waypoints.length) {return}
@@ -111,6 +147,8 @@ export class Enemy extends Entity {
             this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
             this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
+
+        this.updateRotation(delta)
 
         this.tickDebuffs(delta)
 
@@ -126,6 +164,29 @@ export class Enemy extends Entity {
             } else {
                 this.setDistancesToNext(map)
             }
+        }
+    }
+
+    private updateRotation(delta? : number) {
+        if (this.isLooking && this.xToNextWaypoint > 0) {
+            this.sprite.rotation = Math.PI / 2;
+            // this.sprite.anchor.set(0, 1);
+        }
+        if (this.isLooking && this.xToNextWaypoint < 0) {
+            this.sprite.rotation = -Math.PI / 2;
+            // this.sprite.anchor.set(1, 0);
+        }
+        if (this.isLooking && this.yToNextWaypoint > 0) {
+            this.sprite.rotation = Math.PI;
+            // this.sprite.anchor.set(1, 1);
+        }
+        if (this.isLooking && this.yToNextWaypoint < 0) {
+            this.sprite.rotation = 0;
+            // this.sprite.anchor.set(0, 0);
+        }
+
+        if (this.rotationSpeed > 0) {
+            this.sprite.rotation += this.rotationSpeed * (delta || 0) * 0.1
         }
     }
 
@@ -156,10 +217,25 @@ export class Enemy extends Entity {
             eventDispatcher.fireEvent("moneyEarned", this.killValue)
         }
     }
+
+    destroy() {
+        this.sprite.destroy()
+    }
 }
 
 function enemyDied(enemy : Enemy) {
     enemy.isAlive = false
+
+    const sfxEnemyDied = sound.Sound.from({
+        url: "assets/sounds/sfx/killerKilled1.mp3",
+        volume: 0.25
+    })
+    sfxEnemyDied.play()
+
+    if (enemy.sprite.playing) {
+        enemy.sprite.stop()
+    }
+
     enemy.destroy()
     eventDispatcher.fireEvent("enemyDied")
 }
@@ -170,4 +246,3 @@ function reachEnd(enemy : Enemy) {
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
     eventDispatcher.fireEvent("enemyDied")
 }
-

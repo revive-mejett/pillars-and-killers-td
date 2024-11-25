@@ -44,6 +44,7 @@ export class Game {
         await assetLoader.loadIconSprites()
         await assetLoader.loadTowerSprites()
         await assetLoader.loadOtherImagesSprites()
+        await assetLoader.loadEnemySpriteSheets()
 
         this.app.stage.addChild(this.baseContainer)
         const frame = new PIXI.Graphics()
@@ -92,6 +93,9 @@ export class Game {
             mainMenu.constructScene()
             this.resetGameplayScene(gameplayScene)
             this.sceneManager?.transitionScene(mainMenu)
+        })
+
+        eventDispatcher.on("gameEnd", () => {
         })
     }
 

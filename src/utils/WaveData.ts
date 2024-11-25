@@ -4,8 +4,20 @@ const oneEnemy = [
     new Wave(
         [
             {
-                enemy: "yellowCircle",
+                enemy: "Brave Proxima Centauri",
                 count: 1,
+                spacingMillis: 800
+            }
+        ]
+    )
+]
+
+const ten10 = [
+    new Wave(
+        [
+            {
+                enemy: "Infant Circle",
+                count: 10,
                 spacingMillis: 800
             }
         ]
@@ -16,51 +28,37 @@ const grouped = [
     new Wave(
         [
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 50,
                 spacingMillis: 25
             }
         ]
     ),
-    new Wave(
-        [
-            {
-                enemy: "blueCircle",
-                count: 50,
-                spacingMillis: 25
-            }
-        ]
-    ),
-    new Wave(
-        [
-            {
-                enemy: "purpleCircle",
-                count: 50,
-                spacingMillis: 25
-            }
-        ]
-    ),
-    new Wave(
-        [
-            {
-                enemy: "yellowCircle",
-                count: 50,
-                spacingMillis: 25
-            }
-        ]
-    )
 ]
+
+const stressTest = [
+    new Wave(
+        [
+            {
+                enemy: "Infant Circle",
+                count: 9999,
+                spacingMillis: 25
+            }
+        ]
+    ),
+]
+
 
 const testWaves1 = [
     new Wave(
         [
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 55,
                 spacingMillis: 100
             },
             {
-                enemy: "purpleCircle",
+                enemy: "Earthling Flake",
                 count: 40,
                 spacingMillis: 500
             }
@@ -69,7 +67,7 @@ const testWaves1 = [
     new Wave(
         [
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 7,
                 spacingMillis: 800
             }
@@ -81,7 +79,7 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "greenCircle",
+                enemy: "Little Sparrow",
                 count: 12,
                 spacingMillis: 800
             }
@@ -90,7 +88,7 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 15,
                 spacingMillis: 600
             }
@@ -99,12 +97,12 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 5,
                 spacingMillis: 1000
             },
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 13,
                 spacingMillis: 500
             }
@@ -113,12 +111,12 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 10,
                 spacingMillis: 1000
             },
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 10,
                 spacingMillis: 700
             }
@@ -127,7 +125,7 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 30,
                 spacingMillis: 250
             }
@@ -136,17 +134,17 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "purpleCircle",
+                enemy: "Earthling Flake",
                 count: 3,
                 spacingMillis: 250
             },
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 8,
                 spacingMillis: 500
             },
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 8,
                 spacingMillis: 400
             }
@@ -155,12 +153,12 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 20,
                 spacingMillis: 400
             },
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 15,
                 spacingMillis: 1500
             }
@@ -169,17 +167,17 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "greenCircle",
+                enemy: "Infant Circle",
                 count: 5,
                 spacingMillis: 600
             },
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 8,
                 spacingMillis: 600
             },
             {
-                enemy: "purpleCircle",
+                enemy: "Earthling Flake",
                 count: 5,
                 spacingMillis: 1500
             }
@@ -188,17 +186,17 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "blueCircle",
+                enemy: "Little Sparrow",
                 count: 14,
                 spacingMillis: 400
             },
             {
-                enemy: "purpleCircle",
+                enemy: "Earthling Flake",
                 count: 16,
                 spacingMillis: 1000
             },
             {
-                enemy: "yellowCircle",
+                enemy: "Quick Bonhomme",
                 count: 1,
                 spacingMillis: 1000
             }
@@ -226,85 +224,85 @@ const testWaves2 = [
 
 
 
-/**
- * For production
- */
-const prodWaves = [
-    new Wave(
-        [
-            {
-                enemy: "greenCircle",
-                count: 8,
-                spacingMillis: 800
-            }
-        ]
-    ),
-    new Wave(
-        [
-            {
-                enemy: "blueCircle",
-                count: 12,
-                spacingMillis: 777
-            },
-            {
-                enemy: "purpleCircle",
-                count: 5,
-                spacingMillis: 2000
-            }
-        ]
-    ),
-    new Wave(
-        [
-            {
-                enemy: "greenCircle",
-                count: 15,
-                spacingMillis: 500
-            },
-            {
-                enemy: "blueCircle",
-                count: 10,
-                spacingMillis: 700
-            },
-            {
-                enemy: "purpleCircle",
-                count: 20,
-                spacingMillis: 333
-            },
-            {
-                enemy: "yellowCircle",
-                count: 5,
-                spacingMillis: 2000
-            }
-        ]
-    ),
+// /**
+//  * For production
+//  */
+// const prodWaves = [
+//     new Wave(
+//         [
+//             {
+//                 enemy: "Infant Circle",
+//                 count: 8,
+//                 spacingMillis: 800
+//             }
+//         ]
+//     ),
+//     new Wave(
+//         [
+//             {
+//                 enemy: "Little Sparrow",
+//                 count: 12,
+//                 spacingMillis: 777
+//             },
+//             {
+//                 enemy: "Earthling Flake",
+//                 count: 5,
+//                 spacingMillis: 2000
+//             }
+//         ]
+//     ),
+//     new Wave(
+//         [
+//             {
+//                 enemy: "Infant Circle",
+//                 count: 15,
+//                 spacingMillis: 500
+//             },
+//             {
+//                 enemy: "Little Sparrow",
+//                 count: 10,
+//                 spacingMillis: 700
+//             },
+//             {
+//                 enemy: "Earthling Flake",
+//                 count: 20,
+//                 spacingMillis: 333
+//             },
+//             {
+//                 enemy: "Quick Bonhomme",
+//                 count: 5,
+//                 spacingMillis: 2000
+//             }
+//         ]
+//     ),
 
-    //TODO later move enemy data to game data json
-    new Wave(
-        [
-            {
-                enemy: "greenCircle",
-                count: 15,
-                spacingMillis: 500
-            },
-            {
-                enemy: "blueCircle",
-                count: 10,
-                spacingMillis: 700
-            },
-            {
-                enemy: "purpleCircle",
-                count: 20,
-                spacingMillis: 333
-            },
-            {
-                enemy: "yellowCircle",
-                count: 5,
-                spacingMillis: 2000
-            }
-        ]
-    )
-]
+//     //TODO later move enemy data to game data json
+//     new Wave(
+//         [
+//             {
+//                 enemy: "Infant Circle",
+//                 count: 15,
+//                 spacingMillis: 500
+//             },
+//             {
+//                 enemy: "Little Sparrow",
+//                 count: 10,
+//                 spacingMillis: 700
+//             },
+//             {
+//                 enemy: "Earthling Flake",
+//                 count: 20,
+//                 spacingMillis: 333
+//             },
+//             {
+//                 enemy: "Quick Bonhomme",
+//                 count: 5,
+//                 spacingMillis: 2000
+//             }
+//         ]
+//     )
+// ]
 
-export { oneEnemy, grouped, testWaves1, testWaves2, prodWaves }
+export { oneEnemy, grouped, ten10, stressTest, testWaves1, testWaves2 }
 
 

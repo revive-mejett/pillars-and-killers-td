@@ -74,7 +74,6 @@ export class EmberPillar extends Tower {
 
                 //spawn a bullet
                 const bullet = new Fireball(this.getCenterPosition().x, this.getCenterPosition().y, this.fireballWidth, this.fireballWidth, this.targetedEnemy, this.damage, this.flameColour, this.soundPitch, this.impactRadius)
-                console.log(this.fireballWidth)
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime, gameplayScene.enemiesPresent)
 
