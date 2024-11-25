@@ -15,6 +15,8 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 
 ## The Killers
 
+Killers come in various shapes and strengths. A good number of them has different properties such as healing, slow immune, or even attacking (not confirmed if that will be implemented)
+
   <table style="border: 1px solid red">
     <tr>
       <th>Sprite=============</th>
@@ -49,7 +51,7 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
     <tr>
       <td><img src="https://github.com/user-attachments/assets/681bf136-70f5-4768-8e22-8ea1b7c58d14" witdh="125px" height="125px"></td>
       <td>4p 2024</td>
-      <td>A 4-pointed star just twinking around. They aren't too big for a threat. However, you haven't meant their older brothers yet!</td>
+      <td>A 4-pointed star just twinking around. They aren't too big for a threat. However, you haven't met their older brothers yet!</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/7a1bcf04-6f78-4109-8bfd-673391c6c6ac" witdh="125px" height="125px"></td>
