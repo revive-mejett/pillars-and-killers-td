@@ -17,7 +17,7 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 
   <table style="border: 1px solid red">
     <tr>
-      <th></th>
+      <th>                         </th>
       <th>Killer Class</th>
       <th>Description</th>
     </tr>
