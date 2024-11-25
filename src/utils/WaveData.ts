@@ -251,36 +251,6 @@ const testWaves2 = [
             }
         ]
     ),
-    //wave 10
-    new Wave(
-        [
-            {
-                enemy: "Infant Circle",
-                count: 14,
-                spacingMillis: 300
-            },
-            {
-                enemy: "Little Sparrow",
-                count: 8,
-                spacingMillis: 700
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 6,
-                spacingMillis: 2000
-            },
-            {
-                enemy: "Earthling Flake",
-                count: 3,
-                spacingMillis: 2000
-            },
-            {
-                enemy: "Stone Pricker",
-                count: 2,
-                spacingMillis: 5000
-            }
-        ]
-    ),
     //wave 11
     new Wave(
         [
