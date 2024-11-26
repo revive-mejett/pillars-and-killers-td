@@ -67,7 +67,8 @@ export class Beam extends Projectile {
     }
 
     slowEnemy(speedMultiplier : number, duration : number) {
-        if (this.targetEnemy) {
+        //enemy must be not slow immune
+        if (this.targetEnemy && !this.targetEnemy.slowImmune) {
             this.targetEnemy.slowDebuffStats.speedMultiplier = speedMultiplier
             this.targetEnemy.slowDebuffStats.timeLeft = duration
         }

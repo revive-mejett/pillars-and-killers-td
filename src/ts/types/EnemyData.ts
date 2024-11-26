@@ -15,7 +15,8 @@ type EnemyStats = {
     armour? : number,
     pulseRange? : number,
     pulseRate? : number,
-    animationSpeed? : number
+    animationSpeed? : number,
+    slowImmune?: boolean
 }
 
 type EnemyData = {
