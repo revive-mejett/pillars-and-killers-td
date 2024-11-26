@@ -3,7 +3,7 @@ import Position from "src/ts/types/Position";
 import { Vector } from "../../utils/Vector"
 import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
-import { Enemy } from "../Enemy";
+import { Enemy } from "../killers/Enemy";
 import { Tile } from "../Tile";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import TowerData from "src/ts/types/TowerData";

@@ -8,7 +8,7 @@ import { HUD } from "../UI/HUD"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { Scene } from "./Scene"
 import * as PIXI from "pixi.js";
-import { Enemy } from "src/objects/Enemy"
+import { Enemy } from "src/objects/killers/Enemy"
 import { Tower } from "src/objects/pillars/Tower"
 
 const eventDispatcher = new EventDispatcher()

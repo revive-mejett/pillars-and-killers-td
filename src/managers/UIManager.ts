@@ -10,7 +10,7 @@ import { HUD } from "src/UI/HUD";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import { Tile } from "src/objects/Tile";
 import { Tower } from "src/objects/pillars/Tower";
-import { Enemy } from "src/objects/Enemy";
+import { Enemy } from "src/objects/killers/Enemy";
 import sound from "pixi-sound";
 import { getTowerData } from "../utils/TowerStatsData";
 

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Enemy } from "../Enemy";
+import { Enemy } from "../killers/Enemy";
 import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
 

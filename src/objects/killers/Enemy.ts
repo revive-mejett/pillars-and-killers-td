@@ -1,13 +1,14 @@
 import Position from "src/ts/types/Position";
-import { EventDispatcher } from "../utils/EventDispatcher"
-import { all1st } from "../utils/Nicknames";
-import { Entity } from "./Entity"
+import { EventDispatcher } from "../../utils/EventDispatcher"
+import { all1st } from "../../utils/Nicknames";
+import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
-import { TdMap } from "./TdMap";
+import { TdMap } from "../TdMap";
 import { EnemyStats } from "src/ts/types/EnemyData";
 import sound from "pixi-sound";
 
 const eventDispatcher = new EventDispatcher()
+const tickCooldown = 60
 
 type SlowDebuffStats = {
     speedMultiplier: number,
@@ -34,7 +35,10 @@ export class Enemy extends Entity {
     distanceTravelled: number
     isAlive: boolean
 
+    //special properties
     slowDebuffStats : SlowDebuffStats
+    regen: { amount : number, cooldownSeconds : number } | undefined;
+    slowImmune: boolean = false
 
     /**
      *
@@ -50,7 +54,10 @@ export class Enemy extends Entity {
         this.nick = all1st[Math.floor(Math.random() * all1st.length)]
         this.spritesheet = spritesheet
 
+        //setting special properties
         this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
+        this.regen = stats.regen ? { amount : stats.regen, cooldownSeconds: tickCooldown } : undefined
+        this.slowImmune = stats.slowImmune || this.slowImmune
 
         this.position = { x: x, y: y }
 
@@ -151,6 +158,7 @@ export class Enemy extends Entity {
         this.updateRotation(delta)
 
         this.tickDebuffs(delta)
+        this.tickRegen(delta)
 
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
@@ -217,6 +225,27 @@ export class Enemy extends Entity {
             eventDispatcher.fireEvent("moneyEarned", this.killValue)
         }
     }
+
+    //propertie effects
+    tickRegen(delta : number) {
+        if (!this.regen) {
+            return
+        }
+        this.regen.cooldownSeconds -= delta
+
+        if (this.regen.cooldownSeconds <= 0) {
+
+            this.regen.cooldownSeconds = tickCooldown
+            //add health
+            this.health += this.regen.amount
+            //prevent from going over its max health
+            if (this.health > this.totalHealth) {
+                this.health = this.totalHealth
+            }
+        }
+    }
+
+
 
     destroy() {
         this.sprite.destroy()

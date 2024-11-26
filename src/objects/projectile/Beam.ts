@@ -1,5 +1,5 @@
 import Position from "src/ts/types/Position";
-import { Enemy } from "../Enemy";
+import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import sound from "pixi-sound";
@@ -67,7 +67,8 @@ export class Beam extends Projectile {
     }
 
     slowEnemy(speedMultiplier : number, duration : number) {
-        if (this.targetEnemy) {
+        //enemy must be not slow immune
+        if (this.targetEnemy && !this.targetEnemy.slowImmune) {
             this.targetEnemy.slowDebuffStats.speedMultiplier = speedMultiplier
             this.targetEnemy.slowDebuffStats.timeLeft = duration
         }

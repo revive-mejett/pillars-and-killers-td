@@ -1,7 +1,7 @@
 import { Container, Graphics } from "pixi.js";
 import { HealthBar } from "./HealthBar";
 import * as PIXI from "pixi.js";
-import { Enemy } from "src/objects/Enemy";
+import { Enemy } from "src/objects/killers/Enemy";
 
 export class InfoPanelHealthBar extends HealthBar {
 

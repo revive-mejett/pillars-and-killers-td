@@ -105,7 +105,7 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.1,
-            regen: 0.1
+            regen: 2
         }
     },
     "Earthling Flake": {
@@ -157,7 +157,8 @@ const allEnemyData: EnemyData = {
             killValue: 25,
             rotationSpeed: 0,
             isLooking: false,
-            animationSpeed: 0.1
+            animationSpeed: 0.1,
+            slowImmune: true
         }
     },
     "Quick Bonhomme": {
