@@ -1,7 +1,7 @@
-## Overview
+# Pillars V.S. Killers
 ![pvk_banner_repo](https://github.com/user-attachments/assets/63742d48-98fc-468e-bdb4-9876251393f6)
 
-
+## Overview
 In short, Pillars against Killers.
 A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. The game will require players to beat waves of killers, that travel along a path. To survive, players build `pillars` (towers) that attack `killers` to prevent them from reaching the end.
 
