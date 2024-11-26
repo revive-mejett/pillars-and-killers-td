@@ -1,9 +1,9 @@
 import Position from "src/ts/types/Position";
-import { EventDispatcher } from "../utils/EventDispatcher"
-import { all1st } from "../utils/Nicknames";
-import { Entity } from "./Entity"
+import { EventDispatcher } from "../../utils/EventDispatcher"
+import { all1st } from "../../utils/Nicknames";
+import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
-import { TdMap } from "./TdMap";
+import { TdMap } from "../TdMap";
 import { EnemyStats } from "src/ts/types/EnemyData";
 import sound from "pixi-sound";
 

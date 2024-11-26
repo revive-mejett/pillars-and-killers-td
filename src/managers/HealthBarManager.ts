@@ -1,4 +1,4 @@
-import { Enemy } from "src/objects/Enemy"
+import { Enemy } from "src/objects/killers/Enemy"
 import { HealthBar } from "../UI/HealthBar"
 import { EventDispatcher } from "../utils/EventDispatcher"
 

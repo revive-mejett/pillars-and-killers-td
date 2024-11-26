@@ -1,6 +1,6 @@
 import Position from "src/ts/types/Position";
 import { Vector } from "../../utils/Vector";
-import { Enemy } from "../Enemy";
+import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import sound from "pixi-sound";

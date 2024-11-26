@@ -1,4 +1,4 @@
-import { Enemy } from "../objects/Enemy"
+import { Enemy } from "../objects/killers/Enemy"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader"
 import { Wave, WavePart } from "../objects/Wave"

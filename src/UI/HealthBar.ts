@@ -1,6 +1,6 @@
 import { Color, Container, Graphics } from "pixi.js";
 import { Entity } from "../objects/Entity";
-import { Enemy } from "src/objects/Enemy";
+import { Enemy } from "src/objects/killers/Enemy";
 import * as PIXI from "pixi.js";
 
 const yOffset = -5

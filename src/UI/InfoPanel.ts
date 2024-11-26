@@ -5,7 +5,7 @@ import { AssetLoader } from "../core/AssetLoader"
 import { InfoPanelHealthBar } from "./InfoPanelHealthBar"
 import { Tower } from "src/objects/pillars/Tower"
 import * as PIXI from "pixi.js";
-import { Enemy } from "src/objects/Enemy"
+import { Enemy } from "src/objects/killers/Enemy"
 import { HUD } from "./HUD"
 import TowerData from "src/ts/types/TowerData"
 
