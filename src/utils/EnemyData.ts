@@ -260,7 +260,7 @@ const allEnemyData: EnemyData = {
             speed: 0.5,
             damage: 3,
             killValue: 40,
-            armour: 5,
+            armour: 12,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.1
@@ -348,7 +348,7 @@ const allEnemyData: EnemyData = {
             speed: 0.5,
             damage: 3,
             killValue: 75,
-            armour: 0,
+            armour: 8,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.02
@@ -416,7 +416,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0.1,
             isLooking: false,
             animationSpeed: 0.05,
-            regen: 0.05
+            regen: 0,
+            armour: 12
         }
     }
 }

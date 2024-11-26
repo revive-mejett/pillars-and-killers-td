@@ -39,6 +39,7 @@ export class Enemy extends Entity {
     slowDebuffStats : SlowDebuffStats
     regen: { amount : number, cooldownSeconds : number } | undefined;
     slowImmune: boolean = false
+    armour: number = 0
 
     /**
      *
@@ -58,6 +59,7 @@ export class Enemy extends Entity {
         this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
         this.regen = stats.regen ? { amount : stats.regen, cooldownSeconds: tickCooldown } : undefined
         this.slowImmune = stats.slowImmune || this.slowImmune
+        this.armour = stats.armour || this.armour
 
         this.position = { x: x, y: y }
 
@@ -217,7 +219,39 @@ export class Enemy extends Entity {
         if (!this.isAlive) {
             return
         }
-        this.health -= damage
+
+
+        const damageReduction = this.armour
+        // console.log("damage reduction", damageReduction)
+
+
+        let actualDamage = damage - damageReduction
+        // console.log("actual damage", actualDamage)
+
+        if (actualDamage < 0) {
+            actualDamage = 0
+        }
+
+        const deflectedDamagePercent = Math.floor(damageReduction/damage * 100)
+        // const damagePercent = 100 - deflectedDamagePercent
+
+        // console.log(damagePercent)
+        // console.log(deflectedDamagePercent)
+
+        //play a sound - chance increased the higher the deflected damage percent (100% deflected = always play)
+        const rng = Math.floor(Math.random() * 100)
+
+        if (rng <= deflectedDamagePercent && this.armour > 0) {
+            const soundUrlPaths = ["assets/sounds/sfx/armour_clank1.mp3","assets/sounds/sfx/armour_clank2.mp3","assets/sounds/sfx/armour_clank3.mp3"]
+            const sfxEnemyArmour = sound.Sound.from({
+                url: soundUrlPaths[Math.floor(Math.random() * soundUrlPaths.length)],
+                volume: 0.25
+            })
+            sfxEnemyArmour.play()
+        }
+
+
+        this.health -= actualDamage
 
         if (this.health <= 0) {
             this.health = 0
