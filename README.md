@@ -14,6 +14,9 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 - French translation (THIS IS GOING TO BE A CHALLENGE)
 
 ## The Killers
+TBD***
+
+## The Killers
 
 Killers come in various shapes and strengths. A good number of them has different properties such as healing, slow immune, or even attacking (not confirmed if that will be implemented)
 
