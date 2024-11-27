@@ -7,7 +7,7 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 
 
 ## Planned Features
-- 40 Killers of varying strength (including 5 bosses). More info in **Planned Enemies (Killers)**
+- 40 Killers of varying strength (including 5 bosses) + 1 final boss (41 total different killers). More info in **Planned Enemies (Killers)**
 - 11-12 different pillars to build, each with their purpose (ie. slow down, melt armour, AoE splash). More info in **Planned Pillars (Towers)**
 - 100 Waves to fight. Winning the game will require you to beat Wave 100, which is the final boss: **TON 618**. This boss is slow, but will have insane amounts of HP, insane armour, slow immunity, and EMP attacks.
 - Researching new pillars/towers - Players will need to pay a research fee and wait to unlock stronger pillars
@@ -16,12 +16,15 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 - Settings and vfx disabling
 - French translation (THIS IS GOING TO BE A CHALLENGE)
 
-## The Killers
+These are not final, they can change as development progresses. 
+
+## The Pillars
 TBD***
+Your defense. You depend on these pillars to prevent getting killed by the killers. Each pillar has its own purpose, and you may need to use different pillars to succeed.
 
 ## The Killers
 
-Killers come in various shapes and strengths. A good number of them has different properties such as healing, slow immune, or even attacking (not confirmed if that will be implemented)
+Killers come in various shapes and strengths. A good number of them has different properties such as healing, slow immune, or even attacking (not confirmed if that will be implemented). This list is NOT complete, 40 are planned + final boss
 
   <table style="border: 1px solid red">
     <tr>
