@@ -26,9 +26,6 @@ export class InputManager {
         this.gridMask = new PIXI.Graphics()
         this.gridMask.beginFill(0xFFFFFF)
         this.gridMask.drawRect(0, 0, mapContainer.width, mapContainer.height);
-        console.log(mapContainer.width)
-        console.log(mapContainer.height)
-        console.log(this.gridContainer.width)
         this.gridMask.endFill();
 
         eventDispatcher.on("tileHover", this.setHoveredTile.bind(this))
