@@ -10,6 +10,8 @@ import { Scene } from "./Scene"
 import * as PIXI from "pixi.js";
 import { Enemy } from "src/objects/killers/Enemy"
 import { Tower } from "src/objects/pillars/Tower"
+import { InputManager } from "../managers/InputManager"
+import sound from "pixi-sound"
 
 const eventDispatcher = new EventDispatcher()
 export class GameplayScene extends Scene {
@@ -18,12 +20,15 @@ export class GameplayScene extends Scene {
     hud?: HUD
     waveManager?: WaveManager
     uiManager?: UIManager
+    inputManager?: InputManager
     enemiesPresent: Enemy[]
     towersPresent: Tower[]
     healthBarManager?: HealthBarManager
+    mapContainer: PIXI.Container<PIXI.DisplayObject>
 
     constructor(app : PIXI.Application) {
         super(app)
+        this.mapContainer = new PIXI.Container()
         this.tdMap = undefined
         this.gamestate = undefined
         this.hud = undefined
@@ -43,6 +48,10 @@ export class GameplayScene extends Scene {
         this.gamestate.linkUiManager(this.uiManager)
 
         this.healthBarManager = new HealthBarManager()
+        this.mapContainer = new PIXI.Container()
+        this.container.addChild(this.mapContainer)
+        this.buildMap()
+        this.inputManager = new InputManager(this.container, this.mapContainer)
 
 
 
@@ -53,6 +62,7 @@ export class GameplayScene extends Scene {
 
 
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
+        eventDispatcher.on("enemyArmorSoundPlay", this.playArmorSound.bind(this))
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
 
 
@@ -64,14 +74,10 @@ export class GameplayScene extends Scene {
                 this.waveManager.waveInProgress = false
             }
         })
-
-
-
-        this.buildMap()
     }
 
     buildMap() {
-        this.tdMap?.displayTiles(this.container)
+        this.tdMap?.displayTiles(this.mapContainer)
         this.tdMap?.displayPath()
         this.tdMap?.repaveGrass()
     }
@@ -80,6 +86,9 @@ export class GameplayScene extends Scene {
         // console.log(new PIXI.interaction.InteractionManager())
         // console.log(this.enemiesPresent);
 
+
+        //input manager update
+        this.inputManager?.update()
 
         this.enemiesPresent.forEach(enemy => {
 
@@ -124,6 +133,20 @@ export class GameplayScene extends Scene {
         this.towersPresent = this.towersPresent.filter(tower => !tower.isSold)
     }
 
+    playArmorSound() {
+        const soundUrlPaths = ["assets/sounds/sfx/armour_clank1.mp3","assets/sounds/sfx/armour_clank2.mp3","assets/sounds/sfx/armour_clank3.mp3"]
+
+        const rng = Math.floor(Math.random() * this.enemiesPresent.length)
+
+        if ( this.enemiesPresent.length <= 20 || rng <= Math.floor(Math.sqrt(this.enemiesPresent.length))) {
+            const sfxEnemyArmour = sound.Sound.from({
+                url: soundUrlPaths[Math.floor(Math.random() * soundUrlPaths.length)],
+                volume: 0.25
+            })
+            sfxEnemyArmour.play()
+        }
+    }
+
     cleanUpResources() {
         this.towersPresent = []
         this.enemiesPresent = []
@@ -139,8 +162,12 @@ export class GameplayScene extends Scene {
         this.gamestate?.cleanUpResources()
         this.gamestate = undefined
 
+        this.inputManager?.cleanUpResources()
+        this.inputManager = undefined
+
         //clean up event listeners akshan
         eventDispatcher.clearListenersOfEvent("enemySpawn")
+        eventDispatcher.clearListenersOfEvent("enemyArmorSoundPlay")
         eventDispatcher.clearListenersOfEvent("enemyDied")
         eventDispatcher.clearListenersOfEvent("towerPlaced")
         eventDispatcher.clearListenersOfEvent("towerSold")
