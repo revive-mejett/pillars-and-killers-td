@@ -242,12 +242,7 @@ export class Enemy extends Entity {
         const rng = Math.floor(Math.random() * 100)
 
         if (rng <= deflectedDamagePercent && this.armour > 0) {
-            const soundUrlPaths = ["assets/sounds/sfx/armour_clank1.mp3","assets/sounds/sfx/armour_clank2.mp3","assets/sounds/sfx/armour_clank3.mp3"]
-            const sfxEnemyArmour = sound.Sound.from({
-                url: soundUrlPaths[Math.floor(Math.random() * soundUrlPaths.length)],
-                volume: 0.25
-            })
-            sfxEnemyArmour.play()
+            eventDispatcher.fireEvent("enemyArmorSoundPlay")
         }
 
 

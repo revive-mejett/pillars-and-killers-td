@@ -56,12 +56,11 @@ export class InputManager {
         if (this.selectedTowerTile && this.selectedTowerTile.tower) {
             const cyanOutline = UIHelper.createOutline(this.selectedTowerTile.x, this.selectedTowerTile.y, this.selectedTowerTile.width, this.selectedTowerTile.height, 2, 0x00FFFF)
             this.gridContainer.addChild(cyanOutline)
-            
+
             const rangeCircle = new PIXI.Graphics()
             rangeCircle.lineStyle(1, 0x00FFFF)
             rangeCircle.drawEllipse(this.selectedTowerTile.getCenterPosition().x, this.selectedTowerTile.getCenterPosition().y, this.selectedTowerTile.tower.range, this.selectedTowerTile.tower.range)
             rangeCircle.mask = this.gridMask
-            
             this.gridContainer.addChild(this.gridMask)
             this.gridContainer.addChild(rangeCircle)
         }
@@ -70,5 +69,7 @@ export class InputManager {
     cleanUpResources() {
         eventDispatcher.clearListenersOfEvent("tileHover")
         eventDispatcher.clearListenersOfEvent("tileUnhover")
+        eventDispatcher.clearListenersOfEvent("tileTowerSelect")
+
     }
 }

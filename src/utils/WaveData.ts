@@ -28,7 +28,7 @@ const grouped = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Stone Pricker",
                 count: 50,
                 spacingMillis: 25
             }
