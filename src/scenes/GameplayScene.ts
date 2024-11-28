@@ -23,9 +23,11 @@ export class GameplayScene extends Scene {
     enemiesPresent: Enemy[]
     towersPresent: Tower[]
     healthBarManager?: HealthBarManager
+    mapContainer: PIXI.Container<PIXI.DisplayObject>
 
     constructor(app : PIXI.Application) {
         super(app)
+        this.mapContainer = new PIXI.Container()
         this.tdMap = undefined
         this.gamestate = undefined
         this.hud = undefined
@@ -45,6 +47,8 @@ export class GameplayScene extends Scene {
         this.gamestate.linkUiManager(this.uiManager)
 
         this.healthBarManager = new HealthBarManager()
+        this.mapContainer = new PIXI.Container()
+        this.container.addChild(this.mapContainer)
         this.buildMap()
 
 
@@ -73,7 +77,7 @@ export class GameplayScene extends Scene {
     }
 
     buildMap() {
-        this.tdMap?.displayTiles(this.container)
+        this.tdMap?.displayTiles(this.mapContainer)
         this.tdMap?.displayPath()
         this.tdMap?.repaveGrass()
     }
