@@ -50,6 +50,7 @@ export class GameplayScene extends Scene {
         this.mapContainer = new PIXI.Container()
         this.container.addChild(this.mapContainer)
         this.buildMap()
+        this.inputManager = new InputManager(this.container, this.mapContainer)
 
 
 
@@ -71,9 +72,6 @@ export class GameplayScene extends Scene {
                 this.waveManager.waveInProgress = false
             }
         })
-
-
-        this.inputManager = new InputManager(this.container)
     }
 
     buildMap() {

@@ -70,6 +70,7 @@ export class Tile extends Entity {
     onTileSelect() {
         if (this.hasTower) {
             eventDispatcher.fireEvent("towerSelectAction", this.tower)
+            eventDispatcher.fireEvent("tileTowerSelect", this)
         } else {
             eventDispatcher.fireEvent("towerPlaceAction", this)
         }
