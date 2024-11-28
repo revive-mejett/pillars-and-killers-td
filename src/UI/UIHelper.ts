@@ -94,9 +94,9 @@ export class UIHelper {
         return infoPanelOutline
     }
 
-    static createOutline(x: number , y : number, width : number, height : number, hexColour : number) : PIXI.Graphics {
+    static createOutline(x: number , y : number, width : number, height : number, outlineWitdh : number, hexColour : number) : PIXI.Graphics {
         const infoPanelOutline = new PIXI.Graphics()
-        infoPanelOutline.lineStyle(3, hexColour)
+        infoPanelOutline.lineStyle(outlineWitdh, hexColour)
         infoPanelOutline.drawRect(x, y, width, height)
         return infoPanelOutline
     }

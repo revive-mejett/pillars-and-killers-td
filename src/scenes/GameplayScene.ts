@@ -10,6 +10,7 @@ import { Scene } from "./Scene"
 import * as PIXI from "pixi.js";
 import { Enemy } from "src/objects/killers/Enemy"
 import { Tower } from "src/objects/pillars/Tower"
+import { InputManager } from "../managers/InputManager"
 
 const eventDispatcher = new EventDispatcher()
 export class GameplayScene extends Scene {
@@ -18,6 +19,7 @@ export class GameplayScene extends Scene {
     hud?: HUD
     waveManager?: WaveManager
     uiManager?: UIManager
+    inputManager?: InputManager
     enemiesPresent: Enemy[]
     towersPresent: Tower[]
     healthBarManager?: HealthBarManager
@@ -43,6 +45,7 @@ export class GameplayScene extends Scene {
         this.gamestate.linkUiManager(this.uiManager)
 
         this.healthBarManager = new HealthBarManager()
+        this.buildMap()
 
 
 
@@ -66,8 +69,7 @@ export class GameplayScene extends Scene {
         })
 
 
-
-        this.buildMap()
+        this.inputManager = new InputManager(this.container)
     }
 
     buildMap() {
@@ -80,6 +82,9 @@ export class GameplayScene extends Scene {
         // console.log(new PIXI.interaction.InteractionManager())
         // console.log(this.enemiesPresent);
 
+
+        //input manager update
+        this.inputManager?.update()
 
         this.enemiesPresent.forEach(enemy => {
 
@@ -138,6 +143,9 @@ export class GameplayScene extends Scene {
 
         this.gamestate?.cleanUpResources()
         this.gamestate = undefined
+
+        this.inputManager?.cleanUpResources()
+        this.inputManager = undefined
 
         //clean up event listeners akshan
         eventDispatcher.clearListenersOfEvent("enemySpawn")

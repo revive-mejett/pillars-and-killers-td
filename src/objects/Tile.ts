@@ -25,6 +25,8 @@ export class Tile extends Entity {
         this.container = undefined
         this.parentContainer = parentContainer
         this.tower = undefined
+
+    
     }
 
     sellTower() {
@@ -56,7 +58,12 @@ export class Tile extends Entity {
         this.container = new Container()
         this.container.eventMode = "static"
         this.container.addChild(graphics)
+
+
         this.container.on("pointerdown", this.onTileSelect.bind(this))
+        this.container.on("mouseenter", () => eventDispatcher.fireEvent("tileHover", this))
+        this.container.on("mouseleave", () => eventDispatcher.fireEvent("tileUnhover"))
+
         this.parentContainer.addChild(this.container)
     }
 
