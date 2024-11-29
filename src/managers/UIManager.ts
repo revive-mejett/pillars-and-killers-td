@@ -37,9 +37,14 @@ export class UIManager {
         this.selectedEnemyUpdateTicker = undefined
 
         eventDispatcher.on("nextWaveBtnClick", () => {
-            this.gameplayScene.waveManager?.sendWave(this.gameplayScene)
-            this.updateWaveNumber()
+            if (this.gameplayScene.waveManager?.wavesStarted) {
+                this.gameplayScene.waveManager.cooldownToNextWave = 0
+            } else {
+                this.gameplayScene.waveManager?.sendWaves(this.gameplayScene)
+            }
         })
+
+        eventDispatcher.on("waveStarted", () => this.updateWaveNumber())
 
         eventDispatcher.on("towerPlaceAction", this.handleTowerPurchase.bind(this))
 
@@ -194,6 +199,7 @@ export class UIManager {
 
     cleanUpResources() {
         eventDispatcher.clearListenersOfEvent("nextWaveBtnClick")
+        eventDispatcher.clearListenersOfEvent("waveStarted")
         eventDispatcher.clearListenersOfEvent("towerPlaceAction")
         eventDispatcher.clearListenersOfEvent("towerSelectAction")
         eventDispatcher.clearListenersOfEvent("towerSellAction")

@@ -25,10 +25,12 @@ export class GameplayScene extends Scene {
     towersPresent: Tower[]
     healthBarManager?: HealthBarManager
     mapContainer: PIXI.Container<PIXI.DisplayObject>
+    waveTimeline: PIXI.Container<PIXI.DisplayObject>
 
     constructor(app : PIXI.Application) {
         super(app)
         this.mapContainer = new PIXI.Container()
+        this.waveTimeline = new PIXI.Container()
         this.tdMap = undefined
         this.gamestate = undefined
         this.hud = undefined

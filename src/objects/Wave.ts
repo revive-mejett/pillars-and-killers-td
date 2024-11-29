@@ -14,7 +14,7 @@ export class Wave {
     }
 
     waveDurationMillis() {
-        return this.waveParts.reduce((prev, curr) => prev + curr.spacingMillis, 0)
+        return this.waveParts.reduce((prev, curr) => prev + (curr.spacingMillis * curr.count), 0)
     }
 }
 

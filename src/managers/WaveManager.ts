@@ -15,6 +15,8 @@ const eventDispatcher = new EventDispatcher()
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
 
+const delaySecondsToNextWave = 10
+
 export class WaveManager {
     map: TdMap
     waves: Wave[]
@@ -23,6 +25,7 @@ export class WaveManager {
     waveTicker: PIXI.Ticker | undefined
     wavesTicker: PIXI.Ticker |undefined
     cooldownToNextWave: number
+    wavesStarted: boolean = false
 
     /**
      *
@@ -54,13 +57,38 @@ export class WaveManager {
     }
 
     //run the waves
-    sendWaves() {
-        console.log(this.waves[0].waveDurationMillis())
+    sendWaves(gameplayScene : GameplayScene) {
+        if (this.wavesStarted) {
+            return
+        }
+        this.wavesStarted = true
+
+        this.wavesTicker = new PIXI.Ticker()
+        this.wavesTicker.autoStart = false
+
+        this.sendWave(gameplayScene) // send 1st wave
+
+        //spawns an enemy
+        const onTick = () => {
+
+            if (!this.wavesTicker) {
+                return
+            }
+
+            this.cooldownToNextWave -= this.wavesTicker.deltaMS
+            if (this.cooldownToNextWave <= 0) {
+                this.sendWave(gameplayScene)
+            }
+        }
+
+        this.wavesTicker.add(onTick)
+        this.wavesTicker.start()
     }
 
 
     sendWave(gameplayScene : GameplayScene) {
         if (this.waveInProgress) {return}
+
 
         this.waveInProgress = true
         this.currentWave++
@@ -87,6 +115,9 @@ export class WaveManager {
         } else {
             waveArray = this.waves[waveIndex]
         }
+
+        //set the cooldown to next wave to the duration of the current wave
+        this.cooldownToNextWave = waveArray.waveDurationMillis() + delaySecondsToNextWave * 1000
 
         let elapsedMS = 0
         let enemiesSpawned = 0
@@ -152,6 +183,7 @@ export class WaveManager {
 
         this.waveTicker.add(onTick)
         this.waveTicker.start()
+        eventDispatcher.fireEvent("waveStarted")
         return this.waves[waveIndex]
 
     }
@@ -163,7 +195,8 @@ export class WaveManager {
     }
 
     generateWave() {
-        const enemies : EnemyClass[] = Object.keys(allEnemyData) as EnemyClass[]
+        // const enemies : EnemyClass[] = Object.keys(allEnemyData) as EnemyClass[]
+        const enemies = ["Infant Circle"] as EnemyClass[]
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1
 
