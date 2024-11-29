@@ -25,8 +25,6 @@ export class HUD {
 
     constructor(gamestate: GameState) {
         this.container = new PIXI.Container()
-        this.container.x = 1000
-        this.container.y = 0
         this.gamestate = gamestate
         this.moneyText = undefined
         this.livesText = undefined
@@ -42,6 +40,8 @@ export class HUD {
 
     setup(container : PIXI.Container) {
         container.addChild(this.container)
+        this.container.x = 1100
+        this.container.y = 0
 
         const bgColor = new PIXI.Graphics()
         bgColor.beginFill(0x000011)

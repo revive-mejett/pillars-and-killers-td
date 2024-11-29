@@ -24,18 +24,17 @@ export class GameplayScene extends Scene {
     enemiesPresent: Enemy[]
     towersPresent: Tower[]
     healthBarManager?: HealthBarManager
-    mapContainer: PIXI.Container<PIXI.DisplayObject>
-    waveTimeline: PIXI.Container<PIXI.DisplayObject>
+    mapContainer: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
+    waveTimeline: PIXI.Container<PIXI.DisplayObject> | undefined
 
     constructor(app : PIXI.Application) {
         super(app)
-        this.mapContainer = new PIXI.Container()
-        this.waveTimeline = new PIXI.Container()
         this.tdMap = undefined
         this.gamestate = undefined
         this.hud = undefined
         this.waveManager = undefined
         this.uiManager = undefined
+        this.waveTimeline = undefined
         this.enemiesPresent = []
         this.towersPresent = []
     }
@@ -50,8 +49,10 @@ export class GameplayScene extends Scene {
         this.gamestate.linkUiManager(this.uiManager)
 
         this.healthBarManager = new HealthBarManager()
+        this.waveTimeline = new PIXI.Container()
         this.mapContainer = new PIXI.Container()
         this.container.addChild(this.mapContainer)
+        this.mapContainer.x = 100
         this.buildMap()
         this.inputManager = new InputManager(this.container, this.mapContainer)
 
@@ -79,12 +80,18 @@ export class GameplayScene extends Scene {
     }
 
     buildMap() {
+        if (!this.mapContainer) {
+            return
+        }
         this.tdMap?.displayTiles(this.mapContainer)
         this.tdMap?.displayPath()
         this.tdMap?.repaveGrass()
     }
 
     update() {
+        if (!this.mapContainer) {
+            return
+        }
         // console.log(new PIXI.interaction.InteractionManager())
         // console.log(this.enemiesPresent);
 
@@ -108,7 +115,7 @@ export class GameplayScene extends Scene {
             }
         })
 
-        this.healthBarManager?.updateAllHealthBars(this.container)
+        this.healthBarManager?.updateAllHealthBars(this.mapContainer)
     }
 
     updateEnemiesPresentList() {

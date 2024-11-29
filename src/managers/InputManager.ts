@@ -18,6 +18,7 @@ export class InputManager {
 
         //this container will contain the range circle, and tile outline and will be in tdmap
         this.gridContainer = new PIXI.Container()
+        this.gridContainer.x = 100
         sceneContainer.sortableChildren = true
         sceneContainer.zIndex = 10000
         sceneContainer.addChild(this.gridContainer)
@@ -25,7 +26,7 @@ export class InputManager {
         //mask for the grid to prevent range indicator from going off grid; crops it instead
         this.gridMask = new PIXI.Graphics()
         this.gridMask.beginFill(0xFFFFFF)
-        this.gridMask.drawRect(0, 0, mapContainer.width, mapContainer.height);
+        this.gridMask.drawRect(100, 0, mapContainer.width, mapContainer.height);
         this.gridMask.endFill();
 
         eventDispatcher.on("tileHover", this.setHoveredTile.bind(this))

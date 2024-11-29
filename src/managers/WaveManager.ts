@@ -8,7 +8,7 @@ import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 
 
-import { testWaves2 } from "../utils/WaveData"
+import { oneEnemy, testWaves2 } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -51,7 +51,7 @@ export class WaveManager {
 
 
 
-        const waves = testWaves2
+        const waves = oneEnemy
 
         this.waves = waves
     }
@@ -88,6 +88,7 @@ export class WaveManager {
 
     sendWave(gameplayScene : GameplayScene) {
         if (this.waveInProgress) {return}
+
 
 
         this.waveInProgress = true
@@ -134,7 +135,7 @@ export class WaveManager {
         //spawns an enemy
         const onTick = () => {
 
-            if (!this.waveTicker) {
+            if (!this.waveTicker || !gameplayScene.mapContainer) {
                 return
             }
 
@@ -158,7 +159,7 @@ export class WaveManager {
 
                 const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData, spritesheet)
                 // spawnedEnemy.zIndex = 3
-                spawnedEnemy.spawn(gameplayScene.container)
+                spawnedEnemy.spawn(gameplayScene.mapContainer)
 
                 eventDispatcher.fireEvent("enemySpawn", spawnedEnemy)
 

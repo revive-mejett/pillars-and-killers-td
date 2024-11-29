@@ -23,7 +23,7 @@ export class AdvancedPillar extends Tower {
 
     runTower(gameplayScene : GameplayScene) : void {
 
-        const gameplaySceneContainer = gameplayScene.container
+        const gameplaySceneContainer = gameplayScene.mapContainer
 
 
         const towerFireCycleTicker = new PIXI.Ticker()

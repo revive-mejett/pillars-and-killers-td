@@ -26,7 +26,7 @@ export class LightningPillar extends Tower {
     }
 
     runTower(gameplayScene : GameplayScene) : void {
-        const gameplaySceneContainer = gameplayScene.container
+        const gameplaySceneContainer = gameplayScene.mapContainer
 
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const towerRef = this
