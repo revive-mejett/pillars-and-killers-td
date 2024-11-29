@@ -21,6 +21,8 @@ export class WaveManager {
     currentWave: number
     waveInProgress: boolean
     waveTicker: PIXI.Ticker | undefined
+    wavesTicker: PIXI.Ticker |undefined
+    cooldownToNextWave: number
 
     /**
      *
@@ -31,9 +33,15 @@ export class WaveManager {
 
         this.currentWave = 0
         this.waveInProgress = false
+
+        this.cooldownToNextWave = 0
         this.loadWaves()
 
+        //this ticker ticks the timer of when to send the next enemy in a wave
         this.waveTicker = undefined
+
+        //this ticker ticks the timer of when the next wave should start
+        this.wavesTicker = undefined
     }
 
     loadWaves() {
@@ -45,6 +53,10 @@ export class WaveManager {
         this.waves = waves
     }
 
+    //run the waves
+    sendWaves() {
+        console.log(this.waves[0].waveDurationMillis())
+    }
 
 
     sendWave(gameplayScene : GameplayScene) {
@@ -172,6 +184,8 @@ export class WaveManager {
     cleanUpResources() {
         this.waveTicker?.stop()
         this.waveTicker?.destroy()
+        this.wavesTicker?.stop()
+        this.wavesTicker?.destroy()
         this.waves = []
     }
 }
