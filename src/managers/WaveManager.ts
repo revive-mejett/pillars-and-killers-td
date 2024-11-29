@@ -15,7 +15,6 @@ const eventDispatcher = new EventDispatcher()
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
 
-const delaySecondsToNextWave = 10
 
 export class WaveManager {
     map: TdMap
@@ -26,6 +25,7 @@ export class WaveManager {
     wavesTicker: PIXI.Ticker |undefined
     cooldownToNextWave: number
     wavesStarted: boolean = false
+    delaySecondsToNextWave: number
 
     /**
      *
@@ -38,6 +38,7 @@ export class WaveManager {
         this.waveInProgress = false
 
         this.cooldownToNextWave = 0
+        this.delaySecondsToNextWave = 10
         this.loadWaves()
 
         //this ticker ticks the timer of when to send the next enemy in a wave
@@ -51,7 +52,7 @@ export class WaveManager {
 
 
 
-        const waves = oneEnemy
+        const waves = testWaves2
 
         this.waves = waves
     }
@@ -118,7 +119,7 @@ export class WaveManager {
         }
 
         //set the cooldown to next wave to the duration of the current wave
-        this.cooldownToNextWave = waveArray.waveDurationMillis() + delaySecondsToNextWave * 1000
+        this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000
 
         let elapsedMS = 0
         let enemiesSpawned = 0

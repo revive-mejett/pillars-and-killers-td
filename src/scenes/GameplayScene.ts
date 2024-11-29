@@ -12,6 +12,7 @@ import { Enemy } from "src/objects/killers/Enemy"
 import { Tower } from "src/objects/pillars/Tower"
 import { InputManager } from "../managers/InputManager"
 import sound from "pixi-sound"
+import { WaveTimeline } from "../UI/WaveTimeline"
 
 const eventDispatcher = new EventDispatcher()
 export class GameplayScene extends Scene {
@@ -25,7 +26,7 @@ export class GameplayScene extends Scene {
     towersPresent: Tower[]
     healthBarManager?: HealthBarManager
     mapContainer: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
-    waveTimeline: PIXI.Container<PIXI.DisplayObject> | undefined
+    waveTimeline: WaveTimeline | undefined
 
     constructor(app : PIXI.Application) {
         super(app)
@@ -34,7 +35,6 @@ export class GameplayScene extends Scene {
         this.hud = undefined
         this.waveManager = undefined
         this.uiManager = undefined
-        this.waveTimeline = undefined
         this.enemiesPresent = []
         this.towersPresent = []
     }
@@ -49,12 +49,18 @@ export class GameplayScene extends Scene {
         this.gamestate.linkUiManager(this.uiManager)
 
         this.healthBarManager = new HealthBarManager()
-        this.waveTimeline = new PIXI.Container()
+
+
+
         this.mapContainer = new PIXI.Container()
         this.container.addChild(this.mapContainer)
         this.mapContainer.x = 100
         this.buildMap()
         this.inputManager = new InputManager(this.container, this.mapContainer)
+
+        this.waveTimeline = new WaveTimeline(this.waveManager)
+        this.container.addChild(this.waveTimeline.container)
+        this.waveTimeline.render()
 
 
 
@@ -116,6 +122,8 @@ export class GameplayScene extends Scene {
         })
 
         this.healthBarManager?.updateAllHealthBars(this.mapContainer)
+
+        this.waveTimeline?.render()
     }
 
     updateEnemiesPresentList() {

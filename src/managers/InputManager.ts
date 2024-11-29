@@ -26,7 +26,7 @@ export class InputManager {
         //mask for the grid to prevent range indicator from going off grid; crops it instead
         this.gridMask = new PIXI.Graphics()
         this.gridMask.beginFill(0xFFFFFF)
-        this.gridMask.drawRect(100, 0, mapContainer.width, mapContainer.height);
+        this.gridMask.drawRect(0, 0, mapContainer.width, mapContainer.height);
         this.gridMask.endFill();
 
         eventDispatcher.on("tileHover", this.setHoveredTile.bind(this))
