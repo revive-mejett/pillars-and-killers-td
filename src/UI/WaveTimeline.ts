@@ -29,25 +29,41 @@ export class WaveTimeline {
 
     renderNextWaves() {
         //render all wave stones, starting from wave 1
-        const timeToYScaleFactor = 50
+        const timeToYScaleFactor = 100
 
         //stone position and size are based on time till that wave arrives, and the length of the wave
         let timeToWaveStart = this.waveManager.cooldownToNextWave
+        let numberofWaveStones = 5
+        if (this.waveManager.waves.length - this.waveManager.currentWave < 5) {
+            numberofWaveStones = this.waveManager.waves.length - this.waveManager.currentWave
+        }
 
-        for (let i = this.waveManager.currentWave; i < this.waveManager.waves.length; i++) {
+        let startIndex = this.waveManager.currentWave
+
+        if (this.waveManager.wavesStarted) {
+            startIndex = this.waveManager.currentWave
+        }
+
+        for (let i = startIndex; i < this.waveManager.currentWave + numberofWaveStones; i++) {
             const currentWave = this.waveManager.waves[i]
             const waveNumber = i + 1
+            const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
+
+
+
             const waveStone = new PIXI.Graphics()
             waveStone.lineStyle(1, 0x440000)
             waveStone.beginFill(0x222222)
-            waveStone.drawRect(50,timeToWaveStart/timeToYScaleFactor, 50, currentWave.waveDurationMillis()/timeToYScaleFactor)
+            waveStone.drawRect(50,timeToWaveStart/timeToYScaleFactor, 50, stoneHeight)
             waveStone.endFill()
             this.container.addChild(waveStone)
+
             const txtWaveNumber = UIHelper.createText(0,0,`${waveNumber}`, 50, "0xFFFFFF")
             txtWaveNumber.x = 50
             txtWaveNumber.y = timeToWaveStart/timeToYScaleFactor
             this.container.addChild(txtWaveNumber)
-            timeToWaveStart += currentWave.waveDurationMillis()
+
+            timeToWaveStart += stoneHeight
         }
 
     }

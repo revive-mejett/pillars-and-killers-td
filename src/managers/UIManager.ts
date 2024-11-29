@@ -37,7 +37,7 @@ export class UIManager {
         this.selectedEnemyUpdateTicker = undefined
 
         eventDispatcher.on("nextWaveBtnClick", () => {
-            if (this.gameplayScene.waveManager?.wavesStarted) {
+            if (this.gameplayScene.waveManager?.wavesStarted && !this.gameplayScene.waveManager.waveInProgress) {
                 this.gameplayScene.waveManager.cooldownToNextWave = 0
             } else {
                 this.gameplayScene.waveManager?.sendWaves(this.gameplayScene)
