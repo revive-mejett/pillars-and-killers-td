@@ -67,8 +67,8 @@ export class WaveTimeline {
             }
         } else {
             //freeplay waves
-            for (let i = 0; i < numberofWaveStones; i++) {
-                timeToWaveStart = this.buildWaveStoneFreeplay(i, timeToWaveStart)
+            for (let i = 0; i < 10; i++) {
+                timeToWaveStart = this.buildWaveStoneFreeplay(i, timeToWaveStart) || 0
             }
         }
 
@@ -93,6 +93,8 @@ export class WaveTimeline {
         const txtWaveNumber = UIHelper.createText(0, 0, `${waveNumber}`, 50, "0xFFFFFF")
         txtWaveNumber.x = 50;
         txtWaveNumber.y = timeToWaveStart / timeToYScaleFactor
+        txtWaveNumber.pivot.set(txtWaveNumber.width, 0)
+        txtWaveNumber.rotation = -Math.PI/2
         this.innerContainer.addChild(txtWaveNumber)
 
         timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
@@ -100,8 +102,11 @@ export class WaveTimeline {
     }
 
     private buildWaveStoneFreeplay(i: number, timeToWaveStart: number) {
-        console.log("freeplay wave stone")
-        const currentWave = this.waveManager.extraWaves[0]
+        if (!this.waveManager.extraWaves) {
+            return
+        }
+        const currentWave = this.waveManager.extraWaves[i]
+
         const waveNumber = this.waveManager.currentWave + i
         const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
 
@@ -115,8 +120,10 @@ export class WaveTimeline {
         this.innerContainer.addChild(waveStone)
 
         const txtWaveNumber = UIHelper.createText(0, 0, `${waveNumber}`, 50, "0xFFFFFF")
-        txtWaveNumber.x = 50
+        txtWaveNumber.x = 50;
         txtWaveNumber.y = timeToWaveStart / timeToYScaleFactor
+        txtWaveNumber.pivot.set(txtWaveNumber.width, 0)
+        txtWaveNumber.rotation = -Math.PI/2
         this.innerContainer.addChild(txtWaveNumber)
 
         timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)

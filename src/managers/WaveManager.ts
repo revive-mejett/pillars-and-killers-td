@@ -26,7 +26,7 @@ export class WaveManager {
     cooldownToNextWave: number
     wavesStarted: boolean = false
     delaySecondsToNextWave: number
-    extraWaves: Wave[]
+    extraWaves: Wave[] | undefined
     isFreeplay : boolean = false
 
     /**
@@ -35,9 +35,9 @@ export class WaveManager {
     constructor(map : TdMap) {
         this.map = map
         this.waves = []
-        this.extraWaves = new Array(10).fill(this.generateWave())
+        this.extraWaves = this.generateExtraWaves()
 
-        this.currentWave = 17
+        this.currentWave = 100
         this.waveInProgress = false
 
         this.cooldownToNextWave = 0
@@ -49,6 +49,8 @@ export class WaveManager {
 
         //this ticker ticks the timer of when the next wave should start
         this.wavesTicker = undefined
+
+        this.isFreeplay = this.currentWave >= this.waves.length
     }
 
     loadWaves() {
@@ -113,14 +115,11 @@ export class WaveManager {
         this.waveTicker = new PIXI.Ticker()
         this.waveTicker.autoStart = false
 
-        if (this.isFreeplay) {
+        if (this.isFreeplay && this.extraWaves) {
             
             waveArray = this.extraWaves[0]
-            console.log(waveArray)
-            this.extraWaves.splice(0)
-            console.log(this.extraWaves)
+            this.extraWaves.shift()
             this.extraWaves.push(this.generateWave())
-            console.log(this.extraWaves)
         } else {
             waveArray = this.waves[waveIndex]
         }
@@ -234,6 +233,17 @@ export class WaveManager {
         }
 
         return new Wave(waveArray)
+    }
+
+    generateExtraWaves() {
+        const waveArr = []
+        const arraySize = 20
+
+        for (let i = 0; i < arraySize; i++) {
+            waveArr.push(this.generateWave())
+        }
+
+        return waveArr
     }
 
 

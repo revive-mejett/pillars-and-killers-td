@@ -44,6 +44,10 @@ export class UIManager {
                     console.log("Boss is present")
                     return
                 }
+                if (this.gameplayScene.waveManager && this.gameplayScene.waveManager.currentWave >= this.gameplayScene.waveManager.waves.length) {
+                    this.gameplayScene.waveManager.isFreeplay = true
+                    console.log("set to freeplay")
+                }
                 this.gameplayScene.waveManager?.sendWaves(this.gameplayScene)
                 if (this.gameplayScene.waveManager?.isFreeplay) {
                     console.log("Freeplay started...")
