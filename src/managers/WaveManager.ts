@@ -26,6 +26,8 @@ export class WaveManager {
     cooldownToNextWave: number
     wavesStarted: boolean = false
     delaySecondsToNextWave: number
+    extraWaves: Wave[]
+    isFreeplay : boolean = false
 
     /**
      *
@@ -33,6 +35,7 @@ export class WaveManager {
     constructor(map : TdMap) {
         this.map = map
         this.waves = []
+        this.extraWaves = new Array(10).fill(this.generateWave())
 
         this.currentWave = 0
         this.waveInProgress = false
@@ -91,7 +94,6 @@ export class WaveManager {
         if (this.waveInProgress) {return}
 
 
-
         this.waveInProgress = true
         this.currentWave++
         const map = this.map
@@ -111,15 +113,21 @@ export class WaveManager {
         this.waveTicker = new PIXI.Ticker()
         this.waveTicker.autoStart = false
 
-        if (this.currentWave >= this.waves.length + 1) {
-            console.log("gen wave")
-            waveArray = this.generateWave()
+        if (this.isFreeplay) {
+            
+            waveArray = this.extraWaves[0]
+            console.log(waveArray)
+            this.extraWaves.splice(0)
+            console.log(this.extraWaves)
+            this.extraWaves.push(this.generateWave())
+            console.log(this.extraWaves)
         } else {
             waveArray = this.waves[waveIndex]
         }
 
         //set the cooldown to next wave to the duration of the current wave
         this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000
+        console.log(this.cooldownToNextWave)
 
         let elapsedMS = 0
         let enemiesSpawned = 0
@@ -128,7 +136,7 @@ export class WaveManager {
         let wavePart = waveArray.waveParts[currentWavePartIndex]
         let enemyData = allEnemyData[wavePart.enemy].stats
         //after reaching max waves, buff all enemies expononentially
-        if (this.currentWave >= this.waves.length + 1) {
+        if (this.isFreeplay) {
             this.buffKillerHealth(enemyData)
         }
 
@@ -139,6 +147,12 @@ export class WaveManager {
             if (!this.waveTicker || !gameplayScene.mapContainer) {
                 return
             }
+
+            // if (this.currentWave === this.waves.length && this.wavesTicker?.started && !this.isFreeplay) {
+            //     this.wavesTicker?.stop()
+            //     this.wavesStarted = false
+            // }
+
 
             elapsedMS += this.waveTicker.deltaMS
             if (elapsedMS >= wavePart.spacingMillis) {
@@ -161,6 +175,10 @@ export class WaveManager {
                 const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData, spritesheet)
                 // spawnedEnemy.zIndex = 3
                 spawnedEnemy.spawn(gameplayScene.mapContainer)
+                if (this.currentWave === this.waves.length) {
+                    console.log("boss sent")
+                }
+
 
                 eventDispatcher.fireEvent("enemySpawn", spawnedEnemy)
 
@@ -171,13 +189,16 @@ export class WaveManager {
                     if (currentWavePartIndex >= waveArray.waveParts.length) {
                         this.waveTicker.stop()
                         this.waveInProgress = false
+
+                        if (this.currentWave === this.waves.length && this.wavesTicker?.started && !this.isFreeplay) {
+                            this.wavesTicker?.stop()
+                            this.wavesStarted = false
+                            console.log("all waves finish send")
+                            this.isFreeplay = true
+                        }
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
                         enemyData = allEnemyData[wavePart.enemy].stats
-                        //after reaching max waves, buff all enemies expononentially
-                        if (this.currentWave >= this.waves.length + 1) {
-                            this.buffKillerHealth(enemyData)
-                        }
                     }
                 }
             }

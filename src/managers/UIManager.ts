@@ -40,11 +40,27 @@ export class UIManager {
             if (this.gameplayScene.waveManager?.wavesStarted && !this.gameplayScene.waveManager.waveInProgress) {
                 this.gameplayScene.waveManager.cooldownToNextWave = 0
             } else {
+                if (this.gameplayScene.enemiesPresent.some(enemy => enemy.enemyType === "Boss")) {
+                    console.log("Boss is present")
+                    return
+                }
                 this.gameplayScene.waveManager?.sendWaves(this.gameplayScene)
+                if (this.gameplayScene.waveManager?.isFreeplay) {
+                    console.log("Freeplay started...")
+                } else {
+                    console.log("Game started...")
+                }
             }
         })
 
-        eventDispatcher.on("waveStarted", () => this.updateWaveNumber())
+        eventDispatcher.on("waveStarted", () => {
+            this.updateWaveNumber()
+            const sfxRockBreak = sound.Sound.from({
+                url: "assets/sounds/sfx/rock_break.mp3",
+                volume: 0.25
+            })
+            sfxRockBreak.play()
+        })
 
         eventDispatcher.on("towerPlaceAction", this.handleTowerPurchase.bind(this))
 
