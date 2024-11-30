@@ -37,7 +37,7 @@ export class WaveManager {
         this.waves = []
         this.extraWaves = this.generateExtraWaves()
 
-        this.currentWave = 110
+        this.currentWave = 0
         this.waveInProgress = false
 
         this.cooldownToNextWave = 0
