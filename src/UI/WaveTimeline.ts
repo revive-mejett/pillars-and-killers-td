@@ -79,7 +79,7 @@ export class WaveTimeline {
     private buildWaveStone(i: number, timeToWaveStart: number) {
         const currentWave = this.waveManager.waves[i]
         const waveNumber = i + 1
-        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
+        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
 
 
 
@@ -95,7 +95,7 @@ export class WaveTimeline {
         txtWaveNumber.y = timeToWaveStart / timeToYScaleFactor
         this.innerContainer.addChild(txtWaveNumber)
 
-        timeToWaveStart += stoneHeight
+        timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
         return timeToWaveStart
     }
 
@@ -103,7 +103,7 @@ export class WaveTimeline {
         console.log("freeplay wave stone")
         const currentWave = this.waveManager.extraWaves[0]
         const waveNumber = this.waveManager.currentWave + i
-        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
+        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
 
 
 
@@ -119,7 +119,7 @@ export class WaveTimeline {
         txtWaveNumber.y = timeToWaveStart / timeToYScaleFactor
         this.innerContainer.addChild(txtWaveNumber)
 
-        timeToWaveStart += stoneHeight
+        timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
         return timeToWaveStart
     }
 }

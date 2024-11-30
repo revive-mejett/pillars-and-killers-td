@@ -57,7 +57,7 @@ export class UIManager {
             this.updateWaveNumber()
             const sfxRockBreak = sound.Sound.from({
                 url: "assets/sounds/sfx/rock_break.mp3",
-                volume: 0.25
+                volume: 0.7
             })
             sfxRockBreak.play()
         })
