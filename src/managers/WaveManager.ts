@@ -22,22 +22,22 @@ export class WaveManager {
     currentWave: number
     waveInProgress: boolean
     waveTicker: PIXI.Ticker | undefined
-    wavesTicker: PIXI.Ticker |undefined
+    wavesTicker: PIXI.Ticker | undefined
     cooldownToNextWave: number
     wavesStarted: boolean = false
     delaySecondsToNextWave: number
     extraWaves: Wave[] | undefined
-    isFreeplay : boolean = false
+    isFreeplay: boolean = false
 
     /**
      *
      */
-    constructor(map : TdMap) {
+    constructor(map: TdMap) {
         this.map = map
         this.waves = []
         this.extraWaves = this.generateExtraWaves()
 
-        this.currentWave = 100
+        this.currentWave = 110
         this.waveInProgress = false
 
         this.cooldownToNextWave = 0
@@ -63,7 +63,7 @@ export class WaveManager {
     }
 
     //run the waves
-    sendWaves(gameplayScene : GameplayScene) {
+    sendWaves(gameplayScene: GameplayScene) {
         if (this.wavesStarted) {
             return
         }
@@ -92,8 +92,8 @@ export class WaveManager {
     }
 
 
-    sendWave(gameplayScene : GameplayScene) {
-        if (this.waveInProgress) {return}
+    sendWave(gameplayScene: GameplayScene) {
+        if (this.waveInProgress) { return }
 
 
         this.waveInProgress = true
@@ -116,7 +116,7 @@ export class WaveManager {
         this.waveTicker.autoStart = false
 
         if (this.isFreeplay && this.extraWaves) {
-            
+
             waveArray = this.extraWaves[0]
             this.extraWaves.shift()
             this.extraWaves.push(this.generateWave())
@@ -133,7 +133,8 @@ export class WaveManager {
 
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
-        let enemyData = allEnemyData[wavePart.enemy].stats
+        let enemyData = { ...allEnemyData[wavePart.enemy].stats }
+        console.log(enemyData)
         //after reaching max waves, buff all enemies expononentially
         if (this.isFreeplay) {
             this.buffKillerHealth(enemyData)
@@ -197,7 +198,13 @@ export class WaveManager {
                         }
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
-                        enemyData = allEnemyData[wavePart.enemy].stats
+                        enemyData = {...allEnemyData[wavePart.enemy].stats}
+
+                        //after reaching max waves, buff all enemies expononentially
+                        if (this.isFreeplay) {
+                            this.buffKillerHealth(enemyData)
+                        }
+
                     }
                 }
             }
@@ -212,8 +219,11 @@ export class WaveManager {
 
 
     private buffKillerHealth(enemyData: EnemyStats) {
+        console.log("buff killer health")
         const exponentialFactor = 1.05
-        enemyData.health = Math.floor(enemyData.health * exponentialFactor ** (this.currentWave - this.waves.length))
+        const exponent = this.currentWave - this.waves.length
+        console.log(exponent)
+        enemyData.health = Math.floor(enemyData.health * (exponentialFactor ** exponent))
     }
 
     generateWave() {
@@ -222,7 +232,7 @@ export class WaveManager {
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1
 
-        const waveArray : WavePart[] = []
+        const waveArray: WavePart[] = []
 
         for (let i = 0; i < numberWaveParts; i++) {
             waveArray.push({
