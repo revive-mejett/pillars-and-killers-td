@@ -498,6 +498,16 @@ const testWaves2 = [
                 enemy: "Mean Triangle",
                 count: 3,
                 spacingMillis: 500
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 6,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 1,
+                spacingMillis: 3000
             }
         ]
     ),
@@ -507,7 +517,7 @@ const testWaves2 = [
             {
                 enemy: "Brave Proxima Centauri",
                 count: 1,
-                spacingMillis: 5000
+                spacingMillis: 7000
             }
         ]
     ),

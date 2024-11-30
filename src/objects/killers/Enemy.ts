@@ -6,6 +6,7 @@ import * as PIXI from "pixi.js";
 import { TdMap } from "../TdMap";
 import { EnemyStats } from "src/ts/types/EnemyData";
 import sound from "pixi-sound";
+import EnemyType from "src/ts/types/EnemyType";
 
 const eventDispatcher = new EventDispatcher()
 const tickCooldown = 60
@@ -40,6 +41,7 @@ export class Enemy extends Entity {
     regen: { amount : number, cooldownSeconds : number } | undefined;
     slowImmune: boolean = false
     armour: number = 0
+    enemyType: EnemyType;
 
     /**
      *
@@ -54,6 +56,7 @@ export class Enemy extends Entity {
         this.killValue = stats.killValue
         this.nick = all1st[Math.floor(Math.random() * all1st.length)]
         this.spritesheet = spritesheet
+        this.enemyType = stats.type
 
         //setting special properties
         this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }

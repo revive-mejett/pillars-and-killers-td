@@ -24,7 +24,7 @@ export class BasicPillar extends Tower {
 
     runTower(gameplayScene : GameplayScene) {
 
-        const gameplaySceneContainer = gameplayScene.container
+        const gameplaySceneContainer = gameplayScene.mapContainer
 
 
         const towerFireCycleTicker = new PIXI.Ticker()

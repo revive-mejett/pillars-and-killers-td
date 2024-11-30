@@ -256,7 +256,7 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Stone Pricker",
             type: "Armoured",
-            health: 700000,
+            health: 700,
             speed: 0.5,
             damage: 3,
             killValue: 40,

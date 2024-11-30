@@ -18,6 +18,7 @@ export class InputManager {
 
         //this container will contain the range circle, and tile outline and will be in tdmap
         this.gridContainer = new PIXI.Container()
+        this.gridContainer.x = 100
         sceneContainer.sortableChildren = true
         sceneContainer.zIndex = 10000
         sceneContainer.addChild(this.gridContainer)
