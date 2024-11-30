@@ -8,7 +8,7 @@ import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 
 
-import { oneEnemy, testWaves2 } from "../utils/WaveData"
+import { testWaves2 } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
