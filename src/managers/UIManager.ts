@@ -11,13 +11,13 @@ import { GameplayScene } from "src/scenes/GameplayScene";
 import { Tile } from "src/objects/Tile";
 import { Tower } from "src/objects/pillars/Tower";
 import { Enemy } from "src/objects/killers/Enemy";
-import sound from "pixi-sound";
 import { getTowerData } from "../utils/TowerStatsData";
+import { AudioManager } from "./AudioManager";
 
 
 
 const eventDispatcher = new EventDispatcher()
-
+const audioManager = new AudioManager()
 
 export class UIManager {
     app: PIXI.Application<PIXI.ICanvas>;
@@ -59,11 +59,7 @@ export class UIManager {
 
         eventDispatcher.on("waveStarted", () => {
             this.updateWaveNumber()
-            const sfxRockBreak = sound.Sound.from({
-                url: "assets/sounds/sfx/rock_break.mp3",
-                volume: 0.7
-            })
-            sfxRockBreak.play()
+            audioManager.playSound("assets/sounds/sfx/rock_break.mp3", 0.7)
         })
 
         eventDispatcher.on("towerPlaceAction", this.handleTowerPurchase.bind(this))
@@ -150,17 +146,8 @@ export class UIManager {
         tower.runTower(this.gameplayScene)
 
 
-        const sfxBuy = sound.Sound.from({
-            url: "assets/sounds/sfx/tower_buy.mp3",
-            volume: 0.5
-        })
-        sfxBuy.play()
-        const sfxBuild = sound.Sound.from({
-            url: "assets/sounds/sfx/pillar_build.mp3",
-            volume: 0.25
-        })
-        sfxBuild.play()
 
+        audioManager.playBuySound()
 
 
         eventDispatcher.fireEvent("towerPlaced", tower)
@@ -183,16 +170,8 @@ export class UIManager {
         eventDispatcher.fireEvent("purchaseSuccessful1", upgradeCost)
         selectedTile.tower.upgrade()
 
-        const sfxBuy = sound.Sound.from({
-            url: "assets/sounds/sfx/tower_buy.mp3",
-            volume: 0.5
-        })
-        sfxBuy.play()
-        const sfxBuild = sound.Sound.from({
-            url: "assets/sounds/sfx/pillar_build.mp3",
-            volume: 0.25
-        })
-        sfxBuild.play()
+        audioManager.playBuySound()
+
         selectedTile.renderTower()
         this.displaySelectedTowerInfo(selectedTile.tower)
     }

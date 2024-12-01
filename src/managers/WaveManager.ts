@@ -227,8 +227,8 @@ export class WaveManager {
     }
 
     generateWave() {
-        // const enemies : EnemyClass[] = Object.keys(allEnemyData) as EnemyClass[]
-        const enemies = ["Infant Circle"] as EnemyClass[]
+        const enemies : EnemyClass[] = Object.keys(allEnemyData) as EnemyClass[]
+        // const enemies = ["Infant Circle"] as EnemyClass[]
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1
 

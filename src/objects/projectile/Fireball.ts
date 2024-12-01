@@ -3,8 +3,9 @@ import { Vector } from "../../utils/Vector";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
-import sound from "pixi-sound";
+import { AudioManager } from "../../managers/AudioManager";
 
+const audioManager = new AudioManager()
 
 export class Fireball extends Projectile {
     speed: number;
@@ -29,12 +30,7 @@ export class Fireball extends Projectile {
 
     fire(deltaTime : number, enemies :Enemy[]) {
 
-        const sfxFireball = sound.Sound.from({
-            url: "assets/sounds/sfx/torch_whoosh.mp3",
-            volume: 1,
-            speed: this.soundPitch
-        })
-        sfxFireball.play()
+        audioManager.playSound("assets/sounds/sfx/torch_whoosh.mp3", 1, this.soundPitch)
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {

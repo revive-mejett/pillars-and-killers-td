@@ -2,7 +2,9 @@ import Position from "src/ts/types/Position";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
-import sound from "pixi-sound";
+import { AudioManager } from "../../managers/AudioManager";
+
+const audioManager = new AudioManager()
 
 export class IonBeam extends Projectile {
 
@@ -19,11 +21,7 @@ export class IonBeam extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
-        const sfxIceBeamFire = sound.Sound.from({
-            url: "assets/sounds/sfx/ion_cannon.mp3",
-            volume: 0.4
-        })
-        sfxIceBeamFire.play()
+        audioManager.playSound("assets/sounds/sfx/ion_cannon.mp3", 0.4)
 
         let enemyPosition = this.targetEnemy?.getCenterPosition()
         const beamOriginPosition = this.getCenterPosition()

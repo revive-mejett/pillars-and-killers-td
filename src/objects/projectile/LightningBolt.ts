@@ -2,7 +2,10 @@ import Position from "src/ts/types/Position";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
-import sound from "pixi-sound";
+import { AudioManager } from "../../managers/AudioManager";
+
+const audioManager = new AudioManager()
+
 
 export class LightningBolt extends Projectile {
     boltWidth: number;
@@ -21,11 +24,7 @@ export class LightningBolt extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
-        const sfxIceBeamFire = sound.Sound.from({
-            url: "assets/sounds/sfx/zap.mp3",
-            volume: 1
-        })
-        sfxIceBeamFire.play()
+        audioManager.playSound("assets/sounds/sfx/zap.mp3", 1)
 
         let enemyCenterPosition = this.targetEnemy?.getCenterPosition()
         let elapsedOnDeath : number = 0
