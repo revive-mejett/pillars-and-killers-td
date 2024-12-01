@@ -37,7 +37,7 @@ export class WaveManager {
         this.waves = []
         this.extraWaves = this.generateExtraWaves()
 
-        this.currentWave = 200
+        this.currentWave = 110
         this.waveInProgress = false
 
         this.cooldownToNextWave = 0
@@ -126,7 +126,6 @@ export class WaveManager {
 
         //set the cooldown to next wave to the duration of the current wave
         this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000
-        console.log(this.cooldownToNextWave)
 
         let elapsedMS = 0
         let enemiesSpawned = 0
@@ -134,7 +133,7 @@ export class WaveManager {
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
         let enemyData = { ...allEnemyData[wavePart.enemy].stats }
-        console.log(enemyData)
+
         //after reaching max waves, buff all enemies expononentially
         if (this.isFreeplay) {
             this.buffKillerHealth(enemyData)
@@ -219,10 +218,8 @@ export class WaveManager {
 
 
     private buffKillerHealth(enemyData: EnemyStats) {
-        console.log("buff killer health")
         const exponentialFactor = 1.05
         const exponent = this.currentWave - this.waves.length
-        console.log(exponent)
         enemyData.health = Math.floor(enemyData.health * (exponentialFactor ** exponent))
     }
 
