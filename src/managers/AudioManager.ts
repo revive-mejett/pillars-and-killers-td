@@ -34,11 +34,11 @@ export class AudioManager {
 
     playSoundLimited(numberSources: number, maxSources: number, odds: number, path : string, volume?: number, speed?: number) {
         const oddsMultiplier = 1 + Math.floor(1 * Math.sqrt(numberSources))
-        const rng = Math.floor(Math.random() * odds * oddsMultiplier)
+        const rng = Math.floor(Math.random() * (odds - maxSources) * oddsMultiplier)
 
         if (numberSources <= maxSources || rng <= Math.floor(Math.sqrt(odds))) {
             this.playSound(path, volume || 1, speed || 1)
-            console.log(oddsMultiplier)
+
         }
     }
 

@@ -194,6 +194,7 @@ export class GameplayScene extends Scene {
         //clean up event listeners akshan
         eventDispatcher.clearListenersOfEvent("enemySpawn")
         eventDispatcher.clearListenersOfEvent("enemyArmorSoundPlay")
+        eventDispatcher.clearListenersOfEvent("towerAttackSoundPlay")
         eventDispatcher.clearListenersOfEvent("enemyDied")
         eventDispatcher.clearListenersOfEvent("towerPlaced")
         eventDispatcher.clearListenersOfEvent("towerSold")

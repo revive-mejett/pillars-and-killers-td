@@ -24,7 +24,7 @@ export class LightningBolt extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
-        // audioManager.playSound("assets/sounds/sfx/zap.mp3", 1)
+
         eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/zap.mp3", maxSources: 1, towerName: "Lightning Pillar", volume: 1})
 
         let enemyCenterPosition = this.targetEnemy?.getCenterPosition()

@@ -2,9 +2,10 @@ import Position from "src/ts/types/Position";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
-import { AudioManager } from "../../managers/AudioManager";
+import { EventDispatcher } from "../../utils/EventDispatcher";
 
-const audioManager = new AudioManager()
+
+const eventDispatcher = new EventDispatcher()
 
 export class IonBeam extends Projectile {
 
@@ -21,7 +22,7 @@ export class IonBeam extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
-        audioManager.playSound("assets/sounds/sfx/ion_cannon.mp3", 0.4)
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/ion_cannon.mp3", maxSources: 10, towerName: "Ultimate Pillar", volume: 0.7})
 
         let enemyPosition = this.targetEnemy?.getCenterPosition()
         const beamOriginPosition = this.getCenterPosition()
