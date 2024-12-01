@@ -11,10 +11,13 @@ import * as PIXI from "pixi.js";
 import { Enemy } from "src/objects/killers/Enemy"
 import { Tower } from "src/objects/pillars/Tower"
 import { InputManager } from "../managers/InputManager"
-import sound from "pixi-sound"
-import { WaveTimeline } from "../UI/WaveTimeline"
 
+import { WaveTimeline } from "../UI/WaveTimeline"
+import { AudioManager } from "../managers/AudioManager";
+
+const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
+
 export class GameplayScene extends Scene {
     tdMap?: TdMap
     gamestate?: GameState
@@ -151,16 +154,12 @@ export class GameplayScene extends Scene {
     }
 
     playArmorSound() {
-        const soundUrlPaths = ["assets/sounds/sfx/armour_clank1.mp3","assets/sounds/sfx/armour_clank2.mp3","assets/sounds/sfx/armour_clank3.mp3"]
+        
 
         const rng = Math.floor(Math.random() * this.enemiesPresent.length)
 
         if ( this.enemiesPresent.length <= 20 || rng <= Math.floor(Math.sqrt(this.enemiesPresent.length))) {
-            const sfxEnemyArmour = sound.Sound.from({
-                url: soundUrlPaths[Math.floor(Math.random() * soundUrlPaths.length)],
-                volume: 0.25
-            })
-            sfxEnemyArmour.play()
+            audioManager.playArmourSound()
         }
     }
 

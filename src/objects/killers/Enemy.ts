@@ -5,10 +5,11 @@ import { Entity } from "../Entity"
 import * as PIXI from "pixi.js";
 import { TdMap } from "../TdMap";
 import { EnemyStats } from "src/ts/types/EnemyData";
-import sound from "pixi-sound";
 import EnemyType from "src/ts/types/EnemyType";
+import { AudioManager } from "../../managers/AudioManager";
 
 const eventDispatcher = new EventDispatcher()
+const audioManager = new AudioManager()
 const tickCooldown = 60
 
 type SlowDebuffStats = {
@@ -287,11 +288,7 @@ export class Enemy extends Entity {
 function enemyDied(enemy : Enemy) {
     enemy.isAlive = false
 
-    const sfxEnemyDied = sound.Sound.from({
-        url: "assets/sounds/sfx/killerKilled1.mp3",
-        volume: 0.25
-    })
-    sfxEnemyDied.play()
+    audioManager.playKilledSound()
 
     if (enemy.sprite.playing) {
         enemy.sprite.stop()
