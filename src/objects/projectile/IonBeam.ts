@@ -22,7 +22,7 @@ export class IonBeam extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/ion_cannon.mp3", maxSources: 10, towerName: "Ultimate Pillar", volume: 0.7})
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/ion_cannon.mp3", maxSources: 13, towerName: "Ultimate Pillar", volume: 0.7})
 
         let enemyPosition = this.targetEnemy?.getCenterPosition()
         const beamOriginPosition = this.getCenterPosition()

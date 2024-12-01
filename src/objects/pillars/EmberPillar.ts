@@ -21,7 +21,7 @@ export class EmberPillar extends Tower {
      */
     constructor(x : number, y : number, width : number, height : number, towerData : TowerData<EmberPillarStats, EmberPillarInfo>) {
         super(x, y, width, height, towerData);
-        this.towerName = "Ember Akshan"
+        this.towerName = "Ember Pillar"
         this.fireballWidth = towerData.towerInfo.fireballWidth
         this.flameColour = towerData.towerInfo.flameColour
         this.soundPitch = towerData.towerInfo.soundPitch

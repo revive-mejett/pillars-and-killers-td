@@ -24,7 +24,7 @@ export class Bullet extends Projectile {
     }
 
     fire(deltaTime : number) {
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/stone_throw.mp3", maxSources: 16, towerName: "Basic Pillar", volume: 1})
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/stone_throw.mp3", maxSources: 8, towerName: "Basic Pillar", volume: 1})
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
