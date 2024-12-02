@@ -5,7 +5,7 @@ import sound from "pixi-sound"
 export class AudioManager {
 
     static instance: AudioManager
-    useAudio : boolean = true
+    useAudio : boolean = false
 
     constructor() {
         //singleton
