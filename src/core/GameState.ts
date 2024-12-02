@@ -9,7 +9,7 @@ export class GameState {
 
     constructor() {
         this.lives = 50
-        this.money = 300
+        this.money = 10000
         this.uiManager = undefined
 
         eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
