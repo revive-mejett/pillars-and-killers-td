@@ -13,7 +13,7 @@ import { testWaves2 } from "../utils/WaveData"
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 import { allEnemyData } from "../utils/EnemyData"
-import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
+import { EnemyClass, EnemyData, EnemyStats } from "src/ts/types/EnemyData"
 
 
 export class WaveManager {
@@ -224,7 +224,9 @@ export class WaveManager {
     }
 
     generateWave() {
-        const enemies : EnemyClass[] = Object.keys(allEnemyData) as EnemyClass[]
+
+        // const bosses : EnemyClass[] = Object.values(allEnemyData).filter(enemy => enemy.stats.type === "Boss").map(enemy => enemy.stats.className) as EnemyClass[]
+        const enemyClasses : EnemyClass[] = Object.values(allEnemyData).filter(enemy => enemy.stats.type !== "Boss").map(enemy => enemy.stats.className) as EnemyClass[]
         // const enemies = ["Infant Circle"] as EnemyClass[]
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1
@@ -233,7 +235,7 @@ export class WaveManager {
 
         for (let i = 0; i < numberWaveParts; i++) {
             waveArray.push({
-                enemy: enemies[Math.floor(Math.random() * enemies.length)],
+                enemy: enemyClasses[Math.floor(Math.random() * enemyClasses.length)],
                 count: Math.floor(Math.random() * 10),
                 spacingMillis: Math.floor(Math.random() * 10) * 100 + 100
             })

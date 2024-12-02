@@ -158,7 +158,7 @@ export class GameplayScene extends Scene {
     playArmorSound() {
         const rng = Math.floor(Math.random() * this.enemiesPresent.length)
 
-        if ( this.enemiesPresent.length <= 20 || rng <= Math.floor(Math.sqrt(this.enemiesPresent.length))) {
+        if ( this.enemiesPresent.length <= 20 || rng <= Math.floor(Math.cbrt(this.enemiesPresent.length))) {
             audioManager.playArmourSound()
         }
     }
