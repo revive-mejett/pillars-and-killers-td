@@ -154,7 +154,7 @@ export class UIManager {
     }
 
     handleTowerUpgradePurchase(selectedTile : Tile) {
-        if (!selectedTile.tower) {
+        if (!selectedTile.tower || !selectedTile.tower.upgrades) {
             return
         }
 

@@ -14,6 +14,10 @@ const assetLoader = new AssetLoader()
 export class InfoPanel {
 
     static createTowerStatsInfoPanel(tower : Tower) {
+
+        if (!tower.upgrades) {
+            throw new Error("Upgrades not provided")
+        }
         const padding = 5
         const isUpgradable = tower.level <= tower.upgrades.length
 
@@ -21,10 +25,13 @@ export class InfoPanel {
         const infoPanelOutline = UIHelper.createInfoPanelOutline(0x00FF00)
         infoPanel.addChild(infoPanelOutline)
 
-        const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding, 0x000000)
-        currentTowerIcon.x = 160
+        if (tower.assetIcon) {
+            const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding, 0x000000)
+            currentTowerIcon.x = 160
+    
+            infoPanel.addChild(currentTowerIcon)
+        }
 
-        infoPanel.addChild(currentTowerIcon)
 
         const towerTitleText = UIHelper.createText(0 + padding, 0 + padding,`${tower.towerName}`, 20, "0xFFFFFF")
         infoPanel.addChild(towerTitleText)

@@ -89,6 +89,9 @@ export class LightningPillar extends Tower {
     }
 
     upgrade(): void {
+        if (!this.upgrades || !this.visualUpgrades) {
+            return
+        }
         if (this.level > this.upgrades.length) {
             return
         }
@@ -109,8 +112,8 @@ export class LightningPillar extends Tower {
             this.sprite = PIXI.Sprite.from(this.asset)
             this.sprite.height = this.height
             this.sprite.width = this.width
-            this.sprite.x = this.position.x
-            this.sprite.y = this.position.y
+            this.sprite.x = this.position?.x || 0
+            this.sprite.y = this.position?.y || 0
         }
     }
 }
