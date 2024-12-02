@@ -113,6 +113,7 @@ export abstract class Tower extends Entity {
     abstract upgrade() : void
 
     cleanUpResources() {
+        console.log("clean up tower res")
         this.asset = undefined
         this.sprite?.destroy()
         this.sprite = undefined

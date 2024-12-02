@@ -27,7 +27,7 @@ export class BasicPillar extends Tower {
         const gameplaySceneContainer = gameplayScene.mapContainer
 
 
-        const towerFireCycleTicker = new PIXI.Ticker()
+        let towerFireCycleTicker : PIXI.Ticker | undefined = new PIXI.Ticker()
         towerFireCycleTicker.autoStart = false
 
 
@@ -38,10 +38,12 @@ export class BasicPillar extends Tower {
 
             if (this.isSold) {
                 console.log("tower sold, sitkcer stop fire")
-                towerFireCycleTicker.stop()
+                towerFireCycleTicker?.stop()
+                towerFireCycleTicker?.destroy()
+                towerFireCycleTicker = undefined
             }
 
-            cooldown -= towerFireCycleTicker.deltaMS
+            cooldown -= towerFireCycleTicker?.deltaMS || 0
             if (cooldown <= 0) {
                 cooldown = 1000 * 1/this.fireRate
 
@@ -77,7 +79,9 @@ export class BasicPillar extends Tower {
         towerFireCycleTicker.start()
 
         eventDispatcher.on("gameEnd", () => {
-            towerFireCycleTicker.stop()
+            towerFireCycleTicker?.stop()
+            towerFireCycleTicker?.destroy()
+            towerFireCycleTicker = undefined
         })
     }
 
