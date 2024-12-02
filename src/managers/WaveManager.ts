@@ -13,7 +13,7 @@ import { testWaves2 } from "../utils/WaveData"
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 import { allEnemyData } from "../utils/EnemyData"
-import { EnemyClass, EnemyData, EnemyStats } from "src/ts/types/EnemyData"
+import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
 
 
 export class WaveManager {
@@ -37,7 +37,7 @@ export class WaveManager {
         this.waves = []
         this.extraWaves = this.generateExtraWaves()
 
-        this.currentWave = 110
+        this.currentWave = 0
         this.waveInProgress = false
 
         this.cooldownToNextWave = 0

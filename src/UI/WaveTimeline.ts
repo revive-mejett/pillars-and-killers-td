@@ -82,15 +82,22 @@ export class WaveTimeline {
         const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
 
 
-
         const waveStone = new PIXI.Graphics()
-        waveStone.lineStyle(1, 0x440000)
-        waveStone.beginFill(0x222222)
+
+        let outlineColour = "0xE7E7E7"
+        let colour = 0x333333
+
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Brave Proxima Centauri")) {
+            outlineColour = "0xFFEE00"
+            colour = 0x7C2F00
+        }
+        waveStone.lineStyle(1, outlineColour)
+        waveStone.beginFill(colour)
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)
         waveStone.endFill()
-        this.innerContainer.addChild(waveStone);
+        this.innerContainer.addChild(waveStone)
 
-        const txtWaveNumber = UIHelper.createText(0, 0, `${waveNumber}`, 50, "0xFFFFFF")
+        const txtWaveNumber = UIHelper.createText(0, 0, `${waveNumber}`, 50, outlineColour)
         txtWaveNumber.x = 50;
         txtWaveNumber.y = timeToWaveStart / timeToYScaleFactor
         txtWaveNumber.pivot.set(txtWaveNumber.width, 0)
@@ -113,8 +120,8 @@ export class WaveTimeline {
 
 
         const waveStone = new PIXI.Graphics()
-        waveStone.lineStyle(1, 0x440000)
-        waveStone.beginFill(0x222222)
+        waveStone.lineStyle(1, 0xC7C7C7)
+        waveStone.beginFill(0x999999)
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)
         waveStone.endFill()
         this.innerContainer.addChild(waveStone)

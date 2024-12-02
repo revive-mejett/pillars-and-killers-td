@@ -436,7 +436,7 @@ const testWaves2 = [
         [
             {
                 enemy: "Mean Triangle",
-                count: 3,
+                count: 7,
                 spacingMillis: 3000
             },
             {
@@ -461,7 +461,7 @@ const testWaves2 = [
             },
             {
                 enemy: "Mean Triangle",
-                count: 1,
+                count: 7,
                 spacingMillis: 5000
             }
         ]
@@ -471,8 +471,8 @@ const testWaves2 = [
         [
             {
                 enemy: "4p 2024",
-                count: 1,
-                spacingMillis: 1
+                count: 5,
+                spacingMillis: 1000
             },
             {
                 enemy: "Mean Triangle",
