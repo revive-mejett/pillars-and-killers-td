@@ -46,7 +46,6 @@ export abstract class Projectile extends Entity {
     }
 
     cleanUpResources() {
-        console.log("proj clean up res")
         this.updateTicker?.stop()
         this.updateTicker?.destroy()
         this.updateTicker = undefined

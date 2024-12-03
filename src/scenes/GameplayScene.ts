@@ -63,7 +63,6 @@ export class GameplayScene extends Scene {
 
         this.waveTimeline = new WaveTimeline(this.waveManager)
         this.container.addChild(this.waveTimeline.container)
-        this.waveTimeline.render()
 
 
 

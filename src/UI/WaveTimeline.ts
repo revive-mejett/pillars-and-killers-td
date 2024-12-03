@@ -43,9 +43,6 @@ export class WaveTimeline {
     renderNextWaves() {
         this.innerContainer.y = this.waveManager.cooldownToNextWave / timeToYScaleFactor
         this.innerContainer.removeChildren()
-        //render all wave stones, starting from wave 1
-        console.log("render next waves")
-
 
 
         //stone position and size are based on time till that wave arrives, and the length of the wave

@@ -85,6 +85,7 @@ export class BasicPillar extends Tower {
         })
     }
 
+    
     upgrade(): void {
         if (!this.upgrades || !this.visualUpgrades) {
             return
