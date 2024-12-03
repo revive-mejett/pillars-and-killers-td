@@ -2,10 +2,10 @@ import Position from "src/ts/types/Position";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
-import { AudioManager } from "../../managers/AudioManager";
+import { EventDispatcher } from "../../utils/EventDispatcher";
 
-const audioManager = new AudioManager()
 
+const eventDispatcher = new EventDispatcher()
 
 export class LightningBolt extends Projectile {
     boltWidth: number;
@@ -24,11 +24,11 @@ export class LightningBolt extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
-        audioManager.playSound("assets/sounds/sfx/zap.mp3", 1)
+
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/zap.mp3", maxSources: 1, towerName: "Lightning Pillar", volume: 1})
 
         let enemyCenterPosition = this.targetEnemy?.getCenterPosition()
         let elapsedOnDeath : number = 0
-        
 
         const onTick = () => {
             elapsedTime += deltaTime

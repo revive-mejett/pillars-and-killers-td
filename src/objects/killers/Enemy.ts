@@ -283,16 +283,20 @@ export class Enemy extends Entity {
     destroy() {
         this.sprite.destroy()
     }
+
+    cleanUpResources() {
+        this.sprite.off("pointerdown")
+        if (this.sprite.playing) {
+            this.sprite.stop()
+        }
+        // this.sp
+    }
 }
 
 function enemyDied(enemy : Enemy) {
     enemy.isAlive = false
 
     audioManager.playKilledSound()
-
-    if (enemy.sprite.playing) {
-        enemy.sprite.stop()
-    }
 
     enemy.destroy()
     eventDispatcher.fireEvent("enemyDied")

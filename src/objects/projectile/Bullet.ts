@@ -2,10 +2,10 @@ import { Vector } from "../../utils/Vector";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
-import { AudioManager } from "../../managers/AudioManager";
+import { EventDispatcher } from "../../utils/EventDispatcher";
 
 
-const audioManager = new AudioManager()
+const eventDispatcher = new EventDispatcher()
 
 export class Bullet extends Projectile {
     speed: number;
@@ -24,7 +24,7 @@ export class Bullet extends Projectile {
     }
 
     fire(deltaTime : number) {
-        audioManager.playSound("assets/sounds/sfx/stone_throw.mp3", 1)
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/stone_throw.mp3", maxSources: 8, towerName: "Basic Pillar", volume: 1})
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {

@@ -21,7 +21,7 @@ export class EmberPillar extends Tower {
      */
     constructor(x : number, y : number, width : number, height : number, towerData : TowerData<EmberPillarStats, EmberPillarInfo>) {
         super(x, y, width, height, towerData);
-        this.towerName = "Ember Akshan"
+        this.towerName = "Ember Pillar"
         this.fireballWidth = towerData.towerInfo.fireballWidth
         this.flameColour = towerData.towerInfo.flameColour
         this.soundPitch = towerData.towerInfo.soundPitch
@@ -33,7 +33,7 @@ export class EmberPillar extends Tower {
         const gameplaySceneContainer = gameplayScene.mapContainer
 
 
-        const towerFireCycleTicker = new PIXI.Ticker()
+        let towerFireCycleTicker : PIXI.Ticker | undefined = new PIXI.Ticker()
         towerFireCycleTicker.autoStart = false
 
 
@@ -44,10 +44,13 @@ export class EmberPillar extends Tower {
 
             if (this.isSold) {
                 console.log("tower sold, sitkcer stop fire")
-                towerFireCycleTicker.stop()
+                towerFireCycleTicker?.stop()
+                towerFireCycleTicker?.destroy()
+                towerFireCycleTicker = undefined
             }
 
-            cooldown -= towerFireCycleTicker.deltaMS
+            cooldown -= towerFireCycleTicker?.deltaMS || 0
+
             if (cooldown <= 0) {
                 cooldown = 1000 * 1/this.fireRate
 
@@ -78,7 +81,8 @@ export class EmberPillar extends Tower {
                 bullet.fire(gameplayScene.app.ticker.deltaTime, gameplayScene.enemiesPresent)
 
                 eventDispatcher.on("gameEnd", () => {
-                    towerFireCycleTicker.stop()
+                    towerFireCycleTicker?.stop()
+                    towerFireCycleTicker?.destroy()
                 })
             }
         }
@@ -88,6 +92,9 @@ export class EmberPillar extends Tower {
     }
 
     upgrade(): void {
+        if (!this.upgrades || !this.visualUpgrades) {
+            return
+        }
         if (this.level > this.upgrades.length) {
             return
         }

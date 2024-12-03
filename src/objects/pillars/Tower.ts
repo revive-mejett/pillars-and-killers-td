@@ -19,15 +19,15 @@ export abstract class Tower extends Entity {
     fireRate: number;
     cost: number;
     level: number;
-    asset: PIXI.SpriteSource;
-    assetIcon: PIXI.SpriteSource;
-    position: Position;
-    sprite: PIXI.Sprite;
+    asset: PIXI.SpriteSource | undefined;
+    assetIcon: PIXI.SpriteSource | undefined;
+    position: Position | undefined;
+    sprite: PIXI.Sprite | undefined;
     targetedEnemy?: Enemy;
     isSold : boolean;
 
-    upgrades: TowerStats[];
-    visualUpgrades: TowerInfo[];
+    upgrades: TowerStats[] | undefined = [];
+    visualUpgrades: TowerInfo[] | undefined = [];
 
     towerName : string = "Tower";
 
@@ -111,4 +111,16 @@ export abstract class Tower extends Entity {
     }
 
     abstract upgrade() : void
+
+    cleanUpResources() {
+        this.asset = undefined
+        this.sprite?.destroy()
+        this.sprite = undefined
+        this.assetIcon = undefined
+        this.targetedEnemy = undefined
+        this.upgrades = undefined
+        this.visualUpgrades = undefined
+        this.position = undefined
+        this.tile = undefined
+    }
 }

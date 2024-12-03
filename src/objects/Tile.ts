@@ -41,6 +41,7 @@ export class Tile extends Entity {
 
         eventDispatcher.fireEvent("moneyEarned", sellValue)
         eventDispatcher.fireEvent("towerSold")
+        this.tower.cleanUpResources()
         this.tower = undefined
         this.markTowerOccupied(false)
         this.paveGrass()
@@ -100,6 +101,10 @@ export class Tile extends Entity {
     renderTower() {
         if (this.tower) {
 
+            if (!this.tower.sprite) {
+                return
+            }
+
             this.container?.removeChildren()
             const tileBackground = new PIXI.Graphics()
             tileBackground.lineStyle(2, 0x005500)
@@ -107,6 +112,7 @@ export class Tile extends Entity {
             tileBackground.drawRect(this.x, this.y, this.width, this.height)
             tileBackground.endFill()
             this.setTileContainer(tileBackground)
+            
             this.container?.addChild(this.tower.sprite)
         }
     }

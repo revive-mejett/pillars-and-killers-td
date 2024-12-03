@@ -38,6 +38,7 @@ export class AdvancedPillar extends Tower {
             if (this.isSold) {
                 console.log("tower sold, sitkcer stop fire")
                 towerFireCycleTicker.stop()
+                towerFireCycleTicker.destroy()
             }
 
             cooldown -= towerFireCycleTicker.deltaMS

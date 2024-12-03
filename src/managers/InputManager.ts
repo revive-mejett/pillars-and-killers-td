@@ -7,9 +7,17 @@ export class InputManager {
 
 
     hoveredTile : Tile | undefined = undefined
-    gridContainer: PIXI.Container<PIXI.DisplayObject>;
+    gridContainer: PIXI.Container<PIXI.DisplayObject>
     selectedTowerTile : Tile | undefined = undefined
     gridMask: PIXI.Graphics;
+
+    towerRangeDrawn : boolean = false
+
+
+    private rangeCircle : PIXI.Graphics | undefined = undefined
+    private cyanOutline : PIXI.Graphics | undefined = undefined
+    private greenOutline : PIXI.Graphics | undefined = undefined
+
 
     /**
      *
@@ -45,25 +53,71 @@ export class InputManager {
             return
         }
         this.selectedTowerTile = tile
+        this.towerRangeDrawn = false
+        this.rangeCircle = undefined
+        this.cyanOutline = undefined
     }
 
     update() {
-        this.gridContainer.removeChildren()
+        // Remove only non-persistent children
+        this.gridContainer.children.filter(child => child !== this.rangeCircle && child !== this.cyanOutline && child !== this.gridMask).forEach(child => {
+            if (child instanceof PIXI.Graphics) {
+                child.destroy();
+            }
+            this.gridContainer.removeChild(child);
+        });
+
         if (this.hoveredTile && this.hoveredTile.tileType === "grass") {
             const greenOutline = UIHelper.createOutline(this.hoveredTile.x, this.hoveredTile.y, this.hoveredTile.width, this.hoveredTile.height, 2, 0x00FF00)
             this.gridContainer.addChild(greenOutline)
         }
 
-        if (this.selectedTowerTile && this.selectedTowerTile.tower) {
-            const cyanOutline = UIHelper.createOutline(this.selectedTowerTile.x, this.selectedTowerTile.y, this.selectedTowerTile.width, this.selectedTowerTile.height, 2, 0x00FFFF)
-            this.gridContainer.addChild(cyanOutline)
+        if (!this.selectedTowerTile?.tower) {
+            this.towerRangeDrawn = false
+            if (this.cyanOutline) {
+                this.cyanOutline.visible = false
+            }
+            if (this.rangeCircle) {
+                this.rangeCircle.visible = false
+            }
+        }
 
-            const rangeCircle = new PIXI.Graphics()
-            rangeCircle.lineStyle(1, 0x00FFFF)
-            rangeCircle.drawEllipse(this.selectedTowerTile.getCenterPosition().x, this.selectedTowerTile.getCenterPosition().y, this.selectedTowerTile.tower.range, this.selectedTowerTile.tower.range)
-            rangeCircle.mask = this.gridMask
-            this.gridContainer.addChild(this.gridMask)
-            this.gridContainer.addChild(rangeCircle)
+        if (this.selectedTowerTile && this.selectedTowerTile.tower && !this.towerRangeDrawn) {
+
+            this.towerRangeDrawn = true
+
+            // const cyanOutline = UIHelper.createOutline(this.selectedTowerTile.x, this.selectedTowerTile.y, this.selectedTowerTile.width, this.selectedTowerTile.height, 2, 0x00FFFF)
+            // this.gridContainer.addChild(cyanOutline)
+            // const rangeCircle = new PIXI.Graphics()
+            // rangeCircle.lineStyle(1, 0x00FFFF)
+            // rangeCircle.drawEllipse(this.selectedTowerTile.getCenterPosition().x, this.selectedTowerTile.getCenterPosition().y, this.selectedTowerTile.tower.range, this.selectedTowerTile.tower.range)
+            // rangeCircle.mask = this.gridMask
+            // this.gridContainer.addChild(this.gridMask)
+            // this.gridContainer.addChild(rangeCircle)
+
+
+
+            if (!this.rangeCircle) {
+
+                this.rangeCircle = new PIXI.Graphics()
+                this.rangeCircle.lineStyle(1, 0x00FFFF)
+                this.rangeCircle.drawEllipse(this.selectedTowerTile.getCenterPosition().x, this.selectedTowerTile.getCenterPosition().y, this.selectedTowerTile.tower.range, this.selectedTowerTile.tower.range)
+                this.rangeCircle.mask = this.gridMask
+
+                // Add the range circle and mask
+                if (!this.gridContainer.children.includes(this.gridMask)) {
+                    console.log("add mask")
+                    this.gridContainer.addChild(this.gridMask);
+                }
+                this.gridContainer.addChild(this.rangeCircle)
+            }
+
+
+            if (!this.cyanOutline) {
+                this.cyanOutline = UIHelper.createOutline(this.selectedTowerTile.x, this.selectedTowerTile.y, this.selectedTowerTile.width, this.selectedTowerTile.height, 2, 0x00FFFF)
+                this.gridContainer.addChild(this.cyanOutline)
+            }
+
         }
     }
 

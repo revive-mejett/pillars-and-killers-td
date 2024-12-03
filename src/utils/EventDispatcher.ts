@@ -54,4 +54,7 @@ export class EventDispatcher {
         this.listeners[event] = []
     }
 
+    getListeners() {
+        return this.listeners
+    }
 }

@@ -347,7 +347,7 @@ const allEnemyData: EnemyData = {
             health: 800,
             speed: 0.5,
             damage: 3,
-            killValue: 75,
+            killValue: 60,
             armour: 8,
             rotationSpeed: 0,
             isLooking: true,

@@ -2,9 +2,10 @@ import Position from "src/ts/types/Position";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
-import { AudioManager } from "../../managers/AudioManager";
+import { EventDispatcher } from "../../utils/EventDispatcher";
 
-const audioManager = new AudioManager()
+const eventDispatcher = new EventDispatcher()
+
 
 export class Beam extends Projectile {
     beamWidth: number;
@@ -25,8 +26,7 @@ export class Beam extends Projectile {
     fire(deltaTime : number) {
 
         let elapsedTime = 0
-
-        audioManager.playSound("assets/sounds/sfx/ice_beam.mp3", 0.4)
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/ice_beam.mp3", maxSources: 8, towerName: "Ice Pillar", volume: 0.4})
 
         this.targetEnemy?.takeDamage(this.damage)
         this.slowEnemy(this.slowMultiplier, 200) //apply the slow

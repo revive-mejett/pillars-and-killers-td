@@ -63,7 +63,6 @@ export class GameplayScene extends Scene {
 
         this.waveTimeline = new WaveTimeline(this.waveManager)
         this.container.addChild(this.waveTimeline.container)
-        this.waveTimeline.render()
 
 
 
@@ -75,6 +74,8 @@ export class GameplayScene extends Scene {
 
         eventDispatcher.on("enemySpawn", this.addEnemyToPresent.bind(this))
         eventDispatcher.on("enemyArmorSoundPlay", this.playArmorSound.bind(this))
+        eventDispatcher.on("towerAttackSoundPlay", this.onTowerAttackSoundPlay.bind(this))
+
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
 
 
@@ -154,13 +155,21 @@ export class GameplayScene extends Scene {
     }
 
     playArmorSound() {
-        
-
         const rng = Math.floor(Math.random() * this.enemiesPresent.length)
 
-        if ( this.enemiesPresent.length <= 20 || rng <= Math.floor(Math.sqrt(this.enemiesPresent.length))) {
+        if ( this.enemiesPresent.length <= 20 || rng <= Math.floor(Math.cbrt(this.enemiesPresent.length))) {
             audioManager.playArmourSound()
         }
+    }
+
+    onTowerAttackSoundPlay(data : {towerName: string, maxSources: number, path: string, volume?: number, speed?: number}) {
+        const towerCount = this.numberTowersOf(data.towerName)
+
+        audioManager.playSoundLimited(towerCount, data.maxSources, towerCount, data.path, data.volume || 1, data.speed || 1)
+    }
+
+    private numberTowersOf(towerName : string) {
+        return this.towersPresent.filter(tower => tower.towerName === towerName).length
     }
 
     cleanUpResources() {
@@ -184,6 +193,7 @@ export class GameplayScene extends Scene {
         //clean up event listeners akshan
         eventDispatcher.clearListenersOfEvent("enemySpawn")
         eventDispatcher.clearListenersOfEvent("enemyArmorSoundPlay")
+        eventDispatcher.clearListenersOfEvent("towerAttackSoundPlay")
         eventDispatcher.clearListenersOfEvent("enemyDied")
         eventDispatcher.clearListenersOfEvent("towerPlaced")
         eventDispatcher.clearListenersOfEvent("towerSold")

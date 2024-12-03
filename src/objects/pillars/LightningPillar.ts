@@ -31,7 +31,7 @@ export class LightningPillar extends Tower {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const towerRef = this
 
-        const towerFireCycleTicker = new PIXI.Ticker()
+        let towerFireCycleTicker : PIXI.Ticker | undefined = new PIXI.Ticker()
         towerFireCycleTicker.autoStart = false
 
 
@@ -42,10 +42,12 @@ export class LightningPillar extends Tower {
 
             if (this.isSold) {
                 console.log("tower sold, sitkcer stop fire")
-                towerFireCycleTicker.stop()
+                towerFireCycleTicker?.stop()
+                towerFireCycleTicker?.destroy()
+                towerFireCycleTicker = undefined
             }
 
-            cooldown -= towerFireCycleTicker.deltaMS
+            cooldown -= towerFireCycleTicker?.deltaMS || 0
             if (cooldown <= 0) {
                 cooldown = 1000 * 1/this.fireRate
 
@@ -84,11 +86,16 @@ export class LightningPillar extends Tower {
         towerFireCycleTicker.start()
 
         eventDispatcher.on("gameEnd", () => {
-            towerFireCycleTicker.stop()
+            towerFireCycleTicker?.stop()
+            towerFireCycleTicker?.destroy()
+            towerFireCycleTicker = undefined
         })
     }
 
     upgrade(): void {
+        if (!this.upgrades || !this.visualUpgrades) {
+            return
+        }
         if (this.level > this.upgrades.length) {
             return
         }
@@ -109,8 +116,8 @@ export class LightningPillar extends Tower {
             this.sprite = PIXI.Sprite.from(this.asset)
             this.sprite.height = this.height
             this.sprite.width = this.width
-            this.sprite.x = this.position.x
-            this.sprite.y = this.position.y
+            this.sprite.x = this.position?.x || 0
+            this.sprite.y = this.position?.y || 0
         }
     }
 }
