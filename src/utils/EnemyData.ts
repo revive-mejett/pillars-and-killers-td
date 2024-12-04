@@ -637,6 +637,215 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.12
         }
     },
+    "Steel Warrior": {
+        atlasData: {
+            "frames": {
+                "SteelWarrior1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SteelWarrior2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SteelWarrior3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SteelWarrior4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["SteelWarrior1", "SteelWarrior2", "SteelWarrior3", "SteelWarrior4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/SteelWarrior.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Steel Warrior",
+            type: "Armoured",
+            health: 6300,
+            speed: 0.3,
+            damage: 5,
+            killValue: 350,
+            armour: 35,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.5
+        }
+    },
+    "5p 2025": {
+        atlasData: {
+            "frames": {
+                "5p 2025_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "5p 2025_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "5p 2025_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["5p 2025_1", "5p 2025_2", "5p 2025_3", "5p 2025_2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/5p2025.png",
+                "format": "RGBA8888",
+                "size": { "w": 750, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "5p 2025",
+            type: "EMP",
+            health: 7000,
+            speed: 1,
+            damage: 10,
+            killValue: 450,
+            armour: 5,
+            rotationSpeed: 0.08,
+            isLooking: false,
+            animationSpeed: 0.5
+        }
+    },
+    "Angry Piranha": {
+        atlasData: {
+            "frames": {
+                "AngryPiranha1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "AngryPiranha2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["AngryPiranha1", "AngryPiranha2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/AngryPiranha.png",
+                "format": "RGBA8888",
+                "size": { "w": 500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Angry Piranha",
+            type: "Hybrid",
+            health: 6200,
+            speed: 0.4,
+            damage: 6,
+            killValue: 60,
+            armour: 5,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0,
+            slowImmune: true
+        }
+    },
+    "Serious Sirius": {
+        atlasData: {
+            "frames": {
+                "SeriousSirius1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SeriousSirius2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SeriousSirius3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SeriousSirius4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SeriousSirius5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SeriousSirius6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["SeriousSirius1", "SeriousSirius2", "SeriousSirius3", "SeriousSirius4", "SeriousSirius5", "SeriousSirius6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/SeriousSirius.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Serious Sirius",
+            type: "Boss",
+            health: 77000,
+            speed: 0.7,
+            damage: 9999,
+            killValue: 5000,
+            rotationSpeed: 0.15,
+            isLooking: false,
+            animationSpeed: 0.08,
+            regen: 0,
+            armour: 75,
+            slowImmune: true
+        }
+    },
 }
 
 export { allEnemyData }

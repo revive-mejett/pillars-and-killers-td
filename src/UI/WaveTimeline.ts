@@ -88,6 +88,10 @@ export class WaveTimeline {
             outlineColour = "0xFFEE00"
             colour = 0x7C2F00
         }
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Serious Sirius")) {
+            outlineColour = "0x337777"
+            colour = 0xAAFFFF
+        }
         waveStone.lineStyle(1, outlineColour)
         waveStone.beginFill(colour)
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)

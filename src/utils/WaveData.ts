@@ -80,7 +80,27 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
+                enemy: "Brave Proxima Centauri",
+                count: 1,
+                spacingMillis: 5000
+            }
+        ]
+    ),
+    //test wave to be deleted
+    new Wave(
+        [
+            {
+                enemy: "Serious Sirius",
+                count: 1,
+                spacingMillis: 5000
+            }
+        ]
+    ),
+    //test wave to be deleted
+    new Wave(
+        [
+            {
+                enemy: "Angry Piranha",
                 count: 5,
                 spacingMillis: 2000
             },
@@ -98,6 +118,16 @@ const testWaves2 = [
                 enemy: "Fast Runner",
                 count: 5,
                 spacingMillis: 2000
+            },
+        ]
+    ),
+    //test wave to be deleted
+    new Wave(
+        [
+            {
+                enemy: "Steel Warrior",
+                count: 5,
+                spacingMillis: 4000
             },
         ]
     ),
