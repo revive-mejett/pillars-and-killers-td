@@ -82,7 +82,7 @@ export class EmberPillar extends Tower {
 
                 eventDispatcher.on("gameEnd", () => {
                     towerFireCycleTicker?.stop()
-                    towerFireCycleTicker?.destroy()
+                    // towerFireCycleTicker?.destroy() // cause error
                 })
             }
         }
