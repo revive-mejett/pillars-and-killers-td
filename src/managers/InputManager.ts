@@ -16,7 +16,7 @@ export class InputManager {
 
     private rangeCircle : PIXI.Graphics | undefined = undefined
     private cyanOutline : PIXI.Graphics | undefined = undefined
-    private greenOutline : PIXI.Graphics | undefined = undefined
+    // private greenOutline : PIXI.Graphics | undefined = undefined
 
 
     /**
