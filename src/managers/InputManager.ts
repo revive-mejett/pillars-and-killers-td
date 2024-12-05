@@ -40,6 +40,18 @@ export class InputManager {
         eventDispatcher.on("tileHover", this.setHoveredTile.bind(this))
         eventDispatcher.on("tileTowerSelect", this.setSelectedTowerTile.bind(this))
         eventDispatcher.on("tileUnhover", () => this.hoveredTile = undefined)
+        eventDispatcher.on("towerPlaced", () => {
+            this.rangeCircle = undefined
+            this.towerRangeDrawn = false
+            this.rangeCircle = undefined
+            this.cyanOutline = undefined
+        })
+        eventDispatcher.on("towerUpgraded", () => {
+            this.rangeCircle = undefined
+            this.towerRangeDrawn = false
+            this.rangeCircle = undefined
+            this.cyanOutline = undefined
+        })
     }
 
 
