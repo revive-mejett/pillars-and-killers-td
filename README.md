@@ -112,6 +112,11 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>Brave Proxima Centauri</td>
       <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
     </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/d5c1735e-a10a-4740-8300-7783bf0b65a2" witdh="125px" height="125px"></td>
+      <td>TON 618</td>
+      <td>The killer of the killers</td>
+    </tr>
   </table>
 
 ![toddler sphere a](https://github.com/user-attachments/assets/9087945a-0968-4f57-b204-9c26c3a3a103)
