@@ -72,7 +72,49 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>Brave Proxima Centauri</td>
       <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
     </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/45cd0082-5b68-47f8-9997-55a25bc4c3f7" witdh="125px" height="125px"></td>
+      <td>Toddler Sphere</td>
+      <td>He loves rolling around the track, hoping to reach the end someday and say: MAMA!!!!.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/95193467-976a-4670-9cc3-726db7902d81" witdh="125px" height="125px"></td>
+      <td>Cute Crow</td>
+      <td>Due to its cuteness, he simply adores flying around and he's pretty healthy!</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/0a8e9d2c-4492-4dd8-90d6-161c703d5d33" witdh="125px" height="125px"></td>
+      <td>Polar Goldfish</td>
+      <td>Due to its adaptability, it can withstand the sheer cold of a day on Antarctica.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
+      <td>Fast Runner</td>
+      <td>He's been really participating well in P.E class. He loves Track and Field!</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
+      <td>Brave Proxima Centauri</td>
+      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
+      <td>Brave Proxima Centauri</td>
+      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
+      <td>Brave Proxima Centauri</td>
+      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
+      <td>Brave Proxima Centauri</td>
+      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
+    </tr>
   </table>
+
+![toddler sphere a](https://github.com/user-attachments/assets/9087945a-0968-4f57-b204-9c26c3a3a103)
 
 
 
