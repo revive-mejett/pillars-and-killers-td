@@ -113,6 +113,11 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>Boss Killer. If you're talking about killer that's serious, this one is taking it REALLY seriously, without slowing down.</td>
     </tr>
     <tr>
+      <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
+      <td>Kingda Ka Zipper</td>
+      <td>It's travelling at 206 km/hr (128 mph). Arms down, head back, hold on! It's very fast and you will see it reach the end in just seconds.</td>
+    </tr>
+    <tr>
       <td><img src="https://github.com/user-attachments/assets/d5c1735e-a10a-4740-8300-7783bf0b65a2" witdh="125px" height="125px"></td>
       <td>TON 618</td>
       <td>The ki.... th... it's a ton of... .. [inaudible]</td>
