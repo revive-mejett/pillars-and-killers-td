@@ -108,7 +108,7 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>This one's also slow immune, and can bite you if it reaches the end. Don't mess with piranhas.</td>![angry pirahna a]
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
+      <td><img src="https://github.com/user-attachments/assets/0a860247-7521-44b9-b236-c26a92734d1d" witdh="125px" height="125px"></td>
       <td>Serious Sirius</td>
       <td>Boss Killer. If you're talking about killer that's serious, this one is taking it REALLY seriously, without slowing down.</td>
     </tr>
@@ -119,8 +119,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     </tr>
   </table>
 
-![toddler sphere a](https://github.com/user-attachments/assets/9087945a-0968-4f57-b204-9c26c3a3a103)
-
+![ss f]()
 
 
 ## Sources
