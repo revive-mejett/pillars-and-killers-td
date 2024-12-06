@@ -42,7 +42,8 @@ export class AssetLoader {
             "lives" : "assets/images/couple.png",
             "heart" : "assets/images/heart_icon.png",
             "speedArrow" : "assets/images/speed_icon.png",
-            "slowed" : "assets/images/slowed_icon.png"
+            "slowed" : "assets/images/slowed_icon.png",
+            "dmgResistance" : "assets/images/resistance_icon.png"
         })
         Assets.addBundle("towers", {
             "basicPillarIcon" : "assets/images/basic_pillar.png",

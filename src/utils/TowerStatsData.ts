@@ -49,15 +49,15 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 },
                 {
                     range: 175,
-                    damage: 20,
+                    damage: 25,
                     fireRate: 1,
                     cost: 100
                 },
                 {
-                    range: 250,
-                    damage: 25,
+                    range: 200,
+                    damage: 40,
                     fireRate: 1,
-                    cost: 200
+                    cost: 300
                 }],
                 visualUpgrades: [{
                     assetIcon: towerIcons.basicPillarIcon,
@@ -196,23 +196,23 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 95,
-                        damage: 21,
+                        damage: 24,
                         fireRate: 1,
-                        cost: 300,
+                        cost: 325,
                         impactRadius: 80
                     },
                     {
                         range: 105,
-                        damage: 28,
+                        damage: 36,
                         fireRate: 1.2,
-                        cost: 600,
+                        cost: 750,
                         impactRadius: 90
                     },
                     {
                         range: 115,
-                        damage: 35,
+                        damage: 45,
                         fireRate: 1.4,
-                        cost: 1300,
+                        cost: 1500,
                         impactRadius: 100
                     }
                 ],

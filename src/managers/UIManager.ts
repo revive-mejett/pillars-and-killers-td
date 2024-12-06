@@ -38,7 +38,6 @@ export class UIManager {
 
         eventDispatcher.on("nextWaveBtnClick", () => {
             if (this.gameplayScene.waveManager?.bossPresent) {
-                console.log("Boss is present using variable")
                 return
             }
             if (this.gameplayScene.waveManager?.wavesStarted && !this.gameplayScene.waveManager.waveInProgress) {
@@ -47,14 +46,8 @@ export class UIManager {
             } else {
                 if (this.gameplayScene.waveManager && this.gameplayScene.waveManager.currentWave >= this.gameplayScene.waveManager.waves.length) {
                     this.gameplayScene.waveManager.isFreeplay = true
-                    console.log("set to freeplay")
                 }
                 this.gameplayScene.waveManager?.sendWaves(this.gameplayScene)
-                if (this.gameplayScene.waveManager?.isFreeplay) {
-                    console.log("Freeplay started...")
-                } else {
-                    console.log("Game started...")
-                }
             }
         })
 

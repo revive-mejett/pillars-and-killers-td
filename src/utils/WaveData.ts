@@ -76,116 +76,51 @@ const testWaves1 = [
 ]
 
 const testWaves2 = [
-    //test wave to be deleted
-    // new Wave(
-    //     [
-    //         {
-    //             enemy: "Serious Sirius",
-    //             count: 1,
-    //             spacingMillis: 5000
-    //         }
-    //     ]
-    // ),
-    // //test wave to be deleted
-    // new Wave(
-    //     [
-    //         {
-    //             enemy: "Angry Piranha",
-    //             count: 5,
-    //             spacingMillis: 2000
-    //         },
-    //         {
-    //             enemy: "Cute Crow",
-    //             count: 5,
-    //             spacingMillis: 2000
-    //         },
-    //         {
-    //             enemy: "Polar Goldfish",
-    //             count: 5,
-    //             spacingMillis: 2000
-    //         },
-    //         {
-    //             enemy: "Fast Runner",
-    //             count: 5,
-    //             spacingMillis: 2000
-    //         },
-    //     ]
-    // ),
-    // //test wave to be deleted
-    // new Wave(
-    //     [
-    //         {
-    //             enemy: "Steel Warrior",
-    //             count: 5,
-    //             spacingMillis: 4000
-    //         },
-    //     ]
-    // ),
-    // //wave 21
-    // new Wave(
-    //     [
-    //         {
-    //             enemy: "Toddler Sphere",
-    //             count: 5,
-    //             spacingMillis: 1200
-    //         },
-    //         {
-    //             enemy: "4p 2024",
-    //             count: 3,
-    //             spacingMillis: 500
-    //         },
-    //         {
-    //             enemy: "Mean Triangle",
-    //             count: 6,
-    //             spacingMillis: 800
-    //         },
-    //         {
-    //             enemy: "Toddler Sphere",
-    //             count: 5,
-    //             spacingMillis: 1000
-    //         },
-    //     ]
-    // ),
-    // //wave 22
-    // new Wave(
-    //     [
-    //         {
-    //             enemy: "Cute Crow",
-    //             count: 5,
-    //             spacingMillis: 400
-    //         },
-    //         {
-    //             enemy: "Stone Pricker",
-    //             count: 5,
-    //             spacingMillis: 100
-    //         },
-    //         {
-    //             enemy: "Toddler Sphere",
-    //             count: 13,
-    //             spacingMillis: 1300
-    //         },
-    //     ]
-    // ),
-    //test wave to be deleted
+    //wave 21
     new Wave(
         [
             {
-                enemy: "Serious Sirius",
-                count: 1,
-                spacingMillis: 5000
-            }
+                enemy: "Toddler Sphere",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "4p 2024",
+                count: 3,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 6,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 5,
+                spacingMillis: 1000
+            },
         ]
     ),
+    //wave 22
     new Wave(
         [
             {
-                enemy: "Serious Sirius",
-                count: 1,
-                spacingMillis: 5000
-            }
+                enemy: "Cute Crow",
+                count: 5,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 5,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 13,
+                spacingMillis: 1300
+            },
         ]
     ),
-
 ]
 
 
@@ -733,16 +668,491 @@ const productionWaves = [
             }
         ]
     ),
+    //wave 21
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "4p 2024",
+                count: 3,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 6,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 5,
+                spacingMillis: 1000
+            },
+        ]
+    ),
+    //wave 22
+    new Wave(
+        [
+            {
+                enemy: "Cute Crow",
+                count: 5,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 5,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 13,
+                spacingMillis: 1300
+            }
+        ]
+    ),
+    //wave 23
+    new Wave(
+        [
+            {
+                enemy: "Cute Crow",
+                count: 8,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 30,
+                spacingMillis: 250
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 1,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "4p 2024",
+                count: 10,
+                spacingMillis: 600
+            }
+        ]
+    ),
+    //wave 24
+    new Wave(
+        [
+            {
+                enemy: "Fast Runner",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 8,
+                spacingMillis: 250
+            },
+            {
+                enemy: "Cute Crow",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 6,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 15,
+                spacingMillis: 750
+            }
+        ]
+    ),
+    //wave 25
+    new Wave(
+        [
+            {
+                enemy: "Polar Goldfish",
+                count: 5,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 10,
+                spacingMillis: 800
+            },
+        ]
+    ),
+    //wave 26
+    new Wave(
+        [
+            {
+                enemy: "Cute Crow",
+                count: 6,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 5,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 20,
+                spacingMillis: 600
+            },
+        ]
+    ),
+    //wave 27
+    new Wave(
+        [
+            {
+                enemy: "Cute Crow",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Cute Crow",
+                count: 5,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 7,
+                spacingMillis: 650
+            },
+        ]
+    ),
+    //wave 28
+    new Wave(
+        [
+            {
+                enemy: "Steel Warrior",
+                count: 3,
+                spacingMillis: 3000
+            },
+        ]
+    ),
+    //wave 29
+    new Wave(
+        [
+            {
+                enemy: "Fast Runner",
+                count: 3,
+                spacingMillis: 500
+            },
+            {
+                enemy: "4p 2024",
+                count: 25,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Fast Runner",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 14,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 800
+            },
+        ]
+    ),
+    //wave 30
+    new Wave(
+        [
+            {
+                enemy: "Polar Goldfish",
+                count: 8,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Fast Runner",
+                count: 8,
+                spacingMillis: 2000
+            }
+        ]
+    ),
+    //wave 31
+    new Wave(
+        [
+            {
+                enemy: "Steel Warrior",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Cute Crow",
+                count: 5,
+                spacingMillis: 100
+            },
+            {
+                enemy: "5p 2025",
+                count: 3,
+                spacingMillis: 2000
+            },
+        ]
+    ),
+    //wave 32
+    new Wave(
+        [
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 40,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 2,
+                spacingMillis: 600
+            }
+        ]
+    ),
+    //wave 33
+    new Wave(
+        [
+            {
+                enemy: "Polar Goldfish",
+                count: 7,
+                spacingMillis: 8
+            },
+            {
+                enemy: "5p 2025",
+                count: 1,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 5,
+                spacingMillis: 600
+            },
+            {
+                enemy: "5p 2025",
+                count: 2,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 3,
+                spacingMillis: 600
+            },
+            {
+                enemy: "5p 2025",
+                count: 3,
+                spacingMillis: 600
+            },
+        ]
+    ),
+    //wave 34
+    new Wave(
+        [
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 40,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 2,
+                spacingMillis: 600
+            }
+        ]
+    ),
+    //wave 35
+    new Wave(
+        [
+            {
+                enemy: "Angry Piranha",
+                count: 5,
+                spacingMillis: 5000
+            },
+            {
+                enemy: "5p 2025",
+                count: 1,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 5,
+                spacingMillis: 600
+            },
+            {
+                enemy: "5p 2025",
+                count: 2,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 3,
+                spacingMillis: 600
+            },
+            {
+                enemy: "5p 2025",
+                count: 3,
+                spacingMillis: 600
+            },
+        ]
+    ),
+    //wave 36
+    new Wave(
+        [
+            {
+                enemy: "Steel Warrior",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "5p 2025",
+                count: 5,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Fast Runner",
+                count: 12,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "5p 2025",
+                count: 2,
+                spacingMillis: 500
+            },
+        ]
+    ),
+    //wave 37
+    new Wave(
+        [
+            {
+                enemy: "5p 2025",
+                count: 4,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 5,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 2,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 400
+            },
+        ]
+    ),
+    //wave 38
+    new Wave(
+        [
+            {
+                enemy: "Angry Piranha",
+                count: 4,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "5p 2025",
+                count: 6,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 7,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 10,
+                spacingMillis: 1000
+            },
+        ]
+    ),
+    //wave 39
+    new Wave(
+        [
+            {
+                enemy: "Angry Piranha",
+                count: 4,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 14,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 10,
+                spacingMillis: 400
+            }
+        ]
+    ),
+    // wave 40 boss =============================================
+    new Wave(
+        [
+            {
+                enemy: "Serious Sirius",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
     // placeholder wave
     new Wave(
         [
             {
                 enemy: "Toddler Sphere",
                 count: 1,
-                spacingMillis: 2000
+                spacingMillis: 7000
             }
         ]
     ),
+    // placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    )
 ]
 
 

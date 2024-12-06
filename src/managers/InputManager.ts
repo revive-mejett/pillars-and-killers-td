@@ -106,7 +106,6 @@ export class InputManager {
             this.towerRangeDrawn = true
 
             if (!this.rangeCircle) {
-                console.log("add circle");
                 this.displayTowerRange();
             }
 
@@ -130,7 +129,6 @@ export class InputManager {
 
         // Add the range circle and mask
         if (!this.gridContainer.children.includes(this.gridMask)) {
-            console.log("add mask");
             this.gridContainer.addChild(this.gridMask);
         }
         this.gridContainer.addChild(this.rangeCircle);

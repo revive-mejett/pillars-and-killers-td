@@ -8,7 +8,7 @@ import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 
 
-import { testWaves2 } from "../utils/WaveData"
+import { productionWaves } from "../utils/WaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -50,8 +50,9 @@ export class WaveManager {
         this.delaySecondsToNextWave = 10
         this.loadWaves()
 
-        this.currentWave = 0
-        this.checkpointWave = 20
+        this.currentWave = 19
+        this.checkpointWave = this.bossWaves.find(wave => wave > this.currentWave) || 0
+        console.log(this.checkpointWave)
         if (this.checkpointWave > this.waves.length) {
             this.checkpointWave = this.waves.length
         }
@@ -80,7 +81,7 @@ export class WaveManager {
 
 
 
-        const waves = testWaves2
+        const waves = productionWaves
 
         this.waves = waves
     }
