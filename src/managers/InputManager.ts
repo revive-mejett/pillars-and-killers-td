@@ -41,28 +41,26 @@ export class InputManager {
         eventDispatcher.on("tileTowerSelect", this.setSelectedTowerTile.bind(this))
         eventDispatcher.on("tileUnhover", () => this.hoveredTile = undefined)
         eventDispatcher.on("towerPlaced", () => {
-            this.rangeCircle = undefined
-            this.towerRangeDrawn = false
-            this.cyanOutline = undefined
+            this.clearRange();
             this.rangeCircle = new PIXI.Graphics()
             this.rangeCircle.mask = this.gridMask
+            this.displayTowerRange()
         })
         eventDispatcher.on("towerUpgraded", () => {
-            this.rangeCircle = undefined
-            this.towerRangeDrawn = false
-            this.cyanOutline = undefined
-            this.rangeCircle = new PIXI.Graphics()
-            this.rangeCircle.mask = this.gridMask
+            this.clearRange();
+            this.displayTowerRange()
         })
         eventDispatcher.on("towerSold", () => {
-            this.rangeCircle = undefined
-            this.towerRangeDrawn = false
-            this.cyanOutline = undefined
-            this.rangeCircle = new PIXI.Graphics()
-            this.rangeCircle.mask = this.gridMask
+            this.clearRange();
         })
     }
 
+
+    private clearRange() {
+        this.rangeCircle = undefined;
+        this.towerRangeDrawn = false;
+        this.cyanOutline = undefined;
+    }
 
     setHoveredTile(tile: Tile | undefined) {
         this.hoveredTile = tile
@@ -109,19 +107,7 @@ export class InputManager {
 
             if (!this.rangeCircle) {
                 console.log("add circle");
-                
-
-                this.rangeCircle = new PIXI.Graphics()
-                this.rangeCircle.lineStyle(1, 0x00FFFF)
-                this.rangeCircle.drawEllipse(this.selectedTowerTile.getCenterPosition().x, this.selectedTowerTile.getCenterPosition().y, this.selectedTowerTile.tower.range, this.selectedTowerTile.tower.range)
-                this.rangeCircle.mask = this.gridMask
-
-                // Add the range circle and mask
-                if (!this.gridContainer.children.includes(this.gridMask)) {
-                    console.log("add mask")
-                    this.gridContainer.addChild(this.gridMask);
-                }
-                this.gridContainer.addChild(this.rangeCircle)
+                this.displayTowerRange();
             }
 
 
@@ -131,6 +117,23 @@ export class InputManager {
             }
 
         }
+    }
+
+    private displayTowerRange() {
+        if (!this.selectedTowerTile || !this.selectedTowerTile.tower) {
+            return
+        }
+        this.rangeCircle = new PIXI.Graphics();
+        this.rangeCircle.lineStyle(1, 0x00FFFF);
+        this.rangeCircle.drawEllipse(this.selectedTowerTile.getCenterPosition().x, this.selectedTowerTile.getCenterPosition().y, this.selectedTowerTile.tower.range, this.selectedTowerTile.tower.range);
+        this.rangeCircle.mask = this.gridMask;
+
+        // Add the range circle and mask
+        if (!this.gridContainer.children.includes(this.gridMask)) {
+            console.log("add mask");
+            this.gridContainer.addChild(this.gridMask);
+        }
+        this.gridContainer.addChild(this.rangeCircle);
     }
 
     cleanUpResources() {
