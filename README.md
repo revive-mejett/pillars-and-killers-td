@@ -119,7 +119,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     </tr>
   </table>
 
-![ss f]()
+
 
 
 ## Sources
