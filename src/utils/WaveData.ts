@@ -77,16 +77,6 @@ const testWaves1 = [
 
 const testWaves2 = [
     //test wave to be deleted
-    new Wave(
-        [
-            {
-                enemy: "TON 618",
-                count: 1,
-                spacingMillis: 5000
-            }
-        ]
-    ),
-    // //test wave to be deleted
     // new Wave(
     //     [
     //         {
@@ -176,6 +166,16 @@ const testWaves2 = [
     //         },
     //     ]
     // ),
+    //test wave to be deleted
+    new Wave(
+        [
+            {
+                enemy: "TON 618",
+                count: 1,
+                spacingMillis: 5000
+            }
+        ]
+    ),
 
 ]
 

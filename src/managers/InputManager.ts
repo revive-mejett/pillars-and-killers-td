@@ -43,14 +43,23 @@ export class InputManager {
         eventDispatcher.on("towerPlaced", () => {
             this.rangeCircle = undefined
             this.towerRangeDrawn = false
-            this.rangeCircle = undefined
             this.cyanOutline = undefined
+            this.rangeCircle = new PIXI.Graphics()
+            this.rangeCircle.mask = this.gridMask
         })
         eventDispatcher.on("towerUpgraded", () => {
             this.rangeCircle = undefined
             this.towerRangeDrawn = false
-            this.rangeCircle = undefined
             this.cyanOutline = undefined
+            this.rangeCircle = new PIXI.Graphics()
+            this.rangeCircle.mask = this.gridMask
+        })
+        eventDispatcher.on("towerSold", () => {
+            this.rangeCircle = undefined
+            this.towerRangeDrawn = false
+            this.cyanOutline = undefined
+            this.rangeCircle = new PIXI.Graphics()
+            this.rangeCircle.mask = this.gridMask
         })
     }
 
@@ -98,18 +107,9 @@ export class InputManager {
 
             this.towerRangeDrawn = true
 
-            // const cyanOutline = UIHelper.createOutline(this.selectedTowerTile.x, this.selectedTowerTile.y, this.selectedTowerTile.width, this.selectedTowerTile.height, 2, 0x00FFFF)
-            // this.gridContainer.addChild(cyanOutline)
-            // const rangeCircle = new PIXI.Graphics()
-            // rangeCircle.lineStyle(1, 0x00FFFF)
-            // rangeCircle.drawEllipse(this.selectedTowerTile.getCenterPosition().x, this.selectedTowerTile.getCenterPosition().y, this.selectedTowerTile.tower.range, this.selectedTowerTile.tower.range)
-            // rangeCircle.mask = this.gridMask
-            // this.gridContainer.addChild(this.gridMask)
-            // this.gridContainer.addChild(rangeCircle)
-
-
-
             if (!this.rangeCircle) {
+                console.log("add circle");
+                
 
                 this.rangeCircle = new PIXI.Graphics()
                 this.rangeCircle.lineStyle(1, 0x00FFFF)

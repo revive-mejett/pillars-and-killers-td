@@ -1,6 +1,6 @@
 import EnemyType from "./EnemyType"
 
-type EnemyClass = "Infant Circle" | "Little Sparrow" | "Earthling Flake" | "Quick Bonhomme" | "Stone Pricker" | "4p 2024" | "Mean Triangle" | "Brave Proxima Centauri"
+type EnemyClass = "TON 618" | "Infant Circle" | "Little Sparrow" | "Earthling Flake" | "Quick Bonhomme" | "Stone Pricker" | "4p 2024" | "Mean Triangle" | "Brave Proxima Centauri"
 | "Toddler Sphere" | "Cute Crow" | "Polar Goldfish" | "Fast Runner" | "Steel Warrior" | "5p 2025" | "Angry Piranha" | "Serious Sirius"
 
 type EnemyStats = {
