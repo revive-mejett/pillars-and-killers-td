@@ -90,17 +90,17 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
       <td>Fast Runner</td>
-      <td>He loves Track and Field and finished 3rd on 100m! He's kinda speedy and it shows.</td>
+      <td>He/She loves Track and Field and finished 3rd on 100m! He/She kinda speedy and it shows.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/d69d9e7d-f65d-47c0-bcaf-c722695f0656" witdh="125px" height="125px"></td>
       <td>Steel Warrior</td>
-      <td>He is well prepped with armour and ready to tackle against your pillars!</td>
+      <td>He/she is well prepped with armour and ready to tackle against your pillars!</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/30d3bb8a-64c4-4eca-885c-95c21d95ef67" witdh="125px" height="125px"></td>
       <td>5p 2025</td>
-      <td>His/her energy on the outside create a special protection aura just for him/her!</td>!
+      <td>His/Her energy on the outside create a special protection aura just for him/her!</td>!
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/25698b41-7b33-4338-b468-381552fd9bf8" witdh="125px" height="125px"></td>
