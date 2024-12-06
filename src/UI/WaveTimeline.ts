@@ -32,6 +32,7 @@ export class WaveTimeline {
         this.container.addChild(this.innerContainer)
 
         eventDispatcher.on("waveStarted", () => this.renderNextWaves())
+        eventDispatcher.on("boss1Killed", () => this.renderNextWaves())
         this.renderNextWaves()
 
     }
@@ -48,8 +49,8 @@ export class WaveTimeline {
         //stone position and size are based on time till that wave arrives, and the length of the wave
         let timeToWaveStart = 0
         let numberofWaveStones = 5
-        if (this.waveManager.waves.length - this.waveManager.currentWave < 5 && !this.waveManager.isFreeplay) {
-            numberofWaveStones = this.waveManager.waves.length - this.waveManager.currentWave
+        if (this.waveManager.checkpointWave - this.waveManager.currentWave < 5 && !this.waveManager.isFreeplay) {
+            numberofWaveStones = this.waveManager.checkpointWave - this.waveManager.currentWave
         }
 
         const startIndex = this.waveManager.currentWave

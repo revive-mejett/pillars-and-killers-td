@@ -28,6 +28,10 @@ export class WaveManager {
     delaySecondsToNextWave: number
     extraWaves: Wave[] | undefined
     isFreeplay: boolean = false
+    checkpointWave: number
+    checkpointWaveBeaten: number
+    bossPresent: boolean
+    readonly bossWaves = [20, 40, 60, 80, 100]
 
     /**
      *
@@ -37,12 +41,20 @@ export class WaveManager {
         this.waves = []
         this.extraWaves = this.generateExtraWaves()
 
-        this.currentWave = 0
+        this.checkpointWaveBeaten = 0
+        this.bossPresent = false
+
         this.waveInProgress = false
 
         this.cooldownToNextWave = 0
         this.delaySecondsToNextWave = 10
         this.loadWaves()
+
+        this.currentWave = 0
+        this.checkpointWave = 20
+        if (this.checkpointWave > this.waves.length) {
+            this.checkpointWave = this.waves.length
+        }
 
         //this ticker ticks the timer of when to send the next enemy in a wave
         this.waveTicker = undefined
@@ -51,6 +63,17 @@ export class WaveManager {
         this.wavesTicker = undefined
 
         this.isFreeplay = this.currentWave >= this.waves.length
+
+        eventDispatcher.on("boss1Killed", () => {
+            console.log("proxima centauri beaten (wavw 20)")
+            this.cooldownToNextWave = 0
+            this.bossPresent = false
+            this.checkpointWave = 40
+            if (this.checkpointWave > this.waves.length) {
+                this.checkpointWave = this.waves.length
+            }
+            this.checkpointWaveBeaten = 20
+        })
     }
 
     loadWaves() {
@@ -99,6 +122,12 @@ export class WaveManager {
         this.waveInProgress = true
         this.currentWave++
         const map = this.map
+
+        if (this.bossWaves.includes(this.currentWave)) {
+            console.log("this is a boss wave.")
+            this.bossPresent = true
+        }
+
         const enemyAssets = assetLoader.enemies
         const enemySprites = assetLoader.spriteSheetEnemies
 
@@ -108,6 +137,7 @@ export class WaveManager {
 
 
         let waveArray
+
 
 
 
@@ -174,7 +204,7 @@ export class WaveManager {
                 const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData, spritesheet)
                 // spawnedEnemy.zIndex = 3
                 spawnedEnemy.spawn(gameplayScene.mapContainer)
-                if (this.currentWave === this.waves.length) {
+                if (this.currentWave === this.checkpointWave) {
                     console.log("boss sent")
                 }
 
@@ -189,11 +219,16 @@ export class WaveManager {
                         this.waveTicker.stop()
                         this.waveInProgress = false
 
-                        if (this.currentWave === this.waves.length && this.wavesTicker?.started && !this.isFreeplay) {
+                        if (this.currentWave === this.checkpointWave && this.wavesTicker?.started && !this.isFreeplay) {
                             this.wavesTicker?.stop()
                             this.wavesStarted = false
-                            console.log("all waves finish send")
-                            this.isFreeplay = true
+                            console.log("boss wave finished")
+                            if (this.currentWave === this.waves.length) {
+                                console.log("all waves sent, setting into freeplay")
+                                this.wavesTicker?.stop()
+                                this.wavesStarted = false
+                                this.isFreeplay = true
+                            }
                         }
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
@@ -262,5 +297,7 @@ export class WaveManager {
         this.wavesTicker?.stop()
         this.wavesTicker?.destroy()
         this.waves = []
+
+        eventDispatcher.clearListenersOfEvent("boss1Killed")
     }
 }

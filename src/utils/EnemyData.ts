@@ -64,7 +64,7 @@ const allEnemyData: EnemyData = {
             killValue: 1000000,
             rotationSpeed: 0.01,
             isLooking: false,
-            animationSpeed: 0.11,
+            animationSpeed: 0.05,
             regen: 0,
             armour: 42000,
             slowImmune: false

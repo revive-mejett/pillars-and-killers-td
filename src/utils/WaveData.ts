@@ -170,7 +170,16 @@ const testWaves2 = [
     new Wave(
         [
             {
-                enemy: "TON 618",
+                enemy: "Serious Sirius",
+                count: 1,
+                spacingMillis: 5000
+            }
+        ]
+    ),
+    new Wave(
+        [
+            {
+                enemy: "Serious Sirius",
                 count: 1,
                 spacingMillis: 5000
             }
@@ -724,7 +733,16 @@ const productionWaves = [
             }
         ]
     ),
-
+    // placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 2000
+            }
+        ]
+    ),
 ]
 
 

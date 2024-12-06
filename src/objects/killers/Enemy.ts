@@ -300,6 +300,12 @@ function enemyDied(enemy: Enemy) {
 
     enemy.destroy()
     eventDispatcher.fireEvent("enemyDied")
+    if (enemy.enemyClassName === "Brave Proxima Centauri") {
+        eventDispatcher.fireEvent("boss1Killed")
+    }
+    // if (enemy.enemyClassName === "Serious Sirius") {
+    //     eventDispatcher.fireEvent("boss2Killed")
+    // }
 }
 
 function reachEnd(enemy: Enemy) {

@@ -37,13 +37,14 @@ export class UIManager {
         this.selectedEnemyUpdateTicker = undefined
 
         eventDispatcher.on("nextWaveBtnClick", () => {
+            if (this.gameplayScene.waveManager?.bossPresent) {
+                console.log("Boss is present using variable")
+                return
+            }
             if (this.gameplayScene.waveManager?.wavesStarted && !this.gameplayScene.waveManager.waveInProgress) {
+
                 this.gameplayScene.waveManager.cooldownToNextWave = 0
             } else {
-                if (this.gameplayScene.enemiesPresent.some(enemy => enemy.enemyType === "Boss")) {
-                    console.log("Boss is present")
-                    return
-                }
                 if (this.gameplayScene.waveManager && this.gameplayScene.waveManager.currentWave >= this.gameplayScene.waveManager.waves.length) {
                     this.gameplayScene.waveManager.isFreeplay = true
                     console.log("set to freeplay")
