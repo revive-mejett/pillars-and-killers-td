@@ -115,7 +115,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/d5c1735e-a10a-4740-8300-7783bf0b65a2" witdh="125px" height="125px"></td>
       <td>TON 618</td>
-      <td>The ki.... th... it's a ton of... .. \<inaudible\></td>
+      <td>The ki.... th... it's a ton of... .. `<inaudible>`</td>
     </tr>
   </table>
 
