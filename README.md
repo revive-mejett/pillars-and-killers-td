@@ -90,32 +90,32 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
       <td>Fast Runner</td>
-      <td>He's been really participating well in P.E class. He loves Track and Field!</td>
+      <td>He loves Track and Field and finished 3rd on 100m! He's kinda speedy and it shows.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/d69d9e7d-f65d-47c0-bcaf-c722695f0656" witdh="125px" height="125px"></td>
+      <td>Steel Warrior</td>
+      <td>He is well prepped with armour and ready to tackle against your pillars!</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/30d3bb8a-64c4-4eca-885c-95c21d95ef67" witdh="125px" height="125px"></td>
+      <td>5p 2025</td>
+      <td>His/her energy on the outside create a special protection aura just for him/her!</td>!
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/25698b41-7b33-4338-b468-381552fd9bf8" witdh="125px" height="125px"></td>
+      <td>Angry Piranha</td>
+      <td>This one's also slow immune, and can bite you if it reaches the end. Don't mess with piranhas.</td>![angry pirahna a]
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
-      <td>Brave Proxima Centauri</td>
-      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
-    </tr>
-    <tr>
-      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
-      <td>Brave Proxima Centauri</td>
-      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
-    </tr>
-    <tr>
-      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
-      <td>Brave Proxima Centauri</td>
-      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
-    </tr>
-    <tr>
-      <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
-      <td>Brave Proxima Centauri</td>
-      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
+      <td>Serious Sirius</td>
+      <td>Boss Killer. If you're talking about killer that's serious, this one is taking it REALLY seriously, without slowing down.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/d5c1735e-a10a-4740-8300-7783bf0b65a2" witdh="125px" height="125px"></td>
       <td>TON 618</td>
-      <td>The killer of the killers</td>
+      <td>The ki.... th... it's a ton of... .. <inaudible></td>
     </tr>
   </table>
 
