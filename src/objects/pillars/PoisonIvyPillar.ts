@@ -13,6 +13,7 @@ export class PoisonIvyPillar extends Tower {
     towerName: string
     leafColour: number
     soundPitch: number
+    extraDamage: number;
 
     /**
      *
@@ -22,6 +23,7 @@ export class PoisonIvyPillar extends Tower {
         this.towerName = "Poison Ivy Pillar"
         this.leafColour = towerData.towerInfo.leafColour
         this.soundPitch = towerData.towerInfo.soundPitch
+        this.extraDamage = towerData.towerStats.extraDamage
     }
 
     runTower(gameplayScene : GameplayScene) {
@@ -71,7 +73,7 @@ export class PoisonIvyPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new PoisonIvyLeaf(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, this.leafColour, this.soundPitch)
+                const bullet = new PoisonIvyLeaf(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, this.leafColour, this.soundPitch, this.extraDamage)
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
@@ -96,12 +98,13 @@ export class PoisonIvyPillar extends Tower {
             return
         }
         const index = this.level - 1
-        const newStats = this.upgrades[index]
+        const newStats = this.upgrades[index] as PoisonIvyPillarStats
 
         this.range = newStats.range
         this.damage = newStats.damage
         this.fireRate = newStats.fireRate
         this.cost += newStats.cost
+        this.extraDamage = newStats.extraDamage
         this.level++
 
         const newVisualStats = this.visualUpgrades[index] as PoisonIvyPillarInfo

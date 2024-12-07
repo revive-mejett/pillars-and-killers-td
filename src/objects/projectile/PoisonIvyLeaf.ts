@@ -9,11 +9,12 @@ const eventDispatcher = new EventDispatcher()
 export class PoisonIvyLeaf extends Projectile {
     speed: number;
     soundPitch: number;
+    extraDamage: number;
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, soundPitch: number) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, soundPitch: number, extraDamage: number) {
         super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 5
 
@@ -24,6 +25,7 @@ export class PoisonIvyLeaf extends Projectile {
         this.graphics.endFill()
 
         this.soundPitch = soundPitch
+        this.extraDamage = extraDamage
     }
 
     fire(deltaTime : number) {
@@ -49,13 +51,30 @@ export class PoisonIvyLeaf extends Projectile {
 
             if (bulletEnemyVector.magnitude() < 5) {
                 this.targetEnemy.takeDamage(this.damage)
-                this.hasHit = true
-                this.cleanUpResources()
+
+
+                this.applyVulnerableDebuff();
             }
         }
 
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()
+    }
+
+    private applyVulnerableDebuff() {
+        if (!this.targetEnemy) {
+            return
+        }
+        if (this.targetEnemy.vulnerableDebuffStats.extraDamage <= this.extraDamage) {
+            this.targetEnemy.vulnerableDebuffStats.timeLeft = 1000;
+            this.targetEnemy.vulnerableDebuffStats.extraDamage = this.extraDamage;
+            console.log("bullet extra damage is greater than current debuff, debuff updated");
+        } else {
+            console.log("already has greater vul. debuff");
+        }
+        console.log(this.targetEnemy.vulnerableDebuffStats.extraDamage);
+        this.hasHit = true;
+        this.cleanUpResources();
     }
 
     updateSpritePosition() {

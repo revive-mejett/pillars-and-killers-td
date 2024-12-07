@@ -7,15 +7,12 @@ import { TdMap } from "../TdMap";
 import { EnemyStats } from "src/ts/types/EnemyData";
 import EnemyType from "src/ts/types/EnemyType";
 import { AudioManager } from "../../managers/AudioManager";
+import { SlowDebuffStats, VulnerableDebuffStats } from "src/ts/types/DebuffStats";
 
 const eventDispatcher = new EventDispatcher()
 const audioManager = new AudioManager()
 const tickCooldown = 60
 
-type SlowDebuffStats = {
-    speedMultiplier: number,
-    timeLeft: number
-}
 
 export class Enemy extends Entity {
     enemyClassName: string
@@ -37,12 +34,16 @@ export class Enemy extends Entity {
     distanceTravelled: number
     isAlive: boolean
 
-    //special properties
-    slowDebuffStats: SlowDebuffStats
+
     regen: { amount: number, cooldownSeconds: number } | undefined;
     slowImmune: boolean = false
     armour: number = 0
+
     enemyType: EnemyType;
+
+    //special properties
+    slowDebuffStats: SlowDebuffStats
+    vulnerableDebuffStats: VulnerableDebuffStats
 
     /**
      *
@@ -60,10 +61,14 @@ export class Enemy extends Entity {
         this.enemyType = stats.type
 
         //setting special properties
-        this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
+
         this.regen = stats.regen ? { amount: stats.regen, cooldownSeconds: tickCooldown } : undefined
         this.slowImmune = stats.slowImmune || this.slowImmune
         this.armour = stats.armour || this.armour
+
+        //setting debuff stats
+        this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
+        this.vulnerableDebuffStats = { extraDamage: 0, timeLeft: 0 }
 
         this.position = { x: x, y: y }
 
@@ -206,16 +211,28 @@ export class Enemy extends Entity {
 
     tickDebuffs(deltaTime: number) {
 
-        if (this.slowDebuffStats.timeLeft === 0) {
-            return
+        // tick slow debuff
+        if (this.slowDebuffStats.timeLeft > 0) {
+            this.slowDebuffStats.timeLeft -= deltaTime
+
+            // remove debuff
+            if (this.slowDebuffStats.timeLeft <= 0) {
+                this.slowDebuffStats.timeLeft = 0
+                this.slowDebuffStats.speedMultiplier = 1
+            }
         }
 
-        this.slowDebuffStats.timeLeft -= deltaTime
+        // tick vulnerable debuff
+        if (this.vulnerableDebuffStats.timeLeft > 0) {
+            this.vulnerableDebuffStats.timeLeft -= deltaTime
 
-        if (this.slowDebuffStats.timeLeft <= 0) {
-            this.slowDebuffStats.timeLeft = 0
-            this.slowDebuffStats.speedMultiplier = 1
+            // remove debuff
+            if (this.vulnerableDebuffStats.timeLeft <= 0) {
+                this.vulnerableDebuffStats.timeLeft = 0
+                this.vulnerableDebuffStats.extraDamage = 0
+            }
         }
+
     }
 
     takeDamage(damage: number) {
@@ -229,7 +246,7 @@ export class Enemy extends Entity {
         // console.log("damage reduction", damageReduction)
 
 
-        let actualDamage = damage - damageReduction
+        let actualDamage = damage + this.vulnerableDebuffStats.extraDamage - damageReduction
         // console.log("actual damage", actualDamage)
 
         if (actualDamage < 0) {
