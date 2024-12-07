@@ -836,6 +836,11 @@ const productionWaves = [
                 count: 3,
                 spacingMillis: 3000
             },
+            {
+                enemy: "Fast Runner",
+                count: 6,
+                spacingMillis: 1000
+            },
         ]
     ),
     //wave 29
@@ -992,6 +997,11 @@ const productionWaves = [
                 spacingMillis: 600
             },
             {
+                enemy: "Fast Runner",
+                count: 2,
+                spacingMillis: 300
+            },
+            {
                 enemy: "Polar Goldfish",
                 count: 5,
                 spacingMillis: 600
@@ -1000,6 +1010,11 @@ const productionWaves = [
                 enemy: "5p 2025",
                 count: 2,
                 spacingMillis: 600
+            },
+            {
+                enemy: "Fast Runner",
+                count: 2,
+                spacingMillis: 300
             },
             {
                 enemy: "Polar Goldfish",
@@ -1097,14 +1112,14 @@ const productionWaves = [
                 spacingMillis: 2000
             },
             {
-                enemy: "Fast Runner",
-                count: 14,
-                spacingMillis: 700
-            },
-            {
                 enemy: "Steel Warrior",
                 count: 10,
                 spacingMillis: 1000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 14,
+                spacingMillis: 700
             },
             {
                 enemy: "Polar Goldfish",
