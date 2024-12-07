@@ -50,7 +50,7 @@ export class WaveManager {
         this.delaySecondsToNextWave = 10
         this.loadWaves()
 
-        this.currentWave = 19
+        this.currentWave = 0
         this.checkpointWave = this.bossWaves.find(wave => wave > this.currentWave) || 0
         console.log(this.checkpointWave)
         if (this.checkpointWave > this.waves.length) {
@@ -69,11 +69,21 @@ export class WaveManager {
             console.log("proxima centauri beaten (wavw 20)")
             this.cooldownToNextWave = 0
             this.bossPresent = false
-            this.checkpointWave = 40
+            this.checkpointWave = this.bossWaves[1]
             if (this.checkpointWave > this.waves.length) {
                 this.checkpointWave = this.waves.length
             }
-            this.checkpointWaveBeaten = 20
+            this.checkpointWaveBeaten = this.bossWaves[0]
+        })
+        eventDispatcher.on("boss2Killed", () => {
+            console.log("serious sirius beaten (wavw 40)")
+            this.cooldownToNextWave = 0
+            this.bossPresent = false
+            this.checkpointWave = this.bossWaves[2]
+            if (this.checkpointWave > this.waves.length) {
+                this.checkpointWave = this.waves.length
+            }
+            this.checkpointWaveBeaten = this.bossWaves[1]
         })
     }
 
@@ -300,5 +310,6 @@ export class WaveManager {
         this.waves = []
 
         eventDispatcher.clearListenersOfEvent("boss1Killed")
+        eventDispatcher.clearListenersOfEvent("boss2Killed")
     }
 }

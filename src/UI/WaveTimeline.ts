@@ -33,6 +33,7 @@ export class WaveTimeline {
 
         eventDispatcher.on("waveStarted", () => this.renderNextWaves())
         eventDispatcher.on("boss1Killed", () => this.renderNextWaves())
+        eventDispatcher.on("boss2Killed", () => this.renderNextWaves())
         this.renderNextWaves()
 
     }
