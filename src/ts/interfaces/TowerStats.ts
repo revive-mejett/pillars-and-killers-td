@@ -13,5 +13,10 @@ interface EmberPillarStats extends TowerStats {
     impactRadius : number
 }
 
+interface PoisonIvyPillarStats extends TowerStats {
+    extraDamage: number
+}
 
-export { TowerStats, IcePillarStats, EmberPillarStats }
+
+
+export { TowerStats, IcePillarStats, EmberPillarStats, PoisonIvyPillarStats }

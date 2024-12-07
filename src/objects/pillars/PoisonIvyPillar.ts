@@ -1,25 +1,27 @@
 import { Tower } from "./Tower";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
-import { Bullet } from "../projectile/Bullet";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
-import { TowerStats } from "src/ts/interfaces/TowerStats";
-import { BasicPillarInfo } from "src/ts/interfaces/TowerInfo";
+import { PoisonIvyPillarStats } from "src/ts/interfaces/TowerStats";
+import { PoisonIvyPillarInfo } from "src/ts/interfaces/TowerInfo";
+import { PoisonIvyLeaf } from "../projectile/PoisonIvyLeaf";
 
 const eventDispatcher = new EventDispatcher()
 
 export class PoisonIvyPillar extends Tower {
-    towerName: string;
-    bulletSize: number
+    towerName: string
+    leafColour: number
+    soundPitch: number
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, BasicPillarInfo>) {
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<PoisonIvyPillarStats, PoisonIvyPillarInfo>) {
         super(x, y, width, height, towerData);
         this.towerName = "Poison Ivy Pillar"
-        this.bulletSize = towerData.towerInfo.bulletSize
+        this.leafColour = towerData.towerInfo.leafColour
+        this.soundPitch = towerData.towerInfo.soundPitch
     }
 
     runTower(gameplayScene : GameplayScene) {
@@ -69,7 +71,7 @@ export class PoisonIvyPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 0xFFFFFF)
+                const bullet = new PoisonIvyLeaf(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, this.leafColour, this.soundPitch)
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
@@ -102,9 +104,10 @@ export class PoisonIvyPillar extends Tower {
         this.cost += newStats.cost
         this.level++
 
-        const newVisualStats = this.visualUpgrades[index] as BasicPillarInfo
+        const newVisualStats = this.visualUpgrades[index] as PoisonIvyPillarInfo
         this.tileColour = newVisualStats.tileColour
-        this.bulletSize = newVisualStats.bulletSize
+        this.leafColour = newVisualStats.leafColour
+        this.soundPitch = newVisualStats.soundPitch
 
         if (newVisualStats.asset) {
             this.asset = newVisualStats.asset

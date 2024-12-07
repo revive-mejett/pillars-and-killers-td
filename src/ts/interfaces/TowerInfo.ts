@@ -26,6 +26,10 @@ interface EmberPillarInfo extends TowerInfo {
     fireballWidth: number
 }
 
+interface PoisonIvyPillarInfo extends TowerInfo {
+    soundPitch: number,
+    leafColour: number
+}
 
 interface UltimatePillarInfo extends TowerInfo {
     beamWidth: number,
@@ -35,4 +39,4 @@ interface UltimatePillarInfo extends TowerInfo {
 
 
 
-export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo }
+export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo, PoisonIvyPillarInfo }

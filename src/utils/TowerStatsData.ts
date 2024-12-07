@@ -182,7 +182,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Puffs out ember fireballs that damages nearby enemies upon impact"
                     },
                     tileColour: 0x222222,
-                    flameColour: 0x770000,
+                    flameColour: 0xEE0000,
                     fireballWidth: 6,
                     soundPitch: 0.4
                 },
@@ -221,7 +221,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
                         tileColour: 0x004400,
-                        flameColour: 0x884400,
+                        flameColour: 0xEE4400,
                         fireballWidth: 7,
                         soundPitch: 0.5
                     },
@@ -229,7 +229,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
                         tileColour: 0x000066,
-                        flameColour: 0xC77700,
+                        flameColour: 0xEE7700,
                         fireballWidth: 8,
                         soundPitch: 0.6
                     },
@@ -237,7 +237,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
                         tileColour: 0x990000,
-                        flameColour: 0xD78C00,
+                        flameColour: 0xEE8C00,
                         fireballWidth: 10,
                         soundPitch: 0.75
                     },
@@ -259,7 +259,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 300,
                     damage: 275,
                     fireRate: 2,
-                    cost: 850
+                    cost: 850,
                 },
                 towerInfo: {
                     assetIcon: towerIcons.advancedPillar,
@@ -279,9 +279,10 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 120,
-                    damage: 15,
+                    damage: 20,
                     fireRate: 1,
-                    cost: 25
+                    cost: 800,
+                    extraDamage: 10
                 },
                 towerInfo: {
                     assetIcon: towerIcons.poisonIvyPillar,
@@ -291,55 +292,64 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Its stinging leaves make killers irritated, making them vulnerable to other attacks."
                     },
                     tileColour: 0x222222,
-                    bulletSize: 2
+                    leafColour: 0XC7FFC7,
+                    soundPitch: 2
                 },
                 upgrades: [{
-                    range: 125,
-                    damage: 10,
+                    range: 140,
+                    damage: 30,
                     fireRate: 1,
-                    cost: 25
+                    cost: 1500,
+                    extraDamage: 20
                 },
                 {
-                    range: 150,
-                    damage: 15,
+                    range: 160,
+                    damage: 40,
                     fireRate: 1,
-                    cost: 50
+                    cost: 2100,
+                    extraDamage: 45
                 },
                 {
-                    range: 175,
-                    damage: 20,
+                    range: 170,
+                    damage: 70,
                     fireRate: 1,
-                    cost: 100
+                    cost: 3500,
+                    extraDamage: 75
                 },
                 {
-                    range: 250,
-                    damage: 25,
+                    range: 180,
+                    damage: 90,
                     fireRate: 1,
-                    cost: 200
+                    cost: 6000,
+                    extraDamage: 120
                 }],
                 visualUpgrades: [{
                     assetIcon: towerIcons.poisonIvyPillar,
                     asset: towerIcons.poisonIvyTopLv2,
                     tileColour: 0x004400,
-                    bulletSize: 2
+                    leafColour: 0XA6FFA6,
+                    soundPitch: 1.25
                 },
                 {
                     assetIcon: towerIcons.poisonIvyPillar,
                     asset: towerIcons.poisonIvyTopLv3,
                     tileColour: 0x000066,
-                    bulletSize: 3
+                    leafColour: 0X77FF77,
+                    soundPitch: 1
                 },
                 {
                     assetIcon: towerIcons.poisonIvyPillar,
                     asset: towerIcons.poisonIvyTopLv4,
                     tileColour: 0x990000,
-                    bulletSize: 4
+                    leafColour: 0X44FF44,
+                    soundPitch: 0.8
                 },
                 {
                     assetIcon: towerIcons.poisonIvyPillar,
                     asset: towerIcons.poisonIvyTopLv5,
                     tileColour: 0x6600FF,
-                    bulletSize: 5
+                    leafColour: 0X00FF00,
+                    soundPitch: 0.6
                 }
                 ]
             }
