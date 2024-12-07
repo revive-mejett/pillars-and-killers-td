@@ -321,22 +321,22 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 visualUpgrades: [
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv1,
+                        asset: towerIcons.lightningPillarTopLv2,
                         tileColour: 0x004400
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv2,
+                        asset: towerIcons.lightningPillarTopLv3,
                         tileColour: 0x000066
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv3,
+                        asset: towerIcons.lightningPillarTopLv4,
                         tileColour: 0x990000
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv4,
+                        asset: towerIcons.lightningPillarTopLv5,
                         tileColour: 0xE7E7E7
                     }
                 ]
