@@ -80,7 +80,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
-                    tileColour: 0xE7E7E7,
+                    tileColour: 0x6600FF,
                     bulletSize: 5
                 }
                 ]
@@ -158,7 +158,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     {
                         assetIcon: towerIcons.icePillar,
                         asset: towerIcons.icePillarTop,
-                        tileColour: 0xE7E7E7,
+                        tileColour: 0x6600FF,
                         beamWidth: 6
                     }
                 ]
@@ -244,7 +244,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     {
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
-                        tileColour: 0xE7E7E7,
+                        tileColour: 0x6600FF,
                         flameColour: 0xFFC700,
                         fireballWidth: 12,
                         soundPitch: 0.9
@@ -338,7 +338,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 {
                     assetIcon: towerIcons.poisonIvyPillar,
                     asset: towerIcons.poisonIvyTopLv5,
-                    tileColour: 0xE7E7E7,
+                    tileColour: 0x6600FF,
                     bulletSize: 5
                 }
                 ]
@@ -407,7 +407,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     {
                         assetIcon: towerIcons.lightning_pillar,
                         asset: towerIcons.lightningPillarTopLv5,
-                        tileColour: 0xE7E7E7
+                        tileColour: 0x6600FF
                     }
                 ]
             }
@@ -443,7 +443,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 visualUpgrades: [{
                     assetIcon: towerIcons.ultimatePillar,
                     asset: towerIcons.ultimatePillarTop,
-                    tileColour: 0xE7E7E7,
+                    tileColour: 0x6600FF,
                     beamColour: 0xFF00FF,
                     beamWidth: 4
                 }]
