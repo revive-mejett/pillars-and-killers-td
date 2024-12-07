@@ -31,6 +31,8 @@ export class TowerFactory {
             return new EmberPillar(x, y, width, height, towerData as TowerData<EmberPillarStats, EmberPillarInfo>)
         case "advanced":
             return new AdvancedPillar(x, y, width, height, towerData)
+        case "poisonIvy":
+            return new BasicPillar(x, y, width, height, towerData as TowerData<TowerStats, BasicPillarInfo>)
         case "lightning":
             return new LightningPillar(x, y, width, height, towerData)
         case "ultimate":

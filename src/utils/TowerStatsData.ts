@@ -275,6 +275,76 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             }
         ],
         [
+            "poisonIvy",
+            {
+                towerStats: {
+                    range: 120,
+                    damage: 15,
+                    fireRate: 1,
+                    cost: 25
+                },
+                towerInfo: {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv1,
+                    info: {
+                        title: "Poison Ivy Pillar",
+                        description: "Its stinging leaves make killers irritated, making them vulnerable to other attacks."
+                    },
+                    tileColour: 0x222222,
+                    bulletSize: 2
+                },
+                upgrades: [{
+                    range: 125,
+                    damage: 10,
+                    fireRate: 1,
+                    cost: 25
+                },
+                {
+                    range: 150,
+                    damage: 15,
+                    fireRate: 1,
+                    cost: 50
+                },
+                {
+                    range: 175,
+                    damage: 20,
+                    fireRate: 1,
+                    cost: 100
+                },
+                {
+                    range: 250,
+                    damage: 25,
+                    fireRate: 1,
+                    cost: 200
+                }],
+                visualUpgrades: [{
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv2,
+                    tileColour: 0x004400,
+                    bulletSize: 2
+                },
+                {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv3,
+                    tileColour: 0x000066,
+                    bulletSize: 3
+                },
+                {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv4,
+                    tileColour: 0x990000,
+                    bulletSize: 4
+                },
+                {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv5,
+                    tileColour: 0xE7E7E7,
+                    bulletSize: 5
+                }
+                ]
+            }
+        ],
+        [
             "lightning",
             {
                 towerStats: {
