@@ -3,6 +3,73 @@ import { EnemyData } from "src/ts/types/EnemyData"
 //TODO later move enemy data to game data json
 const allEnemyData: EnemyData = {
 
+    "TON 618": {
+        atlasData: {
+            "frames": {
+                "TON618_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["TON618_1", "TON618_2", "TON618_3", "TON618_4", "TON618_5", "TON618_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/TON618.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "TON 618",
+            type: "Boss",
+            health: 111000000,
+            speed: 0.2,
+            damage: 999999999,
+            killValue: 1000000,
+            rotationSpeed: 0.01,
+            isLooking: false,
+            animationSpeed: 0.05,
+            regen: 0,
+            armour: 42000,
+            slowImmune: false
+        }
+    },
     "Infant Circle": {
         atlasData: {
             "frames": {

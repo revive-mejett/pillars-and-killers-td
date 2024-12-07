@@ -141,6 +141,11 @@ export class InfoPanel {
         const enemyHealthText = UIHelper.createText(40 + padding, 80 + padding,`${enemy.health} / ${enemy.totalHealth}`, 20, "FFFFFF")
         infoPanel.addChild(enemyHealthText)
 
+        const dmgResistanceIcon = UIHelper.createIcon(assetLoader.icons.dmgResistance, 100 + padding, 110 + padding, 0x000000, 40, 40)
+        infoPanel.addChild(dmgResistanceIcon)
+        const dmgResistanceText = UIHelper.createText(140 + padding, 120 + padding,`${enemy.armour}`, 20, "0x9955FF")
+        infoPanel.addChild(dmgResistanceText)
+
         const speedIcon = UIHelper.createIcon(assetLoader.icons.speedArrow, padding, 110 + padding, 0x000000, 40, 40)
         infoPanel.addChild(speedIcon)
         const enemySpeedText = UIHelper.createText(40 + padding, 120 + padding,`${enemy.speed}`, 20, "0xFFFFFF")

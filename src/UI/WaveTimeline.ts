@@ -32,6 +32,8 @@ export class WaveTimeline {
         this.container.addChild(this.innerContainer)
 
         eventDispatcher.on("waveStarted", () => this.renderNextWaves())
+        eventDispatcher.on("boss1Killed", () => this.renderNextWaves())
+        eventDispatcher.on("boss2Killed", () => this.renderNextWaves())
         this.renderNextWaves()
 
     }
@@ -48,8 +50,8 @@ export class WaveTimeline {
         //stone position and size are based on time till that wave arrives, and the length of the wave
         let timeToWaveStart = 0
         let numberofWaveStones = 5
-        if (this.waveManager.waves.length - this.waveManager.currentWave < 5 && !this.waveManager.isFreeplay) {
-            numberofWaveStones = this.waveManager.waves.length - this.waveManager.currentWave
+        if (this.waveManager.checkpointWave - this.waveManager.currentWave < 5 && !this.waveManager.isFreeplay) {
+            numberofWaveStones = this.waveManager.checkpointWave - this.waveManager.currentWave
         }
 
         const startIndex = this.waveManager.currentWave
@@ -84,13 +86,20 @@ export class WaveTimeline {
         let outlineColour = "0xE7E7E7"
         let colour = 0x333333
 
+        // boss #1 marker
         if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Brave Proxima Centauri")) {
             outlineColour = "0xFFEE00"
             colour = 0x7C2F00
         }
+        // boss #2 marker
         if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Serious Sirius")) {
             outlineColour = "0x337777"
             colour = 0xAAFFFF
+        }
+        // boss #6 marker
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "TON 618")) {
+            outlineColour = "0xFFFFFF"
+            colour = 0x000000
         }
         waveStone.lineStyle(1, outlineColour)
         waveStone.beginFill(colour)

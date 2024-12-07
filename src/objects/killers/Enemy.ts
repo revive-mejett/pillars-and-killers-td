@@ -14,32 +14,32 @@ const tickCooldown = 60
 
 type SlowDebuffStats = {
     speedMultiplier: number,
-    timeLeft : number
+    timeLeft: number
 }
 
 export class Enemy extends Entity {
-    enemyClassName : string
+    enemyClassName: string
     health: number
     totalHealth: number
     speed: number
     damage: number
     killValue: number
     nick: string
-    position : Position
+    position: Position
     xToNextWaypoint: number
     yToNextWaypoint: number
     nextWayPointIndex: number
     sprite: PIXI.AnimatedSprite
     spritesheet: PIXI.Spritesheet
-    animationSpeed? : number
-    rotationSpeed : number
+    animationSpeed?: number
+    rotationSpeed: number
     isLooking: boolean
     distanceTravelled: number
     isAlive: boolean
 
     //special properties
-    slowDebuffStats : SlowDebuffStats
-    regen: { amount : number, cooldownSeconds : number } | undefined;
+    slowDebuffStats: SlowDebuffStats
+    regen: { amount: number, cooldownSeconds: number } | undefined;
     slowImmune: boolean = false
     armour: number = 0
     enemyType: EnemyType;
@@ -47,7 +47,7 @@ export class Enemy extends Entity {
     /**
      *
      */
-    constructor(x : number, y : number, width : number , height : number, stats : EnemyStats, spritesheet: PIXI.Spritesheet) {
+    constructor(x: number, y: number, width: number, height: number, stats: EnemyStats, spritesheet: PIXI.Spritesheet) {
         super(x, y, width, height);
         this.enemyClassName = stats.className
         this.health = stats.health
@@ -55,13 +55,13 @@ export class Enemy extends Entity {
         this.speed = stats.speed
         this.damage = stats.damage
         this.killValue = stats.killValue
-        this.nick = all1st[Math.floor(Math.random() * all1st.length)]
+        this.nick = bossToName(stats.className) || all1st[Math.floor(Math.random() * all1st.length)]
         this.spritesheet = spritesheet
         this.enemyType = stats.type
 
         //setting special properties
         this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
-        this.regen = stats.regen ? { amount : stats.regen, cooldownSeconds: tickCooldown } : undefined
+        this.regen = stats.regen ? { amount: stats.regen, cooldownSeconds: tickCooldown } : undefined
         this.slowImmune = stats.slowImmune || this.slowImmune
         this.armour = stats.armour || this.armour
 
@@ -78,7 +78,7 @@ export class Enemy extends Entity {
         this.animationSpeed = stats.animationSpeed || 0.1
         this.sprite.animationSpeed = this.animationSpeed
         this.sprite.visible = false //dont render when first init.
-        this.sprite.anchor.set(0.5,0.5)
+        this.sprite.anchor.set(0.5, 0.5)
 
         this.rotationSpeed = stats.rotationSpeed
         this.isLooking = stats.isLooking
@@ -101,8 +101,8 @@ export class Enemy extends Entity {
     //overridden
     getCenterPosition() {
         return {
-            x : this.position.x + this.width / 2,
-            y : this.position.y + this.height / 2
+            x: this.position.x + this.width / 2,
+            y: this.position.y + this.height / 2
         }
     }
 
@@ -112,7 +112,7 @@ export class Enemy extends Entity {
     }
 
 
-    setDistancesToNext(map : TdMap) {
+    setDistancesToNext(map: TdMap) {
         this.position.x = map.waypoints[this.nextWayPointIndex - 1].x * map.tileSize
         this.position.y = map.waypoints[this.nextWayPointIndex - 1].y * map.tileSize
         this.xToNextWaypoint = (map.waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
@@ -121,7 +121,7 @@ export class Enemy extends Entity {
 
 
 
-    spawn(sceneContainer : PIXI.Container) {
+    spawn(sceneContainer: PIXI.Container) {
         this.updateRotation()
         sceneContainer.addChild(this.sprite)
         setTimeout(() => {
@@ -138,7 +138,7 @@ export class Enemy extends Entity {
     }
 
 
-    updateMovement(map : TdMap, delta : number) {
+    updateMovement(map: TdMap, delta: number) {
 
         const waypoints = map.waypoints
         const speed = this.speed
@@ -150,7 +150,7 @@ export class Enemy extends Entity {
         }
 
 
-        if (this.nextWayPointIndex >= waypoints.length) {return}
+        if (this.nextWayPointIndex >= waypoints.length) { return }
 
         if (this.xToNextWaypoint !== 0) {
             this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
@@ -181,7 +181,7 @@ export class Enemy extends Entity {
         }
     }
 
-    private updateRotation(delta? : number) {
+    private updateRotation(delta?: number) {
         if (this.isLooking && this.xToNextWaypoint > 0) {
             this.sprite.rotation = Math.PI / 2;
             // this.sprite.anchor.set(0, 1);
@@ -204,7 +204,7 @@ export class Enemy extends Entity {
         }
     }
 
-    tickDebuffs(deltaTime : number) {
+    tickDebuffs(deltaTime: number) {
 
         if (this.slowDebuffStats.timeLeft === 0) {
             return
@@ -218,7 +218,7 @@ export class Enemy extends Entity {
         }
     }
 
-    takeDamage(damage : number) {
+    takeDamage(damage: number) {
 
         if (!this.isAlive) {
             return
@@ -236,7 +236,7 @@ export class Enemy extends Entity {
             actualDamage = 0
         }
 
-        const deflectedDamagePercent = Math.floor(damageReduction/damage * 100)
+        const deflectedDamagePercent = Math.floor(damageReduction / damage * 100)
         // const damagePercent = 100 - deflectedDamagePercent
 
         // console.log(damagePercent)
@@ -260,7 +260,7 @@ export class Enemy extends Entity {
     }
 
     //propertie effects
-    tickRegen(delta : number) {
+    tickRegen(delta: number) {
         if (!this.regen) {
             return
         }
@@ -293,18 +293,45 @@ export class Enemy extends Entity {
     }
 }
 
-function enemyDied(enemy : Enemy) {
+function enemyDied(enemy: Enemy) {
     enemy.isAlive = false
 
     audioManager.playKilledSound()
 
     enemy.destroy()
     eventDispatcher.fireEvent("enemyDied")
+    if (enemy.enemyClassName === "Brave Proxima Centauri") {
+        eventDispatcher.fireEvent("boss1Killed")
+    }
+    if (enemy.enemyClassName === "Serious Sirius") {
+        eventDispatcher.fireEvent("boss2Killed")
+    }
 }
 
-function reachEnd(enemy : Enemy) {
+function reachEnd(enemy: Enemy) {
     enemy.isAlive = false
     enemy.destroy()
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
     eventDispatcher.fireEvent("enemyDied")
+}
+
+function bossToName(enemyClass: string) {
+    switch (enemyClass) {
+    case "Brave Proxima Centauri":
+        return "Tyler"
+    case "Serious Sirius":
+        // Alexandra
+        return "Zhao Qiang"
+    case "Remorseless Rigel":
+        // Kyle
+        return "Kyle"
+    case "Unforgiving UY Scuti":
+        // Zhao Qiang
+        return "Zhao Qiang"
+    case "TON 618":
+        return "François"
+        break;
+    default:
+        return undefined
+    }
 }
