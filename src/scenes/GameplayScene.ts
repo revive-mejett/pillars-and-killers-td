@@ -46,7 +46,7 @@ export class GameplayScene extends Scene {
         this.tdMap = new TdMap(1000, 1000, 25)
         this.gamestate = new GameState()
         this.hud = new HUD(this.gamestate)
-        this.waveManager = new WaveManager(this.tdMap)
+        this.waveManager = new WaveManager(this.tdMap, this.gamestate.startWave)
         this.hud.setup(this.container)
         this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
         this.gamestate.linkUiManager(this.uiManager)

@@ -10,11 +10,13 @@ import { GameplayScene } from "src/scenes/GameplayScene"
 
 import { productionWaves } from "../utils/WaveData"
 
-const assetLoader = new AssetLoader()
-const eventDispatcher = new EventDispatcher()
+
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
+import { calculateWaveValue } from "../utils/Calc"
 
+const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
 
 export class WaveManager {
     map: TdMap
@@ -36,7 +38,7 @@ export class WaveManager {
     /**
      *
      */
-    constructor(map: TdMap) {
+    constructor(map: TdMap, startWave: number) {
         this.map = map
         this.waves = []
         this.extraWaves = this.generateExtraWaves()
@@ -50,7 +52,7 @@ export class WaveManager {
         this.delaySecondsToNextWave = 10
         this.loadWaves()
 
-        this.currentWave = 0
+        this.currentWave = startWave
         this.checkpointWave = this.bossWaves.find(wave => wave > this.currentWave) || 0
         console.log(this.checkpointWave)
         if (this.checkpointWave > this.waves.length) {
@@ -164,6 +166,8 @@ export class WaveManager {
         } else {
             waveArray = this.waves[waveIndex]
         }
+
+        console.log(calculateWaveValue(waveArray))
 
         //set the cooldown to next wave to the duration of the current wave
         this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000
