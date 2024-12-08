@@ -1,25 +1,29 @@
 import { Tower } from "./Tower";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
-import { Bullet } from "../projectile/Bullet";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
-import { TowerStats } from "src/ts/interfaces/TowerStats";
-import { BasicPillarInfo } from "src/ts/interfaces/TowerInfo";
+import { PoisonIvyPillarStats } from "src/ts/interfaces/TowerStats";
+import { PoisonIvyPillarInfo } from "src/ts/interfaces/TowerInfo";
+import { PoisonIvyLeaf } from "../projectile/PoisonIvyLeaf";
 
 const eventDispatcher = new EventDispatcher()
 
-export class BasicPillar extends Tower {
-    towerName: string;
-    bulletSize: number
+export class PoisonIvyPillar extends Tower {
+    towerName: string
+    leafColour: number
+    soundPitch: number
+    extraDamage: number;
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, BasicPillarInfo>) {
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<PoisonIvyPillarStats, PoisonIvyPillarInfo>) {
         super(x, y, width, height, towerData);
-        this.towerName = "Basic Pillar"
-        this.bulletSize = towerData.towerInfo.bulletSize
+        this.towerName = "Poison Ivy Pillar"
+        this.leafColour = towerData.towerInfo.leafColour
+        this.soundPitch = towerData.towerInfo.soundPitch
+        this.extraDamage = towerData.towerStats.extraDamage
     }
 
     runTower(gameplayScene : GameplayScene) {
@@ -69,7 +73,7 @@ export class BasicPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 5, 0xFFFFFF, "assets/sounds/sfx/stone_throw.mp3", "Basic Pillar")
+                const bullet = new PoisonIvyLeaf(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, this.leafColour, this.soundPitch, this.extraDamage)
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
@@ -94,17 +98,28 @@ export class BasicPillar extends Tower {
             return
         }
         const index = this.level - 1
-        const newStats = this.upgrades[index]
+        const newStats = this.upgrades[index] as PoisonIvyPillarStats
 
         this.range = newStats.range
         this.damage = newStats.damage
         this.fireRate = newStats.fireRate
         this.cost += newStats.cost
+        this.extraDamage = newStats.extraDamage
         this.level++
 
-        const newVisualStats = this.visualUpgrades[index] as BasicPillarInfo
+        const newVisualStats = this.visualUpgrades[index] as PoisonIvyPillarInfo
         this.tileColour = newVisualStats.tileColour
-        this.bulletSize = newVisualStats.bulletSize
+        this.leafColour = newVisualStats.leafColour
+        this.soundPitch = newVisualStats.soundPitch
+
+        if (newVisualStats.asset) {
+            this.asset = newVisualStats.asset
+            this.sprite = PIXI.Sprite.from(this.asset)
+            this.sprite.height = this.height
+            this.sprite.width = this.width
+            this.sprite.x = this.position?.x || 0
+            this.sprite.y = this.position?.y || 0
+        }
     }
 
 }

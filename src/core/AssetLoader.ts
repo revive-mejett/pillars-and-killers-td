@@ -52,6 +52,15 @@ export class AssetLoader {
             "icePillarTop" : "assets/images/frozen_pillar_top.png",
             "emberPillar" : "assets/images/ember_pillar_icon.png",
             "emberPillarTop" : "assets/images/ember_pillar_top.png",
+
+            "poisonIvyPillar" : "assets/images/poisonivy_pillar_icon.png",
+            "poisonIvyTopLv1" : "assets/images/poisonivy_pillar_top_lv1.png",
+            "poisonIvyTopLv2" : "assets/images/poisonivy_pillar_top_lv2.png",
+            "poisonIvyTopLv3" : "assets/images/poisonivy_pillar_top_lv3.png",
+            "poisonIvyTopLv4" : "assets/images/poisonivy_pillar_top_lv4.png",
+            "poisonIvyTopLv5" : "assets/images/poisonivy_pillar_top_lv5.png",
+
+
             "advancedPillar" : "assets/images/advanced_pillar_icon.png",
             "advancedPillarTop" : "assets/images/advanced_pillar_top.png",
             "lightningPillar" : "assets/images/lightning_pillar_icon.png",

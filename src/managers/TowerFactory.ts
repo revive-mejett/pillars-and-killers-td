@@ -5,9 +5,10 @@ import { UltimatePillar } from "../objects/pillars/UltimatePillar";
 import { EmberPillar } from "../objects/pillars/EmberPillar";
 import { LightningPillar } from "../objects/pillars/LightningPillar";
 import TowerData from "src/ts/types/TowerData";
-import { EmberPillarStats, IcePillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
-import { BasicPillarInfo, EmberPillarInfo, IcePillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
+import { EmberPillarStats, IcePillarStats, PoisonIvyPillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
+import { AdvancedPillarInfo, BasicPillarInfo, EmberPillarInfo, IcePillarInfo, PoisonIvyPillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
 import { getTowerData } from "../utils/TowerStatsData";
+import { PoisonIvyPillar } from "../objects/pillars/PoisonIvyPillar";
 
 
 
@@ -30,7 +31,9 @@ export class TowerFactory {
         case "ember":
             return new EmberPillar(x, y, width, height, towerData as TowerData<EmberPillarStats, EmberPillarInfo>)
         case "advanced":
-            return new AdvancedPillar(x, y, width, height, towerData)
+            return new AdvancedPillar(x, y, width, height, towerData as TowerData<TowerStats, AdvancedPillarInfo>)
+        case "poisonIvy":
+            return new PoisonIvyPillar(x, y, width, height, towerData as TowerData<PoisonIvyPillarStats, PoisonIvyPillarInfo>)
         case "lightning":
             return new LightningPillar(x, y, width, height, towerData)
         case "ultimate":

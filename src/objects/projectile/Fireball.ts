@@ -21,7 +21,7 @@ export class Fireball extends Projectile {
 
         this.graphics = new PIXI.Graphics()
         this.graphics.beginFill(this.colour)
-        this.graphics.drawRect(0, 0, this.width, this.height)
+        this.graphics.drawCircle(0,0,this.width/2)
         this.graphics.endFill()
 
         this.impactRadius = impactRadius
@@ -52,6 +52,9 @@ export class Fireball extends Projectile {
             if (bulletEnemyVector.magnitude() < 5) {
                 this.onImpact(enemies, this.getCenterPosition())
                 this.hasHit = true
+                if (this.graphics) {
+                    this.graphics.visible = false
+                }
                 this.cleanUpResources()
             }
         }

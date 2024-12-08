@@ -35,6 +35,12 @@ export class HealthBar extends Entity {
         if (this.enemy.slowDebuffStats.timeLeft > 0) {
             healthBarBackground.lineStyle(1, 0x0000FF)
         }
+        if (this.enemy.vulnerableDebuffStats.timeLeft > 0) {
+            healthBarBackground.lineStyle(1, 0x00FF00)
+        }
+        if (this.enemy.slowDebuffStats.timeLeft > 0 && this.enemy.vulnerableDebuffStats.timeLeft > 0) {
+            healthBarBackground.lineStyle(1, 0x00FF99)
+        }
         healthBarBackground.x = this.enemy.position.x
         healthBarBackground.y = this.enemy.position.y + yOffset
         healthBarBackground.beginFill(0x000000)

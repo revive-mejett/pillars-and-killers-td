@@ -184,7 +184,7 @@ export class HUD {
         const towerSpriteBundle = assetLoader.towers
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
-        towerSelectMenu.y = 400
+        towerSelectMenu.y = 300
         this.container.addChild(towerSelectMenu)
 
         if (!towerSpriteBundle) {
@@ -199,17 +199,20 @@ export class HUD {
         towerSelectMenu.addChild(icePillarButton)
         const emberPillarButton = UIHelper.createIcon(towerSpriteBundle.emberPillar, 160, 0, 0x0D110A)
         towerSelectMenu.addChild(emberPillarButton)
-        const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 0, 80, 0x221100)
+        const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 80, 80, 0x221100)
         towerSelectMenu.addChild(advancedPillarButton)
-        const lightningPillarButton = UIHelper.createIcon(towerSpriteBundle.lightningPillar, 80, 80, 0x002222)
+        const poisonIvyPillarButton = UIHelper.createIcon(towerSpriteBundle.poisonIvyPillar, 0, 80, 0x112200)
+        towerSelectMenu.addChild(poisonIvyPillarButton)
+        const lightningPillarButton = UIHelper.createIcon(towerSpriteBundle.lightningPillar, 80, 160, 0x002222)
         towerSelectMenu.addChild(lightningPillarButton)
-        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 160, 80, 0x110011)
+        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 160, 160, 0x110011)
         towerSelectMenu.addChild(ultimatePillarButton)
 
         this.towerSelectionButtons.basic = basicPillarButton
         this.towerSelectionButtons.ice = icePillarButton
         this.towerSelectionButtons.ember = emberPillarButton
         this.towerSelectionButtons.advanced = advancedPillarButton
+        this.towerSelectionButtons.poisonIvy = poisonIvyPillarButton
         this.towerSelectionButtons.lightning = lightningPillarButton
         this.towerSelectionButtons.ultimate = ultimatePillarButton
     }

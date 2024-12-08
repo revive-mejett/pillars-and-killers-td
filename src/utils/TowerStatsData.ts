@@ -80,7 +80,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
-                    tileColour: 0xE7E7E7,
+                    tileColour: 0x6600FF,
                     bulletSize: 5
                 }
                 ]
@@ -158,7 +158,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     {
                         assetIcon: towerIcons.icePillar,
                         asset: towerIcons.icePillarTop,
-                        tileColour: 0xE7E7E7,
+                        tileColour: 0x6600FF,
                         beamWidth: 6
                     }
                 ]
@@ -182,7 +182,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Puffs out ember fireballs that damages nearby enemies upon impact"
                     },
                     tileColour: 0x222222,
-                    flameColour: 0x770000,
+                    flameColour: 0xEE0000,
                     fireballWidth: 6,
                     soundPitch: 0.4
                 },
@@ -221,7 +221,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
                         tileColour: 0x004400,
-                        flameColour: 0x884400,
+                        flameColour: 0xEE4400,
                         fireballWidth: 7,
                         soundPitch: 0.5
                     },
@@ -229,7 +229,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
                         tileColour: 0x000066,
-                        flameColour: 0xC77700,
+                        flameColour: 0xEE7700,
                         fireballWidth: 8,
                         soundPitch: 0.6
                     },
@@ -237,14 +237,14 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
                         tileColour: 0x990000,
-                        flameColour: 0xD78C00,
+                        flameColour: 0xEE8C00,
                         fireballWidth: 10,
                         soundPitch: 0.75
                     },
                     {
                         assetIcon: towerIcons.emberPillar,
                         asset: towerIcons.emberPillarTop,
-                        tileColour: 0xE7E7E7,
+                        tileColour: 0x6600FF,
                         flameColour: 0xFFC700,
                         fireballWidth: 12,
                         soundPitch: 0.9
@@ -256,22 +256,152 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             "advanced",
             {
                 towerStats: {
-                    range: 300,
-                    damage: 275,
-                    fireRate: 2,
-                    cost: 850
+                    range: 190,
+                    damage: 290,
+                    fireRate: 0.4,
+                    cost: 1200
                 },
                 towerInfo: {
                     assetIcon: towerIcons.advancedPillar,
                     asset: towerIcons.advancedPillarTop,
                     info: {
-                        title: "Advanced Pillar",
-                        description: "This pillar is made with advanced material and can deal great damage to the strongest killers."
+                        title: "Sniper Pillar",
+                        description: "This pillar may not have an actual gun, but it can pack a punch from a distance."
                     },
-                    tileColour: 0x222222
+                    tileColour: 0x222222,
+                    bulletSize: 4
                 },
-                upgrades: [],
-                visualUpgrades: []
+                upgrades: [
+                    {
+                        range: 210,
+                        damage: 410,
+                        fireRate: 0.5,
+                        cost: 1700
+                    },
+                    {
+                        range: 225,
+                        damage: 565,
+                        fireRate: 0.6,
+                        cost: 3200
+                    },
+                    {
+                        range: 250,
+                        damage: 825,
+                        fireRate: 0.7,
+                        cost: 5000
+                    },
+                    {
+                        range: 275,
+                        damage: 1075,
+                        fireRate: 0.8,
+                        cost: 7000
+                    },
+                ],
+                visualUpgrades: [{
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x004400,
+                    bulletSize: 4
+                },
+                {
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x000066,
+                    bulletSize: 4
+                },
+                {
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x990000,
+                    bulletSize: 6
+                },
+                {
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x6600FF,
+                    bulletSize: 6
+                }
+                ]
+            }
+        ],
+        [
+            "poisonIvy",
+            {
+                towerStats: {
+                    range: 120,
+                    damage: 20,
+                    fireRate: 1,
+                    cost: 800,
+                    extraDamage: 10
+                },
+                towerInfo: {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv1,
+                    info: {
+                        title: "Poison Ivy Pillar",
+                        description: "Its stinging leaves make killers irritated, making them vulnerable to other attacks."
+                    },
+                    tileColour: 0x222222,
+                    leafColour: 0XC7FFC7,
+                    soundPitch: 2
+                },
+                upgrades: [{
+                    range: 140,
+                    damage: 30,
+                    fireRate: 1,
+                    cost: 1500,
+                    extraDamage: 20
+                },
+                {
+                    range: 160,
+                    damage: 40,
+                    fireRate: 1,
+                    cost: 2100,
+                    extraDamage: 45
+                },
+                {
+                    range: 170,
+                    damage: 70,
+                    fireRate: 1,
+                    cost: 3500,
+                    extraDamage: 75
+                },
+                {
+                    range: 180,
+                    damage: 90,
+                    fireRate: 1,
+                    cost: 6000,
+                    extraDamage: 120
+                }],
+                visualUpgrades: [{
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv2,
+                    tileColour: 0x004400,
+                    leafColour: 0XA6FFA6,
+                    soundPitch: 1.25
+                },
+                {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv3,
+                    tileColour: 0x000066,
+                    leafColour: 0X77FF77,
+                    soundPitch: 1
+                },
+                {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv4,
+                    tileColour: 0x990000,
+                    leafColour: 0X44FF44,
+                    soundPitch: 0.8
+                },
+                {
+                    assetIcon: towerIcons.poisonIvyPillar,
+                    asset: towerIcons.poisonIvyTopLv5,
+                    tileColour: 0x6600FF,
+                    leafColour: 0X00FF00,
+                    soundPitch: 0.6
+                }
+                ]
             }
         ],
         [
@@ -321,23 +451,23 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 visualUpgrades: [
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv1,
+                        asset: towerIcons.lightningPillarTopLv2,
                         tileColour: 0x004400
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv2,
+                        asset: towerIcons.lightningPillarTopLv3,
                         tileColour: 0x000066
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv3,
+                        asset: towerIcons.lightningPillarTopLv4,
                         tileColour: 0x990000
                     },
                     {
                         assetIcon: towerIcons.lightning_pillar,
-                        asset: towerIcons.lightningPillarTopLv4,
-                        tileColour: 0xE7E7E7
+                        asset: towerIcons.lightningPillarTopLv5,
+                        tileColour: 0x6600FF
                     }
                 ]
             }
@@ -373,7 +503,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 visualUpgrades: [{
                     assetIcon: towerIcons.ultimatePillar,
                     asset: towerIcons.ultimatePillarTop,
-                    tileColour: 0xE7E7E7,
+                    tileColour: 0x6600FF,
                     beamColour: 0xFF00FF,
                     beamWidth: 4
                 }]

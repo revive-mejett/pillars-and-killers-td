@@ -4,33 +4,33 @@ import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 
-
 const eventDispatcher = new EventDispatcher()
 
-export class Bullet extends Projectile {
+export class PoisonIvyLeaf extends Projectile {
     speed: number;
-    sfxPath: string | undefined
-    towerName: string | undefined
+    soundPitch: number;
+    extraDamage: number;
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, bulletSpeed: number, colour : number, sfxPath?: string, towerName?: string) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, soundPitch: number, extraDamage: number) {
         super(x, y, width, height, targetEnemy, damage, colour);
-        this.speed = bulletSpeed
-        this.sfxPath = sfxPath
-        this.towerName = towerName
+        this.speed = 5
 
         this.graphics = new PIXI.Graphics()
         this.graphics.beginFill(this.colour)
         this.graphics.drawRect(0, 0, this.width, this.height)
+        this.graphics.drawCircle(0,0,this.width)
         this.graphics.endFill()
+
+        this.soundPitch = soundPitch
+        this.extraDamage = extraDamage
     }
 
     fire(deltaTime : number) {
-        if (this.sfxPath && this.towerName) {
-            eventDispatcher.fireEvent("towerAttackSoundPlay", {path: this.sfxPath, maxSources: 8, towerName: this.towerName, volume: 1})
-        }
+
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/tree_leaves.mp3", maxSources: 10, towerName: "Poison Ivy Pillar", volume: 1, speed: this.soundPitch})
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
@@ -51,16 +51,31 @@ export class Bullet extends Projectile {
 
             if (bulletEnemyVector.magnitude() < 5) {
                 this.targetEnemy.takeDamage(this.damage)
-                this.hasHit = true
                 if (this.graphics) {
                     this.graphics.visible = false
                 }
-                this.cleanUpResources()
+                this.applyVulnerableDebuff();
             }
         }
 
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()
+    }
+
+    private applyVulnerableDebuff() {
+        if (!this.targetEnemy) {
+            return
+        }
+        if (this.targetEnemy.vulnerableDebuffStats.extraDamage <= this.extraDamage) {
+            this.targetEnemy.vulnerableDebuffStats.timeLeft = 1000;
+            this.targetEnemy.vulnerableDebuffStats.extraDamage = this.extraDamage;
+            console.log("bullet extra damage is greater than current debuff, debuff updated");
+        } else {
+            console.log("already has greater vul. debuff");
+        }
+        console.log(this.targetEnemy.vulnerableDebuffStats.extraDamage);
+        this.hasHit = true;
+        this.cleanUpResources();
     }
 
     updateSpritePosition() {
@@ -73,6 +88,5 @@ export class Bullet extends Projectile {
         this.graphics.x = this.x
         this.graphics.y = this.y
     }
-
 
 }

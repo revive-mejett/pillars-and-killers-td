@@ -1,15 +1,16 @@
 import { Wave } from "../objects/Wave"
 
 const oneEnemy = [
+    //wave 1
     new Wave(
         [
             {
-                enemy: "Brave Proxima Centauri",
+                enemy: "TON 618",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1000
             }
         ]
-    )
+    ),
 ]
 
 const ten10 = [

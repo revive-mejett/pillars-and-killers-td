@@ -1,15 +1,27 @@
 import { UIManager } from "src/managers/UIManager"
 import { EventDispatcher } from "../utils/EventDispatcher"
+import { calculateWaveValue } from "../utils/Calc"
+import { productionWaves } from "../utils/WaveData"
 
 const eventDispatcher = new EventDispatcher()
 export class GameState {
     lives: number
     money: number
     uiManager?: UIManager
+    startWave: number
 
     constructor() {
         this.lives = 50
-        this.money = 4000000
+        this.money = 400
+        this.startWave = 0
+
+        //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
+        for (let i = 0; i < this.startWave || 0; i++) {
+            if (productionWaves[i]) {
+                this.money += calculateWaveValue(productionWaves[i])
+            }
+        }
+
         this.uiManager = undefined
 
         eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
