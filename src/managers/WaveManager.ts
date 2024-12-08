@@ -54,7 +54,7 @@ export class WaveManager {
 
         this.currentWave = startWave
         this.checkpointWave = this.bossWaves.find(wave => wave > this.currentWave) || 0
-        console.log(this.checkpointWave)
+
         if (this.checkpointWave > this.waves.length) {
             this.checkpointWave = this.waves.length
         }

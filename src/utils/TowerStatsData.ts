@@ -256,22 +256,72 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             "advanced",
             {
                 towerStats: {
-                    range: 300,
-                    damage: 275,
-                    fireRate: 2,
-                    cost: 850,
+                    range: 190,
+                    damage: 290,
+                    fireRate: 0.4,
+                    cost: 1200
                 },
                 towerInfo: {
                     assetIcon: towerIcons.advancedPillar,
                     asset: towerIcons.advancedPillarTop,
                     info: {
-                        title: "Advanced Pillar",
-                        description: "This pillar is made with advanced material and can deal great damage to the strongest killers."
+                        title: "Sniper Pillar",
+                        description: "This pillar may not have an actual gun, but it can pack a punch from a distance."
                     },
-                    tileColour: 0x222222
+                    tileColour: 0x222222,
+                    bulletSize: 4
                 },
-                upgrades: [],
-                visualUpgrades: []
+                upgrades: [
+                    {
+                        range: 210,
+                        damage: 410,
+                        fireRate: 0.5,
+                        cost: 1700
+                    },
+                    {
+                        range: 225,
+                        damage: 565,
+                        fireRate: 0.6,
+                        cost: 3200
+                    },
+                    {
+                        range: 250,
+                        damage: 825,
+                        fireRate: 0.7,
+                        cost: 5000
+                    },
+                    {
+                        range: 275,
+                        damage: 1075,
+                        fireRate: 0.8,
+                        cost: 7000
+                    },
+                ],
+                visualUpgrades: [{
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x004400,
+                    bulletSize: 4
+                },
+                {
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x000066,
+                    bulletSize: 4
+                },
+                {
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x990000,
+                    bulletSize: 6
+                },
+                {
+                    assetIcon: towerIcons.advancedPillar,
+                    asset: towerIcons.advancedPillarTop,
+                    tileColour: 0x6600FF,
+                    bulletSize: 6
+                }
+                ]
             }
         ],
         [

@@ -9,13 +9,17 @@ const eventDispatcher = new EventDispatcher()
 
 export class Bullet extends Projectile {
     speed: number;
+    sfxPath: string | undefined
+    towerName: string | undefined
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, sfxPath?: string, towerName?: string) {
         super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 5
+        this.sfxPath = sfxPath
+        this.towerName = towerName
 
         this.graphics = new PIXI.Graphics()
         this.graphics.beginFill(this.colour)
@@ -24,7 +28,9 @@ export class Bullet extends Projectile {
     }
 
     fire(deltaTime : number) {
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/stone_throw.mp3", maxSources: 8, towerName: "Basic Pillar", volume: 1})
+        if (this.sfxPath && this.towerName) {
+            eventDispatcher.fireEvent("towerAttackSoundPlay", {path: this.sfxPath, maxSources: 8, towerName: this.towerName, volume: 1})
+        }
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {

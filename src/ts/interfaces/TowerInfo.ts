@@ -14,6 +14,10 @@ interface BasicPillarInfo extends TowerInfo {
     bulletSize: number
 }
 
+interface AdvancedPillarInfo extends TowerInfo {
+    bulletSize: number
+}
+
 
 interface IcePillarInfo extends TowerInfo {
     beamWidth: number
@@ -39,4 +43,4 @@ interface UltimatePillarInfo extends TowerInfo {
 
 
 
-export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo, PoisonIvyPillarInfo }
+export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo, PoisonIvyPillarInfo, AdvancedPillarInfo }

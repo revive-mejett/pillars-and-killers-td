@@ -69,7 +69,7 @@ export class BasicPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 0xFFFFFF)
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 0xFFFFFF, "assets/sounds/sfx/stone_throw.mp3", "Basic Pillar")
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
@@ -85,7 +85,7 @@ export class BasicPillar extends Tower {
         })
     }
 
-    
+
     upgrade(): void {
         if (!this.upgrades || !this.visualUpgrades) {
             return

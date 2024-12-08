@@ -4,7 +4,7 @@ import * as PIXI from "pixi.js";
 import { Bullet } from "../projectile/Bullet";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
-import { BasicPillarInfo } from "src/ts/interfaces/TowerInfo";
+import { AdvancedPillarInfo, BasicPillarInfo } from "src/ts/interfaces/TowerInfo";
 import { TowerStats } from "src/ts/interfaces/TowerStats";
 
 const eventDispatcher = new EventDispatcher()
@@ -16,9 +16,9 @@ export class AdvancedPillar extends Tower {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, BasicPillarInfo>) {
+    constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, AdvancedPillarInfo>) {
         super(x, y, width, height, towerData);
-        this.towerName = "Basic Pillar"
+        this.towerName = "Sniper Pillar"
         this.bulletSize = towerData.towerInfo.bulletSize
     }
 
@@ -69,7 +69,7 @@ export class AdvancedPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 0xFFFFFF)
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 0xFFFFFF, "assets/sounds/sfx/8bit_gun.mp3", "Sniper Pillar")
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }
