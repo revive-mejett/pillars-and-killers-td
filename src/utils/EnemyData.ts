@@ -838,7 +838,7 @@ const allEnemyData: EnemyData = {
             health: 6200,
             speed: 0.4,
             damage: 6,
-            killValue: 60,
+            killValue: 500,
             armour: 5,
             rotationSpeed: 0,
             isLooking: true,
@@ -911,6 +911,89 @@ const allEnemyData: EnemyData = {
             regen: 0,
             armour: 75,
             slowImmune: true
+        }
+    },
+    "Freshman Octahedron": {
+        atlasData: {
+            "frames": {
+                "FreshmanOctahedron1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron7":
+                {
+                    "frame": { "x": 1500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron8":
+                {
+                    "frame": { "x": 1750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron9":
+                {
+                    "frame": { "x": 2000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["FreshmanOctahedron1", "FreshmanOctahedron2", "FreshmanOctahedron3", "FreshmanOctahedron4", "FreshmanOctahedron5", "FreshmanOctahedron6", "FreshmanOctahedron7", "FreshmanOctahedron8", "FreshmanOctahedron9"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/FreshmanOctahedron.png",
+                "format": "RGBA8888",
+                "size": { "w": 2250, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Freshman Octahedron",
+            type: "Normal",
+            health: 8000,
+            speed: 1.2,
+            damage: 5,
+            killValue: 475,
+            rotationSpeed: 0.22,
+            isLooking: false,
+            animationSpeed: 0.2,
+            armour: 25
         }
     },
 }

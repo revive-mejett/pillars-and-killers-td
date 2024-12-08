@@ -1109,13 +1109,8 @@ const productionWaves = [
         [
             {
                 enemy: "Angry Piranha",
-                count: 4,
+                count: 12,
                 spacingMillis: 2000
-            },
-            {
-                enemy: "Steel Warrior",
-                count: 10,
-                spacingMillis: 1000
             },
             {
                 enemy: "Fast Runner",
@@ -1126,6 +1121,11 @@ const productionWaves = [
                 enemy: "Polar Goldfish",
                 count: 10,
                 spacingMillis: 400
+            },
+            {
+                enemy: "Cute Crow",
+                count: 4,
+                spacingMillis: 3000
             }
         ]
     ),
@@ -1139,14 +1139,44 @@ const productionWaves = [
             }
         ]
     ),
-    // placeholder wave
+    // wave 41
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Steel Warrior",
+                count: 5,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 5,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 9,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 10,
+                spacingMillis: 1700
+            },
+        ]
+    ),
+    // wave 42
+    new Wave(
+        [
+            {
+                enemy: "Freshman Octahedron",
+                count: 6,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "5p 2025",
+                count: 6,
+                spacingMillis: 1000
+            },
         ]
     ),
     // placeholder wave
