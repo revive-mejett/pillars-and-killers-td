@@ -51,8 +51,9 @@ export class PoisonIvyLeaf extends Projectile {
 
             if (bulletEnemyVector.magnitude() < 5) {
                 this.targetEnemy.takeDamage(this.damage)
-
-
+                if (this.graphics) {
+                    this.graphics.visible = false
+                }
                 this.applyVulnerableDebuff();
             }
         }

@@ -15,9 +15,9 @@ export class Bullet extends Projectile {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, sfxPath?: string, towerName?: string) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, bulletSpeed: number, colour : number, sfxPath?: string, towerName?: string) {
         super(x, y, width, height, targetEnemy, damage, colour);
-        this.speed = 5
+        this.speed = bulletSpeed
         this.sfxPath = sfxPath
         this.towerName = towerName
 
@@ -52,6 +52,9 @@ export class Bullet extends Projectile {
             if (bulletEnemyVector.magnitude() < 5) {
                 this.targetEnemy.takeDamage(this.damage)
                 this.hasHit = true
+                if (this.graphics) {
+                    this.graphics.visible = false
+                }
                 this.cleanUpResources()
             }
         }

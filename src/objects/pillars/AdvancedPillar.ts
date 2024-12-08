@@ -69,7 +69,7 @@ export class AdvancedPillar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 0xFFFFFF, "assets/sounds/sfx/8bit_gun.mp3", "Sniper Pillar")
+                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 12, 0xFFFFFF, "assets/sounds/sfx/8bit_gun.mp3", "Sniper Pillar")
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime)
             }

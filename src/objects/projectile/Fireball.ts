@@ -52,6 +52,9 @@ export class Fireball extends Projectile {
             if (bulletEnemyVector.magnitude() < 5) {
                 this.onImpact(enemies, this.getCenterPosition())
                 this.hasHit = true
+                if (this.graphics) {
+                    this.graphics.visible = false
+                }
                 this.cleanUpResources()
             }
         }
