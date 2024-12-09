@@ -142,9 +142,26 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>12p 2028</td>
       <td>They love to spin really fast! Be careful of taking these down</td>
     </tr>
-
-    ![12p b]()
-
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/7cfbbcf3-d419-474c-bea7-80dcd9e9ec87" witdh="125px" height="125px"></td>
+      <td>Furious Pigeon</td>
+      <td>They are speedy as well as they are filled with fury! They are after your pillars too!</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/560b0229-2eaa-47b6-9619-c799ade7e69c" witdh="125px" height="125px"></td>
+      <td>Sophomore Dodecahedron</td>
+      <td>TBD</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/560b0229-2eaa-47b6-9619-c799ade7e69c" witdh="125px" height="125px"></td>
+      <td>Junior Rhombicosidodecahedron</td>
+      <td>TBD</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/560b0229-2eaa-47b6-9619-c799ade7e69c" witdh="125px" height="125px"></td>
+      <td>Sophmore</td>
+      <td>Boss Killer. This one has no remorse, and is great at travelling at a really fast speed for such a boss.</td>
+    </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
       <td>Kingda Ka Zipper</td>
