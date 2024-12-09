@@ -113,6 +113,39 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>Boss Killer. If you're talking about killer that's serious, this one is taking it REALLY seriously, without slowing down.</td>
     </tr>
     <tr>
+      <td><img src="https://github.com/user-attachments/assets/f12f5656-cff9-4df0-a72a-58f66e1130c3" witdh="125px" height="125px"></td>
+      <td>Freshman Octahedron</td>
+      <td>He/She behaves as usual as a typical teenager, spinning around and messing around. (S)he's bullied because of that unfortunately.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/daff470b-d5c6-4074-9243-7632e89c22a8" witdh="125px" height="125px"></td>
+      <td>Beautiful Peacock</td>
+      <td>Wow! Look at its beautiful wings! This gentlebird can regen its health as it tries its best enjoying things.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/69bc71ce-02e6-40f0-9c4a-d3af74d48dff" witdh="125px" height="125px"></td>
+      <td>Twilight Great White</td>
+      <td>It can easily adapt to cold temperatures, and they do bite, granted. These guys can slip past your pillars so try and stop them!</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/61935a7f-3d8d-4795-abfe-30d593ea1a52" witdh="125px" height="125px"></td>
+      <td>Dashing Dasher</td>
+      <td>These move unbelievably fast. You might see them on highways. They can cause havoc and can damage your BMW if you're not careful.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/6f9658e9-4eb3-4a82-b018-eacf79d73b94" witdh="125px" height="125px"></td>
+      <td>Titanium Bruiser</td>
+      <td>They're built with strong metal; you need powerful weapons to take these guys/girls down.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/694512c1-ce1b-445d-82eb-c7cce657d04d" witdh="125px" height="125px"></td>
+      <td>12p 2028</td>
+      <td>They love to spin really fast! Be careful of taking these down</td>
+    </tr>
+
+    ![12p b]()
+
+    <tr>
       <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
       <td>Kingda Ka Zipper</td>
       <td>It's travelling at 206 km/hr (128 mph). Arms down, head back, hold on! It's very fast and you will see it reach the end in just seconds.</td>
