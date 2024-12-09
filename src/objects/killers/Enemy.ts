@@ -323,6 +323,10 @@ function enemyDied(enemy: Enemy) {
     if (enemy.enemyClassName === "Serious Sirius") {
         eventDispatcher.fireEvent("boss2Killed")
     }
+    if (enemy.enemyClassName === "Remorseless Rigel") {
+        console.log("remorseless rigel killed akshan!")
+        eventDispatcher.fireEvent("boss3Killed")
+    }
 }
 
 function reachEnd(enemy: Enemy) {
@@ -335,17 +339,19 @@ function reachEnd(enemy: Enemy) {
 function bossToName(enemyClass: string) {
     switch (enemyClass) {
     case "Brave Proxima Centauri":
+        // Tyler
         return "Tyler"
     case "Serious Sirius":
-        // Alexandra
-        return "Zhao Qiang"
-    case "Remorseless Rigel":
-        // Kyle
-        return "Kyle"
-    case "Unforgiving UY Scuti":
         // Zhao Qiang
         return "Zhao Qiang"
+    case "Remorseless Rigel":
+        // Alexandra
+        return "Alexandra"
+    case "Unforgiving UY Scuti":
+        // Kyle
+        return "Kyle"
     case "TON 618":
+        // François
         return "François"
         break;
     default:

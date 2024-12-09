@@ -67,26 +67,20 @@ export class WaveManager {
 
         this.isFreeplay = this.currentWave >= this.waves.length
 
-        eventDispatcher.on("boss1Killed", () => {
-            console.log("proxima centauri beaten (wavw 20)")
-            this.cooldownToNextWave = 0
-            this.bossPresent = false
-            this.checkpointWave = this.bossWaves[1]
-            if (this.checkpointWave > this.waves.length) {
-                this.checkpointWave = this.waves.length
-            }
-            this.checkpointWaveBeaten = this.bossWaves[0]
-        })
-        eventDispatcher.on("boss2Killed", () => {
-            console.log("serious sirius beaten (wavw 40)")
-            this.cooldownToNextWave = 0
-            this.bossPresent = false
-            this.checkpointWave = this.bossWaves[2]
-            if (this.checkpointWave > this.waves.length) {
-                this.checkpointWave = this.waves.length
-            }
-            this.checkpointWaveBeaten = this.bossWaves[1]
-        })
+        eventDispatcher.on("boss1Killed", () => this.updateNextCheckpointWave(1))
+        eventDispatcher.on("boss2Killed", () => this.updateNextCheckpointWave(2))
+        eventDispatcher.on("boss3Killed", () => this.updateNextCheckpointWave(3))
+
+    }
+
+    private updateNextCheckpointWave(nextCheckpointIndex: number) {
+        this.cooldownToNextWave = 0
+        this.bossPresent = false
+        this.checkpointWave = this.bossWaves[nextCheckpointIndex]
+        if (this.checkpointWave > this.waves.length) {
+            this.checkpointWave = this.waves.length
+        }
+        this.checkpointWaveBeaten = this.bossWaves[nextCheckpointIndex - 1]
     }
 
     loadWaves() {
@@ -315,5 +309,6 @@ export class WaveManager {
 
         eventDispatcher.clearListenersOfEvent("boss1Killed")
         eventDispatcher.clearListenersOfEvent("boss2Killed")
+        eventDispatcher.clearListenersOfEvent("boss3Killed")
     }
 }

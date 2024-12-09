@@ -1156,6 +1156,165 @@ const allEnemyData: EnemyData = {
             armour: 30
         }
     },
+    "Titanium Bruiser": {
+        atlasData: {
+            "frames": {
+                "TitaniumBruiser1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TitaniumBruiser2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TitaniumBruiser3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TitaniumBruiser4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["TitaniumBruiser1", "TitaniumBruiser2", "TitaniumBruiser3", "TitaniumBruiser4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/TitaniumBruiser.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Titanium Bruiser",
+            type: "Armoured",
+            health: 25000,
+            speed: 0.7,
+            damage: 10,
+            killValue: 865,
+            armour: 320,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.21
+        }
+    },
+    "12p 2028": {
+        atlasData: {
+            "frames": {
+                "12p 2028_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["12p 2028_1", "12p 2028_2", "12p 2028_3", "12p 2028_4", "12p 2028_5", "12p 2028_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/12p2028.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "12p 2028",
+            type: "EMP",
+            health: 33300,
+            speed: 1.5,
+            damage: 15,
+            killValue: 1000,
+            armour: 45,
+            rotationSpeed: 1,
+            isLooking: false,
+            animationSpeed: 0.2
+        }
+    },
+    "Furious Raven": {
+        atlasData: {
+            "frames": {
+                "FuriousRaven1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FuriousRaven2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["FuriousRaven1", "FuriousRaven2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/FuriousRaven.png",
+                "format": "RGBA8888",
+                "size": { "w": 500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Furious Raven",
+            type: "Hybrid",
+            health: 42000,
+            speed: 1.2,
+            damage: 6,
+            killValue: 450,
+            armour: 30,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0,
+        }
+    },
     "Remorseless Rigel": {
         atlasData: {
             "frames": {
@@ -1223,7 +1382,7 @@ const allEnemyData: EnemyData = {
         }
     },
 }
-//RemorselessRigel
+
 
 export { allEnemyData }
 

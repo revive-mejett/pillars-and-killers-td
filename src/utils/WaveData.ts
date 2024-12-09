@@ -1258,7 +1258,7 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Dashing Dasher",
+                enemy: "Furious Raven", // change to dashing dasher after testing each t3 killer
                 count: 6,
                 spacingMillis: 2000
             },
@@ -1358,9 +1358,9 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Dashing Dasher",
+                count: 999,
+                spacingMillis: 1
             }
         ]
     ),
@@ -1404,7 +1404,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 40 boss =============================================
+    // wave 60 boss =============================================
     new Wave(
         [
             {
