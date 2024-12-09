@@ -1109,13 +1109,8 @@ const productionWaves = [
         [
             {
                 enemy: "Angry Piranha",
-                count: 4,
+                count: 12,
                 spacingMillis: 2000
-            },
-            {
-                enemy: "Steel Warrior",
-                count: 10,
-                spacingMillis: 1000
             },
             {
                 enemy: "Fast Runner",
@@ -1126,6 +1121,11 @@ const productionWaves = [
                 enemy: "Polar Goldfish",
                 count: 10,
                 spacingMillis: 400
+            },
+            {
+                enemy: "Cute Crow",
+                count: 4,
+                spacingMillis: 3000
             }
         ]
     ),
@@ -1139,7 +1139,132 @@ const productionWaves = [
             }
         ]
     ),
-    // placeholder wave
+    // wave 41
+    new Wave(
+        [
+            {
+                enemy: "Steel Warrior",
+                count: 5,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 5,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 9,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "Fast Runner",
+                count: 10,
+                spacingMillis: 1700
+            },
+        ]
+    ),
+    // wave 42
+    new Wave(
+        [
+            {
+                enemy: "Freshman Octahedron",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "5p 2025",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 7,
+                spacingMillis: 1000
+            },
+        ]
+    ),
+    // wave 43
+    new Wave(
+        [
+            {
+                enemy: "Fast Runner",
+                count: 10,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 3,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 5,
+                spacingMillis: 400
+            },
+        ]
+    ),
+    // wave 44
+    new Wave(
+        [
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 1,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 6,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 1,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 1,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 4,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 100,
+                spacingMillis: 200
+            },
+        ]
+    ),
+    // wave 45
+    new Wave(
+        [
+            {
+                enemy: "Furious Raven", // change to dashing dasher after testing each t3 killer
+                count: 6,
+                spacingMillis: 2000
+            },
+        ]
+    ),
+    // wave 46 placeholder wave
     new Wave(
         [
             {
@@ -1149,7 +1274,7 @@ const productionWaves = [
             }
         ]
     ),
-    // placeholder wave
+    // wave 47 placeholder wave
     new Wave(
         [
             {
@@ -1159,7 +1284,7 @@ const productionWaves = [
             }
         ]
     ),
-    // placeholder wave
+    // wave 48 placeholder wave
     new Wave(
         [
             {
@@ -1168,7 +1293,157 @@ const productionWaves = [
                 spacingMillis: 7000
             }
         ]
-    )
+    ),
+    // wave 49 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 50 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 51 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 52 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 53 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 54 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 55 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Dashing Dasher",
+                count: 999,
+                spacingMillis: 1
+            }
+        ]
+    ),
+    // wave 56 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 57 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 58 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 59 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 60 boss =============================================
+    new Wave(
+        [
+            {
+                enemy: "Remorseless Rigel",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 61 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 62 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 63 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
 ]
 
 

@@ -695,7 +695,7 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Fast Runner",
             type: "Fast",
-            health: 4750,
+            health: 3750,
             speed: 1.6,
             damage: 2,
             killValue: 215,
@@ -747,10 +747,10 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Steel Warrior",
             type: "Armoured",
-            health: 6300,
+            health: 4500,
             speed: 0.3,
             damage: 5,
-            killValue: 350,
+            killValue: 270,
             armour: 35,
             rotationSpeed: 0,
             isLooking: true,
@@ -794,10 +794,10 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "5p 2025",
             type: "EMP",
-            health: 7000,
+            health: 5500,
             speed: 1,
             damage: 10,
-            killValue: 450,
+            killValue: 350,
             armour: 5,
             rotationSpeed: 0.08,
             isLooking: false,
@@ -835,11 +835,11 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Angry Piranha",
             type: "Hybrid",
-            health: 6200,
+            health: 7000,
             speed: 0.4,
             damage: 6,
-            killValue: 60,
-            armour: 5,
+            killValue: 450,
+            armour: 15,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0,
@@ -913,7 +913,476 @@ const allEnemyData: EnemyData = {
             slowImmune: true
         }
     },
+    "Freshman Octahedron": {
+        atlasData: {
+            "frames": {
+                "FreshmanOctahedron1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron7":
+                {
+                    "frame": { "x": 1500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron8":
+                {
+                    "frame": { "x": 1750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FreshmanOctahedron9":
+                {
+                    "frame": { "x": 2000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["FreshmanOctahedron1", "FreshmanOctahedron2", "FreshmanOctahedron3", "FreshmanOctahedron4", "FreshmanOctahedron5", "FreshmanOctahedron6", "FreshmanOctahedron7", "FreshmanOctahedron8", "FreshmanOctahedron9"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/FreshmanOctahedron.png",
+                "format": "RGBA8888",
+                "size": { "w": 2250, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Freshman Octahedron",
+            type: "Normal",
+            health: 9000,
+            speed: 1.2,
+            damage: 5,
+            killValue: 450,
+            rotationSpeed: 0.22,
+            isLooking: false,
+            animationSpeed: 0.2,
+            armour: 25
+        }
+    },
+    "Beautiful Peacock": {
+        atlasData: {
+            "frames": {
+                "BeautifulPeacock1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "BeautifulPeacock2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "BeautifulPeacock3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "BeautifulPeacock4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["BeautifulPeacock1", "BeautifulPeacock2", "BeautifulPeacock3", "BeautifulPeacock4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/BeautifulPeacock.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Beautiful Peacock",
+            type: "Regen",
+            health: 12000,
+            speed: 1.2,
+            damage: 5,
+            killValue: 525,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.3,
+            regen: 155,
+            armour: 30
+        }
+    },
+    "Twilight Great White": {
+        atlasData: {
+            "frames": {
+                "TwilightGreatWhite1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TwilightGreatWhite2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TwilightGreatWhite3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TwilightGreatWhite4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["TwilightGreatWhite1", "TwilightGreatWhite2", "TwilightGreatWhite3", "TwilightGreatWhite4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/TwilightGreatWhite.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Twilight Great White",
+            type: "SlowImmune",
+            health: 16500,
+            speed: 0.8,
+            damage: 5,
+            killValue: 640,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.077,
+            slowImmune: true
+        }
+    },
+    "Dashing Dasher": {
+        atlasData: {
+            "frames": {
+                "DashingDasher1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "DashingDasher2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "DashingDasher3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "DashingDasher4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["DashingDasher1", "DashingDasher2", "DashingDasher3", "DashingDasher4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/DashingDasher.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Dashing Dasher",
+            type: "Fast",
+            health: 22000,
+            speed: 1.8,
+            damage: 5,
+            killValue: 777,
+            rotationSpeed: 1.2,
+            isLooking: false,
+            animationSpeed: 0.12,
+            armour: 30
+        }
+    },
+    "Titanium Bruiser": {
+        atlasData: {
+            "frames": {
+                "TitaniumBruiser1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TitaniumBruiser2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TitaniumBruiser3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TitaniumBruiser4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["TitaniumBruiser1", "TitaniumBruiser2", "TitaniumBruiser3", "TitaniumBruiser4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/TitaniumBruiser.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Titanium Bruiser",
+            type: "Armoured",
+            health: 25000,
+            speed: 0.7,
+            damage: 10,
+            killValue: 865,
+            armour: 320,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.21
+        }
+    },
+    "12p 2028": {
+        atlasData: {
+            "frames": {
+                "12p 2028_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "12p 2028_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["12p 2028_1", "12p 2028_2", "12p 2028_3", "12p 2028_4", "12p 2028_5", "12p 2028_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/12p2028.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "12p 2028",
+            type: "EMP",
+            health: 33300,
+            speed: 1.5,
+            damage: 15,
+            killValue: 1000,
+            armour: 45,
+            rotationSpeed: 1,
+            isLooking: false,
+            animationSpeed: 0.2
+        }
+    },
+    "Furious Raven": {
+        atlasData: {
+            "frames": {
+                "FuriousRaven1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "FuriousRaven2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["FuriousRaven1", "FuriousRaven2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/FuriousRaven.png",
+                "format": "RGBA8888",
+                "size": { "w": 500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Furious Raven",
+            type: "Hybrid",
+            health: 42000,
+            speed: 1.2,
+            damage: 6,
+            killValue: 450,
+            armour: 30,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0,
+        }
+    },
+    "Remorseless Rigel": {
+        atlasData: {
+            "frames": {
+                "RemorselessRigel1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "RemorselessRigel2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "RemorselessRigel3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "RemorselessRigel4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "RemorselessRigel5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "RemorselessRigel6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["RemorselessRigel1", "RemorselessRigel2", "RemorselessRigel3", "RemorselessRigel4", "RemorselessRigel5", "RemorselessRigel6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/RemorselessRigel.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Remorseless Rigel",
+            type: "Boss",
+            health: 500000,
+            speed: 1,
+            damage: 99999,
+            killValue: 30000,
+            rotationSpeed: 0.18,
+            isLooking: false,
+            animationSpeed: 0.1,
+            regen: 500,
+            armour: 400
+        }
+    },
 }
+
 
 export { allEnemyData }
 

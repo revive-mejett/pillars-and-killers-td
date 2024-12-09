@@ -2,6 +2,7 @@ import EnemyType from "./EnemyType"
 
 type EnemyClass = "TON 618" | "Infant Circle" | "Little Sparrow" | "Earthling Flake" | "Quick Bonhomme" | "Stone Pricker" | "4p 2024" | "Mean Triangle" | "Brave Proxima Centauri"
 | "Toddler Sphere" | "Cute Crow" | "Polar Goldfish" | "Fast Runner" | "Steel Warrior" | "5p 2025" | "Angry Piranha" | "Serious Sirius"
+| "Freshman Octahedron" | "Beautiful Peacock" | "Twilight Great White" | "Dashing Dasher" | "Titanium Bruiser" | "12p 2028" | "Furious Raven" | "Remorseless Rigel"
 
 type EnemyStats = {
     className: EnemyClass,
