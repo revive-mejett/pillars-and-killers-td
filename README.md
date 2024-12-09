@@ -149,7 +149,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/560b0229-2eaa-47b6-9619-c799ade7e69c" witdh="125px" height="125px"></td>
-      <td>Sophmore</td>
+      <td>Remorseless Rigel</td>
       <td>Boss Killer. This one has no remorse, and is great at travelling at a really fast speed for such a boss.</td>
     </tr>
     <tr>
