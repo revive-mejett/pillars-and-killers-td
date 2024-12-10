@@ -73,6 +73,7 @@ export abstract class Tower extends Entity {
         this.zappedGraphics.width = width
         this.zappedGraphics.x = this.position.x
         this.zappedGraphics.y = this.position.y
+        this.zappedGraphics.animationSpeed = 0.05
         this.zappedGraphics.visible = false
 
         this.targetedEnemy = undefined
