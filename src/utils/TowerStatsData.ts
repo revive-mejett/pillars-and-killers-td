@@ -405,6 +405,94 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             }
         ],
         [
+            "missile",
+            {
+                towerStats: {
+                    range: 85,
+                    damage: 8,
+                    fireRate: 0.8,
+                    cost: 100,
+                    impactRadius: 60
+                },
+                towerInfo: {
+                    assetIcon: towerIcons.missilePillar,
+                    asset: towerIcons.missilePillarTopLv1,
+                    info: {
+                        title: "Missile Pillar",
+                        description: "Puffs out heat seeking rockets that explodes and deals area damage. This pillar is your beat weapon against hordes of killers."
+                    },
+                    tileColour: 0x222222,
+                    flameColour: 0xEE0000,
+                    fireballWidth: 6,
+                    soundPitch: 0.4
+                },
+                upgrades: [
+                    {
+                        range: 85,
+                        damage: 14,
+                        fireRate: 0.8,
+                        cost: 150,
+                        impactRadius: 70
+                    },
+                    {
+                        range: 95,
+                        damage: 21,
+                        fireRate: 1,
+                        cost: 300,
+                        impactRadius: 80
+                    },
+                    {
+                        range: 105,
+                        damage: 28,
+                        fireRate: 1.2,
+                        cost: 600,
+                        impactRadius: 90
+                    },
+                    {
+                        range: 115,
+                        damage: 35,
+                        fireRate: 1.4,
+                        cost: 1300,
+                        impactRadius: 100
+                    }
+                ],
+                visualUpgrades: [
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv2,
+                        tileColour: 0x004400,
+                        flameColour: 0xEE4400,
+                        fireballWidth: 7,
+                        soundPitch: 0.5
+                    },
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv3,
+                        tileColour: 0x000066,
+                        flameColour: 0xEE7700,
+                        fireballWidth: 8,
+                        soundPitch: 0.6
+                    },
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv4,
+                        tileColour: 0x990000,
+                        flameColour: 0xEE8C00,
+                        fireballWidth: 10,
+                        soundPitch: 0.75
+                    },
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv5,
+                        tileColour: 0x6600FF,
+                        flameColour: 0xFFC700,
+                        fireballWidth: 12,
+                        soundPitch: 0.9
+                    }
+                ]
+            }
+        ],
+        [
             "lightning",
             {
                 towerStats: {
