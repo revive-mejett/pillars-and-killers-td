@@ -408,10 +408,10 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             "missile",
             {
                 towerStats: {
-                    range: 85,
-                    damage: 8,
-                    fireRate: 0.8,
-                    cost: 100,
+                    range: 175,
+                    damage: 2000,
+                    fireRate: 0.3,
+                    cost: 5000,
                     impactRadius: 60
                 },
                 towerInfo: {
@@ -424,35 +424,35 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     tileColour: 0x222222,
                     flameColour: 0xEE0000,
                     fireballWidth: 6,
-                    soundPitch: 0.4
+                    soundPitch: 2.3
                 },
                 upgrades: [
                     {
-                        range: 85,
-                        damage: 14,
-                        fireRate: 0.8,
-                        cost: 150,
+                        range: 195,
+                        damage: 4500,
+                        fireRate: 0.3,
+                        cost: 8000,
                         impactRadius: 70
                     },
                     {
-                        range: 95,
-                        damage: 21,
-                        fireRate: 1,
-                        cost: 300,
+                        range: 215,
+                        damage: 7700,
+                        fireRate: 0.4,
+                        cost: 15000,
                         impactRadius: 80
                     },
                     {
-                        range: 105,
-                        damage: 28,
-                        fireRate: 1.2,
-                        cost: 600,
+                        range: 235,
+                        damage: 9500,
+                        fireRate: 0.5,
+                        cost: 20000,
                         impactRadius: 90
                     },
                     {
-                        range: 115,
-                        damage: 35,
-                        fireRate: 1.4,
-                        cost: 1300,
+                        range: 255,
+                        damage: 14000,
+                        fireRate: 0.5,
+                        cost: 25000,
                         impactRadius: 100
                     }
                 ],
@@ -463,7 +463,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         tileColour: 0x004400,
                         flameColour: 0xEE4400,
                         fireballWidth: 7,
-                        soundPitch: 0.5
+                        soundPitch: 1.8
                     },
                     {
                         assetIcon: towerIcons.missilePillar,
@@ -471,7 +471,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         tileColour: 0x000066,
                         flameColour: 0xEE7700,
                         fireballWidth: 8,
-                        soundPitch: 0.6
+                        soundPitch: 1.4
                     },
                     {
                         assetIcon: towerIcons.missilePillar,
@@ -479,7 +479,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         tileColour: 0x990000,
                         flameColour: 0xEE8C00,
                         fireballWidth: 10,
-                        soundPitch: 0.75
+                        soundPitch: 1.2
                     },
                     {
                         assetIcon: towerIcons.missilePillar,
@@ -487,7 +487,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         tileColour: 0x6600FF,
                         flameColour: 0xFFC700,
                         fireballWidth: 12,
-                        soundPitch: 0.9
+                        soundPitch: 1
                     }
                 ]
             }
@@ -515,19 +515,19 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 145,
                         damage: 650,
                         fireRate: 3,
-                        cost: 12000
+                        cost: 8000
                     },
                     {
                         range: 150,
                         damage: 950,
                         fireRate: 5,
-                        cost: 17000
+                        cost: 15000
                     },
                     {
                         range: 155,
                         damage: 1225,
                         fireRate: 7,
-                        cost: 21000
+                        cost: 20000
                     },
                     {
                         range: 160,

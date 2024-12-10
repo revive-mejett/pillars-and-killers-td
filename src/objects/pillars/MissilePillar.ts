@@ -1,5 +1,4 @@
 import { Tower } from "./Tower";
-import { Fireball } from "../projectile/Fireball";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
@@ -113,5 +112,14 @@ export class MissilePillar extends Tower {
         this.flameColour = newVisualStats.flameColour
         this.fireballWidth = newVisualStats.fireballWidth
         this.soundPitch = newVisualStats.soundPitch
+
+        if (newVisualStats.asset) {
+            this.asset = newVisualStats.asset
+            this.sprite = PIXI.Sprite.from(this.asset)
+            this.sprite.height = this.height
+            this.sprite.width = this.width
+            this.sprite.x = this.position?.x || 0
+            this.sprite.y = this.position?.y || 0
+        }
     }
 }
