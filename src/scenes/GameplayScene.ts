@@ -116,6 +116,7 @@ export class GameplayScene extends Scene {
             }
             if (enemy.enemyType === "EMP" && !enemy.towers) {
                 enemy.towers = this.towersPresent
+                enemy.mapContainer = this.mapContainer
             }
 
         })
