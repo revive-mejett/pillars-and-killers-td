@@ -8,6 +8,8 @@ import { EnemyStats } from "src/ts/types/EnemyData";
 import EnemyType from "src/ts/types/EnemyType";
 import { AudioManager } from "../../managers/AudioManager";
 import { SlowDebuffStats, VulnerableDebuffStats } from "src/ts/types/DebuffStats";
+import { Tower } from "../pillars/Tower";
+import { Vector } from "../../utils/Vector";
 
 const eventDispatcher = new EventDispatcher()
 const audioManager = new AudioManager()
@@ -44,6 +46,8 @@ export class Enemy extends Entity {
     //special properties
     slowDebuffStats: SlowDebuffStats
     vulnerableDebuffStats: VulnerableDebuffStats
+
+    towers?: Tower[]
 
     /**
      *
@@ -125,6 +129,26 @@ export class Enemy extends Entity {
     }
 
 
+    findAndAttackTower() {
+        if (!this.towers) {
+            return
+        }
+
+        const targetTower = this.towers.find(tower => this.checkTowerInRange(tower))
+
+        // if (targetTower) {
+
+        // }
+
+    }
+
+    private checkTowerInRange(tower : Tower) {
+        const enemyRange = 200
+        const enemyCenterPosition = this.getCenterPosition()
+        const towerCenterPosition = tower.getCenterPosition()
+        const enemyTowerVector = new Vector(towerCenterPosition.x - enemyCenterPosition.x, towerCenterPosition.y - enemyCenterPosition.y)
+        return enemyTowerVector.magnitude() <= enemyRange
+    }
 
     spawn(sceneContainer: PIXI.Container) {
         this.updateRotation()
