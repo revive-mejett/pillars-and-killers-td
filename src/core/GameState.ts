@@ -13,12 +13,14 @@ export class GameState {
     constructor() {
         this.lives = 50
         this.money = 400
-        this.startWave = 59
+        this.startWave = 100
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         for (let i = 0; i < this.startWave || 0; i++) {
             if (productionWaves[i]) {
                 this.money += calculateWaveValue(productionWaves[i])
+            } else {
+                this.money += 20000
             }
         }
 

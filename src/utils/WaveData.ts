@@ -1628,9 +1628,9 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Dashing Dasher",
+                count: 100,
+                spacingMillis: 500
             }
         ]
     ),

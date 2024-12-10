@@ -405,13 +405,101 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             }
         ],
         [
+            "missile",
+            {
+                towerStats: {
+                    range: 175,
+                    damage: 2000,
+                    fireRate: 0.3,
+                    cost: 5000,
+                    impactRadius: 60
+                },
+                towerInfo: {
+                    assetIcon: towerIcons.missilePillar,
+                    asset: towerIcons.missilePillarTopLv1,
+                    info: {
+                        title: "Missile Pillar",
+                        description: "Puffs out heat seeking rockets that explodes and deals area damage. This pillar is your beat weapon against hordes of killers."
+                    },
+                    tileColour: 0x222222,
+                    flameColour: 0xAAAAAA,
+                    fireballWidth: 6,
+                    soundPitch: 2.3
+                },
+                upgrades: [
+                    {
+                        range: 195,
+                        damage: 4500,
+                        fireRate: 0.3,
+                        cost: 8000,
+                        impactRadius: 70
+                    },
+                    {
+                        range: 215,
+                        damage: 7700,
+                        fireRate: 0.4,
+                        cost: 15000,
+                        impactRadius: 80
+                    },
+                    {
+                        range: 235,
+                        damage: 9500,
+                        fireRate: 0.5,
+                        cost: 20000,
+                        impactRadius: 90
+                    },
+                    {
+                        range: 255,
+                        damage: 14000,
+                        fireRate: 0.5,
+                        cost: 25000,
+                        impactRadius: 100
+                    }
+                ],
+                visualUpgrades: [
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv2,
+                        tileColour: 0x004400,
+                        flameColour: 0x004400,
+                        fireballWidth: 6,
+                        soundPitch: 1.8
+                    },
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv3,
+                        tileColour: 0x000066,
+                        flameColour: 0x000066,
+                        fireballWidth: 7,
+                        soundPitch: 1.4
+                    },
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv4,
+                        tileColour: 0x990000,
+                        flameColour: 0x990000,
+                        fireballWidth: 7,
+                        soundPitch: 1.2
+                    },
+                    {
+                        assetIcon: towerIcons.missilePillar,
+                        asset: towerIcons.missilePillarTopLv5,
+                        tileColour: 0x6600FF,
+                        flameColour: 0x6600FF,
+                        fireballWidth: 8,
+                        soundPitch: 1
+                    }
+                ]
+            }
+        ],
+        [
             "lightning",
             {
                 towerStats: {
                     range: 140,
-                    damage: 130,
+                    damage: 450,
                     fireRate: 2,
-                    cost: 1000
+                    cost: 5000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.lightningPillar,
@@ -425,27 +513,27 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 145,
-                        damage: 370,
+                        damage: 650,
                         fireRate: 3,
-                        cost: 4200
+                        cost: 8000
                     },
                     {
                         range: 150,
-                        damage: 650,
+                        damage: 950,
                         fireRate: 5,
-                        cost: 7700
+                        cost: 15000
                     },
                     {
                         range: 155,
                         damage: 1225,
                         fireRate: 7,
-                        cost: 10500
+                        cost: 20000
                     },
                     {
                         range: 160,
                         damage: 1775,
                         fireRate: 12,
-                        cost: 24000
+                        cost: 25000
                     },
                 ],
                 visualUpgrades: [
@@ -479,7 +567,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 300,
                     damage: 37000,
                     fireRate: 0.2,
-                    cost: 30000
+                    cost: 70000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.ultimatePillar,
@@ -497,7 +585,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 500,
                         damage: 60000,
                         fireRate: 0.4,
-                        cost: 77500
+                        cost: 300000
                     }
                 ],
                 visualUpgrades: [{
