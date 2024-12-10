@@ -292,7 +292,6 @@ export class Enemy extends Entity {
             if (this.empCooldown < 0) {
                 this.empCooldown = empCooldown
                 this.findAndAttackTower(deltaTime)
-                console.log("attack tower")
             }
         }
     }
