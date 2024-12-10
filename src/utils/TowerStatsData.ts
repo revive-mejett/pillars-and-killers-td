@@ -422,7 +422,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Puffs out heat seeking rockets that explodes and deals area damage. This pillar is your beat weapon against hordes of killers."
                     },
                     tileColour: 0x222222,
-                    flameColour: 0xEE0000,
+                    flameColour: 0xAAAAAA,
                     fireballWidth: 6,
                     soundPitch: 2.3
                 },
@@ -461,32 +461,32 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         assetIcon: towerIcons.missilePillar,
                         asset: towerIcons.missilePillarTopLv2,
                         tileColour: 0x004400,
-                        flameColour: 0xEE4400,
-                        fireballWidth: 7,
+                        flameColour: 0x004400,
+                        fireballWidth: 6,
                         soundPitch: 1.8
                     },
                     {
                         assetIcon: towerIcons.missilePillar,
                         asset: towerIcons.missilePillarTopLv3,
                         tileColour: 0x000066,
-                        flameColour: 0xEE7700,
-                        fireballWidth: 8,
+                        flameColour: 0x000066,
+                        fireballWidth: 7,
                         soundPitch: 1.4
                     },
                     {
                         assetIcon: towerIcons.missilePillar,
                         asset: towerIcons.missilePillarTopLv4,
                         tileColour: 0x990000,
-                        flameColour: 0xEE8C00,
-                        fireballWidth: 10,
+                        flameColour: 0x990000,
+                        fireballWidth: 7,
                         soundPitch: 1.2
                     },
                     {
                         assetIcon: towerIcons.missilePillar,
                         asset: towerIcons.missilePillarTopLv5,
                         tileColour: 0x6600FF,
-                        flameColour: 0xFFC700,
-                        fireballWidth: 12,
+                        flameColour: 0x6600FF,
+                        fireballWidth: 8,
                         soundPitch: 1
                     }
                 ]

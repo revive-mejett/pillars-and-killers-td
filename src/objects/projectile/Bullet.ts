@@ -29,7 +29,7 @@ export class Bullet extends Projectile {
 
     fire(deltaTime : number) {
         if (this.sfxPath && this.towerName) {
-            eventDispatcher.fireEvent("towerAttackSoundPlay", {path: this.sfxPath, maxSources: 8, towerName: this.towerName, volume: 1})
+            eventDispatcher.fireEvent("towerAttackSoundPlay", {path: this.sfxPath, maxSources: 8, towerName: this.towerName, volume: 0.5})
         }
 
         const onTick = () => {
