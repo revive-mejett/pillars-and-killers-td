@@ -409,9 +409,9 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 140,
-                    damage: 130,
+                    damage: 450,
                     fireRate: 2,
-                    cost: 1000
+                    cost: 5000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.lightningPillar,
@@ -425,27 +425,27 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 145,
-                        damage: 370,
+                        damage: 650,
                         fireRate: 3,
-                        cost: 4200
+                        cost: 12000
                     },
                     {
                         range: 150,
-                        damage: 650,
+                        damage: 950,
                         fireRate: 5,
-                        cost: 7700
+                        cost: 17000
                     },
                     {
                         range: 155,
                         damage: 1225,
                         fireRate: 7,
-                        cost: 10500
+                        cost: 21000
                     },
                     {
                         range: 160,
                         damage: 1775,
                         fireRate: 12,
-                        cost: 24000
+                        cost: 25000
                     },
                 ],
                 visualUpgrades: [
@@ -479,7 +479,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 300,
                     damage: 37000,
                     fireRate: 0.2,
-                    cost: 30000
+                    cost: 70000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.ultimatePillar,
@@ -497,7 +497,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 500,
                         damage: 60000,
                         fireRate: 0.4,
-                        cost: 77500
+                        cost: 300000
                     }
                 ],
                 visualUpgrades: [{
