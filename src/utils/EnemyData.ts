@@ -1383,6 +1383,39 @@ const allEnemyData: EnemyData = {
     },
 }
 
+const zappedAtlasData = {
+    "frames": {
+        "zapped1":
+        {
+            "frame": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "sourceSize": { "w": 500, "h": 500 }
+        },
+        "zapped2":
+        {
+            "frame": { "x": 500, "y": 0, "w": 500, "h": 500 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "sourceSize": { "w": 500, "h": 500 }
+        },
+        "zapped3":
+        {
+            "frame": { "x": 1000, "y": 0, "w": 500, "h": 500 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "sourceSize": { "w": 500, "h": 500 }
+        },
+    },
 
-export { allEnemyData }
+    "animations": {
+        "empParticle": ["zapped1", "zapped2", "zapped3"]
+    },
+
+    "meta": {
+        "image": "assets/spritesheets/towerZapped.png",
+        "format": "RGBA8888",
+        "size": { "w": 1500, "h": 500 },
+        "scale": "1"
+    }
+}
+
+export { allEnemyData, zappedAtlasData }
 
