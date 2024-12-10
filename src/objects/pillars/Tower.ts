@@ -9,8 +9,9 @@ import { GameplayScene } from "src/scenes/GameplayScene";
 import TowerData from "src/ts/types/TowerData";
 import { TowerStats } from "src/ts/interfaces/TowerStats";
 import { TowerInfo } from "src/ts/interfaces/TowerInfo";
+import { AssetLoader } from "../../core/AssetLoader";
 
-
+const assetLoader = new AssetLoader()
 
 //base class for tower
 export abstract class Tower extends Entity {
@@ -36,7 +37,7 @@ export abstract class Tower extends Entity {
 
     //is affected by EMP if cooldown is > 0
     disabledCooldown: number = 0
-    zappedGraphics: PIXI.Graphics
+    zappedGraphics: PIXI.AnimatedSprite
 
 
 
@@ -63,10 +64,15 @@ export abstract class Tower extends Entity {
         this.sprite.x = this.position.x
         this.sprite.y = this.position.y
 
-        this.zappedGraphics = new PIXI.Graphics()
-        this.zappedGraphics.beginFill(0x00FFFFF)
-        this.zappedGraphics.drawRect(this.x, this.y, this.width, this.height)
-        this.zappedGraphics.endFill()
+        if (!assetLoader.spriteSheetZapped) {
+            throw new Error("zapped animation failed to load")
+        }
+
+        this.zappedGraphics = new PIXI.AnimatedSprite(assetLoader.spriteSheetZapped.animations.empParticle)
+        this.zappedGraphics.height = height
+        this.zappedGraphics.width = width
+        this.zappedGraphics.x = this.position.x
+        this.zappedGraphics.y = this.position.y
         this.zappedGraphics.visible = false
 
         this.targetedEnemy = undefined
@@ -92,14 +98,13 @@ export abstract class Tower extends Entity {
     }
 
     disableTower() {
-        console.log("tower disable")
         this.disabledCooldown = 5000
         this.zappedGraphics.visible = true
+        this.zappedGraphics.play()
     }
 
     tickDisabled(towerFireCycleTicker : PIXI.Ticker) {
         if (this.disabledCooldown > 0 && towerFireCycleTicker) {
-            console.log(this.disabledCooldown)
             this.disabledCooldown -= towerFireCycleTicker?.deltaMS || 0
             if (this.disabledCooldown <=0 ) {
                 this.zappedGraphics.visible = false
@@ -152,5 +157,9 @@ export abstract class Tower extends Entity {
         this.visualUpgrades = undefined
         this.position = undefined
         this.tile = undefined
+
+        if (this.zappedGraphics.playing) {
+            this.zappedGraphics.stop()
+        }
     }
 }
