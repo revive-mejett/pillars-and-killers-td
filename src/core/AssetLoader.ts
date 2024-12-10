@@ -63,6 +63,16 @@ export class AssetLoader {
 
             "advancedPillar" : "assets/images/advanced_pillar_icon.png",
             "advancedPillarTop" : "assets/images/advanced_pillar_top.png",
+
+
+            "missilePillar" : "assets/images/missile_pillar_icon.png",
+            "missilePillarTopLv1" : "assets/images/missile_pillar_top_lv1.png",
+            "missilePillarTopLv2" : "assets/images/missile_pillar_top_lv2.png",
+            "missilePillarTopLv3" : "assets/images/missile_pillar_top_lv3.png",
+            "missilePillarTopLv4" : "assets/images/missile_pillar_top_lv4.png",
+            "missilePillarTopLv5" : "assets/images/missile_pillar_top_lv5.png",
+
+
             "lightningPillar" : "assets/images/lightning_pillar_icon.png",
             "lightningPillarTopLv1" : "assets/images/lightning_pillar_top_lv1.png",
             "lightningPillarTopLv2" : "assets/images/lightning_pillar_top_lv2.png",
