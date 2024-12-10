@@ -9,6 +9,7 @@ import { EmberPillarStats, IcePillarStats, PoisonIvyPillarStats, TowerStats } fr
 import { AdvancedPillarInfo, BasicPillarInfo, EmberPillarInfo, IcePillarInfo, PoisonIvyPillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
 import { getTowerData } from "../utils/TowerStatsData";
 import { PoisonIvyPillar } from "../objects/pillars/PoisonIvyPillar";
+import { MissilePillar } from "../objects/pillars/MissilePillar";
 
 
 
@@ -34,6 +35,8 @@ export class TowerFactory {
             return new AdvancedPillar(x, y, width, height, towerData as TowerData<TowerStats, AdvancedPillarInfo>)
         case "poisonIvy":
             return new PoisonIvyPillar(x, y, width, height, towerData as TowerData<PoisonIvyPillarStats, PoisonIvyPillarInfo>)
+        case "missile":
+            return new MissilePillar(x, y, width, height, towerData as TowerData<EmberPillarStats, EmberPillarInfo>)
         case "lightning":
             return new LightningPillar(x, y, width, height, towerData)
         case "ultimate":
