@@ -1042,7 +1042,7 @@ const allEnemyData: EnemyData = {
             health: 12000,
             speed: 1.2,
             damage: 5,
-            killValue: 525,
+            killValue: 555,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.3,
@@ -1096,7 +1096,7 @@ const allEnemyData: EnemyData = {
             health: 16500,
             speed: 0.8,
             damage: 5,
-            killValue: 640,
+            killValue: 670,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.077,
@@ -1202,7 +1202,7 @@ const allEnemyData: EnemyData = {
             health: 25000,
             speed: 0.7,
             damage: 10,
-            killValue: 865,
+            killValue: 885,
             armour: 320,
             rotationSpeed: 0,
             isLooking: true,
@@ -1267,7 +1267,7 @@ const allEnemyData: EnemyData = {
             health: 33300,
             speed: 1.5,
             damage: 15,
-            killValue: 1000,
+            killValue: 1200,
             armour: 45,
             rotationSpeed: 1,
             isLooking: false,
@@ -1308,7 +1308,7 @@ const allEnemyData: EnemyData = {
             health: 42000,
             speed: 1.2,
             damage: 6,
-            killValue: 450,
+            killValue: 1300,
             armour: 30,
             rotationSpeed: 0,
             isLooking: true,
@@ -1378,7 +1378,7 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.1,
             regen: 500,
-            armour: 400
+            armour: 700
         }
     },
 }
