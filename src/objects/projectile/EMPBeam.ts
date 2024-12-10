@@ -50,7 +50,7 @@ export class EMPBeam extends Entity {
                 return
             }
 
-            if (elapsedTime >= 200) {
+            if (elapsedTime >= 25) {
                 this.cleanUpResources()
                 return
             }

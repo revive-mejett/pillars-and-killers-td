@@ -369,7 +369,7 @@ const allEnemyData: EnemyData = {
         },
         "stats": {
             className: "4p 2024",
-            type: "EMP",
+            type: "Normal",
             health: 750,
             speed: 0.6,
             damage: 5,
@@ -793,7 +793,7 @@ const allEnemyData: EnemyData = {
         },
         "stats": {
             className: "5p 2025",
-            type: "EMP",
+            type: "Normal",
             health: 5500,
             speed: 1,
             damage: 10,

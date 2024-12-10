@@ -141,7 +141,15 @@ export class Enemy extends Entity {
             return
         }
 
-        const targetTower = this.towers.find(tower => this.checkTowerInRange(tower))
+        const towersInRange = this.towers.filter(tower => {
+            return this.checkTowerInRange(tower)
+        })
+
+        const targetTower = towersInRange[Math.floor(Math.random() * this.towers.length)]
+        console.log(this.towers.length)
+
+
+
         if (targetTower && !targetTower.isSold) {
             
             const emp = new EMPBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, targetTower, this)
