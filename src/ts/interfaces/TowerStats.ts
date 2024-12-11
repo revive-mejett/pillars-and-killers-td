@@ -17,6 +17,9 @@ interface PoisonIvyPillarStats extends TowerStats {
     extraDamage: number
 }
 
+interface DreadglassPillarStats extends TowerStats {
+    armourReduction: number
+}
 
 
-export { TowerStats, IcePillarStats, EmberPillarStats, PoisonIvyPillarStats }
+export { TowerStats, IcePillarStats, EmberPillarStats, PoisonIvyPillarStats, DreadglassPillarStats }
