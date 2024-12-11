@@ -113,7 +113,9 @@ export class DreadglassPillar extends Tower {
         this.range = newStats.range
         this.damage = newStats.damage
         this.fireRate = newStats.fireRate
+        this.armourReduction = newStats.armourReduction
         this.cost += newStats.cost
+
         this.level++
 
         const newVisualStats = this.visualUpgrades[index] as DreadglassPillarInfo
