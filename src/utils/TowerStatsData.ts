@@ -561,6 +561,94 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             }
         ],
         [
+            "dreadglass",
+            {
+                towerStats: {
+                    range: 100,
+                    damage: 200,
+                    fireRate: 0.8,
+                    cost: 4000,
+                    armourReduction: 2
+                },
+                towerInfo: {
+                    assetIcon: towerIcons.dreadglassPillar,
+                    asset: towerIcons.dreadglassPillarTopLv1,
+                    info: {
+                        title: "Dreadglass Pillar",
+                        description: "This pillar is made with dreadglass, a material known of causing a loss of hope. Sheds cursed dreadglass at killers, reducing their damage resistance."
+                    },
+                    tileColour: 0x222222,
+                    bulletColour: 0xFF00C7,
+                    bulletSize: 3,
+                    soundPitch: 1.1
+                },
+                upgrades: [
+                    {
+                        range: 100,
+                        damage: 400,
+                        fireRate: 1,
+                        cost: 6000,
+                        armourReduction: 5
+                    },
+                    {
+                        range: 125,
+                        damage: 600,
+                        fireRate: 1.2,
+                        cost: 9000,
+                        armourReduction: 10
+                    },
+                    {
+                        range: 125,
+                        damage: 800,
+                        fireRate: 1.4,
+                        cost: 13000,
+                        armourReduction: 14
+                    },
+                    {
+                        range: 150,
+                        damage: 1000,
+                        fireRate: 1.6,
+                        cost: 13000,
+                        armourReduction: 20
+                    }
+                ],
+                visualUpgrades: [
+                    {
+                        assetIcon: towerIcons.dreadglassPillar,
+                        asset: towerIcons.dreadglassPillarTopLv2,
+                        tileColour: 0x004400,
+                        bulletColour: 0xFF0099,
+                        bulletSize: 4,
+                        soundPitch: 1
+                    },
+                    {
+                        assetIcon: towerIcons.dreadglassPillar,
+                        asset: towerIcons.dreadglassPillarTopLv3,
+                        tileColour: 0x000066,
+                        bulletColour: 0xFF0077,
+                        bulletSize: 5,
+                        soundPitch: 0.9
+                    },
+                    {
+                        assetIcon: towerIcons.dreadglassPillar,
+                        asset: towerIcons.dreadglassPillarTopLv4,
+                        tileColour: 0x990000,
+                        bulletColour: 0xFF0011,
+                        bulletSize: 6,
+                        soundPitch: 0.8
+                    },
+                    {
+                        assetIcon: towerIcons.dreadglassPillar,
+                        asset: towerIcons.dreadglassPillarTopLv5,
+                        tileColour: 0x6600FF,
+                        bulletColour: 0x880033,
+                        bulletSize: 7,
+                        soundPitch: 0.7
+                    }
+                ]
+            }
+        ],
+        [
             "ultimate",
             {
                 towerStats: {

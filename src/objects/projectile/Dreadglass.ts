@@ -2,10 +2,12 @@ import { Vector } from "../../utils/Vector";
 import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
+import { EventDispatcher } from "../../utils/EventDispatcher";
+
+const eventDispatcher = new EventDispatcher()
 
 
-
-export class Bullet extends Projectile {
+export class Dreadglass extends Projectile {
     speed: number
     soundPitch: number
     armourReduction: number
@@ -26,6 +28,8 @@ export class Bullet extends Projectile {
     }
 
     fire(deltaTime : number) {
+
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/glass_break.mp3", maxSources: 8, towerName: "Dreadglass Pillar", volume: 0.3, speed: this.soundPitch})
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {

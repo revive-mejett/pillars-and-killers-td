@@ -1,15 +1,15 @@
 import { Tower } from "./Tower";
 import { GameplayScene } from "src/scenes/GameplayScene";
 import * as PIXI from "pixi.js";
-import { Bullet } from "../projectile/Bullet";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import TowerData from "src/ts/types/TowerData";
 import { DreadglassPillarStats } from "src/ts/interfaces/TowerStats";
 import { DreadglassPillarInfo } from "src/ts/interfaces/TowerInfo";
+import { Dreadglass } from "../projectile/Dreadglass";
 
 const eventDispatcher = new EventDispatcher()
 
-export class DreadglassPilar extends Tower {
+export class DreadglassPillar extends Tower {
     towerName: string
     bulletSize: number
     bulletColour: number
@@ -83,9 +83,9 @@ export class DreadglassPilar extends Tower {
                 }
 
                 //spawn a bullet
-                const bullet = new Bullet(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 5, 0xFFFFFF, "assets/sounds/sfx/stone_throw.mp3", "Basic Pillar")
-                bullet.render(gameplaySceneContainer)
-                bullet.fire(gameplayScene.app.ticker.deltaTime)
+                const dreadglass = new Dreadglass(this.getCenterPosition().x, this.getCenterPosition().y, this.bulletSize, this.bulletSize, this.targetedEnemy, this.damage, 4, this.bulletColour, this.armourReduction, this.soundPitch)
+                dreadglass.render(gameplaySceneContainer)
+                dreadglass.fire(gameplayScene.app.ticker.deltaTime)
             }
         }
 

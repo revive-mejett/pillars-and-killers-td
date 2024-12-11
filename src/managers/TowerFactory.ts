@@ -5,11 +5,12 @@ import { UltimatePillar } from "../objects/pillars/UltimatePillar";
 import { EmberPillar } from "../objects/pillars/EmberPillar";
 import { LightningPillar } from "../objects/pillars/LightningPillar";
 import TowerData from "src/ts/types/TowerData";
-import { EmberPillarStats, IcePillarStats, PoisonIvyPillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
-import { AdvancedPillarInfo, BasicPillarInfo, EmberPillarInfo, IcePillarInfo, PoisonIvyPillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
+import { DreadglassPillarStats, EmberPillarStats, IcePillarStats, PoisonIvyPillarStats, TowerStats } from "src/ts/interfaces/TowerStats";
+import { AdvancedPillarInfo, BasicPillarInfo, DreadglassPillarInfo, EmberPillarInfo, IcePillarInfo, PoisonIvyPillarInfo, UltimatePillarInfo } from "src/ts/interfaces/TowerInfo";
 import { getTowerData } from "../utils/TowerStatsData";
 import { PoisonIvyPillar } from "../objects/pillars/PoisonIvyPillar";
 import { MissilePillar } from "../objects/pillars/MissilePillar";
+import { DreadglassPillar } from "../objects/pillars/DreadglassPillar";
 
 
 
@@ -39,6 +40,8 @@ export class TowerFactory {
             return new MissilePillar(x, y, width, height, towerData as TowerData<EmberPillarStats, EmberPillarInfo>)
         case "lightning":
             return new LightningPillar(x, y, width, height, towerData)
+        case "dreadglass":
+            return new DreadglassPillar(x, y, width, height, towerData as TowerData<DreadglassPillarStats, DreadglassPillarInfo>)
         case "ultimate":
             return new UltimatePillar(x, y, width, height, towerData as TowerData<TowerStats, UltimatePillarInfo>)
         default:
