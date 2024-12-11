@@ -1628,9 +1628,9 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Dashing Dasher",
-                count: 100,
-                spacingMillis: 500
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 5000
             }
         ]
     ),

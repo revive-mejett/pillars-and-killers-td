@@ -172,9 +172,11 @@ export class InfoPanel {
             if (!enemy.isAlive) {
                 healthBar.deleteBar()
                 updateTicker.stop()
+                updateTicker.destroy()
                 hud.clearInfoPanel()
             }
             UIHelper.updateText(enemyHealthText.children[0] as PIXI.Text, `${enemy.health} / ${enemy.totalHealth}`)
+            UIHelper.updateText(dmgResistanceText.children[0] as PIXI.Text, `${enemy.armour}`)
             slowedIndicator.visible = enemy.slowDebuffStats.timeLeft > 0
             healthBar.renderBar(infoPanel)
         }

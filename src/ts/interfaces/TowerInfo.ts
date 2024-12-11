@@ -35,6 +35,12 @@ interface PoisonIvyPillarInfo extends TowerInfo {
     leafColour: number
 }
 
+interface DreadglassPillarInfo extends TowerInfo {
+    bulletColour: number,
+    bulletSize: number,
+    soundPitch: number,
+}
+
 interface UltimatePillarInfo extends TowerInfo {
     beamWidth: number,
     beamColour: number
@@ -43,4 +49,4 @@ interface UltimatePillarInfo extends TowerInfo {
 
 
 
-export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo, PoisonIvyPillarInfo, AdvancedPillarInfo }
+export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo, PoisonIvyPillarInfo, AdvancedPillarInfo, DreadglassPillarInfo }
