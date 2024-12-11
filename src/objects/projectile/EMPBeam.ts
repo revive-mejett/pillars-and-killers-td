@@ -40,7 +40,7 @@ export class EMPBeam extends Entity {
 
         // TODO add code here to set towerDisabled true
         this.targetTower.disableTower()
-        audioManager.playSound("assets/sounds/sfx/emp_zap.mp3", 0.1)
+        audioManager.playSound("assets/sounds/sfx/emp_zap.mp3", 0.07)
 
 
 
