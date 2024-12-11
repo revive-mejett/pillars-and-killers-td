@@ -68,12 +68,9 @@ export class PoisonIvyLeaf extends Projectile {
         }
         if (this.targetEnemy.vulnerableDebuffStats.extraDamage <= this.extraDamage) {
             this.targetEnemy.vulnerableDebuffStats.timeLeft = 1000;
-            this.targetEnemy.vulnerableDebuffStats.extraDamage = this.extraDamage;
-            console.log("bullet extra damage is greater than current debuff, debuff updated");
-        } else {
-            console.log("already has greater vul. debuff");
+            this.targetEnemy.vulnerableDebuffStats.extraDamage = this.extraDamage
         }
-        console.log(this.targetEnemy.vulnerableDebuffStats.extraDamage);
+
         this.hasHit = true;
         this.cleanUpResources();
     }

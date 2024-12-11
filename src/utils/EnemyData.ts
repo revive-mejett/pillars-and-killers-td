@@ -369,7 +369,7 @@ const allEnemyData: EnemyData = {
         },
         "stats": {
             className: "4p 2024",
-            type: "EMP",
+            type: "Normal",
             health: 750,
             speed: 0.6,
             damage: 5,
@@ -793,7 +793,7 @@ const allEnemyData: EnemyData = {
         },
         "stats": {
             className: "5p 2025",
-            type: "EMP",
+            type: "Normal",
             health: 5500,
             speed: 1,
             damage: 10,
@@ -1042,7 +1042,7 @@ const allEnemyData: EnemyData = {
             health: 12000,
             speed: 1.2,
             damage: 5,
-            killValue: 525,
+            killValue: 555,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.3,
@@ -1096,7 +1096,7 @@ const allEnemyData: EnemyData = {
             health: 16500,
             speed: 0.8,
             damage: 5,
-            killValue: 640,
+            killValue: 670,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.077,
@@ -1202,7 +1202,7 @@ const allEnemyData: EnemyData = {
             health: 25000,
             speed: 0.7,
             damage: 10,
-            killValue: 865,
+            killValue: 885,
             armour: 320,
             rotationSpeed: 0,
             isLooking: true,
@@ -1267,7 +1267,7 @@ const allEnemyData: EnemyData = {
             health: 33300,
             speed: 1.5,
             damage: 15,
-            killValue: 1000,
+            killValue: 1200,
             armour: 45,
             rotationSpeed: 1,
             isLooking: false,
@@ -1308,7 +1308,7 @@ const allEnemyData: EnemyData = {
             health: 42000,
             speed: 1.2,
             damage: 6,
-            killValue: 450,
+            killValue: 1300,
             armour: 30,
             rotationSpeed: 0,
             isLooking: true,
@@ -1378,11 +1378,44 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.1,
             regen: 500,
-            armour: 400
+            armour: 700
         }
     },
 }
 
+const zappedAtlasData = {
+    "frames": {
+        "zapped1":
+        {
+            "frame": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "sourceSize": { "w": 500, "h": 500 }
+        },
+        "zapped2":
+        {
+            "frame": { "x": 500, "y": 0, "w": 500, "h": 500 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "sourceSize": { "w": 500, "h": 500 }
+        },
+        "zapped3":
+        {
+            "frame": { "x": 1000, "y": 0, "w": 500, "h": 500 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
+            "sourceSize": { "w": 500, "h": 500 }
+        },
+    },
 
-export { allEnemyData }
+    "animations": {
+        "empParticle": ["zapped1", "zapped2", "zapped3"]
+    },
+
+    "meta": {
+        "image": "assets/spritesheets/towerZapped.png",
+        "format": "RGBA8888",
+        "size": { "w": 1500, "h": 500 },
+        "scale": "1"
+    }
+}
+
+export { allEnemyData, zappedAtlasData }
 

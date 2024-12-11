@@ -1,5 +1,5 @@
 import { Assets, Spritesheet, Texture } from "pixi.js"
-import { allEnemyData } from "../utils/EnemyData"
+import { allEnemyData, zappedAtlasData } from "../utils/EnemyData"
 
 
 let instance : AssetLoader | null = null
@@ -12,6 +12,7 @@ export class AssetLoader {
     sfx: {[key: string] : string } | undefined
 
     spriteSheetEnemies: Map<string, Spritesheet> | undefined
+    spriteSheetZapped : Spritesheet | undefined
 
 
 
@@ -22,6 +23,7 @@ export class AssetLoader {
             instance = this
             this.enemies = {}
             this.spriteSheetEnemies = new Map()
+            this.spriteSheetZapped = undefined
             this.icons = {}
             this.towers = {}
             this.otherImages = {}
@@ -121,10 +123,15 @@ export class AssetLoader {
             this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
         })
         // console.log(this.spriteSheetEnemies)
+        const atlasData = zappedAtlasData
+        const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
+        await spritesheet.parse()
+        this.spriteSheetZapped = spritesheet
     }
-    // async loadSfx() {
-    //     this.sfx = await Assets.loadBundle("sfx")
-    // }
+
+    async loadZappedSpriteSheet() {
+
+    }
 
 
 }

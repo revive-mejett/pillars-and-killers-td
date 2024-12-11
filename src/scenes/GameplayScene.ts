@@ -114,6 +114,10 @@ export class GameplayScene extends Scene {
             if (this.tdMap) {
                 enemy?.updateMovement(this.tdMap, this.app.ticker.deltaTime)
             }
+            if (enemy.enemyType === "EMP") {
+                enemy.towers = this.towersPresent
+                enemy.mapContainer = this.mapContainer
+            }
 
         })
 

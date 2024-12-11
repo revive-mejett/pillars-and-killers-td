@@ -8,11 +8,15 @@ import { EnemyStats } from "src/ts/types/EnemyData";
 import EnemyType from "src/ts/types/EnemyType";
 import { AudioManager } from "../../managers/AudioManager";
 import { SlowDebuffStats, VulnerableDebuffStats } from "src/ts/types/DebuffStats";
+import { Tower } from "../pillars/Tower";
+import { Vector } from "../../utils/Vector";
+import { EMPBeam } from "../projectile/EMPBeam";
 
 const eventDispatcher = new EventDispatcher()
 const audioManager = new AudioManager()
 const tickCooldown = 60
 
+const empCooldown = 500
 
 export class Enemy extends Entity {
     enemyClassName: string
@@ -45,6 +49,11 @@ export class Enemy extends Entity {
     slowDebuffStats: SlowDebuffStats
     vulnerableDebuffStats: VulnerableDebuffStats
 
+    //properties used for EMP enemies
+    empCooldown? : number
+    towers?: Tower[]
+    mapContainer?: PIXI.Container
+
     /**
      *
      */
@@ -69,6 +78,8 @@ export class Enemy extends Entity {
         //setting debuff stats
         this.slowDebuffStats = { speedMultiplier: 1, timeLeft: 0 }
         this.vulnerableDebuffStats = { extraDamage: 0, timeLeft: 0 }
+
+        this.empCooldown = empCooldown
 
         this.position = { x: x, y: y }
 
@@ -125,6 +136,36 @@ export class Enemy extends Entity {
     }
 
 
+    findAndAttackTower(delta: number) {
+        if (!this.towers || !this.mapContainer) {
+            return
+        }
+
+        const towersInRange = this.towers.filter(tower => {
+            return this.checkTowerInRange(tower)
+        })
+
+        const targetTower = towersInRange[Math.floor(Math.random() * this.towers.length)]
+        console.log(this.towers.length)
+
+
+
+        if (targetTower && !targetTower.isSold) {
+            
+            const emp = new EMPBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, targetTower, this)
+            emp.render(this.mapContainer)
+            emp.fireTower(delta)
+        }
+
+    }
+
+    private checkTowerInRange(tower : Tower) {
+        const enemyRange = 200
+        const enemyCenterPosition = this.getCenterPosition()
+        const towerCenterPosition = tower.getCenterPosition()
+        const enemyTowerVector = new Vector(towerCenterPosition.x - enemyCenterPosition.x, towerCenterPosition.y - enemyCenterPosition.y)
+        return enemyTowerVector.magnitude() <= enemyRange
+    }
 
     spawn(sceneContainer: PIXI.Container) {
         this.updateRotation()
@@ -167,9 +208,12 @@ export class Enemy extends Entity {
         }
 
         this.updateRotation(delta)
-
         this.tickDebuffs(delta)
         this.tickRegen(delta)
+
+        if (this.enemyType === "EMP") {
+            this.tickEMP(delta)
+        }
 
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
@@ -233,6 +277,23 @@ export class Enemy extends Entity {
             }
         }
 
+    }
+
+    tickEMP(deltaTime : number) {
+        if (!this.empCooldown) {
+            return
+        }
+        // console.log(this.empCooldown)
+        this.empCooldown -= deltaTime
+        if (this.empCooldown > 0) {
+            this.empCooldown -= deltaTime
+
+            //attack enemy once cooldown reaches 0
+            if (this.empCooldown < 0) {
+                this.empCooldown = empCooldown
+                this.findAndAttackTower(deltaTime)
+            }
+        }
     }
 
     takeDamage(damage: number) {

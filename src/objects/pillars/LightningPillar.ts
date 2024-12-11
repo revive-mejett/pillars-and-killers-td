@@ -47,9 +47,18 @@ export class LightningPillar extends Tower {
                 towerFireCycleTicker = undefined
             }
 
+            if (towerFireCycleTicker) {
+                this.tickDisabled(towerFireCycleTicker)
+            }
+
             cooldown -= towerFireCycleTicker?.deltaMS || 0
             if (cooldown <= 0) {
                 cooldown = 1000 * 1/this.fireRate
+
+                //disabled towers cant attack
+                if (this.disabledCooldown > 0) {
+                    return
+                }
 
 
                 // Find the best enemy before firing

@@ -9,8 +9,9 @@ import { GameplayScene } from "src/scenes/GameplayScene";
 import TowerData from "src/ts/types/TowerData";
 import { TowerStats } from "src/ts/interfaces/TowerStats";
 import { TowerInfo } from "src/ts/interfaces/TowerInfo";
+import { AssetLoader } from "../../core/AssetLoader";
 
-
+const assetLoader = new AssetLoader()
 
 //base class for tower
 export abstract class Tower extends Entity {
@@ -33,6 +34,10 @@ export abstract class Tower extends Entity {
 
     tile?: Tile;
     tileColour: number;
+
+    //is affected by EMP if cooldown is > 0
+    disabledCooldown: number = 0
+    zappedGraphics: PIXI.AnimatedSprite
 
 
 
@@ -59,9 +64,24 @@ export abstract class Tower extends Entity {
         this.sprite.x = this.position.x
         this.sprite.y = this.position.y
 
+        if (!assetLoader.spriteSheetZapped) {
+            throw new Error("zapped animation failed to load")
+        }
+
+        this.zappedGraphics = new PIXI.AnimatedSprite(assetLoader.spriteSheetZapped.animations.empParticle)
+        this.zappedGraphics.height = height
+        this.zappedGraphics.width = width
+        this.zappedGraphics.x = this.position.x
+        this.zappedGraphics.y = this.position.y
+        this.zappedGraphics.animationSpeed = 0.05
+        this.zappedGraphics.visible = false
+
         this.targetedEnemy = undefined
         this.isSold = false
         this.tile = undefined
+
+        //debuffs
+        this.disabledCooldown = 0
 
     }
 
@@ -76,6 +96,22 @@ export abstract class Tower extends Entity {
 
     lockInEnemy(enemy : Enemy) {
         this.targetedEnemy = enemy
+    }
+
+    disableTower() {
+        this.disabledCooldown = 5000
+        this.zappedGraphics.visible = true
+        this.zappedGraphics.play()
+    }
+
+    tickDisabled(towerFireCycleTicker : PIXI.Ticker) {
+        if (this.disabledCooldown > 0 && towerFireCycleTicker) {
+            this.disabledCooldown -= towerFireCycleTicker?.deltaMS || 0
+            if (this.disabledCooldown <=0 ) {
+                this.zappedGraphics.visible = false
+                this.disabledCooldown = 0
+            }
+        }
     }
 
     findEnemy(enemies : Enemy[]) {
@@ -122,5 +158,9 @@ export abstract class Tower extends Entity {
         this.visualUpgrades = undefined
         this.position = undefined
         this.tile = undefined
+
+        if (this.zappedGraphics.playing) {
+            this.zappedGraphics.stop()
+        }
     }
 }
