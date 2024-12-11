@@ -184,7 +184,7 @@ export class HUD {
         const towerSpriteBundle = assetLoader.towers
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
-        towerSelectMenu.y = 300
+        towerSelectMenu.y = 250
         this.container.addChild(towerSelectMenu)
 
         if (!towerSpriteBundle) {
@@ -207,7 +207,9 @@ export class HUD {
         towerSelectMenu.addChild(missilePillarButton)
         const lightningPillarButton = UIHelper.createIcon(towerSpriteBundle.lightningPillar, 80, 160, 0x002222)
         towerSelectMenu.addChild(lightningPillarButton)
-        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 160, 160, 0x110011)
+        const dreadglassPillarButton = UIHelper.createIcon(towerSpriteBundle.dreadglassPillar, 160, 160, 0x220000)
+        towerSelectMenu.addChild(dreadglassPillarButton)
+        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 0, 240, 0x110011)
         towerSelectMenu.addChild(ultimatePillarButton)
 
         this.towerSelectionButtons.basic = basicPillarButton
@@ -217,6 +219,7 @@ export class HUD {
         this.towerSelectionButtons.poisonIvy = poisonIvyPillarButton
         this.towerSelectionButtons.missile = missilePillarButton
         this.towerSelectionButtons.lightning = lightningPillarButton
+        this.towerSelectionButtons.dreadglass = dreadglassPillarButton
         this.towerSelectionButtons.ultimate = ultimatePillarButton
     }
 

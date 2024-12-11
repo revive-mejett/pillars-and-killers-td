@@ -74,6 +74,13 @@ export class AssetLoader {
             "missilePillarTopLv4" : "assets/images/missile_pillar_top_lv4.png",
             "missilePillarTopLv5" : "assets/images/missile_pillar_top_lv5.png",
 
+            "dreadglassPillar" : "assets/images/dreadglass_pillar_icon.png",
+            "dreadglassPillarTopLv1" : "assets/images/dreadglass_pillar_top_lv1.png",
+            "dreadglassPillarTopLv2" : "assets/images/dreadglass_pillar_top_lv2.png",
+            "dreadglassPillarTopLv3" : "assets/images/dreadglass_pillar_top_lv3.png",
+            "dreadglassPillarTopLv4" : "assets/images/dreadglass_pillar_top_lv4.png",
+            "dreadglassPillarTopLv5" : "assets/images/dreadglass_pillar_top_lv5.png",
+
 
             "lightningPillar" : "assets/images/lightning_pillar_icon.png",
             "lightningPillarTopLv1" : "assets/images/lightning_pillar_top_lv1.png",
