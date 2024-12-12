@@ -1579,13 +1579,172 @@ const allEnemyData: EnemyData = {
             className: "Kingda Ka Zipper",
             type: "Fast",
             health: 128000,
-            speed: 2,
+            speed: 3,
             damage: 10,
             killValue: 3200,
             rotationSpeed: 1.4,
             isLooking: false,
             animationSpeed: 0.10,
             armour: 400
+        }
+    },
+    "Obsidian Ripper": {
+        atlasData: {
+            "frames": {
+                "ObsidianRipper1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ObsidianRipper2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ObsidianRipper3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ObsidianRipper4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["ObsidianRipper1", "ObsidianRipper2", "ObsidianRipper3", "ObsidianRipper4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/ObsidianRipper.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Obsidian Ripper",
+            type: "Armoured",
+            health: 140000,
+            speed: 0.7,
+            damage: 10,
+            killValue: 4700,
+            armour: 2200,
+            rotationSpeed: 0.07,
+            isLooking: false,
+            animationSpeed: 0.07
+        }
+    },
+    "256p 2152": {
+        atlasData: {
+            "frames": {
+                "256p 2152_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["256p 2152_1", "256p 2152_2", "256p 2152_3", "256p 2152_4", "256p 2152_5", "256p 2152_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/256p2152.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "256p 2152",
+            type: "EMP",
+            health: 200000,
+            speed: 1,
+            damage: 30,
+            killValue: 5550,
+            armour: 800,
+            rotationSpeed: 1.2,
+            isLooking: false,
+            animationSpeed: 0.27
+        }
+    },
+    "Enraged Eagle": {
+        atlasData: {
+            "frames": {
+                "EnragedEagle1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "EnragedEagle2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["EnragedEagle1", "EnragedEagle2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/EnragedEagle.png",
+                "format": "RGBA8888",
+                "size": { "w": 500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Enraged Eagle",
+            type: "Hybrid",
+            health: 370000,
+            speed: 0.7,
+            damage: 12,
+            killValue: 7200,
+            armour: 900,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.7,
         }
     },
     "Jr. Rhombicosidodecahedron": {
@@ -1671,7 +1830,7 @@ const zappedAtlasData = {
     }
 }
 
-//
+//EnragedEagle
 
 export { allEnemyData, zappedAtlasData }
 
