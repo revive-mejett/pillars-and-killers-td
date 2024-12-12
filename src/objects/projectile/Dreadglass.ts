@@ -29,7 +29,7 @@ export class Dreadglass extends Projectile {
 
     fire(deltaTime : number) {
 
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/glass_break.mp3", maxSources: 8, towerName: "Dreadglass Pillar", volume: 0.8, speed: this.soundPitch})
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/glass_break.mp3", maxSources: 6, towerName: "Dreadglass Pillar", volume: 0.3, speed: this.soundPitch})
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {

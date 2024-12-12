@@ -1203,7 +1203,7 @@ const allEnemyData: EnemyData = {
             speed: 0.7,
             damage: 10,
             killValue: 885,
-            armour: 320,
+            armour: 540,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.21
@@ -1309,7 +1309,7 @@ const allEnemyData: EnemyData = {
             speed: 1.2,
             damage: 6,
             killValue: 1300,
-            armour: 30,
+            armour: 120,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0,
@@ -1381,6 +1381,100 @@ const allEnemyData: EnemyData = {
             armour: 700
         }
     },
+    "Sophomore Dodecahedron": {
+        atlasData: {
+            "frames": {
+                "SophomoreDodecahedron1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SophomoreDodecahedron2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SophomoreDodecahedron3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["SophomoreDodecahedron1", "SophomoreDodecahedron2", "SophomoreDodecahedron3"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/SophomoreDodecahedron.png",
+                "format": "RGBA8888",
+                "size": { "w": 750, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Sophomore Dodecahedron",
+            type: "Normal",
+            health: 55000,
+            speed: 0.8,
+            damage: 8,
+            killValue: 1200,
+            rotationSpeed: 0.24,
+            isLooking: false,
+            animationSpeed: 0.11,
+            armour: 125
+        }
+    },
+    "Jr. Rhombicosidodecahedron": {
+        atlasData: {
+            "frames": {
+                "JrRhombicosidodecahedron1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "JrRhombicosidodecahedron2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "JrRhombicosidodecahedron3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["JrRhombicosidodecahedron1", "JrRhombicosidodecahedron2", "JrRhombicosidodecahedron3"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/JrRhombicosidodecahedron.png",
+                "format": "RGBA8888",
+                "size": { "w": 750, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Jr. Rhombicosidodecahedron",
+            type: "Normal",
+            health: 650000,
+            speed: 0.7,
+            damage: 10,
+            killValue: 4800,
+            rotationSpeed: 0.10,
+            isLooking: false,
+            animationSpeed: 0.06,
+            armour: 1700
+        }
+    },
 }
 
 const zappedAtlasData = {
@@ -1416,6 +1510,8 @@ const zappedAtlasData = {
         "scale": "1"
     }
 }
+
+//JrRhombicosidodecahedron
 
 export { allEnemyData, zappedAtlasData }
 

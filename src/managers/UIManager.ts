@@ -200,5 +200,11 @@ export class UIManager {
         eventDispatcher.clearListenersOfEvent("enemySelectAction")
         eventDispatcher.clearListenersOfEvent("towerUpgradeAction")
         eventDispatcher.clearListenersOfEvent("towerSellAction")
+
+        if (this.selectedEnemyUpdateTicker) {
+            console.log("clean up ticker")
+            this.selectedEnemyUpdateTicker.stop()
+            this.selectedEnemyUpdateTicker.destroy()
+        }
     }
 }

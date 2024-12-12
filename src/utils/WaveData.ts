@@ -1618,7 +1618,7 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Remorseless Rigel",
+                enemy: "TON 618",
                 count: 1,
                 spacingMillis: 7000
             }
@@ -1628,19 +1628,59 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "12p 2028",
+                enemy: "Titanium Bruiser",
                 count: 10,
-                spacingMillis: 5000
-            }
+                spacingMillis: 700
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 100
+            },
         ]
     ),
     // wave 62 placeholder wave
     new Wave(
         [
+            // {
+            //     enemy: "Infant Circle",
+            //     count: 5,
+            //     spacingMillis: 1000
+            // },
+            // {
+            //     enemy: "Toddler Sphere",
+            //     count: 5,
+            //     spacingMillis: 1000
+            // },
+            // {
+            //     enemy: "Freshman Octahedron",
+            //     count: 5,
+            //     spacingMillis: 1000
+            // },
+            // {
+            //     enemy: "Sophomore Dodecahedron",
+            //     count: 5,
+            //     spacingMillis: 1000
+            // },
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 5,
+                spacingMillis: 1000
             }
         ]
     ),
