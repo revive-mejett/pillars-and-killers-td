@@ -1678,7 +1678,12 @@ const productionWaves = [
             //     spacingMillis: 1000
             // },
             {
-                enemy: "Jr. Rhombicosidodecahedron",
+                enemy: "Neptunian Megalodon",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
                 count: 5,
                 spacingMillis: 1000
             }

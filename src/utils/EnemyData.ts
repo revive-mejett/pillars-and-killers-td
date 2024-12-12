@@ -1308,7 +1308,7 @@ const allEnemyData: EnemyData = {
             health: 42000,
             speed: 1.2,
             damage: 6,
-            killValue: 1300,
+            killValue: 1450,
             armour: 120,
             rotationSpeed: 0,
             isLooking: true,
@@ -1421,11 +1421,171 @@ const allEnemyData: EnemyData = {
             health: 55000,
             speed: 0.8,
             damage: 8,
-            killValue: 1200,
+            killValue: 1300,
             rotationSpeed: 0.24,
             isLooking: false,
             animationSpeed: 0.11,
-            armour: 125
+            armour: 350
+        }
+    },
+    "Alluring Rooster": {
+        atlasData: {
+            "frames": {
+                "AlluringRooster1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "AlluringRooster2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "AlluringRooster3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "AlluringRooster4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["AlluringRooster1", "AlluringRooster2", "AlluringRooster3", "AlluringRooster4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/AlluringRooster.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Alluring Rooster",
+            type: "Regen",
+            health: 72000,
+            speed: 0.8,
+            damage: 10,
+            killValue: 1730,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.18,
+            regen: 1000,
+            armour: 300
+        }
+    },
+    "Neptunian Megalodon": {
+        atlasData: {
+            "frames": {
+                "NeptunianMegalodon1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NeptunianMegalodon2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NeptunianMegalodon3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NeptunianMegalodon4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["NeptunianMegalodon1", "NeptunianMegalodon2", "NeptunianMegalodon3", "NeptunianMegalodon4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/NeptunianMegalodon.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Neptunian Megalodon",
+            type: "SlowImmune",
+            health: 80000,
+            speed: 1.1,
+            damage: 5,
+            killValue: 2150,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.06,
+            slowImmune: true
+        }
+    },
+    "Kingda Ka Zipper": {
+        atlasData: {
+            "frames": {
+                "KingdaKaZipper1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "KingdaKaZipper2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "KingdaKaZipper3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "KingdaKaZipper4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["KingdaKaZipper1", "KingdaKaZipper2", "KingdaKaZipper3", "KingdaKaZipper4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/KingdaKaZipper.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Kingda Ka Zipper",
+            type: "Fast",
+            health: 128000,
+            speed: 2,
+            damage: 10,
+            killValue: 3200,
+            rotationSpeed: 1.4,
+            isLooking: false,
+            animationSpeed: 0.10,
+            armour: 400
         }
     },
     "Jr. Rhombicosidodecahedron": {
@@ -1511,7 +1671,7 @@ const zappedAtlasData = {
     }
 }
 
-//JrRhombicosidodecahedron
+//
 
 export { allEnemyData, zappedAtlasData }
 
