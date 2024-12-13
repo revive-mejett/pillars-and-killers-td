@@ -108,7 +108,7 @@ export class WaveTimeline {
         // boss #4 marker
         if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Unforgiving Stephenson 2-18")) {
             outlineColour = "0xFF0000"
-            colour = 0xFF6600
+            colour = 0xFFFF00
         }
         // boss #5 marker
         if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "TON 618")) {
