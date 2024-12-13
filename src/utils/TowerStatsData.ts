@@ -673,7 +673,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 500,
                         damage: 60000,
                         fireRate: 0.4,
-                        cost: 300000
+                        cost: 150000
                     }
                 ],
                 visualUpgrades: [{
