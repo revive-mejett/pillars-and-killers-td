@@ -1658,7 +1658,7 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Jr. Rhombicosidodecahedron",
+                enemy: "Sophomore Dodecahedron",
                 count: 8,
                 spacingMillis: 1000
             },
