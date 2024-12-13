@@ -1659,48 +1659,38 @@ const productionWaves = [
         [
             {
                 enemy: "Jr. Rhombicosidodecahedron",
-                count: 5,
+                count: 8,
                 spacingMillis: 1000
             },
             {
-                enemy: "Irresistible Phoenix",
-                count: 5,
-                spacingMillis: 1000
+                enemy: "Neptunian Megalodon",
+                count: 2,
+                spacingMillis: 1500
             },
-            {
-                enemy: "Challenger Deep Kraken",
-                count: 5,
-                spacingMillis: 1000
-            },
-            {
-                enemy: "Near-Light Zoomer",
-                count: 5,
-                spacingMillis: 1000
-            },
-            {
-                enemy: "Carbon Nanotube Annihilator",
-                count: 5,
-                spacingMillis: 1000
-            },
-            {
-                enemy: "2^1024p 137632",
-                count: 5,
-                spacingMillis: 1000
-            },
-            {
-                enemy: "Merciless Loch Ness",
-                count: 5,
-                spacingMillis: 1000
-            }
         ]
     ),
     // wave 63 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Sophomore Dodecahedron",
+                count: 4,
+                spacingMillis: 500
+            },
+            {
+                enemy: "12p 2028",
+                count: 8,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 4,
+                spacingMillis: 500
             }
         ]
     ),
@@ -1708,19 +1698,39 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 5,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 14,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 3000
+            },
         ]
     ),
     // wave 65 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Neptunian Megalodon",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 13,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -1728,9 +1738,14 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Titanium Bruiser",
+                count: 8,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 6,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -1738,39 +1753,79 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Alluring Rooster",
+                count: 4,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 7,
+                spacingMillis: 900
+            },
         ]
     ),
     // wave 68 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Furious Raven",
+                count: 10,
+                spacingMillis: 300
+            },
         ]
     ),
     // wave 69 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Neptunian Megalodon",
+                count: 7,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 2,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 7,
+                spacingMillis: 1000
+            },
         ]
     ),
     // wave 70 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Kingda Ka Zipper",
+                count: 12,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 12,
+                spacingMillis: 400
             }
         ]
     ),
@@ -1778,19 +1833,54 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 7000
-            }
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 5,
+                spacingMillis: 5
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 4,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 200
+            },
         ]
     ),
     // wave 72 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
+                enemy: "256p 2152",
                 count: 1,
-                spacingMillis: 7000
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 8,
+                spacingMillis: 900
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 8,
+                spacingMillis: 900
             }
         ]
     ),
@@ -1798,9 +1888,9 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Obsidian Ripper",
+                count: 6,
+                spacingMillis: 2500
             }
         ]
     ),
@@ -1808,9 +1898,19 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 8,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 4,
+                spacingMillis: 850
             }
         ]
     ),
@@ -1818,9 +1918,14 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 5,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -1828,9 +1933,19 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "256p 2152",
+                count: 5,
+                spacingMillis: 900
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 350
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 6,
+                spacingMillis: 1750
             }
         ]
     ),
@@ -1838,9 +1953,9 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Enraged Eagle",
+                count: 8,
+                spacingMillis: 1400
             }
         ]
     ),
@@ -1848,9 +1963,19 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 3,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 8,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -1858,10 +1983,25 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "256p 2152",
+                count: 6,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 7,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 7,
+                spacingMillis: 800
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 800
+            },
         ]
     ),
     // wave 80 boss =============================================
