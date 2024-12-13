@@ -1618,13 +1618,13 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "TON 618",
+                enemy: "Remorseless Rigel",
                 count: 1,
                 spacingMillis: 7000
             }
         ]
     ),
-    // wave 61 placeholder wave
+    // wave 61
     new Wave(
         [
             {
@@ -1657,26 +1657,6 @@ const productionWaves = [
     // wave 62 placeholder wave
     new Wave(
         [
-            // {
-            //     enemy: "Infant Circle",
-            //     count: 5,
-            //     spacingMillis: 1000
-            // },
-            // {
-            //     enemy: "Toddler Sphere",
-            //     count: 5,
-            //     spacingMillis: 1000
-            // },
-            // {
-            //     enemy: "Freshman Octahedron",
-            //     count: 5,
-            //     spacingMillis: 1000
-            // },
-            // {
-            //     enemy: "Sophomore Dodecahedron",
-            //     count: 5,
-            //     spacingMillis: 1000
-            // },
             {
                 enemy: "Enraged Eagle",
                 count: 5,
@@ -1694,6 +1674,376 @@ const productionWaves = [
         [
             {
                 enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 64 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 65 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 66 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 67 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 68 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 69 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 70 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 71 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 72 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 73 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 74 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 75 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 76 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 77 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 78 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 79 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 80 boss =============================================
+    new Wave(
+        [
+            {
+                enemy: "Unforgiving Stephenson 2-18",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 81 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 82 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 83 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 84 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 85 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 86 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 87 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 88 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 89 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 90 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 91 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 92 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 93 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 94 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 95 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 96 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 97 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 98 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 99 placeholder wave
+    new Wave(
+        [
+            {
+                enemy: "Toddler Sphere",
+                count: 1,
+                spacingMillis: 7000
+            }
+        ]
+    ),
+    // wave 100 final boss =============================================
+    new Wave(
+        [
+            {
+                enemy: "TON 618",
                 count: 1,
                 spacingMillis: 7000
             }
