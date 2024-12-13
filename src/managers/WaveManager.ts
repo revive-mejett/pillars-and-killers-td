@@ -70,6 +70,12 @@ export class WaveManager {
         eventDispatcher.on("boss1Killed", () => this.updateNextCheckpointWave(1))
         eventDispatcher.on("boss2Killed", () => this.updateNextCheckpointWave(2))
         eventDispatcher.on("boss3Killed", () => this.updateNextCheckpointWave(3))
+        eventDispatcher.on("boss4Killed", () => this.updateNextCheckpointWave(4))
+        eventDispatcher.on("boss5Killed", () => {
+            console.log("WINNER!!! TODO implement winner ui and option freeplay!")
+            this.bossPresent = false
+            this.cooldownToNextWave = 0
+        })
 
     }
 
@@ -301,6 +307,7 @@ export class WaveManager {
 
 
     cleanUpResources() {
+        console.log("clean up resources wave manager")
         this.waveTicker?.stop()
         this.waveTicker?.destroy()
         this.wavesTicker?.stop()
@@ -310,5 +317,6 @@ export class WaveManager {
         eventDispatcher.clearListenersOfEvent("boss1Killed")
         eventDispatcher.clearListenersOfEvent("boss2Killed")
         eventDispatcher.clearListenersOfEvent("boss3Killed")
+        eventDispatcher.clearListenersOfEvent("boss4Killed")
     }
 }

@@ -2,74 +2,6 @@ import { EnemyData } from "src/ts/types/EnemyData"
 
 //TODO later move enemy data to game data json
 const allEnemyData: EnemyData = {
-
-    "TON 618": {
-        atlasData: {
-            "frames": {
-                "TON618_1":
-                {
-                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
-                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
-                    "sourceSize": { "w": 250, "h": 250 }
-                },
-                "TON618_2":
-                {
-                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
-                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
-                    "sourceSize": { "w": 250, "h": 250 }
-                },
-                "TON618_3":
-                {
-                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
-                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
-                    "sourceSize": { "w": 250, "h": 250 }
-                },
-                "TON618_4":
-                {
-                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
-                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
-                    "sourceSize": { "w": 250, "h": 250 }
-                },
-                "TON618_5":
-                {
-                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
-                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
-                    "sourceSize": { "w": 250, "h": 250 }
-                },
-                "TON618_6":
-                {
-                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
-                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
-                    "sourceSize": { "w": 250, "h": 250 }
-                },
-            },
-
-            "animations": {
-                "enemy": ["TON618_1", "TON618_2", "TON618_3", "TON618_4", "TON618_5", "TON618_6"]
-            },
-
-            "meta": {
-                "image": "assets/spritesheets/TON618.png",
-                "format": "RGBA8888",
-                "size": { "w": 1500, "h": 250 },
-                "scale": "1"
-            }
-        },
-        "stats": {
-            className: "TON 618",
-            type: "Boss",
-            health: 999999999,
-            speed: 0.2,
-            damage: 999999999,
-            killValue: 1000000,
-            rotationSpeed: 0.01,
-            isLooking: false,
-            animationSpeed: 0.05,
-            regen: 0,
-            armour: 42000,
-            slowImmune: false
-        }
-    },
     "Infant Circle": {
         atlasData: {
             "frames": {
@@ -479,7 +411,7 @@ const allEnemyData: EnemyData = {
             health: 10000,
             speed: 0.5,
             damage: 9999,
-            killValue: 500,
+            killValue: 2000,
             rotationSpeed: 0.1,
             isLooking: false,
             animationSpeed: 0.05,
@@ -1203,7 +1135,7 @@ const allEnemyData: EnemyData = {
             speed: 0.7,
             damage: 10,
             killValue: 885,
-            armour: 320,
+            armour: 540,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.21
@@ -1308,8 +1240,8 @@ const allEnemyData: EnemyData = {
             health: 42000,
             speed: 1.2,
             damage: 6,
-            killValue: 1300,
-            armour: 30,
+            killValue: 1450,
+            armour: 120,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0,
@@ -1373,12 +1305,558 @@ const allEnemyData: EnemyData = {
             health: 500000,
             speed: 1,
             damage: 99999,
-            killValue: 30000,
+            killValue: 75000,
             rotationSpeed: 0.18,
             isLooking: false,
             animationSpeed: 0.1,
             regen: 500,
             armour: 700
+        }
+    },
+    "Sophomore Dodecahedron": {
+        atlasData: {
+            "frames": {
+                "SophomoreDodecahedron1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SophomoreDodecahedron2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "SophomoreDodecahedron3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["SophomoreDodecahedron1", "SophomoreDodecahedron2", "SophomoreDodecahedron3"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/SophomoreDodecahedron.png",
+                "format": "RGBA8888",
+                "size": { "w": 750, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Sophomore Dodecahedron",
+            type: "Normal",
+            health: 55000,
+            speed: 0.8,
+            damage: 8,
+            killValue: 1300,
+            rotationSpeed: 0.24,
+            isLooking: false,
+            animationSpeed: 0.11,
+            armour: 350
+        }
+    },
+    "Alluring Rooster": {
+        atlasData: {
+            "frames": {
+                "AlluringRooster1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "AlluringRooster2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "AlluringRooster3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "AlluringRooster4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["AlluringRooster1", "AlluringRooster2", "AlluringRooster3", "AlluringRooster4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/AlluringRooster.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Alluring Rooster",
+            type: "Regen",
+            health: 72000,
+            speed: 0.8,
+            damage: 10,
+            killValue: 1730,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.18,
+            regen: 1000,
+            armour: 300
+        }
+    },
+    "Neptunian Megalodon": {
+        atlasData: {
+            "frames": {
+                "NeptunianMegalodon1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NeptunianMegalodon2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NeptunianMegalodon3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NeptunianMegalodon4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["NeptunianMegalodon1", "NeptunianMegalodon2", "NeptunianMegalodon3", "NeptunianMegalodon4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/NeptunianMegalodon.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Neptunian Megalodon",
+            type: "SlowImmune",
+            health: 80000,
+            speed: 1.1,
+            damage: 5,
+            killValue: 2150,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.06,
+            slowImmune: true
+        }
+    },
+    "Kingda Ka Zipper": {
+        atlasData: {
+            "frames": {
+                "KingdaKaZipper1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "KingdaKaZipper2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "KingdaKaZipper3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "KingdaKaZipper4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["KingdaKaZipper1", "KingdaKaZipper2", "KingdaKaZipper3", "KingdaKaZipper4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/KingdaKaZipper.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Kingda Ka Zipper",
+            type: "Fast",
+            health: 128000,
+            speed: 3,
+            damage: 10,
+            killValue: 3200,
+            rotationSpeed: 1.4,
+            isLooking: false,
+            animationSpeed: 0.10,
+            armour: 400
+        }
+    },
+    "Obsidian Ripper": {
+        atlasData: {
+            "frames": {
+                "ObsidianRipper1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ObsidianRipper2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ObsidianRipper3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ObsidianRipper4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["ObsidianRipper1", "ObsidianRipper2", "ObsidianRipper3", "ObsidianRipper4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/ObsidianRipper.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Obsidian Ripper",
+            type: "Armoured",
+            health: 140000,
+            speed: 0.7,
+            damage: 10,
+            killValue: 4700,
+            armour: 2200,
+            rotationSpeed: 0.07,
+            isLooking: false,
+            animationSpeed: 0.07
+        }
+    },
+    "256p 2152": {
+        atlasData: {
+            "frames": {
+                "256p 2152_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "256p 2152_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["256p 2152_1", "256p 2152_2", "256p 2152_3", "256p 2152_4", "256p 2152_5", "256p 2152_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/256p2152.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "256p 2152",
+            type: "EMP",
+            health: 200000,
+            speed: 1,
+            damage: 30,
+            killValue: 5550,
+            armour: 800,
+            rotationSpeed: 1.2,
+            isLooking: false,
+            animationSpeed: 0.27
+        }
+    },
+    "Enraged Eagle": {
+        atlasData: {
+            "frames": {
+                "EnragedEagle1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "EnragedEagle2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["EnragedEagle1", "EnragedEagle2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/EnragedEagle.png",
+                "format": "RGBA8888",
+                "size": { "w": 500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Enraged Eagle",
+            type: "Hybrid",
+            health: 370000,
+            speed: 0.7,
+            damage: 12,
+            killValue: 7200,
+            armour: 900,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.02,
+        }
+    },
+    "Unforgiving Stephenson 2-18": {
+        atlasData: {
+            "frames": {
+                "UnforgivingStephenson 2-18_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["UnforgivingStephenson 2-18_1", "UnforgivingStephenson 2-18_2", "UnforgivingStephenson 2-18_3", "UnforgivingStephenson 2-18_4", "UnforgivingStephenson 2-18_5", "UnforgivingStephenson 2-18_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/UnforgivingStephenson218.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Unforgiving Stephenson 2-18",
+            type: "Boss",
+            health: 8000000,
+            speed: 0.5,
+            damage: 99999,
+            killValue: 300000,
+            rotationSpeed: 0.13,
+            isLooking: false,
+            animationSpeed: 0.1,
+            regen: 0,
+            armour: 9500
+        }
+    },
+    "Jr. Rhombicosidodecahedron": {
+        atlasData: {
+            "frames": {
+                "JrRhombicosidodecahedron1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "JrRhombicosidodecahedron2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "JrRhombicosidodecahedron3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["JrRhombicosidodecahedron1", "JrRhombicosidodecahedron2", "JrRhombicosidodecahedron3"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/JrRhombicosidodecahedron.png",
+                "format": "RGBA8888",
+                "size": { "w": 750, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Jr. Rhombicosidodecahedron",
+            type: "Normal",
+            health: 650000,
+            speed: 0.7,
+            damage: 10,
+            killValue: 4800,
+            rotationSpeed: 0.10,
+            isLooking: false,
+            animationSpeed: 0.06,
+            armour: 1700
+        }
+    },
+    "TON 618": {
+        atlasData: {
+            "frames": {
+                "TON618_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "TON618_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["TON618_1", "TON618_2", "TON618_3", "TON618_4", "TON618_5", "TON618_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/TON618.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "TON 618",
+            type: "Boss",
+            health: 999999999, //999999999
+            speed: 0.2,
+            damage: 999999999,
+            killValue: 1000000,
+            rotationSpeed: 0.01,
+            isLooking: false,
+            animationSpeed: 0.05,
+            regen: 0,
+            armour: 42000,
+            slowImmune: false
         }
     },
 }
@@ -1416,6 +1894,8 @@ const zappedAtlasData = {
         "scale": "1"
     }
 }
+
+//UnforgivingStephenson218
 
 export { allEnemyData, zappedAtlasData }
 

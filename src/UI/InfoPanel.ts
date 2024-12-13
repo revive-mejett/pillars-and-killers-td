@@ -132,7 +132,7 @@ export class InfoPanel {
         const enemyNickText = UIHelper.createText(0 + padding, 5 + padding,`${enemy.nick}`, 20, "0xFFFFFF")
         infoPanel.addChild(enemyNickText)
 
-        const enemyClassText = UIHelper.createText(0 + padding, 30 + padding,`${enemy.enemyClassName}`, 15, "0xA7A7A7")
+        const enemyClassText = UIHelper.createText(0 + padding, 30 + padding,`${enemy.enemyClassName}`, 13, "0xA7A7A7")
         infoPanel.addChild(enemyClassText)
 
 
@@ -172,7 +172,6 @@ export class InfoPanel {
             if (!enemy.isAlive) {
                 healthBar.deleteBar()
                 updateTicker.stop()
-                updateTicker.destroy()
                 hud.clearInfoPanel()
             }
             UIHelper.updateText(enemyHealthText.children[0] as PIXI.Text, `${enemy.health} / ${enemy.totalHealth}`)
