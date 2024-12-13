@@ -1658,13 +1658,38 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Enraged Eagle",
+                enemy: "Jr. Rhombicosidodecahedron",
                 count: 5,
                 spacingMillis: 1000
             },
             {
-                enemy: "256p 2152",
-                count: 10,
+                enemy: "Irresistible Phoenix",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 5,
                 spacingMillis: 1000
             }
         ]

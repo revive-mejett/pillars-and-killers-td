@@ -1357,7 +1357,7 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0.24,
             isLooking: false,
             animationSpeed: 0.11,
-            armour: 350
+            armour: 1000
         }
     },
     "Alluring Rooster": {
@@ -1411,7 +1411,7 @@ const allEnemyData: EnemyData = {
             isLooking: true,
             animationSpeed: 0.18,
             regen: 1000,
-            armour: 300
+            armour: 1000
         }
     },
     "Neptunian Megalodon": {
@@ -1464,7 +1464,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.06,
-            slowImmune: true
+            slowImmune: true,
+            armour: 1700
         }
     },
     "Kingda Ka Zipper": {
@@ -1511,13 +1512,13 @@ const allEnemyData: EnemyData = {
             className: "Kingda Ka Zipper",
             type: "Fast",
             health: 128000,
-            speed: 3,
+            speed: 2.1,
             damage: 10,
             killValue: 3200,
             rotationSpeed: 1.4,
             isLooking: false,
             animationSpeed: 0.10,
-            armour: 400
+            armour: 2200
         }
     },
     "Obsidian Ripper": {
@@ -1567,7 +1568,7 @@ const allEnemyData: EnemyData = {
             speed: 0.7,
             damage: 10,
             killValue: 4700,
-            armour: 2200,
+            armour: 12000,
             rotationSpeed: 0.07,
             isLooking: false,
             animationSpeed: 0.07
@@ -1632,10 +1633,10 @@ const allEnemyData: EnemyData = {
             speed: 1,
             damage: 30,
             killValue: 5550,
-            armour: 800,
+            armour: 7000,
             rotationSpeed: 1.2,
             isLooking: false,
-            animationSpeed: 0.27
+            animationSpeed: 0.27,
         }
     },
     "Enraged Eagle": {
@@ -1673,10 +1674,10 @@ const allEnemyData: EnemyData = {
             speed: 0.7,
             damage: 12,
             killValue: 7200,
-            armour: 900,
+            armour: 5000,
             rotationSpeed: 0,
             isLooking: true,
-            animationSpeed: 0.02,
+            animationSpeed: 0.02
         }
     },
     "Unforgiving Stephenson 2-18": {
@@ -1782,14 +1783,329 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Jr. Rhombicosidodecahedron",
             type: "Normal",
-            health: 650000,
+            health: 480000,
             speed: 0.7,
             damage: 10,
-            killValue: 4800,
+            killValue: 7000,
             rotationSpeed: 0.10,
             isLooking: false,
             animationSpeed: 0.06,
-            armour: 1700
+            armour: 8500
+        }
+    },
+    "Irresistible Phoenix": {
+        atlasData: {
+            "frames": {
+                "IrresistiblePhoenix1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "IrresistiblePhoenix2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "IrresistiblePhoenix3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "IrresistiblePhoenix4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["IrresistiblePhoenix1", "IrresistiblePhoenix2", "IrresistiblePhoenix3", "IrresistiblePhoenix4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/IrresistiblePhoenix.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Irresistible Phoenix",
+            type: "Regen",
+            health: 570000,
+            speed: 0.6,
+            damage: 10,
+            killValue: 9200,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.1,
+            regen: 12500,
+            armour: 8000
+        }
+    },
+    "Challenger Deep Kraken": {
+        atlasData: {
+            "frames": {
+                "ChallengerDeepKraken1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ChallengerDeepKraken2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ChallengerDeepKraken3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "ChallengerDeepKraken4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["ChallengerDeepKraken1", "ChallengerDeepKraken2", "ChallengerDeepKraken3", "ChallengerDeepKraken4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/ChallengerDeepKraken.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Challenger Deep Kraken",
+            type: "SlowImmune",
+            health: 750000,
+            speed: 1.2,
+            damage: 10,
+            killValue: 11500,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.04,
+            slowImmune: true,
+            armour: 12000
+        }
+    },
+    "Near-Light Zoomer": {
+        atlasData: {
+            "frames": {
+                "NearLightZoomer1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NearLightZoomer2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NearLightZoomer3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "NearLightZoomer4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["NearLightZoomer1", "NearLightZoomer2", "NearLightZoomer3", "NearLightZoomer4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/NearLightZoomer.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Near-Light Zoomer",
+            type: "Fast",
+            health: 1200000,
+            speed: 2.8,
+            damage: 12,
+            killValue: 13750,
+            rotationSpeed: 1.3,
+            isLooking: false,
+            animationSpeed: 0.22,
+            armour: 15000
+        }
+    },
+    "Carbon Nanotube Annihilator": {
+        atlasData: {
+            "frames": {
+                "CarbonNanotubeAnnihilator1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "CarbonNanotubeAnnihilator2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "CarbonNanotubeAnnihilator3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "CarbonNanotubeAnnihilator4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["CarbonNanotubeAnnihilator1", "CarbonNanotubeAnnihilator2", "CarbonNanotubeAnnihilator3", "CarbonNanotubeAnnihilator4"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/CarbonNanotubeAnnihilator.png",
+                "format": "RGBA8888",
+                "size": { "w": 1000, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Carbon Nanotube Annihilator",
+            type: "Armoured",
+            health: 1500000,
+            speed: 0.7,
+            damage: 18,
+            killValue: 15200,
+            armour: 22000,
+            rotationSpeed: 1,
+            isLooking: true,
+            animationSpeed: 0.07
+        }
+    },
+    "2^1024p 137632": {
+        atlasData: {
+            "frames": {
+                "2^1024p 137632_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "2^1024p 137632_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "2^1024p 137632_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "2^1024p 137632_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "2^1024p 137632_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["2^1024p 137632_1", "2^1024p 137632_2", "2^1024p 137632_3", "2^1024p 137632_4", "2^1024p 137632_5"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/2e1024p137632.png",
+                "format": "RGBA8888",
+                "size": { "w": 1250, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "2^1024p 137632",
+            type: "EMP",
+            health: 1750000,
+            speed: 0.9,
+            damage: 30,
+            killValue: 18200,
+            armour: 11000,
+            rotationSpeed: 0.11,
+            isLooking: false,
+            animationSpeed: 0.25,
+        }
+    },
+    "Merciless Loch Ness": {
+        atlasData: {
+            "frames": {
+                "MercilessLochNess1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "MercilessLochNess2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                }
+            },
+
+            "animations": {
+                "enemy": ["MercilessLochNess1", "MercilessLochNess2"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/MercilessLochNess.png",
+                "format": "RGBA8888",
+                "size": { "w": 500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Merciless Loch Ness",
+            type: "Hybrid",
+            health: 2100000,
+            speed: 0.7,
+            damage: 20,
+            killValue: 7200,
+            armour: 20000,
+            rotationSpeed: 0,
+            isLooking: true,
+            animationSpeed: 0.02,
+            regen: 7500
         }
     },
     "TON 618": {
