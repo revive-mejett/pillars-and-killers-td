@@ -1264,7 +1264,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 46 placeholder wave
+    // wave 46 
     new Wave(
         [
             {
@@ -1289,7 +1289,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 47 placeholder wave
+    // wave 47 
     new Wave(
         [
             {
@@ -1309,7 +1309,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 48 placeholder wave
+    // wave 48 
     new Wave(
         [
             {
@@ -1334,7 +1334,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 49 placeholder wave
+    // wave 49 
     new Wave(
         [
             {
@@ -1344,7 +1344,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 50 placeholder wave
+    // wave 50 
     new Wave(
         [
             {
@@ -1369,7 +1369,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 51 placeholder wave
+    // wave 51 
     new Wave(
         [
             {
@@ -1394,7 +1394,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 52 placeholder wave
+    // wave 52 
     new Wave(
         [
             {
@@ -1429,7 +1429,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 53 placeholder wave
+    // wave 53 
     new Wave(
         [
             {
@@ -1449,7 +1449,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 54 placeholder wave
+    // wave 54 
     new Wave(
         [
             {
@@ -1464,7 +1464,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 55 placeholder wave
+    // wave 55 
     new Wave(
         [
             {
@@ -1489,7 +1489,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 56 placeholder wave
+    // wave 56 
     new Wave(
         [
             {
@@ -1544,7 +1544,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 57 placeholder wave
+    // wave 57 
     new Wave(
         [
             {
@@ -1574,7 +1574,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 58 placeholder wave
+    // wave 58 
     new Wave(
         [
             {
@@ -1594,7 +1594,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 59 placeholder wave
+    // wave 59 
     new Wave(
         [
             {
@@ -1654,7 +1654,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 62 placeholder wave
+    // wave 62 
     new Wave(
         [
             {
@@ -1669,7 +1669,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 63 placeholder wave
+    // wave 63 
     new Wave(
         [
             {
@@ -1694,7 +1694,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 64 placeholder wave
+    // wave 64 
     new Wave(
         [
             {
@@ -1719,7 +1719,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 65 placeholder wave
+    // wave 65 
     new Wave(
         [
             {
@@ -1734,7 +1734,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 66 placeholder wave
+    // wave 66 
     new Wave(
         [
             {
@@ -1749,7 +1749,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 67 placeholder wave
+    // wave 67 
     new Wave(
         [
             {
@@ -1769,7 +1769,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 68 placeholder wave
+    // wave 68 
     new Wave(
         [
             {
@@ -1789,7 +1789,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 69 placeholder wave
+    // wave 69 
     new Wave(
         [
             {
@@ -1814,7 +1814,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 70 placeholder wave
+    // wave 70 
     new Wave(
         [
             {
@@ -1829,7 +1829,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 71 placeholder wave
+    // wave 71 
     new Wave(
         [
             {
@@ -1859,7 +1859,7 @@ const productionWaves = [
             },
         ]
     ),
-    // wave 72 placeholder wave
+    // wave 72 
     new Wave(
         [
             {
@@ -1884,7 +1884,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 73 placeholder wave
+    // wave 73 
     new Wave(
         [
             {
@@ -1894,7 +1894,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 74 placeholder wave
+    // wave 74 
     new Wave(
         [
             {
@@ -1914,7 +1914,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 75 placeholder wave
+    // wave 75 
     new Wave(
         [
             {
@@ -1929,7 +1929,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 76 placeholder wave
+    // wave 76 
     new Wave(
         [
             {
@@ -1949,7 +1949,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 77 placeholder wave
+    // wave 77 
     new Wave(
         [
             {
@@ -1959,7 +1959,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 78 placeholder wave
+    // wave 78 
     new Wave(
         [
             {
@@ -1979,7 +1979,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 79 placeholder wave
+    // wave 79 
     new Wave(
         [
             {
@@ -2014,53 +2014,108 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 81 placeholder wave
+    // wave 81 
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Enraged Eagle",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 3,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 3,
+                spacingMillis: 1200
             }
         ]
     ),
-    // wave 82 placeholder wave
+    // wave 82 
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 7,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 4,
+                spacingMillis: 1400
             }
         ]
     ),
-    // wave 83 placeholder wave
+    // wave 83
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Irresistible Phoenix",
+                count: 6,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 25
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 6,
+                spacingMillis: 2400
+            },
+        ]
+    ),
+    // wave 84
+    new Wave(
+        [
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 4,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "256p 2152",
+                count: 5,
+                spacingMillis: 1337
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 7,
+                spacingMillis: 1600
             }
         ]
     ),
-    // wave 84 placeholder wave
+    // wave 85
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
-        ]
-    ),
-    // wave 85 placeholder wave
-    new Wave(
-        [
+                enemy: "Challenger Deep Kraken",
+                count: 4,
+                spacingMillis: 8000
+            },
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Near-Light Zoomer",
+                count: 4,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -2068,29 +2123,79 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Irresistible Phoenix",
+                count: 6,
+                spacingMillis: 1050
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 7,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 8,
+                spacingMillis: 400
+            },
         ]
     ),
     // wave 87 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 2,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 4,
+                spacingMillis: 3500
+            },
         ]
     ),
     // wave 88 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Carbon Nanotube Annihilator",
+                count: 3,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 3,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 10,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -2098,9 +2203,9 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Near-Light Zoomer",
+                count: 6,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -2108,19 +2213,49 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "2^1024p 137632",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 6,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 5,
+                spacingMillis: 250
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 2,
+                spacingMillis: 3300
+            },
         ]
     ),
     // wave 91 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
+                enemy: "Carbon Nanotube Annihilator",
+                count: 3,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
                 count: 1,
-                spacingMillis: 7000
+                spacingMillis: 500
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 12,
+                spacingMillis: 500
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 3,
+                spacingMillis: 1600
             }
         ]
     ),
@@ -2128,19 +2263,44 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Irresistible Phoenix",
+                count: 6,
+                spacingMillis: 750
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 2,
+                spacingMillis: 1250
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 7,
+                spacingMillis: 1100
+            },
         ]
     ),
     // wave 93 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "2^1024p 137632",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 4,
+                spacingMillis: 1400
             }
         ]
     ),
