@@ -2308,60 +2308,295 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
+                enemy: "Merciless Loch Ness",
+                count: 4,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 7,
+                spacingMillis: 1000
             }
         ]
     ),
-    // wave 95 placeholder wave
+    // wave 95 LONG WAVE
     new Wave(
         [
             {
+                enemy: "2^1024p 137632",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 3,
+                spacingMillis: 400
+            },
+            {
                 enemy: "Toddler Sphere",
                 count: 1,
-                spacingMillis: 7000
-            }
+                spacingMillis: 400
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 1,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 6,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 1,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 1,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Cute Crow",
+                count: 1,
+                spacingMillis: 100
+            },
+            {
+                enemy: "4p 2024",
+                count: 1,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 6,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 2,
+                spacingMillis: 1000
+            },
         ]
     ),
-    // wave 96 placeholder wave
+    // wave 96 LONG WAVE
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
+                enemy: "Obsidian Ripper",
+                count: 4,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Furious Raven",
                 count: 1,
-                spacingMillis: 7000
-            }
+                spacingMillis: 1200
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Earthling Flake",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Cute Crow",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 5,
+                spacingMillis: 700
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 2,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Infant Circle",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 3,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 1,
+                spacingMillis: 1
+            },
         ]
     ),
-    // wave 97 placeholder wave
+    // wave 97 LONG WAVE
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
+                enemy: "Carbon Nanotube Annihilator",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Little Sparrow",
                 count: 1,
-                spacingMillis: 7000
-            }
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 7,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 3,
+                spacingMillis: 50
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 3,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 7,
+                spacingMillis: 800
+            },
         ]
     ),
-    // wave 98 placeholder wave
+    // wave 98 LONG WAVE
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
+                enemy: "2^1024p 137632",
+                count: 6,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Earthling Flake",
                 count: 1,
-                spacingMillis: 7000
-            }
+                spacingMillis: 10
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 5,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 8,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 1,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 100
+            },
+            {
+                enemy: "12p 2028",
+                count: 7,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 10,
+                spacingMillis: 2000
+            },
         ]
     ),
     // wave 99 placeholder wave
     new Wave(
         [
             {
-                enemy: "Toddler Sphere",
-                count: 1,
-                spacingMillis: 7000
-            }
+                enemy: "Merciless Loch Ness",
+                count: 4,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 4,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 4,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 3,
+                spacingMillis: 2000
+            },
         ]
     ),
     // wave 100 final boss =============================================
