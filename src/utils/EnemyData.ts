@@ -1744,7 +1744,73 @@ const allEnemyData: EnemyData = {
             armour: 900,
             rotationSpeed: 0,
             isLooking: true,
-            animationSpeed: 0.7,
+            animationSpeed: 0.02,
+        }
+    },
+    "Unforgiving Stephenson 2-18": {
+        atlasData: {
+            "frames": {
+                "UnforgivingStephenson 2-18_1":
+                {
+                    "frame": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_2":
+                {
+                    "frame": { "x": 250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_3":
+                {
+                    "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_4":
+                {
+                    "frame": { "x": 750, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_5":
+                {
+                    "frame": { "x": 1000, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+                "UnforgivingStephenson 2-18_6":
+                {
+                    "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
+                    "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
+                    "sourceSize": { "w": 250, "h": 250 }
+                },
+            },
+
+            "animations": {
+                "enemy": ["UnforgivingStephenson 2-18_1", "UnforgivingStephenson 2-18_2", "UnforgivingStephenson 2-18_3", "UnforgivingStephenson 2-18_4", "UnforgivingStephenson 2-18_5", "UnforgivingStephenson 2-18_6"]
+            },
+
+            "meta": {
+                "image": "assets/spritesheets/UnforgivingStephenson218.png",
+                "format": "RGBA8888",
+                "size": { "w": 1500, "h": 250 },
+                "scale": "1"
+            }
+        },
+        "stats": {
+            className: "Unforgiving Stephenson 2-18",
+            type: "Boss",
+            health: 8000000,
+            speed: 0.5,
+            damage: 99999,
+            killValue: 30000,
+            rotationSpeed: 0.13,
+            isLooking: false,
+            animationSpeed: 0.1,
+            regen: 0,
+            armour: 9500
         }
     },
     "Jr. Rhombicosidodecahedron": {
@@ -1830,7 +1896,7 @@ const zappedAtlasData = {
     }
 }
 
-//EnragedEagle
+//UnforgivingStephenson218
 
 export { allEnemyData, zappedAtlasData }
 
