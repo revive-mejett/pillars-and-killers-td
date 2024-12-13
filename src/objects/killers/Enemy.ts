@@ -385,8 +385,15 @@ function enemyDied(enemy: Enemy) {
         eventDispatcher.fireEvent("boss2Killed")
     }
     if (enemy.enemyClassName === "Remorseless Rigel") {
-        console.log("remorseless rigel killed akshan!")
         eventDispatcher.fireEvent("boss3Killed")
+    }
+    if (enemy.enemyClassName === "Unforgiving Stephenson 2-18") {
+        console.log("stephenson killed")
+        eventDispatcher.fireEvent("boss4Killed")
+    }
+    if (enemy.enemyClassName === "TON 618") {
+        console.log("ton 618 killed")
+        eventDispatcher.fireEvent("boss5Killed")
     }
 }
 
@@ -408,7 +415,7 @@ function bossToName(enemyClass: string) {
     case "Remorseless Rigel":
         // Alexandra
         return "Alexandra"
-    case "Unforgiving UY Scuti":
+    case "Unforgiving Stephenson 2-18":
         // Kyle
         return "Kyle"
     case "TON 618":

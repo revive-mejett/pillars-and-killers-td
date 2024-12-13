@@ -35,6 +35,8 @@ export class WaveTimeline {
         eventDispatcher.on("boss1Killed", () => this.renderNextWaves())
         eventDispatcher.on("boss2Killed", () => this.renderNextWaves())
         eventDispatcher.on("boss3Killed", () => this.renderNextWaves())
+        eventDispatcher.on("boss4Killed", () => this.renderNextWaves())
+        // eventDispatcher.on("boss5Killed", () => this.renderNextWaves())
 
         this.renderNextWaves()
 
@@ -104,10 +106,10 @@ export class WaveTimeline {
             colour = 0x609EFF
         }
         // boss #4 marker
-        // if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Unforgiving UY Scuti")) {
-        //     outlineColour = "0xFF0000"
-        //     colour = 0xFF6600
-        // }
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Unforgiving Stephenson 2-18")) {
+            outlineColour = "0xFF0000"
+            colour = 0xFF6600
+        }
         // boss #5 marker
         if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "TON 618")) {
             outlineColour = "0xFFFFFF"
