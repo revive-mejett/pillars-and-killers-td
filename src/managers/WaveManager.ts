@@ -71,7 +71,11 @@ export class WaveManager {
         eventDispatcher.on("boss2Killed", () => this.updateNextCheckpointWave(2))
         eventDispatcher.on("boss3Killed", () => this.updateNextCheckpointWave(3))
         eventDispatcher.on("boss4Killed", () => this.updateNextCheckpointWave(4))
-        eventDispatcher.on("boss5Killed", () => console.log("WINNER!!! TODO implement winner ui and option freeplay!"))
+        eventDispatcher.on("boss5Killed", () => {
+            console.log("WINNER!!! TODO implement winner ui and option freeplay!")
+            this.bossPresent = false
+            this.cooldownToNextWave = 0
+        })
 
     }
 
