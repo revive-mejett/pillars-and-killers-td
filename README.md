@@ -153,14 +153,14 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>Boss Killer. This one has no remorse, and is great at travelling at a really fast speed for such a boss.</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/560b0229-2eaa-47b6-9619-c799ade7e69c" witdh="125px" height="125px"></td>
+      <td><img src="https://github.com/user-attachments/assets/6934ac7b-0d33-424a-a667-6b5e45be901c" witdh="125px" height="125px"></td>
       <td>Sophomore Dodecahedron</td>
-      <td>TBD</td>
+      <td>He/she is maturing and he/she is strong and very healthy. He/she is trying to find a job and serve Iced Capps and donuts.</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/560b0229-2eaa-47b6-9619-c799ade7e69c" witdh="125px" height="125px"></td>
+      <td><img src="https://github.com/user-attachments/assets/84cab303-ff8c-48e9-a1c8-95a28ccfe369" witdh="125px" height="125px"></td>
       <td>Junior Rhombicosidodecahedron</td>
-      <td>TBD</td>
+      <td>He/she has bills to pay, and is living from paycheck to paycheck. Money is the root of all evil isnt it?</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
