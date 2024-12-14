@@ -169,7 +169,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/2c5a165d-b17c-434b-9ec7-373df0387c1e" witdh="125px" height="125px"></td>
-      <td>Unforgiving Stephenson 2-18r</td>
+      <td>Unforgiving Stephenson 2-18</td>
       <td>Boss Killer. A star walks into a bar. He asks for water. You are the bartender and must give broken dreadglass! He is heavily damage resistant and can widthstand even the strongest of your pillars.</td>
     </tr>
     <tr>
