@@ -168,6 +168,11 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>It's travelling at 206 km/hr (128 mph). Arms down, head back, hold on! It's very fast and you will see it reach the end in just seconds.</td>
     </tr>
     <tr>
+      <td><img src="https://github.com/user-attachments/assets/2c5a165d-b17c-434b-9ec7-373df0387c1e" witdh="125px" height="125px"></td>
+      <td>Unforgiving Stephenson 2-18r</td>
+      <td>Boss Killer. A star walks into a bar. He asks for water. You are the bartender and must give broken dreadglass! He is heavily damage resistant and can widthstand even the strongest of your pillars.</td>
+    </tr>
+    <tr>
       <td><img src="https://github.com/user-attachments/assets/d5c1735e-a10a-4740-8300-7783bf0b65a2" witdh="125px" height="125px"></td>
       <td>TON 618</td>
       <td>The ki.... th... it's a ton of... .. [inaudible]</td>
