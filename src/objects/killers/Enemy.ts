@@ -296,35 +296,29 @@ export class Enemy extends Entity {
         }
     }
 
-    takeDamage(damage: number) {
+    takeDamage(damage: number, muteImpactSound: boolean = false) {
 
         if (!this.isAlive) {
             return
         }
-
-
         const damageReduction = this.armour
-        // console.log("damage reduction", damageReduction)
-
 
         let actualDamage = damage + this.vulnerableDebuffStats.extraDamage - damageReduction
-        // console.log("actual damage", actualDamage)
+
 
         if (actualDamage < 0) {
             actualDamage = 0
         }
 
         const deflectedDamagePercent = Math.floor(damageReduction / damage * 100)
-        // const damagePercent = 100 - deflectedDamagePercent
-
-        // console.log(damagePercent)
-        // console.log(deflectedDamagePercent)
 
         //play a sound - chance increased the higher the deflected damage percent (100% deflected = always play)
         const rng = Math.floor(Math.random() * 100)
 
-        if (rng <= deflectedDamagePercent && this.armour > 0) {
-            eventDispatcher.fireEvent("enemyArmorSoundPlay")
+        //bosses always play armour sound even if mute sound is set to true
+
+        if ((!muteImpactSound && rng <= deflectedDamagePercent && this.armour > 0) || (this.enemyType === "Boss" && this.armour > 0)) {
+            eventDispatcher.fireEvent("enemyArmorSoundPlay", this.enemyType === "Boss")
         }
 
 

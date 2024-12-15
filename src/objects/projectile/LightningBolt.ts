@@ -9,15 +9,17 @@ const eventDispatcher = new EventDispatcher()
 
 export class LightningBolt extends Projectile {
     boltWidth: number;
+    towerLevel: number
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, boltWidth : number) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, boltWidth : number, towerLevel: number) {
         super(x, y, width, height, targetEnemy, damage, colour);
 
         this.graphics = new PIXI.Graphics()
         this.boltWidth = boltWidth
+        this.towerLevel = towerLevel
 
     }
 
@@ -25,7 +27,13 @@ export class LightningBolt extends Projectile {
 
         let elapsedTime = 0
 
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/zap.mp3", maxSources: 1, towerName: "Lightning Pillar", volume: 1})
+
+        //reduce frequency of sound playing on higher levels
+        const rng = Math.floor(Math.random() * this.towerLevel)
+        if (rng === 0) {
+            eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/zap.mp3", maxSources: 1, towerName: "Lightning Pillar", volume: 1})
+        }
+
 
         let enemyCenterPosition = this.targetEnemy?.getCenterPosition()
         let elapsedOnDeath : number = 0

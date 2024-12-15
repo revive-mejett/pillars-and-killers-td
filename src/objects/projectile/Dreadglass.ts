@@ -72,8 +72,8 @@ export class Dreadglass extends Projectile {
         //bosses only suffer a 5% armour reduction
         if (this.targetEnemy.enemyType === "Boss") {
 
-            //TON 618's armour cannot fall below 20000
-            if (this.targetEnemy.enemyClassName === "TON 618" && this.targetEnemy.armour <= 40000) {
+            //TON 618's armour cannot fall below 30000
+            if (this.targetEnemy.enemyClassName === "TON 618" && this.targetEnemy.armour <= 30000) {
                 this.targetEnemy.armour = 20000
                 return
             }
@@ -83,7 +83,7 @@ export class Dreadglass extends Projectile {
         } else {
             this.targetEnemy.armour -= this.armourReduction;
         }
-        
+
 
         if (this.targetEnemy.armour <= 0) {
             this.targetEnemy.armour = 0;

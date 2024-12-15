@@ -74,12 +74,12 @@ export class Missile extends Projectile {
 
         eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/missile_boom.mp3", maxSources: 12, towerName: "Missile Pillar", volume: 1, speed: 1})
 
-        enemies.forEach((enemy) => {
+        enemies.forEach((enemy, i) => {
             const enemyPosition = enemy.getCenterPosition()
             const distanceToImpact = new Vector(enemyPosition.x - impactPosition.x, enemyPosition.y - impactPosition.y).magnitude()
 
             if (distanceToImpact <= this.impactRadius) {
-                enemy.takeDamage(Math.ceil(this.damage * ((this.impactRadius - distanceToImpact/2) / this.impactRadius)))
+                enemy.takeDamage(Math.ceil(this.damage * ((this.impactRadius - distanceToImpact/2) / this.impactRadius)), i !== 0)
             }
         })
     }

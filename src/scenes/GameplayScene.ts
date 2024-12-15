@@ -158,11 +158,21 @@ export class GameplayScene extends Scene {
         this.towersPresent = this.towersPresent.filter(tower => !tower.isSold)
     }
 
-    playArmorSound() {
-        const rng = Math.floor(Math.random() * this.enemiesPresent.length)
+    playArmorSound(isBoss: boolean = false) {
+        console.log(isBoss)
 
-        if ( this.enemiesPresent.length <= 20 || rng <= Math.floor(Math.cbrt(this.enemiesPresent.length))) {
+        //always play armour impact for bosses
+        if (isBoss) {
             audioManager.playArmourSound()
+            return
+        }
+
+        const rng = Math.floor(Math.random() * this.enemiesPresent.length + Math.random() * this.towersPresent.length)
+
+        if (this.enemiesPresent.length + this.towersPresent.length <= 10 || rng <= Math.floor(Math.cbrt(this.enemiesPresent.length + this.towersPresent.length))) {
+            console.log("rng ", rng)
+            console.log("towers and enemies summed ", this.enemiesPresent.length + this.towersPresent.length)
+
         }
     }
 

@@ -220,7 +220,7 @@ export class WaveManager {
                 // spawnedEnemy.zIndex = 3
                 spawnedEnemy.spawn(gameplayScene.mapContainer)
                 if (this.currentWave === this.checkpointWave) {
-                    console.log("boss sent")
+                    //
                 }
 
 

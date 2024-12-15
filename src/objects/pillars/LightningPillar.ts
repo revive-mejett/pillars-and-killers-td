@@ -83,7 +83,7 @@ export class LightningPillar extends Tower {
 
                 //spawn a beam
                 if (this.targetedEnemy) {
-                    const beam = new LightningBolt(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, 0x77FFFF, 4)
+                    const beam = new LightningBolt(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, 0x77FFFF, 4, this.level)
                     beam.render(gameplaySceneContainer)
                     beam.fire(gameplayScene.app.ticker.deltaTime)
                 }
