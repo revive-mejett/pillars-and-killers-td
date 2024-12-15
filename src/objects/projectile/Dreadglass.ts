@@ -29,7 +29,7 @@ export class Dreadglass extends Projectile {
 
     fire(deltaTime : number) {
 
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/glass_break.mp3", maxSources: 6, towerName: "Dreadglass Pillar", volume: 0.3, speed: this.soundPitch})
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/glass_break.mp3", maxSources: 4, towerName: "Dreadglass Pillar", volume: 0.2, speed: this.soundPitch})
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
@@ -69,7 +69,21 @@ export class Dreadglass extends Projectile {
         if (!this.targetEnemy) {
             return
         }
-        this.targetEnemy.armour -= this.armourReduction;
+        //bosses only suffer a 5% armour reduction
+        if (this.targetEnemy.enemyType === "Boss") {
+
+            //TON 618's armour cannot fall below 20000
+            if (this.targetEnemy.enemyClassName === "TON 618" && this.targetEnemy.armour <= 40000) {
+                this.targetEnemy.armour = 20000
+                return
+            }
+
+            this.targetEnemy.armour -= Math.ceil(this.armourReduction * 0.05);
+
+        } else {
+            this.targetEnemy.armour -= this.armourReduction;
+        }
+        
 
         if (this.targetEnemy.armour <= 0) {
             this.targetEnemy.armour = 0;

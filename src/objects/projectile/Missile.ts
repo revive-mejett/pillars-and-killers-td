@@ -30,7 +30,7 @@ export class Missile extends Projectile {
 
     fire(deltaTime : number, enemies : Enemy[]) {
 
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/missile_whoosh.mp3", maxSources: 12, towerName: "Missile Pillar", volume: 0.7, speed: this.soundPitch})
+        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/missile_whoosh.mp3", maxSources: 6, towerName: "Missile Pillar", volume: 0.5, speed: this.soundPitch})
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
