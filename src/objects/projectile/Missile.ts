@@ -85,6 +85,7 @@ export class Missile extends Projectile {
     }
 
     private seekEnemy(enemies : Enemy[]) {
+        console.log("seek enemy")
         let bestEnemy : Enemy | undefined = undefined
         enemies.forEach(enemy => {
             // Check if the enemy is alive and within range

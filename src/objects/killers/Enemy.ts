@@ -146,12 +146,10 @@ export class Enemy extends Entity {
         })
 
         const targetTower = towersInRange[Math.floor(Math.random() * this.towers.length)]
-        console.log(this.towers.length)
 
 
 
         if (targetTower && !targetTower.isSold) {
-            
             const emp = new EMPBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, targetTower, this)
             emp.render(this.mapContainer)
             emp.fireTower(delta)
@@ -382,11 +380,9 @@ function enemyDied(enemy: Enemy) {
         eventDispatcher.fireEvent("boss3Killed")
     }
     if (enemy.enemyClassName === "Unforgiving Stephenson 2-18") {
-        console.log("stephenson killed")
         eventDispatcher.fireEvent("boss4Killed")
     }
     if (enemy.enemyClassName === "TON 618") {
-        console.log("ton 618 killed")
         eventDispatcher.fireEvent("boss5Killed")
     }
 }

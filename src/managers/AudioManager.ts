@@ -27,9 +27,9 @@ export class AudioManager {
         })
         sfx.play()
 
-        // setTimeout(() => {
-        //     sfx.destroy()
-        // }, 1000);
+        setTimeout(() => {
+            sfx.destroy()
+        }, 1000);
     }
 
     playSoundLimited(numberSources: number, maxSources: number, odds: number, path : string, volume?: number, speed?: number) {
@@ -57,6 +57,10 @@ export class AudioManager {
             volume: 0.25
         })
         sfxBuild.play()
+
+        setTimeout(() => {
+            sfxBuild.destroy()
+        }, 1000);
     }
 
 
@@ -70,6 +74,11 @@ export class AudioManager {
             volume: 0.4
         })
         sfxIceBeamFire.play()
+
+        setTimeout(() => {
+            sfxIceBeamFire.destroy()
+        }, 1000);
+
     }
 
     //enemy sounds
@@ -83,6 +92,10 @@ export class AudioManager {
             volume: 0.25
         })
         sfxEnemyArmour.play()
+
+        setTimeout(() => {
+            sfxEnemyArmour.destroy()
+        }, 1000);
     }
 
     playKilledSound() {
@@ -94,6 +107,10 @@ export class AudioManager {
             volume: 0.25
         })
         sfxEnemyDied.play()
+
+        setTimeout(() => {
+            sfxEnemyDied.destroy()
+        }, 1000);
     }
 
 

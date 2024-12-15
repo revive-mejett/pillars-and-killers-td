@@ -40,7 +40,7 @@ export class EMPBeam extends Entity {
 
         // TODO add code here to set towerDisabled true
         this.targetTower.disableTower()
-        audioManager.playSound("assets/sounds/sfx/emp_zap.mp3", 0.07)
+        audioManager.playSound("assets/sounds/sfx/emp_zap.mp3", 0.08)
 
 
 
@@ -80,7 +80,6 @@ export class EMPBeam extends Entity {
 
     render(parentContainer : PIXI.Container) {
         if (this.graphics) {
-            console.log("render")
             parentContainer.addChild(this.graphics)
             this.graphics.visible = true
         }

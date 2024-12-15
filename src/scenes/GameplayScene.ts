@@ -159,7 +159,6 @@ export class GameplayScene extends Scene {
     }
 
     playArmorSound(isBoss: boolean = false) {
-        console.log(isBoss)
 
         //always play armour impact for bosses
         if (isBoss) {
@@ -169,10 +168,10 @@ export class GameplayScene extends Scene {
 
         const rng = Math.floor(Math.random() * this.enemiesPresent.length + Math.random() * this.towersPresent.length)
 
-        if (this.enemiesPresent.length + this.towersPresent.length <= 10 || rng <= Math.floor(Math.cbrt(this.enemiesPresent.length + this.towersPresent.length))) {
+        if (this.enemiesPresent.length + this.towersPresent.length <= 10 || rng <= Math.floor(Math.sqrt(this.enemiesPresent.length + this.towersPresent.length))) {
             console.log("rng ", rng)
             console.log("towers and enemies summed ", this.enemiesPresent.length + this.towersPresent.length)
-
+            audioManager.playArmourSound()
         }
     }
 
