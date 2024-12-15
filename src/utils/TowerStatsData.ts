@@ -55,7 +55,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 },
                 {
                     range: 250,
-                    damage: 25,
+                    damage: 30,
                     fireRate: 1,
                     cost: 200
                 }],

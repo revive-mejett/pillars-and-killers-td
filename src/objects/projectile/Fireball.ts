@@ -66,12 +66,12 @@ export class Fireball extends Projectile {
 
     onImpact(enemies : Enemy[], impactPosition : Position) {
 
-        enemies.forEach((enemy) => {
+        enemies.forEach((enemy, i) => {
             const enemyPosition = enemy.getCenterPosition()
             const distanceToImpact = new Vector(enemyPosition.x - impactPosition.x, enemyPosition.y - impactPosition.y).magnitude()
 
             if (distanceToImpact <= this.impactRadius) {
-                enemy.takeDamage(Math.ceil(this.damage * ((this.impactRadius - distanceToImpact/2) / this.impactRadius)))
+                enemy.takeDamage(Math.ceil(this.damage * ((this.impactRadius - distanceToImpact/2) / this.impactRadius)), i !== 0)
             }
         })
     }
