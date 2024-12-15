@@ -10,10 +10,16 @@ export class GameState {
     uiManager?: UIManager
     startWave: number
 
+    researchLevel: 1 | 2 | 3 | 4 = 1
+    readonly tier2ResearchCost: number = 2000
+    readonly tier3ResearchCost: number = 25000
+    readonly tier4ResearchCost: number = 250000
+
     constructor() {
         this.lives = 50
         this.money = 400
         this.startWave = 96
+        this.researchLevel = 1
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         for (let i = 0; i < this.startWave || 0; i++) {
