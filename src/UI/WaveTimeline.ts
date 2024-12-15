@@ -119,7 +119,7 @@ export class WaveTimeline {
         //red waves
         if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Merciless Loch Ness")) {
             outlineColour = "0xFF0000"
-            colour = 0xFF5555
+            colour = 0x220000
         }
         waveStone.lineStyle(1, outlineColour)
         waveStone.beginFill(colour)

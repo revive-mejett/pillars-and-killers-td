@@ -41,9 +41,9 @@ const stressTest = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 9999,
-                spacingMillis: 25
+                enemy: "Obsidian Ripper",
+                count: 999,
+                spacingMillis: 5
             }
         ]
     ),
@@ -2408,6 +2408,16 @@ const productionWaves = [
                 spacingMillis: 500
             },
             {
+                enemy: "Merciless Loch Ness",
+                count: 1,
+                spacingMillis: 6000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 30,
+                spacingMillis: 100
+            },
+            {
                 enemy: "Jr. Rhombicosidodecahedron",
                 count: 10,
                 spacingMillis: 1200
@@ -2426,6 +2436,26 @@ const productionWaves = [
                 enemy: "Earthling Flake",
                 count: 1,
                 spacingMillis: 1
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 2,
+                spacingMillis: 1
+            },
+            {
+                enemy: "5p 2025",
+                count: 5,
+                spacingMillis: 200
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 4000
             },
             {
                 enemy: "Cute Crow",
@@ -2483,6 +2513,16 @@ const productionWaves = [
                 spacingMillis: 200
             },
             {
+                enemy: "Merciless Loch Ness",
+                count: 1,
+                spacingMillis: 6000
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 3,
+                spacingMillis: 650
+            },
+            {
                 enemy: "Steel Warrior",
                 count: 1,
                 spacingMillis: 1
@@ -2491,6 +2531,11 @@ const productionWaves = [
                 enemy: "Near-Light Zoomer",
                 count: 7,
                 spacingMillis: 800
+            },
+            {
+                enemy: "256p 2152",
+                count: 10,
+                spacingMillis: 1000
             },
             {
                 enemy: "Freshman Octahedron",
@@ -2524,8 +2569,13 @@ const productionWaves = [
             },
             {
                 enemy: "Earthling Flake",
-                count: 1,
+                count: 8,
                 spacingMillis: 10
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 10,
+                spacingMillis: 1400
             },
             {
                 enemy: "Merciless Loch Ness",
@@ -2543,9 +2593,59 @@ const productionWaves = [
                 spacingMillis: 1000
             },
             {
+                enemy: "Infant Circle",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
                 enemy: "Alluring Rooster",
                 count: 1,
                 spacingMillis: 10
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 2,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 10,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 1,
+                spacingMillis: 1
             },
             {
                 enemy: "Carbon Nanotube Annihilator",
