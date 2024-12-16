@@ -15,13 +15,18 @@ export class GameState {
     readonly tier3ResearchCost: number = 25000
     readonly tier4ResearchCost: number = 250000
 
-    constructor(savedData?: GameSaveData) {
+    constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6, savedData?: GameSaveData) {
+
         if (savedData) {
             this.lives = savedData.lives
             this.money = savedData.money
             this.startWave = savedData.checkpointWave
             this.researchLevel = savedData.researchLevel
+        } else {
+            this.saveFileIndex = fileNumber
+            console.log(fileNumber)
         }
+
 
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)

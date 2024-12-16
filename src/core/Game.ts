@@ -87,8 +87,9 @@ export class Game {
     }
 
 
-    initGameplay(gameData : GameSaveData) {
-        const gameplayScene = new GameplayScene(this.app, gameData)
+    initGameplay(eventData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData}) {
+        console.log(eventData)
+        const gameplayScene = new GameplayScene(this.app, eventData.fileNumber, eventData.gameData)
         gameplayScene.constructScene()
         this.sceneManager?.transitionScene(gameplayScene)
 

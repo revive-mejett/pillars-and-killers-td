@@ -36,10 +36,12 @@ export class GameplayScene extends Scene {
     mapContainer: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     waveTimeline: WaveTimeline | undefined
 
+    fileNumber: 1 | 2 | 3 | 4 | 5 | 6
+
     //if the player loads the game
     savedData: GameSaveData | undefined
 
-    constructor(app: PIXI.Application, gameSaveData?: GameSaveData) {
+    constructor(app: PIXI.Application, fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameSaveData?: GameSaveData) {
         super(app)
         this.tdMap = undefined
         this.gamestate = undefined
@@ -49,12 +51,13 @@ export class GameplayScene extends Scene {
         this.enemiesPresent = []
         this.towersPresent = []
         this.savedData = gameSaveData
+        this.fileNumber = fileNumber
 
     }
 
     constructScene() {
 
-        this.gamestate = new GameState(this.savedData)
+        this.gamestate = new GameState(this.fileNumber, this.savedData)
 
         if (!allMaps.get(this.gamestate.mapName)) {
             throw new Error("Map not correctly loaded; please check the name of the map to ensure it exists.")

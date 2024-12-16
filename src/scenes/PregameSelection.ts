@@ -4,6 +4,7 @@ import { UIHelper } from "../UI/UIHelper";
 import { GameDataManager } from "../managers/GameDataManager";
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader";
+import { GameSaveData } from "src/ts/types/GameSaveData";
 
 const gameDataManager = new GameDataManager()
 const eventDispatcher = new EventDispatcher()
@@ -21,54 +22,63 @@ export class PregameSelection extends Scene {
 
     constructScene() {
         gameDataManager.updateSavedFiles()
+        const file1Data = gameDataManager.file1Data;
+        const file2Data = gameDataManager.file2Data;
+
+        this.createSaveFilePane(0, 0, 1, file1Data);
+        this.createSaveFilePane(400, 0, 2, file2Data);
+    }
+
+    private createSaveFilePane(paneXPos : number, paneYPos : number, fileNumber : number, fileData : GameSaveData | null) {
+
         const iconBundle = assetLoader.icons
 
         if (!iconBundle) {
             throw new Error("Icons asset may have not loaded properly Akshan")
         }
 
-        const file1Data = gameDataManager.file1Data
 
+        const padding = 5;
+        const saveFileContainer = new PIXI.Container();
+        saveFileContainer.x = paneXPos
+        saveFileContainer.y = paneYPos
+        this.container.addChild(saveFileContainer);
+        const bgColour = new PIXI.Graphics();
+        bgColour.beginFill(0x002222);
+        bgColour.drawRect(0, 0, 300, 300);
+        bgColour.endFill();
+        saveFileContainer.addChild(bgColour);
+        const saveText = UIHelper.createText(0, 0, `Save slot ${fileNumber}`, 30, "0xFFFFFF");
+        saveFileContainer.addChild(saveText);
+        if (fileData) {
+            const btnLoadFile1 = UIHelper.createButton(0, 250, 300, 50, "Load Game", 20, 0xFFFFFF);
+            saveFileContainer.addChild(btnLoadFile1);
+            const txtMap = UIHelper.createText(0 + padding, 50, `${fileData.map}`, 30, "0xFFFFFF");
+            saveFileContainer.addChild(txtMap);
+            const txtCheckpointWave = UIHelper.createText(0 + padding, 100, `Wave ${fileData.checkpointWave}`, 30, "0xFFFFFF");
+            saveFileContainer.addChild(txtCheckpointWave);
 
-        const padding = 5
-        const saveFile1Container = new PIXI.Container()
-        this.container.addChild(saveFile1Container)
-        const saveFile1bg = new PIXI.Graphics()
-        saveFile1bg.beginFill(0x002222)
-        saveFile1bg.drawRect(0, 0, 300,300)
-        saveFile1bg.endFill()
-        saveFile1Container.addChild(saveFile1bg)
-        const save1Text = UIHelper.createText(0,0, "Save File 1", 30, "0xFFFFFF")
-        saveFile1Container.addChild(save1Text)
-        if (file1Data) {
-            const btnLoadFile1 = UIHelper.createButton(0,250,300,50,"Load Game", 20, 0xFFFFFF)
-            saveFile1Container.addChild(btnLoadFile1)
-            const txtMap = UIHelper.createText(0 + padding, 50, `${file1Data.map}`, 30, "0xFFFFFF")
-            saveFile1Container.addChild(txtMap)
-            const txtCheckpointWave = UIHelper.createText(0 + padding, 100, `Wave ${file1Data.checkpointWave}`, 30, "0xFFFFFF")
-            saveFile1Container.addChild(txtCheckpointWave)
+            const iconMoney = UIHelper.createIcon(iconBundle.money, 0 + padding, 130, 0x002222, 30, 30);
+            saveFileContainer.addChild(iconMoney);
+            const txtMoney = UIHelper.createText(35 + padding, 130, `${fileData.money}`, 30, "0xFFFF00");
+            saveFileContainer.addChild(txtMoney);
 
-            const iconMoney = UIHelper.createIcon(iconBundle.money, 0 + padding, 130, 0x002222, 30, 30)
-            saveFile1Container.addChild(iconMoney)
-            const txtMoney = UIHelper.createText(35 + padding, 130, `${file1Data.money}`, 30, "0xFFFF00")
-            saveFile1Container.addChild(txtMoney)
+            const iconLives = UIHelper.createIcon(iconBundle.lives, 0 + padding, 160, 0x002222, 30, 30);
+            saveFileContainer.addChild(iconLives);
+            const txtLives = UIHelper.createText(35 + padding, 160, `${fileData.lives}`, 30, "0x00FF00");
+            saveFileContainer.addChild(txtLives);
 
-            const iconLives = UIHelper.createIcon(iconBundle.lives, 0 + padding, 160, 0x002222, 30, 30)
-            saveFile1Container.addChild(iconLives)
-            const txtLives = UIHelper.createText(35 + padding, 160, `${file1Data.lives}`, 30, "0x00FF00")
-            saveFile1Container.addChild(txtLives)
-            
             btnLoadFile1.on("pointerdown", () => {
-                eventDispatcher.fireEvent("gameStarted", file1Data)
-            })
+                eventDispatcher.fireEvent("gameStarted", {fileNumber: fileNumber, gameData : fileData});
+            });
         } else {
-            const btnLoadFile1 = UIHelper.createButton(0,250,300,50,"New Game", 20, 0xFFFFFF)
-            const save1Text = UIHelper.createText(100,100, "Empty", 30, "0x777777")
-            saveFile1Container.addChild(save1Text)
-            saveFile1Container.addChild(btnLoadFile1)
-            btnLoadFile1.on("pointerdown", () => {
-                eventDispatcher.fireEvent("gameStarted")
-            })
+            const btnLoadFile = UIHelper.createButton(0, 250, 300, 50, "New Game", 20, 0xFFFFFF);
+            const saveText = UIHelper.createText(100, 100, "Empty", 30, "0x777777");
+            saveFileContainer.addChild(saveText);
+            saveFileContainer.addChild(btnLoadFile);
+            btnLoadFile.on("pointerdown", () => {
+                eventDispatcher.fireEvent("gameStarted", {fileNumber: fileNumber, gameData : undefined});
+            });
         }
     }
 }
