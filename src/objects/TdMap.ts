@@ -1,5 +1,4 @@
 import Waypoint from "src/ts/types/WaypointType";
-import { allMaps } from "../utils/MapData"
 import { Tile } from "./Tile"
 import * as PIXI from "pixi.js";
 
@@ -10,13 +9,14 @@ class TdMap {
     dimensions: number
     tileSize: number
     tiles: Tile[][]
-    waypoints : Waypoint[] | undefined = allMaps.get("Walk in the Park")
-    constructor(mapWidth : number, mapHeight : number, dimensions : number) {
+    waypoints : Waypoint[] | undefined
+    constructor(wayPoints: Waypoint[], mapWidth : number, mapHeight : number, dimensions : number) {
         this.mapWidth = mapWidth
         this.mapHeight = mapHeight
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
+        this.waypoints = wayPoints
     }
 
     displayTiles(container : PIXI.Container) {

@@ -9,7 +9,8 @@ export class GameState {
     money: number
     uiManager?: UIManager
     startWave: number
-
+    mapName: string = "Walk in the Park"
+    saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
     readonly tier2ResearchCost: number = 2000
     readonly tier3ResearchCost: number = 25000
