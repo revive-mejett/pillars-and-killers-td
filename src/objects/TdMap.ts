@@ -1,4 +1,5 @@
-import { easy1 } from "../utils/MapData"
+import Waypoint from "src/ts/types/WaypointType";
+import { allMaps } from "../utils/MapData"
 import { Tile } from "./Tile"
 import * as PIXI from "pixi.js";
 
@@ -9,14 +10,13 @@ class TdMap {
     dimensions: number
     tileSize: number
     tiles: Tile[][]
-    waypoints = easy1
+    waypoints : Waypoint[] | undefined = allMaps.get("Walk in the Park")
     constructor(mapWidth : number, mapHeight : number, dimensions : number) {
         this.mapWidth = mapWidth
         this.mapHeight = mapHeight
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
-        this.waypoints = easy1
     }
 
     displayTiles(container : PIXI.Container) {
@@ -35,6 +35,9 @@ class TdMap {
     }
 
     displayPath() {
+        if (!this.waypoints) {
+            throw new Error("Map not correctly loaded")
+        }
         let currWayPtNum = 0
         const waypoints = this.waypoints
 

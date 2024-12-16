@@ -129,7 +129,7 @@ export class WaveManager {
 
 
     sendWave(gameplayScene: GameplayScene) {
-        if (this.waveInProgress) { return }
+        if (this.waveInProgress || !this.map.waypoints) { return }
 
 
         this.waveInProgress = true
@@ -188,7 +188,7 @@ export class WaveManager {
         //spawns an enemy
         const onTick = () => {
 
-            if (!this.waveTicker || !gameplayScene.mapContainer) {
+            if (!this.waveTicker || !gameplayScene.mapContainer || !map.waypoints) {
                 return
             }
 
