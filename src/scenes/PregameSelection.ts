@@ -21,12 +21,33 @@ export class PregameSelection extends Scene {
     }
 
     constructScene() {
+        if (!assetLoader || !assetLoader.otherImages) {
+            throw new Error("asset loader not properly loaded")
+        }
         gameDataManager.updateSavedFiles()
         const file1Data = gameDataManager.file1Data;
         const file2Data = gameDataManager.file2Data;
+        const file3Data = gameDataManager.file3Data;
+        const file4Data = gameDataManager.file4Data;
+        const file5Data = gameDataManager.file5Data;
+        const file6Data = gameDataManager.file6Data;
 
-        this.createSaveFilePane(0, 0, 1, file1Data);
-        this.createSaveFilePane(400, 0, 2, file2Data);
+        this.createSaveFilePane(100, 300, 1, file1Data);
+        this.createSaveFilePane(500, 300, 2, file2Data);
+        this.createSaveFilePane(900, 300, 3, file3Data);
+        this.createSaveFilePane(100, 650, 4, file4Data);
+        this.createSaveFilePane(500, 650, 5, file5Data);
+        this.createSaveFilePane(900, 650, 6, file6Data);
+
+
+        const pillarsKillersVisual = PIXI.Sprite.from(assetLoader.otherImages.mainTitleImage)
+        pillarsKillersVisual.width = 700
+        pillarsKillersVisual.height = 400
+        pillarsKillersVisual.x = 300
+        pillarsKillersVisual.y = 10
+        pillarsKillersVisual.zIndex = 1
+
+        this.container.addChild(pillarsKillersVisual)
     }
 
     private createSaveFilePane(paneXPos : number, paneYPos : number, fileNumber : number, fileData : GameSaveData | null) {
@@ -43,6 +64,7 @@ export class PregameSelection extends Scene {
         saveFileContainer.x = paneXPos
         saveFileContainer.y = paneYPos
         this.container.addChild(saveFileContainer);
+        saveFileContainer.zIndex = 10
         const bgColour = new PIXI.Graphics();
         bgColour.beginFill(0x002222);
         bgColour.drawRect(0, 0, 300, 300);
