@@ -20,6 +20,7 @@ export class PregameSelection extends Scene {
     }
 
     constructScene() {
+        gameDataManager.updateSavedFiles()
         const iconBundle = assetLoader.icons
 
         if (!iconBundle) {

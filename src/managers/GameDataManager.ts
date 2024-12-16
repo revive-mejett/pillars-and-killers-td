@@ -37,4 +37,13 @@ export class GameDataManager {
     wipeAllData() {
         localStorage.clear()
     }
+
+    updateSavedFiles() {
+        this.file1Data = this.loadFromLocalStorage(1)
+        this.file2Data = this.loadFromLocalStorage(2)
+        this.file3Data = this.loadFromLocalStorage(3)
+        this.file4Data = this.loadFromLocalStorage(4)
+        this.file5Data = this.loadFromLocalStorage(5)
+        this.file6Data = this.loadFromLocalStorage(6)
+    }
 }

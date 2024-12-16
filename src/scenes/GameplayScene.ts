@@ -113,6 +113,7 @@ export class GameplayScene extends Scene {
         }
 
         const towerData: TowerData[] = []
+        console.log(this.gamestate.money)
 
         this.towersPresent.forEach(tower => {
             towerData.push({
@@ -132,7 +133,13 @@ export class GameplayScene extends Scene {
             checkpointWave: this.waveManager?.currentWave
         }
 
-        gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
+        setTimeout(() => {
+            if (!this.gamestate) {return}
+            console.log(this.gamestate.money)
+            gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
+        }, 500);
+
+
 
     }
 
@@ -140,9 +147,16 @@ export class GameplayScene extends Scene {
         if (!this.mapContainer) {
             return
         }
-        this.tdMap?.displayTiles(this.mapContainer)
+        if(this.savedData) {
+            this.tdMap?.displayTiles(this.mapContainer, this, this.savedData.towers)
+        } else {
+            this.tdMap?.displayTiles(this.mapContainer, this)
+        }
+
         this.tdMap?.displayPath()
         this.tdMap?.repaveGrass()
+
+
     }
 
     update() {

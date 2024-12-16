@@ -9,9 +9,9 @@ import { AssetLoader } from "./AssetLoader"
 import * as PIXI from "pixi.js";
 import { GameSaveData } from "../ts/types/GameSaveData"
 
-import { GameDataManager } from "../managers/GameDataManager";
-const gameDataManager = new GameDataManager()
-gameDataManager.wipeAllData()
+// import { GameDataManager } from "../managers/GameDataManager";
+// const gameDataManager = new GameDataManager()
+// gameDataManager.wipeAllData()
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -88,7 +88,6 @@ export class Game {
 
 
     initGameplay(gameData : GameSaveData) {
-        console.log(gameData)
         const gameplayScene = new GameplayScene(this.app, gameData)
         gameplayScene.constructScene()
         this.sceneManager?.transitionScene(gameplayScene)
