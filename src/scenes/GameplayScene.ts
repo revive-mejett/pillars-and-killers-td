@@ -17,9 +17,11 @@ import { AudioManager } from "../managers/AudioManager";
 import { allMaps } from "../utils/MapData"
 import { GameSaveData, TowerData } from "src/ts/types/GameSaveData"
 import { towerNameToKey } from "../utils/TowerStatsData"
+import { GameDataManager } from "../managers/GameDataManager"
 
 const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
+const gameDataManager = new GameDataManager()
 
 export class GameplayScene extends Scene {
     tdMap?: TdMap
@@ -102,7 +104,7 @@ export class GameplayScene extends Scene {
     }
 
     saveData() {
-        if (!this.gamestate) {
+        if (!this.gamestate || !this.waveManager) {
             return
         }
 
@@ -122,10 +124,11 @@ export class GameplayScene extends Scene {
             lives: this.gamestate.lives,
             researchLevel: this.gamestate.researchLevel,
             saveFileIndex: this.gamestate.saveFileIndex,
-            towers: towerData
+            towers: towerData,
+            checkpointWave: this.waveManager?.currentWave
         }
 
-        console.log(gameSaveData)
+        gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
 
     }
 

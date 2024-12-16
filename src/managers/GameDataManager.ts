@@ -25,13 +25,16 @@ export class GameDataManager {
 
     private loadFromLocalStorage(fileNumber : number) : GameSaveData | null {
         if (localStorage.getItem(fileNumber.toString())) {
-            this.file1Data = JSON.parse(localStorage.getItem(fileNumber.toString())!) as GameSaveData
-            return this.file1Data
+            return JSON.parse(localStorage.getItem(fileNumber.toString())!) as GameSaveData
         }
         return null
     }
 
     checkIfASavedFileExists() {
         return this.file1Data || this.file2Data || this.file3Data || this.file4Data || this.file5Data || this.file6Data
+    }
+
+    wipeAllData() {
+        localStorage.clear()
     }
 }
