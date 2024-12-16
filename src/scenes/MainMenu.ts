@@ -1,6 +1,7 @@
 import { AssetLoader } from "../core/AssetLoader"
 import { UIHelper } from "../UI/UIHelper"
 import { EventDispatcher } from "../utils/EventDispatcher"
+
 import { Scene } from "./Scene"
 import * as PIXI from "pixi.js";
 
@@ -38,13 +39,11 @@ export class MainMenu extends Scene {
 
         this.container.addChild(pillarsKillersVisual)
 
-        const startButton = UIHelper.createButton(450,600,400,50, "Start Game")
-        this.container.addChild(startButton)
-        startButton.zIndex = 1
+        const btnNewGame = UIHelper.createButton(450,600,400,50, "New Game")
+        this.container.addChild(btnNewGame)
+        btnNewGame.zIndex = 1
 
-        startButton.on("pointerdown", () => {
-            eventDispatcher.fireEvent("gameStarted")
-        })
+        btnNewGame.on("pointerdown", () => eventDispatcher.fireEvent("newGameClick"))
 
         const settingsButton = UIHelper.createButton(450,700,400,50, "Settings")
         settingsButton.zIndex = 1

@@ -23,7 +23,7 @@ export class GameDataManager {
         localStorage.setItem(fileNumber.toString(), JSON.stringify(saveData))
     }
 
-    loadFromLocalStorage(fileNumber : number) : GameSaveData | null {
+    private loadFromLocalStorage(fileNumber : number) : GameSaveData | null {
         if (localStorage.getItem(fileNumber.toString())) {
             this.file1Data = JSON.parse(localStorage.getItem(fileNumber.toString())!) as GameSaveData
             return this.file1Data
@@ -32,6 +32,6 @@ export class GameDataManager {
     }
 
     checkIfASavedFileExists() {
-        
+        return this.file1Data || this.file2Data || this.file3Data || this.file4Data || this.file5Data || this.file6Data
     }
 }
