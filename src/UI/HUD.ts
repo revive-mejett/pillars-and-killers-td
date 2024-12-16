@@ -22,6 +22,10 @@ export class HUD {
     currentTowerSelectedIcon: undefined
     towerSelectionButtons: {[key: string] : PIXI.Container<PIXI.DisplayObject>} | undefined
 
+    tier2ResearchUI: PIXI.Container | undefined
+    tier3ResearchUI: PIXI.Container | undefined
+    tier4ResearchUI: PIXI.Container | undefined
+
 
     constructor(gamestate: GameState) {
         this.container = new PIXI.Container()
@@ -184,32 +188,30 @@ export class HUD {
         const towerSpriteBundle = assetLoader.towers
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
-        towerSelectMenu.y = 250
+        towerSelectMenu.y = 255
         this.container.addChild(towerSelectMenu)
 
         if (!towerSpriteBundle) {
             throw new Error("Asset tower sprite bundle not loaded properly")
         }
 
-
-
         const basicPillarButton = UIHelper.createIcon(towerSpriteBundle.basicPillarIcon, 0, 0, 0x111111)
         towerSelectMenu.addChild(basicPillarButton)
-        const icePillarButton = UIHelper.createIcon(towerSpriteBundle.icePillar, 80, 0, 0x001122)
+        const icePillarButton = UIHelper.createIcon(towerSpriteBundle.icePillar, 85, 0, 0x001122)
         towerSelectMenu.addChild(icePillarButton)
-        const emberPillarButton = UIHelper.createIcon(towerSpriteBundle.emberPillar, 160, 0, 0x0D110A)
+        const emberPillarButton = UIHelper.createIcon(towerSpriteBundle.emberPillar, 170, 0, 0x0D110A)
         towerSelectMenu.addChild(emberPillarButton)
-        const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 80, 80, 0x221100)
-        towerSelectMenu.addChild(advancedPillarButton)
-        const poisonIvyPillarButton = UIHelper.createIcon(towerSpriteBundle.poisonIvyPillar, 0, 80, 0x112200)
+        const poisonIvyPillarButton = UIHelper.createIcon(towerSpriteBundle.poisonIvyPillar, 0, 85, 0x112200)
         towerSelectMenu.addChild(poisonIvyPillarButton)
-        const missilePillarButton = UIHelper.createIcon(towerSpriteBundle.missilePillar, 0, 160, 0x222200)
+        const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 85, 85, 0x221100)
+        towerSelectMenu.addChild(advancedPillarButton)
+        const missilePillarButton = UIHelper.createIcon(towerSpriteBundle.missilePillar, 0, 170, 0x222200)
         towerSelectMenu.addChild(missilePillarButton)
-        const lightningPillarButton = UIHelper.createIcon(towerSpriteBundle.lightningPillar, 80, 160, 0x002222)
+        const lightningPillarButton = UIHelper.createIcon(towerSpriteBundle.lightningPillar, 85, 170, 0x002222)
         towerSelectMenu.addChild(lightningPillarButton)
-        const dreadglassPillarButton = UIHelper.createIcon(towerSpriteBundle.dreadglassPillar, 160, 160, 0x220000)
+        const dreadglassPillarButton = UIHelper.createIcon(towerSpriteBundle.dreadglassPillar, 170, 170, 0x220000)
         towerSelectMenu.addChild(dreadglassPillarButton)
-        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 0, 240, 0x110011)
+        const ultimatePillarButton = UIHelper.createIcon(towerSpriteBundle.ultimatePillar, 0, 255, 0x110011)
         towerSelectMenu.addChild(ultimatePillarButton)
 
         this.towerSelectionButtons.basic = basicPillarButton
@@ -221,6 +223,59 @@ export class HUD {
         this.towerSelectionButtons.lightning = lightningPillarButton
         this.towerSelectionButtons.dreadglass = dreadglassPillarButton
         this.towerSelectionButtons.ultimate = ultimatePillarButton
+
+
+        this.tier2ResearchUI = new PIXI.Container()
+        towerSelectMenu.addChild(this.tier2ResearchUI)
+        this.tier2ResearchUI.y = 85
+        const btnResearchTier2 = UIHelper.createButton(0,0,250,30, `Research Pillars: $${this.gamestate.tier2ResearchCost}`, 20, 0xFFFF00)
+        this.tier2ResearchUI.addChild(btnResearchTier2)
+        btnResearchTier2.on("pointerdown", () => {
+            eventDispatcher.fireEvent("researchTier2Action")
+        })
+
+        this.tier3ResearchUI = new PIXI.Container()
+        towerSelectMenu.addChild(this.tier3ResearchUI)
+        this.tier3ResearchUI.y = 170
+        const btnResearchTier3 = UIHelper.createButton(0,0,250,30, `Research Pillars: $${this.gamestate.tier3ResearchCost}`, 20, 0xFFFF00)
+        this.tier3ResearchUI.addChild(btnResearchTier3)
+        btnResearchTier3.on("pointerdown", () => {
+            eventDispatcher.fireEvent("researchTier3Action")
+        })
+
+        this.tier4ResearchUI = new PIXI.Container()
+        towerSelectMenu.addChild(this.tier4ResearchUI)
+        this.tier4ResearchUI.y = 255
+        const btnResearchTier4 = UIHelper.createButton(0,0,250,30, `Research Pillars: $${this.gamestate.tier4ResearchCost}`, 20, 0xFFFF00)
+        this.tier4ResearchUI.addChild(btnResearchTier4)
+        btnResearchTier4.on("pointerdown", () => {
+            eventDispatcher.fireEvent("researchTier4Action")
+        })
+
+        this.updateTowerSelectionVisibility()
+    }
+
+    updateTowerSelectionVisibility() {
+        if (!this.towerSelectionButtons || !this.tier2ResearchUI || !this.tier3ResearchUI || !this.tier4ResearchUI) {
+            return
+        }
+        this.towerSelectionButtons.basic.visible = true
+        this.towerSelectionButtons.ice.visible = true
+        this.towerSelectionButtons.ember.visible = true
+
+        this.towerSelectionButtons.advanced.visible = this.gamestate.researchLevel >= 2
+        this.towerSelectionButtons.poisonIvy.visible = this.gamestate.researchLevel >= 2
+
+        this.towerSelectionButtons.missile.visible = this.gamestate.researchLevel >= 3
+        this.towerSelectionButtons.lightning.visible = this.gamestate.researchLevel >= 3
+        this.towerSelectionButtons.dreadglass.visible = this.gamestate.researchLevel >= 3
+
+        this.towerSelectionButtons.ultimate.visible = this.gamestate.researchLevel >= 4
+
+        //research UI
+        this.tier2ResearchUI.visible = this.gamestate.researchLevel === 1
+        this.tier3ResearchUI.visible = this.gamestate.researchLevel === 2
+        this.tier4ResearchUI.visible = this.gamestate.researchLevel === 3
     }
 
     updateTowerDescriptionUI(towerData : TowerData) {

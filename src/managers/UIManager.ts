@@ -66,9 +66,24 @@ export class UIManager {
 
         eventDispatcher.on("enemySelectAction", this.displaySelectedEnemyInfo.bind(this))
 
+
+        eventDispatcher.on("researchTier2Action", () => this.handleResearchAction(2, this.gamestate.tier2ResearchCost))
+        eventDispatcher.on("researchTier3Action", () => this.handleResearchAction(3, this.gamestate.tier3ResearchCost))
+        eventDispatcher.on("researchTier4Action", () => this.handleResearchAction(4, this.gamestate.tier4ResearchCost))
+
         this.setTowerButtonClickListeners()
 
     }
+
+    handleResearchAction(tier: 1 | 2 | 3 | 4, researchCost: number) {
+        if (this.gamestate.money < researchCost) {
+            return
+        }
+        eventDispatcher.fireEvent("purchaseSuccessful1", researchCost)
+        this.gamestate.researchLevel = tier
+        this.hud.updateTowerSelectionVisibility()
+    }
+
 
     updateMoney() {
         if (this.hud && this.hud.moneyText) {
@@ -201,8 +216,11 @@ export class UIManager {
         eventDispatcher.clearListenersOfEvent("towerUpgradeAction")
         eventDispatcher.clearListenersOfEvent("towerSellAction")
 
+        eventDispatcher.clearListenersOfEvent("researchTier2Action")
+        eventDispatcher.clearListenersOfEvent("researchTier3Action")
+        eventDispatcher.clearListenersOfEvent("researchTier4Action")
+
         if (this.selectedEnemyUpdateTicker) {
-            console.log("clean up ticker")
             this.selectedEnemyUpdateTicker.stop()
             this.selectedEnemyUpdateTicker.destroy()
         }

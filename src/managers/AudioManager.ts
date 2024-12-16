@@ -29,7 +29,7 @@ export class AudioManager {
 
         setTimeout(() => {
             sfx.destroy()
-        }, 1000);
+        }, 2000);
     }
 
     playSoundLimited(numberSources: number, maxSources: number, odds: number, path : string, volume?: number, speed?: number) {
@@ -60,7 +60,7 @@ export class AudioManager {
 
         setTimeout(() => {
             sfxBuild.destroy()
-        }, 1000);
+        }, 2000);
     }
 
 
@@ -77,7 +77,7 @@ export class AudioManager {
 
         setTimeout(() => {
             sfxIceBeamFire.destroy()
-        }, 1000);
+        }, 2000);
 
     }
 
@@ -95,7 +95,7 @@ export class AudioManager {
 
         setTimeout(() => {
             sfxEnemyArmour.destroy()
-        }, 1000);
+        }, 2000);
     }
 
     playKilledSound() {
@@ -110,7 +110,7 @@ export class AudioManager {
 
         setTimeout(() => {
             sfxEnemyDied.destroy()
-        }, 1000);
+        }, 2000);
     }
 
 
