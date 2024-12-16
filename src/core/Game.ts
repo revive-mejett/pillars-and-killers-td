@@ -108,7 +108,6 @@ export class Game {
     }
 
     private toPregameSelection() {
-        console.log(this.app)
         const pregameSelection = new PregameSelection(this.app)
         pregameSelection.constructScene()
         this.sceneManager?.transitionScene(pregameSelection)

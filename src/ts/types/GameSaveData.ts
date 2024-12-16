@@ -1,5 +1,5 @@
 
-type TowerData = {
+export type TowerData = {
     towerType: string,
     x: number,
     y: number,
@@ -7,10 +7,11 @@ type TowerData = {
 }
 
 
-type GameSaveData = {
+export type GameSaveData = {
     map: string,
     money: number,
+    lives: number,
+    researchLevel: 1 | 2 | 3 | 4,
+    saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6
     towers: TowerData[]
 }
-
-export default GameSaveData

@@ -1,4 +1,4 @@
-import GameSaveData from "src/ts/types/GameSaveData"
+import { GameSaveData } from "src/ts/types/GameSaveData"
 
 export class GameDataManager {
 

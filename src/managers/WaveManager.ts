@@ -67,10 +67,23 @@ export class WaveManager {
 
         this.isFreeplay = this.currentWave >= this.waves.length
 
-        eventDispatcher.on("boss1Killed", () => this.updateNextCheckpointWave(1))
-        eventDispatcher.on("boss2Killed", () => this.updateNextCheckpointWave(2))
-        eventDispatcher.on("boss3Killed", () => this.updateNextCheckpointWave(3))
-        eventDispatcher.on("boss4Killed", () => this.updateNextCheckpointWave(4))
+        eventDispatcher.on("boss1Killed", () => {
+            this.updateNextCheckpointWave(1)
+            eventDispatcher.fireEvent("saveProgess")
+        })
+        eventDispatcher.on("boss2Killed", () => {
+            this.updateNextCheckpointWave(2)
+            eventDispatcher.fireEvent("saveProgess")
+        })
+        eventDispatcher.on("boss3Killed", () => {
+            this.updateNextCheckpointWave(3)
+            eventDispatcher.fireEvent("saveProgess")
+        })
+        eventDispatcher.on("boss4Killed", () => {
+            this.updateNextCheckpointWave(4)
+            eventDispatcher.fireEvent("saveProgess")
+
+        })
         eventDispatcher.on("boss5Killed", () => {
             console.log("WINNER!!! TODO implement winner ui and option freeplay!")
             this.bossPresent = false

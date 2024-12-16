@@ -15,6 +15,8 @@ import { InputManager } from "../managers/InputManager"
 import { WaveTimeline } from "../UI/WaveTimeline"
 import { AudioManager } from "../managers/AudioManager";
 import { allMaps } from "../utils/MapData"
+import { GameSaveData, TowerData } from "src/ts/types/GameSaveData"
+import { towerNameToKey } from "../utils/TowerStatsData"
 
 const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
@@ -95,6 +97,36 @@ export class GameplayScene extends Scene {
                 this.waveManager.waveInProgress = false
             }
         })
+
+        eventDispatcher.on("saveProgess", this.saveData.bind(this))
+    }
+
+    saveData() {
+        if (!this.gamestate) {
+            return
+        }
+
+        const towerData: TowerData[] = []
+
+        this.towersPresent.forEach(tower => {
+            towerData.push({
+                towerType: towerNameToKey.get(tower.towerName)!,
+                x: tower.x,
+                y: tower.y,
+                level: tower.level
+            })
+        })
+        const gameSaveData : GameSaveData = {
+            map: this.gamestate.mapName,
+            money: this.gamestate.money,
+            lives: this.gamestate.lives,
+            researchLevel: this.gamestate.researchLevel,
+            saveFileIndex: this.gamestate.saveFileIndex,
+            towers: towerData
+        }
+
+        console.log(gameSaveData)
+
     }
 
     buildMap() {
@@ -217,5 +249,6 @@ export class GameplayScene extends Scene {
         eventDispatcher.clearListenersOfEvent("towerPlaced")
         eventDispatcher.clearListenersOfEvent("towerSold")
         eventDispatcher.clearListenersOfEvent("defeat")
+        eventDispatcher.clearListenersOfEvent("saveProgress")
     }
 }

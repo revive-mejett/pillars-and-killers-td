@@ -83,6 +83,8 @@ export abstract class Tower extends Entity {
         //debuffs
         this.disabledCooldown = 0
 
+        console.log(this)
+
     }
 
     // eslint-disable-next-line no-unused-vars
