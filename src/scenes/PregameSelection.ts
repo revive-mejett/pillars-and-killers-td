@@ -1,10 +1,10 @@
 import * as PIXI from "pixi.js";
 import { Scene } from "./Scene"
 import { UIHelper } from "../UI/UIHelper";
-import { GameDataManager } from "src/managers/GameDataManager";
+import { GameDataManager } from "../managers/GameDataManager";
 import { EventDispatcher } from "../utils/EventDispatcher"
 
-// const gameDataManager = new GameDataManager()
+const gameDataManager = new GameDataManager()
 const eventDispatcher = new EventDispatcher()
 
 export class PregameSelection extends Scene {
@@ -19,6 +19,7 @@ export class PregameSelection extends Scene {
 
     constructScene() {
 
+        const file1Data = gameDataManager.file1Data
 
         const saveFile1Container = new PIXI.Container()
         this.container.addChild(saveFile1Container)
@@ -27,19 +28,22 @@ export class PregameSelection extends Scene {
         saveFile1bg.drawRect(0, 0, 300,300)
         saveFile1bg.endFill()
         saveFile1Container.addChild(saveFile1bg)
-        const btnLoadFile1 = UIHelper.createButton(0,250,300,50,"Load Save 1", 20, 0xFFFFFF)
-        saveFile1Container.addChild(btnLoadFile1)
-
-        btnLoadFile1.on("pointerdown", () => {
-            eventDispatcher.fireEvent("gameStarted")
-        })
-
-        const settingsButton = UIHelper.createButton(450,700,400,50, "Settings")
-        settingsButton.zIndex = 1
-        this.container.addChild(settingsButton)
-
-        const tutorialButton = UIHelper.createButton(450,800,400,50, "Tutorial")
-        tutorialButton.zIndex = 1
-        this.container.addChild(tutorialButton)
+        const save1Text = UIHelper.createText(0,0, "Save File 1", 30, "0xFFFFFF")
+        saveFile1Container.addChild(save1Text)
+        if (file1Data) {
+            const btnLoadFile1 = UIHelper.createButton(0,250,300,50,"Load Game", 20, 0xFFFFFF)
+            saveFile1Container.addChild(btnLoadFile1)
+            btnLoadFile1.on("pointerdown", () => {
+                eventDispatcher.fireEvent("gameStarted")
+            })
+        } else {
+            const btnLoadFile1 = UIHelper.createButton(0,250,300,50,"New Game", 20, 0xFFFFFF)
+            const save1Text = UIHelper.createText(100,100, "Empty", 30, "0x777777")
+            saveFile1Container.addChild(save1Text)
+            saveFile1Container.addChild(btnLoadFile1)
+            btnLoadFile1.on("pointerdown", () => {
+                eventDispatcher.fireEvent("gameStarted")
+            })
+        }
     }
 }
