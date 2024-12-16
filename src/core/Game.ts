@@ -7,10 +7,15 @@ import { MainMenu } from "../scenes/MainMenu"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "./AssetLoader"
 import * as PIXI from "pixi.js";
+import { GameSaveData } from "../ts/types/GameSaveData"
 
+import { GameDataManager } from "../managers/GameDataManager";
+const gameDataManager = new GameDataManager()
+gameDataManager.wipeAllData()
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
+
 
 const sceneContainerWidth = 1000 + 250
 const sceneContainerHeight = 1000
@@ -33,7 +38,7 @@ export class Game {
         const view = this.app.view
         document.body.appendChild(view as HTMLCanvasElement)
 
-        eventDispatcher.on("gameStarted", () => this.initGameplay())
+        eventDispatcher.on("gameStarted", this.initGameplay.bind(this))
     }
 
     start() {
@@ -47,6 +52,8 @@ export class Game {
         await assetLoader.loadTowerSprites()
         await assetLoader.loadOtherImagesSprites()
         await assetLoader.loadEnemySpriteSheets()
+
+
 
         this.app.stage.addChild(this.baseContainer)
         const frame = new PIXI.Graphics()
@@ -80,8 +87,9 @@ export class Game {
     }
 
 
-    initGameplay() {
-        const gameplayScene = new GameplayScene(this.app)
+    initGameplay(gameData : GameSaveData) {
+        console.log(gameData)
+        const gameplayScene = new GameplayScene(this.app, gameData)
         gameplayScene.constructScene()
         this.sceneManager?.transitionScene(gameplayScene)
 

@@ -27,7 +27,6 @@ export class PregameSelection extends Scene {
         }
 
         const file1Data = gameDataManager.file1Data
-        console.log(file1Data);
 
 
         const padding = 5
@@ -59,7 +58,7 @@ export class PregameSelection extends Scene {
             saveFile1Container.addChild(txtLives)
             
             btnLoadFile1.on("pointerdown", () => {
-                eventDispatcher.fireEvent("gameStarted")
+                eventDispatcher.fireEvent("gameStarted", file1Data)
             })
         } else {
             const btnLoadFile1 = UIHelper.createButton(0,250,300,50,"New Game", 20, 0xFFFFFF)

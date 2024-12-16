@@ -2,13 +2,14 @@ import { UIManager } from "src/managers/UIManager"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { calculateWaveValue } from "../utils/Calc"
 import { productionWaves } from "../utils/WaveData"
+import { GameSaveData } from "../ts/types/GameSaveData"
 
 const eventDispatcher = new EventDispatcher()
 export class GameState {
-    lives: number
-    money: number
+    lives: number = 100
+    money: number = 400
     uiManager?: UIManager
-    startWave: number
+    startWave: number = 19
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -16,11 +17,14 @@ export class GameState {
     readonly tier3ResearchCost: number = 25000
     readonly tier4ResearchCost: number = 250000
 
-    constructor() {
-        this.lives = 50
-        this.money = 999990
-        this.startWave = 19
-        this.researchLevel = 1
+    constructor(savedData?: GameSaveData) {
+        if (savedData) {
+            this.lives = savedData.lives
+            this.money = savedData.money
+            this.startWave = savedData.checkpointWave
+            this.researchLevel = savedData.researchLevel
+        }
+
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         for (let i = 0; i < this.startWave || 0; i++) {
