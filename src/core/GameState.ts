@@ -24,7 +24,6 @@ export class GameState {
             this.researchLevel = savedData.researchLevel
         } else {
             this.saveFileIndex = fileNumber
-            console.log(fileNumber)
         }
 
 
