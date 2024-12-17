@@ -15,6 +15,8 @@ export class PregameSelection extends Scene {
 
     saveFilesListContainer : PIXI.Container
     mapSelectionContainer: PIXI.Container
+    selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined }
+    selectedMapTitle: string | undefined = undefined
 
     /**
      *
@@ -26,8 +28,10 @@ export class PregameSelection extends Scene {
         this.mapSelectionContainer = new PIXI.Container()
         this.container.addChild(this.saveFilesListContainer)
         this.container.addChild(this.mapSelectionContainer)
+        this.mapSelectionContainer.visible = false
 
         this.saveFilesListContainer.zIndex = 2
+        this.mapSelectionContainer.zIndex = 2
     }
 
     constructScene() {
@@ -37,6 +41,11 @@ export class PregameSelection extends Scene {
 
         // this.container.removeChildren()
         this.updateSaveFileList();
+
+
+
+        this.createMapSelectionPane(300, 100, "Walk in the Park");
+        this.createMapSelectionPane(700, 100, "Death Walk");
 
         const btnBackToMain = UIHelper.createButton(0, 200, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -55,13 +64,41 @@ export class PregameSelection extends Scene {
 
     }
 
+    private createMapSelectionPane(paneXPos: number, paneYPos: number, title: string) {
+        const paneWidth = 300
+
+        const paneContainer = new PIXI.Container();
+        paneContainer.x = paneXPos;
+        paneContainer.y = paneYPos;
+
+        this.mapSelectionContainer.addChild(paneContainer);
+        const bgColour = new PIXI.Graphics();
+        bgColour.beginFill(0x002222);
+        bgColour.drawRect(0, 0, paneWidth, 300);
+        bgColour.endFill();
+        paneContainer.addChild(bgColour);
+
+
+        const txtMapTitle = UIHelper.createText(paneWidth/2, 20, title, 30, "0xFFFFFF", true);
+        paneContainer.addChild(txtMapTitle);
+
+        const btnSelect = UIHelper.createButton(0, 250, 300, 50, "Select", 30, 0x77FF77);
+        paneContainer.addChild(btnSelect)
+
+        btnSelect.on("pointerdown", () => {
+            this.selectedSaveData.mapTitle = title
+            eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+        });
+
+    }
+
     private updateSaveFileList() {
         this.saveFilesListContainer.removeChildren();
         gameDataManager.updateSavedFiles()
 
         const saveScreenTitle = UIHelper.createText(500, 0, "Select Save Slot:", 50, "0xFFFFFF");
         this.saveFilesListContainer.addChild(saveScreenTitle);
-        
+
         const file1Data = gameDataManager.file1Data;
         const file2Data = gameDataManager.file2Data;
         const file3Data = gameDataManager.file3Data;
@@ -120,7 +157,8 @@ export class PregameSelection extends Scene {
             saveFileContainer.addChild(txtLives);
 
             btnLoadFile.on("pointerdown", () => {
-                eventDispatcher.fireEvent("gameStarted", {fileNumber: fileNumber, gameData : fileData});
+                this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined}
+                eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
             });
 
 
@@ -154,7 +192,9 @@ export class PregameSelection extends Scene {
             saveFileContainer.addChild(saveText);
             saveFileContainer.addChild(btnNewGame);
             btnNewGame.on("pointerdown", () => {
-                eventDispatcher.fireEvent("gameStarted", {fileNumber: fileNumber, gameData : undefined});
+                this.selectedSaveData = {fileNumber: fileNumber, gameData : undefined, mapTitle: undefined}
+                this.saveFilesListContainer.visible = false
+                this.mapSelectionContainer.visible = true
             });
         }
     }
