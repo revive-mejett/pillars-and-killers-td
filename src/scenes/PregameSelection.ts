@@ -11,10 +11,11 @@ const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
 
 export class PregameSelection extends Scene {
+
+
     /**
      *
      */
-
     constructor(app : PIXI.Application) {
         super(app)
         this.container.sortableChildren = true
@@ -24,6 +25,21 @@ export class PregameSelection extends Scene {
         if (!assetLoader || !assetLoader.otherImages) {
             throw new Error("asset loader not properly loaded")
         }
+
+        this.container.removeChildren()
+
+        const pillarsKillersVisual = PIXI.Sprite.from(assetLoader.otherImages.mainTitleImage)
+        pillarsKillersVisual.width = 700
+        pillarsKillersVisual.height = 400
+        pillarsKillersVisual.x = 300
+        pillarsKillersVisual.y = 10
+        pillarsKillersVisual.zIndex = 1
+
+        this.container.addChild(pillarsKillersVisual)
+
+        const saveScreenTitle = UIHelper.createText(0, 0, "Select Save Slot:", 50, "0xFFFFFF");
+        this.container.addChild(saveScreenTitle);
+
         gameDataManager.updateSavedFiles()
         const file1Data = gameDataManager.file1Data;
         const file2Data = gameDataManager.file2Data;
@@ -38,19 +54,6 @@ export class PregameSelection extends Scene {
         this.createSaveFilePane(100, 650, 4, file4Data);
         this.createSaveFilePane(500, 650, 5, file5Data);
         this.createSaveFilePane(900, 650, 6, file6Data);
-
-
-        const pillarsKillersVisual = PIXI.Sprite.from(assetLoader.otherImages.mainTitleImage)
-        pillarsKillersVisual.width = 700
-        pillarsKillersVisual.height = 400
-        pillarsKillersVisual.x = 300
-        pillarsKillersVisual.y = 10
-        pillarsKillersVisual.zIndex = 1
-
-        this.container.addChild(pillarsKillersVisual)
-
-        const saveScreenTitle = UIHelper.createText(0, 0, "Select Save Slot:", 50, "0xFFFFFF");
-        this.container.addChild(saveScreenTitle);
     }
 
     private createSaveFilePane(paneXPos : number, paneYPos : number, fileNumber : 1 | 2 | 3 | 4 | 5 | 6, fileData : GameSaveData | null) {
@@ -68,6 +71,7 @@ export class PregameSelection extends Scene {
         saveFileContainer.x = paneXPos
         saveFileContainer.y = paneYPos
         this.container.addChild(saveFileContainer);
+
         saveFileContainer.zIndex = 10
         const bgColour = new PIXI.Graphics();
         bgColour.beginFill(0x002222);
@@ -111,6 +115,7 @@ export class PregameSelection extends Scene {
                     btnConfirmDelete.visible = true
                     btnDeleteFile.visible = false
                     gameDataManager.wipeSaveData(fileNumber)
+                    this.constructScene()
                 });
                 setTimeout(() => {
                     btnConfirmDelete.off("pointerdown", () => {
