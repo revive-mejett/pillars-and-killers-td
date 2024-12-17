@@ -76,6 +76,7 @@ export class Game {
         this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width)/2
 
         eventDispatcher.on("newGameClick", () => this.toPregameSelection())
+        eventDispatcher.on("btnBackToMainMenuClick", () => this.toMainMenu())
     }
 
     run() {
@@ -118,5 +119,13 @@ export class Game {
         const pregameSelection = new PregameSelection(this.app)
         pregameSelection.constructScene()
         this.sceneManager?.transitionScene(pregameSelection)
+    }
+
+    private toMainMenu() {
+        const mainMenu = new MainMenu(this.app)
+        // mainMenu.constructScene(this.sceneContainer)
+        mainMenu.constructScene()
+
+        this.sceneManager?.transitionScene(mainMenu)
     }
 }
