@@ -14,6 +14,8 @@ export class PregameSelection extends Scene {
 
 
     saveFilesListContainer : PIXI.Container
+    mapSelectionContainer: PIXI.Container
+
     /**
      *
      */
@@ -21,7 +23,10 @@ export class PregameSelection extends Scene {
         super(app)
         this.container.sortableChildren = true
         this.saveFilesListContainer = new PIXI.Container()
+        this.mapSelectionContainer = new PIXI.Container()
         this.container.addChild(this.saveFilesListContainer)
+        this.container.addChild(this.mapSelectionContainer)
+
         this.saveFilesListContainer.zIndex = 2
     }
 
@@ -47,13 +52,16 @@ export class PregameSelection extends Scene {
         pillarsKillersVisual.zIndex = 1
         this.container.addChild(pillarsKillersVisual)
 
-        const saveScreenTitle = UIHelper.createText(500, 0, "Select Save Slot:", 50, "0xFFFFFF");
-        this.container.addChild(saveScreenTitle);
+
     }
 
     private updateSaveFileList() {
         this.saveFilesListContainer.removeChildren();
         gameDataManager.updateSavedFiles()
+
+        const saveScreenTitle = UIHelper.createText(500, 0, "Select Save Slot:", 50, "0xFFFFFF");
+        this.saveFilesListContainer.addChild(saveScreenTitle);
+        
         const file1Data = gameDataManager.file1Data;
         const file2Data = gameDataManager.file2Data;
         const file3Data = gameDataManager.file3Data;
