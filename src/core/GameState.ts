@@ -1,34 +1,48 @@
 import { UIManager } from "src/managers/UIManager"
 import { EventDispatcher } from "../utils/EventDispatcher"
-import { calculateWaveValue } from "../utils/Calc"
+import { GameSaveData } from "../ts/types/GameSaveData"
 import { productionWaves } from "../utils/WaveData"
+import { calculateWaveValue } from "../utils/Calc"
 
 const eventDispatcher = new EventDispatcher()
-export class GameState {
-    lives: number
-    money: number
-    uiManager?: UIManager
-    startWave: number
+const developerTest = false
 
+
+export class GameState {
+    lives: number = 100
+    money: number = 400
+    uiManager?: UIManager
+    startWave: number = 0
+    mapName: string = "Walk in the Park"
+    saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
     readonly tier2ResearchCost: number = 2000
     readonly tier3ResearchCost: number = 25000
     readonly tier4ResearchCost: number = 250000
 
-    constructor() {
-        this.lives = 50
-        this.money = 400
-        this.startWave = 96
-        this.researchLevel = 1
+    constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6, savedData?: GameSaveData) {
+
+        if (savedData) {
+            this.lives = savedData.lives
+            this.money = savedData.money
+            this.startWave = savedData.checkpointWave
+            this.researchLevel = savedData.researchLevel
+        } else {
+            this.saveFileIndex = fileNumber
+        }
+
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
-        for (let i = 0; i < this.startWave || 0; i++) {
-            if (productionWaves[i]) {
-                this.money += calculateWaveValue(productionWaves[i])
-            } else {
-                this.money += 20000
+        if (developerTest) {
+            for (let i = 0; i < this.startWave || 0; i++) {
+                if (productionWaves[i]) {
+                    this.money += calculateWaveValue(productionWaves[i])
+                } else {
+                    this.money += 20000
+                }
             }
         }
+
 
         this.uiManager = undefined
 

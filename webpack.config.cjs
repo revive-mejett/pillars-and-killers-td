@@ -44,6 +44,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./index.html", // Path to your HTML template
             filename: "index.html" // Output file name
+        }),
+        new HtmlWebpackPlugin({
+            template: "./index.css", // Path to your HTML template
+            filename: "index.css" // Output file name
         })
     ],
     devServer: {

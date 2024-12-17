@@ -92,6 +92,12 @@ export abstract class Tower extends Entity {
         this.tile = tile
     }
 
+    presetLevel(desiredLevel: number) {
+        for (let i = this.level; i < desiredLevel; i++) {
+            this.upgrade()
+        }
+    }
+
 
 
     lockInEnemy(enemy : Enemy) {

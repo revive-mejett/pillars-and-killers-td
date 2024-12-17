@@ -689,4 +689,16 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
     return towerTypeStatMap.get(towerType) as TowerData<S, I>
 }
 
-export { getTowerData }
+const towerNameToKey = new Map([
+    ["Basic Pillar", "basic"],
+    ["Ice Pillar", "ice"],
+    ["Ember Pillar", "ember"],
+    ["Sniper Pillar", "advanced"],
+    ["Poison Ivy Pillar", "poisonIvy"],
+    ["Missile Pillar", "missile"],
+    ["Lightning Pillar", "lightning"],
+    ["Dreadglass Pillar", "dreadglass"],
+    ["Ultimate Pillar", "ultimate"]
+])
+
+export { getTowerData, towerNameToKey }

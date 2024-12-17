@@ -1,4 +1,5 @@
 
+import { PregameSelection } from "../scenes/PregameSelection"
 import { SceneManager } from "../managers/SceneManager"
 import { GameOver } from "../scenes/GameOver"
 import { GameplayScene } from "../scenes/GameplayScene"
@@ -6,9 +7,15 @@ import { MainMenu } from "../scenes/MainMenu"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "./AssetLoader"
 import * as PIXI from "pixi.js";
+import { GameSaveData } from "../ts/types/GameSaveData"
+
+// import { GameDataManager } from "../managers/GameDataManager";
+// const gameDataManager = new GameDataManager()
+// gameDataManager.wipeAllData()
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
+
 
 const sceneContainerWidth = 1000 + 250
 const sceneContainerHeight = 1000
@@ -23,7 +30,7 @@ export class Game {
     constructor() {
         this.mapSize = 1000
         this.dimensions = 25
-        this.app = new PIXI.Application({width: window.outerWidth, height: window.outerHeight})
+        this.app = new PIXI.Application({width: window.outerWidth, height: 1000})
         this.baseContainer = new PIXI.Container()
         this.sceneContainer = undefined
         this.sceneManager = undefined
@@ -31,7 +38,7 @@ export class Game {
         const view = this.app.view
         document.body.appendChild(view as HTMLCanvasElement)
 
-        eventDispatcher.on("gameStarted", () => this.initGameplay())
+        eventDispatcher.on("gameStarted", this.initGameplay.bind(this))
     }
 
     start() {
@@ -45,6 +52,8 @@ export class Game {
         await assetLoader.loadTowerSprites()
         await assetLoader.loadOtherImagesSprites()
         await assetLoader.loadEnemySpriteSheets()
+
+
 
         this.app.stage.addChild(this.baseContainer)
         const frame = new PIXI.Graphics()
@@ -65,6 +74,9 @@ export class Game {
 
         this.baseContainer.addChild(this.sceneContainer)
         this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width)/2
+
+        eventDispatcher.on("newGameClick", () => this.toPregameSelection())
+        eventDispatcher.on("btnBackToMainMenuClick", () => this.toMainMenu())
     }
 
     run() {
@@ -76,8 +88,8 @@ export class Game {
     }
 
 
-    initGameplay() {
-        const gameplayScene = new GameplayScene(this.app)
+    initGameplay(eventData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData}) {
+        const gameplayScene = new GameplayScene(this.app, eventData.fileNumber, eventData.gameData)
         gameplayScene.constructScene()
         this.sceneManager?.transitionScene(gameplayScene)
 
@@ -88,11 +100,11 @@ export class Game {
         })
 
         eventDispatcher.on("defeat", () => {
-            const mainMenu = new GameOver(this.app)
+            const gameOver = new GameOver(this.app)
             eventDispatcher.fireEvent("gameEnd")
-            mainMenu.constructScene()
+            gameOver.constructScene()
             this.resetGameplayScene(gameplayScene)
-            this.sceneManager?.transitionScene(mainMenu)
+            this.sceneManager?.transitionScene(gameOver)
         })
 
         eventDispatcher.on("gameEnd", () => {
@@ -101,5 +113,19 @@ export class Game {
 
     resetGameplayScene(gameplayScene : GameplayScene) {
         gameplayScene?.cleanUpResources()
+    }
+
+    private toPregameSelection() {
+        const pregameSelection = new PregameSelection(this.app)
+        pregameSelection.constructScene()
+        this.sceneManager?.transitionScene(pregameSelection)
+    }
+
+    private toMainMenu() {
+        const mainMenu = new MainMenu(this.app)
+        // mainMenu.constructScene(this.sceneContainer)
+        mainMenu.constructScene()
+
+        this.sceneManager?.transitionScene(mainMenu)
     }
 }

@@ -1,6 +1,9 @@
-import { easy1 } from "../utils/MapData"
+import Waypoint from "src/ts/types/WaypointType";
 import { Tile } from "./Tile"
 import * as PIXI from "pixi.js";
+import { TowerData } from "src/ts/types/GameSaveData";
+import { TowerFactory } from "../managers/TowerFactory";
+import { GameplayScene } from "../scenes/GameplayScene";
 
 
 class TdMap {
@@ -9,17 +12,17 @@ class TdMap {
     dimensions: number
     tileSize: number
     tiles: Tile[][]
-    waypoints = easy1
-    constructor(mapWidth : number, mapHeight : number, dimensions : number) {
+    waypoints : Waypoint[] | undefined
+    constructor(wayPoints: Waypoint[], mapWidth : number, mapHeight : number, dimensions : number) {
         this.mapWidth = mapWidth
         this.mapHeight = mapHeight
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
-        this.waypoints = easy1
+        this.waypoints = wayPoints
     }
 
-    displayTiles(container : PIXI.Container) {
+    displayTiles(container : PIXI.Container, gameplayScene: GameplayScene, savedTowers?: TowerData[]) {
 
         //init array with array of 0
 
@@ -30,11 +33,28 @@ class TdMap {
                 const tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container)
                 tile.paveGrass()
                 this.tiles[i].push(tile)
+
+                if (!savedTowers) {
+                    continue
+                }
+
+                const savedTowerData = savedTowers.find(savedTower => savedTower.x === i * this.tileSize && savedTower.y === j * this.tileSize)
+
+                if (savedTowerData) {
+                    const tower = TowerFactory.createTower(tile.x, tile.y, tile.width, tile.height, savedTowerData.towerType)
+                    tower.presetLevel(savedTowerData.level)
+                    tile.placeTowerOnTile(tower)
+                    tower.setTileRef(tile)
+                    tower.runTower(gameplayScene)
+                }
             }
         }
     }
 
     displayPath() {
+        if (!this.waypoints) {
+            throw new Error("Map not correctly loaded")
+        }
         let currWayPtNum = 0
         const waypoints = this.waypoints
 
@@ -89,7 +109,7 @@ class TdMap {
     repaveGrass() {
         this.tiles.forEach(row => {
             row.forEach(tile => {
-                if (tile.tileType === "grass") {
+                if (tile.tileType === "grass" && !tile.hasTower) {
                     tile.paveGrass()
                 }
             })

@@ -14,9 +14,14 @@ import { InputManager } from "../managers/InputManager"
 
 import { WaveTimeline } from "../UI/WaveTimeline"
 import { AudioManager } from "../managers/AudioManager";
+import { allMaps } from "../utils/MapData"
+import { GameSaveData, TowerData } from "src/ts/types/GameSaveData"
+import { towerNameToKey } from "../utils/TowerStatsData"
+import { GameDataManager } from "../managers/GameDataManager"
 
 const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
+const gameDataManager = new GameDataManager()
 
 export class GameplayScene extends Scene {
     tdMap?: TdMap
@@ -31,7 +36,12 @@ export class GameplayScene extends Scene {
     mapContainer: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     waveTimeline: WaveTimeline | undefined
 
-    constructor(app : PIXI.Application) {
+    fileNumber: 1 | 2 | 3 | 4 | 5 | 6
+
+    //if the player loads the game
+    savedData: GameSaveData | undefined
+
+    constructor(app: PIXI.Application, fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameSaveData?: GameSaveData) {
         super(app)
         this.tdMap = undefined
         this.gamestate = undefined
@@ -40,11 +50,20 @@ export class GameplayScene extends Scene {
         this.uiManager = undefined
         this.enemiesPresent = []
         this.towersPresent = []
+        this.savedData = gameSaveData
+        this.fileNumber = fileNumber
+
     }
 
     constructScene() {
-        this.tdMap = new TdMap(1000, 1000, 25)
-        this.gamestate = new GameState()
+
+        this.gamestate = new GameState(this.fileNumber, this.savedData)
+
+        if (!allMaps.get(this.gamestate.mapName)) {
+            throw new Error("Map not correctly loaded; please check the name of the map to ensure it exists.")
+        }
+        this.tdMap = new TdMap(allMaps.get(this.gamestate.mapName)!, 1000, 1000, 25)
+
         this.hud = new HUD(this.gamestate)
         this.waveManager = new WaveManager(this.tdMap, this.gamestate.startWave)
         this.hud.setup(this.container)
@@ -66,7 +85,7 @@ export class GameplayScene extends Scene {
 
 
 
-        const gameplaySceneTicker : PIXI.Ticker = new Ticker()
+        const gameplaySceneTicker: PIXI.Ticker = new Ticker()
         gameplaySceneTicker.autoStart = false
         gameplaySceneTicker.add(() => this.update())
         gameplaySceneTicker.start()
@@ -87,15 +106,54 @@ export class GameplayScene extends Scene {
                 this.waveManager.waveInProgress = false
             }
         })
+
+        eventDispatcher.on("saveProgess", this.saveData.bind(this))
+    }
+
+    saveData() {
+        setTimeout(() => {
+            if (!this.gamestate || !this.waveManager) {
+                return
+            }
+            console.log(this.gamestate.money)
+            const towerData: TowerData[] = []
+
+            this.towersPresent.forEach(tower => {
+                towerData.push({
+                    towerType: towerNameToKey.get(tower.towerName)!,
+                    x: tower.x,
+                    y: tower.y,
+                    level: tower.level
+                })
+            })
+            const gameSaveData : GameSaveData = {
+                map: this.gamestate.mapName,
+                money: this.gamestate.money,
+                lives: this.gamestate.lives,
+                researchLevel: this.gamestate.researchLevel,
+                saveFileIndex: this.gamestate.saveFileIndex,
+                towers: towerData,
+                checkpointWave: this.waveManager.currentWave
+            }
+            gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
+        }, 0);
+
     }
 
     buildMap() {
         if (!this.mapContainer) {
             return
         }
-        this.tdMap?.displayTiles(this.mapContainer)
+        if(this.savedData) {
+            this.tdMap?.displayTiles(this.mapContainer, this, this.savedData.towers)
+        } else {
+            this.tdMap?.displayTiles(this.mapContainer, this)
+        }
+
         this.tdMap?.displayPath()
         this.tdMap?.repaveGrass()
+
+
     }
 
     update() {
@@ -142,7 +200,7 @@ export class GameplayScene extends Scene {
     //     this.projectilesPresent = this.projectilesPresent.filter(projectile => !projectile.hasHit)
     // }
 
-    addEnemyToPresent(enemy : Enemy) {
+    addEnemyToPresent(enemy: Enemy) {
         this.enemiesPresent.push(enemy)
     }
 
@@ -150,7 +208,7 @@ export class GameplayScene extends Scene {
     //     this.projectilesPresent.push(projectile)
     // }
 
-    addTowerToPresent(tower : Tower) {
+    addTowerToPresent(tower: Tower) {
         this.towersPresent.push(tower)
     }
 
@@ -173,13 +231,13 @@ export class GameplayScene extends Scene {
         }
     }
 
-    onTowerAttackSoundPlay(data : {towerName: string, maxSources: number, path: string, volume?: number, speed?: number}) {
+    onTowerAttackSoundPlay(data: { towerName: string, maxSources: number, path: string, volume?: number, speed?: number }) {
         const towerCount = this.numberTowersOf(data.towerName)
 
         audioManager.playSoundLimited(towerCount, data.maxSources, towerCount, data.path, data.volume || 1, data.speed || 1)
     }
 
-    private numberTowersOf(towerName : string) {
+    private numberTowersOf(towerName: string) {
         return this.towersPresent.filter(tower => tower.towerName === towerName).length
     }
 
@@ -209,5 +267,6 @@ export class GameplayScene extends Scene {
         eventDispatcher.clearListenersOfEvent("towerPlaced")
         eventDispatcher.clearListenersOfEvent("towerSold")
         eventDispatcher.clearListenersOfEvent("defeat")
+        eventDispatcher.clearListenersOfEvent("saveProgress")
     }
 }

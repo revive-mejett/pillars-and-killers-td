@@ -13,7 +13,7 @@ import { productionWaves } from "../utils/WaveData"
 
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
-import { calculateWaveValue } from "../utils/Calc"
+// import { calculateWaveValue } from "../utils/Calc"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -55,6 +55,7 @@ export class WaveManager {
         this.currentWave = startWave
         this.checkpointWave = this.bossWaves.find(wave => wave > this.currentWave) || 0
 
+
         if (this.checkpointWave > this.waves.length) {
             this.checkpointWave = this.waves.length
         }
@@ -67,10 +68,23 @@ export class WaveManager {
 
         this.isFreeplay = this.currentWave >= this.waves.length
 
-        eventDispatcher.on("boss1Killed", () => this.updateNextCheckpointWave(1))
-        eventDispatcher.on("boss2Killed", () => this.updateNextCheckpointWave(2))
-        eventDispatcher.on("boss3Killed", () => this.updateNextCheckpointWave(3))
-        eventDispatcher.on("boss4Killed", () => this.updateNextCheckpointWave(4))
+        eventDispatcher.on("boss1Killed", () => {
+            this.updateNextCheckpointWave(1)
+            eventDispatcher.fireEvent("saveProgess")
+        })
+        eventDispatcher.on("boss2Killed", () => {
+            this.updateNextCheckpointWave(2)
+            eventDispatcher.fireEvent("saveProgess")
+        })
+        eventDispatcher.on("boss3Killed", () => {
+            this.updateNextCheckpointWave(3)
+            eventDispatcher.fireEvent("saveProgess")
+        })
+        eventDispatcher.on("boss4Killed", () => {
+            this.updateNextCheckpointWave(4)
+            eventDispatcher.fireEvent("saveProgess")
+
+        })
         eventDispatcher.on("boss5Killed", () => {
             console.log("WINNER!!! TODO implement winner ui and option freeplay!")
             this.bossPresent = false
@@ -129,7 +143,7 @@ export class WaveManager {
 
 
     sendWave(gameplayScene: GameplayScene) {
-        if (this.waveInProgress) { return }
+        if (this.waveInProgress || !this.map.waypoints) { return }
 
 
         this.waveInProgress = true
@@ -137,7 +151,7 @@ export class WaveManager {
         const map = this.map
 
         if (this.bossWaves.includes(this.currentWave)) {
-            console.log("this is a boss wave.")
+            // console.log("this is a boss wave.")
             this.bossPresent = true
         }
 
@@ -167,7 +181,7 @@ export class WaveManager {
             waveArray = this.waves[waveIndex]
         }
 
-        console.log(calculateWaveValue(waveArray))
+        // console.log(calculateWaveValue(waveArray))
 
         //set the cooldown to next wave to the duration of the current wave
         this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000
@@ -188,7 +202,7 @@ export class WaveManager {
         //spawns an enemy
         const onTick = () => {
 
-            if (!this.waveTicker || !gameplayScene.mapContainer) {
+            if (!this.waveTicker || !gameplayScene.mapContainer || !map.waypoints) {
                 return
             }
 
@@ -237,9 +251,9 @@ export class WaveManager {
                         if (this.currentWave === this.checkpointWave && this.wavesTicker?.started && !this.isFreeplay) {
                             this.wavesTicker?.stop()
                             this.wavesStarted = false
-                            console.log("boss wave finished")
+                            // console.log("boss wave finished")
                             if (this.currentWave === this.waves.length) {
-                                console.log("all waves sent, setting into freeplay")
+                                // console.log("all waves sent, setting into freeplay")
                                 this.wavesTicker?.stop()
                                 this.wavesStarted = false
                                 this.isFreeplay = true
@@ -307,7 +321,6 @@ export class WaveManager {
 
 
     cleanUpResources() {
-        console.log("clean up resources wave manager")
         this.waveTicker?.stop()
         this.waveTicker?.destroy()
         this.wavesTicker?.stop()

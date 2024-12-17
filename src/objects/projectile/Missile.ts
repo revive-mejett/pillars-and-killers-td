@@ -34,6 +34,7 @@ export class Missile extends Projectile {
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
+
                 const newEnemy = this.seekEnemy(enemies)
                 if (newEnemy) {
                     this.targetEnemy = newEnemy

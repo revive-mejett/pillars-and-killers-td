@@ -129,6 +129,9 @@ export class Enemy extends Entity {
 
 
     setDistancesToNext(map: TdMap) {
+        if (!map.waypoints) {
+            return
+        }
         this.position.x = map.waypoints[this.nextWayPointIndex - 1].x * map.tileSize
         this.position.y = map.waypoints[this.nextWayPointIndex - 1].y * map.tileSize
         this.xToNextWaypoint = (map.waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
@@ -183,9 +186,13 @@ export class Enemy extends Entity {
 
 
     updateMovement(map: TdMap, delta: number) {
-
+        if (!map.waypoints) {
+            return
+        }
         const waypoints = map.waypoints
         const speed = this.speed
+
+
 
 
 

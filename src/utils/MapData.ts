@@ -1,6 +1,8 @@
+import Waypoint from "src/ts/types/WaypointType"
 
+const allMaps : Map<string, Waypoint[]> = new Map()
 
-const easy1 = [
+allMaps.set("Walk in the Park", [
     {
         type: "start",
         x: 0,
@@ -191,12 +193,9 @@ const easy1 = [
         x: 24,
         y: 2
     }
-]
+])
 
-
-
-
-const hard1 = [
+allMaps.set("Death Walk", [
     {
         type: "start",
         x: 0,
@@ -237,11 +236,10 @@ const hard1 = [
         x: 20,
         y: 0
     }
-]
+])
 
-
-//TEST MAPS
-const blons = [
+// TEST MAPS
+allMaps.set("blons", [
     {
         type: "start",
         x: 10,
@@ -252,8 +250,8 @@ const blons = [
         x: 16,
         y: 10
     }
-]
+])
 
 
 
-export { easy1, hard1, blons }
+export { allMaps }
