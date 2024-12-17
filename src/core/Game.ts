@@ -30,7 +30,7 @@ export class Game {
     constructor() {
         this.mapSize = 1000
         this.dimensions = 25
-        this.app = new PIXI.Application({width: window.outerWidth, height: window.outerHeight})
+        this.app = new PIXI.Application({width: window.outerWidth, height: 1000})
         this.baseContainer = new PIXI.Container()
         this.sceneContainer = undefined
         this.sceneManager = undefined

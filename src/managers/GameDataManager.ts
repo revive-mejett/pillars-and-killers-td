@@ -38,6 +38,10 @@ export class GameDataManager {
         localStorage.clear()
     }
 
+    wipeSaveData(fileNumber: 1 | 2 | 3 | 4 | 5 | 6) {
+        localStorage.removeItem(fileNumber.toString())
+    }
+
     updateSavedFiles() {
         this.file1Data = this.loadFromLocalStorage(1)
         this.file2Data = this.loadFromLocalStorage(2)

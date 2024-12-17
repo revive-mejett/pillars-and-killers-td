@@ -111,38 +111,32 @@ export class GameplayScene extends Scene {
     }
 
     saveData() {
-        if (!this.gamestate || !this.waveManager) {
-            return
-        }
-
-        const towerData: TowerData[] = []
-        console.log(this.gamestate.money)
-
-        this.towersPresent.forEach(tower => {
-            towerData.push({
-                towerType: towerNameToKey.get(tower.towerName)!,
-                x: tower.x,
-                y: tower.y,
-                level: tower.level
-            })
-        })
-        const gameSaveData : GameSaveData = {
-            map: this.gamestate.mapName,
-            money: this.gamestate.money,
-            lives: this.gamestate.lives,
-            researchLevel: this.gamestate.researchLevel,
-            saveFileIndex: this.gamestate.saveFileIndex,
-            towers: towerData,
-            checkpointWave: this.waveManager?.currentWave
-        }
-
         setTimeout(() => {
-            if (!this.gamestate) {return}
+            if (!this.gamestate || !this.waveManager) {
+                return
+            }
             console.log(this.gamestate.money)
+            const towerData: TowerData[] = []
+
+            this.towersPresent.forEach(tower => {
+                towerData.push({
+                    towerType: towerNameToKey.get(tower.towerName)!,
+                    x: tower.x,
+                    y: tower.y,
+                    level: tower.level
+                })
+            })
+            const gameSaveData : GameSaveData = {
+                map: this.gamestate.mapName,
+                money: this.gamestate.money,
+                lives: this.gamestate.lives,
+                researchLevel: this.gamestate.researchLevel,
+                saveFileIndex: this.gamestate.saveFileIndex,
+                towers: towerData,
+                checkpointWave: this.waveManager.currentWave
+            }
             gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
-        }, 500);
-
-
+        }, 0);
 
     }
 

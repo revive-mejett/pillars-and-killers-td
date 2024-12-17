@@ -42,6 +42,7 @@ class TdMap {
 
                 if (savedTowerData) {
                     const tower = TowerFactory.createTower(tile.x, tile.y, tile.width, tile.height, savedTowerData.towerType)
+                    tower.presetLevel(savedTowerData.level)
                     tile.placeTowerOnTile(tower)
                     tower.setTileRef(tile)
                     tower.runTower(gameplayScene)

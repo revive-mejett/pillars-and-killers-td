@@ -48,9 +48,12 @@ export class PregameSelection extends Scene {
         pillarsKillersVisual.zIndex = 1
 
         this.container.addChild(pillarsKillersVisual)
+
+        const saveScreenTitle = UIHelper.createText(0, 0, "Select Save Slot:", 50, "0xFFFFFF");
+        this.container.addChild(saveScreenTitle);
     }
 
-    private createSaveFilePane(paneXPos : number, paneYPos : number, fileNumber : number, fileData : GameSaveData | null) {
+    private createSaveFilePane(paneXPos : number, paneYPos : number, fileNumber : 1 | 2 | 3 | 4 | 5 | 6, fileData : GameSaveData | null) {
 
         const iconBundle = assetLoader.icons
 
@@ -60,6 +63,7 @@ export class PregameSelection extends Scene {
 
 
         const padding = 5;
+        const paneWidth = 300;
         const saveFileContainer = new PIXI.Container();
         saveFileContainer.x = paneXPos
         saveFileContainer.y = paneYPos
@@ -67,38 +71,63 @@ export class PregameSelection extends Scene {
         saveFileContainer.zIndex = 10
         const bgColour = new PIXI.Graphics();
         bgColour.beginFill(0x002222);
-        bgColour.drawRect(0, 0, 300, 300);
+        bgColour.drawRect(0, 0, paneWidth, 300);
         bgColour.endFill();
         saveFileContainer.addChild(bgColour);
-        const saveText = UIHelper.createText(0, 0, `Save slot ${fileNumber}`, 30, "0xFFFFFF");
+        const saveText = UIHelper.createText(paneWidth/2, 20, `Save slot ${fileNumber}`, 30, "0xFFFFFF", true);
         saveFileContainer.addChild(saveText);
         if (fileData) {
-            const btnLoadFile1 = UIHelper.createButton(0, 250, 300, 50, "Load Game", 20, 0xFFFFFF);
-            saveFileContainer.addChild(btnLoadFile1);
-            const txtMap = UIHelper.createText(0 + padding, 50, `${fileData.map}`, 30, "0xFFFFFF");
+            const btnLoadFile = UIHelper.createButton(0, 250, 140, 50, "Load Game", 20, 0xFFFFFF);
+            saveFileContainer.addChild(btnLoadFile);
+            const txtMap = UIHelper.createText(paneWidth/2, 50, `${fileData.map}`, 20, "0xC7FFFF", true);
             saveFileContainer.addChild(txtMap);
-            const txtCheckpointWave = UIHelper.createText(0 + padding, 100, `Wave ${fileData.checkpointWave}`, 30, "0xFFFFFF");
+            const txtCheckpointWave = UIHelper.createText(0 + padding, 150, `Wave ${fileData.checkpointWave}`, 30, "0xFFFFFF");
             saveFileContainer.addChild(txtCheckpointWave);
 
-            const iconMoney = UIHelper.createIcon(iconBundle.money, 0 + padding, 130, 0x002222, 30, 30);
+            const iconMoney = UIHelper.createIcon(iconBundle.money, 0 + padding, 180, 0x002222, 30, 30);
             saveFileContainer.addChild(iconMoney);
-            const txtMoney = UIHelper.createText(35 + padding, 130, `${fileData.money}`, 30, "0xFFFF00");
+            const txtMoney = UIHelper.createText(35 + padding, 180, `${fileData.money}`, 30, "0xFFFF00");
             saveFileContainer.addChild(txtMoney);
 
-            const iconLives = UIHelper.createIcon(iconBundle.lives, 0 + padding, 160, 0x002222, 30, 30);
+            const iconLives = UIHelper.createIcon(iconBundle.lives, 0 + padding, 210, 0x002222, 30, 30);
             saveFileContainer.addChild(iconLives);
-            const txtLives = UIHelper.createText(35 + padding, 160, `${fileData.lives}`, 30, "0x00FF00");
+            const txtLives = UIHelper.createText(35 + padding, 210, `${fileData.lives}`, 30, "0x00FF00");
             saveFileContainer.addChild(txtLives);
 
-            btnLoadFile1.on("pointerdown", () => {
+            btnLoadFile.on("pointerdown", () => {
                 eventDispatcher.fireEvent("gameStarted", {fileNumber: fileNumber, gameData : fileData});
             });
+
+
+            const btnDeleteFile = UIHelper.createButton(160, 250, 140, 50, "Delete File", 20, 0xFFC7C7);
+            const btnConfirmDelete = UIHelper.createButton(160, 250, 140, 50, "Confirm?", 20, 0xFF0000);
+            saveFileContainer.addChild(btnDeleteFile);
+            saveFileContainer.addChild(btnConfirmDelete);
+            btnConfirmDelete.visible = false
+
+            btnDeleteFile.on("pointerdown", () => {
+                btnConfirmDelete.visible = true
+                btnConfirmDelete.on("pointerdown", () => {
+                    btnConfirmDelete.visible = true
+                    btnDeleteFile.visible = false
+                    gameDataManager.wipeSaveData(fileNumber)
+                });
+                setTimeout(() => {
+                    btnConfirmDelete.off("pointerdown", () => {
+                        btnConfirmDelete.visible = true
+                        btnDeleteFile.visible = false
+                    });
+                    btnConfirmDelete.visible = false
+                    btnDeleteFile.visible = true
+                }, 2000);
+            });
+
         } else {
-            const btnLoadFile = UIHelper.createButton(0, 250, 300, 50, "New Game", 20, 0xFFFFFF);
+            const btnNewGame = UIHelper.createButton(0, 250, 300, 50, "New Game", 20, 0xFFFFFF);
             const saveText = UIHelper.createText(100, 100, "Empty", 30, "0x777777");
             saveFileContainer.addChild(saveText);
-            saveFileContainer.addChild(btnLoadFile);
-            btnLoadFile.on("pointerdown", () => {
+            saveFileContainer.addChild(btnNewGame);
+            btnNewGame.on("pointerdown", () => {
                 eventDispatcher.fireEvent("gameStarted", {fileNumber: fileNumber, gameData : undefined});
             });
         }
