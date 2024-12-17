@@ -5,6 +5,7 @@ import { GameDataManager } from "../managers/GameDataManager";
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader";
 import { GameSaveData } from "src/ts/types/GameSaveData";
+import { allMaps } from "../utils/MapData";
 
 const gameDataManager = new GameDataManager()
 const eventDispatcher = new EventDispatcher()
@@ -44,8 +45,9 @@ export class PregameSelection extends Scene {
 
 
 
-        this.createMapSelectionPane(300, 100, "Walk in the Park");
-        this.createMapSelectionPane(700, 100, "Death Walk");
+        this.createMapSelectionPane(0, 300, "Walk in the Park");
+        this.createMapSelectionPane(400, 300, "Death Walk");
+        this.createMapSelectionPane(800, 300, "blons");
 
         const btnBackToMain = UIHelper.createButton(0, 200, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -79,8 +81,20 @@ export class PregameSelection extends Scene {
         paneContainer.addChild(bgColour);
 
 
-        const txtMapTitle = UIHelper.createText(paneWidth/2, 20, title, 30, "0xFFFFFF", true);
+
+        const txtMapTitle = UIHelper.createText(paneWidth/2, 20, title, 20, "0xFFFFFF", true);
         paneContainer.addChild(txtMapTitle);
+
+        //map card
+        const mapWaypoints = allMaps.get(title)
+        if (!mapWaypoints) {
+            throw new Error("No map exists w/ that title!")
+        }
+
+        const mapCard = UIHelper.createMapCard(mapWaypoints, 200, 25)
+        paneContainer.addChild(mapCard)
+        mapCard.x = 50
+        mapCard.y = 40
 
         const btnSelect = UIHelper.createButton(0, 250, 300, 50, "Select", 30, 0x77FF77);
         paneContainer.addChild(btnSelect)
