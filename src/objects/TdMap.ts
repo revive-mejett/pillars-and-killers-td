@@ -4,6 +4,7 @@ import * as PIXI from "pixi.js";
 import { TowerData } from "src/ts/types/GameSaveData";
 import { TowerFactory } from "../managers/TowerFactory";
 import { GameplayScene } from "../scenes/GameplayScene";
+import { MapData } from "src/utils/MapData";
 
 
 class TdMap {
@@ -13,13 +14,19 @@ class TdMap {
     tileSize: number
     tiles: Tile[][]
     waypoints : Waypoint[] | undefined
-    constructor(wayPoints: Waypoint[], mapWidth : number, mapHeight : number, dimensions : number) {
+
+    grassColour: number | undefined
+    grassOutlineColour: number | undefined
+    constructor(mapData: MapData, mapWidth : number, mapHeight : number, dimensions : number) {
         this.mapWidth = mapWidth
         this.mapHeight = mapHeight
         this.dimensions = dimensions
         this.tileSize = mapWidth / dimensions
         this.tiles = []
-        this.waypoints = wayPoints
+        this.waypoints = mapData.waypoints
+
+        this.grassColour = mapData.mapInfo.grassColour
+        this.grassOutlineColour = mapData.mapInfo.grassSecondaryColour
     }
 
     displayTiles(container : PIXI.Container, gameplayScene: GameplayScene, savedTowers?: TowerData[]) {
@@ -30,7 +37,7 @@ class TdMap {
             this.tiles.push([])
             for (let j = 0; j < this.dimensions; j++) {
 
-                const tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container)
+                const tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container, this.grassColour, this.grassOutlineColour)
                 tile.paveGrass()
                 this.tiles[i].push(tile)
 

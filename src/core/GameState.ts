@@ -20,15 +20,17 @@ export class GameState {
     readonly tier3ResearchCost: number = 25000
     readonly tier4ResearchCost: number = 250000
 
-    constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6, savedData?: GameSaveData) {
+    constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6, savedData?: GameSaveData, mapTitle?: string) {
 
         if (savedData) {
             this.lives = savedData.lives
             this.money = savedData.money
             this.startWave = savedData.checkpointWave
             this.researchLevel = savedData.researchLevel
+            this.mapName = savedData.map
         } else {
             this.saveFileIndex = fileNumber
+            this.mapName = mapTitle || "Walk in the Park"
         }
 
 

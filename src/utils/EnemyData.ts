@@ -2171,7 +2171,7 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.05,
             regen: 0,
-            armour: 155250,
+            armour: 192575,
             slowImmune: false
         }
     },

@@ -15,18 +15,21 @@ export class Tile extends Entity {
     parentContainer: Container<PIXI.DisplayObject>;
     tower?: Tower;
 
+    grassColour : number = 0x001100
+    grassOutlineColour : number = 0x005500
+
     /**
      * tileType can be either "start", "end", "path", "grass"
      */
-    constructor(x : number, y : number, width : number, height : number, tileType: TileType, parentContainer : PIXI.Container) {
+    constructor(x : number, y : number, width : number, height : number, tileType: TileType, parentContainer : PIXI.Container, grassColour?: number, grassOutlineColour?: number) {
         super(x, y, width, height);
         this.tileType = tileType
         this.hasTower = false
         this.container = undefined
         this.parentContainer = parentContainer
         this.tower = undefined
-
-    
+        this.grassColour = grassColour || this.grassColour
+        this.grassOutlineColour = grassOutlineColour || this.grassOutlineColour
     }
 
     sellTower() {
@@ -69,6 +72,11 @@ export class Tile extends Entity {
     }
 
     onTileSelect() {
+        console.log(`\n{
+            type: "point",
+            x: ${this.x/this.width},
+            y: ${this.y/this.width}
+        },`)
         if (this.hasTower) {
             eventDispatcher.fireEvent("towerSelectAction", this.tower)
             eventDispatcher.fireEvent("tileTowerSelect", this)
@@ -91,8 +99,8 @@ export class Tile extends Entity {
 
     paveGrass() {
         const grass = new PIXI.Graphics()
-        grass.beginFill(0x001100)
-        grass.lineStyle(2, 0x005500)
+        grass.beginFill(this.grassColour)
+        grass.lineStyle(2, this.grassOutlineColour)
         grass.drawRect(this.x, this.y, this.width, this.height)
         grass.endFill()
         this.setTileContainer(grass)
@@ -107,7 +115,7 @@ export class Tile extends Entity {
 
             this.container?.removeChildren()
             const tileBackground = new PIXI.Graphics()
-            tileBackground.lineStyle(2, 0x005500)
+            tileBackground.lineStyle(2, this.grassOutlineColour)
             tileBackground.beginFill(this.tower.tileColour)
             tileBackground.drawRect(this.x, this.y, this.width, this.height)
             tileBackground.endFill()
