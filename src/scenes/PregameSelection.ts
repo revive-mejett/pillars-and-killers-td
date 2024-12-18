@@ -45,12 +45,12 @@ export class PregameSelection extends Scene {
 
 
 
-        this.createMapSelectionPane(0, 300, "Walk in the Park");
-        this.createMapSelectionPane(400, 300, "Death Walk");
-        this.createMapSelectionPane(800, 300, "blons");
-        this.createMapSelectionPane(0, 700, "Xmas 2024")
+        this.createMapSelectionPane(0, 100, "Walk in the Park");
+        this.createMapSelectionPane(400, 100, "Death Walk");
+        this.createMapSelectionPane(800, 100, "blons");
+        this.createMapSelectionPane(0, 400, "Xmas 2024")
 
-        const btnBackToMain = UIHelper.createButton(0, 200, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
+        const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
         btnBackToMain.on("pointerdown", () => {
             eventDispatcher.fireEvent("btnBackToMainMenuClick");
@@ -151,9 +151,13 @@ export class PregameSelection extends Scene {
         bgColour.drawRect(0, 0, paneWidth, 300);
         bgColour.endFill();
         saveFileContainer.addChild(bgColour);
-        const saveText = UIHelper.createText(paneWidth/2, 20, `Save slot ${fileNumber}`, 30, "0xFFFFFF", true);
-        saveFileContainer.addChild(saveText);
-        if (fileData) {
+
+        if (fileData && allMaps.get(fileData.map)) {
+            const miniMapIcon = UIHelper.createMapCard(allMaps.get(fileData.map)!, 300, 25)
+            miniMapIcon.alpha = 0.5
+            saveFileContainer.addChild(miniMapIcon)
+            miniMapIcon.zIndex = -1
+
             const btnLoadFile = UIHelper.createButton(0, 250, 140, 50, "Load Game", 20, 0xFFFFFF);
             saveFileContainer.addChild(btnLoadFile);
             const txtMap = UIHelper.createText(paneWidth/2, 50, `${fileData.map}`, 20, "0xC7FFFF", true);
@@ -170,6 +174,8 @@ export class PregameSelection extends Scene {
             saveFileContainer.addChild(iconLives);
             const txtLives = UIHelper.createText(35 + padding, 210, `${fileData.lives}`, 30, "0x00FF00");
             saveFileContainer.addChild(txtLives);
+
+
 
             btnLoadFile.on("pointerdown", () => {
                 this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined}
@@ -212,5 +218,9 @@ export class PregameSelection extends Scene {
                 this.mapSelectionContainer.visible = true
             });
         }
+
+        const saveText = UIHelper.createText(paneWidth/2, 20, `Save slot ${fileNumber}`, 30, "0xFFFFFF", true);
+        saveFileContainer.addChild(saveText);
+        saveText.zIndex = 2
     }
 }
