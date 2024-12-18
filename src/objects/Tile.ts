@@ -72,6 +72,11 @@ export class Tile extends Entity {
     }
 
     onTileSelect() {
+        console.log(`\n{
+            type: "point",
+            x: ${this.x/this.width},
+            y: ${this.y/this.width}
+        },`)
         if (this.hasTower) {
             eventDispatcher.fireEvent("towerSelectAction", this.tower)
             eventDispatcher.fireEvent("tileTowerSelect", this)
@@ -110,7 +115,7 @@ export class Tile extends Entity {
 
             this.container?.removeChildren()
             const tileBackground = new PIXI.Graphics()
-            tileBackground.lineStyle(2, 0x005500)
+            tileBackground.lineStyle(2, this.grassOutlineColour)
             tileBackground.beginFill(this.tower.tileColour)
             tileBackground.drawRect(this.x, this.y, this.width, this.height)
             tileBackground.endFill()

@@ -262,6 +262,126 @@ allMaps.set("Death Walk", {
     ]
 })
 
+allMaps.set("Xmas 2024", {
+    mapInfo: {
+        difficulty: 1,
+        grassColour: 0x000344,
+        grassSecondaryColour: 0x001F77
+    },
+    waypoints: [{
+        type: "start",
+        x: 12,
+        y: 24
+    },
+    {
+        type: "point",
+        x: 12,
+        y: 4
+    },
+    {
+        type: "point",
+        x: 13,
+        y: 4
+    },
+    {
+        type: "point",
+        x: 13,
+        y: 2
+    },
+    {
+        type: "point",
+        x: 11,
+        y: 2
+    },
+    {
+        type: "point",
+        x: 11,
+        y: 4
+    },
+    {
+        type: "point",
+        x: 12,
+        y: 4
+    },
+    {
+        type: "point",
+        x: 12,
+        y: 7
+    },
+    {
+        type: "point",
+        x: 7,
+        y: 7
+    },
+    {
+        type: "point",
+        x: 7,
+        y: 9
+    },
+    {
+        type: "point",
+        x: 17,
+        y: 9
+    },
+    {
+        type: "point",
+        x: 17,
+        y: 11
+    },
+    {
+        type: "point",
+        x: 5,
+        y: 11
+    },
+    {
+        type: "point",
+        x: 5,
+        y: 14
+    },
+    {
+        type: "point",
+        x: 19,
+        y: 14
+    },
+    {
+        type: "point",
+        x: 19,
+        y: 17
+    },
+    {
+        type: "point",
+        x: 3,
+        y: 17
+    },
+    {
+        type: "point",
+        x: 3,
+        y: 20
+    },
+    {
+        type: "point",
+        x: 22,
+        y: 20
+    },
+    {
+        type: "point",
+        x: 22,
+        y: 22
+    },
+    {
+        type: "point",
+        x: 14,
+        y: 22
+    },
+    {
+        type: "end",
+        x: 14,
+        y: 24
+    }]
+})
+
+
+
 // TEST MAPS
 allMaps.set("blons", {
     mapInfo: {
