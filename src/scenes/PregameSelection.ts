@@ -86,12 +86,12 @@ export class PregameSelection extends Scene {
         paneContainer.addChild(txtMapTitle);
 
         //map card
-        const mapWaypoints = allMaps.get(title)
-        if (!mapWaypoints) {
+        const mapData = allMaps.get(title)
+        if (!mapData) {
             throw new Error("No map exists w/ that title!")
         }
 
-        const mapCard = UIHelper.createMapCard(mapWaypoints, 200, 25)
+        const mapCard = UIHelper.createMapCard(mapData, 200, 25)
         paneContainer.addChild(mapCard)
         mapCard.x = 50
         mapCard.y = 40

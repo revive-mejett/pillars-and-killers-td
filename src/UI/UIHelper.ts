@@ -1,6 +1,6 @@
 import { Text, TextStyle } from "pixi.js"
 import * as PIXI from "pixi.js";
-import Waypoint from "src/ts/types/WaypointType";
+import { MapData } from "src/utils/MapData";
 
 export class UIHelper {
 
@@ -104,11 +104,12 @@ export class UIHelper {
         return infoPanelOutline
     }
 
-    static createMapCard(waypoints: Waypoint[], cardSize: number, dimensions: number) {
+    static createMapCard(mapData: MapData, cardSize: number, dimensions: number) {
         const mapCard = new PIXI.Container()
+        const waypoints = mapData.waypoints
 
         const grassBackground = new PIXI.Graphics()
-        grassBackground.beginFill(0x005500)
+        grassBackground.beginFill(mapData.mapInfo.grassSecondaryColour || 0x005500)
         grassBackground.drawRect(0, 0, cardSize, cardSize)
         grassBackground.endFill()
         mapCard.addChild(grassBackground)
