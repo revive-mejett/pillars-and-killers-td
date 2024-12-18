@@ -89,6 +89,7 @@ export class WaveManager {
             console.log("WINNER!!! TODO implement winner ui and option freeplay!")
             this.bossPresent = false
             this.cooldownToNextWave = 0
+            eventDispatcher.fireEvent("saveProgess")
         })
 
     }

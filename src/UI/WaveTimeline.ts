@@ -150,8 +150,8 @@ export class WaveTimeline {
 
 
         const waveStone = new PIXI.Graphics()
-        waveStone.lineStyle(1, 0x360077)
-        waveStone.beginFill(0x999999)
+        waveStone.lineStyle(1, 0xFF00FF)
+        waveStone.beginFill(0x360077)
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)
         waveStone.endFill()
         this.innerContainer.addChild(waveStone)
