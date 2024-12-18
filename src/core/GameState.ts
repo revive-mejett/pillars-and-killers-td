@@ -27,6 +27,7 @@ export class GameState {
             this.money = savedData.money
             this.startWave = savedData.checkpointWave
             this.researchLevel = savedData.researchLevel
+            this.mapName = savedData.map
         } else {
             this.saveFileIndex = fileNumber
             this.mapName = mapTitle || "Walk in the Park"
