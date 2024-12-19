@@ -176,7 +176,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 },
                 towerInfo: {
                     assetIcon: towerIcons.emberPillar,
-                    asset: towerIcons.emberPillarTop,
+                    asset: towerIcons.emberPillarTopLv1,
                     info: {
                         title: "Ember Pillar",
                         description: "Puffs out ember fireballs that damages nearby enemies upon impact"
@@ -219,7 +219,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 visualUpgrades: [
                     {
                         assetIcon: towerIcons.emberPillar,
-                        asset: towerIcons.emberPillarTop,
+                        asset: towerIcons.emberPillarTopLv2,
                         tileColour: 0x004400,
                         flameColour: 0xEE4400,
                         fireballWidth: 7,
@@ -227,7 +227,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         assetIcon: towerIcons.emberPillar,
-                        asset: towerIcons.emberPillarTop,
+                        asset: towerIcons.emberPillarTopLv3,
                         tileColour: 0x000066,
                         flameColour: 0xEE7700,
                         fireballWidth: 8,
@@ -235,7 +235,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         assetIcon: towerIcons.emberPillar,
-                        asset: towerIcons.emberPillarTop,
+                        asset: towerIcons.emberPillarTopLv4,
                         tileColour: 0x990000,
                         flameColour: 0xEE8C00,
                         fireballWidth: 10,
@@ -243,7 +243,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         assetIcon: towerIcons.emberPillar,
-                        asset: towerIcons.emberPillarTop,
+                        asset: towerIcons.emberPillarTopLv5,
                         tileColour: 0x6600FF,
                         flameColour: 0xFFC700,
                         fireballWidth: 12,

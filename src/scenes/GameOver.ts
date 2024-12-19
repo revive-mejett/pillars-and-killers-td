@@ -47,7 +47,7 @@ export class GameOver extends Scene {
         btnRestart.zIndex = 1
 
         btnRestart.on("pointerdown", () => {
-            eventDispatcher.fireEvent("gameStarted")
+            eventDispatcher.fireEvent("newGameClick")
         })
 
         const btnMainMenu = UIHelper.createButton(450,800,400,50, "Main Menu")
