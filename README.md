@@ -140,7 +140,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/694512c1-ce1b-445d-82eb-c7cce657d04d" witdh="125px" height="125px"></td>
       <td>12p 2028</td>
-      <td>They love to spin really fast! Be careful of taking these down. They are after your pillars too!</td>
+      <td>It's moving and shining! Is it brighter than the world's brightest flashlight? Perhaps! They are after your pillars too!</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/7cfbbcf3-d419-474c-bea7-80dcd9e9ec87" witdh="125px" height="125px"></td>
@@ -170,7 +170,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/7e520905-f49f-4d5c-a0bd-c0f44bfeec80" witdh="125px" height="125px"></td>
       <td>Kingda Ka Zipper</td>
-      <td>It's travelling at 206 km/hr (128 mph). Arms down, head back, hold on! It's very fast and you will see it reach the end in just seconds.</td>
+      <td>It's travelling at 206 km/hr (128 mph). Arms down, head back, hold on! Exceedingly fast!! You will see it reach the end in just seconds.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/aa101991-8ec1-4b32-aebc-33abd5e4eb40" witdh="125px" height="125px"></td>
@@ -180,7 +180,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/09b0d1ad-3fb2-41b5-921a-c528bbdd36f4" witdh="125px" height="125px"></td>
       <td>256p 2152</td>
-      <td>It's moving and shining! Is it brighter than the world's brightest flashlight? Perhaps, and its going to shock your pillars!</td>
+      <td>Its power still havent been measured yet, however it has the power to shut down YouTube and Facebook, or any other PC.</td>
     </tr>
       <tr>
       <td><img src="https://github.com/user-attachments/assets/eb3ea630-8731-467f-8fcc-58f73da79b42" witdh="125px" height="125px"></td>
@@ -196,6 +196,36 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td><img src="https://github.com/user-attachments/assets/84cab303-ff8c-48e9-a1c8-95a28ccfe369" witdh="125px" height="125px"></td>
       <td>Junior Rhombicosidodecahedron</td>
       <td>He/she has bills to pay, and is living from paycheck to paycheck. Money is the root of all evil isnt it?</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/08c93797-0a4b-478b-82be-d408a5536736" witdh="125px" height="125px"></td>
+      <td>Irresistible Phoenix</td>
+      <td>Is it a bird? Is it a plane? It's definitely not the latter and he/she will try his/her best as if he/she is living to 100.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/67b21b24-bfe2-4a59-aacd-05dd24db048f" witdh="125px" height="125px"></td>
+      <td>Challenger Deep Kraken</td>
+      <td>Mythical creature. Who knows if this really exists?? Take a picture if you see this.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/1b6dd3ae-785b-4179-829f-af2497d26af0" witdh="125px" height="125px"></td>
+      <td>Near-Light Zoomer</td>
+      <td>Someone had a crazy dream on January 16, 2024 and saw him/her...</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/956dbcfe-6db4-4392-b002-3ab7225037ca" witdh="125px" height="125px"></td>
+      <td>Carbon Nanotube Annihilator</td>
+      <td>He/she has one job: Annihilate</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/e018119a-5e8f-422c-8d26-f12cd8e98f49" witdh="125px" height="125px"></td>
+      <td>2^1024p 137632</td>
+      <td>No description provided.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/ace6a272-40bc-4449-b5e9-8b3e1323c58e" witdh="125px" height="125px"></td>
+      <td>Merciless Loch Ness</td>
+      <td>Zero mercy. A true killer.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/d5c1735e-a10a-4740-8300-7783bf0b65a2" witdh="125px" height="125px"></td>
