@@ -37,13 +37,14 @@ export class InputManager {
         this.gridMask.drawRect(0, 0, mapContainer.width, mapContainer.height);
         this.gridMask.endFill();
 
+        this.rangeCircle = new PIXI.Graphics()
+        this.rangeCircle.mask = this.gridMask
+
         eventDispatcher.on("tileHover", this.setHoveredTile.bind(this))
         eventDispatcher.on("tileTowerSelect", this.setSelectedTowerTile.bind(this))
         eventDispatcher.on("tileUnhover", () => this.hoveredTile = undefined)
         eventDispatcher.on("towerPlaced", () => {
             this.clearRange();
-            this.rangeCircle = new PIXI.Graphics()
-            this.rangeCircle.mask = this.gridMask
             this.displayTowerRange()
         })
         eventDispatcher.on("towerUpgraded", () => {

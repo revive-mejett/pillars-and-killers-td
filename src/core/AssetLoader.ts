@@ -51,9 +51,24 @@ export class AssetLoader {
             "basicPillarIcon" : "assets/images/basic_pillar.png",
             "basicPillarTop" : "assets/images/basic_pillar_top.png",
             "icePillar" : "assets/images/frozen_pillar_icon.png",
+
+
             "icePillarTop" : "assets/images/frozen_pillar_top.png",
+            "icePillarTopLv1" : "assets/images/frozen_pillar_top_lv1.png",
+            "icePillarTopLv2" : "assets/images/frozen_pillar_top_lv2.png",
+            "icePillarTopLv3" : "assets/images/frozen_pillar_top_lv3.png",
+            "icePillarTopLv4" : "assets/images/frozen_pillar_top_lv4.png",
+            "icePillarTopLv5" : "assets/images/frozen_pillar_top_lv5.png",
+
+
             "emberPillar" : "assets/images/ember_pillar_icon.png",
             "emberPillarTop" : "assets/images/ember_pillar_top.png",
+            "emberPillarTopLv1" : "assets/images/ember_pillar_top_lv1.png",
+            "emberPillarTopLv2" : "assets/images/ember_pillar_top_lv2.png",
+            "emberPillarTopLv3" : "assets/images/ember_pillar_top_lv3.png",
+            "emberPillarTopLv4" : "assets/images/ember_pillar_top_lv4.png",
+            "emberPillarTopLv5" : "assets/images/ember_pillar_top_lv5.png",
+
 
             "poisonIvyPillar" : "assets/images/poisonivy_pillar_icon.png",
             "poisonIvyTopLv1" : "assets/images/poisonivy_pillar_top_lv1.png",
@@ -65,6 +80,11 @@ export class AssetLoader {
 
             "advancedPillar" : "assets/images/advanced_pillar_icon.png",
             "advancedPillarTop" : "assets/images/advanced_pillar_top.png",
+            "advancedPillarTopLv1" : "assets/images/advanced_pillar_top_lv1.png",
+            "advancedPillarTopLv2" : "assets/images/advanced_pillar_top_lv2.png",
+            "advancedPillarTopLv3" : "assets/images/advanced_pillar_top_lv3.png",
+            "advancedPillarTopLv4" : "assets/images/advanced_pillar_top_lv4.png",
+            "advancedPillarTopLv5" : "assets/images/advanced_pillar_top_lv5.png",
 
 
             "missilePillar" : "assets/images/missile_pillar_icon.png",
@@ -88,8 +108,12 @@ export class AssetLoader {
             "lightningPillarTopLv3" : "assets/images/lightning_pillar_top_lv3.png",
             "lightningPillarTopLv4" : "assets/images/lightning_pillar_top_lv4.png",
             "lightningPillarTopLv5" : "assets/images/lightning_pillar_top_lv5.png",
+
+
             "ultimatePillar" : "assets/images/ultimate_pillar.png",
-            "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png"
+            "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png",
+            "ultimatePillarTopLv1" : "assets/images/ultimate_pillar_top_lv1.png",
+            "ultimatePillarTopLv2" : "assets/images/ultimate_pillar_top_lv2.png"
         })
 
         Assets.addBundle("otherImages", {

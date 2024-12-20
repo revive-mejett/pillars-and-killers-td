@@ -8,6 +8,7 @@ import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "./AssetLoader"
 import * as PIXI from "pixi.js";
 import { GameSaveData } from "../ts/types/GameSaveData"
+import { AudioManager } from "../managers/AudioManager"
 
 // import { GameDataManager } from "../managers/GameDataManager";
 // const gameDataManager = new GameDataManager()
@@ -15,7 +16,7 @@ import { GameSaveData } from "../ts/types/GameSaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
-
+const audioManager = new AudioManager()
 
 const sceneContainerWidth = 1000 + 250
 const sceneContainerHeight = 1000
@@ -107,8 +108,11 @@ export class Game {
             this.sceneManager?.transitionScene(gameOver)
         })
 
+        audioManager.playbackgroundMusic()
         eventDispatcher.on("gameEnd", () => {
+            audioManager.stopbackgroundMusic()
         })
+
     }
 
     resetGameplayScene(gameplayScene : GameplayScene) {
