@@ -5,7 +5,10 @@ import sound from "pixi-sound"
 export class AudioManager {
 
     static instance: AudioManager
+    bgmMusic: sound.Sound | undefined
+
     useAudio : boolean = true
+    useMusic : boolean = false
 
     constructor() {
         //singleton
@@ -13,6 +16,11 @@ export class AudioManager {
             return AudioManager.instance
         }
         AudioManager.instance = this
+        this.bgmMusic = sound.Sound.from({
+            url: "assets/sounds/sfx/shadowy_figure.mp3",
+            volume: 0.25,
+            loop: true
+        })
     }
 
     //general play sound method
@@ -112,6 +120,23 @@ export class AudioManager {
             sfxEnemyDied.destroy()
         }, 2000);
     }
+
+    playbackgroundMusic() {
+        if (!this.bgmMusic  || !this.useMusic) {
+            return
+        }
+        this.bgmMusic.play()
+    }
+
+    stopbackgroundMusic() {
+        if (!this.useMusic) {
+            return
+        }
+        if (this.bgmMusic && this.bgmMusic.isPlaying) {
+            this.bgmMusic.stop()
+        }
+    }
+
 
 
 }

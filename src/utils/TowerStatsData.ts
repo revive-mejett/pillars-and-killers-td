@@ -98,7 +98,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 },
                 towerInfo: {
                     assetIcon: towerIcons.icePillar,
-                    asset: towerIcons.icePillarTop,
+                    asset: towerIcons.icePillarTopLv1,
                     info: {
                         title: "Ice Pillar",
                         description: "Fires chily ice bolts that slows down killers."
@@ -125,39 +125,39 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 150,
                         damage: 16,
                         fireRate: 1,
-                        cost: 260,
+                        cost: 160,
                         speedMultiplier: 0.4
                     },
                     {
                         range: 155,
                         damage: 20,
                         fireRate: 1,
-                        cost: 200,
+                        cost: 225,
                         speedMultiplier: 0.2
                     }
                 ],
                 visualUpgrades: [
                     {
                         assetIcon: towerIcons.icePillar,
-                        asset: towerIcons.icePillarTop,
-                        tileColour: 0x004400,
+                        asset: towerIcons.icePillarTopLv2,
+                        tileColour: 0x001100,
                         beamWidth: 3
                     },
                     {
                         assetIcon: towerIcons.icePillar,
-                        asset: towerIcons.icePillarTop,
+                        asset: towerIcons.icePillarTopLv3,
                         tileColour: 0x000066,
                         beamWidth: 4
                     },
                     {
                         assetIcon: towerIcons.icePillar,
-                        asset: towerIcons.icePillarTop,
+                        asset: towerIcons.icePillarTopLv4,
                         tileColour: 0x990000,
                         beamWidth: 5
                     },
                     {
                         assetIcon: towerIcons.icePillar,
-                        asset: towerIcons.icePillarTop,
+                        asset: towerIcons.icePillarTopLv5,
                         tileColour: 0x6600FF,
                         beamWidth: 6
                     }
@@ -263,7 +263,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 },
                 towerInfo: {
                     assetIcon: towerIcons.advancedPillar,
-                    asset: towerIcons.advancedPillarTop,
+                    asset: towerIcons.advancedPillarTopLv1,
                     info: {
                         title: "Sniper Pillar",
                         description: "This pillar may not have an actual gun, but it can pack a punch from a distance."
@@ -299,25 +299,25 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 ],
                 visualUpgrades: [{
                     assetIcon: towerIcons.advancedPillar,
-                    asset: towerIcons.advancedPillarTop,
+                    asset: towerIcons.advancedPillarTopLv2,
                     tileColour: 0x004400,
                     bulletSize: 4
                 },
                 {
                     assetIcon: towerIcons.advancedPillar,
-                    asset: towerIcons.advancedPillarTop,
+                    asset: towerIcons.advancedPillarTopLv3,
                     tileColour: 0x000066,
                     bulletSize: 4
                 },
                 {
                     assetIcon: towerIcons.advancedPillar,
-                    asset: towerIcons.advancedPillarTop,
+                    asset: towerIcons.advancedPillarTopLv4,
                     tileColour: 0x990000,
                     bulletSize: 6
                 },
                 {
                     assetIcon: towerIcons.advancedPillar,
-                    asset: towerIcons.advancedPillarTop,
+                    asset: towerIcons.advancedPillarTopLv5,
                     tileColour: 0x6600FF,
                     bulletSize: 6
                 }
@@ -659,7 +659,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 },
                 towerInfo: {
                     assetIcon: towerIcons.ultimatePillar,
-                    asset: towerIcons.ultimatePillarTop,
+                    asset: towerIcons.ultimatePillarTopLv1,
                     info: {
                         title: "Ultimate Pillar",
                         description: "The next generation using power currently being experimented..."
@@ -678,9 +678,9 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 ],
                 visualUpgrades: [{
                     assetIcon: towerIcons.ultimatePillar,
-                    asset: towerIcons.ultimatePillarTop,
+                    asset: towerIcons.ultimatePillarTopLv2,
                     tileColour: 0x6600FF,
-                    beamColour: 0xFF00FF,
+                    beamColour: 0X00FFFF,
                     beamWidth: 4
                 }]
             }
