@@ -4,8 +4,9 @@ import { EventDispatcher } from "../utils/EventDispatcher";
 import TileType from "src/ts/types/TileType";
 import * as PIXI from "pixi.js";
 import { Tower } from "./pillars/Tower";
+import { AudioManager } from "../managers/AudioManager";
 
-
+const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
 
 export class Tile extends Entity {
@@ -44,6 +45,8 @@ export class Tile extends Entity {
 
         eventDispatcher.fireEvent("moneyEarned", sellValue)
         eventDispatcher.fireEvent("towerSold")
+
+        audioManager.playSound("assets/sounds/sfx/coin_drop.mp3", 1, 1)
         this.tower.cleanUpResources()
         this.tower = undefined
         this.markTowerOccupied(false)
