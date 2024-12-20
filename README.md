@@ -168,12 +168,7 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td>This legendary creature is very strong and immune to slow. It can take lots and lots of damage which can easily bypass your defenses.</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
-      <td>Kingda Ka Zipper</td>
-      <td>It's travelling at 206 km/hr (128 mph). Arms down, head back, hold on! It's very fast and you will see it reach the end in just seconds.</td>
-    </tr>
-    <tr>
-      <td><img src="https://github.com/user-attachments/assets/9b9a1156-df55-4a7f-9537-d661a671f431" witdh="125px" height="125px"></td>
+      <td><img src="https://github.com/user-attachments/assets/7e520905-f49f-4d5c-a0bd-c0f44bfeec80" witdh="125px" height="125px"></td>
       <td>Kingda Ka Zipper</td>
       <td>It's travelling at 206 km/hr (128 mph). Arms down, head back, hold on! It's very fast and you will see it reach the end in just seconds.</td>
     </tr>
@@ -181,6 +176,16 @@ Killers come in various shapes and strengths. A good number of them has differen
       <td><img src="https://github.com/user-attachments/assets/aa101991-8ec1-4b32-aebc-33abd5e4eb40" witdh="125px" height="125px"></td>
       <td>Obsidian Ripper</td>
       <td>This heavily armoured behemoth can even endure the strongest bullets from your snipers.</td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/09b0d1ad-3fb2-41b5-921a-c528bbdd36f4" witdh="125px" height="125px"></td>
+      <td>256p 2152</td>
+      <td>It's moving and shining! Is it brighter than the world's brightest flashlight? Perhaps, and its going to shock your pillars!</td>
+    </tr>
+      <tr>
+      <td><img src="https://github.com/user-attachments/assets/eb3ea630-8731-467f-8fcc-58f73da79b42" witdh="125px" height="125px"></td>
+      <td>Enraged Eagle</td>
+      <td>He/she will fly through your restless pillars and it's also surprisingly armoured</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/2c5a165d-b17c-434b-9ec7-373df0387c1e" witdh="125px" height="125px"></td>
