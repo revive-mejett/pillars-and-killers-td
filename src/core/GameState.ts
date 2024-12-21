@@ -5,7 +5,8 @@ import { productionWaves } from "../utils/WaveData"
 import { calculateWaveValue } from "../utils/Calc"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = false
+const developerTest = true
+const developerOffSet = 0
 
 
 export class GameState {
@@ -25,14 +26,14 @@ export class GameState {
         if (savedData) {
             this.lives = savedData.lives
             this.money = savedData.money
-            this.startWave = savedData.checkpointWave
+            this.startWave = savedData.checkpointWave + developerOffSet
             this.researchLevel = savedData.researchLevel
             this.mapName = savedData.map
+            this.saveFileIndex = savedData.saveFileIndex
         } else {
             this.saveFileIndex = fileNumber
             this.mapName = mapTitle || "Walk in the Park"
         }
-
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         if (developerTest) {
