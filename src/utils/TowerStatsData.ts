@@ -42,20 +42,20 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     cost: 25
                 },
                 {
-                    range: 150,
+                    range: 135,
                     damage: 15,
                     fireRate: 1,
                     cost: 50
                 },
                 {
-                    range: 175,
-                    damage: 20,
+                    range: 155,
+                    damage: 25,
                     fireRate: 1,
                     cost: 100
                 },
                 {
-                    range: 250,
-                    damage: 30,
+                    range: 175,
+                    damage: 35,
                     fireRate: 1,
                     cost: 200
                 }],
@@ -203,14 +203,14 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 105,
-                        damage: 28,
+                        damage: 30,
                         fireRate: 1.2,
                         cost: 600,
                         impactRadius: 90
                     },
                     {
                         range: 115,
-                        damage: 35,
+                        damage: 40,
                         fireRate: 1.4,
                         cost: 1300,
                         impactRadius: 100
@@ -409,7 +409,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 175,
-                    damage: 1500,
+                    damage: 1250,
                     fireRate: 0.3,
                     cost: 5000,
                     impactRadius: 60
@@ -429,30 +429,30 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 195,
-                        damage: 3000,
+                        damage: 2500,
                         fireRate: 0.3,
-                        cost: 8000,
+                        cost: 7000,
                         impactRadius: 70
                     },
                     {
                         range: 215,
-                        damage: 5000,
+                        damage: 4500,
                         fireRate: 0.4,
-                        cost: 15000,
+                        cost: 12000,
                         impactRadius: 80
                     },
                     {
                         range: 235,
-                        damage: 7000,
+                        damage: 8500,
                         fireRate: 0.5,
-                        cost: 20000,
+                        cost: 22000,
                         impactRadius: 90
                     },
                     {
                         range: 255,
-                        damage: 10000,
+                        damage: 15000,
                         fireRate: 0.5,
-                        cost: 25000,
+                        cost: 35000,
                         impactRadius: 100
                     }
                 ],
@@ -497,9 +497,9 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 140,
-                    damage: 950,
+                    damage: 750,
                     fireRate: 2,
-                    cost: 7000
+                    cost: 5000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.lightningPillar,
@@ -513,27 +513,27 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 145,
-                        damage: 1450,
+                        damage: 1250,
                         fireRate: 3,
                         cost: 12000
                     },
                     {
                         range: 150,
-                        damage: 1820,
+                        damage: 1550,
                         fireRate: 5,
-                        cost: 22000
+                        cost: 12000
                     },
                     {
                         range: 155,
-                        damage: 2550,
+                        damage: 2150,
                         fireRate: 7,
-                        cost: 27000
+                        cost: 22000
                     },
                     {
                         range: 160,
-                        damage: 3225,
+                        damage: 2850,
                         fireRate: 8,
-                        cost: 33000
+                        cost: 35000
                     },
                 ],
                 visualUpgrades: [

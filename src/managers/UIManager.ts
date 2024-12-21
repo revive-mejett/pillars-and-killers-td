@@ -82,6 +82,8 @@ export class UIManager {
         eventDispatcher.fireEvent("purchaseSuccessful1", researchCost)
         this.gamestate.researchLevel = tier
         this.hud.updateTowerSelectionVisibility()
+
+        audioManager.playSound("assets/sounds/sfx/research_successful.mp3", 1, 1)
     }
 
 

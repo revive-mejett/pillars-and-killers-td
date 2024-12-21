@@ -397,6 +397,7 @@ function enemyDied(enemy: Enemy) {
 function reachEnd(enemy: Enemy) {
     enemy.isAlive = false
     enemy.destroy()
+    audioManager.playSound("assets/sounds/sfx/live_lost_glass_smash.mp3", 0.7, 1)
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
     eventDispatcher.fireEvent("enemyDied")
 }

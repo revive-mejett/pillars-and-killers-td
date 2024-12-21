@@ -138,6 +138,7 @@ export class GameplayScene extends Scene {
                 checkpointWave: this.waveManager.currentWave
             }
             gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
+            console.log(gameSaveData)
         }, 0);
 
     }

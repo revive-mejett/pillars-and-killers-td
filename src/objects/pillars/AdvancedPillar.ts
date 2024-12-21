@@ -114,14 +114,14 @@ export class AdvancedPillar extends Tower {
         this.tileColour = newVisualStats.tileColour
         this.bulletSize = newVisualStats.bulletSize
 
-                if (newVisualStats.asset) {
-                    this.asset = newVisualStats.asset
-                    this.sprite = PIXI.Sprite.from(this.asset)
-                    this.sprite.height = this.height
-                    this.sprite.width = this.width
-                    this.sprite.x = this.position?.x || 0
-                    this.sprite.y = this.position?.y || 0
-                }
+        if (newVisualStats.asset) {
+            this.asset = newVisualStats.asset
+            this.sprite = PIXI.Sprite.from(this.asset)
+            this.sprite.height = this.height
+            this.sprite.width = this.width
+            this.sprite.x = this.position?.x || 0
+            this.sprite.y = this.position?.y || 0
+        }
     }
 
 }
