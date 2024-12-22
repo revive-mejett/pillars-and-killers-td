@@ -34,8 +34,12 @@ class TdMap {
         this.grassColour = mapData.mapInfo.grassColour
         this.grassOutlineColour = mapData.mapInfo.grassSecondaryColour
         this.mapBackgroundImageKey = mapData.mapInfo.bgColourMapKey
-        this.pathOpacity = mapData.mapInfo.pathOpacity || 1
-        this.grassOpacity = mapData.mapInfo.grassOpacity
+        if (mapData.mapInfo.pathOpacity) {
+            this.pathOpacity = mapData.mapInfo.pathOpacity !== 0 ? mapData.mapInfo.pathOpacity : 0.001
+        }
+        if (mapData.mapInfo.grassOpacity) {
+            this.grassOpacity = mapData.mapInfo.grassOpacity !== 0 ? mapData.mapInfo.grassOpacity : 0.001
+        }
     }
 
     private putBackground(container : PIXI.Container, mapKey : string) {

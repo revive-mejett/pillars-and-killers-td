@@ -76,6 +76,7 @@ export class PregameSelection extends Scene {
         paneContainer.y = paneYPos;
 
         this.mapSelectionContainer.addChild(paneContainer);
+
         const bgColour = new PIXI.Graphics();
         bgColour.beginFill(0x002222);
         bgColour.drawRect(0, 0, paneWidth, 300);

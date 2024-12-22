@@ -13,7 +13,7 @@ export type MapData = {
     waypoints: Waypoint[]
 }
 
-const allMaps : Map<string, MapData> = new Map()
+const allMaps: Map<string, MapData> = new Map()
 
 
 
@@ -387,21 +387,244 @@ allMaps.set("Starry Night", {
         difficulty: 3,
         grassColour: 0x555555,
         grassSecondaryColour: 0xA6A6A6,
-        grassOpacity: 0.1,
-        pathOpacity: 0.7,
+        grassOpacity: 0.001,
+        pathOpacity: 0.5,
         bgColourMapKey: "starryNight"
     },
     waypoints: [
         {
             type: "start",
-            x: 10,
+            x: 1,
             y: 24
         },
+
+        {
+            type: "point",
+            x: 1,
+            y: 18
+        },
+
+        {
+            type: "point",
+            x: 2,
+            y: 18
+        },
+
+        {
+            type: "point",
+            x: 2,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 3,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 3,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 1
+        },
+
+        {
+            type: "point",
+            x: 8,
+            y: 1
+        },
+
+        {
+            type: "point",
+            x: 8,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 0
+        },
+
+        {
+            type: "point",
+            x: 16,
+            y: 0
+        },
+
+        {
+            type: "point",
+            x: 16,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 14,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 14,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 8,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 8,
+            y: 16
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 16
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 11
+        },
+
+        {
+            type: "point",
+            x: 18,
+            y: 11
+        },
+
+        {
+            type: "point",
+            x: 18,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 14,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 14,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 23
+        },
+
+        {
+            type: "point",
+            x: 18,
+            y: 23
+        },
+
+        {
+            type: "point",
+            x: 18,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 20,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 20,
+            y: 17
+        },
+
         {
             type: "end",
-            x: 10,
-            y: 0
-        }
+            x: 24,
+            y: 17
+        },
     ]
 })
 
