@@ -192,8 +192,8 @@ export class UIManager {
         const hud = this.hud
         hud.clearInfoPanel()
 
-        const selectedTowerPanel = InfoPanel.createTowerStatsInfoPanel(tower)
-        hud.infoPanel?.addChild(selectedTowerPanel)
+        const infoPanel = InfoPanel.createTowerStatsInfoPanel(tower)
+        hud.infoPanel?.addChild(infoPanel)
     }
 
     displaySelectedEnemyInfo(enemy : Enemy) {

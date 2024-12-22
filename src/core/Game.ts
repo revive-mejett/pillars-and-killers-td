@@ -40,6 +40,8 @@ export class Game {
         document.body.appendChild(view as HTMLCanvasElement)
 
         eventDispatcher.on("gameStarted", this.initGameplay.bind(this))
+
+        
     }
 
     start() {
