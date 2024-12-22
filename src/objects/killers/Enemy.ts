@@ -30,7 +30,7 @@ export class Enemy extends Entity {
     xToNextWaypoint: number
     yToNextWaypoint: number
     nextWayPointIndex: number
-    sprite: PIXI.AnimatedSprite
+    sprite: PIXI.AnimatedSprite | undefined
     spritesheet: PIXI.Spritesheet
     animationSpeed?: number
     rotationSpeed: number
@@ -95,6 +95,8 @@ export class Enemy extends Entity {
         this.sprite.animationSpeed = this.animationSpeed
         this.sprite.visible = false //dont render when first init.
         this.sprite.anchor.set(0.5, 0.5)
+        this.sprite.play()
+        
 
         this.rotationSpeed = stats.rotationSpeed
         this.isLooking = stats.isLooking
@@ -123,6 +125,9 @@ export class Enemy extends Entity {
     }
 
     updateSpritePosition() {
+        if (!this.sprite) {
+            return
+        }
         this.sprite.x = this.getCenterPosition().x
         this.sprite.y = this.getCenterPosition().y
     }
@@ -169,10 +174,13 @@ export class Enemy extends Entity {
     }
 
     spawn(sceneContainer: PIXI.Container) {
+        if (!this.sprite) {
+            return
+        }
         this.updateRotation()
         sceneContainer.addChild(this.sprite)
         setTimeout(() => {
-            if (this.isAlive) {
+            if (this.sprite && this.isAlive) {
                 this.sprite.visible = true
             }
         }, 50)
@@ -191,14 +199,6 @@ export class Enemy extends Entity {
         }
         const waypoints = map.waypoints
         const speed = this.speed
-
-
-
-
-
-        if (!this.sprite.playing) {
-            this.sprite.play()
-        }
 
 
         if (this.nextWayPointIndex >= waypoints.length) { return }
@@ -236,6 +236,9 @@ export class Enemy extends Entity {
     }
 
     private updateRotation(delta?: number) {
+        if (!this.sprite) {
+            return
+        }
         if (this.isLooking && this.xToNextWaypoint > 0) {
             this.sprite.rotation = Math.PI / 2;
             // this.sprite.anchor.set(0, 1);
@@ -356,17 +359,23 @@ export class Enemy extends Entity {
     }
 
 
-
-    destroy() {
-        this.sprite.destroy()
-    }
-
     cleanUpResources() {
+        if (!this.sprite) {
+            return
+        }
         this.sprite.off("pointerdown")
         if (this.sprite.playing) {
             this.sprite.stop()
         }
-        // this.sp
+        if (this.sprite?.parent) {
+            this.sprite.parent.removeChild(this.sprite);
+            this.sprite.destroy()
+
+            if (this.sprite?.texture?.baseTexture) {
+                this.sprite.texture.destroy(true); // `true` forces the texture's base to be destroyed
+            }
+            this.sprite = undefined
+        }
     }
 }
 
@@ -375,7 +384,6 @@ function enemyDied(enemy: Enemy) {
 
     audioManager.playKilledSound()
 
-    enemy.destroy()
     eventDispatcher.fireEvent("enemyDied")
     if (enemy.enemyClassName === "Brave Proxima Centauri") {
         eventDispatcher.fireEvent("boss1Killed")
@@ -392,14 +400,16 @@ function enemyDied(enemy: Enemy) {
     if (enemy.enemyClassName === "TON 618") {
         eventDispatcher.fireEvent("boss5Killed")
     }
+
+    enemy.cleanUpResources()
 }
 
 function reachEnd(enemy: Enemy) {
     enemy.isAlive = false
-    enemy.destroy()
     audioManager.playSound("assets/sounds/sfx/live_lost_glass_smash.mp3", 0.7, 1)
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
     eventDispatcher.fireEvent("enemyDied")
+    enemy.cleanUpResources()
 }
 
 function bossToName(enemyClass: string) {

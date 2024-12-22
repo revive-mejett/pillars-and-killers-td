@@ -11,7 +11,7 @@ const developerOffSet = 0
 
 export class GameState {
     lives: number = 100
-    money: number = 400
+    money: number = 4000000
     uiManager?: UIManager
     startWave: number = 0
     mapName: string = "Walk in the Park"

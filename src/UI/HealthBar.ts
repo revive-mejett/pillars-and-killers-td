@@ -19,7 +19,7 @@ export class HealthBar extends Entity {
 
     renderBar(parentContainer : PIXI.Container) {
 
-        if (this.enemy === null) {
+        if (this.enemy === null || !this.enemy.sprite) {
             return
         }
 
