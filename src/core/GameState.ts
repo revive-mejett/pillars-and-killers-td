@@ -13,13 +13,13 @@ export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 40
+    startWave: number = 0
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
     readonly tier2ResearchCost: number = 2000
     readonly tier3ResearchCost: number = 25000
-    readonly tier4ResearchCost: number = 250000
+    readonly tier4ResearchCost: number = 400000
 
     constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6, savedData?: GameSaveData, mapTitle?: string) {
 
