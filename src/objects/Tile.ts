@@ -18,11 +18,12 @@ export class Tile extends Entity {
 
     grassColour : number = 0x001100
     grassOutlineColour : number = 0x005500
+    grassOpacity: number
 
     /**
      * tileType can be either "start", "end", "path", "grass"
      */
-    constructor(x : number, y : number, width : number, height : number, tileType: TileType, parentContainer : PIXI.Container, grassColour?: number, grassOutlineColour?: number) {
+    constructor(x : number, y : number, width : number, height : number, tileType: TileType, parentContainer : PIXI.Container, grassColour?: number, grassOutlineColour?: number, grassOpacity?: number) {
         super(x, y, width, height);
         this.tileType = tileType
         this.hasTower = false
@@ -31,6 +32,7 @@ export class Tile extends Entity {
         this.tower = undefined
         this.grassColour = grassColour || this.grassColour
         this.grassOutlineColour = grassOutlineColour || this.grassOutlineColour
+        this.grassOpacity = grassOpacity || 0.5
     }
 
     sellTower() {
@@ -101,11 +103,13 @@ export class Tile extends Entity {
 
 
     paveGrass() {
+        this.container?.removeChildren()
         const grass = new PIXI.Graphics()
         grass.beginFill(this.grassColour)
         grass.lineStyle(2, this.grassOutlineColour)
         grass.drawRect(this.x, this.y, this.width, this.height)
         grass.endFill()
+        grass.alpha = this.grassOpacity
         this.setTileContainer(grass)
     }
 

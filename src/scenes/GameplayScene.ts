@@ -147,6 +147,7 @@ export class GameplayScene extends Scene {
         if (!this.mapContainer) {
             return
         }
+
         if(this.savedData) {
             this.tdMap?.displayTiles(this.mapContainer, this, this.savedData.towers)
         } else {

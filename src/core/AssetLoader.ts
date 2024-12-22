@@ -8,6 +8,7 @@ export class AssetLoader {
     enemies: {[key: string] : string } | undefined
     icons: {[key: string] : string } | undefined
     towers: {[key: string] : string } | undefined
+    mapBackgroundImages: {[key: string] : string } | undefined
     otherImages: {[key: string] : string } | undefined
     sfx: {[key: string] : string } | undefined
 
@@ -26,6 +27,7 @@ export class AssetLoader {
             this.spriteSheetZapped = undefined
             this.icons = {}
             this.towers = {}
+            this.mapBackgroundImages = {}
             this.otherImages = {}
             this.sfx = {}
         }
@@ -122,6 +124,10 @@ export class AssetLoader {
             "gameoverGraveyard" : "assets/images/gameover_rip.png"
         })
 
+        Assets.addBundle("mapBackgroundImages", {
+            "starryNight" : "assets/mapbg/starrynight_pvk.png",
+        })
+
         // Assets.addBundle("sfx", {
         //     "towerBuy" : "assets/sounds/sfx/tower_buy.mp3"
         // })
@@ -139,9 +145,15 @@ export class AssetLoader {
         this.towers = await Assets.loadBundle("towers")
     }
 
+    async loadMapBackgroundImages() {
+        this.mapBackgroundImages = await Assets.loadBundle("mapBackgroundImages")
+    }
+
     async loadOtherImagesSprites() {
         this.otherImages = await Assets.loadBundle("otherImages")
     }
+
+
 
     async loadEnemySpriteSheets() {
         const enemyClasses = Object.keys(allEnemyData)
@@ -153,16 +165,13 @@ export class AssetLoader {
             await spritesheet.parse()
             this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
         })
-        // console.log(this.spriteSheetEnemies)
+
         const atlasData = zappedAtlasData
         const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
         await spritesheet.parse()
         this.spriteSheetZapped = spritesheet
     }
 
-    async loadZappedSpriteSheet() {
-
-    }
 
 
 }

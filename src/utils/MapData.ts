@@ -5,7 +5,10 @@ export type MapData = {
     mapInfo: {
         grassColour?: number
         grassSecondaryColour?: number
-        difficulty?: 1 | 2 | 3 | 4 | 5
+        difficulty?: 1 | 2 | 3 | 4 | 5,
+        grassOpacity?: number,
+        pathOpacity?: number
+        bgColourMapKey?: string
     },
     waypoints: Waypoint[]
 }
@@ -379,7 +382,28 @@ allMaps.set("Xmas 2024", {
         y: 24
     }]
 })
-
+allMaps.set("Starry Night", {
+    mapInfo: {
+        difficulty: 3,
+        grassColour: 0x555555,
+        grassSecondaryColour: 0xA6A6A6,
+        grassOpacity: 0.1,
+        pathOpacity: 0.7,
+        bgColourMapKey: "starryNight"
+    },
+    waypoints: [
+        {
+            type: "start",
+            x: 10,
+            y: 24
+        },
+        {
+            type: "end",
+            x: 10,
+            y: 0
+        }
+    ]
+})
 
 
 // TEST MAPS
