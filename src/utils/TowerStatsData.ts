@@ -436,21 +436,21 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 215,
-                        damage: 5000,
+                        damage: 5500,
                         fireRate: 0.4,
                         cost: 27000,
                         impactRadius: 80
                     },
                     {
                         range: 235,
-                        damage: 10000,
+                        damage: 9500,
                         fireRate: 0.5,
                         cost: 54000,
                         impactRadius: 90
                     },
                     {
                         range: 255,
-                        damage: 17000,
+                        damage: 15000,
                         fireRate: 0.5,
                         cost: 75000,
                         impactRadius: 100
@@ -567,8 +567,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 100,
                     damage: 200,
                     fireRate: 0.8,
-                    cost: 4000,
-                    armourReduction: 5
+                    cost: 3000,
+                    armourReduction: 25
                 },
                 towerInfo: {
                     assetIcon: towerIcons.dreadglassPillar,
@@ -587,29 +587,29 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 100,
                         damage: 400,
                         fireRate: 1,
-                        cost: 8000,
-                        armourReduction: 20
+                        cost: 7000,
+                        armourReduction: 50
                     },
                     {
                         range: 125,
                         damage: 600,
                         fireRate: 1.2,
                         cost: 15000,
-                        armourReduction: 50
+                        armourReduction: 140
                     },
                     {
                         range: 125,
                         damage: 800,
                         fireRate: 1.4,
-                        cost: 25000,
-                        armourReduction: 150
+                        cost: 28000,
+                        armourReduction: 280
                     },
                     {
                         range: 150,
                         damage: 1000,
                         fireRate: 1.6,
                         cost: 45000,
-                        armourReduction: 300
+                        armourReduction: 400
                     }
                 ],
                 visualUpgrades: [
