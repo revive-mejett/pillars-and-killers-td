@@ -89,6 +89,7 @@ class TdMap {
                     tile.placeTowerOnTile(tower)
                     tower.setTileRef(tile)
                     tower.runTower(gameplayScene)
+                    gameplayScene.addTowerToPresent(tower)
                 }
             }
         }

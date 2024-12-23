@@ -7,7 +7,7 @@ export class AudioManager {
     static instance: AudioManager
     bgmMusic: sound.Sound | undefined
 
-    useAudio : boolean = true
+    useAudio : boolean = false
     useMusic : boolean = false
 
     constructor() {

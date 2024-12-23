@@ -2113,6 +2113,11 @@ const productionWaves = [
                 spacingMillis: 8000
             },
             {
+                enemy: "Enraged Eagle",
+                count: 12,
+                spacingMillis: 800
+            },
+            {
                 enemy: "Near-Light Zoomer",
                 count: 4,
                 spacingMillis: 4000
@@ -2205,7 +2210,12 @@ const productionWaves = [
             {
                 enemy: "Near-Light Zoomer",
                 count: 6,
-                spacingMillis: 1200
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -2256,6 +2266,11 @@ const productionWaves = [
                 enemy: "2^1024p 137632",
                 count: 3,
                 spacingMillis: 1600
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 8,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -2376,6 +2391,11 @@ const productionWaves = [
                 enemy: "Cute Crow",
                 count: 1,
                 spacingMillis: 100
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 12,
+                spacingMillis: 1000
             },
             {
                 enemy: "4p 2024",
