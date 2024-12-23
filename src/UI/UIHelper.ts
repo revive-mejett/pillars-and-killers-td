@@ -1,6 +1,8 @@
 import { Text, TextStyle } from "pixi.js"
 import * as PIXI from "pixi.js";
+import { AssetLoader } from "../core/AssetLoader";
 import { MapData } from "src/utils/MapData";
+const assetLoader = new AssetLoader()
 
 export class UIHelper {
 
@@ -107,12 +109,33 @@ export class UIHelper {
     static createMapCard(mapData: MapData, cardSize: number, dimensions: number) {
         const mapCard = new PIXI.Container()
         const waypoints = mapData.waypoints
+        const mapKey = mapData.mapInfo.bgColourMapKey
 
-        const grassBackground = new PIXI.Graphics()
-        grassBackground.beginFill(mapData.mapInfo.grassSecondaryColour || 0x005500)
-        grassBackground.drawRect(0, 0, cardSize, cardSize)
-        grassBackground.endFill()
-        mapCard.addChild(grassBackground)
+        if (mapKey) {
+            const mapBackgroundBundle = assetLoader.mapBackgroundImages
+            if (!mapBackgroundBundle) {
+                throw new Error("Map bundle not properly loaded")
+            }
+            const backgroundImg = mapBackgroundBundle[mapKey]
+
+            if (!backgroundImg) {
+                throw new Error("Map image does not exist!")
+            }
+
+            const background = PIXI.Sprite.from(backgroundImg)
+            background.height = cardSize
+            background.width = cardSize
+            background.x = 0
+            background.y = 0
+            mapCard.addChild(background)
+        } else {
+            const grassBackground = new PIXI.Graphics()
+            grassBackground.beginFill(mapData.mapInfo.grassSecondaryColour || 0x005500)
+            grassBackground.drawRect(0, 0, cardSize, cardSize)
+            grassBackground.endFill()
+            mapCard.addChild(grassBackground)
+        }
+
 
         const miniTileSize = cardSize / dimensions
 
