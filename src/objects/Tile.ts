@@ -127,7 +127,6 @@ export class Tile extends Entity {
             tileBackground.drawRect(this.x, this.y, this.width, this.height)
             tileBackground.endFill()
             this.setTileContainer(tileBackground)
-            
             this.container?.addChild(this.tower.sprite)
             this.container?.addChild(this.tower.zappedGraphics)
         }

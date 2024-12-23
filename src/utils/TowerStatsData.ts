@@ -295,7 +295,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         damage: 1075,
                         fireRate: 0.8,
                         cost: 7000
-                    },
+                    }
                 ],
                 visualUpgrades: [{
                     assetIcon: towerIcons.advancedPillar,
@@ -534,7 +534,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         damage: 2850,
                         fireRate: 8,
                         cost: 75000
-                    },
+                    }
                 ],
                 visualUpgrades: [
                     {

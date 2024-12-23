@@ -10,7 +10,7 @@ const oneEnemy = [
                 spacingMillis: 1000
             }
         ]
-    ),
+    )
 ]
 
 const ten10 = [
@@ -34,7 +34,7 @@ const grouped = [
                 spacingMillis: 25
             }
         ]
-    ),
+    )
 ]
 
 const stressTest = [
@@ -46,7 +46,7 @@ const stressTest = [
                 spacingMillis: 5
             }
         ]
-    ),
+    )
 ]
 
 
@@ -99,7 +99,7 @@ const testWaves2 = [
                 enemy: "Toddler Sphere",
                 count: 5,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     //wave 22
@@ -119,9 +119,9 @@ const testWaves2 = [
                 enemy: "Toddler Sphere",
                 count: 13,
                 spacingMillis: 1300
-            },
+            }
         ]
-    ),
+    )
 ]
 
 
@@ -691,7 +691,7 @@ const productionWaves = [
                 enemy: "Toddler Sphere",
                 count: 5,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     //wave 22
@@ -781,7 +781,7 @@ const productionWaves = [
                 enemy: "Polar Goldfish",
                 count: 10,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     //wave 26
@@ -801,7 +801,7 @@ const productionWaves = [
                 enemy: "Toddler Sphere",
                 count: 20,
                 spacingMillis: 600
-            },
+            }
         ]
     ),
     //wave 27
@@ -826,7 +826,7 @@ const productionWaves = [
                 enemy: "Polar Goldfish",
                 count: 7,
                 spacingMillis: 650
-            },
+            }
         ]
     ),
     //wave 28
@@ -841,7 +841,7 @@ const productionWaves = [
                 enemy: "Fast Runner",
                 count: 6,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     //wave 29
@@ -871,7 +871,7 @@ const productionWaves = [
                 enemy: "Fast Runner",
                 count: 5,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     //wave 30
@@ -906,7 +906,7 @@ const productionWaves = [
                 enemy: "5p 2025",
                 count: 3,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     //wave 32
@@ -961,7 +961,7 @@ const productionWaves = [
                 enemy: "5p 2025",
                 count: 3,
                 spacingMillis: 600
-            },
+            }
         ]
     ),
     //wave 34
@@ -1026,7 +1026,7 @@ const productionWaves = [
                 enemy: "5p 2025",
                 count: 3,
                 spacingMillis: 600
-            },
+            }
         ]
     ),
     //wave 36
@@ -1051,7 +1051,7 @@ const productionWaves = [
                 enemy: "5p 2025",
                 count: 2,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     //wave 37
@@ -1076,7 +1076,7 @@ const productionWaves = [
                 enemy: "Fast Runner",
                 count: 5,
                 spacingMillis: 400
-            },
+            }
         ]
     ),
     //wave 38
@@ -1101,7 +1101,7 @@ const productionWaves = [
                 enemy: "Steel Warrior",
                 count: 10,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     //wave 39
@@ -1161,7 +1161,7 @@ const productionWaves = [
                 enemy: "Fast Runner",
                 count: 10,
                 spacingMillis: 1700
-            },
+            }
         ]
     ),
     // wave 42
@@ -1181,7 +1181,7 @@ const productionWaves = [
                 enemy: "Freshman Octahedron",
                 count: 7,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     // wave 43
@@ -1211,7 +1211,7 @@ const productionWaves = [
                 enemy: "Freshman Octahedron",
                 count: 5,
                 spacingMillis: 400
-            },
+            }
         ]
     ),
     // wave 44
@@ -1251,7 +1251,7 @@ const productionWaves = [
                 enemy: "Quick Bonhomme",
                 count: 100,
                 spacingMillis: 200
-            },
+            }
         ]
     ),
     // wave 45
@@ -1261,10 +1261,10 @@ const productionWaves = [
                 enemy: "Dashing Dasher", // change to dashing dasher after testing each t3 killer
                 count: 6,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
-    // wave 46 
+    // wave 46
     new Wave(
         [
             {
@@ -1289,7 +1289,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 47 
+    // wave 47
     new Wave(
         [
             {
@@ -1306,10 +1306,10 @@ const productionWaves = [
                 enemy: "Beautiful Peacock",
                 count: 8,
                 spacingMillis: 850
-            },
+            }
         ]
     ),
-    // wave 48 
+    // wave 48
     new Wave(
         [
             {
@@ -1331,10 +1331,10 @@ const productionWaves = [
                 enemy: "Freshman Octahedron",
                 count: 12,
                 spacingMillis: 700
-            },
+            }
         ]
     ),
-    // wave 49 
+    // wave 49
     new Wave(
         [
             {
@@ -1344,7 +1344,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 50 
+    // wave 50
     new Wave(
         [
             {
@@ -1366,10 +1366,10 @@ const productionWaves = [
                 enemy: "Titanium Bruiser",
                 count: 1,
                 spacingMillis: 50
-            },
+            }
         ]
     ),
-    // wave 51 
+    // wave 51
     new Wave(
         [
             {
@@ -1394,7 +1394,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 52 
+    // wave 52
     new Wave(
         [
             {
@@ -1426,10 +1426,10 @@ const productionWaves = [
                 enemy: "Titanium Bruiser",
                 count: 1,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
-    // wave 53 
+    // wave 53
     new Wave(
         [
             {
@@ -1449,7 +1449,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 54 
+    // wave 54
     new Wave(
         [
             {
@@ -1464,7 +1464,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 55 
+    // wave 55
     new Wave(
         [
             {
@@ -1486,10 +1486,10 @@ const productionWaves = [
                 enemy: "12p 2028",
                 count: 1,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
-    // wave 56 
+    // wave 56
     new Wave(
         [
             {
@@ -1544,7 +1544,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 57 
+    // wave 57
     new Wave(
         [
             {
@@ -1571,10 +1571,10 @@ const productionWaves = [
                 enemy: "Dashing Dasher",
                 count: 8,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
-    // wave 58 
+    // wave 58
     new Wave(
         [
             {
@@ -1591,10 +1591,10 @@ const productionWaves = [
                 enemy: "Dashing Dasher",
                 count: 25,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
-    // wave 59 
+    // wave 59
     new Wave(
         [
             {
@@ -1651,10 +1651,10 @@ const productionWaves = [
                 enemy: "12p 2028",
                 count: 5,
                 spacingMillis: 100
-            },
+            }
         ]
     ),
-    // wave 62 
+    // wave 62
     new Wave(
         [
             {
@@ -1666,10 +1666,10 @@ const productionWaves = [
                 enemy: "Neptunian Megalodon",
                 count: 2,
                 spacingMillis: 1500
-            },
+            }
         ]
     ),
-    // wave 63 
+    // wave 63
     new Wave(
         [
             {
@@ -1694,7 +1694,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 64 
+    // wave 64
     new Wave(
         [
             {
@@ -1716,10 +1716,10 @@ const productionWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 2,
                 spacingMillis: 3000
-            },
+            }
         ]
     ),
-    // wave 65 
+    // wave 65
     new Wave(
         [
             {
@@ -1734,7 +1734,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 66 
+    // wave 66
     new Wave(
         [
             {
@@ -1749,7 +1749,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 67 
+    // wave 67
     new Wave(
         [
             {
@@ -1766,10 +1766,10 @@ const productionWaves = [
                 enemy: "Sophomore Dodecahedron",
                 count: 7,
                 spacingMillis: 900
-            },
+            }
         ]
     ),
-    // wave 68 
+    // wave 68
     new Wave(
         [
             {
@@ -1786,10 +1786,10 @@ const productionWaves = [
                 enemy: "Furious Raven",
                 count: 10,
                 spacingMillis: 300
-            },
+            }
         ]
     ),
-    // wave 69 
+    // wave 69
     new Wave(
         [
             {
@@ -1811,10 +1811,10 @@ const productionWaves = [
                 enemy: "Neptunian Megalodon",
                 count: 7,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
-    // wave 70 
+    // wave 70
     new Wave(
         [
             {
@@ -1829,7 +1829,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 71 
+    // wave 71
     new Wave(
         [
             {
@@ -1856,10 +1856,10 @@ const productionWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 4,
                 spacingMillis: 200
-            },
+            }
         ]
     ),
-    // wave 72 
+    // wave 72
     new Wave(
         [
             {
@@ -1884,7 +1884,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 73 
+    // wave 73
     new Wave(
         [
             {
@@ -1894,7 +1894,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 74 
+    // wave 74
     new Wave(
         [
             {
@@ -1914,7 +1914,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 75 
+    // wave 75
     new Wave(
         [
             {
@@ -1929,7 +1929,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 76 
+    // wave 76
     new Wave(
         [
             {
@@ -1949,7 +1949,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 77 
+    // wave 77
     new Wave(
         [
             {
@@ -1959,7 +1959,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 78 
+    // wave 78
     new Wave(
         [
             {
@@ -1979,7 +1979,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 79 
+    // wave 79
     new Wave(
         [
             {
@@ -2001,7 +2001,7 @@ const productionWaves = [
                 enemy: "256p 2152",
                 count: 2,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     // wave 80 boss =============================================
@@ -2014,7 +2014,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 81 
+    // wave 81
     new Wave(
         [
             {
@@ -2044,7 +2044,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 82 
+    // wave 82
     new Wave(
         [
             {
@@ -2081,7 +2081,7 @@ const productionWaves = [
                 enemy: "Irresistible Phoenix",
                 count: 6,
                 spacingMillis: 2400
-            },
+            }
         ]
     ),
     // wave 84
@@ -2141,7 +2141,7 @@ const productionWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 8,
                 spacingMillis: 400
-            },
+            }
         ]
     ),
     // wave 87 placeholder wave
@@ -2171,7 +2171,7 @@ const productionWaves = [
                 enemy: "Near-Light Zoomer",
                 count: 4,
                 spacingMillis: 3500
-            },
+            }
         ]
     ),
     // wave 88 placeholder wave
@@ -2231,7 +2231,7 @@ const productionWaves = [
                 enemy: "Near-Light Zoomer",
                 count: 2,
                 spacingMillis: 3300
-            },
+            }
         ]
     ),
     // wave 91 placeholder wave
@@ -2281,7 +2281,7 @@ const productionWaves = [
                 enemy: "Challenger Deep Kraken",
                 count: 7,
                 spacingMillis: 1100
-            },
+            }
         ]
     ),
     // wave 93 placeholder wave
@@ -2396,7 +2396,7 @@ const productionWaves = [
                 enemy: "Merciless Loch Ness",
                 count: 2,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     // wave 96 LONG WAVE
@@ -2491,7 +2491,7 @@ const productionWaves = [
                 enemy: "Angry Piranha",
                 count: 1,
                 spacingMillis: 1
-            },
+            }
         ]
     ),
     // wave 97 LONG WAVE
@@ -2556,7 +2556,7 @@ const productionWaves = [
                 enemy: "Near-Light Zoomer",
                 count: 7,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     // wave 98 LONG WAVE
@@ -2666,7 +2666,7 @@ const productionWaves = [
                 enemy: "Merciless Loch Ness",
                 count: 10,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 99 placeholder wave
@@ -2696,7 +2696,7 @@ const productionWaves = [
                 enemy: "Jr. Rhombicosidodecahedron",
                 count: 3,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 100 final boss =============================================
@@ -2708,7 +2708,7 @@ const productionWaves = [
                 spacingMillis: 7000
             }
         ]
-    ),
+    )
 ]
 
 

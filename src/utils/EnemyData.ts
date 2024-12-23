@@ -391,7 +391,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -816,7 +816,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1179,7 +1179,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1244,7 +1244,7 @@ const allEnemyData: EnemyData = {
             armour: 350,
             rotationSpeed: 0,
             isLooking: true,
-            animationSpeed: 0,
+            animationSpeed: 0
         }
     },
     "Remorseless Rigel": {
@@ -1285,7 +1285,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1333,7 +1333,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1612,7 +1612,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1636,7 +1636,7 @@ const allEnemyData: EnemyData = {
             armour: 3000,
             rotationSpeed: 1.2,
             isLooking: false,
-            animationSpeed: 0.27,
+            animationSpeed: 0.27
         }
     },
     "Enraged Eagle": {
@@ -1718,7 +1718,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1766,7 +1766,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -2063,7 +2063,7 @@ const allEnemyData: EnemyData = {
             armour: 27000,
             rotationSpeed: 0.11,
             isLooking: false,
-            animationSpeed: 0.25,
+            animationSpeed: 0.25
         }
     },
     "Merciless Loch Ness": {
@@ -2146,7 +2146,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -2174,7 +2174,7 @@ const allEnemyData: EnemyData = {
             armour: 192575,
             slowImmune: false
         }
-    },
+    }
 }
 
 const zappedAtlasData = {
@@ -2196,7 +2196,7 @@ const zappedAtlasData = {
             "frame": { "x": 1000, "y": 0, "w": 500, "h": 500 },
             "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
             "sourceSize": { "w": 500, "h": 500 }
-        },
+        }
     },
 
     "animations": {

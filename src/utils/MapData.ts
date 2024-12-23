@@ -624,7 +624,7 @@ allMaps.set("Starry Night", {
             type: "end",
             x: 24,
             y: 17
-        },
+        }
     ]
 })
 
