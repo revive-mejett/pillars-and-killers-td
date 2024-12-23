@@ -39,7 +39,8 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 { from: "src/assets/", to: "assets/" },
-                { from: "index.css", to: "index.css" }
+                { from: "index.css", to: "index.css" },
+                { from: "favicon_pvk.png", to: "favicon_pvk.png" }
             ]
         }),
         new HtmlWebpackPlugin({
