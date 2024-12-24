@@ -10,10 +10,6 @@ import * as PIXI from "pixi.js";
 import { GameSaveData } from "../ts/types/GameSaveData"
 import { AudioManager } from "../managers/AudioManager"
 
-// import { GameDataManager } from "../managers/GameDataManager";
-// const gameDataManager = new GameDataManager()
-// gameDataManager.wipeAllData()
-
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 const audioManager = new AudioManager()
@@ -40,23 +36,24 @@ export class Game {
         document.body.appendChild(view as HTMLCanvasElement)
 
         eventDispatcher.on("gameStarted", this.initGameplay.bind(this))
-
-        
     }
 
     start() {
-        this.setup().then(() => this.run())
+        this.setup().then(() => this.run()).catch(error => console.error("Game failed to run", error))
     }
 
     async setup() {
         assetLoader.bundleAssets()
-        await assetLoader.loadEnemySprites()
-        await assetLoader.loadIconSprites()
-        await assetLoader.loadTowerSprites()
-        await assetLoader.loadOtherImagesSprites()
-        await assetLoader.loadEnemySpriteSheets()
-        await assetLoader.loadMapBackgroundImages()
-
+        await Promise.all(
+            [
+                assetLoader.loadEnemySprites(),
+                assetLoader.loadIconSprites(),
+                assetLoader.loadTowerSprites(),
+                assetLoader.loadOtherImagesSprites(),
+                assetLoader.loadEnemySpriteSheets(),
+                assetLoader.loadMapBackgroundImages()
+            ]
+        )
 
 
         this.app.stage.addChild(this.baseContainer)
