@@ -1,14 +1,14 @@
-import sound from "pixi-sound"
+import { Howl } from "howler";
 
 
 
 export class AudioManager {
 
     static instance: AudioManager
-    bgmMusic: sound.Sound | undefined
+    bgmMusic: Howl | undefined
 
     useAudio : boolean = true
-    useMusic : boolean = false
+    useMusic : boolean = true
 
     constructor() {
         //singleton
@@ -16,8 +16,8 @@ export class AudioManager {
             return AudioManager.instance
         }
         AudioManager.instance = this
-        this.bgmMusic = sound.Sound.from({
-            url: "assets/sounds/sfx/shadowy_figure.mp3",
+        this.bgmMusic = new Howl({
+            src: "assets/sounds/sfx/shadowy_figure.mp3",
             volume: 0.25,
             loop: true
         })
@@ -28,17 +28,22 @@ export class AudioManager {
         if (!this.useAudio) {
             return
         }
-        let sfx : sound.Sound | undefined = sound.Sound.from({
-            url: path,
-            volume: volume,
-            speed: speed || 1
-        })
-        sfx.play()
 
-        setTimeout(() => {
-            sfx!.destroy()
-            sfx = undefined
-        }, 2000);
+        let rate = 1
+        if (speed) {
+            rate = speed
+        }
+        
+        const sfx = new Howl({
+            src: path,
+            volume: volume,
+            rate: rate > 0.4 ? speed : 0.4,
+            onend: () => {
+                sfx.unload()
+            }
+        })
+
+        sfx.play()
     }
 
     playSoundLimited(numberSources: number, maxSources: number, odds: number, path : string, volume?: number, speed?: number) {
@@ -87,7 +92,7 @@ export class AudioManager {
         if (!this.useMusic) {
             return
         }
-        if (this.bgmMusic && this.bgmMusic.isPlaying) {
+        if (this.bgmMusic && this.bgmMusic.playing()) {
             this.bgmMusic.stop()
         }
     }
