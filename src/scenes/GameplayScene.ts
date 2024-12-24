@@ -225,7 +225,7 @@ export class GameplayScene extends Scene {
 
         const rng = Math.floor(Math.random() * this.enemiesPresent.length + Math.random() * this.towersPresent.length)
 
-        if (this.enemiesPresent.length + this.towersPresent.length <= 10 || rng <= Math.floor((isBoss? 3 : 1) * Math.sqrt(this.enemiesPresent.length + this.towersPresent.length))) {
+        if (this.enemiesPresent.length + this.towersPresent.length <= 10 || rng <= Math.floor((isBoss? 5 : 1) * Math.sqrt(this.enemiesPresent.length + this.towersPresent.length))) {
             audioManager.playArmourSound()
         }
     }

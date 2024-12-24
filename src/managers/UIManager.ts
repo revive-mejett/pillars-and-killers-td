@@ -13,6 +13,7 @@ import { Tower } from "src/objects/pillars/Tower";
 import { Enemy } from "src/objects/killers/Enemy";
 import { getTowerData } from "../utils/TowerStatsData";
 import { AudioManager } from "./AudioManager";
+import { formatMillionString } from "../utils/Calc";
 
 
 
@@ -31,6 +32,7 @@ export class UIManager {
         this.app = app
         this.gamestate = gamestate
         this.hud = hud
+        this.updateMoney()
         this.gameplayScene = gameplayScene
         this.selectedTowerType = undefined
 
@@ -89,7 +91,7 @@ export class UIManager {
 
     updateMoney() {
         if (this.hud && this.hud.moneyText) {
-            this.hud.moneyText.text = this.gamestate.money
+            this.hud.moneyText.text = this.gamestate.money >= 1000000 ? formatMillionString(this.gamestate.money) : this.gamestate.money
         }
     }
 

@@ -8,7 +8,7 @@ export class AudioManager {
     bgmMusic: Howl | undefined
 
     useAudio : boolean = true
-    useMusic : boolean = true
+    useMusic : boolean = false
 
     constructor() {
         //singleton
@@ -33,7 +33,7 @@ export class AudioManager {
         if (speed) {
             rate = speed
         }
-        
+
         const sfx = new Howl({
             src: path,
             volume: volume,
