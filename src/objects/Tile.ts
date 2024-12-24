@@ -122,7 +122,7 @@ export class Tile extends Entity {
 
             this.container?.removeChildren()
             const tileBackground = new PIXI.Graphics()
-            tileBackground.lineStyle(2, this.tower.tileColour)
+            tileBackground.lineStyle(2, 0x000000)
             tileBackground.beginFill(this.tower.tileColour)
             tileBackground.drawRect(this.x, this.y, this.width, this.height)
             tileBackground.endFill()

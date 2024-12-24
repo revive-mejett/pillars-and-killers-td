@@ -287,7 +287,12 @@ export class HUD {
     }
 
     clearInfoPanel() {
+        if (this.infoPanel && this.infoPanel.parent) {
+            this.container.removeChild(this.infoPanel)
+        }
         this.infoPanel?.removeChildren()
+        this.infoPanel?.destroy(true)
+
         this.infoPanel = new PIXI.Container()
         this.container.addChild(this.infoPanel)
         this.infoPanel.x = 1

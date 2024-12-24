@@ -19,6 +19,9 @@ export class HealthBarManager {
 
 
     assignHealthBar(enemy : Enemy) {
+        if (!enemy.sprite) {
+            return
+        }
         const healthBar = new HealthBar(enemy.position.x, enemy.position.y, enemy.sprite.width, enemy.sprite.height, enemy)
         this.healthBars.push(healthBar)
     }

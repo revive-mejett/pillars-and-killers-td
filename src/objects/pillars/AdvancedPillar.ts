@@ -37,7 +37,6 @@ export class AdvancedPillar extends Tower {
         const onTick = () => {
 
             if (this.isSold) {
-                console.log("tower sold, sitkcer stop fire")
                 towerFireCycleTicker?.stop()
                 towerFireCycleTicker?.destroy()
                 towerFireCycleTicker = undefined

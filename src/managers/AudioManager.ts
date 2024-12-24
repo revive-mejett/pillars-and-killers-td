@@ -1,11 +1,11 @@
-import sound from "pixi-sound"
+import { Howl } from "howler";
 
 
 
 export class AudioManager {
 
     static instance: AudioManager
-    bgmMusic: sound.Sound | undefined
+    bgmMusic: Howl | undefined
 
     useAudio : boolean = true
     useMusic : boolean = false
@@ -16,8 +16,8 @@ export class AudioManager {
             return AudioManager.instance
         }
         AudioManager.instance = this
-        this.bgmMusic = sound.Sound.from({
-            url: "assets/sounds/sfx/shadowy_figure.mp3",
+        this.bgmMusic = new Howl({
+            src: "assets/sounds/sfx/shadowy_figure.mp3",
             volume: 0.25,
             loop: true
         })
@@ -28,16 +28,22 @@ export class AudioManager {
         if (!this.useAudio) {
             return
         }
-        const sfx = sound.Sound.from({
-            url: path,
-            volume: volume,
-            speed: speed || 1
-        })
-        sfx.play()
 
-        setTimeout(() => {
-            sfx.destroy()
-        }, 2000);
+        let rate = 1
+        if (speed) {
+            rate = speed
+        }
+
+        const sfx = new Howl({
+            src: path,
+            volume: volume,
+            rate: rate > 0.4 ? speed : 0.4,
+            onend: () => {
+                sfx.unload()
+            }
+        })
+
+        sfx.play()
     }
 
     playSoundLimited(numberSources: number, maxSources: number, odds: number, path : string, volume?: number, speed?: number) {
@@ -52,23 +58,8 @@ export class AudioManager {
 
     //tower/pillar specific sounds
     playBuySound() {
-        if (!this.useAudio) {
-            return
-        }
-        const sfxBuy = sound.Sound.from({
-            url: "assets/sounds/sfx/tower_buy.mp3",
-            volume: 0.5
-        })
-        sfxBuy.play()
-        const sfxBuild = sound.Sound.from({
-            url: "assets/sounds/sfx/pillar_build.mp3",
-            volume: 0.25
-        })
-        sfxBuild.play()
-
-        setTimeout(() => {
-            sfxBuild.destroy()
-        }, 2000);
+        this.playSound("assets/sounds/sfx/tower_buy.mp3", 0.5)
+        this.playSound("assets/sounds/sfx/pillar_build.mp3", 0.25)
     }
 
 
@@ -77,48 +68,17 @@ export class AudioManager {
         if (!this.useAudio) {
             return
         }
-        const sfxIceBeamFire = sound.Sound.from({
-            url: "assets/sounds/sfx/ice_beam.mp3",
-            volume: 0.4
-        })
-        sfxIceBeamFire.play()
-
-        setTimeout(() => {
-            sfxIceBeamFire.destroy()
-        }, 2000);
-
+        this.playSound("assets/sounds/sfx/ice_beam.mp3", 0.4)
     }
 
     //enemy sounds
     playArmourSound() {
-        if (!this.useAudio) {
-            return
-        }
         const soundUrlPaths = ["assets/sounds/sfx/armour_clank1.mp3","assets/sounds/sfx/armour_clank2.mp3","assets/sounds/sfx/armour_clank3.mp3"]
-        const sfxEnemyArmour = sound.Sound.from({
-            url: soundUrlPaths[Math.floor(Math.random() * soundUrlPaths.length)],
-            volume: 0.25
-        })
-        sfxEnemyArmour.play()
-
-        setTimeout(() => {
-            sfxEnemyArmour.destroy()
-        }, 2000);
+        this.playSound(soundUrlPaths[Math.floor(Math.random() * soundUrlPaths.length)], 0.25)
     }
 
     playKilledSound() {
-        if (!this.useAudio) {
-            return
-        }
-        const sfxEnemyDied = sound.Sound.from({
-            url: "assets/sounds/sfx/killerKilled1.mp3",
-            volume: 0.25
-        })
-        sfxEnemyDied.play()
-
-        setTimeout(() => {
-            sfxEnemyDied.destroy()
-        }, 2000);
+        this.playSound("assets/sounds/sfx/killerKilled1.mp3", 0.25)
     }
 
     playbackgroundMusic() {
@@ -132,7 +92,7 @@ export class AudioManager {
         if (!this.useMusic) {
             return
         }
-        if (this.bgmMusic && this.bgmMusic.isPlaying) {
+        if (this.bgmMusic && this.bgmMusic.playing()) {
             this.bgmMusic.stop()
         }
     }
