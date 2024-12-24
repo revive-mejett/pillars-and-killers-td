@@ -55,6 +55,7 @@ export class Game {
         await assetLoader.loadTowerSprites()
         await assetLoader.loadOtherImagesSprites()
         await assetLoader.loadEnemySpriteSheets()
+        await assetLoader.loadMapBackgroundImages()
 
 
 

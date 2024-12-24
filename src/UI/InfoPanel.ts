@@ -28,7 +28,6 @@ export class InfoPanel {
         if (tower.assetIcon) {
             const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding, 0x000000)
             currentTowerIcon.x = 160
-    
             infoPanel.addChild(currentTowerIcon)
         }
 

@@ -391,7 +391,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -816,7 +816,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1134,7 +1134,7 @@ const allEnemyData: EnemyData = {
             health: 25000,
             speed: 0.7,
             damage: 10,
-            killValue: 885,
+            killValue: 1470,
             armour: 540,
             rotationSpeed: 0,
             isLooking: true,
@@ -1179,7 +1179,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1199,7 +1199,7 @@ const allEnemyData: EnemyData = {
             health: 33300,
             speed: 1.5,
             damage: 15,
-            killValue: 1700,
+            killValue: 2250,
             armour: 155,
             rotationSpeed: 1,
             isLooking: false,
@@ -1240,11 +1240,11 @@ const allEnemyData: EnemyData = {
             health: 42000,
             speed: 1.2,
             damage: 6,
-            killValue: 3000,
+            killValue: 4250,
             armour: 350,
             rotationSpeed: 0,
             isLooking: true,
-            animationSpeed: 0,
+            animationSpeed: 0
         }
     },
     "Remorseless Rigel": {
@@ -1285,7 +1285,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1333,7 +1333,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1353,11 +1353,11 @@ const allEnemyData: EnemyData = {
             health: 55000,
             speed: 0.8,
             damage: 8,
-            killValue: 2800,
+            killValue: 4100,
             rotationSpeed: 0.24,
             isLooking: false,
             animationSpeed: 0.11,
-            armour: 1000
+            armour: 550
         }
     },
     "Alluring Rooster": {
@@ -1406,12 +1406,12 @@ const allEnemyData: EnemyData = {
             health: 72000,
             speed: 0.8,
             damage: 10,
-            killValue: 3500,
+            killValue: 6200,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.18,
             regen: 1000,
-            armour: 1000
+            armour: 550
         }
     },
     "Neptunian Megalodon": {
@@ -1460,12 +1460,12 @@ const allEnemyData: EnemyData = {
             health: 80000,
             speed: 1.1,
             damage: 5,
-            killValue: 4800,
+            killValue: 9000,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.06,
             slowImmune: true,
-            armour: 1700
+            armour: 1200
         }
     },
     "Kingda Ka Zipper": {
@@ -1514,11 +1514,11 @@ const allEnemyData: EnemyData = {
             health: 128000,
             speed: 2.1,
             damage: 10,
-            killValue: 5500,
+            killValue: 12000,
             rotationSpeed: 1.4,
             isLooking: false,
             animationSpeed: 0.10,
-            armour: 2200
+            armour: 1200
         }
     },
     "Obsidian Ripper": {
@@ -1567,7 +1567,7 @@ const allEnemyData: EnemyData = {
             health: 140000,
             speed: 0.7,
             damage: 10,
-            killValue: 7500,
+            killValue: 16500,
             armour: 7000,
             rotationSpeed: 0.07,
             isLooking: false,
@@ -1612,7 +1612,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1632,11 +1632,11 @@ const allEnemyData: EnemyData = {
             health: 180000,
             speed: 1,
             damage: 30,
-            killValue: 10700,
+            killValue: 22000,
             armour: 3000,
             rotationSpeed: 1.2,
             isLooking: false,
-            animationSpeed: 0.27,
+            animationSpeed: 0.27
         }
     },
     "Enraged Eagle": {
@@ -1673,7 +1673,7 @@ const allEnemyData: EnemyData = {
             health: 280000,
             speed: 0.7,
             damage: 12,
-            killValue: 12200,
+            killValue: 37000,
             armour: 5000,
             rotationSpeed: 0,
             isLooking: true,
@@ -1718,7 +1718,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1766,7 +1766,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 500, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -1786,7 +1786,7 @@ const allEnemyData: EnemyData = {
             health: 350000,
             speed: 0.7,
             damage: 10,
-            killValue: 7000,
+            killValue: 36000,
             rotationSpeed: 0.10,
             isLooking: false,
             animationSpeed: 0.06,
@@ -1839,7 +1839,7 @@ const allEnemyData: EnemyData = {
             health: 420000,
             speed: 0.6,
             damage: 10,
-            killValue: 9200,
+            killValue: 65000,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.1,
@@ -1893,7 +1893,7 @@ const allEnemyData: EnemyData = {
             health: 520000,
             speed: 1.2,
             damage: 10,
-            killValue: 13500,
+            killValue: 75000,
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.04,
@@ -1947,7 +1947,7 @@ const allEnemyData: EnemyData = {
             health: 1000000,
             speed: 2.8,
             damage: 12,
-            killValue: 15750,
+            killValue: 85000,
             rotationSpeed: 1.3,
             isLooking: false,
             animationSpeed: 0.22,
@@ -2000,7 +2000,7 @@ const allEnemyData: EnemyData = {
             health: 1250000,
             speed: 0.7,
             damage: 18,
-            killValue: 21200,
+            killValue: 85000,
             armour: 22000,
             rotationSpeed: 1,
             isLooking: true,
@@ -2059,11 +2059,11 @@ const allEnemyData: EnemyData = {
             health: 1500000,
             speed: 0.9,
             damage: 30,
-            killValue: 18200,
+            killValue: 100000,
             armour: 27000,
             rotationSpeed: 0.11,
             isLooking: false,
-            animationSpeed: 0.25,
+            animationSpeed: 0.25
         }
     },
     "Merciless Loch Ness": {
@@ -2097,10 +2097,10 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Merciless Loch Ness",
             type: "Hybrid",
-            health: 1700000,
+            health: 2000000,
             speed: 0.7,
             damage: 20,
-            killValue: 34000,
+            killValue: 120000,
             armour: 20000,
             rotationSpeed: 0,
             isLooking: true,
@@ -2146,7 +2146,7 @@ const allEnemyData: EnemyData = {
                     "frame": { "x": 1250, "y": 0, "w": 250, "h": 250 },
                     "spriteSourceSize": { "x": 0, "y": 0, "w": 250, "h": 250 },
                     "sourceSize": { "w": 250, "h": 250 }
-                },
+                }
             },
 
             "animations": {
@@ -2164,7 +2164,7 @@ const allEnemyData: EnemyData = {
             className: "TON 618",
             type: "Boss",
             health: 110000000, //999999999
-            speed: 0.2,
+            speed: 0.1,
             damage: 99999,
             killValue: 1000000,
             rotationSpeed: 0.01,
@@ -2172,9 +2172,9 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.05,
             regen: 0,
             armour: 192575,
-            slowImmune: false
+            slowImmune: true
         }
-    },
+    }
 }
 
 const zappedAtlasData = {
@@ -2196,7 +2196,7 @@ const zappedAtlasData = {
             "frame": { "x": 1000, "y": 0, "w": 500, "h": 500 },
             "spriteSourceSize": { "x": 0, "y": 0, "w": 500, "h": 500 },
             "sourceSize": { "w": 500, "h": 500 }
-        },
+        }
     },
 
     "animations": {

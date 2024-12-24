@@ -295,7 +295,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         damage: 1075,
                         fireRate: 0.8,
                         cost: 7000
-                    },
+                    }
                 ],
                 visualUpgrades: [{
                     assetIcon: towerIcons.advancedPillar,
@@ -409,9 +409,9 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 175,
-                    damage: 1250,
+                    damage: 1000,
                     fireRate: 0.3,
-                    cost: 5000,
+                    cost: 6000,
                     impactRadius: 60
                 },
                 towerInfo: {
@@ -431,28 +431,28 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 195,
                         damage: 2500,
                         fireRate: 0.3,
-                        cost: 7000,
+                        cost: 14000,
                         impactRadius: 70
                     },
                     {
                         range: 215,
-                        damage: 4500,
+                        damage: 5500,
                         fireRate: 0.4,
-                        cost: 12000,
+                        cost: 27000,
                         impactRadius: 80
                     },
                     {
                         range: 235,
-                        damage: 8500,
+                        damage: 9500,
                         fireRate: 0.5,
-                        cost: 22000,
+                        cost: 54000,
                         impactRadius: 90
                     },
                     {
                         range: 255,
                         damage: 15000,
                         fireRate: 0.5,
-                        cost: 35000,
+                        cost: 75000,
                         impactRadius: 100
                     }
                 ],
@@ -499,7 +499,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 140,
                     damage: 750,
                     fireRate: 2,
-                    cost: 5000
+                    cost: 6000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.lightningPillar,
@@ -515,26 +515,26 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 145,
                         damage: 1250,
                         fireRate: 3,
-                        cost: 12000
+                        cost: 14000
                     },
                     {
                         range: 150,
                         damage: 1550,
                         fireRate: 5,
-                        cost: 12000
+                        cost: 27000
                     },
                     {
                         range: 155,
                         damage: 2150,
                         fireRate: 7,
-                        cost: 22000
+                        cost: 54000
                     },
                     {
                         range: 160,
-                        damage: 2850,
+                        damage: 3500,
                         fireRate: 8,
-                        cost: 35000
-                    },
+                        cost: 110000
+                    }
                 ],
                 visualUpgrades: [
                     {
@@ -567,8 +567,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 100,
                     damage: 200,
                     fireRate: 0.8,
-                    cost: 4000,
-                    armourReduction: 40
+                    cost: 3000,
+                    armourReduction: 25
                 },
                 towerInfo: {
                     assetIcon: towerIcons.dreadglassPillar,
@@ -587,29 +587,29 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 100,
                         damage: 400,
                         fireRate: 1,
-                        cost: 6000,
-                        armourReduction: 80
+                        cost: 7000,
+                        armourReduction: 50
                     },
                     {
                         range: 125,
                         damage: 600,
                         fireRate: 1.2,
-                        cost: 9000,
+                        cost: 15000,
                         armourReduction: 140
                     },
                     {
                         range: 125,
                         damage: 800,
                         fireRate: 1.4,
-                        cost: 13000,
-                        armourReduction: 220
+                        cost: 28000,
+                        armourReduction: 280
                     },
                     {
                         range: 150,
                         damage: 1000,
                         fireRate: 1.6,
-                        cost: 17000,
-                        armourReduction: 300
+                        cost: 45000,
+                        armourReduction: 400
                     }
                 ],
                 visualUpgrades: [
@@ -655,7 +655,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     range: 300,
                     damage: 37000,
                     fireRate: 0.2,
-                    cost: 70000
+                    cost: 280000
                 },
                 towerInfo: {
                     assetIcon: towerIcons.ultimatePillar,
@@ -673,7 +673,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 500,
                         damage: 60000,
                         fireRate: 0.4,
-                        cost: 150000
+                        cost: 500000
                     }
                 ],
                 visualUpgrades: [{

@@ -138,7 +138,6 @@ export class GameplayScene extends Scene {
                 checkpointWave: this.waveManager.currentWave
             }
             gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
-            console.log(gameSaveData)
         }, 0);
 
     }
@@ -147,6 +146,7 @@ export class GameplayScene extends Scene {
         if (!this.mapContainer) {
             return
         }
+
         if(this.savedData) {
             this.tdMap?.displayTiles(this.mapContainer, this, this.savedData.towers)
         } else {
@@ -221,15 +221,11 @@ export class GameplayScene extends Scene {
 
     playArmorSound(isBoss: boolean = false) {
 
-        //always play armour impact for bosses
-        if (isBoss) {
-            audioManager.playArmourSound()
-            return
-        }
+
 
         const rng = Math.floor(Math.random() * this.enemiesPresent.length + Math.random() * this.towersPresent.length)
 
-        if (this.enemiesPresent.length + this.towersPresent.length <= 10 || rng <= Math.floor(Math.sqrt(this.enemiesPresent.length + this.towersPresent.length))) {
+        if (this.enemiesPresent.length + this.towersPresent.length <= 10 || rng <= Math.floor((isBoss? 3 : 1) * Math.sqrt(this.enemiesPresent.length + this.towersPresent.length))) {
             audioManager.playArmourSound()
         }
     }
