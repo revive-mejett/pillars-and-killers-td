@@ -628,6 +628,218 @@ allMaps.set("Starry Night", {
     ]
 })
 
+// TEST MAPS
+allMaps.set("Medium French Vanilla", {
+    mapInfo: {
+        difficulty: 2,
+        grassColour: 0x555555,
+        grassSecondaryColour: 0xC1682C,
+        grassOpacity: 0.001,
+        pathOpacity: 0.4,
+        bgColourMapKey: "mediumFrenchVanilla"
+    },
+    waypoints: [
+        {
+            type: "start",
+            x: 18,
+            y: 24
+        },
+         
+        {
+            type: "point",
+            x: 18,
+            y: 22
+        },
+         
+        {
+            type: "point",
+            x: 7,
+            y: 22
+        },
+         
+        {
+            type: "point",
+            x: 7,
+            y: 24
+        },
+         
+        {
+            type: "point",
+            x: 1,
+            y: 24
+        },
+         
+        {
+            type: "point",
+            x: 1,
+            y: 22
+        },
+         
+        {
+            type: "point",
+            x: 5,
+            y: 22
+        },
+         
+        {
+            type: "point",
+            x: 5,
+            y: 19
+        },
+         
+        {
+            type: "point",
+            x: 8,
+            y: 19
+        },
+         
+        {
+            type: "point",
+            x: 8,
+            y: 17
+        },
+         
+        {
+            type: "point",
+            x: 5,
+            y: 17
+        },
+         
+        {
+            type: "point",
+            x: 5,
+            y: 15
+        },
+         
+        {
+            type: "point",
+            x: 17,
+            y: 15
+        },
+         
+        {
+            type: "point",
+            x: 17,
+            y: 19
+        },
+         
+        {
+            type: "point",
+            x: 17,
+            y: 15
+        },
+         
+        {
+            type: "point",
+            x: 5,
+            y: 15
+        },
+         
+        {
+            type: "point",
+            x: 5,
+            y: 11
+        },
+         
+        {
+            type: "point",
+            x: 6,
+            y: 11
+        },
+         
+        {
+            type: "point",
+            x: 6,
+            y: 6
+        },
+         
+        {
+            type: "point",
+            x: 9,
+            y: 6
+        },
+         
+        {
+            type: "point",
+            x: 9,
+            y: 10
+        },
+         
+        {
+            type: "point",
+            x: 16,
+            y: 10
+        },
+         
+        {
+            type: "point",
+            x: 16,
+            y: 9
+        },
+         
+        {
+            type: "point",
+            x: 18,
+            y: 9
+        },
+         
+        {
+            type: "point",
+            x: 18,
+            y: 5
+        },
+         
+        {
+            type: "point",
+            x: 12,
+            y: 5
+        },
+         
+        {
+            type: "point",
+            x: 18,
+            y: 5
+        },
+         
+        {
+            type: "point",
+            x: 18,
+            y: 2
+        },
+         
+        {
+            type: "point",
+            x: 22,
+            y: 2
+        },
+         
+        {
+            type: "point",
+            x: 22,
+            y: 4
+        },
+         
+        {
+            type: "point",
+            x: 22,
+            y: 2
+        },
+         
+        {
+            type: "point",
+            x: 18,
+            y: 2
+        },
+         
+        {
+            type: "end",
+            x: 18,
+            y: 0
+        },
+    ]
+})
+
+
 
 // TEST MAPS
 allMaps.set("blons", {
@@ -651,3 +863,5 @@ allMaps.set("blons", {
 
 
 export { allMaps }
+
+

@@ -125,7 +125,8 @@ export class AssetLoader {
         })
 
         Assets.addBundle("mapBackgroundImages", {
-            "starryNight" : "assets/mapbg/starrynight_pvk.png"
+            "starryNight" : "assets/mapbg/starrynight_pvk.png",
+            "mediumFrenchVanilla" : "assets/mapbg/Medium_French_Vanilla_pvk.jpg"
         })
 
         // Assets.addBundle("sfx", {
