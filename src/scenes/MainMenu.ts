@@ -49,8 +49,9 @@ export class MainMenu extends Scene {
         settingsButton.zIndex = 1
         this.container.addChild(settingsButton)
 
-        const tutorialButton = UIHelper.createButton(450,800,400,50, "Tutorial")
-        tutorialButton.zIndex = 1
-        this.container.addChild(tutorialButton)
+        const btnTutorial = UIHelper.createButton(450,800,400,50, "Tutorial")
+        btnTutorial.zIndex = 1
+        this.container.addChild(btnTutorial)
+        btnTutorial.on("pointerdown", () => eventDispatcher.fireEvent("tutorialClick"))
     }
 }

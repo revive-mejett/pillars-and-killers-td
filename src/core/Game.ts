@@ -9,6 +9,7 @@ import { AssetLoader } from "./AssetLoader"
 import * as PIXI from "pixi.js";
 import { GameSaveData } from "../ts/types/GameSaveData"
 import { AudioManager } from "../managers/AudioManager"
+import { Tutorial } from "../scenes/Tutorial"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -78,6 +79,7 @@ export class Game {
 
         eventDispatcher.on("newGameClick", () => this.toPregameSelection())
         eventDispatcher.on("btnBackToMainMenuClick", () => this.toMainMenu())
+        eventDispatcher.on("tutorialClick", () => this.toTutorial())
     }
 
     run() {
@@ -123,6 +125,12 @@ export class Game {
         const pregameSelection = new PregameSelection(this.app)
         pregameSelection.constructScene()
         this.sceneManager?.transitionScene(pregameSelection)
+    }
+
+    private toTutorial() {
+        const tutorialScene = new Tutorial(this.app)
+        tutorialScene.constructScene()
+        this.sceneManager?.transitionScene(tutorialScene)
     }
 
     private toMainMenu() {

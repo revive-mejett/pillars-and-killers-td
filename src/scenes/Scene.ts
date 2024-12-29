@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-export class Scene {
+export abstract class Scene {
     app: PIXI.Application<PIXI.ICanvas>;
     container: PIXI.Container<PIXI.DisplayObject>;
 
@@ -17,9 +17,7 @@ export class Scene {
         }
     }
 
-    constructScene() {
-
-    }
+    abstract constructScene() : void
 
     pause() {
         this.container.visible = false
