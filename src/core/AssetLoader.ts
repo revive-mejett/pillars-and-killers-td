@@ -52,9 +52,8 @@ export class AssetLoader {
         Assets.addBundle("towers", {
             "basicPillarIcon" : "assets/images/basic_pillar.png",
             "basicPillarTop" : "assets/images/basic_pillar_top.png",
+
             "icePillar" : "assets/images/frozen_pillar_icon.png",
-
-
             "icePillarTop" : "assets/images/frozen_pillar_top.png",
             "icePillarTopLv1" : "assets/images/frozen_pillar_top_lv1.png",
             "icePillarTopLv2" : "assets/images/frozen_pillar_top_lv2.png",

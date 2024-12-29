@@ -438,21 +438,21 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 215,
                         damage: 5500,
                         fireRate: 0.4,
-                        cost: 27000,
+                        cost: 30000,
                         impactRadius: 80
                     },
                     {
                         range: 235,
                         damage: 9500,
                         fireRate: 0.5,
-                        cost: 54000,
+                        cost: 75000,
                         impactRadius: 90
                     },
                     {
                         range: 255,
                         damage: 15000,
                         fireRate: 0.5,
-                        cost: 75000,
+                        cost: 150000,
                         impactRadius: 100
                     }
                 ],
@@ -521,19 +521,19 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 150,
                         damage: 1550,
                         fireRate: 5,
-                        cost: 27000
+                        cost: 30000
                     },
                     {
                         range: 155,
                         damage: 2150,
                         fireRate: 7,
-                        cost: 54000
+                        cost: 75000
                     },
                     {
                         range: 160,
                         damage: 3500,
                         fireRate: 8,
-                        cost: 110000
+                        cost: 150000
                     }
                 ],
                 visualUpgrades: [
