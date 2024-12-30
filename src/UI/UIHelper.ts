@@ -26,13 +26,13 @@ export class UIHelper {
         return buttonContainer
     }
 
-    static createText(x: number, y: number, text: string, fontSize: number, textColour: string, centered?: boolean): PIXI.Container {
+    static createText(x: number, y: number, text: string, fontSize: number, textColour: string, centered?: boolean, wordwrapWidth?: number): PIXI.Container {
         const textContainer = new PIXI.Container()
         textContainer.eventMode = "static"
         textContainer.x = x
         textContainer.y = y
 
-        const textObject = new Text(text, new TextStyle({ fontFamily: "Times New Roman", fontSize: fontSize, fill: textColour || 0xFFFFFF, align: "center" }))
+        const textObject = new Text(text, new TextStyle({ fontFamily: "Times New Roman", fontSize: fontSize, fill: textColour || 0xFFFFFF, align: "center", wordWrap: true, wordWrapWidth: wordwrapWidth }))
         if (centered) {
             textObject.x = (textContainer.width - textObject.width) / 2;
             textObject.y = (textContainer.height - textObject.height) / 2;

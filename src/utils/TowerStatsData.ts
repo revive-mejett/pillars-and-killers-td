@@ -677,7 +677,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     }
                 ],
                 visualUpgrades: [{
-                    assetIcon: towerIcons.ultimatePillar,
+                    assetIcon: towerIcons.ultimatePillarLv2,
                     asset: towerIcons.ultimatePillarTopLv2,
                     tileColour: 0x6600FF,
                     beamColour: 0X00FFFF,

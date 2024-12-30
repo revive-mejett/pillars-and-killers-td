@@ -127,6 +127,10 @@ export class UltimatePillar extends Tower {
             this.sprite.x = this.position?.x || 0
             this.sprite.y = this.position?.y || 0
         }
+
+        if (newVisualStats.assetIcon) {
+            this.assetIcon = newVisualStats.assetIcon
+        }
     }
 
 }

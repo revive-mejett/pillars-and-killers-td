@@ -105,17 +105,23 @@ class TdMap {
         let x = waypoints[currWayPtNum].x
         let y = waypoints[currWayPtNum].y
 
+        const drawnTileCoords : {x : number, y: number}[] = []
+
         while (currWayPtNum < this.waypoints.length - 1) {
-            const pathTile = new PIXI.Graphics()
-            pathTile.beginFill(0x070707)
-            pathTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
-            pathTile.endFill()
-            if (this.pathOpacity) {
-                pathTile.alpha = this.pathOpacity
+
+            if (!drawnTileCoords.find(coordinate => coordinate.x === x * this.tileSize && coordinate.y === y * this.tileSize)) {
+                const pathTile = new PIXI.Graphics()
+                pathTile.beginFill(0x070707)
+                pathTile.drawRect(x * this.tileSize, y * this.tileSize, this.tileSize, this.tileSize)
+                pathTile.endFill()
+                if (this.pathOpacity) {
+                    pathTile.alpha = this.pathOpacity
+                }
+                this.tiles[x][y].setTileContainer(pathTile)
+                this.tiles[x][y].changeTileType("path")
+                drawnTileCoords.push({x : x * this.tileSize, y : y * this.tileSize})
             }
 
-            this.tiles[x][y].setTileContainer(pathTile)
-            this.tiles[x][y].changeTileType("path")
 
             if (this.waypoints[currWayPtNum + 1].x > x) {
                 x++
@@ -158,7 +164,7 @@ class TdMap {
         this.tiles.forEach(row => {
             row.forEach(tile => {
                 if (tile.tileType === "grass" && !tile.hasTower) {
-                    // tile.paveGrass()
+                    tile.paveGrass()
                 }
             })
         })
