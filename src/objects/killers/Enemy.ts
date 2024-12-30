@@ -38,6 +38,8 @@ export class Enemy extends Entity {
     distanceTravelled: number
     isAlive: boolean
 
+    direction: "NORTH" | "SOUTH" | "EAST" | "WEST" | undefined
+
 
     regen: { amount: number, cooldownSeconds: number } | undefined;
     slowImmune: boolean = false
@@ -83,9 +85,10 @@ export class Enemy extends Entity {
 
         this.position = { x: x, y: y }
 
+
+        this.nextWayPointIndex = 1
         this.xToNextWaypoint = 0
         this.yToNextWaypoint = 0
-        this.nextWayPointIndex = 1
         this.sprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         this.sprite.height = height
         this.sprite.width = width
@@ -184,12 +187,6 @@ export class Enemy extends Entity {
                 this.sprite.visible = true
             }
         }, 50)
-
-
-        // if (this.isAlive) {
-        //     this.sprite.visible = true
-        // }
-
     }
 
 
@@ -200,15 +197,16 @@ export class Enemy extends Entity {
         const waypoints = map.waypoints
         const speed = this.speed
 
-
-        if (this.nextWayPointIndex >= waypoints.length) { return }
+        if (this.nextWayPointIndex >= waypoints.length) {
+            return
+        }
 
         if (this.xToNextWaypoint !== 0) {
-            this.position.x += speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
+            this.position.x += (speed) * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
             this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
         else if (this.yToNextWaypoint !== 0) {
-            this.position.y += speed * (this.yToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
+            this.position.y += (speed) * (this.yToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
             this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
 
@@ -223,15 +221,38 @@ export class Enemy extends Entity {
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
 
+        if (!this.direction) {
+            this.determineDirection()
+        }
+
         this.updateSpritePosition()
 
-        if (Math.abs(this.xToNextWaypoint) < 1 && Math.abs(this.yToNextWaypoint) < 1 && this.nextWayPointIndex < waypoints.length) {
+        if (((this.direction === "EAST" && this.xToNextWaypoint < 0) || (this.direction === "WEST" && this.xToNextWaypoint > 0) || (this.direction === "NORTH" && this.yToNextWaypoint > 0) || (this.direction === "SOUTH" && this.yToNextWaypoint < 0)) && this.nextWayPointIndex < waypoints.length) {
             this.nextWayPointIndex++
+
+
             if (this.nextWayPointIndex === waypoints.length) {
                 reachEnd(this)
             } else {
                 this.setDistancesToNext(map)
+
+                this.determineDirection();
             }
+        }
+    }
+
+    private determineDirection() {
+        if (this.xToNextWaypoint > 0 && this.yToNextWaypoint === 0) {
+            this.direction = "EAST";
+        }
+        if (this.xToNextWaypoint < 0 && this.yToNextWaypoint === 0) {
+            this.direction = "WEST";
+        }
+        if (this.xToNextWaypoint === 0 && this.yToNextWaypoint < 0) {
+            this.direction = "NORTH";
+        }
+        if (this.xToNextWaypoint === 0 && this.yToNextWaypoint > 0) {
+            this.direction = "SOUTH";
         }
     }
 
@@ -291,7 +312,7 @@ export class Enemy extends Entity {
         if (!this.empCooldown) {
             return
         }
-        // console.log(this.empCooldown)
+
         this.empCooldown -= deltaTime
         if (this.empCooldown > 0) {
             this.empCooldown -= deltaTime
