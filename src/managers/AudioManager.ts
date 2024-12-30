@@ -35,13 +35,12 @@ export class AudioManager {
 
         const sfx = new Howl({
             src: path,
-            volume: volume,
+            volume: volume * settingsManager.sfxVolumeMultiplier,
             rate: rate > 0.4 ? speed : 0.4,
             onend: () => {
                 sfx.unload()
             }
         })
-
         sfx.play()
     }
 

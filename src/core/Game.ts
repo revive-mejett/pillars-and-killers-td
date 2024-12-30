@@ -10,6 +10,7 @@ import * as PIXI from "pixi.js";
 import { GameSaveData } from "../ts/types/GameSaveData"
 import { AudioManager } from "../managers/AudioManager"
 import { Tutorial } from "../scenes/Tutorial"
+import { OffGameSettings } from "../scenes/OffGameSettings"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -79,6 +80,7 @@ export class Game {
 
         eventDispatcher.on("newGameClick", () => this.toPregameSelection())
         eventDispatcher.on("btnBackToMainMenuClick", () => this.toMainMenu())
+        eventDispatcher.on("settingsClick", () => this.toOffGameSettings())
         eventDispatcher.on("tutorialClick", () => this.toTutorial())
     }
 
@@ -139,5 +141,12 @@ export class Game {
         mainMenu.constructScene()
 
         this.sceneManager?.transitionScene(mainMenu)
+    }
+
+    private toOffGameSettings() {
+        const settingsScene = new OffGameSettings(this.app)
+        settingsScene.constructScene()
+
+        this.sceneManager?.transitionScene(settingsScene)
     }
 }
