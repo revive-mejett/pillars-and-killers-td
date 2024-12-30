@@ -126,7 +126,9 @@ export class AssetLoader {
             "tutorial2" : "assets/images/tutorial_2.png",
             "tutorial3" : "assets/images/tutorial_3.png",
             "tutorial4" : "assets/images/tutorial_4.png",
-            "tutorial5" : "assets/images/tutorial_5.png"
+            "tutorial5" : "assets/images/tutorial_5.png",
+            "tutorial6" : "assets/images/tutorial_6.png",
+            "tutorial7" : "assets/images/tutorial_7.png"
         })
 
         Assets.addBundle("mapBackgroundImages", {

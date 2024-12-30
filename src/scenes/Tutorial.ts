@@ -38,7 +38,7 @@ export class Tutorial extends Scene {
         this.buildPage("Killers on the loose!", "These are your enemies called \"Killers\". They are after you and your \"City\"! Your objective is to stop them from reaching the end of the path.", "tutorial1");
         this.buildPage("Pillars - Your Defense 1/2",
             [
-                "To stop them, you must build \"Pillars\" that attack killers. They cost money, depending on their strength",
+                "To stop them, you must build \"Pillars\" that attack killers. They cost money, depending on their strength.",
                 "Each pillar has its own purpose, where each may be used to beat all the killers. Some pillars have special attacks. For example, the Ice Pillar is capable of slowing killers down. Another pillar, called the Sniper Pillar which is orange in colour, is truly capable of shooting from a large distance!",
                 "Pillars can also be upgraded or sold. Upgrading them may improve their damage, range, attack speed, or even their special properties such as slow. Selling pillars return 60% of its total cost, including all bought upgrades."
             ],
@@ -52,8 +52,8 @@ export class Tutorial extends Scene {
             "tutorial3", 0.8);
         this.buildPage("The Killers 1/2",
             [
-                "Killers come in waves. You can tell when a new wave starts by looking at the \"Timeline\" on the left.",
-                "In this game, you will encounter a wide range of killers, varying in strength.",
+                "Killers come in waves. You can tell when a new wave starts by looking at the \"Timeline\" on the left. Killing them rewards their bounty, allowing you to build/upgrade pillars and strengthen your defense.",
+                "In this game, you will encounter a wide range of killers, varying in strength. You can click on a killer on the path to see its stats.",
                 "Some move fast, others move slowly. Some enemies can even have armour, which can resist up to a certain amount of damage. Killing armoured killers requires pillars that can deal high damage at once.",
                 "If a killer reaches the end of the path, you will lose lives depending on their damage. Losing all lives will cause defeat."
             ],
@@ -67,10 +67,17 @@ export class Tutorial extends Scene {
             "tutorial5", 1.2);
         this.buildPage("Checkpoints",
             [
-                "Every 20th wave, you will reach a checkpoint upon beating it. Checkpoints allow you to reload your progress from the end of the last wave",
+                "Every 20th wave, you will reach a checkpoint upon beating it. Checkpoints allow you to reload your progress from the end of the last wave.",
                 "It happens automatically, and it will be saved on the slot you chose when you start/load."
             ],
-            "tutorial5", 1.2);
+            "tutorial6", 1.2);
+        this.buildPage("Good Luck!",
+            [
+                "In order to win, you will need to beat 100 waves filled with fierce killers. Don't get killed by the killers!",
+                "There are many maps to choose from, from easy to nearly impossible. Can you beat all maps? This tutorial covers the main fundamentals of the game. You will have to know the rest the hard way.",
+                "Good luck out there. The city is counting on you!"
+            ],
+            "tutorial7", 1);
         this.updatePageVisibility()
 
 
