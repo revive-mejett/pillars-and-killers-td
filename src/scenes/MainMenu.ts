@@ -7,6 +7,7 @@ import * as PIXI from "pixi.js";
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
+const version = "V0.9.2"
 
 export class MainMenu extends Scene {
     /**
@@ -53,5 +54,8 @@ export class MainMenu extends Scene {
         btnTutorial.zIndex = 1
         this.container.addChild(btnTutorial)
         btnTutorial.on("pointerdown", () => eventDispatcher.fireEvent("tutorialClick"))
+
+        const txtVersion = UIHelper.createText(0, 950, version, 20, "0X777777")
+        this.container.addChild(txtVersion)
     }
 }
