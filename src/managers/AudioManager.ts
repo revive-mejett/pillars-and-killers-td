@@ -1,14 +1,13 @@
 import { Howl } from "howler";
+import { SettingsManager } from "./SettingsManager";
 
-
+const settingsManager = new SettingsManager()
 
 export class AudioManager {
 
     static instance: AudioManager
     bgmMusic: Howl | undefined
 
-    useAudio : boolean = true
-    useMusic : boolean = false
 
     constructor() {
         //singleton
@@ -25,7 +24,7 @@ export class AudioManager {
 
     //general play sound method
     playSound(path : string, volume: number, speed?: number) {
-        if (!this.useAudio) {
+        if (!settingsManager.useAudio) {
             return
         }
 
@@ -65,7 +64,7 @@ export class AudioManager {
 
 
     playIceBeamSound() {
-        if (!this.useAudio) {
+        if (settingsManager.useAudio) {
             return
         }
         this.playSound("assets/sounds/sfx/ice_beam.mp3", 0.4)
@@ -82,14 +81,14 @@ export class AudioManager {
     }
 
     playbackgroundMusic() {
-        if (!this.bgmMusic  || !this.useMusic) {
+        if (!this.bgmMusic  || !settingsManager.useMusic) {
             return
         }
         this.bgmMusic.play()
     }
 
     stopbackgroundMusic() {
-        if (!this.useMusic) {
+        if (!settingsManager.useMusic) {
             return
         }
         if (this.bgmMusic && this.bgmMusic.playing()) {
