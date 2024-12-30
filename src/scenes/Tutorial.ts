@@ -36,13 +36,41 @@ export class Tutorial extends Scene {
 
 
         this.buildPage("Killers on the loose!", "These are your enemies called \"Killers\". They are after you and your \"City\"! Your objective is to stop them from reaching the end of the path.", "tutorial1");
-        this.buildPage("Pillars - Your Defense",
+        this.buildPage("Pillars - Your Defense 1/2",
             [
                 "To stop them, you must build \"Pillars\" that attack killers. They cost money, depending on their strength",
                 "Each pillar has its own purpose, where each may be used to beat all the killers. Some pillars have special attacks. For example, the Ice Pillar is capable of slowing killers down. Another pillar, called the Sniper Pillar which is orange in colour, is truly capable of shooting from a large distance!",
+                "Pillars can also be upgraded or sold. Upgrading them may improve their damage, range, attack speed, or even their special properties such as slow. Selling pillars return 60% of its total cost, including all bought upgrades."
             ],
             "tutorial2");
-        this.buildPage("Pillars - Your Defense (part 2)", "You start with a few pillars to begin with. However as the waves go by, you will need to rely on stronger ones.", "tutorial3", 1.5)
+        this.buildPage("Pillars - Your Defense 2/2",
+            [
+                "You start with a few pillars to begin with. However as the waves go by, you will need to rely on stronger ones.",
+                "Due to their strength, they need to be researched, which costs money. Eventually, you will need to research pillars to advance your defence.",
+                "The Basic Pillar is cheap but weak. As mentioned before, the Sniper Pillar has a huge range, while dealing great damage. The Lightning Pillar, which is among the most advanced pillars, is very powerful (and VERY expensive!)"
+            ],
+            "tutorial3", 0.8);
+        this.buildPage("The Killers 1/2",
+            [
+                "Killers come in waves. You can tell when a new wave starts by looking at the \"Timeline\" on the left.",
+                "In this game, you will encounter a wide range of killers, varying in strength.",
+                "Some move fast, others move slowly. Some enemies can even have armour, which can resist up to a certain amount of damage. Killing armoured killers requires pillars that can deal high damage at once.",
+                "If a killer reaches the end of the path, you will lose lives depending on their damage. Losing all lives will cause defeat."
+            ],
+            "tutorial4", 1.2);
+        this.buildPage("The Killers 2/2",
+            [
+                "As your defence advances, so do the killers too!",
+                "You will encounter stronger killers the further you go in the later waves. The killers you meet later on will have more health, more damage (in other words, the number of lives you will lose upon reaching the end) and the most frightening, their armour/damage resistance.",
+                "Remember to upgrade your pillars, and research if you can!"
+            ],
+            "tutorial5", 1.2);
+        this.buildPage("Checkpoints",
+            [
+                "Every 20th wave, you will reach a checkpoint upon beating it. Checkpoints allow you to reload your progress from the end of the last wave",
+                "It happens automatically, and it will be saved on the slot you chose when you start/load."
+            ],
+            "tutorial5", 1.2);
         this.updatePageVisibility()
 
 
@@ -84,8 +112,8 @@ export class Tutorial extends Scene {
 
         const pageLeftPane = new PIXI.Container();
         page.addChild(pageLeftPane);
-        const paneWidth = 800;
-        const paneHeight = 700;
+        const paneWidth = 700;
+        const paneHeight = 800;
         pageLeftPane.x = 0;
         pageLeftPane.y = 150;
 
@@ -116,7 +144,7 @@ export class Tutorial extends Scene {
         page.addChild(pageRightPane);
         const paneWidthRight = 800;
         const paneHeightRight = 700;
-        pageRightPane.x = 800;
+        pageRightPane.x = 700;
         pageRightPane.y = 150;
 
         const bgColourRight = new PIXI.Graphics();

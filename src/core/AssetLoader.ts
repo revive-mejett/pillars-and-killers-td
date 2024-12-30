@@ -112,6 +112,7 @@ export class AssetLoader {
 
 
             "ultimatePillar" : "assets/images/ultimate_pillar.png",
+            "ultimatePillarLv2" : "assets/images/ultimate_pillar_lv2.png",
             "ultimatePillarTop" : "assets/images/ultimate_pillar_top.png",
             "ultimatePillarTopLv1" : "assets/images/ultimate_pillar_top_lv1.png",
             "ultimatePillarTopLv2" : "assets/images/ultimate_pillar_top_lv2.png"
@@ -123,17 +124,15 @@ export class AssetLoader {
             "gameoverGraveyard" : "assets/images/gameover_rip.png",
             "tutorial1" : "assets/images/tutorial_1.png",
             "tutorial2" : "assets/images/tutorial_2.png",
-            "tutorial3" : "assets/images/tutorial_3.png"
+            "tutorial3" : "assets/images/tutorial_3.png",
+            "tutorial4" : "assets/images/tutorial_4.png",
+            "tutorial5" : "assets/images/tutorial_5.png"
         })
 
         Assets.addBundle("mapBackgroundImages", {
             "starryNight" : "assets/mapbg/starrynight_pvk.png",
             "mediumFrenchVanilla" : "assets/mapbg/Medium_French_Vanilla_pvk.jpg"
         })
-
-        // Assets.addBundle("sfx", {
-        //     "towerBuy" : "assets/sounds/sfx/tower_buy.mp3"
-        // })
     }
 
     async loadEnemySprites() {
