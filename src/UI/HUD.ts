@@ -139,14 +139,31 @@ export class HUD {
         const btnNextWave = UIHelper.createButton(0, 1000 - 100, this.container.width, 48, "Next Wave", 40, 0x00FFFF, 0x000077)
         this.container.addChild(btnNextWave)
 
-        const btnExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 25, this.container.width/2, 25, "Exit", 25, 0xFFFFFF, 0x330000)
+        const btnExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 30, this.container.width/2, 25, "Exit", 25, 0xFFFFFF, 0x330000)
         this.container.addChild(btnExit)
+        const confirmExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 30, this.container.width/2, 25, "Confirm?", 25, 0xFF7777, 0x770000)
+        this.container.addChild(confirmExit)
+        confirmExit.visible = false
+
+        btnExit.on("pointerdown", () => {
+            confirmExit.visible = true
+            btnExit.visible = false
+            confirmExit.on("pointerdown", () => eventDispatcher.fireEvent("mainMenuReturn"))
+            setTimeout(() => {
+                confirmExit.off("pointerdown", () => {
+                    confirmExit.visible = true
+                    btnExit.visible = false
+                });
+                confirmExit.visible = false
+                btnExit.visible = true
+            }, 2000);
+        });
 
 
         btnNextWave.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
         this.nextWaveButton = btnNextWave
 
-        btnExit.on("pointerdown", () => eventDispatcher.fireEvent("mainMenuReturn"))
+
 
         this.setUpTowerSelections()
 
