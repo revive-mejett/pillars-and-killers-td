@@ -16,22 +16,27 @@ export class AudioManager {
             return AudioManager.instance
         }
         AudioManager.instance = this
-        this.bgmMusic!.push(new Howl({
-            src: "assets/sounds/sfx/tree_leaves.mp3",
-            volume: 0.25,
-            loop: false
-        }))
-        this.bgmMusic!.push(new Howl({
-            src: "assets/sounds/sfx/stone_throw.mp3",
-            volume: 0.5,
-            loop: false
-        }))
-        this.bgmMusic!.push(new Howl({
-            src: "assets/sounds/sfx/tower_buy.mp3",
-            volume: 0.3,
-            loop: false
-        }))
+        this.loadMusic();
 
+    }
+
+    private loadMusic() {
+        this.bgmMusic = [];
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/shadowy_figure.mp3",
+            volume: 0.25 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/ghost_coast.mp3",
+            volume: 0.5 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/hyron.mp3",
+            volume: 0.3 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
     }
 
     //general play sound method
@@ -97,6 +102,7 @@ export class AudioManager {
         }
 
         if (initial) {
+            this.loadMusic()
             this.currentMusicIndex = Math.floor(Math.random() * this.bgmMusic!.length)
         }
 
@@ -116,11 +122,20 @@ export class AudioManager {
             return
         }
 
-        this.bgmMusic.forEach(music => {
-            music.stop()
-        })
+        this.unloadAllMusic();
     }
 
 
 
+
+    private unloadAllMusic() {
+        if (!this.bgmMusic) {
+            return
+        }
+        this.bgmMusic.forEach(music => {
+            music.stop();
+            music.unload();
+        });
+        this.bgmMusic = [];
+    }
 }
