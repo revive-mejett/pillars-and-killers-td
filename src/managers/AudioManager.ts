@@ -37,6 +37,16 @@ export class AudioManager {
             volume: 0.3 * settingsManager.musicVolumeMultiplier,
             loop: false
         }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/plastic_flowers.mp3",
+            volume: 0.25 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/a_dream_place.mp3",
+            volume: 0.33 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
     }
 
     //general play sound method
