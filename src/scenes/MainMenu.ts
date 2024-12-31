@@ -48,7 +48,8 @@ export class MainMenu extends Scene {
         this.container.addChild(btnTutorial)
         btnTutorial.on("pointerdown", () => eventDispatcher.fireEvent("tutorialClick"))
 
-        const txtVersion = UIHelper.createText(1200 + btnShift, 950, version, 20, "0X777777")
+        const txtVersion = UIHelper.createText(0, 980, version, 20, "0X777777")
+        txtVersion.zIndex = 2
         this.container.addChild(txtVersion)
     }
 }
