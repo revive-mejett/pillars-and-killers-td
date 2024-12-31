@@ -125,6 +125,7 @@ export class AssetLoader {
         Assets.addBundle("otherImages", {
             "mainTitle" : "assets/images/td_title.png",
             "mainTitleImage" : "assets/images/pillars_killers_title_pic.png",
+            "mainTitleBackground" : "assets/images/main_menu_background.png",
             "gameoverGraveyard" : "assets/images/gameover_rip.png",
             "tutorial1" : "assets/images/tutorial_1.png",
             "tutorial2" : "assets/images/tutorial_2.png",
