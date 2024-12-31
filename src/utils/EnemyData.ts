@@ -1357,7 +1357,7 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0.24,
             isLooking: false,
             animationSpeed: 0.11,
-            armour: 550
+            armour: 700
         }
     },
     "Alluring Rooster": {

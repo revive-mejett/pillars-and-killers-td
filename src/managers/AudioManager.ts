@@ -116,9 +116,8 @@ export class AudioManager {
             this.currentMusicIndex = Math.floor(Math.random() * this.bgmMusic!.length)
         }
 
-        this.bgmMusic[this.currentMusicIndex ].play()
-        this.bgmMusic[this.currentMusicIndex ].once("end", () => {
-            console.log("called callback")
+        this.bgmMusic[this.currentMusicIndex].play()
+        this.bgmMusic[this.currentMusicIndex].once("end", () => {
             this.currentMusicIndex  = this.currentMusicIndex  === this.bgmMusic!.length - 1 ? 0 : this.currentMusicIndex  + 1
             this.playbackgroundMusic(false)
         })

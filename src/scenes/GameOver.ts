@@ -34,7 +34,7 @@ export class GameOver extends Scene {
 
         const txtRip = UIHelper.createText(580,270,"R.I.P.", 70, "0x000077")
         this.container.addChild(txtRip)
-        const txtDate = UIHelper.createText(580,350,`10/13/24 - ${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`, 20, "0x000077")
+        const txtDate = UIHelper.createText(570,350,`10/13/24 - ${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`, 20, "0x000077")
         this.container.addChild(txtDate)
 
 

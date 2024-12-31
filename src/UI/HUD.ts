@@ -3,13 +3,16 @@ import { AssetLoader } from "../core/AssetLoader"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { UIHelper } from "./UIHelper"
 import { InfoPanel } from "./InfoPanel"
-
-const assetLoader = new AssetLoader()
-const eventDispatcher = new EventDispatcher()
-
 import * as PIXI from "pixi.js";
 import { GameState } from "src/core/GameState"
 import TowerData from "src/ts/types/TowerData"
+import { SettingsManager } from "../managers/SettingsManager"
+import { AudioManager } from "../managers/AudioManager"
+
+const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
+const settingsManager = new SettingsManager()
+const audioManager = new AudioManager()
 
 export class HUD {
     container: PIXI.Container
@@ -136,51 +139,79 @@ export class HUD {
 
 
         //buttons
-        const nextWaveButtonContainer = new PIXI.Container()
-        nextWaveButtonContainer.eventMode = "static"
-        nextWaveButtonContainer.x = 0
-        nextWaveButtonContainer.y = 1000 - 100
-        this.container.addChild(nextWaveButtonContainer)
+        const btnNextWave = UIHelper.createButton(0, 1000 - 100, this.container.width, 48, "Next Wave", 40, 0x00FFFF, 0x000077)
+        this.container.addChild(btnNextWave)
 
-        const nextWaveButtonContainerbg = new PIXI.Graphics()
-        nextWaveButtonContainer.addChild(nextWaveButtonContainerbg)
-        nextWaveButtonContainerbg.beginFill(0x003300)
-        nextWaveButtonContainerbg.drawRect(0,0, this.container.width, 50)
-        nextWaveButtonContainerbg.endFill()
+        const btnExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 30, this.container.width/2, 25, "Exit", 25, 0xFFFFFF, 0x330000)
+        this.container.addChild(btnExit)
+        const confirmExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 30, this.container.width/2, 25, "Confirm?", 25, 0xFF7777, 0x770000)
+        this.container.addChild(confirmExit)
+        confirmExit.visible = false
 
-        const nextWaveButtonText = new Text("Next Wave", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: "center"}))
-        nextWaveButtonText.x = (nextWaveButtonContainer.width - nextWaveButtonText.width) / 2;
-        nextWaveButtonText.y = (nextWaveButtonContainer.height - nextWaveButtonText.height) / 2;
-        nextWaveButtonContainer.addChild(nextWaveButtonText)
+        btnNextWave.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
+        this.nextWaveButton = btnNextWave
 
-        nextWaveButtonContainer.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
-        this.nextWaveButton = nextWaveButtonContainer
+        btnExit.on("pointerdown", () => {
+            confirmExit.visible = true
+            btnExit.visible = false
+            confirmExit.on("pointerdown", () => eventDispatcher.fireEvent("mainMenuReturn"))
+            setTimeout(() => {
+                confirmExit.off("pointerdown", () => {
+                    confirmExit.visible = true
+                    btnExit.visible = false
+                });
+                confirmExit.visible = false
+                btnExit.visible = true
+            }, 2000);
+        });
 
-        const exitButtonContainer = new PIXI.Container()
-        exitButtonContainer.eventMode = "static"
-        exitButtonContainer.x = 0
-        exitButtonContainer.y = 1000 - 50
-        this.container.addChild(exitButtonContainer)
+        const musicSfxIconWidth = 30
+        const btnMusicIcon = UIHelper.createIcon(iconBundle.musicActive, 0, 1000 - musicSfxIconWidth, 0x003300, musicSfxIconWidth, musicSfxIconWidth)
+        const btnMusicMutedIcon = UIHelper.createIcon(iconBundle.musicMuted, 0, 1000 - musicSfxIconWidth, 0x330000, musicSfxIconWidth, musicSfxIconWidth)
+        const btnSfxIcon = UIHelper.createIcon(iconBundle.sfxActive, musicSfxIconWidth, 1000 - musicSfxIconWidth, 0x003300, musicSfxIconWidth, musicSfxIconWidth)
+        const btnSfxMutedIcon = UIHelper.createIcon(iconBundle.sfxMuted, musicSfxIconWidth, 1000 - musicSfxIconWidth, 0x330000, musicSfxIconWidth, musicSfxIconWidth)
+        this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
 
-        const exitButtonContainerbg = new PIXI.Graphics()
-        exitButtonContainer.addChild(exitButtonContainerbg)
-        exitButtonContainerbg.beginFill(0x330000)
-        exitButtonContainerbg.drawRect(0,0, this.container.width, 50)
-        exitButtonContainerbg.endFill()
+        this.container.addChild(btnMusicIcon)
+        this.container.addChild(btnMusicMutedIcon)
+        this.container.addChild(btnSfxIcon)
+        this.container.addChild(btnSfxMutedIcon)
+        btnMusicIcon.on("pointerdown", () => {
+            //mutes the music
+            audioManager.stopbackgroundMusic()
+            settingsManager.useMusic = false
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
+        });
+        btnMusicMutedIcon.on("pointerdown", () => {
+            //plays the music
+            settingsManager.useMusic = true
+            audioManager.playbackgroundMusic(true)
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
+        });
+        btnSfxIcon.on("pointerdown", () => {
+            //mutes all sfx (sound effects)
+            settingsManager.useAudio = false
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
+        });
+        btnSfxMutedIcon.on("pointerdown", () => {
+            //plays all sfx (sound effects)
+            settingsManager.useAudio = true
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
+        });
 
-        const exitButtonText = new Text("Exit", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: "center"}))
-        exitButtonText.x = (exitButtonContainer.width - exitButtonText.width) / 2;
-        exitButtonText.y = (exitButtonContainer.height - exitButtonText.height) / 2;
-        exitButtonContainer.addChild(exitButtonText)
 
 
-        exitButtonContainer.on("pointerdown", () => {
-            eventDispatcher.fireEvent("mainMenuReturn")
-        })
         this.setUpTowerSelections()
 
     }
 
+
+    private updateMusicSfxIconVisibility(btnMusicIcon: PIXI.Container<PIXI.DisplayObject>, btnMusicMutedIcon: PIXI.Container<PIXI.DisplayObject>, btnSfxIcon: PIXI.Container<PIXI.DisplayObject>, btnSfxMutedIcon: PIXI.Container<PIXI.DisplayObject>) {
+        btnMusicIcon.visible = settingsManager.useMusic
+        btnMusicMutedIcon.visible = !settingsManager.useMusic
+        btnSfxIcon.visible = settingsManager.useAudio
+        btnSfxMutedIcon.visible = !settingsManager.useAudio
+    }
 
     //tower selection menu
     setUpTowerSelections() {
