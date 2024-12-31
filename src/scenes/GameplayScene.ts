@@ -117,7 +117,6 @@ export class GameplayScene extends Scene {
             if (!this.gamestate || !this.waveManager) {
                 return
             }
-            console.log(this.gamestate.money)
             const towerData: TowerData[] = []
 
             this.towersPresent.forEach(tower => {

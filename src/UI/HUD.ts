@@ -3,13 +3,16 @@ import { AssetLoader } from "../core/AssetLoader"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { UIHelper } from "./UIHelper"
 import { InfoPanel } from "./InfoPanel"
-
-const assetLoader = new AssetLoader()
-const eventDispatcher = new EventDispatcher()
-
 import * as PIXI from "pixi.js";
 import { GameState } from "src/core/GameState"
 import TowerData from "src/ts/types/TowerData"
+import { SettingsManager } from "../managers/SettingsManager"
+import { AudioManager } from "../managers/AudioManager"
+
+const assetLoader = new AssetLoader()
+const eventDispatcher = new EventDispatcher()
+const settingsManager = new SettingsManager()
+const audioManager = new AudioManager()
 
 export class HUD {
     container: PIXI.Container
@@ -145,6 +148,9 @@ export class HUD {
         this.container.addChild(confirmExit)
         confirmExit.visible = false
 
+        btnNextWave.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
+        this.nextWaveButton = btnNextWave
+
         btnExit.on("pointerdown", () => {
             confirmExit.visible = true
             btnExit.visible = false
@@ -159,9 +165,25 @@ export class HUD {
             }, 2000);
         });
 
+        const musicSfxIconWidth = 30
+        const btnMusicIcon = UIHelper.createIcon(iconBundle.musicActive, 0, 1000 - musicSfxIconWidth, 0x003300, musicSfxIconWidth, musicSfxIconWidth)
+        const btnMusicMutedIcon = UIHelper.createIcon(iconBundle.musicMuted, 0, 1000 - musicSfxIconWidth, 0x330000, musicSfxIconWidth, musicSfxIconWidth)
+        this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon)
 
-        btnNextWave.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
-        this.nextWaveButton = btnNextWave
+        this.container.addChild(btnMusicIcon)
+        this.container.addChild(btnMusicMutedIcon)
+        btnMusicIcon.on("pointerdown", () => {
+            //mutes the music
+            audioManager.stopbackgroundMusic()
+            settingsManager.useMusic = false
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon)
+        });
+        btnMusicMutedIcon.on("pointerdown", () => {
+            //plays the music
+            settingsManager.useMusic = true
+            audioManager.playbackgroundMusic(true)
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon)
+        });
 
 
 
@@ -169,6 +191,11 @@ export class HUD {
 
     }
 
+
+    private updateMusicSfxIconVisibility(btnMusicIcon: PIXI.Container<PIXI.DisplayObject>, btnMusicMutedIcon: PIXI.Container<PIXI.DisplayObject>) {
+        btnMusicIcon.visible = settingsManager.useMusic
+        btnMusicMutedIcon.visible = !settingsManager.useMusic
+    }
 
     //tower selection menu
     setUpTowerSelections() {
