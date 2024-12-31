@@ -2,12 +2,16 @@ import { Text, TextStyle } from "pixi.js"
 import * as PIXI from "pixi.js";
 import { AssetLoader } from "../core/AssetLoader";
 import { MapData } from "src/utils/MapData";
+import { AudioManager } from "../managers/AudioManager";
 const assetLoader = new AssetLoader()
+
+
+const audioManager = new AudioManager()
 
 export class UIHelper {
 
 
-    static createButton(x: number, y: number, width: number, height: number, text: string, fontSize?: number, bgColour?: number): PIXI.Container {
+    static createButton(x: number, y: number, width: number, height: number, text: string, fontSize?: number, textColour?: number, bgColour?: number): PIXI.Container {
         const buttonContainer = new PIXI.Container()
         buttonContainer.eventMode = "static"
         buttonContainer.x = x
@@ -15,14 +19,33 @@ export class UIHelper {
 
         const buttonBackground = new PIXI.Graphics()
         buttonContainer.addChild(buttonBackground)
-        buttonBackground.beginFill(0x003333)
+        buttonBackground.beginFill(bgColour || 0x003333)
         buttonBackground.drawRect(0, 0, width, height)
         buttonBackground.endFill()
 
-        const buttonText = new Text(text, new TextStyle({ fontFamily: "Times New Roman", fontSize: fontSize || 40, fill: bgColour || 0xFFFFFF, align: "center" }))
+        const buttonText = new Text(text, new TextStyle({ fontFamily: "Times New Roman", fontSize: fontSize || 40, fill: textColour || 0xFFFFFF, align: "center" }))
         buttonText.x = (buttonContainer.width - buttonText.width) / 2;
         buttonText.y = (buttonContainer.height - buttonText.height) / 2;
         buttonContainer.addChild(buttonText)
+
+        buttonContainer.on("mouseenter", () => {
+            audioManager.playSound("assets/sounds/sfx/btn_press.mp3", 0.4)
+            buttonBackground.clear()
+            buttonBackground.lineStyle(1, 0x00FFFF)
+            buttonBackground.beginFill(0x007777)
+            buttonBackground.drawRect(0, 0, width, height)
+            buttonBackground.endFill()
+        })
+        buttonContainer.on("mouseleave", () => {
+            buttonBackground.clear()
+            buttonBackground.beginFill(0x003333)
+            buttonBackground.drawRect(0, 0, width, height)
+            buttonBackground.endFill()
+        })
+        buttonContainer.on("pointerdown", () => {
+            audioManager.playSound("assets/sounds/sfx/btn_click.mp3", 0.4)
+        })
+
         return buttonContainer
     }
 
