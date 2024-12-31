@@ -168,21 +168,35 @@ export class HUD {
         const musicSfxIconWidth = 30
         const btnMusicIcon = UIHelper.createIcon(iconBundle.musicActive, 0, 1000 - musicSfxIconWidth, 0x003300, musicSfxIconWidth, musicSfxIconWidth)
         const btnMusicMutedIcon = UIHelper.createIcon(iconBundle.musicMuted, 0, 1000 - musicSfxIconWidth, 0x330000, musicSfxIconWidth, musicSfxIconWidth)
-        this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon)
+        const btnSfxIcon = UIHelper.createIcon(iconBundle.sfxActive, musicSfxIconWidth, 1000 - musicSfxIconWidth, 0x003300, musicSfxIconWidth, musicSfxIconWidth)
+        const btnSfxMutedIcon = UIHelper.createIcon(iconBundle.sfxMuted, musicSfxIconWidth, 1000 - musicSfxIconWidth, 0x330000, musicSfxIconWidth, musicSfxIconWidth)
+        this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
 
         this.container.addChild(btnMusicIcon)
         this.container.addChild(btnMusicMutedIcon)
+        this.container.addChild(btnSfxIcon)
+        this.container.addChild(btnSfxMutedIcon)
         btnMusicIcon.on("pointerdown", () => {
             //mutes the music
             audioManager.stopbackgroundMusic()
             settingsManager.useMusic = false
-            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon)
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
         });
         btnMusicMutedIcon.on("pointerdown", () => {
             //plays the music
             settingsManager.useMusic = true
             audioManager.playbackgroundMusic(true)
-            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon)
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
+        });
+        btnSfxIcon.on("pointerdown", () => {
+            //mutes all sfx (sound effects)
+            settingsManager.useAudio = false
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
+        });
+        btnSfxMutedIcon.on("pointerdown", () => {
+            //plays all sfx (sound effects)
+            settingsManager.useAudio = true
+            this.updateMusicSfxIconVisibility(btnMusicIcon, btnMusicMutedIcon, btnSfxIcon, btnSfxMutedIcon)
         });
 
 
@@ -192,9 +206,11 @@ export class HUD {
     }
 
 
-    private updateMusicSfxIconVisibility(btnMusicIcon: PIXI.Container<PIXI.DisplayObject>, btnMusicMutedIcon: PIXI.Container<PIXI.DisplayObject>) {
+    private updateMusicSfxIconVisibility(btnMusicIcon: PIXI.Container<PIXI.DisplayObject>, btnMusicMutedIcon: PIXI.Container<PIXI.DisplayObject>, btnSfxIcon: PIXI.Container<PIXI.DisplayObject>, btnSfxMutedIcon: PIXI.Container<PIXI.DisplayObject>) {
         btnMusicIcon.visible = settingsManager.useMusic
         btnMusicMutedIcon.visible = !settingsManager.useMusic
+        btnSfxIcon.visible = settingsManager.useAudio
+        btnSfxMutedIcon.visible = !settingsManager.useAudio
     }
 
     //tower selection menu
