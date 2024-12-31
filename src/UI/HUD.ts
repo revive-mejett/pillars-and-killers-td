@@ -136,47 +136,18 @@ export class HUD {
 
 
         //buttons
-        const nextWaveButtonContainer = new PIXI.Container()
-        nextWaveButtonContainer.eventMode = "static"
-        nextWaveButtonContainer.x = 0
-        nextWaveButtonContainer.y = 1000 - 100
-        this.container.addChild(nextWaveButtonContainer)
+        const btnNextWave = UIHelper.createButton(0, 1000 - 100, this.container.width, 48, "Next Wave", 40, 0x00FFFF, 0x000077)
+        this.container.addChild(btnNextWave)
 
-        const nextWaveButtonContainerbg = new PIXI.Graphics()
-        nextWaveButtonContainer.addChild(nextWaveButtonContainerbg)
-        nextWaveButtonContainerbg.beginFill(0x003300)
-        nextWaveButtonContainerbg.drawRect(0,0, this.container.width, 50)
-        nextWaveButtonContainerbg.endFill()
-
-        const nextWaveButtonText = new Text("Next Wave", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: "center"}))
-        nextWaveButtonText.x = (nextWaveButtonContainer.width - nextWaveButtonText.width) / 2;
-        nextWaveButtonText.y = (nextWaveButtonContainer.height - nextWaveButtonText.height) / 2;
-        nextWaveButtonContainer.addChild(nextWaveButtonText)
-
-        nextWaveButtonContainer.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
-        this.nextWaveButton = nextWaveButtonContainer
-
-        const exitButtonContainer = new PIXI.Container()
-        exitButtonContainer.eventMode = "static"
-        exitButtonContainer.x = 0
-        exitButtonContainer.y = 1000 - 50
-        this.container.addChild(exitButtonContainer)
-
-        const exitButtonContainerbg = new PIXI.Graphics()
-        exitButtonContainer.addChild(exitButtonContainerbg)
-        exitButtonContainerbg.beginFill(0x330000)
-        exitButtonContainerbg.drawRect(0,0, this.container.width, 50)
-        exitButtonContainerbg.endFill()
-
-        const exitButtonText = new Text("Exit", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFFFF, align: "center"}))
-        exitButtonText.x = (exitButtonContainer.width - exitButtonText.width) / 2;
-        exitButtonText.y = (exitButtonContainer.height - exitButtonText.height) / 2;
-        exitButtonContainer.addChild(exitButtonText)
+        const btnExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 25, this.container.width/2, 25, "Exit", 25, 0xFFFFFF, 0x330000)
+        this.container.addChild(btnExit)
 
 
-        exitButtonContainer.on("pointerdown", () => {
-            eventDispatcher.fireEvent("mainMenuReturn")
-        })
+        btnNextWave.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
+        this.nextWaveButton = btnNextWave
+
+        btnExit.on("pointerdown", () => eventDispatcher.fireEvent("mainMenuReturn"))
+
         this.setUpTowerSelections()
 
     }
