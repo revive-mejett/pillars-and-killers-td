@@ -1,14 +1,14 @@
 import { Howl } from "howler";
+import { SettingsManager } from "./SettingsManager";
 
-
+const settingsManager = new SettingsManager()
 
 export class AudioManager {
 
     static instance: AudioManager
-    bgmMusic: Howl | undefined
+    bgmMusic: Howl[] | undefined = []
+    currentMusicIndex = 0
 
-    useAudio : boolean = true
-    useMusic : boolean = false
 
     constructor() {
         //singleton
@@ -16,16 +16,42 @@ export class AudioManager {
             return AudioManager.instance
         }
         AudioManager.instance = this
-        this.bgmMusic = new Howl({
+        this.loadMusic();
+
+    }
+
+    private loadMusic() {
+        this.bgmMusic = [];
+        this.bgmMusic!.push(new Howl({
             src: "assets/sounds/sfx/shadowy_figure.mp3",
-            volume: 0.25,
-            loop: true
-        })
+            volume: 0.25 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/ghost_coast.mp3",
+            volume: 0.5 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/hyron.mp3",
+            volume: 0.3 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/plastic_flowers.mp3",
+            volume: 0.25 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/a_dream_place.mp3",
+            volume: 0.33 * settingsManager.musicVolumeMultiplier,
+            loop: false
+        }));
     }
 
     //general play sound method
     playSound(path : string, volume: number, speed?: number) {
-        if (!this.useAudio) {
+        if (!settingsManager.useAudio) {
             return
         }
 
@@ -36,13 +62,12 @@ export class AudioManager {
 
         const sfx = new Howl({
             src: path,
-            volume: volume,
+            volume: volume * settingsManager.sfxVolumeMultiplier,
             rate: rate > 0.4 ? speed : 0.4,
             onend: () => {
                 sfx.unload()
             }
         })
-
         sfx.play()
     }
 
@@ -65,7 +90,7 @@ export class AudioManager {
 
 
     playIceBeamSound() {
-        if (!this.useAudio) {
+        if (settingsManager.useAudio) {
             return
         }
         this.playSound("assets/sounds/sfx/ice_beam.mp3", 0.4)
@@ -81,22 +106,46 @@ export class AudioManager {
         this.playSound("assets/sounds/sfx/killerKilled1.mp3", 0.25)
     }
 
-    playbackgroundMusic() {
-        if (!this.bgmMusic  || !this.useMusic) {
+    playbackgroundMusic(initial: boolean) {
+        if (!this.bgmMusic || !settingsManager.useMusic) {
             return
         }
-        this.bgmMusic.play()
+
+        if (initial) {
+            this.loadMusic()
+            this.currentMusicIndex = Math.floor(Math.random() * this.bgmMusic!.length)
+        }
+
+        this.bgmMusic[this.currentMusicIndex ].play()
+        this.bgmMusic[this.currentMusicIndex ].once("end", () => {
+            console.log("called callback")
+            this.currentMusicIndex  = this.currentMusicIndex  === this.bgmMusic!.length - 1 ? 0 : this.currentMusicIndex  + 1
+            this.playbackgroundMusic(false)
+        })
     }
 
     stopbackgroundMusic() {
-        if (!this.useMusic) {
+        if (!settingsManager.useMusic) {
             return
         }
-        if (this.bgmMusic && this.bgmMusic.playing()) {
-            this.bgmMusic.stop()
+        if (!this.bgmMusic) {
+            return
         }
+
+        this.unloadAllMusic();
     }
 
 
 
+
+    private unloadAllMusic() {
+        if (!this.bgmMusic) {
+            return
+        }
+        this.bgmMusic.forEach(music => {
+            music.stop();
+            music.unload();
+        });
+        this.bgmMusic = [];
+    }
 }

@@ -26,7 +26,7 @@ export class Tutorial extends Scene {
     }
 
     constructScene(): void {
-        const txtTitle = UIHelper.createText(500, 25, "Tutorial", 50, "0xFFFFFF", true);
+        const txtTitle = UIHelper.createText(650, 50, "Tutorial", 50, "0xFFFFFF", true);
         this.container.addChild(txtTitle);
         this.btnPrev.x = 0
         this.btnPrev.y = 900

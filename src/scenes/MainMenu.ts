@@ -46,9 +46,10 @@ export class MainMenu extends Scene {
 
         btnNewGame.on("pointerdown", () => eventDispatcher.fireEvent("newGameClick"))
 
-        const settingsButton = UIHelper.createButton(450,700,400,50, "Settings")
-        settingsButton.zIndex = 1
-        this.container.addChild(settingsButton)
+        const btnSettings = UIHelper.createButton(450,700,400,50, "Settings")
+        btnSettings.zIndex = 1
+        this.container.addChild(btnSettings)
+        btnSettings.on("pointerdown", () => eventDispatcher.fireEvent("settingsClick"))
 
         const btnTutorial = UIHelper.createButton(450,800,400,50, "Tutorial")
         btnTutorial.zIndex = 1
