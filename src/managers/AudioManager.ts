@@ -83,6 +83,12 @@ export class AudioManager {
         if (!this.bgmMusic  || !settingsManager.useMusic) {
             return
         }
+
+        this.bgmMusic = new Howl({
+            src: "assets/sounds/sfx/shadowy_figure.mp3",
+            volume: 0.25 * settingsManager.musicVolumeMultiplier,
+            loop: true
+        })
         this.bgmMusic.play()
     }
 
