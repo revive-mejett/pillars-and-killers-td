@@ -112,7 +112,7 @@ export class Game {
             this.sceneManager?.transitionScene(gameOver)
         })
 
-        audioManager.playbackgroundMusic()
+        audioManager.playbackgroundMusic(true)
         eventDispatcher.on("gameEnd", () => {
             audioManager.stopbackgroundMusic()
         })

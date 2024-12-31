@@ -6,7 +6,8 @@ const settingsManager = new SettingsManager()
 export class AudioManager {
 
     static instance: AudioManager
-    bgmMusic: Howl | undefined
+    bgmMusic: Howl[] | undefined = []
+    currentMusicIndex = 0
 
 
     constructor() {
@@ -15,11 +16,22 @@ export class AudioManager {
             return AudioManager.instance
         }
         AudioManager.instance = this
-        this.bgmMusic = new Howl({
-            src: "assets/sounds/sfx/shadowy_figure.mp3",
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/tree_leaves.mp3",
             volume: 0.25,
-            loop: true
-        })
+            loop: false
+        }))
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/stone_throw.mp3",
+            volume: 0.5,
+            loop: false
+        }))
+        this.bgmMusic!.push(new Howl({
+            src: "assets/sounds/sfx/tower_buy.mp3",
+            volume: 0.3,
+            loop: false
+        }))
+
     }
 
     //general play sound method
@@ -79,26 +91,34 @@ export class AudioManager {
         this.playSound("assets/sounds/sfx/killerKilled1.mp3", 0.25)
     }
 
-    playbackgroundMusic() {
-        if (!this.bgmMusic  || !settingsManager.useMusic) {
+    playbackgroundMusic(initial: boolean) {
+        if (!this.bgmMusic || !settingsManager.useMusic) {
             return
         }
 
-        this.bgmMusic = new Howl({
-            src: "assets/sounds/sfx/shadowy_figure.mp3",
-            volume: 0.25 * settingsManager.musicVolumeMultiplier,
-            loop: true
+        if (initial) {
+            this.currentMusicIndex = Math.floor(Math.random() * this.bgmMusic!.length)
+        }
+
+        this.bgmMusic[this.currentMusicIndex ].play()
+        this.bgmMusic[this.currentMusicIndex ].once("end", () => {
+            console.log("called callback")
+            this.currentMusicIndex  = this.currentMusicIndex  === this.bgmMusic!.length - 1 ? 0 : this.currentMusicIndex  + 1
+            this.playbackgroundMusic(false)
         })
-        this.bgmMusic.play()
     }
 
     stopbackgroundMusic() {
         if (!settingsManager.useMusic) {
             return
         }
-        if (this.bgmMusic && this.bgmMusic.playing()) {
-            this.bgmMusic.stop()
+        if (!this.bgmMusic) {
+            return
         }
+
+        this.bgmMusic.forEach(music => {
+            music.stop()
+        })
     }
 
 
