@@ -628,7 +628,7 @@ allMaps.set("Starry Night", {
     ]
 })
 
-// TEST MAPS
+
 allMaps.set("Medium French Vanilla", {
     mapInfo: {
         difficulty: 2,
@@ -644,197 +644,385 @@ allMaps.set("Medium French Vanilla", {
             x: 18,
             y: 24
         },
-         
+
         {
             type: "point",
             x: 18,
             y: 22
         },
-         
+
         {
             type: "point",
             x: 7,
             y: 22
         },
-         
+
         {
             type: "point",
             x: 7,
             y: 24
         },
-         
+
         {
             type: "point",
             x: 1,
             y: 24
         },
-         
+
         {
             type: "point",
             x: 1,
             y: 22
         },
-         
+
         {
             type: "point",
             x: 5,
             y: 22
         },
-         
+
         {
             type: "point",
             x: 5,
             y: 19
         },
-         
+
         {
             type: "point",
             x: 8,
             y: 19
         },
-         
+
         {
             type: "point",
             x: 8,
             y: 17
         },
-         
+
         {
             type: "point",
             x: 5,
             y: 17
         },
-         
+
         {
             type: "point",
             x: 5,
             y: 15
         },
-         
+
         {
             type: "point",
             x: 17,
             y: 15
         },
-         
+
         {
             type: "point",
             x: 17,
             y: 19
         },
-         
+
         {
             type: "point",
             x: 17,
             y: 15
         },
-         
+
         {
             type: "point",
             x: 5,
             y: 15
         },
-         
+
         {
             type: "point",
             x: 5,
             y: 11
         },
-         
+
         {
             type: "point",
             x: 6,
             y: 11
         },
-         
+
         {
             type: "point",
             x: 6,
             y: 6
         },
-         
+
         {
             type: "point",
             x: 9,
             y: 6
         },
-         
+
         {
             type: "point",
             x: 9,
             y: 10
         },
-         
+
         {
             type: "point",
             x: 16,
             y: 10
         },
-         
+
         {
             type: "point",
             x: 16,
             y: 9
         },
-         
+
         {
             type: "point",
             x: 18,
             y: 9
         },
-         
+
         {
             type: "point",
             x: 18,
             y: 5
         },
-         
+
         {
             type: "point",
             x: 12,
             y: 5
         },
-         
+
         {
             type: "point",
             x: 18,
             y: 5
         },
-         
+
         {
             type: "point",
             x: 18,
             y: 2
         },
-         
+
         {
             type: "point",
             x: 22,
             y: 2
         },
-         
+
         {
             type: "point",
             x: 22,
             y: 4
         },
-         
+
         {
             type: "point",
             x: 22,
             y: 2
         },
-         
+
         {
             type: "point",
             x: 18,
             y: 2
         },
-         
+
         {
             type: "end",
             x: 18,
             y: 0
+        },
+    ]
+})
+
+allMaps.set("Rough Spiral", {
+    mapInfo: {
+        difficulty: 3,
+        grassColour: 0x222200,
+        grassSecondaryColour: 0x667A00
+    },
+    waypoints: [
+        {
+            type: "start",
+            x: 19,
+            y: 24
+        },
+        {
+            type: "point",
+            x: 19,
+            y: 20
+        },
+
+        {
+            type: "point",
+            x: 22,
+            y: 20
+        },
+
+        {
+            type: "point",
+            x: 22,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 2
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 2
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 5
+        },
+
+        {
+            type: "point",
+            x: 2,
+            y: 5
+        },
+
+        {
+            type: "point",
+            x: 2,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 4,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 4,
+            y: 20
+        },
+
+        {
+            type: "point",
+            x: 11,
+            y: 20
+        },
+
+        {
+            type: "point",
+            x: 11,
+            y: 16
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 16
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 18
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 18
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 20,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 20,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 8
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 8
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 10,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 10,
+            y: 14
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 14
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 14,
+            y: 12
+        },
+
+        {
+            type: "end",
+            x: 14,
+            y: 11
         },
     ]
 })
