@@ -154,7 +154,7 @@ export class WaveTimeline {
         }
         const currentWave = this.waveManager.extraWaves[i]
 
-        const waveNumber = this.waveManager.currentWave + i
+        const waveNumber = this.waveManager.currentWave + i + 1
         const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
 
 
@@ -165,6 +165,12 @@ export class WaveTimeline {
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)
         waveStone.endFill()
         this.innerContainer.addChild(waveStone)
+        waveStone.on("pointerdown", () => {
+            const infoPanel = InfoPanel.createWaveInfoPanel(waveNumber, currentWave, "0xFF00FF")
+            this.hud.clearInfoPanel()
+            this.hud.infoPanel?.addChild(infoPanel)
+        })
+        waveStone.eventMode = "static"
 
         const txtWaveNumber = UIHelper.createText(0, 0, `${waveNumber}`, 50, "0xFF00FF")
         txtWaveNumber.x = 50;
