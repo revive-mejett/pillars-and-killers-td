@@ -164,6 +164,10 @@ export class InfoPanel {
         infoPanel.addChild(slowedIndicator)
         slowedIndicator.visible = false
 
+        const poisonIvedIndicator = UIHelper.createIcon(assetLoader.icons.poisonIved, padding + 40, 250 + padding, 0x000000, 40, 40)
+        infoPanel.addChild(poisonIvedIndicator)
+        poisonIvedIndicator.visible = false
+
 
         const healthBar = new InfoPanelHealthBar(40, 110, 200, 5, enemy)
 
@@ -176,6 +180,7 @@ export class InfoPanel {
             UIHelper.updateText(enemyHealthText.children[0] as PIXI.Text, `${enemy.health} / ${enemy.totalHealth}`)
             UIHelper.updateText(dmgResistanceText.children[0] as PIXI.Text, `${enemy.armour}`)
             slowedIndicator.visible = enemy.slowDebuffStats.timeLeft > 0
+            poisonIvedIndicator.visible = enemy.vulnerableDebuffStats.timeLeft > 0
             healthBar.renderBar(infoPanel)
         }
 
