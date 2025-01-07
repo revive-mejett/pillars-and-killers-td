@@ -47,8 +47,8 @@ export class PregameSelection extends Scene {
 
         this.createMapSelectionPane(0, 100, "Walk in the Park");
         this.createMapSelectionPane(400, 100, "Death Walk");
-        // this.createMapSelectionPane(800, 100, "blons");
-        this.createMapSelectionPane(0, 500, "Xmas 2024")
+        this.createMapSelectionPane(800, 100, "blons");
+        this.createMapSelectionPane(0, 500, "Rough Spiral")
         this.createMapSelectionPane(400, 500, "Starry Night")
         this.createMapSelectionPane(800, 500, "Medium French Vanilla")
 
