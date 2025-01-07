@@ -2,6 +2,8 @@ import { WaveManager } from "src/managers/WaveManager";
 import * as PIXI from "pixi.js";
 import { UIHelper } from "./UIHelper";
 import { EventDispatcher } from "../utils/EventDispatcher";
+import { HUD } from "./HUD";
+import { InfoPanel } from "./InfoPanel";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -13,14 +15,16 @@ export class WaveTimeline {
     waveManager: WaveManager;
     waveBlocks: PIXI.Container<PIXI.DisplayObject>[];
     innerContainer: PIXI.Container<PIXI.DisplayObject>;
+    hud: HUD
 
     /**
      *
      */
-    constructor(waveManager: WaveManager) {
+    constructor(waveManager: WaveManager, hud: HUD) {
         this.container = new PIXI.Container()
         this.waveBlocks = []
         this.waveManager = waveManager
+        this.hud = hud
         const bg = new PIXI.Graphics()
         bg.lineStyle(1, 0x770000)
         bg.beginFill(0x111111)
@@ -126,6 +130,12 @@ export class WaveTimeline {
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)
         waveStone.endFill()
         this.innerContainer.addChild(waveStone)
+        waveStone.on("pointerdown", () => {
+            const infoPanel = InfoPanel.createWaveInfoPanel(waveNumber, currentWave, outlineColour)
+            this.hud.clearInfoPanel()
+            this.hud.infoPanel?.addChild(infoPanel)
+        })
+        waveStone.eventMode = "static"
 
         const txtWaveNumber = UIHelper.createText(0, 0, `${waveNumber}`, 50, outlineColour)
         txtWaveNumber.x = 50;
@@ -144,7 +154,7 @@ export class WaveTimeline {
         }
         const currentWave = this.waveManager.extraWaves[i]
 
-        const waveNumber = this.waveManager.currentWave + i
+        const waveNumber = this.waveManager.currentWave + i + 1
         const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
 
 
@@ -155,6 +165,12 @@ export class WaveTimeline {
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)
         waveStone.endFill()
         this.innerContainer.addChild(waveStone)
+        waveStone.on("pointerdown", () => {
+            const infoPanel = InfoPanel.createWaveInfoPanel(waveNumber, currentWave, "0xFF00FF")
+            this.hud.clearInfoPanel()
+            this.hud.infoPanel?.addChild(infoPanel)
+        })
+        waveStone.eventMode = "static"
 
         const txtWaveNumber = UIHelper.createText(0, 0, `${waveNumber}`, 50, "0xFF00FF")
         txtWaveNumber.x = 50;

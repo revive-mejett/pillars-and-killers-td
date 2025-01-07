@@ -13,7 +13,6 @@ import { productionWaves } from "../utils/WaveData"
 
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
-// import { calculateWaveValue } from "../utils/Calc"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()

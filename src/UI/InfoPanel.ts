@@ -8,6 +8,9 @@ import * as PIXI from "pixi.js";
 import { Enemy } from "src/objects/killers/Enemy"
 import { HUD } from "./HUD"
 import TowerData from "src/ts/types/TowerData"
+import { Wave } from "src/objects/Wave"
+import { countEnemyQuantityInWave } from "../utils/Calc"
+import { allEnemyData } from "../utils/EnemyData"
 
 const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
@@ -110,6 +113,47 @@ export class InfoPanel {
         return infoPanel
     }
 
+    static createWaveInfoPanel(waveNumber: number, wave: Wave, waveTextColour: string = "0XFFFFFF") {
+        const infoPanel = new PIXI.Container()
+        const infoPanelOutline = UIHelper.createInfoPanelOutline(0xFF7700)
+        infoPanel.addChild(infoPanelOutline)
+        const padding = 5
+
+        if (!wave) {
+            throw new Error("Wave invalid")
+        }
+
+        const txtWaveNumber = UIHelper.createText(padding, padding,`Wave ${waveNumber}`, 30, waveTextColour)
+        infoPanel.addChild(txtWaveNumber)
+
+        let enemiesCount = Array.from(countEnemyQuantityInWave(wave))
+        enemiesCount = enemiesCount.sort((enemy1, enemy2) => allEnemyData[enemy2[0]].stats.health - allEnemyData[enemy1[0]].stats.health)
+
+        //create enemy icons and their quantities
+        const maxListSize = 4
+        const textXPad = 55
+        let textYpad = 30
+        const textYOffset = 20
+        enemiesCount.forEach((enemyCount, i) => {
+            if (i < maxListSize) {
+                const spritesheet = assetLoader.spriteSheetEnemies?.get(enemyCount[0])
+                if (!spritesheet) {
+                    return
+                }
+                const enemyIcon = UIHelper.createAnimatedIcon(spritesheet, padding, padding + textYpad, 0x000000, 50, 50, 0.02, true)
+                const enemyQuantityText = UIHelper.createText(textXPad + padding, padding + textYpad,`(x${enemyCount[1]})`, 20, "0xFFFF00")
+                infoPanel.addChild(enemyQuantityText)
+                const enemyText = UIHelper.createText(textXPad + padding, padding + textYpad + textYOffset,`${enemyCount[0]}`, 15, "0xFF8888")
+                infoPanel.addChild(enemyText)
+                infoPanel.addChild(enemyIcon)
+                textYpad += 55
+
+            }
+        })
+
+        return infoPanel
+    }
+
 
     static createEnemyStatsInfoPanel(enemy : Enemy, hud : HUD, updateTicker : PIXI.Ticker) {
 
@@ -164,6 +208,10 @@ export class InfoPanel {
         infoPanel.addChild(slowedIndicator)
         slowedIndicator.visible = false
 
+        const poisonIvedIndicator = UIHelper.createIcon(assetLoader.icons.poisonIved, padding + 40, 250 + padding, 0x000000, 40, 40)
+        infoPanel.addChild(poisonIvedIndicator)
+        poisonIvedIndicator.visible = false
+
 
         const healthBar = new InfoPanelHealthBar(40, 110, 200, 5, enemy)
 
@@ -176,6 +224,7 @@ export class InfoPanel {
             UIHelper.updateText(enemyHealthText.children[0] as PIXI.Text, `${enemy.health} / ${enemy.totalHealth}`)
             UIHelper.updateText(dmgResistanceText.children[0] as PIXI.Text, `${enemy.armour}`)
             slowedIndicator.visible = enemy.slowDebuffStats.timeLeft > 0
+            poisonIvedIndicator.visible = enemy.vulnerableDebuffStats.timeLeft > 0
             healthBar.renderBar(infoPanel)
         }
 
