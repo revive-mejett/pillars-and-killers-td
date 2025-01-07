@@ -82,7 +82,7 @@ export class GameplayScene extends Scene {
         this.buildMap()
         this.inputManager = new InputManager(this.container, this.mapContainer)
 
-        this.waveTimeline = new WaveTimeline(this.waveManager)
+        this.waveTimeline = new WaveTimeline(this.waveManager, this.hud)
         this.container.addChild(this.waveTimeline.container)
 
 

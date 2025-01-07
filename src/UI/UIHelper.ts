@@ -93,17 +93,20 @@ export class UIHelper {
     }
 
     //helper function to create an animated Sprite
-    static createAnimatedIcon(spritesheet: PIXI.Spritesheet, xPosition: number, yPosition: number, hexBackground: number, width?: number, height?: number, animationSpeed: number = 0.25): PIXI.Container {
+    static createAnimatedIcon(spritesheet: PIXI.Spritesheet, xPosition: number, yPosition: number, hexBackground: number, width?: number, height?: number, animationSpeed: number = 0.25, noBackground: boolean = false): PIXI.Container {
         const iconContainer = new PIXI.Container()
         iconContainer.eventMode = "static"
         iconContainer.x = xPosition
         iconContainer.y = yPosition
 
-        const iconBackground = new PIXI.Graphics()
-        iconBackground.beginFill(hexBackground)
-        iconBackground.drawRect(0, 0, width || 80, height || 80)
-        iconBackground.endFill()
-        iconContainer.addChild(iconBackground)
+        if (!noBackground) {
+            const iconBackground = new PIXI.Graphics()
+            iconBackground.beginFill(hexBackground)
+            iconBackground.drawRect(0, 0, width || 80, height || 80)
+            iconBackground.endFill()
+            iconContainer.addChild(iconBackground)
+        }
+
 
         const animatedIcon = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         animatedIcon.width = width || 80
