@@ -87,6 +87,12 @@ export class InputManager {
             this.gridContainer.removeChild(child);
         });
 
+        if (this.hoveredTile && this.hoveredTile.tileType === "terrain") {
+            const redOutline = UIHelper.createOutline(this.hoveredTile.x, this.hoveredTile.y, this.hoveredTile.width, this.hoveredTile.height, 2, 0xFF0000)
+            this.gridContainer.addChild(redOutline)
+        }
+
+
         if (this.hoveredTile && this.hoveredTile.tileType === "grass") {
             const greenOutline = UIHelper.createOutline(this.hoveredTile.x, this.hoveredTile.y, this.hoveredTile.width, this.hoveredTile.height, 2, 0x00FF00)
             this.gridContainer.addChild(greenOutline)
