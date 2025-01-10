@@ -47,10 +47,12 @@ export class PregameSelection extends Scene {
 
         this.createMapSelectionPane(0, 100, "Walk in the Park");
         this.createMapSelectionPane(400, 100, "Death Walk");
-        this.createMapSelectionPane(800, 100, "blons");
-        this.createMapSelectionPane(0, 500, "Rough Spiral")
-        this.createMapSelectionPane(400, 500, "Starry Night")
-        this.createMapSelectionPane(800, 500, "Medium French Vanilla")
+        this.createMapSelectionPane(800, 100, "Rough Spiral")
+        this.createMapSelectionPane(0, 500, "Starry Night")
+        this.createMapSelectionPane(400, 500, "Medium French Vanilla")
+        this.createMapSelectionPane(800, 500, "Stairwell-O-Chaos");
+
+        // this.createMapSelectionPane(800, 100, "blons");
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);

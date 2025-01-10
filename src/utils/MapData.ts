@@ -1028,6 +1028,283 @@ allMaps.set("Rough Spiral", {
 })
 
 
+allMaps.set("Stairwell-O-Chaos", {
+    mapInfo: {
+        difficulty: 5,
+        bgColourMapKey: "stairwellOChaos",
+        grassOpacity: 0.001,
+        pathOpacity: 0.05,
+        grassColour: 0x0044DD,
+        grassSecondaryColour: 0x0077EE
+    },
+    waypoints: [
+        {
+            type: "start",
+            x: 24,
+            y: 22
+        },
+
+        {
+            type: "point",
+            x: 0,
+            y: 22
+        },
+
+        {
+            type: "point",
+            x: 1,
+            y: 22
+        },
+
+        {
+            type: "point",
+            x: 1,
+            y: 21
+        },
+
+        {
+            type: "point",
+            x: 3,
+            y: 21
+        },
+
+        {
+            type: "point",
+            x: 3,
+            y: 20
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 20
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 18
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 18
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 17
+        },
+
+        {
+            type: "point",
+            x: 11,
+            y: 17
+        },
+
+        {
+            type: "point",
+            x: 11,
+            y: 16
+        },
+
+        {
+            type: "point",
+            x: 13,
+            y: 16
+        },
+
+        {
+            type: "point",
+            x: 13,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 14
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 14
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 24,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 11
+        },
+
+        {
+            type: "point",
+            x: 21,
+            y: 11
+        },
+
+        {
+            type: "point",
+            x: 21,
+            y: 10
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 10
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 8
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 8
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 13,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 13,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 11,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 11,
+            y: 5
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 5
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 7,
+            y: 3
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 3
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 2
+        },
+
+        {
+            type: "end",
+            x: 0,
+            y: 2
+        },
+    ]
+})
+
+
 
 // TEST MAPS
 allMaps.set("blons", {
