@@ -16,6 +16,7 @@ class TdMap {
     tileSize: number
     tiles: Tile[][]
     waypoints : Waypoint[] | undefined
+    blocked?: {x: number, y: number}[] = []
 
     grassColour: number | undefined
     grassOutlineColour: number | undefined
@@ -30,6 +31,7 @@ class TdMap {
         this.tileSize = mapWidth / dimensions
         this.tiles = []
         this.waypoints = mapData.waypoints
+        this.blocked = mapData.blocked || undefined
 
         this.grassColour = mapData.mapInfo.grassColour
         this.grassOutlineColour = mapData.mapInfo.grassSecondaryColour
@@ -73,7 +75,9 @@ class TdMap {
             this.tiles.push([])
             for (let j = 0; j < this.dimensions; j++) {
 
-                const tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, "grass", container, this.grassColour, this.grassOutlineColour, this.grassOpacity)
+                const isBlocked = this.blocked?.find((coordinate) => coordinate.x === i && coordinate.y === j)
+
+                const tile = new Tile(i * this.tileSize, j * this.tileSize, this.tileSize, this.tileSize, isBlocked ? "terrain" : "grass", container, this.grassColour, this.grassOutlineColour, this.grassOpacity)
                 tile.paveGrass()
                 this.tiles[i].push(tile)
 
