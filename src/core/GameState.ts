@@ -5,15 +5,15 @@ import { productionWaves } from "../utils/WaveData"
 import { calculateWaveValue } from "../utils/Calc"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = false
+const developerTest = true
 const developerOffSet = 0
 
 
 export class GameState {
     lives: number = 100
-    money: number = 400
+    money: number = 400000
     uiManager?: UIManager
-    startWave: number = 0
+    startWave: number = 19
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -30,6 +30,7 @@ export class GameState {
             this.startWave = savedData.checkpointWave + developerOffSet
             this.researchLevel = savedData.researchLevel
             this.mapName = savedData.map
+            this.difficulty = savedData.difficulty || "Normal"
             this.saveFileIndex = savedData.saveFileIndex
         } else {
             this.saveFileIndex = fileNumber

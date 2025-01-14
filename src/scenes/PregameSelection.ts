@@ -235,6 +235,7 @@ export class PregameSelection extends Scene {
 
             btnLoadFile.on("pointerdown", () => {
                 this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined, difficulty: undefined}
+                console.log("file data ", fileData)
                 eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
             });
 

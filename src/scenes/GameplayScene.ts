@@ -55,8 +55,7 @@ export class GameplayScene extends Scene {
         this.savedData = gameSaveData
         this.fileNumber = fileNumber
         this.mapTitle = mapTitle
-        this.difficulty = difficulty || "Normal"
-        console.log(this.difficulty)
+        this.difficulty = difficulty
 
     }
 
@@ -140,6 +139,7 @@ export class GameplayScene extends Scene {
                 checkpointWave: this.waveManager.currentWave,
                 difficulty: this.gamestate.difficulty
             }
+            console.log("saved difficulty ", this.gamestate.difficulty)
             gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
             if (isVictory) {
                 if (this.hud && this.hud.exitButton) {
