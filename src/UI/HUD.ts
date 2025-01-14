@@ -21,6 +21,7 @@ export class HUD {
     livesText: PIXI.Text | undefined
     waveNumText: PIXI.Text | undefined
     nextWaveButton: PIXI.Container | undefined
+    exitButton: PIXI.Container | undefined
     infoPanel: PIXI.Container | undefined
     currentTowerSelectedIcon: undefined
     towerSelectionButtons: {[key: string] : PIXI.Container<PIXI.DisplayObject>} | undefined
@@ -150,6 +151,7 @@ export class HUD {
 
         btnNextWave.on("pointerdown", () => eventDispatcher.fireEvent("nextWaveBtnClick"))
         this.nextWaveButton = btnNextWave
+        this.exitButton = btnExit
 
         btnExit.on("pointerdown", () => {
             confirmExit.visible = true
