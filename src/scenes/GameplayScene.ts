@@ -61,7 +61,7 @@ export class GameplayScene extends Scene {
 
     constructScene() {
 
-        this.gamestate = new GameState(this.fileNumber, this.savedData, this.mapTitle)
+        this.gamestate = new GameState(this.fileNumber, this.savedData, this.mapTitle, this.difficulty)
 
         if (!allMaps.get(this.gamestate.mapName)) {
             throw new Error("Map not correctly loaded; please check the name of the map to ensure it exists.")

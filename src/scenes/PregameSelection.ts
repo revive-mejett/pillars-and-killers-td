@@ -59,7 +59,9 @@ export class PregameSelection extends Scene {
         this.createMapSelectionPane(800, 500, "Stairwell-O-Chaos");
 
         // this.createMapSelectionPane(800, 100, "blons");
-        this.createNormalDifficultyPane(100, 100)
+        this.createDifficultyPane(100, 100, "Chill", "0x00FF77")
+        this.createDifficultyPane(500, 100, "Normal", "0XFFFF00")
+        this.createDifficultyPane(900, 100, "Killer's Thrill", "0xFF0066")
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -78,7 +80,7 @@ export class PregameSelection extends Scene {
 
     }
 
-    private createNormalDifficultyPane(paneXPos: number, paneYPos: number) {
+    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, textColour: string) {
         const paneWidth = 300
         const paneHeight = 800
         const paneContainer = new PIXI.Container();
@@ -95,14 +97,15 @@ export class PregameSelection extends Scene {
 
         this.difficultySelectionContainer.addChild(paneContainer);
 
-        const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, "Normal", 50, "0xFFFF00", true);
+        const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, difficulty, 50, textColour, true);
         paneContainer.addChild(textDifficultyTitle);
 
         const btnSelect = UIHelper.createButton(0, 250, 300, 50, "Select", 30, 0x77FF77);
         paneContainer.addChild(btnSelect)
 
         btnSelect.on("pointerdown", () => {
-            this.selectedSaveData.difficulty = "Normal"
+            this.selectedSaveData.difficulty = difficulty
+            console.log(this.selectedSaveData)
             eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
         });
     }
@@ -202,7 +205,7 @@ export class PregameSelection extends Scene {
                 difficultyColour = "0xFFFF00"
             }
             if (difficulty === "Chill") {
-                difficultyColour = "0x77FF00"
+                difficultyColour = "0x00FF77"
             }
             if (difficulty === "Killer's Thrill") {
                 difficultyColour = "0xFF0066"
