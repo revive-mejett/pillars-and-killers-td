@@ -149,7 +149,7 @@ export class GameplayScene extends Scene {
                     this.hud.nextWaveButton.visible = false
                 }
                 setTimeout(() => {
-                    eventDispatcher.fireEvent("victory")
+                    eventDispatcher.fireEvent("victory", this.gamestate?.difficulty)
                 }, 5000);
             }
         }, 0);

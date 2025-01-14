@@ -114,8 +114,8 @@ export class Game {
             this.sceneManager?.transitionScene(gameOver)
         })
 
-        eventDispatcher.on("victory", () => {
-            const gameOver = new Victory(this.app)
+        eventDispatcher.on("victory", (data: Difficulty) => {
+            const gameOver = new Victory(this.app, data)
             eventDispatcher.fireEvent("gameEnd")
             gameOver.constructScene()
             this.resetGameplayScene(gameplayScene)

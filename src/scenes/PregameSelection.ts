@@ -60,8 +60,8 @@ export class PregameSelection extends Scene {
 
         // this.createMapSelectionPane(800, 100, "blons");
         this.createDifficultyPane(100, 100, "Chill", "0x00FF77")
-        this.createDifficultyPane(500, 100, "Normal", "0XFFFF00")
-        this.createDifficultyPane(900, 100, "Killer's Thrill", "0xFF0066")
+        this.createDifficultyPane(510, 100, "Normal", "0XFFFF00")
+        this.createDifficultyPane(920, 100, "Killer's Thrill", "0xFF0066")
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -81,7 +81,7 @@ export class PregameSelection extends Scene {
     }
 
     private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, textColour: string) {
-        const paneWidth = 300
+        const paneWidth = 400
         const paneHeight = 800
         const paneContainer = new PIXI.Container();
         paneContainer.x = paneXPos;
@@ -100,7 +100,7 @@ export class PregameSelection extends Scene {
         const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, difficulty, 50, textColour, true);
         paneContainer.addChild(textDifficultyTitle);
 
-        const btnSelect = UIHelper.createButton(0, 250, 300, 50, "Select", 30, 0x77FF77);
+        const btnSelect = UIHelper.createButton(0, 800 - 50, paneWidth, 50, "Select", 30, 0x77FF77);
         paneContainer.addChild(btnSelect)
 
         btnSelect.on("pointerdown", () => {

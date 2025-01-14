@@ -13,7 +13,7 @@ export class GameState {
     lives: number = 100
     money: number = 400000
     uiManager?: UIManager
-    startWave: number = 19
+    startWave: number = 99
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
