@@ -112,7 +112,7 @@ export class GameplayScene extends Scene {
         eventDispatcher.on("saveProgess", this.saveData.bind(this))
     }
 
-    saveData() {
+    saveData(isVictory: boolean) {
         setTimeout(() => {
             if (!this.gamestate || !this.waveManager) {
                 return
@@ -137,6 +137,17 @@ export class GameplayScene extends Scene {
                 checkpointWave: this.waveManager.currentWave
             }
             gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
+            if (isVictory) {
+                if (this.hud && this.hud.exitButton) {
+                    this.hud.exitButton.visible = false
+                }
+                if (this.hud && this.hud.nextWaveButton) {
+                    this.hud.nextWaveButton.visible = false
+                }
+                setTimeout(() => {
+                    eventDispatcher.fireEvent("victory")
+                }, 5000);
+            }
         }, 0);
 
     }
@@ -265,6 +276,7 @@ export class GameplayScene extends Scene {
         eventDispatcher.clearListenersOfEvent("towerPlaced")
         eventDispatcher.clearListenersOfEvent("towerSold")
         eventDispatcher.clearListenersOfEvent("defeat")
+        eventDispatcher.clearListenersOfEvent("victory")
         eventDispatcher.clearListenersOfEvent("saveProgress")
     }
 }

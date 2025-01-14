@@ -11,6 +11,7 @@ import { GameSaveData } from "../ts/types/GameSaveData"
 import { AudioManager } from "../managers/AudioManager"
 import { Tutorial } from "../scenes/Tutorial"
 import { OffGameSettings } from "../scenes/OffGameSettings"
+import { Victory } from "../scenes/Victory"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -106,6 +107,14 @@ export class Game {
 
         eventDispatcher.on("defeat", () => {
             const gameOver = new GameOver(this.app)
+            eventDispatcher.fireEvent("gameEnd")
+            gameOver.constructScene()
+            this.resetGameplayScene(gameplayScene)
+            this.sceneManager?.transitionScene(gameOver)
+        })
+
+        eventDispatcher.on("victory", () => {
+            const gameOver = new Victory(this.app)
             eventDispatcher.fireEvent("gameEnd")
             gameOver.constructScene()
             this.resetGameplayScene(gameplayScene)

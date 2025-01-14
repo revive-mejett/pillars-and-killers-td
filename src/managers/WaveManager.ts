@@ -85,10 +85,8 @@ export class WaveManager {
 
         })
         eventDispatcher.on("boss5Killed", () => {
-            console.log("WINNER!!! TODO implement winner ui and option freeplay!")
-            this.bossPresent = false
             this.cooldownToNextWave = 0
-            eventDispatcher.fireEvent("saveProgess")
+            eventDispatcher.fireEvent("saveProgess", true)
         })
 
     }

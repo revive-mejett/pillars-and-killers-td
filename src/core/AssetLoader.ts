@@ -127,6 +127,7 @@ export class AssetLoader {
             "mainTitle" : "assets/images/td_title.png",
             "mainTitleImage" : "assets/images/pillars_killers_title_pic.png",
             "mainTitleBackground" : "assets/images/main_menu_background.png",
+            "victoryNormal" : "assets/images/victory_normal.png",
             "gameoverGraveyard" : "assets/images/gameover_rip.png",
             "tutorial1" : "assets/images/tutorial_1.png",
             "tutorial2" : "assets/images/tutorial_2.png",
