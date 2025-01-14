@@ -196,6 +196,17 @@ export class PregameSelection extends Scene {
         saveFileContainer.addChild(bgColour);
 
         if (fileData && allMaps.get(fileData.map)) {
+            const difficulty : Difficulty = fileData.difficulty || "Normal"
+            let difficultyColour = "0xFFFF00"
+            if (difficulty === "Normal") {
+                difficultyColour = "0xFFFF00"
+            }
+            if (difficulty === "Chill") {
+                difficultyColour = "0x77FF00"
+            }
+            if (difficulty === "Killer's Thrill") {
+                difficultyColour = "0xFF0066"
+            }
             const miniMapIcon = UIHelper.createMapCard(allMaps.get(fileData.map)!, 300, 25)
             miniMapIcon.alpha = 0.5
             saveFileContainer.addChild(miniMapIcon)
@@ -203,8 +214,10 @@ export class PregameSelection extends Scene {
 
             const btnLoadFile = UIHelper.createButton(0, 250, 140, 50, "Load Game", 20, 0xFFFFFF);
             saveFileContainer.addChild(btnLoadFile);
-            const txtMap = UIHelper.createText(paneWidth/2, 50, `${fileData.map}`, 20, "0xC7FFFF", true);
+            const txtMap = UIHelper.createText(paneWidth/2, 50, `${fileData.map}`, 25, "0xC7FFFF", true);
             saveFileContainer.addChild(txtMap);
+            const txtDifficulty = UIHelper.createText(paneWidth/2, 80, `${difficulty}`, 20, difficultyColour, true);
+            saveFileContainer.addChild(txtDifficulty);
             const txtCheckpointWave = UIHelper.createText(0 + padding, 150, `Wave ${fileData.checkpointWave}`, 30, "0xFFFFFF");
             saveFileContainer.addChild(txtCheckpointWave);
 
