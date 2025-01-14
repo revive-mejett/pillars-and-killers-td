@@ -15,7 +15,7 @@ import { InputManager } from "../managers/InputManager"
 import { WaveTimeline } from "../UI/WaveTimeline"
 import { AudioManager } from "../managers/AudioManager";
 import { allMaps } from "../utils/MapData"
-import { GameSaveData, TowerData } from "src/ts/types/GameSaveData"
+import { Difficulty, GameSaveData, TowerData } from "src/ts/types/GameSaveData"
 import { towerNameToKey } from "../utils/TowerStatsData"
 import { GameDataManager } from "../managers/GameDataManager"
 
@@ -38,11 +38,12 @@ export class GameplayScene extends Scene {
 
     fileNumber: 1 | 2 | 3 | 4 | 5 | 6
     mapTitle: string | undefined
+    difficulty: Difficulty | undefined
 
     //if the player loads the game
     savedData: GameSaveData | undefined
 
-    constructor(app: PIXI.Application, fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameSaveData?: GameSaveData, mapTitle?: string) {
+    constructor(app: PIXI.Application, fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameSaveData?: GameSaveData, mapTitle?: string, difficulty?: Difficulty) {
         super(app)
         this.tdMap = undefined
         this.gamestate = undefined
@@ -54,6 +55,8 @@ export class GameplayScene extends Scene {
         this.savedData = gameSaveData
         this.fileNumber = fileNumber
         this.mapTitle = mapTitle
+        this.difficulty = difficulty || "Normal"
+        console.log(this.difficulty)
 
     }
 
@@ -134,7 +137,8 @@ export class GameplayScene extends Scene {
                 researchLevel: this.gamestate.researchLevel,
                 saveFileIndex: this.gamestate.saveFileIndex,
                 towers: towerData,
-                checkpointWave: this.waveManager.currentWave
+                checkpointWave: this.waveManager.currentWave,
+                difficulty: this.gamestate.difficulty
             }
             gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
             if (isVictory) {

@@ -6,6 +6,8 @@ export type TowerData = {
     level: number,
 }
 
+export type Difficulty = "Chill" | "Normal" | "Killer's Thrill"
+
 
 export type GameSaveData = {
     map: string,
@@ -14,5 +16,6 @@ export type GameSaveData = {
     researchLevel: 1 | 2 | 3 | 4,
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6
     towers: TowerData[]
-    checkpointWave: number
+    checkpointWave: number,
+    difficulty?: Difficulty
 }

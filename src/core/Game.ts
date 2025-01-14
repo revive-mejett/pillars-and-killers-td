@@ -7,7 +7,7 @@ import { MainMenu } from "../scenes/MainMenu"
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "./AssetLoader"
 import * as PIXI from "pixi.js";
-import { GameSaveData } from "../ts/types/GameSaveData"
+import { Difficulty, GameSaveData } from "../ts/types/GameSaveData"
 import { AudioManager } from "../managers/AudioManager"
 import { Tutorial } from "../scenes/Tutorial"
 import { OffGameSettings } from "../scenes/OffGameSettings"
@@ -94,8 +94,8 @@ export class Game {
     }
 
 
-    initGameplay(eventData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData, mapTitle: string | undefined}) {
-        const gameplayScene = new GameplayScene(this.app, eventData.fileNumber, eventData.gameData, eventData.mapTitle)
+    initGameplay(eventData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData, mapTitle: string | undefined, difficulty: Difficulty | undefined}) {
+        const gameplayScene = new GameplayScene(this.app, eventData.fileNumber, eventData.gameData, eventData.mapTitle, eventData.difficulty)
         gameplayScene.constructScene()
         this.sceneManager?.transitionScene(gameplayScene)
 

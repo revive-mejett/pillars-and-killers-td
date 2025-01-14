@@ -1,6 +1,6 @@
 import { UIManager } from "src/managers/UIManager"
 import { EventDispatcher } from "../utils/EventDispatcher"
-import { GameSaveData } from "../ts/types/GameSaveData"
+import { Difficulty, GameSaveData } from "../ts/types/GameSaveData"
 import { productionWaves } from "../utils/WaveData"
 import { calculateWaveValue } from "../utils/Calc"
 
@@ -20,8 +20,9 @@ export class GameState {
     readonly tier2ResearchCost: number = 2000
     readonly tier3ResearchCost: number = 25000
     readonly tier4ResearchCost: number = 400000
+    difficulty: Difficulty = "Normal"
 
-    constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6, savedData?: GameSaveData, mapTitle?: string) {
+    constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6,  savedData?: GameSaveData, mapTitle?: string, difficulty?: Difficulty) {
 
         if (savedData) {
             this.lives = savedData.lives
@@ -33,6 +34,7 @@ export class GameState {
         } else {
             this.saveFileIndex = fileNumber
             this.mapName = mapTitle || "Walk in the Park"
+            this.difficulty = difficulty || "Normal"
         }
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
@@ -52,6 +54,8 @@ export class GameState {
         eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
         eventDispatcher.on("purchaseSuccessful1", this.debitMoney.bind(this))
         eventDispatcher.on("moneyEarned", this.gainMoney.bind(this))
+
+        console.log(this.difficulty)
     }
 
     loseLives(damage : number) {

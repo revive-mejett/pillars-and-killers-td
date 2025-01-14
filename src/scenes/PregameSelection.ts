@@ -4,7 +4,7 @@ import { UIHelper } from "../UI/UIHelper";
 import { GameDataManager } from "../managers/GameDataManager";
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader";
-import { GameSaveData } from "src/ts/types/GameSaveData";
+import { Difficulty, GameSaveData } from "src/ts/types/GameSaveData";
 import { allMaps } from "../utils/MapData";
 
 const gameDataManager = new GameDataManager()
@@ -16,8 +16,10 @@ export class PregameSelection extends Scene {
 
     saveFilesListContainer : PIXI.Container
     mapSelectionContainer: PIXI.Container
-    selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined }
+    difficultySelectionContainer: PIXI.Container
+    selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined, difficulty: Difficulty | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined, difficulty: "Normal" }
     selectedMapTitle: string | undefined = undefined
+    selectedDifficulty: Difficulty | undefined = undefined
 
     /**
      *
@@ -27,12 +29,16 @@ export class PregameSelection extends Scene {
         this.container.sortableChildren = true
         this.saveFilesListContainer = new PIXI.Container()
         this.mapSelectionContainer = new PIXI.Container()
+        this.difficultySelectionContainer = new PIXI.Container()
         this.container.addChild(this.saveFilesListContainer)
         this.container.addChild(this.mapSelectionContainer)
+        this.container.addChild(this.difficultySelectionContainer)
         this.mapSelectionContainer.visible = false
+        this.difficultySelectionContainer.visible = false
 
         this.saveFilesListContainer.zIndex = 2
         this.mapSelectionContainer.zIndex = 2
+        this.difficultySelectionContainer.zIndex = 2
     }
 
     constructScene() {
@@ -53,6 +59,7 @@ export class PregameSelection extends Scene {
         this.createMapSelectionPane(800, 500, "Stairwell-O-Chaos");
 
         // this.createMapSelectionPane(800, 100, "blons");
+        this.createNormalDifficultyPane(100, 100)
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -69,6 +76,35 @@ export class PregameSelection extends Scene {
         this.container.addChild(pillarsKillersVisual)
 
 
+    }
+
+    private createNormalDifficultyPane(paneXPos: number, paneYPos: number) {
+        const paneWidth = 300
+        const paneHeight = 800
+        const paneContainer = new PIXI.Container();
+        paneContainer.x = paneXPos;
+        paneContainer.y = paneYPos;
+        paneContainer.zIndex = 20
+
+        const bgColour = new PIXI.Graphics();
+        bgColour.beginFill(0x002222);
+        bgColour.drawRect(0, 0, paneWidth, paneHeight);
+        bgColour.endFill();
+        paneContainer.addChild(bgColour);
+        bgColour.zIndex = 20
+
+        this.difficultySelectionContainer.addChild(paneContainer);
+
+        const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, "Normal", 50, "0xFFFF00", true);
+        paneContainer.addChild(textDifficultyTitle);
+
+        const btnSelect = UIHelper.createButton(0, 250, 300, 50, "Select", 30, 0x77FF77);
+        paneContainer.addChild(btnSelect)
+
+        btnSelect.on("pointerdown", () => {
+            this.selectedSaveData.difficulty = "Normal"
+            eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+        });
     }
 
     private createMapSelectionPane(paneXPos: number, paneYPos: number, title: string) {
@@ -107,7 +143,9 @@ export class PregameSelection extends Scene {
 
         btnSelect.on("pointerdown", () => {
             this.selectedSaveData.mapTitle = title
-            eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+            this.mapSelectionContainer.visible = false
+            this.difficultySelectionContainer.visible = true
+            // eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
         });
 
     }
@@ -183,7 +221,7 @@ export class PregameSelection extends Scene {
 
 
             btnLoadFile.on("pointerdown", () => {
-                this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined}
+                this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined, difficulty: undefined}
                 eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
             });
 
@@ -218,7 +256,7 @@ export class PregameSelection extends Scene {
             saveFileContainer.addChild(saveText);
             saveFileContainer.addChild(btnNewGame);
             btnNewGame.on("pointerdown", () => {
-                this.selectedSaveData = {fileNumber: fileNumber, gameData : undefined, mapTitle: undefined}
+                this.selectedSaveData = {fileNumber: fileNumber, gameData : undefined, mapTitle: undefined, difficulty: undefined}
                 this.saveFilesListContainer.visible = false
                 this.mapSelectionContainer.visible = true
             });
