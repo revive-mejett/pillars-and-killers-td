@@ -63,17 +63,17 @@ export class PregameSelection extends Scene {
             100,
             100,
             "Chill",
-            "*400 starting money, 80 waves\n*Killers give +30% more than Normal\n*Great for casual pillar builders",
+            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*75% pillar sellback value\n*Great for casual pillar builders",
             "0x00FF77",
             "chillbg",
-            400,
+            500,
             200
         )
         this.createDifficultyPane(
             510,
             100,
             "Normal",
-            "*400 starting money, 100 waves\n*Killers give normal bounty\n*For those who are skilled at slaying killers",
+            "*400 starting money, 100 waves\n*Killers give normal bounty\n*60% pillar sellback value\n*For those who are skilled at slaying killers",
             "0XFFFF00",
             "normalbg",
             400,
@@ -83,10 +83,10 @@ export class PregameSelection extends Scene {
             920,
             100,
             "Killer's Thrill",
-            "*100 starting money, 100 waves\nKillers only give 50% of their original bounty\n*Alternate wave set\n*Waves will have more killers\n*Volatile checkpoints - you cannot go back if you quit upon loading\n*Only for the experienced - not for the faint of heart",
+            "*200 starting money, 100 waves\nKillers only give 50% of their original bounty\n*50% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile checkpoints - you cannot go back if you quit upon loading\n*Only for the experienced - not for the faint of heart",
             "0xFF0066",
             "killerthrillbg",
-            100,
+            200,
             1,
             true // TODO remove boolean once developed
         )
