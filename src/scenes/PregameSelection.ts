@@ -63,7 +63,7 @@ export class PregameSelection extends Scene {
             100,
             100,
             "Chill",
-            "*400 starting money\n*Killers give +30% more than Normal\n*Great for casual pillar builders",
+            "*400 starting money, 80 waves\n*Killers give +30% more than Normal\n*Great for casual pillar builders",
             "0x00FF77",
             "chillbg",
             400,
@@ -73,7 +73,7 @@ export class PregameSelection extends Scene {
             510,
             100,
             "Normal",
-            "*400 starting money\n*Killers give normal bounty\n*For those who are skilled at slaying killers",
+            "*400 starting money, 100 waves\n*Killers give normal bounty\n*For those who are skilled at slaying killers",
             "0XFFFF00",
             "normalbg",
             400,
@@ -83,11 +83,12 @@ export class PregameSelection extends Scene {
             920,
             100,
             "Killer's Thrill",
-            "*100 starting money\nKillers only give 50% of their original bounty\n*Alternate wave set\n*Waves will have more killers\n*Volatile checkpoints - you cannot go back if you quit upon loading\n*Only for the experienced - not for the faint of heart",
+            "*100 starting money, 100 waves\nKillers only give 50% of their original bounty\n*Alternate wave set\n*Waves will have more killers\n*Volatile checkpoints - you cannot go back if you quit upon loading\n*Only for the experienced - not for the faint of heart",
             "0xFF0066",
             "killerthrillbg",
             100,
-            1
+            1,
+            true // TODO remove boolean once developed
         )
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
@@ -107,7 +108,7 @@ export class PregameSelection extends Scene {
 
     }
 
-    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, description: string, textColour: string, backgroundAsset: string, startingMoney: number, startingLives: number) {
+    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, description: string, textColour: string, backgroundAsset: string, startingMoney: number, startingLives: number, isWIP?: boolean) {
 
         if (!assetLoader.otherImages || !assetLoader.otherImages[backgroundAsset]) {
             return
@@ -161,13 +162,18 @@ export class PregameSelection extends Scene {
         const textDescription = UIHelper.createText(paneWidth/2, 650, description, 20, textColour, true, paneWidth);
         paneContainer.addChild(textDescription);
 
-        const btnSelect = UIHelper.createButton(0, 800 - 50, paneWidth, 50, "Select", 30, 0x77FF77);
-        paneContainer.addChild(btnSelect)
+        if (!isWIP) {
+            const btnSelect = UIHelper.createButton(0, 800 - 50, paneWidth, 50, "Select", 30, 0x77FF77);
+            paneContainer.addChild(btnSelect)
+            btnSelect.on("pointerdown", () => {
+                this.selectedSaveData.difficulty = difficulty
+                eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+            });
+        } else {
+            const textComingSoon = UIHelper.createText(200, + 800 - 50 + textYOffset, "Coming soon!", 40, "0x777777", true);
+            paneContainer.addChild(textComingSoon);
+        }
 
-        btnSelect.on("pointerdown", () => {
-            this.selectedSaveData.difficulty = difficulty
-            eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
-        });
     }
 
     private createMapSelectionPane(paneXPos: number, paneYPos: number, title: string) {
