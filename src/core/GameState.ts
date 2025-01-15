@@ -5,7 +5,7 @@ import { productionWaves } from "../utils/WaveData"
 import { calculateWaveValue } from "../utils/Calc"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = true
+const developerTest = false
 const developerOffSet = 0
 
 

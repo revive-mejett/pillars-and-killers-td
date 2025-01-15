@@ -67,11 +67,12 @@ export class GameplayScene extends Scene {
             throw new Error("Map not correctly loaded; please check the name of the map to ensure it exists.")
         }
         this.tdMap = new TdMap(allMaps.get(this.gamestate.mapName)!, 1000, 1000, 25)
-
         this.hud = new HUD(this.gamestate)
+
         this.waveManager = new WaveManager(this.tdMap, this.gamestate.startWave)
         this.hud.setup(this.container)
         this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
+        this.uiManager?.updateLives()
         this.gamestate.linkUiManager(this.uiManager)
 
         this.healthBarManager = new HealthBarManager()

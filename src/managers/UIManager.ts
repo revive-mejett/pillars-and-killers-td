@@ -98,6 +98,13 @@ export class UIManager {
     updateLives() {
         if (this.hud && this.hud.livesText) {
             this.hud.livesText.text = this.gamestate.lives
+
+            if (this.gamestate.lives < 70) {
+                this.hud.livesText.style.fill = 0xFFC700
+            }
+            if (this.gamestate.lives < 25) {
+                this.hud.livesText.style.fill = 0xFF0000
+            }
         }
     }
 
