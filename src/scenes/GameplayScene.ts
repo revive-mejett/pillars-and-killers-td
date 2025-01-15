@@ -139,7 +139,6 @@ export class GameplayScene extends Scene {
                 checkpointWave: this.waveManager.currentWave,
                 difficulty: this.gamestate.difficulty
             }
-            console.log("saved difficulty ", this.gamestate.difficulty)
             gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
             if (isVictory) {
                 if (this.hud && this.hud.exitButton) {

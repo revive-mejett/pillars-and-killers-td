@@ -56,7 +56,6 @@ export class GameState {
         eventDispatcher.on("purchaseSuccessful1", this.debitMoney.bind(this))
         eventDispatcher.on("moneyEarned", this.gainMoney.bind(this))
 
-        console.log(this.difficulty)
     }
 
     loseLives(damage : number) {

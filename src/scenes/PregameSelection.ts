@@ -59,9 +59,36 @@ export class PregameSelection extends Scene {
         this.createMapSelectionPane(800, 500, "Stairwell-O-Chaos");
 
         // this.createMapSelectionPane(800, 100, "blons");
-        this.createDifficultyPane(100, 100, "Chill", "0x00FF77")
-        this.createDifficultyPane(510, 100, "Normal", "0XFFFF00")
-        this.createDifficultyPane(920, 100, "Killer's Thrill", "0xFF0066")
+        this.createDifficultyPane(
+            100,
+            100,
+            "Chill",
+            "*400 starting money\n*Killers give +30% more than Normal\n*Great for casual pillar builders",
+            "0x00FF77",
+            "chillbg",
+            400,
+            200
+        )
+        this.createDifficultyPane(
+            510,
+            100,
+            "Normal",
+            "*400 starting money\n*Killers give normal bounty\n*For those who are skilled at slaying killers",
+            "0XFFFF00",
+            "normalbg",
+            400,
+            100
+        )
+        this.createDifficultyPane(
+            920,
+            100,
+            "Killer's Thrill",
+            "*100 starting money\nKillers only give 50% of their original bounty\n*Alternate wave set\n*Waves will have more killers\n*Volatile checkpoints - you cannot go back if you quit upon loading\n*Only for the experienced - not for the faint of heart",
+            "0xFF0066",
+            "killerthrillbg",
+            100,
+            1
+        )
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -80,7 +107,17 @@ export class PregameSelection extends Scene {
 
     }
 
-    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, textColour: string) {
+    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, description: string, textColour: string, backgroundAsset: string, startingMoney: number, startingLives: number) {
+
+        if (!assetLoader.otherImages || !assetLoader.otherImages[backgroundAsset]) {
+            return
+        }
+        const iconBundle = assetLoader.icons
+
+        if (!iconBundle) {
+            throw new Error("Icons asset may have not loaded properly Akshan")
+        }
+
         const paneWidth = 400
         const paneHeight = 800
         const paneContainer = new PIXI.Container();
@@ -95,17 +132,40 @@ export class PregameSelection extends Scene {
         paneContainer.addChild(bgColour);
         bgColour.zIndex = 20
 
+        const bgImage = PIXI.Sprite.from(assetLoader.otherImages[backgroundAsset])
+        bgImage.zIndex = 1
+        paneContainer.addChild(bgImage)
+
+        const padding = 5
+        const livesMoneyIconTextYPos = 475
+        const textXOffset = 80
+        const textYOffset = 15
+        const moneyIconTextXOffset = 40
+        const livesIconTextXOffset = 220
+
         this.difficultySelectionContainer.addChild(paneContainer);
 
-        const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, difficulty, 50, textColour, true);
+        const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, difficulty, 60, textColour, true);
         paneContainer.addChild(textDifficultyTitle);
+
+        const iconMoney = UIHelper.createIcon(iconBundle.money, moneyIconTextXOffset + padding , livesMoneyIconTextYPos, 0x002222, 80, 80);
+        paneContainer.addChild(iconMoney);
+        const txtStartingMoney = UIHelper.createText(moneyIconTextXOffset + textXOffset + padding, livesMoneyIconTextYPos + textYOffset, `x${startingMoney.toString()}`, 40, "0xFFFF00");
+        paneContainer.addChild(txtStartingMoney);
+
+        const iconLives = UIHelper.createIcon(iconBundle.lives, livesIconTextXOffset + padding , livesMoneyIconTextYPos, 0x002222, 80, 80);
+        paneContainer.addChild(iconLives);
+        const txtStartingLives = UIHelper.createText(livesIconTextXOffset + textXOffset + padding, livesMoneyIconTextYPos + textYOffset, `x${startingLives.toString()}`, 40, "0xFF0000");
+        paneContainer.addChild(txtStartingLives);
+
+        const textDescription = UIHelper.createText(paneWidth/2, 650, description, 20, textColour, true, paneWidth);
+        paneContainer.addChild(textDescription);
 
         const btnSelect = UIHelper.createButton(0, 800 - 50, paneWidth, 50, "Select", 30, 0x77FF77);
         paneContainer.addChild(btnSelect)
 
         btnSelect.on("pointerdown", () => {
             this.selectedSaveData.difficulty = difficulty
-            console.log(this.selectedSaveData)
             eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
         });
     }
@@ -238,7 +298,6 @@ export class PregameSelection extends Scene {
 
             btnLoadFile.on("pointerdown", () => {
                 this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined, difficulty: undefined}
-                console.log("file data ", fileData)
                 eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
             });
 
