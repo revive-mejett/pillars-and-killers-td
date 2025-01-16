@@ -37,11 +37,23 @@ export class Victory extends Scene {
 
         this.container.addChild(background)
 
+        let congratsMessage2 = ""
+
+        if (this.playedDifficulty === "Chill") {
+            congratsMessage2 = "The killers were pretty laid back. To play Endless mode, beat the game on Normal!"
+        }
+        if (this.playedDifficulty === "Normal") {
+            congratsMessage2 = "Feel free to return back to this save slot in order to play Endless Mode!"
+        }
+        if (this.playedDifficulty === "Killer's Thrill") {
+            congratsMessage2 = "You have beat the toughest the killers can get! Your city is unstoppable! Feel free to continue on Endless mode!"
+        }
+
 
 
         const txtAdditional1 = UIHelper.createText(700,870,`You beat ${this.playedDifficulty}! The city is now safe!`, 30, "0x00FFFF", true)
         this.container.addChild(txtAdditional1)
-        const txtAdditional2 = UIHelper.createText(700,920,"Feel free to return back to this save slot in order to play Endless Mode!", 30, "0x00FFFF", true)
+        const txtAdditional2 = UIHelper.createText(700,920,congratsMessage2, 30, "0x00FFFF", true)
         this.container.addChild(txtAdditional2)
 
 

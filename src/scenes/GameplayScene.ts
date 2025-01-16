@@ -69,7 +69,7 @@ export class GameplayScene extends Scene {
         this.tdMap = new TdMap(allMaps.get(this.gamestate.mapName)!, 1000, 1000, 25)
         this.hud = new HUD(this.gamestate)
 
-        this.waveManager = new WaveManager(this.tdMap, this.gamestate.startWave)
+        this.waveManager = new WaveManager(this.tdMap, this.gamestate.startWave, this.gamestate.difficulty)
         this.hud.setup(this.container)
         this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
         this.uiManager?.updateLives()
@@ -112,10 +112,10 @@ export class GameplayScene extends Scene {
             }
         })
 
-        eventDispatcher.on("saveProgess", this.saveData.bind(this))
+        eventDispatcher.on("saveProgess", this.handleCheckpoint.bind(this))
     }
 
-    saveData(isVictory: boolean) {
+    handleCheckpoint(modifiers: {isVictory: boolean, deleteSave : boolean}) {
         setTimeout(() => {
             if (!this.gamestate || !this.waveManager) {
                 return
@@ -140,8 +140,13 @@ export class GameplayScene extends Scene {
                 checkpointWave: this.waveManager.currentWave,
                 difficulty: this.gamestate.difficulty
             }
-            gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
-            if (isVictory) {
+            if (modifiers.deleteSave) {
+                this.wipeSave()
+            } else {
+                gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
+            }
+
+            if (modifiers.isVictory) {
                 if (this.hud && this.hud.exitButton) {
                     this.hud.exitButton.visible = false
                 }
@@ -154,6 +159,12 @@ export class GameplayScene extends Scene {
             }
         }, 0);
 
+    }
+
+    wipeSave() {
+        if (this.gamestate?.saveFileIndex) {
+            gameDataManager.wipeSaveData(this.gamestate?.saveFileIndex)
+        }
     }
 
     buildMap() {
