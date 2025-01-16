@@ -1,227 +1,5 @@
 import { Wave } from "../objects/Wave"
 
-const oneEnemy = [
-    //wave 1
-    new Wave(
-        [
-            {
-                enemy: "TON 618",
-                count: 1,
-                spacingMillis: 1000
-            }
-        ]
-    )
-]
-
-const ten10 = [
-    new Wave(
-        [
-            {
-                enemy: "Infant Circle",
-                count: 10,
-                spacingMillis: 800
-            }
-        ]
-    )
-]
-
-const grouped = [
-    new Wave(
-        [
-            {
-                enemy: "Stone Pricker",
-                count: 50,
-                spacingMillis: 25
-            }
-        ]
-    )
-]
-
-const stressTest = [
-    new Wave(
-        [
-            {
-                enemy: "Obsidian Ripper",
-                count: 999,
-                spacingMillis: 5
-            }
-        ]
-    )
-]
-
-
-const testWaves1 = [
-    new Wave(
-        [
-            {
-                enemy: "Little Sparrow",
-                count: 55,
-                spacingMillis: 100
-            },
-            {
-                enemy: "Earthling Flake",
-                count: 40,
-                spacingMillis: 500
-            }
-        ]
-    ),
-    new Wave(
-        [
-            {
-                enemy: "Little Sparrow",
-                count: 7,
-                spacingMillis: 800
-            }
-        ]
-    )
-]
-
-const testWaves2 = [
-    //wave 21
-    new Wave(
-        [
-            {
-                enemy: "Toddler Sphere",
-                count: 5,
-                spacingMillis: 1200
-            },
-            {
-                enemy: "4p 2024",
-                count: 3,
-                spacingMillis: 500
-            },
-            {
-                enemy: "Mean Triangle",
-                count: 6,
-                spacingMillis: 800
-            },
-            {
-                enemy: "Toddler Sphere",
-                count: 5,
-                spacingMillis: 1000
-            }
-        ]
-    ),
-    //wave 22
-    new Wave(
-        [
-            {
-                enemy: "Cute Crow",
-                count: 5,
-                spacingMillis: 400
-            },
-            {
-                enemy: "Stone Pricker",
-                count: 5,
-                spacingMillis: 100
-            },
-            {
-                enemy: "Toddler Sphere",
-                count: 13,
-                spacingMillis: 1300
-            }
-        ]
-    )
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /**
-//  * legacy old waves
-//  */
-// const ancientWaves = [
-//     new Wave(
-//         [
-//             {
-//                 enemy: "Infant Circle",
-//                 count: 8,
-//                 spacingMillis: 800
-//             }
-//         ]
-//     ),
-//     new Wave(
-//         [
-//             {
-//                 enemy: "Little Sparrow",
-//                 count: 12,
-//                 spacingMillis: 777
-//             },
-//             {
-//                 enemy: "Earthling Flake",
-//                 count: 5,
-//                 spacingMillis: 2000
-//             }
-//         ]
-//     ),
-//     new Wave(
-//         [
-//             {
-//                 enemy: "Infant Circle",
-//                 count: 15,
-//                 spacingMillis: 500
-//             },
-//             {
-//                 enemy: "Little Sparrow",
-//                 count: 10,
-//                 spacingMillis: 700
-//             },
-//             {
-//                 enemy: "Earthling Flake",
-//                 count: 20,
-//                 spacingMillis: 333
-//             },
-//             {
-//                 enemy: "Quick Bonhomme",
-//                 count: 5,
-//                 spacingMillis: 2000
-//             }
-//         ]
-//     ),
-
-//     //TODO later move enemy data to game data json
-//     new Wave(
-//         [
-//             {
-//                 enemy: "Infant Circle",
-//                 count: 15,
-//                 spacingMillis: 500
-//             },
-//             {
-//                 enemy: "Little Sparrow",
-//                 count: 10,
-//                 spacingMillis: 700
-//             },
-//             {
-//                 enemy: "Earthling Flake",
-//                 count: 20,
-//                 spacingMillis: 333
-//             },
-//             {
-//                 enemy: "Quick Bonhomme",
-//                 count: 5,
-//                 spacingMillis: 2000
-//             }
-//         ]
-//     )
-// ]
-
 //for production
 const productionWaves = [
     //wave 1
@@ -2124,7 +1902,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 86 placeholder wave
+    // wave 86
     new Wave(
         [
             {
@@ -2149,7 +1927,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 87 placeholder wave
+    // wave 87
     new Wave(
         [
             {
@@ -2179,7 +1957,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 88 placeholder wave
+    // wave 88
     new Wave(
         [
             {
@@ -2204,7 +1982,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 89 placeholder wave
+    // wave 89
     new Wave(
         [
             {
@@ -2219,7 +1997,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 90 placeholder wave
+    // wave 90
     new Wave(
         [
             {
@@ -2244,7 +2022,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 91 placeholder wave
+    // wave 91
     new Wave(
         [
             {
@@ -2274,7 +2052,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 92 placeholder wave
+    // wave 92
     new Wave(
         [
             {
@@ -2299,7 +2077,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 93 placeholder wave
+    // wave 93
     new Wave(
         [
             {
@@ -2319,7 +2097,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 94 placeholder wave
+    // wave 94
     new Wave(
         [
             {
@@ -2689,7 +2467,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 99 placeholder wave
+    // wave 99
     new Wave(
         [
             {
@@ -2732,6 +2510,6 @@ const productionWaves = [
 ]
 
 
-export { oneEnemy, grouped, ten10, stressTest, testWaves1, testWaves2, productionWaves }
+export { productionWaves }
 
 

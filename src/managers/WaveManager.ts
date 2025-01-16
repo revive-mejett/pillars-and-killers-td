@@ -6,6 +6,7 @@ import { TdMap } from "src/objects/TdMap"
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
 import { productionWaves } from "../utils/WaveData"
+import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
 import { Difficulty } from "src/ts/types/GameSaveData"
@@ -46,7 +47,7 @@ export class WaveManager {
 
         this.cooldownToNextWave = 0
         this.delaySecondsToNextWave = 10
-        this.loadWaves()
+        this.loadWaves(difficulty)
 
         this.currentWave = startWave
         this.checkpointWave = this.bossWaves.find(wave => wave > this.currentWave) || 0
@@ -105,11 +106,12 @@ export class WaveManager {
         this.checkpointWaveBeaten = this.bossWaves[nextCheckpointIndex - 1]
     }
 
-    loadWaves() {
+    loadWaves(difficulty: Difficulty) {
 
 
 
-        const waves = productionWaves
+        //set to an alternatve wave set if player plays on killer's thrill (hard) difficulty
+        const waves = difficulty === "Killer's Thrill" ? killerThrillWaves : productionWaves
 
         this.waves = waves
     }
@@ -183,7 +185,6 @@ export class WaveManager {
             waveArray = this.waves[waveIndex]
         }
 
-        // console.log(calculateWaveValue(waveArray))
 
         //set the cooldown to next wave to the duration of the current wave
         this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000
