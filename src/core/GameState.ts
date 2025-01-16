@@ -22,7 +22,7 @@ export class GameState {
     readonly tier4ResearchCost: number = 400000
     difficulty: Difficulty = "Normal"
 
-    readonly sellValuePercentage : number = 50
+    readonly sellValuePercentage : number = 60
     readonly killBountyMultiplier : number = 1
 
     constructor(fileNumber : 1 | 2 | 3 | 4 | 5 | 6,  savedData?: GameSaveData, mapTitle?: string, difficulty?: Difficulty) {

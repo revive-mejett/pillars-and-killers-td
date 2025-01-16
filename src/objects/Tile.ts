@@ -41,6 +41,8 @@ export class Tile extends Entity {
             return
         }
 
+        this.tower.isSold = true
+
         eventDispatcher.fireEvent("moneyEarned", {source: "towerSell", money: this.tower.cost})
         eventDispatcher.fireEvent("towerSold")
 
