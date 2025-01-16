@@ -4,7 +4,7 @@ import { UIHelper } from "../UI/UIHelper";
 import { GameDataManager } from "../managers/GameDataManager";
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader";
-import { GameSaveData } from "src/ts/types/GameSaveData";
+import { Difficulty, GameSaveData } from "src/ts/types/GameSaveData";
 import { allMaps } from "../utils/MapData";
 
 const gameDataManager = new GameDataManager()
@@ -16,8 +16,10 @@ export class PregameSelection extends Scene {
 
     saveFilesListContainer : PIXI.Container
     mapSelectionContainer: PIXI.Container
-    selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined }
+    difficultySelectionContainer: PIXI.Container
+    selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined, difficulty: Difficulty | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined, difficulty: "Normal" }
     selectedMapTitle: string | undefined = undefined
+    selectedDifficulty: Difficulty | undefined = undefined
 
     /**
      *
@@ -27,12 +29,16 @@ export class PregameSelection extends Scene {
         this.container.sortableChildren = true
         this.saveFilesListContainer = new PIXI.Container()
         this.mapSelectionContainer = new PIXI.Container()
+        this.difficultySelectionContainer = new PIXI.Container()
         this.container.addChild(this.saveFilesListContainer)
         this.container.addChild(this.mapSelectionContainer)
+        this.container.addChild(this.difficultySelectionContainer)
         this.mapSelectionContainer.visible = false
+        this.difficultySelectionContainer.visible = false
 
         this.saveFilesListContainer.zIndex = 2
         this.mapSelectionContainer.zIndex = 2
+        this.difficultySelectionContainer.zIndex = 2
     }
 
     constructScene() {
@@ -53,6 +59,37 @@ export class PregameSelection extends Scene {
         this.createMapSelectionPane(800, 500, "Stairwell-O-Chaos");
 
         // this.createMapSelectionPane(800, 100, "blons");
+        this.createDifficultyPane(
+            100,
+            100,
+            "Chill",
+            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*75% pillar sellback value\n*Great for casual pillar builders",
+            "0x00FF77",
+            "chillbg",
+            500,
+            200
+        )
+        this.createDifficultyPane(
+            510,
+            100,
+            "Normal",
+            "*400 starting money, 100 waves\n*Killers give normal bounty\n*60% pillar sellback value\n*For those who are skilled at slaying killers",
+            "0XFFFF00",
+            "normalbg",
+            400,
+            100
+        )
+        this.createDifficultyPane(
+            920,
+            100,
+            "Killer's Thrill",
+            "*200 starting money, 100 waves\nKillers only give 50% of their original bounty\n*50% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile checkpoints - you cannot go back if you quit upon loading\n*Only for the experienced - not for the faint of heart",
+            "0xFF0066",
+            "killerthrillbg",
+            200,
+            1,
+            true // TODO remove boolean once developed
+        )
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -68,6 +105,74 @@ export class PregameSelection extends Scene {
         pillarsKillersVisual.zIndex = 1
         this.container.addChild(pillarsKillersVisual)
 
+
+    }
+
+    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, description: string, textColour: string, backgroundAsset: string, startingMoney: number, startingLives: number, isWIP?: boolean) {
+
+        if (!assetLoader.otherImages || !assetLoader.otherImages[backgroundAsset]) {
+            return
+        }
+        const iconBundle = assetLoader.icons
+
+        if (!iconBundle) {
+            throw new Error("Icons asset may have not loaded properly Akshan")
+        }
+
+        const paneWidth = 400
+        const paneHeight = 800
+        const paneContainer = new PIXI.Container();
+        paneContainer.x = paneXPos;
+        paneContainer.y = paneYPos;
+        paneContainer.zIndex = 20
+
+        const bgColour = new PIXI.Graphics();
+        bgColour.beginFill(0x002222);
+        bgColour.drawRect(0, 0, paneWidth, paneHeight);
+        bgColour.endFill();
+        paneContainer.addChild(bgColour);
+        bgColour.zIndex = 20
+
+        const bgImage = PIXI.Sprite.from(assetLoader.otherImages[backgroundAsset])
+        bgImage.zIndex = 1
+        paneContainer.addChild(bgImage)
+
+        const padding = 5
+        const livesMoneyIconTextYPos = 475
+        const textXOffset = 80
+        const textYOffset = 15
+        const moneyIconTextXOffset = 40
+        const livesIconTextXOffset = 220
+
+        this.difficultySelectionContainer.addChild(paneContainer);
+
+        const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, difficulty, 60, textColour, true);
+        paneContainer.addChild(textDifficultyTitle);
+
+        const iconMoney = UIHelper.createIcon(iconBundle.money, moneyIconTextXOffset + padding , livesMoneyIconTextYPos, 0x002222, 80, 80);
+        paneContainer.addChild(iconMoney);
+        const txtStartingMoney = UIHelper.createText(moneyIconTextXOffset + textXOffset + padding, livesMoneyIconTextYPos + textYOffset, `x${startingMoney.toString()}`, 40, "0xFFFF00");
+        paneContainer.addChild(txtStartingMoney);
+
+        const iconLives = UIHelper.createIcon(iconBundle.lives, livesIconTextXOffset + padding , livesMoneyIconTextYPos, 0x002222, 80, 80);
+        paneContainer.addChild(iconLives);
+        const txtStartingLives = UIHelper.createText(livesIconTextXOffset + textXOffset + padding, livesMoneyIconTextYPos + textYOffset, `x${startingLives.toString()}`, 40, "0xFF0000");
+        paneContainer.addChild(txtStartingLives);
+
+        const textDescription = UIHelper.createText(paneWidth/2, 650, description, 20, textColour, true, paneWidth);
+        paneContainer.addChild(textDescription);
+
+        if (!isWIP) {
+            const btnSelect = UIHelper.createButton(0, 800 - 50, paneWidth, 50, "Select", 30, 0x77FF77);
+            paneContainer.addChild(btnSelect)
+            btnSelect.on("pointerdown", () => {
+                this.selectedSaveData.difficulty = difficulty
+                eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+            });
+        } else {
+            const textComingSoon = UIHelper.createText(200, + 800 - 50 + textYOffset, "Coming soon!", 40, "0x777777", true);
+            paneContainer.addChild(textComingSoon);
+        }
 
     }
 
@@ -107,7 +212,9 @@ export class PregameSelection extends Scene {
 
         btnSelect.on("pointerdown", () => {
             this.selectedSaveData.mapTitle = title
-            eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+            this.mapSelectionContainer.visible = false
+            this.difficultySelectionContainer.visible = true
+            // eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
         });
 
     }
@@ -158,6 +265,17 @@ export class PregameSelection extends Scene {
         saveFileContainer.addChild(bgColour);
 
         if (fileData && allMaps.get(fileData.map)) {
+            const difficulty : Difficulty = fileData.difficulty || "Normal"
+            let difficultyColour = "0xFFFF00"
+            if (difficulty === "Normal") {
+                difficultyColour = "0xFFFF00"
+            }
+            if (difficulty === "Chill") {
+                difficultyColour = "0x00FF77"
+            }
+            if (difficulty === "Killer's Thrill") {
+                difficultyColour = "0xFF0066"
+            }
             const miniMapIcon = UIHelper.createMapCard(allMaps.get(fileData.map)!, 300, 25)
             miniMapIcon.alpha = 0.5
             saveFileContainer.addChild(miniMapIcon)
@@ -165,8 +283,10 @@ export class PregameSelection extends Scene {
 
             const btnLoadFile = UIHelper.createButton(0, 250, 140, 50, "Load Game", 20, 0xFFFFFF);
             saveFileContainer.addChild(btnLoadFile);
-            const txtMap = UIHelper.createText(paneWidth/2, 50, `${fileData.map}`, 20, "0xC7FFFF", true);
+            const txtMap = UIHelper.createText(paneWidth/2, 50, `${fileData.map}`, 25, "0xC7FFFF", true);
             saveFileContainer.addChild(txtMap);
+            const txtDifficulty = UIHelper.createText(paneWidth/2, 80, `${difficulty}`, 20, difficultyColour, true);
+            saveFileContainer.addChild(txtDifficulty);
             const txtCheckpointWave = UIHelper.createText(0 + padding, 150, `Wave ${fileData.checkpointWave}`, 30, "0xFFFFFF");
             saveFileContainer.addChild(txtCheckpointWave);
 
@@ -183,7 +303,7 @@ export class PregameSelection extends Scene {
 
 
             btnLoadFile.on("pointerdown", () => {
-                this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined}
+                this.selectedSaveData = {fileNumber: fileNumber, gameData : fileData, mapTitle: undefined, difficulty: undefined}
                 eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
             });
 
@@ -218,7 +338,7 @@ export class PregameSelection extends Scene {
             saveFileContainer.addChild(saveText);
             saveFileContainer.addChild(btnNewGame);
             btnNewGame.on("pointerdown", () => {
-                this.selectedSaveData = {fileNumber: fileNumber, gameData : undefined, mapTitle: undefined}
+                this.selectedSaveData = {fileNumber: fileNumber, gameData : undefined, mapTitle: undefined, difficulty: undefined}
                 this.saveFilesListContainer.visible = false
                 this.mapSelectionContainer.visible = true
             });

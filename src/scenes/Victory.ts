@@ -1,3 +1,4 @@
+import { Difficulty } from "src/ts/types/GameSaveData";
 import { AssetLoader } from "../core/AssetLoader";
 import { UIHelper } from "../UI/UIHelper";
 import { EventDispatcher } from "../utils/EventDispatcher";
@@ -12,8 +13,10 @@ export class Victory extends Scene {
     /**
      *
      */
-    constructor(app : PIXI.Application) {
+    playedDifficulty: Difficulty
+    constructor(app : PIXI.Application, difficulty: Difficulty) {
         super(app);
+        this.playedDifficulty = difficulty
     }
 
     constructScene() {
@@ -22,16 +25,35 @@ export class Victory extends Scene {
             throw new Error("Asset failed to load")
         }
 
-        const background = PIXI.Sprite.from(assetLoader.otherImages.victoryNormal)
+        let background = PIXI.Sprite.from(assetLoader.otherImages.victoryNormal)
+
+        if (this.playedDifficulty === "Chill") {
+            background = PIXI.Sprite.from(assetLoader.otherImages.victoryChill)
+        }
+        if (this.playedDifficulty === "Killer's Thrill") {
+            background = PIXI.Sprite.from(assetLoader.otherImages.victoryKillerThrill)
+        }
         background.zIndex = 1
 
         this.container.addChild(background)
 
+        let congratsMessage2 = ""
+
+        if (this.playedDifficulty === "Chill") {
+            congratsMessage2 = "The killers were pretty laid back. To play Endless mode, beat the game on Normal!"
+        }
+        if (this.playedDifficulty === "Normal") {
+            congratsMessage2 = "Feel free to return back to this save slot in order to play Endless Mode!"
+        }
+        if (this.playedDifficulty === "Killer's Thrill") {
+            congratsMessage2 = "You have beat the toughest the killers can get! Your city is unstoppable! Feel free to continue on Endless mode!"
+        }
 
 
-        const txtAdditional1 = UIHelper.createText(700,870,"You beat Normal! The city is now safe!", 30, "0x00FFFF", true)
+
+        const txtAdditional1 = UIHelper.createText(700,870,`You beat ${this.playedDifficulty}! The city is now safe!`, 30, "0x00FFFF", true)
         this.container.addChild(txtAdditional1)
-        const txtAdditional2 = UIHelper.createText(700,920,"Feel free to return back to this save slot in order to play Endless Mode!", 30, "0x00FFFF", true)
+        const txtAdditional2 = UIHelper.createText(700,920,congratsMessage2, 30, "0x00FFFF", true)
         this.container.addChild(txtAdditional2)
 
 

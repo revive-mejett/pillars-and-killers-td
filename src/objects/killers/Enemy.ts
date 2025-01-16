@@ -356,7 +356,7 @@ export class Enemy extends Entity {
         if (this.health <= 0) {
             this.health = 0
             enemyDied(this)
-            eventDispatcher.fireEvent("moneyEarned", this.killValue)
+            eventDispatcher.fireEvent("moneyEarned", {source: "bounty", money: this.killValue})
         }
     }
 

@@ -37,15 +37,13 @@ export class Tile extends Entity {
 
     sellTower() {
 
-        const sellValuePercentage = 60
         if (!this.tower) {
             return
         }
 
         this.tower.isSold = true
-        const sellValue = Math.floor(this.tower.cost * sellValuePercentage/100)
 
-        eventDispatcher.fireEvent("moneyEarned", sellValue)
+        eventDispatcher.fireEvent("moneyEarned", {source: "towerSell", money: this.tower.cost})
         eventDispatcher.fireEvent("towerSold")
 
         audioManager.playSound("assets/sounds/sfx/coin_drop.mp3", 1, 1)

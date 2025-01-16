@@ -39,8 +39,12 @@ export class WaveTimeline {
         eventDispatcher.on("boss1Killed", () => this.renderNextWaves())
         eventDispatcher.on("boss2Killed", () => this.renderNextWaves())
         eventDispatcher.on("boss3Killed", () => this.renderNextWaves())
-        eventDispatcher.on("boss4Killed", () => this.renderNextWaves())
-        // eventDispatcher.on("boss5Killed", () => this.renderNextWaves())
+        eventDispatcher.on("boss4Killed", () => {
+            //chill mode has no waves past 80
+            if (this.waveManager.bossWaves.find(wave => wave === 100)) {
+                this.renderNextWaves()
+            }
+        })
 
         this.renderNextWaves()
 

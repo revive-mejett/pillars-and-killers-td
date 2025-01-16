@@ -16,7 +16,7 @@ const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
 export class InfoPanel {
 
-    static createTowerStatsInfoPanel(tower : Tower) {
+    static createTowerStatsInfoPanel(tower : Tower, sellValuePercentage: number) {
 
         if (!tower.upgrades) {
             throw new Error("Upgrades not provided")
@@ -49,7 +49,6 @@ export class InfoPanel {
         const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $${isUpgradable ? tower.upgrades[tower.level - 1].cost : "N/A"}`, 20, "0xFFFF00")
         infoPanel.addChild(upgradeCostText)
 
-        const sellValuePercentage = 60
         const sellValue = Math.floor(tower.cost * sellValuePercentage/100)
 
         const sellValueText = UIHelper.createText(0 + padding, 230 + padding,`sell value: $${sellValue}`, 20, "0x777777")
@@ -155,7 +154,7 @@ export class InfoPanel {
     }
 
 
-    static createEnemyStatsInfoPanel(enemy : Enemy, hud : HUD, updateTicker : PIXI.Ticker) {
+    static createEnemyStatsInfoPanel(enemy : Enemy, hud : HUD, updateTicker : PIXI.Ticker, killBountyMultiplier: number) {
 
         if (!assetLoader.icons) {
             throw new Error("Assetloader icons is not defined - something went wrong")
@@ -201,7 +200,7 @@ export class InfoPanel {
 
         const killValueIcon = UIHelper.createIcon(assetLoader.icons.money, padding, 190 + padding, 0x000000, 40, 40)
         infoPanel.addChild(killValueIcon)
-        const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${enemy.killValue}`, 20, "0xFFFF00")
+        const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${Math.ceil(enemy.killValue * killBountyMultiplier)}`, 20, "0xFFFF00")
         infoPanel.addChild(killValueText)
 
         const slowedIndicator = UIHelper.createIcon(assetLoader.icons.slowed, padding, 250 + padding, 0x000000, 40, 40)

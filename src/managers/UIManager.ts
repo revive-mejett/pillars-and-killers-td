@@ -98,6 +98,13 @@ export class UIManager {
     updateLives() {
         if (this.hud && this.hud.livesText) {
             this.hud.livesText.text = this.gamestate.lives
+
+            if (this.gamestate.lives < 70) {
+                this.hud.livesText.style.fill = 0xFFC700
+            }
+            if (this.gamestate.lives < 25) {
+                this.hud.livesText.style.fill = 0xFF0000
+            }
         }
     }
 
@@ -194,7 +201,7 @@ export class UIManager {
         const hud = this.hud
         hud.clearInfoPanel()
 
-        const infoPanel = InfoPanel.createTowerStatsInfoPanel(tower)
+        const infoPanel = InfoPanel.createTowerStatsInfoPanel(tower, this.gamestate.sellValuePercentage)
         hud.infoPanel?.addChild(infoPanel)
     }
 
@@ -206,7 +213,7 @@ export class UIManager {
         this.selectedEnemyUpdateTicker?.destroy()
         this.selectedEnemyUpdateTicker = new Ticker()
         this.selectedEnemyUpdateTicker.autoStart = false
-        const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud, this.selectedEnemyUpdateTicker)
+        const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud, this.selectedEnemyUpdateTicker, this.gamestate.killBountyMultiplier)
         hud.infoPanel?.addChild(selectedEnemyPanel)
     }
 

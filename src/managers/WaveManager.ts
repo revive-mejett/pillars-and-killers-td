@@ -3,19 +3,16 @@ import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader"
 import { Wave, WavePart } from "../objects/Wave"
 import { TdMap } from "src/objects/TdMap"
-
 import * as PIXI from "pixi.js";
 import { GameplayScene } from "src/scenes/GameplayScene"
-
-
 import { productionWaves } from "../utils/WaveData"
-
-
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
+import { Difficulty } from "src/ts/types/GameSaveData"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
+
 
 export class WaveManager {
     map: TdMap
@@ -37,7 +34,7 @@ export class WaveManager {
     /**
      *
      */
-    constructor(map: TdMap, startWave: number) {
+    constructor(map: TdMap, startWave: number, difficulty: Difficulty) {
         this.map = map
         this.waves = []
         this.extraWaves = this.generateExtraWaves()
@@ -69,26 +66,33 @@ export class WaveManager {
 
         eventDispatcher.on("boss1Killed", () => {
             this.updateNextCheckpointWave(1)
-            eventDispatcher.fireEvent("saveProgess")
+            eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss2Killed", () => {
             this.updateNextCheckpointWave(2)
-            eventDispatcher.fireEvent("saveProgess")
+            eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss3Killed", () => {
             this.updateNextCheckpointWave(3)
-            eventDispatcher.fireEvent("saveProgess")
+            eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss4Killed", () => {
-            this.updateNextCheckpointWave(4)
-            eventDispatcher.fireEvent("saveProgess")
-
+            if (difficulty === "Chill") {
+                eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: true})
+            } else {
+                this.updateNextCheckpointWave(4)
+                eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
+            }
         })
         eventDispatcher.on("boss5Killed", () => {
             this.cooldownToNextWave = 0
-            eventDispatcher.fireEvent("saveProgess", true)
+            eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: false})
         })
 
+        if (difficulty === "Chill") {
+            this.bossWaves = [20, 40, 60, 80]
+            this.waves.splice(80) //remove waves after 80 from the standard wave set
+        }
     }
 
     private updateNextCheckpointWave(nextCheckpointIndex: number) {

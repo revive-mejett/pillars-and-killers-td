@@ -15,7 +15,7 @@ import { InputManager } from "../managers/InputManager"
 import { WaveTimeline } from "../UI/WaveTimeline"
 import { AudioManager } from "../managers/AudioManager";
 import { allMaps } from "../utils/MapData"
-import { GameSaveData, TowerData } from "src/ts/types/GameSaveData"
+import { Difficulty, GameSaveData, TowerData } from "src/ts/types/GameSaveData"
 import { towerNameToKey } from "../utils/TowerStatsData"
 import { GameDataManager } from "../managers/GameDataManager"
 
@@ -38,11 +38,12 @@ export class GameplayScene extends Scene {
 
     fileNumber: 1 | 2 | 3 | 4 | 5 | 6
     mapTitle: string | undefined
+    difficulty: Difficulty | undefined
 
     //if the player loads the game
     savedData: GameSaveData | undefined
 
-    constructor(app: PIXI.Application, fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameSaveData?: GameSaveData, mapTitle?: string) {
+    constructor(app: PIXI.Application, fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameSaveData?: GameSaveData, mapTitle?: string, difficulty?: Difficulty) {
         super(app)
         this.tdMap = undefined
         this.gamestate = undefined
@@ -54,22 +55,24 @@ export class GameplayScene extends Scene {
         this.savedData = gameSaveData
         this.fileNumber = fileNumber
         this.mapTitle = mapTitle
+        this.difficulty = difficulty
 
     }
 
     constructScene() {
 
-        this.gamestate = new GameState(this.fileNumber, this.savedData, this.mapTitle)
+        this.gamestate = new GameState(this.fileNumber, this.savedData, this.mapTitle, this.difficulty)
 
         if (!allMaps.get(this.gamestate.mapName)) {
             throw new Error("Map not correctly loaded; please check the name of the map to ensure it exists.")
         }
         this.tdMap = new TdMap(allMaps.get(this.gamestate.mapName)!, 1000, 1000, 25)
-
         this.hud = new HUD(this.gamestate)
-        this.waveManager = new WaveManager(this.tdMap, this.gamestate.startWave)
+
+        this.waveManager = new WaveManager(this.tdMap, this.gamestate.startWave, this.gamestate.difficulty)
         this.hud.setup(this.container)
         this.uiManager = new UIManager(this.app, this.gamestate, this, this.hud)
+        this.uiManager?.updateLives()
         this.gamestate.linkUiManager(this.uiManager)
 
         this.healthBarManager = new HealthBarManager()
@@ -109,10 +112,10 @@ export class GameplayScene extends Scene {
             }
         })
 
-        eventDispatcher.on("saveProgess", this.saveData.bind(this))
+        eventDispatcher.on("saveProgess", this.handleCheckpoint.bind(this))
     }
 
-    saveData(isVictory: boolean) {
+    handleCheckpoint(modifiers: {isVictory: boolean, deleteSave : boolean}) {
         setTimeout(() => {
             if (!this.gamestate || !this.waveManager) {
                 return
@@ -134,10 +137,16 @@ export class GameplayScene extends Scene {
                 researchLevel: this.gamestate.researchLevel,
                 saveFileIndex: this.gamestate.saveFileIndex,
                 towers: towerData,
-                checkpointWave: this.waveManager.currentWave
+                checkpointWave: this.waveManager.currentWave,
+                difficulty: this.gamestate.difficulty
             }
-            gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
-            if (isVictory) {
+            if (modifiers.deleteSave) {
+                this.wipeSave()
+            } else {
+                gameDataManager.saveData(this.gamestate.saveFileIndex, gameSaveData)
+            }
+
+            if (modifiers.isVictory) {
                 if (this.hud && this.hud.exitButton) {
                     this.hud.exitButton.visible = false
                 }
@@ -145,11 +154,17 @@ export class GameplayScene extends Scene {
                     this.hud.nextWaveButton.visible = false
                 }
                 setTimeout(() => {
-                    eventDispatcher.fireEvent("victory")
+                    eventDispatcher.fireEvent("victory", this.gamestate?.difficulty)
                 }, 5000);
             }
         }, 0);
 
+    }
+
+    wipeSave() {
+        if (this.gamestate?.saveFileIndex) {
+            gameDataManager.wipeSaveData(this.gamestate?.saveFileIndex)
+        }
     }
 
     buildMap() {
