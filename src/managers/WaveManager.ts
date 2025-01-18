@@ -92,7 +92,7 @@ export class WaveManager {
 
         if (difficulty === "Chill") {
             this.bossWaves = [20, 40, 60, 80]
-            this.waves.splice(80) //remove waves after 80 from the standard wave set
+            this.waves.slice(80) //remove waves after 80 from the standard wave set
         }
     }
 
@@ -184,7 +184,6 @@ export class WaveManager {
         } else {
             waveArray = this.waves[waveIndex]
         }
-
 
         //set the cooldown to next wave to the duration of the current wave
         this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000

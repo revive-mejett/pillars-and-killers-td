@@ -14,7 +14,7 @@ export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 0
+    startWave: number = 17
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -61,8 +61,8 @@ export class GameState {
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         if (developerTest) {
             for (let i = 0; i < this.startWave || 0; i++) {
-                if (killerThrillWaves[i]) {
-                    this.money += calculateWaveValue(productionWaves[i])
+                if (killerThrillWaves[i] && productionWaves[i]) {
+                    // this.money += calculateWaveValue(productionWaves[i])
                     this.money += calculateWaveValue(killerThrillWaves[i])
                 } else {
                     this.money += 20000
@@ -87,7 +87,7 @@ export class GameState {
         }
         if (this.difficulty === "Killer's Thrill") {
             this.sellValuePercentage = 50
-            this.killBountyMultiplier = 0.5
+            this.killBountyMultiplier = 0.50
         }
 
     }

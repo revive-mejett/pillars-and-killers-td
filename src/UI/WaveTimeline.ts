@@ -95,40 +95,8 @@ export class WaveTimeline {
 
         const waveStone = new PIXI.Graphics()
 
-        let outlineColour = "0xE7E7E7"
-        let colour = 0x333333
+        const { outlineColour, colour } = this.determineWaveStoneColours(i);
 
-        // boss #1 marker
-        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Brave Proxima Centauri")) {
-            outlineColour = "0xFFEE00"
-            colour = 0x7C2F00
-        }
-        // boss #2 marker
-        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Serious Sirius")) {
-            outlineColour = "0x337777"
-            colour = 0xAAFFFF
-        }
-        // boss #3 marker
-        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Remorseless Rigel")) {
-            outlineColour = "0x0000FF"
-            colour = 0x609EFF
-        }
-        // boss #4 marker
-        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Unforgiving Stephenson 2-18")) {
-            outlineColour = "0xFF0000"
-            colour = 0xFFFF00
-        }
-        // boss #5 marker
-        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "TON 618")) {
-            outlineColour = "0xFFFFFF"
-            colour = 0x000000
-        }
-
-        //red waves
-        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Merciless Loch Ness")) {
-            outlineColour = "0xFF0000"
-            colour = 0x220000
-        }
         waveStone.lineStyle(1, outlineColour)
         waveStone.beginFill(colour)
         waveStone.drawRect(50, timeToWaveStart / timeToYScaleFactor, 50, stoneHeight)
@@ -150,6 +118,63 @@ export class WaveTimeline {
 
         timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
         return timeToWaveStart
+    }
+
+    private determineWaveStoneColours(i: number) {
+        let outlineColour = "0xE7E7E7";
+        let colour = 0x333333;
+
+        //wave 21-39 colours
+        if (i >= 20 && i < 40) {
+            outlineColour = "0xF7FF68";
+            colour = 0x303030;
+        }
+        if (i >= 40 && i < 60) {
+            outlineColour = "0x00FFD0";
+            colour = 0x2A2A2A;
+        }
+        if (i >= 60 && i < 80) {
+            outlineColour = "0xE100FF";
+            colour = 0x222222;
+        }
+        if (i >= 80 && i < 100) {
+            outlineColour = "0xFF140C";
+            colour = 0x171717;
+        }
+
+
+        // boss #1 marker
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Brave Proxima Centauri")) {
+            outlineColour = "0xFFEE00";
+            colour = 0x7C2F00;
+        }
+        // boss #2 marker
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Serious Sirius")) {
+            outlineColour = "0x337777";
+            colour = 0xAAFFFF;
+        }
+        // boss #3 marker
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Remorseless Rigel")) {
+            outlineColour = "0x0000FF";
+            colour = 0x609EFF;
+        }
+        // boss #4 marker
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Unforgiving Stephenson 2-18")) {
+            outlineColour = "0xFF0000";
+            colour = 0xFFFF00;
+        }
+        // boss #5 marker
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "TON 618")) {
+            outlineColour = "0xFFFFFF";
+            colour = 0x000000;
+        }
+
+        //red waves
+        if (this.waveManager.waves[i].waveParts.find(wavePart => wavePart.enemy === "Merciless Loch Ness")) {
+            outlineColour = "0xFF0000";
+            colour = 0x220000;
+        }
+        return { outlineColour, colour };
     }
 
     private buildWaveStoneFreeplay(i: number, timeToWaveStart: number) {
