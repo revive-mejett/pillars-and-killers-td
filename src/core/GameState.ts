@@ -3,9 +3,10 @@ import { EventDispatcher } from "../utils/EventDispatcher"
 import { Difficulty, GameSaveData } from "../ts/types/GameSaveData"
 import { productionWaves } from "../utils/WaveData"
 import { calculateWaveValue } from "../utils/Calc"
+import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = false
+const developerTest = true
 const developerOffSet = 0
 
 
@@ -60,8 +61,9 @@ export class GameState {
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         if (developerTest) {
             for (let i = 0; i < this.startWave || 0; i++) {
-                if (productionWaves[i]) {
-                    this.money += calculateWaveValue(productionWaves[i])
+                if (killerThrillWaves[i] && productionWaves[i]) {
+                    // this.money += calculateWaveValue(productionWaves[i])
+                    this.money += calculateWaveValue(killerThrillWaves[i])
                 } else {
                     this.money += 20000
                 }
@@ -85,7 +87,7 @@ export class GameState {
         }
         if (this.difficulty === "Killer's Thrill") {
             this.sellValuePercentage = 50
-            this.killBountyMultiplier = 0.5
+            this.killBountyMultiplier = 0.50
         }
 
     }

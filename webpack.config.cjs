@@ -52,5 +52,5 @@ module.exports = {
         static: path.resolve(__dirname, "dist"), // Directory to serve
         port: 6969 // Development server port
     },
-    mode: "production" // Set mode to development, change 'production' once ready
+    mode: "development" // Set mode to development, change 'production' once ready
 };
