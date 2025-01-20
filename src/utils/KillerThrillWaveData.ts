@@ -321,11 +321,6 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Stone Pricker",
-                count: 1,
-                spacingMillis: 1
-            },
-            {
                 enemy: "Earthling Flake",
                 count: 3,
                 spacingMillis: 1000
@@ -357,12 +352,17 @@ const killerThrillWaves = [
             },
             {
                 enemy: "Stone Pricker",
-                count: 3,
-                spacingMillis: 2000
+                count: 2,
+                spacingMillis: 7000
             },
             {
                 enemy: "Quick Bonhomme",
                 count: 3,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Earthling Flake",
+                count: 16,
                 spacingMillis: 300
             }
         ]
@@ -372,20 +372,24 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Stone Pricker",
-                count: 2,
-                spacingMillis: 2000
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 6,
-                spacingMillis: 1250
+                count: 1,
+                spacingMillis: 10000
             },
             {
                 enemy: "Earthling Flake",
                 count: 7,
-                spacingMillis: 400
+                spacingMillis: 1500
             },
-
+            {
+                enemy: "Quick Bonhomme",
+                count: 6,
+                spacingMillis: 1350
+            },
+            {
+                enemy: "Earthling Flake",
+                count: 7,
+                spacingMillis: 1500
+            },
         ]
     ),
     //wave 12
@@ -398,8 +402,8 @@ const killerThrillWaves = [
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 6,
-                spacingMillis: 900
+                count: 7,
+                spacingMillis: 1900
             },
             {
                 enemy: "4p 2024",
@@ -407,10 +411,15 @@ const killerThrillWaves = [
                 spacingMillis: 1
             },
             {
-                enemy: "Quick Bonhomme",
-                count: 6,
-                spacingMillis: 800
-            }
+                enemy: "4p 2024",
+                count: 2,
+                spacingMillis: 6000
+            },
+            {
+                enemy: "Earthling Flake",
+                count: 12,
+                spacingMillis: 300
+            },
         ]
     ),
     //wave 13
@@ -434,7 +443,12 @@ const killerThrillWaves = [
             {
                 enemy: "4p 2024",
                 count: 1,
-                spacingMillis: 5000
+                spacingMillis: 8000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 6,
+                spacingMillis: 800
             },
         ]
     ),
@@ -443,14 +457,19 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Stone Pricker",
-                count: 5,
+                count: 3,
                 spacingMillis: 1500
             },
             {
                 enemy: "Earthling Flake",
                 count: 20,
-                spacingMillis: 200
-            }
+                spacingMillis: 700
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 2,
+                spacingMillis: 3000
+            },
         ]
     ),
     // wave 15
@@ -549,7 +568,7 @@ const killerThrillWaves = [
             {
                 enemy: "Stone Pricker",
                 count: 7,
-                spacingMillis: 1000
+                spacingMillis: 1500
             }
         ]
     ),

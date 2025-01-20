@@ -182,8 +182,8 @@ const productionWaves = [
         [
             {
                 enemy: "Quick Bonhomme",
-                count: 15,
-                spacingMillis: 800
+                count: 10,
+                spacingMillis: 1500
             },
             {
                 enemy: "Infant Circle",
@@ -192,8 +192,8 @@ const productionWaves = [
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 12,
-                spacingMillis: 2
+                count: 5,
+                spacingMillis: 2000
             },
             {
                 enemy: "Earthling Flake",
@@ -202,7 +202,7 @@ const productionWaves = [
             },
             {
                 enemy: "Stone Pricker",
-                count: 2,
+                count: 1,
                 spacingMillis: 500
             }
         ]
@@ -234,7 +234,12 @@ const productionWaves = [
                 enemy: "Stone Pricker",
                 count: 1,
                 spacingMillis: 120
-            }
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 7,
+                spacingMillis: 500
+            },
         ]
     ),
     //wave 13
@@ -287,12 +292,12 @@ const productionWaves = [
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 4,
+                count: 9,
                 spacingMillis: 2000
             },
             {
                 enemy: "Stone Pricker",
-                count: 3,
+                count: 2,
                 spacingMillis: 1000
             }
         ]
@@ -319,6 +324,11 @@ const productionWaves = [
                 enemy: "Earthling Flake",
                 count: 7,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 1,
+                spacingMillis: 500
             }
         ]
     ),
