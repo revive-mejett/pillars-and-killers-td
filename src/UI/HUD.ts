@@ -238,6 +238,8 @@ export class HUD {
         towerSelectMenu.addChild(poisonIvyPillarButton)
         const advancedPillarButton = UIHelper.createIcon(towerSpriteBundle.advancedPillar, 85, 85, 0x221100)
         towerSelectMenu.addChild(advancedPillarButton)
+        const cyroBlastPillarButton = UIHelper.createIcon(towerSpriteBundle.cyroBlastPillar, 170, 85, 0x273333)
+        towerSelectMenu.addChild(cyroBlastPillarButton)
         const missilePillarButton = UIHelper.createIcon(towerSpriteBundle.missilePillar, 0, 170, 0x222200)
         towerSelectMenu.addChild(missilePillarButton)
         const lightningPillarButton = UIHelper.createIcon(towerSpriteBundle.lightningPillar, 85, 170, 0x002222)
@@ -251,6 +253,7 @@ export class HUD {
         this.towerSelectionButtons.ice = icePillarButton
         this.towerSelectionButtons.ember = emberPillarButton
         this.towerSelectionButtons.advanced = advancedPillarButton
+        this.towerSelectionButtons.cyro = cyroBlastPillarButton
         this.towerSelectionButtons.poisonIvy = poisonIvyPillarButton
         this.towerSelectionButtons.missile = missilePillarButton
         this.towerSelectionButtons.lightning = lightningPillarButton
@@ -298,6 +301,7 @@ export class HUD {
 
         this.towerSelectionButtons.advanced.visible = this.gamestate.researchLevel >= 2
         this.towerSelectionButtons.poisonIvy.visible = this.gamestate.researchLevel >= 2
+        this.towerSelectionButtons.cyro.visible = this.gamestate.researchLevel >= 2
 
         this.towerSelectionButtons.missile.visible = this.gamestate.researchLevel >= 3
         this.towerSelectionButtons.lightning.visible = this.gamestate.researchLevel >= 3
