@@ -405,6 +405,89 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             }
         ],
         [
+            "cyro",
+            {
+                towerStats: {
+                    range: 160,
+                    damage: 50,
+                    fireRate: 1,
+                    cost: 400,
+                    speedMultiplier: 0.6
+                },
+                towerInfo: {
+                    assetIcon: towerIcons.cyroBlastPillar,
+                    asset: towerIcons.cyroBlastPillarTopLv1,
+                    info: {
+                        title: "Cyro Blast Pillar",
+                        description: "Created with ice with temperatues well below -70 degrees Celsius, this pillar fires sharp cold blasts that can suppress stronger killers."
+                    },
+                    tileColour: 0x222222,
+                    beamWidth: 3,
+                    soundPitch: 1
+                },
+                upgrades: [
+                    {
+                        range: 160,
+                        damage: 100,
+                        fireRate: 0.95,
+                        cost: 1000,
+                        speedMultiplier: 0.5
+                    },
+                    {
+                        range: 160,
+                        damage: 200,
+                        fireRate: 0.9,
+                        cost: 2200,
+                        speedMultiplier: 0.4
+                    },
+                    {
+                        range: 160,
+                        damage: 400,
+                        fireRate: 0.85,
+                        cost: 4500,
+                        speedMultiplier: 0.3
+                    },
+                    {
+                        range: 160,
+                        damage: 600,
+                        fireRate: 0.8,
+                        cost: 25000,
+                        speedMultiplier: 0.2
+                    }
+                ],
+                visualUpgrades: [
+                    {
+                        assetIcon: towerIcons.cyroBlastPillar,
+                        asset: towerIcons.cyroBlastPillarTopLv2,
+                        tileColour: 0x001100,
+                        beamWidth: 3,
+                        soundPitch: 0.9
+                    },
+                    {
+                        assetIcon: towerIcons.cyroBlastPillar,
+                        asset: towerIcons.cyroBlastPillarTopLv3,
+                        tileColour: 0x000066,
+                        beamWidth: 4,
+                        soundPitch: 0.85
+                    },
+                    {
+                        assetIcon: towerIcons.cyroBlastPillar,
+                        asset: towerIcons.cyroBlastPillarTopLv4,
+                        tileColour: 0x990000,
+                        beamWidth: 5,
+                        soundPitch: 0.8
+                    },
+                    {
+                        assetIcon: towerIcons.cyroBlastPillar,
+                        asset: towerIcons.cyroBlastPillarTopLv5,
+                        tileColour: 0x6600FF,
+                        beamWidth: 6,
+                        soundPitch: 0.7
+                    }
+                ]
+            }
+        ],
+        [
             "missile",
             {
                 towerStats: {
@@ -695,6 +778,7 @@ const towerNameToKey = new Map([
     ["Ember Pillar", "ember"],
     ["Sniper Pillar", "advanced"],
     ["Poison Ivy Pillar", "poisonIvy"],
+    ["Cyro Blast Pillar", "cyro"],
     ["Missile Pillar", "missile"],
     ["Lightning Pillar", "lightning"],
     ["Dreadglass Pillar", "dreadglass"],

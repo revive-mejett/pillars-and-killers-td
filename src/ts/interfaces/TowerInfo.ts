@@ -23,6 +23,11 @@ interface IcePillarInfo extends TowerInfo {
     beamWidth: number
 }
 
+interface CyroPillarInfo extends TowerInfo {
+    beamWidth: number,
+    soundPitch: number
+}
+
 interface EmberPillarInfo extends TowerInfo {
     impactRadius: number;
     flameColour: number
@@ -49,4 +54,4 @@ interface UltimatePillarInfo extends TowerInfo {
 
 
 
-export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo, PoisonIvyPillarInfo, AdvancedPillarInfo, DreadglassPillarInfo }
+export { TowerInfo, BasicPillarInfo, IcePillarInfo, UltimatePillarInfo, EmberPillarInfo, PoisonIvyPillarInfo, AdvancedPillarInfo, DreadglassPillarInfo, CyroPillarInfo }
