@@ -87,7 +87,8 @@ export class PregameSelection extends Scene {
             "0xFF0066",
             "killerthrillbg",
             200,
-            1
+            1,
+            true
         )
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
