@@ -1,5 +1,6 @@
 import { Wave } from "../objects/Wave"
 
+
 //for production
 const productionWaves = [
     //wave 1
@@ -182,8 +183,8 @@ const productionWaves = [
         [
             {
                 enemy: "Quick Bonhomme",
-                count: 10,
-                spacingMillis: 1500
+                count: 15,
+                spacingMillis: 2000
             },
             {
                 enemy: "Infant Circle",
@@ -191,18 +192,13 @@ const productionWaves = [
                 spacingMillis: 1
             },
             {
-                enemy: "Quick Bonhomme",
-                count: 5,
-                spacingMillis: 2000
-            },
-            {
                 enemy: "Earthling Flake",
-                count: 6,
-                spacingMillis: 2000
+                count: 10,
+                spacingMillis: 1000
             },
             {
                 enemy: "Stone Pricker",
-                count: 1,
+                count: 2,
                 spacingMillis: 500
             }
         ]
@@ -234,12 +230,7 @@ const productionWaves = [
                 enemy: "Stone Pricker",
                 count: 1,
                 spacingMillis: 120
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 7,
-                spacingMillis: 500
-            },
+            }
         ]
     ),
     //wave 13
@@ -292,12 +283,12 @@ const productionWaves = [
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 9,
+                count: 4,
                 spacingMillis: 2000
             },
             {
                 enemy: "Stone Pricker",
-                count: 2,
+                count: 3,
                 spacingMillis: 1000
             }
         ]
@@ -324,11 +315,6 @@ const productionWaves = [
                 enemy: "Earthling Flake",
                 count: 7,
                 spacingMillis: 800
-            },
-            {
-                enemy: "Stone Pricker",
-                count: 1,
-                spacingMillis: 500
             }
         ]
     ),
@@ -364,7 +350,12 @@ const productionWaves = [
                 enemy: "Stone Pricker",
                 count: 8,
                 spacingMillis: 2000
-            }
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 12,
+                spacingMillis: 1600
+            },
         ]
     ),
     // wave 18
@@ -1046,10 +1037,20 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Dashing Dasher", // change to dashing dasher after testing each t3 killer
-                count: 6,
+                enemy: "Dashing Dasher",
+                count: 3,
                 spacingMillis: 2000
-            }
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 5,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 3,
+                spacingMillis: 2000
+            },
         ]
     ),
     // wave 46
@@ -1086,14 +1087,24 @@ const productionWaves = [
                 spacingMillis: 850
             },
             {
+                enemy: "Twilight Great White",
+                count: 2,
+                spacingMillis: 400
+            },
+            {
                 enemy: "Angry Piranha",
                 count: 16,
-                spacingMillis: 1000
+                spacingMillis: 1100
             },
             {
                 enemy: "Beautiful Peacock",
                 count: 8,
                 spacingMillis: 850
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 2,
+                spacingMillis: 400
             }
         ]
     ),
@@ -1139,6 +1150,11 @@ const productionWaves = [
                 enemy: "Titanium Bruiser",
                 count: 2,
                 spacingMillis: 1000
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 3,
+                spacingMillis: 2000
             },
             {
                 enemy: "Beautiful Peacock",
@@ -1341,6 +1357,11 @@ const productionWaves = [
                 spacingMillis: 1200
             },
             {
+                enemy: "Twilight Great White",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
                 enemy: "Furious Raven",
                 count: 4,
                 spacingMillis: 1200
@@ -1351,6 +1372,11 @@ const productionWaves = [
                 spacingMillis: 1200
             },
             {
+                enemy: "Twilight Great White",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
                 enemy: "Furious Raven",
                 count: 2,
                 spacingMillis: 3000
@@ -1359,6 +1385,11 @@ const productionWaves = [
                 enemy: "Dashing Dasher",
                 count: 8,
                 spacingMillis: 1000
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 1,
+                spacingMillis: 1
             }
         ]
     ),
@@ -1699,6 +1730,11 @@ const productionWaves = [
                 enemy: "Obsidian Ripper",
                 count: 4,
                 spacingMillis: 850
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 7,
+                spacingMillis: 600
             }
         ]
     ),
@@ -1912,7 +1948,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 86
+    // wave 86 placeholder wave
     new Wave(
         [
             {
@@ -1937,7 +1973,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 87
+    // wave 87 placeholder wave
     new Wave(
         [
             {
@@ -1967,7 +2003,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 88
+    // wave 88 placeholder wave
     new Wave(
         [
             {
@@ -1992,7 +2028,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 89
+    // wave 89 placeholder wave
     new Wave(
         [
             {
@@ -2007,7 +2043,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 90
+    // wave 90 placeholder wave
     new Wave(
         [
             {
@@ -2032,7 +2068,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 91
+    // wave 91 placeholder wave
     new Wave(
         [
             {
@@ -2062,7 +2098,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 92
+    // wave 92 placeholder wave
     new Wave(
         [
             {
@@ -2087,7 +2123,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 93
+    // wave 93 placeholder wave
     new Wave(
         [
             {
@@ -2107,7 +2143,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 94
+    // wave 94 placeholder wave
     new Wave(
         [
             {
@@ -2316,6 +2352,11 @@ const productionWaves = [
                 spacingMillis: 1
             },
             {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
                 enemy: "Dashing Dasher",
                 count: 10,
                 spacingMillis: 200
@@ -2334,6 +2375,11 @@ const productionWaves = [
                 enemy: "Steel Warrior",
                 count: 1,
                 spacingMillis: 1
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 500
             },
             {
                 enemy: "Near-Light Zoomer",
@@ -2477,7 +2523,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 99
+    // wave 99 placeholder wave
     new Wave(
         [
             {
@@ -2521,5 +2567,3 @@ const productionWaves = [
 
 
 export { productionWaves }
-
-
