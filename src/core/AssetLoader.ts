@@ -92,6 +92,13 @@ export class AssetLoader {
             "advancedPillarTopLv4" : "assets/images/advanced_pillar_top_lv4.png",
             "advancedPillarTopLv5" : "assets/images/advanced_pillar_top_lv5.png",
 
+            "cyroBlastPillar" : "assets/images/cyroblast_pillar.png",
+            "cyroBlastPillarTopLv1" : "assets/images/cyroblast_pillar_top_lv1.png",
+            "cyroBlastPillarTopLv2" : "assets/images/cyroblast_pillar_top_lv2.png",
+            "cyroBlastPillarTopLv3" : "assets/images/cyroblast_pillar_top_lv3.png",
+            "cyroBlastPillarTopLv4" : "assets/images/cyroblast_pillar_top_lv4.png",
+            "cyroBlastPillarTopLv5" : "assets/images/cyroblast_pillar_top_lv5.png",
+
 
             "missilePillar" : "assets/images/missile_pillar_icon.png",
             "missilePillarTopLv1" : "assets/images/missile_pillar_top_lv1.png",

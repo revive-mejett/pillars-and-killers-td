@@ -6,7 +6,7 @@ import { EventDispatcher } from "../../utils/EventDispatcher";
 
 const eventDispatcher = new EventDispatcher()
 
-
+const effectiveHealthThreshhold = 10000 // this is the highest health a killer/enemy that would still suffer 100% of a basic ice pillar's slowing effect (not cyro pillar)
 export class Beam extends Projectile {
     beamWidth: number;
     slowMultiplier: number;
@@ -67,8 +67,19 @@ export class Beam extends Projectile {
 
     slowEnemy(speedMultiplier : number, duration : number) {
         //enemy must be not slow immune
+
+
         if (this.targetEnemy && !this.targetEnemy.slowImmune && this.targetEnemy.slowDebuffStats.speedMultiplier >= this.slowMultiplier) {
-            this.targetEnemy.slowDebuffStats.speedMultiplier = speedMultiplier
+            let modifiedSpeedMultiplier = speedMultiplier
+            if (this.targetEnemy.health > effectiveHealthThreshhold) {
+
+                //20% of the ice pillar's effect for stronger enemies above effectiveHealthThreshhold hp; speed multiplier is 80% reduced
+                //ex: if a speed mulltiplier is 0.5, stronger enemies will only suffer a speed multiplier of 0.9 ()
+                const speedMultiplierReduction = 1 - speedMultiplier
+                modifiedSpeedMultiplier = 1 - (speedMultiplierReduction * 0.2)
+
+            }
+            this.targetEnemy.slowDebuffStats.speedMultiplier = modifiedSpeedMultiplier
             this.targetEnemy.slowDebuffStats.timeLeft = duration
         }
 
