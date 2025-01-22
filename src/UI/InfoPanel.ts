@@ -220,8 +220,12 @@ export class InfoPanel {
                 updateTicker.stop()
                 hud.clearInfoPanel()
             }
+            const speedTxt = enemySpeedText.children[0] as PIXI.Text
             UIHelper.updateText(enemyHealthText.children[0] as PIXI.Text, `${enemy.health} / ${enemy.totalHealth}`)
             UIHelper.updateText(dmgResistanceText.children[0] as PIXI.Text, `${enemy.armour}`)
+            UIHelper.updateText(speedTxt, `${(enemy.speed * enemy.slowDebuffStats.speedMultiplier).toFixed(1)}`)
+            speedTxt.style.fill = enemy.slowDebuffStats.timeLeft > 0 ? 0x7777FF : 0xFFFFFF
+
             slowedIndicator.visible = enemy.slowDebuffStats.timeLeft > 0
             poisonIvedIndicator.visible = enemy.vulnerableDebuffStats.timeLeft > 0
             healthBar.renderBar(infoPanel)

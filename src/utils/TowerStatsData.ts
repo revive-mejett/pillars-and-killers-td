@@ -412,7 +412,8 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     damage: 50,
                     fireRate: 1,
                     cost: 400,
-                    speedMultiplier: 0.6
+                    speedMultiplier: 0.6,
+                    impactRadius: 0
                 },
                 towerInfo: {
                     assetIcon: towerIcons.cyroBlastPillar,
@@ -431,28 +432,32 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         damage: 100,
                         fireRate: 0.95,
                         cost: 1000,
-                        speedMultiplier: 0.5
+                        speedMultiplier: 0.5,
+                        impactRadius: 0
                     },
                     {
                         range: 160,
                         damage: 200,
                         fireRate: 0.9,
                         cost: 2200,
-                        speedMultiplier: 0.4
+                        speedMultiplier: 0.4,
+                        impactRadius: 0
                     },
                     {
                         range: 160,
                         damage: 400,
                         fireRate: 0.85,
                         cost: 4500,
-                        speedMultiplier: 0.3
+                        speedMultiplier: 0.3,
+                        impactRadius: 0
                     },
                     {
                         range: 160,
-                        damage: 600,
+                        damage: 5000,
                         fireRate: 0.8,
                         cost: 25000,
-                        speedMultiplier: 0.2
+                        speedMultiplier: 0.2,
+                        impactRadius: 50
                     }
                 ],
                 visualUpgrades: [

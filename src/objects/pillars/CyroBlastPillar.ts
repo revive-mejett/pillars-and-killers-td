@@ -15,6 +15,7 @@ export class CyroBlastPillar extends Tower {
     speedMultiplier: number;
     beamWidth: number;
     soundPitch: number;
+    impactRadius: number;
 
 
     /**
@@ -24,6 +25,7 @@ export class CyroBlastPillar extends Tower {
         super(x, y, width, height, towerData);
         this.towerName = "Cyro Blast Pillar"
         this.speedMultiplier = towerData.towerStats.speedMultiplier
+        this.impactRadius = towerData.towerStats.impactRadius
         this.beamWidth = towerData.towerInfo.beamWidth
         this.soundPitch = towerData.towerInfo.soundPitch
     }
@@ -84,9 +86,9 @@ export class CyroBlastPillar extends Tower {
 
                 //spawn a beam
                 if (this.targetedEnemy) {
-                    const beam = new CyroBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, this.speedMultiplier, 0xC7C7FF, this.beamWidth, this.soundPitch)
+                    const beam = new CyroBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, this.speedMultiplier, 0xC7C7FF, this.beamWidth, this.soundPitch, this.impactRadius)
                     beam.render(gameplaySceneContainer)
-                    beam.fire(gameplayScene.app.ticker.deltaTime)
+                    beam.fire(gameplayScene.app.ticker.deltaTime, gameplayScene.enemiesPresent)
                 }
 
             }
@@ -117,6 +119,7 @@ export class CyroBlastPillar extends Tower {
         this.fireRate = newStats.fireRate
         this.cost += newStats.cost
         this.speedMultiplier = newStats.speedMultiplier
+        this.impactRadius = newStats.impactRadius
         this.level++
 
         const newVisualStats = this.visualUpgrades[index] as CyroPillarInfo

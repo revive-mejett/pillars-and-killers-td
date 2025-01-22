@@ -10,7 +10,8 @@ interface IcePillarStats extends TowerStats {
 }
 
 interface CyroPillarStats extends TowerStats {
-    speedMultiplier : number
+    speedMultiplier : number,
+    impactRadius: number
 }
 
 interface EmberPillarStats extends TowerStats {

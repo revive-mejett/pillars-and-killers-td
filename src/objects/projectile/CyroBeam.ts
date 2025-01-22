@@ -3,6 +3,7 @@ import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import { Vector } from "../../utils/Vector";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -10,28 +11,36 @@ const eventDispatcher = new EventDispatcher()
 export class CyroBeam extends Projectile {
     beamWidth: number;
     slowMultiplier: number;
-    soundPitch: number
+    soundPitch: number;
+    impactRadius: number;
 
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, slowMultiplier: number, colour : number, beamWidth : number, soundPitch: number) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, slowMultiplier: number, colour : number, beamWidth : number, soundPitch: number, impactRadius: number) {
         super(x, y, width, height, targetEnemy, damage, colour);
 
         this.graphics = new PIXI.Graphics()
         this.beamWidth = beamWidth
         this.slowMultiplier = slowMultiplier
+        this.impactRadius = impactRadius
         this.soundPitch = soundPitch
 
     }
 
-    fire(deltaTime : number) {
+    fire(deltaTime : number, enemies :Enemy[]) {
 
         let elapsedTime = 0
         eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/cyro_blast_shot.mp3", maxSources: 8, towerName: "Cryo Blast Pillar", volume: 0.7, speed: this.soundPitch})
 
-        this.targetEnemy?.takeDamage(this.damage)
-        this.slowEnemy(this.slowMultiplier, 200) //apply the slow
+        if (this.impactRadius > 0 && this.targetEnemy) {
+            this.onImpact(enemies, this.targetEnemy.getCenterPosition())
+        } else {
+            this.targetEnemy?.takeDamage(this.damage)
+            this.slowEnemy(this.slowMultiplier, 200) //apply the slow
+        }
+
+
 
         const onTick = () => {
             elapsedTime += deltaTime
@@ -67,6 +76,19 @@ export class CyroBeam extends Projectile {
 
     }
 
+    onImpact(enemies : Enemy[], impactPosition : Position) {
+
+        enemies.forEach((enemy, i) => {
+            const enemyPosition = enemy.getCenterPosition()
+            const distanceToImpact = new Vector(enemyPosition.x - impactPosition.x, enemyPosition.y - impactPosition.y).magnitude()
+
+            if (distanceToImpact <= this.impactRadius) {
+                enemy.takeDamage(Math.ceil(this.damage * ((this.impactRadius - distanceToImpact/2) / this.impactRadius)), i !== 0)
+                this.slowOtherEnemy(enemy, this.slowMultiplier, 200) //apply the slow
+            }
+        })
+    }
+
     slowEnemy(speedMultiplier : number, duration : number) {
         //enemy must be not slow immune
         if (this.targetEnemy && !this.targetEnemy.slowImmune && this.targetEnemy.slowDebuffStats.speedMultiplier >= this.slowMultiplier) {
@@ -74,6 +96,15 @@ export class CyroBeam extends Projectile {
             this.targetEnemy.slowDebuffStats.timeLeft = duration
         }
 
+    }
+
+    //slow other enemies that isnt the direct target
+    private slowOtherEnemy(enemy: Enemy, speedMultiplier : number, duration : number) {
+        //enemy must be not slow immune
+        if (enemy && !enemy.slowImmune && enemy.slowDebuffStats.speedMultiplier >= this.slowMultiplier) {
+            enemy.slowDebuffStats.speedMultiplier = speedMultiplier
+            enemy.slowDebuffStats.timeLeft = duration
+        }
     }
 
     render(parentContainer : PIXI.Container) {
