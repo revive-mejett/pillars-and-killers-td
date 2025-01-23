@@ -409,7 +409,7 @@ const allEnemyData: EnemyData = {
             className: "Brave Proxima Centauri",
             type: "Boss",
             health: 9500,
-            speed: 0.4,
+            speed: 0.5,
             damage: 9999,
             killValue: 2000,
             rotationSpeed: 0.1,
