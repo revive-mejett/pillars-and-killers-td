@@ -408,7 +408,7 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Brave Proxima Centauri",
             type: "Boss",
-            health: 10000,
+            health: 9500,
             speed: 0.5,
             damage: 9999,
             killValue: 2000,

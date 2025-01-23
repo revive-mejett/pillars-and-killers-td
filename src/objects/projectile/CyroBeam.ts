@@ -33,6 +33,16 @@ export class CyroBeam extends Projectile {
         let elapsedTime = 0
         eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/cyro_blast_shot.mp3", maxSources: 8, towerName: "Cryo Blast Pillar", volume: 0.7, speed: this.soundPitch})
 
+
+
+        const beamOriginPosition = this.getCenterPosition()
+        beamOriginPosition.x -= this.width/2
+        beamOriginPosition.y -= this.height/2
+        let enemyCenterPosition = this.targetEnemy?.getCenterPosition()
+        if (enemyCenterPosition) {
+            this.beamPosition(beamOriginPosition, enemyCenterPosition, 3 * Math.floor(Math.random() * 3))
+        }
+
         if (this.impactRadius > 0 && this.targetEnemy) {
             this.onImpact(enemies, this.targetEnemy.getCenterPosition())
         } else {
@@ -41,9 +51,14 @@ export class CyroBeam extends Projectile {
         }
 
 
-
         const onTick = () => {
             elapsedTime += deltaTime
+            if (this.targetEnemy) {
+                enemyCenterPosition = this.targetEnemy?.getCenterPosition()
+            }
+
+            this.beamPosition(beamOriginPosition, enemyCenterPosition as Position, 3 * Math.floor(Math.random() * 3))
+
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
                 this.cleanUpResources()
                 return
@@ -54,12 +69,8 @@ export class CyroBeam extends Projectile {
                 return
             }
 
-            const beamOriginPosition = this.getCenterPosition() 
-            beamOriginPosition.x -= this.width/2
-            beamOriginPosition.y -= this.height/2
-            const enemyCenterPosition = this.targetEnemy.getCenterPosition()
 
-            this.beamPosition(beamOriginPosition, enemyCenterPosition, 3 * Math.floor(Math.random() * 3))
+
         }
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()

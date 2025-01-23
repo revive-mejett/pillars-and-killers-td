@@ -101,7 +101,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     asset: towerIcons.icePillarTopLv1,
                     info: {
                         title: "Ice Pillar",
-                        description: "Fires chily ice bolts that slows down killers."
+                        description: "Fires chilly ice bolts that slows down killers. Less effective against stronger killers."
                     },
                     tileColour: 0x222222,
                     beamWidth: 3
@@ -109,31 +109,31 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 130,
-                        damage: 9,
+                        damage: 10,
                         fireRate: 1,
                         cost: 50,
                         speedMultiplier: 0.7
                     },
                     {
                         range: 140,
-                        damage: 13,
+                        damage: 14,
                         fireRate: 1,
-                        cost: 120,
-                        speedMultiplier: 0.55
+                        cost: 100,
+                        speedMultiplier: 0.6
                     },
                     {
                         range: 150,
-                        damage: 16,
+                        damage: 19,
                         fireRate: 1,
-                        cost: 160,
-                        speedMultiplier: 0.4
+                        cost: 150,
+                        speedMultiplier: 0.5
                     },
                     {
                         range: 155,
-                        damage: 20,
+                        damage: 25,
                         fireRate: 1,
-                        cost: 225,
-                        speedMultiplier: 0.2
+                        cost: 200,
+                        speedMultiplier: 0.4
                     }
                 ],
                 visualUpgrades: [
@@ -179,7 +179,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     asset: towerIcons.emberPillarTopLv1,
                     info: {
                         title: "Ember Pillar",
-                        description: "Puffs out ember fireballs that damages nearby enemies upon impact"
+                        description: "Puffs out ember fireballs that damages nearby killers upon impact."
                     },
                     tileColour: 0x222222,
                     flameColour: 0xEE0000,
@@ -266,7 +266,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     asset: towerIcons.advancedPillarTopLv1,
                     info: {
                         title: "Sniper Pillar",
-                        description: "This pillar may not have an actual gun, but it can pack a punch from a distance."
+                        description: "This pillar may not have an actual gun, but it can pack a punch from a large distance. A max-level sniper can shoot from miles away!"
                     },
                     tileColour: 0x222222,
                     bulletSize: 4
@@ -339,7 +339,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     asset: towerIcons.poisonIvyTopLv1,
                     info: {
                         title: "Poison Ivy Pillar",
-                        description: "Its stinging leaves make killers irritated, making them vulnerable to other attacks."
+                        description: "Its stinging leaves make killers irritated, making them vulnerable to other attacks. Upgrades increase the extra damage that affected killers would take."
                     },
                     tileColour: 0x222222,
                     leafColour: 0XC7FFC7,
@@ -409,7 +409,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 160,
-                    damage: 50,
+                    damage: 25,
                     fireRate: 1,
                     cost: 400,
                     speedMultiplier: 0.6,
@@ -420,7 +420,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     asset: towerIcons.cyroBlastPillarTopLv1,
                     info: {
                         title: "Cyro Blast Pillar",
-                        description: "Created with ice with temperatues well below -70 degrees Celsius, this pillar fires sharp cold blasts that can suppress stronger killers."
+                        description: "Created with ice with temperatures well below -70 degrees Celsius, this pillar fires sharp cold blasts that can suppress stronger killers. Upgrading to the max level allows the slowing of nearby killers!"
                     },
                     tileColour: 0x222222,
                     beamWidth: 3,
@@ -429,7 +429,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 160,
-                        damage: 100,
+                        damage: 45,
                         fireRate: 0.95,
                         cost: 1000,
                         speedMultiplier: 0.5,
@@ -437,7 +437,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 160,
-                        damage: 200,
+                        damage: 75,
                         fireRate: 0.9,
                         cost: 2200,
                         speedMultiplier: 0.4,
@@ -445,7 +445,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 160,
-                        damage: 400,
+                        damage: 125,
                         fireRate: 0.85,
                         cost: 4500,
                         speedMultiplier: 0.3,
@@ -453,7 +453,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 160,
-                        damage: 1000,
+                        damage: 500,
                         fireRate: 0.8,
                         cost: 25000,
                         speedMultiplier: 0.2,
@@ -594,7 +594,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     asset: towerIcons.lightningPillarTopLv1,
                     info: {
                         title: "Lightning Pillar",
-                        description: "Relentless pillar that zaps \"lightning\" bolts at killers that dare to enter its range"
+                        description: "Relentless pillar that zaps \"lightning\" bolts at killers that dare to enter its range."
                     },
                     tileColour: 0x222222
                 },
