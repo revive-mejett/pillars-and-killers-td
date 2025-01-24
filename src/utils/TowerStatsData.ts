@@ -431,7 +431,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 160,
                         damage: 45,
                         fireRate: 0.95,
-                        cost: 1000,
+                        cost: 600,
                         speedMultiplier: 0.5,
                         impactRadius: 0
                     },
@@ -439,7 +439,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 160,
                         damage: 75,
                         fireRate: 0.9,
-                        cost: 2200,
+                        cost: 1000,
                         speedMultiplier: 0.4,
                         impactRadius: 0
                     },
@@ -447,7 +447,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         range: 160,
                         damage: 125,
                         fireRate: 0.85,
-                        cost: 4500,
+                        cost: 2200,
                         speedMultiplier: 0.3,
                         impactRadius: 0
                     },
