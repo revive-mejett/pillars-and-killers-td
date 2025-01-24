@@ -7,13 +7,15 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 
 
 ## Planned Features
-- 40 Killers of varying strength (including 5 bosses) + 1 final boss (41 total different killers). More info in **Planned Enemies (Killers)**
+- 40 Killers of varying strength. More info in **Planned Enemies (Killers)**
 - 11-12 different pillars to build, each with their purpose (ie. slow down, melt armour, AoE splash). More info in **Planned Pillars (Towers)**
-- 100 Waves to fight. Winning the game will require you to beat Wave 100, which is the final boss: **TON 618**. This boss is slow, but will have insane amounts of HP, insane armour, slow immunity, and EMP attacks.
-- Researching new pillars/towers - Players will need to pay a research fee and wait to unlock stronger pillars
+- 100 Waves to fight. Winning the game will require you to beat Wave 100: **TON 618**. This killer is slow, but will have insane amounts of HP, and insane armour.
+- Every 20th wave is a checkpoint. Checkpoints automatically save a player's progress once wave 20, 40 is beaten and can reload their progress. note: killer's thrill saves funtion differently
+- Researching new pillars/towers - Players will need to pay a research fee to unlock stronger pillars
 - Different maps to choose from in various difficulties
 - Endless mode (enemies getting exponentially tougher until you die)
 - Settings and vfx disabling
+- 3 difficulty levels: Chill (Easy), Normal (medium), Killer's Thrill (Hard)
 - French translation (THIS IS GOING TO BE A CHALLENGE)
 
 These are not final, they can change as development progresses. 
@@ -70,7 +72,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/cea53d01-4c09-47e0-a9d0-0ce8e608e58e" witdh="125px" height="125px"></td>
       <td>Brave Proxima Centauri</td>
-      <td>Boss Killer. Taking this star down requires not only ice, but a taste of its own element.</td>
+      <td>Taking this star down requires not only ice, but a taste of its own element.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/45cd0082-5b68-47f8-9997-55a25bc4c3f7" witdh="125px" height="125px"></td>
@@ -110,7 +112,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/0a860247-7521-44b9-b236-c26a92734d1d" witdh="125px" height="125px"></td>
       <td>Serious Sirius</td>
-      <td>Boss Killer. If you're talking about killer that's serious, this one is taking it REALLY seriously, without slowing down.</td>
+      <td>If you're talking about killer that's serious, this one is taking it REALLY seriously, without slowing down.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/f12f5656-cff9-4df0-a72a-58f66e1130c3" witdh="125px" height="125px"></td>
@@ -150,7 +152,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/560b0229-2eaa-47b6-9619-c799ade7e69c" witdh="125px" height="125px"></td>
       <td>Remorseless Rigel</td>
-      <td>Boss Killer. This one has no remorse, and is great at travelling at a really fast speed for such a boss.</td>
+      <td>This one has no remorse, and is great at travelling at a really fast speed for a celestial object.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/6934ac7b-0d33-424a-a667-6b5e45be901c" witdh="125px" height="125px"></td>
@@ -190,7 +192,7 @@ Killers come in various shapes and strengths. A good number of them has differen
     <tr>
       <td><img src="https://github.com/user-attachments/assets/2c5a165d-b17c-434b-9ec7-373df0387c1e" witdh="125px" height="125px"></td>
       <td>Unforgiving Stephenson 2-18</td>
-      <td>Boss Killer. A star walks into a bar. He asks for water. You are the bartender and must give broken dreadglass! He is heavily damage resistant and can widthstand even the strongest of your pillars.</td>
+      <td>A red hypergiant star walks into a bar. He asks for water. You are the bartender and must give broken dreadglass! He is heavily damage resistant and can widthstand even the strongest of your pillars.</td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/84cab303-ff8c-48e9-a1c8-95a28ccfe369" witdh="125px" height="125px"></td>
