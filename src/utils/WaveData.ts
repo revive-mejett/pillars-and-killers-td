@@ -74,7 +74,7 @@ const productionWaves = [
             {
                 enemy: "Quick Bonhomme",
                 count: 4,
-                spacingMillis: 2500
+                spacingMillis: 3500
             },
             {
                 enemy: "Little Sparrow",
@@ -97,15 +97,25 @@ const productionWaves = [
                 spacingMillis: 400
             },
             {
+                enemy: "Quick Bonhomme",
+                count: 5,
+                spacingMillis: 3000
+            },
+            {
                 enemy: "Infant Circle",
                 count: 15,
                 spacingMillis: 1500
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 15,
-                spacingMillis: 1500
-            }
+                count: 7,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Earthling Flake",
+                count: 5,
+                spacingMillis: 400
+            },
         ]
     ),
     //wave 8
@@ -183,7 +193,7 @@ const productionWaves = [
         [
             {
                 enemy: "Quick Bonhomme",
-                count: 15,
+                count: 5,
                 spacingMillis: 2000
             },
             {
@@ -195,6 +205,11 @@ const productionWaves = [
                 enemy: "Earthling Flake",
                 count: 10,
                 spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 10,
+                spacingMillis: 2000
             },
             {
                 enemy: "Stone Pricker",
