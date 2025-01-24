@@ -494,7 +494,7 @@ const productionWaves = [
             {
                 enemy: "Cute Crow",
                 count: 5,
-                spacingMillis: 400
+                spacingMillis: 1200
             },
             {
                 enemy: "Stone Pricker",
@@ -512,9 +512,9 @@ const productionWaves = [
     new Wave(
         [
             {
-                enemy: "Cute Crow",
-                count: 8,
-                spacingMillis: 500
+                enemy: "Polar Goldfish",
+                count: 1,
+                spacingMillis: 2000
             },
             {
                 enemy: "Quick Bonhomme",
@@ -522,9 +522,9 @@ const productionWaves = [
                 spacingMillis: 250
             },
             {
-                enemy: "Polar Goldfish",
-                count: 1,
-                spacingMillis: 2000
+                enemy: "Cute Crow",
+                count: 8,
+                spacingMillis: 800
             },
             {
                 enemy: "4p 2024",
@@ -539,7 +539,7 @@ const productionWaves = [
             {
                 enemy: "Fast Runner",
                 count: 2,
-                spacingMillis: 2000
+                spacingMillis: 3000
             },
             {
                 enemy: "Toddler Sphere",
@@ -549,7 +549,7 @@ const productionWaves = [
             {
                 enemy: "Cute Crow",
                 count: 5,
-                spacingMillis: 1000
+                spacingMillis: 500
             },
             {
                 enemy: "Mean Triangle",
@@ -569,12 +569,17 @@ const productionWaves = [
             {
                 enemy: "Polar Goldfish",
                 count: 5,
-                spacingMillis: 1400
+                spacingMillis: 2100
             },
             {
                 enemy: "Polar Goldfish",
-                count: 10,
-                spacingMillis: 800
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 5,
+                spacingMillis: 350
             }
         ]
     ),
@@ -583,13 +588,13 @@ const productionWaves = [
         [
             {
                 enemy: "Cute Crow",
-                count: 6,
-                spacingMillis: 700
+                count: 10,
+                spacingMillis: 400
             },
             {
                 enemy: "Polar Goldfish",
                 count: 5,
-                spacingMillis: 400
+                spacingMillis: 600
             },
             {
                 enemy: "Toddler Sphere",
@@ -634,7 +639,7 @@ const productionWaves = [
             {
                 enemy: "Fast Runner",
                 count: 6,
-                spacingMillis: 1000
+                spacingMillis: 2200
             }
         ]
     ),
@@ -653,8 +658,13 @@ const productionWaves = [
             },
             {
                 enemy: "Fast Runner",
-                count: 4,
-                spacingMillis: 700
+                count: 3,
+                spacingMillis: 2600
+            },
+            {
+                enemy: "Fast Runner",
+                count: 1,
+                spacingMillis: 4000
             },
             {
                 enemy: "Toddler Sphere",
@@ -672,14 +682,19 @@ const productionWaves = [
     new Wave(
         [
             {
+                enemy: "Fast Runner",
+                count: 4,
+                spacingMillis: 3000
+            },
+            {
                 enemy: "Polar Goldfish",
                 count: 8,
-                spacingMillis: 500
+                spacingMillis: 300
             },
             {
                 enemy: "Fast Runner",
-                count: 8,
-                spacingMillis: 2000
+                count: 4,
+                spacingMillis: 2500
             }
         ]
     ),
@@ -693,7 +708,7 @@ const productionWaves = [
             },
             {
                 enemy: "Cute Crow",
-                count: 5,
+                count: 7,
                 spacingMillis: 100
             },
             {
@@ -729,7 +744,7 @@ const productionWaves = [
             {
                 enemy: "Polar Goldfish",
                 count: 7,
-                spacingMillis: 8
+                spacingMillis: 300
             },
             {
                 enemy: "5p 2025",
@@ -744,7 +759,7 @@ const productionWaves = [
             {
                 enemy: "5p 2025",
                 count: 2,
-                spacingMillis: 600
+                spacingMillis: 1400
             },
             {
                 enemy: "Polar Goldfish",
@@ -754,7 +769,7 @@ const productionWaves = [
             {
                 enemy: "5p 2025",
                 count: 3,
-                spacingMillis: 600
+                spacingMillis: 750
             }
         ]
     ),
