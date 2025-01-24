@@ -63,7 +63,7 @@ export class PregameSelection extends Scene {
             100,
             100,
             "Chill",
-            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*75% pillar sellback value\n*Great for casual pillar builders",
+            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*75% pillar sellback value\n*Great for casual pillar builders\n[Note]: Beat Wave 100 on Normal or Killer's Thrill to continue on Endless!",
             "0x00FF77",
             "chillbg",
             500,
