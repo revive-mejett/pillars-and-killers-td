@@ -409,7 +409,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
             {
                 towerStats: {
                     range: 160,
-                    damage: 25,
+                    damage: 40,
                     fireRate: 1,
                     cost: 400,
                     speedMultiplier: 0.6,
@@ -429,7 +429,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                 upgrades: [
                     {
                         range: 160,
-                        damage: 45,
+                        damage: 70,
                         fireRate: 0.95,
                         cost: 600,
                         speedMultiplier: 0.5,
@@ -437,7 +437,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 160,
-                        damage: 75,
+                        damage: 125,
                         fireRate: 0.9,
                         cost: 1000,
                         speedMultiplier: 0.4,
@@ -445,7 +445,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     },
                     {
                         range: 160,
-                        damage: 125,
+                        damage: 275,
                         fireRate: 0.85,
                         cost: 2200,
                         speedMultiplier: 0.3,
@@ -457,7 +457,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         fireRate: 0.8,
                         cost: 25000,
                         speedMultiplier: 0.2,
-                        impactRadius: 50
+                        impactRadius: 30
                     }
                 ],
                 visualUpgrades: [
