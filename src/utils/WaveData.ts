@@ -1153,7 +1153,7 @@ const productionWaves = [
             },
             {
                 enemy: "Dashing Dasher",
-                count: 7,
+                count: 3,
                 spacingMillis: 1000
             },
             {
@@ -1180,6 +1180,11 @@ const productionWaves = [
                 enemy: "Titanium Bruiser",
                 count: 2,
                 spacingMillis: 1000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 6,
+                spacingMillis: 1200
             },
             {
                 enemy: "Twilight Great White",
@@ -1923,8 +1928,13 @@ const productionWaves = [
         [
             {
                 enemy: "Irresistible Phoenix",
-                count: 6,
-                spacingMillis: 2400
+                count: 5,
+                spacingMillis: 3500
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 4500
             },
             {
                 enemy: "Dashing Dasher",
@@ -1934,7 +1944,7 @@ const productionWaves = [
             {
                 enemy: "Irresistible Phoenix",
                 count: 6,
-                spacingMillis: 2400
+                spacingMillis: 2800
             }
         ]
     ),
@@ -1944,7 +1954,7 @@ const productionWaves = [
             {
                 enemy: "Challenger Deep Kraken",
                 count: 4,
-                spacingMillis: 2000
+                spacingMillis: 8000
             },
             {
                 enemy: "256p 2152",
@@ -1954,7 +1964,7 @@ const productionWaves = [
             {
                 enemy: "Jr. Rhombicosidodecahedron",
                 count: 7,
-                spacingMillis: 1600
+                spacingMillis: 1800
             }
         ]
     ),
@@ -1964,7 +1974,7 @@ const productionWaves = [
             {
                 enemy: "Challenger Deep Kraken",
                 count: 4,
-                spacingMillis: 8000
+                spacingMillis: 5000
             },
             {
                 enemy: "Enraged Eagle",

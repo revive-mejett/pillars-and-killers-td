@@ -457,7 +457,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         fireRate: 0.8,
                         cost: 25000,
                         speedMultiplier: 0.2,
-                        impactRadius: 50
+                        impactRadius: 30
                     }
                 ],
                 visualUpgrades: [
