@@ -2164,7 +2164,7 @@ const allEnemyData: EnemyData = {
             className: "TON 618",
             type: "Boss",
             health: 175_571_777,
-            speed: 0.05,
+            speed: 1,
             damage: 99999,
             killValue: 1000000,
             rotationSpeed: 0.01,
@@ -2172,7 +2172,7 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.05,
             regen: 0,
             armour: 327500,
-            slowImmune: true
+            slowImmune: false
         }
     }
 }
