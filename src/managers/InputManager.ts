@@ -3,7 +3,11 @@ import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../utils/EventDispatcher";
 import { UIHelper } from "../UI/UIHelper";
 import { UIManager } from "./UIManager";
+import { AudioManager } from "./AudioManager";
 const eventDispatcher = new EventDispatcher()
+const audioManager = new AudioManager()
+
+
 export class InputManager {
 
     uiManager: UIManager
@@ -66,10 +70,12 @@ export class InputManager {
         if ((e.key === "Q" || e.key === "q") && this.selectedTowerTile?.tower) {
             this.selectedTowerTile.tower.previousTargetingStrategy()
             this.uiManager.displaySelectedTowerInfo(this.selectedTowerTile.tower)
+            audioManager.playSound("assets/sounds/sfx/btn_press.mp3", 0.2)
         }
         if ((e.key === "E" || e.key === "e") && this.selectedTowerTile?.tower) {
             this.selectedTowerTile.tower.nextTargetingStrategy()
             this.uiManager.displaySelectedTowerInfo(this.selectedTowerTile.tower)
+            audioManager.playSound("assets/sounds/sfx/btn_press.mp3", 0.2)
         }
     }
 
