@@ -1,7 +1,7 @@
 import { Enemy } from "src/objects/killers/Enemy";
 
 
-abstract class TargetingStrategy {
+export abstract class ITargetingStrategy {
     // eslint-disable-next-line no-unused-vars
     abstract compareEnemies(enemy1: Enemy | undefined, enemy2: Enemy | undefined) : Enemy | undefined
 
@@ -10,13 +10,69 @@ abstract class TargetingStrategy {
     }
 }
 
-export class FirstTargetingStrategy extends TargetingStrategy {
+export class FirstTargetingStrategy extends ITargetingStrategy {
     compareEnemies(enemy1: Enemy | undefined, enemy2: Enemy | undefined): Enemy | undefined {
         if (!this.validateEnemies(enemy1, enemy2)) {
             return undefined
         }
         //enemies are still existing and alive
         if (enemy1!.distanceTravelled > enemy2!.distanceTravelled) {
+            return enemy1
+        } else {
+            return enemy2
+        }
+    }
+}
+
+export class LastTargetingStrategy extends ITargetingStrategy {
+    compareEnemies(enemy1: Enemy | undefined, enemy2: Enemy | undefined): Enemy | undefined {
+        if (!this.validateEnemies(enemy1, enemy2)) {
+            return undefined
+        }
+        //enemies are still existing and alive
+        if (enemy1!.distanceTravelled < enemy2!.distanceTravelled) {
+            return enemy1
+        } else {
+            return enemy2
+        }
+    }
+}
+
+export class StrongTargetingStrategy extends ITargetingStrategy {
+    compareEnemies(enemy1: Enemy | undefined, enemy2: Enemy | undefined): Enemy | undefined {
+        if (!this.validateEnemies(enemy1, enemy2)) {
+            return undefined
+        }
+        //enemies are still existing and alive
+        if (enemy1!.health > enemy2!.health) {
+            return enemy1
+        } else {
+            return enemy2
+        }
+    }
+}
+
+export class WeakTargetingStrategy extends ITargetingStrategy {
+    compareEnemies(enemy1: Enemy | undefined, enemy2: Enemy | undefined): Enemy | undefined {
+        if (!this.validateEnemies(enemy1, enemy2)) {
+            return undefined
+        }
+        //enemies are still existing and alive
+        if (enemy1!.health < enemy2!.health) {
+            return enemy1
+        } else {
+            return enemy2
+        }
+    }
+}
+
+export class FastTargetingStrategy extends ITargetingStrategy {
+    compareEnemies(enemy1: Enemy | undefined, enemy2: Enemy | undefined): Enemy | undefined {
+        if (!this.validateEnemies(enemy1, enemy2)) {
+            return undefined
+        }
+        //enemies are still existing and alive
+        if (enemy1!.speed > enemy2!.speed) {
             return enemy1
         } else {
             return enemy2

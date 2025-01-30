@@ -1,3 +1,3 @@
-type TargetingStrategy = "1st" | "Last" | "Strong" | "Weak"
+type TargetingStrategy = "1st" | "Last" | "Strong" | "Weak" | "Fastest"
 
 export default TargetingStrategy

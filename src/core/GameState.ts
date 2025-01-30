@@ -6,7 +6,7 @@ import { calculateWaveValue } from "../utils/Calc"
 import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = true
+const developerTest = false
 const developerOffSet = 0
 
 
@@ -14,7 +14,7 @@ export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 80
+    startWave: number = 0
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1

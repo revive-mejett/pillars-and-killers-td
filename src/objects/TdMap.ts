@@ -87,12 +87,16 @@ class TdMap {
 
                 const savedTowerData = savedTowers.find(savedTower => savedTower.x === i * this.tileSize && savedTower.y === j * this.tileSize)
 
+                //get its targeting priority
+                const targetingIndex = savedTowerData?.currentTargetingIndex || 0
+
                 if (savedTowerData) {
                     const tower = TowerFactory.createTower(tile.x, tile.y, tile.width, tile.height, savedTowerData.towerType)
                     tower.presetLevel(savedTowerData.level)
                     tile.placeTowerOnTile(tower)
                     tower.setTileRef(tile)
                     tower.runTower(gameplayScene)
+                    tower.currentTargetingIndex = targetingIndex
                     gameplayScene.addTowerToPresent(tower)
                 }
             }

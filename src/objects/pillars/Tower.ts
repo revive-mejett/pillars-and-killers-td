@@ -10,7 +10,7 @@ import TowerData from "src/ts/types/TowerData";
 import { TowerStats } from "src/ts/interfaces/TowerStats";
 import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 import { AssetLoader } from "../../core/AssetLoader";
-import { FirstTargetingStrategy } from "../../utils/targeting/TargetingStrategy";
+import { FastTargetingStrategy, FirstTargetingStrategy, ITargetingStrategy, LastTargetingStrategy, StrongTargetingStrategy, WeakTargetingStrategy } from "../../utils/targeting/TargetingStrategy";
 import TargetingStrategy from "src/ts/types/TargetingStrategy";
 
 const assetLoader = new AssetLoader()
@@ -91,7 +91,7 @@ export abstract class Tower extends Entity {
         this.disabledCooldown = 0
 
         //targeting strategies
-        this.targetingStrategies = ["1st", "Last", "Strong", "Weak"]
+        this.targetingStrategies = ["1st", "Last", "Strong", "Weak", "Fastest"]
         this.currentTargetingIndex = 0
 
     }
@@ -142,7 +142,28 @@ export abstract class Tower extends Entity {
                 }
             }
         });
-        const targetingStrategy = new FirstTargetingStrategy()
+        let targetingStrategy : ITargetingStrategy
+
+        switch (this.targetingStrategies[this.currentTargetingIndex]) {
+        case "1st":
+            targetingStrategy = new FirstTargetingStrategy()
+            break;
+        case "Last":
+            targetingStrategy = new LastTargetingStrategy()
+            break;
+        case "Strong":
+            targetingStrategy = new StrongTargetingStrategy()
+            break;
+        case "Weak":
+            targetingStrategy = new WeakTargetingStrategy()
+            break;
+        case "Fastest":
+            targetingStrategy = new FastTargetingStrategy()
+            break;
+        default:
+            targetingStrategy = new FirstTargetingStrategy()
+            break;
+        }
         enemies.forEach(enemy => {
             // Check if the enemy is alive and within range
             if (enemy.isAlive && this.checkEnemyInRange(enemy)) {

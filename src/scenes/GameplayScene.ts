@@ -127,7 +127,8 @@ export class GameplayScene extends Scene {
                     towerType: towerNameToKey.get(tower.towerName)!,
                     x: tower.x,
                     y: tower.y,
-                    level: tower.level
+                    level: tower.level,
+                    currentTargetingIndex: tower.currentTargetingIndex
                 })
             })
             const gameSaveData : GameSaveData = {
