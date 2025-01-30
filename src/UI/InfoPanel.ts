@@ -69,7 +69,7 @@ export class InfoPanel {
         background.alpha = 0
         currentTargetingContainer.addChild(background)
 
-        const txtCurrentTargeting = new Text("Target: 1st", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
+        const txtCurrentTargeting = new Text(`Target: ${tower.targetingStrategies[tower.currentTargetingIndex]}`, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
         txtCurrentTargeting.x = (currentTargetingContainer.width - txtCurrentTargeting.width) / 2;
         txtCurrentTargeting.y = (currentTargetingContainer.height - txtCurrentTargeting.height) / 2;
         currentTargetingContainer.addChild(txtCurrentTargeting)

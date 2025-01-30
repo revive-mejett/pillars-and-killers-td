@@ -10,6 +10,8 @@ import TowerData from "src/ts/types/TowerData";
 import { TowerStats } from "src/ts/interfaces/TowerStats";
 import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 import { AssetLoader } from "../../core/AssetLoader";
+import { FirstTargetingStrategy } from "../../utils/targeting/TargetingStrategy";
+import TargetingStrategy from "src/ts/types/TargetingStrategy";
 
 const assetLoader = new AssetLoader()
 
@@ -38,6 +40,11 @@ export abstract class Tower extends Entity {
     //is affected by EMP if cooldown is > 0
     disabledCooldown: number = 0
     zappedGraphics: PIXI.AnimatedSprite
+
+
+    //fields for targeting strategies
+    currentTargetingIndex: number
+    targetingStrategies: TargetingStrategy[]
 
 
 
@@ -82,6 +89,10 @@ export abstract class Tower extends Entity {
 
         //debuffs
         this.disabledCooldown = 0
+
+        //targeting strategies
+        this.targetingStrategies = ["1st", "Last", "Strong", "Weak"]
+        this.currentTargetingIndex = 0
 
     }
 
@@ -131,10 +142,34 @@ export abstract class Tower extends Entity {
                 }
             }
         });
+        const targetingStrategy = new FirstTargetingStrategy()
+        enemies.forEach(enemy => {
+            // Check if the enemy is alive and within range
+            if (enemy.isAlive && this.checkEnemyInRange(enemy)) {
+                // Use the correct targeting strategy algorithm. If we don't have a target or this enemy has traveled further, update the target
+                bestEnemy = targetingStrategy.compareEnemies(enemy, bestEnemy)
+            }
+        });
 
         // If we found a better target, lock it in
         if (bestEnemy && bestEnemy !== this.targetedEnemy) {
             this.lockInEnemy(bestEnemy);
+        }
+    }
+
+    previousTargetingStrategy() {
+        if (this.currentTargetingIndex === 0) {
+            this.currentTargetingIndex = this.targetingStrategies.length - 1
+        } else {
+            this.currentTargetingIndex--
+        }
+    }
+
+    nextTargetingStrategy() {
+        if (this.currentTargetingIndex === this.targetingStrategies.length - 1) {
+            this.currentTargetingIndex = 0
+        } else {
+            this.currentTargetingIndex++
         }
     }
 

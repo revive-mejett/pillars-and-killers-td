@@ -2,10 +2,11 @@ import { Tile } from "src/objects/Tile";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../utils/EventDispatcher";
 import { UIHelper } from "../UI/UIHelper";
+import { UIManager } from "./UIManager";
 const eventDispatcher = new EventDispatcher()
 export class InputManager {
 
-
+    uiManager: UIManager
     hoveredTile : Tile | undefined = undefined
     gridContainer: PIXI.Container<PIXI.DisplayObject>
     selectedTowerTile : Tile | undefined = undefined
@@ -18,11 +19,14 @@ export class InputManager {
     private cyanOutline : PIXI.Graphics | undefined = undefined
     // private greenOutline : PIXI.Graphics | undefined = undefined
 
+    private handleKeyPress = (e : KeyboardEvent) => this.onkeydown(e)
+
 
     /**
      *
      */
-    constructor(sceneContainer : PIXI.Container, mapContainer : PIXI.Container) {
+    constructor(sceneContainer : PIXI.Container, mapContainer : PIXI.Container, uiManager: UIManager) {
+        this.uiManager = uiManager
 
         //this container will contain the range circle, and tile outline and will be in tdmap
         this.gridContainer = new PIXI.Container()
@@ -54,6 +58,19 @@ export class InputManager {
         eventDispatcher.on("towerSold", () => {
             this.clearRange();
         })
+
+        window.addEventListener("keydown", this.handleKeyPress)
+    }
+
+    onkeydown(e: KeyboardEvent) {
+        if ((e.key === "Q" || e.key === "q") && this.selectedTowerTile?.tower) {
+            this.selectedTowerTile.tower.previousTargetingStrategy()
+            this.uiManager.displaySelectedTowerInfo(this.selectedTowerTile.tower)
+        }
+        if ((e.key === "E" || e.key === "e") && this.selectedTowerTile?.tower) {
+            this.selectedTowerTile.tower.nextTargetingStrategy()
+            this.uiManager.displaySelectedTowerInfo(this.selectedTowerTile.tower)
+        }
     }
 
 
@@ -145,6 +162,6 @@ export class InputManager {
         eventDispatcher.clearListenersOfEvent("tileHover")
         eventDispatcher.clearListenersOfEvent("tileUnhover")
         eventDispatcher.clearListenersOfEvent("tileTowerSelect")
-
+        window.removeEventListener("keydown", this.handleKeyPress)
     }
 }
