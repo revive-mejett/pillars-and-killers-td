@@ -24,6 +24,9 @@ export class IcePillar extends Tower {
         this.towerName = "Ice Pillar"
         this.speedMultiplier = towerData.towerStats.speedMultiplier
         this.beamWidth = towerData.towerInfo.beamWidth
+
+        //default targeting priority to fastest
+        this.currentTargetingIndex = this.targetingStrategies.length - 1
     }
 
     runTower(gameplayScene : GameplayScene) : void {

@@ -46,17 +46,37 @@ export class InfoPanel {
         const towerFireRateText = UIHelper.createText(0 + padding, 110 + padding,`fire rate: ${tower.fireRate}`, 20, "0xFFC7FF")
         infoPanel.addChild(towerFireRateText)
 
-        const upgradeCostText = UIHelper.createText(0 + padding, 160 + padding,`upgrade cost: $${isUpgradable ? tower.upgrades[tower.level - 1].cost : "N/A"}`, 20, "0xFFFF00")
-        infoPanel.addChild(upgradeCostText)
+
 
         const sellValue = Math.floor(tower.cost * sellValuePercentage/100)
 
-        const sellValueText = UIHelper.createText(0 + padding, 230 + padding,`sell value: $${sellValue}`, 20, "0x777777")
-        infoPanel.addChild(sellValueText)
+        const txtTogglePrevTargeting = UIHelper.createText(0 + padding, 200 + padding,"< Q", 20, "0x00FFFF")
+        infoPanel.addChild(txtTogglePrevTargeting)
+
+        const txtToggleNextTargeting = UIHelper.createText(200 + padding, 200 + padding,"E >", 20, "0x00FFFF")
+        infoPanel.addChild(txtToggleNextTargeting)
+
+        const currentTargetingContainer = new PIXI.Container()
+        currentTargetingContainer.x = 30 + padding
+        currentTargetingContainer.y = 200 + padding
+
+        infoPanel.addChild(currentTargetingContainer)
+        currentTargetingContainer.width = 500
+        const background = new PIXI.Graphics()
+        background.beginFill(0x000000)
+        background.drawRect(0,0,170,20)
+        background.endFill()
+        background.alpha = 0
+        currentTargetingContainer.addChild(background)
+
+        const txtCurrentTargeting = new Text(`Target: ${tower.targetingStrategies[tower.currentTargetingIndex]}`, new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
+        txtCurrentTargeting.x = (currentTargetingContainer.width - txtCurrentTargeting.width) / 2;
+        txtCurrentTargeting.y = (currentTargetingContainer.height - txtCurrentTargeting.height) / 2;
+        currentTargetingContainer.addChild(txtCurrentTargeting)
 
         //upgrade/sell btns
         if (isUpgradable) {
-            const upgradeButton = UIHelper.createButton(0 + padding, 190, 150, 30, "Upgrade", 20, 0x33FF33)
+            const upgradeButton = UIHelper.createButton(0 + padding, 250 - padding, 110, 50, `Upgrade\n$${isUpgradable ? tower.upgrades[tower.level - 1].cost : "N/A"}`, 20, 0xFFFF00)
             infoPanel.addChild(upgradeButton)
             //register event listener on upgrade btn
             upgradeButton.on("pointerdown", () => {
@@ -67,7 +87,7 @@ export class InfoPanel {
         }
 
 
-        const sellButton = UIHelper.createButton(80 + padding, 260, 150, 30, "Sell", 20, 0xFF3333)
+        const sellButton = UIHelper.createButton(0 + padding + 120 + padding, 250 - padding, 110, 50, `Sell\n$${sellValue}`, 20, 0x888888)
         infoPanel.addChild(sellButton)
 
         //register event listener on sell btn

@@ -62,8 +62,8 @@ export class GameState {
         if (developerTest) {
             for (let i = 0; i < this.startWave || 0; i++) {
                 if (killerThrillWaves[i] && productionWaves[i]) {
-                    // this.money += calculateWaveValue(productionWaves[i])
-                    this.money += calculateWaveValue(killerThrillWaves[i])
+                    this.money += calculateWaveValue(productionWaves[i])
+                    // this.money += calculateWaveValue(killerThrillWaves[i])
                 } else {
                     this.money += 20000
                 }

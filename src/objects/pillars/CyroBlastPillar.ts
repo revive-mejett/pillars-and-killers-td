@@ -28,6 +28,8 @@ export class CyroBlastPillar extends Tower {
         this.impactRadius = towerData.towerStats.impactRadius
         this.beamWidth = towerData.towerInfo.beamWidth
         this.soundPitch = towerData.towerInfo.soundPitch
+
+        this.currentTargetingIndex = this.targetingStrategies.length - 1
     }
 
     runTower(gameplayScene : GameplayScene) : void {
