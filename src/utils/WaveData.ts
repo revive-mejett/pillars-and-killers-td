@@ -1517,9 +1517,9 @@ const productionWaves = [
                 spacingMillis: 1000
             },
             {
-                enemy: "Neptunian Megalodon",
-                count: 2,
-                spacingMillis: 1500
+                enemy: "Alluring Rooster",
+                count: 4,
+                spacingMillis: 1700
             }
         ]
     ),
@@ -1782,8 +1782,13 @@ const productionWaves = [
                 spacingMillis: 1000
             },
             {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
                 enemy: "Enraged Eagle",
-                count: 5,
+                count: 4,
                 spacingMillis: 1200
             }
         ]
@@ -1792,9 +1797,19 @@ const productionWaves = [
     new Wave(
         [
             {
+                enemy: "Alluring Rooster",
+                count: 1,
+                spacingMillis: 2
+            },
+            {
                 enemy: "256p 2152",
                 count: 5,
                 spacingMillis: 900
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 1,
+                spacingMillis: 2
             },
             {
                 enemy: "Kingda Ka Zipper",
@@ -1802,10 +1817,20 @@ const productionWaves = [
                 spacingMillis: 350
             },
             {
+                enemy: "Alluring Rooster",
+                count: 1,
+                spacingMillis: 2
+            },
+            {
                 enemy: "Obsidian Ripper",
                 count: 6,
                 spacingMillis: 1750
-            }
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 1,
+                spacingMillis: 2
+            },
         ]
     ),
     // wave 77
@@ -1813,7 +1838,7 @@ const productionWaves = [
         [
             {
                 enemy: "Enraged Eagle",
-                count: 8,
+                count: 7,
                 spacingMillis: 1400
             }
         ]
