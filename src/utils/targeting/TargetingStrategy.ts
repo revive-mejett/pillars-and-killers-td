@@ -72,7 +72,7 @@ export class FastTargetingStrategy extends ITargetingStrategy {
             return undefined
         }
         //enemies are still existing and alive
-        if (enemy1!.speed > enemy2!.speed) {
+        if (enemy1!.speed * enemy1!.slowDebuffStats.speedMultiplier > enemy2!.speed * enemy2!.slowDebuffStats.speedMultiplier) {
             return enemy1
         } else {
             return enemy2
