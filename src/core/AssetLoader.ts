@@ -137,6 +137,7 @@ export class AssetLoader {
             "chillbg": "assets/images/chill_bg.png",
             "normalbg": "assets/images/normal_bg.png",
             "killerthrillbg": "assets/images/killerthrill_bg.png",
+            "1pill2nilbg": "assets/images/1pill2nil_bg.png",
             "victoryChill" : "assets/images/victory_chill.png",
             "victoryNormal" : "assets/images/victory_normal.png",
             "victoryKillerThrill" : "assets/images/victory_killersthrill.png",
