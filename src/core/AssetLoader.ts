@@ -141,6 +141,7 @@ export class AssetLoader {
             "victoryChill" : "assets/images/victory_chill.png",
             "victoryNormal" : "assets/images/victory_normal.png",
             "victoryKillerThrill" : "assets/images/victory_killersthrill.png",
+            "victory1Pill2Nil" : "assets/images/victory_1pill2nil.png",
             "gameoverGraveyard" : "assets/images/gameover_rip.png",
             "tutorial1" : "assets/images/tutorial_1.png",
             "tutorial2" : "assets/images/tutorial_2.png",

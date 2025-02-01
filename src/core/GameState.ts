@@ -14,7 +14,7 @@ export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 0
+    startWave: number = 99
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -53,7 +53,11 @@ export class GameState {
                 this.lives = 100
             }
             if (this.difficulty === "Killer's Thrill") {
-                this.money = 200
+                this.money = 300
+                this.lives = 75
+            }
+            if (this.difficulty === "1Pill2Nil") {
+                this.money = 2000000
                 this.lives = 1
             }
         }
@@ -86,6 +90,10 @@ export class GameState {
             this.killBountyMultiplier = 1
         }
         if (this.difficulty === "Killer's Thrill") {
+            this.sellValuePercentage = 60
+            this.killBountyMultiplier = 0.50
+        }
+        if (this.difficulty === "1Pill2Nil") {
             this.sellValuePercentage = 50
             this.killBountyMultiplier = 0.50
         }

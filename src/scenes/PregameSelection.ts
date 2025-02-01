@@ -330,7 +330,7 @@ export class PregameSelection extends Scene {
 
         if (fileData && allMaps.get(fileData.map)) {
             const difficulty : Difficulty = fileData.difficulty || "Normal"
-            let difficultyColour = "0xFFFF00"
+            let difficultyColour = "0xFFFFFF"
             if (difficulty === "Normal") {
                 difficultyColour = "0xFFFF00"
             }
