@@ -111,7 +111,7 @@ export class WaveManager {
 
 
         //set to an alternatve wave set if player plays on killer's thrill (hard) difficulty
-        const waves = difficulty === "Killer's Thrill" ? killerThrillWaves : productionWaves
+        const waves = difficulty === "Killer's Thrill" || difficulty === "1Pill2Nil" ? killerThrillWaves : productionWaves
 
         this.waves = waves
     }

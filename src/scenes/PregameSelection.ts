@@ -87,11 +87,11 @@ export class PregameSelection extends Scene {
             820,
             100,
             "Killer's Thrill",
-            "*200 starting money, 100 waves\nKillers only give 60% of their original bounty\n*50% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading",
+            "*250 starting money, 100 waves\nKillers only give 60% of their original bounty\n*50% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading",
             "0xFF0066",
             "killerthrillbg",
-            200,
-            1,
+            250,
+            75,
             true
         )
         this.createDifficultyPane(
