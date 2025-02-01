@@ -33,6 +33,9 @@ export class Victory extends Scene {
         if (this.playedDifficulty === "Killer's Thrill") {
             background = PIXI.Sprite.from(assetLoader.otherImages.victoryKillerThrill)
         }
+        if (this.playedDifficulty === "1Pill2Nil") {
+            background = PIXI.Sprite.from(assetLoader.otherImages.victory1Pill2Nil)
+        }
         background.zIndex = 1
 
         this.container.addChild(background)
@@ -46,6 +49,9 @@ export class Victory extends Scene {
             congratsMessage2 = "Feel free to return back to this save slot in order to play Endless Mode!"
         }
         if (this.playedDifficulty === "Killer's Thrill") {
+            congratsMessage2 = "Despite the killers unleashing a larger attack, you claim victory! Feel free to continue on Endless mode!"
+        }
+        if (this.playedDifficulty === "1Pill2Nil") {
             congratsMessage2 = "You have beat the toughest the killers can get! Your city is unstoppable! Feel free to continue on Endless mode!"
         }
 

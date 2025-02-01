@@ -53,6 +53,10 @@ export class GameState {
                 this.lives = 100
             }
             if (this.difficulty === "Killer's Thrill") {
+                this.money = 300
+                this.lives = 75
+            }
+            if (this.difficulty === "1Pill2Nil") {
                 this.money = 200
                 this.lives = 1
             }
@@ -86,6 +90,10 @@ export class GameState {
             this.killBountyMultiplier = 1
         }
         if (this.difficulty === "Killer's Thrill") {
+            this.sellValuePercentage = 60
+            this.killBountyMultiplier = 0.50
+        }
+        if (this.difficulty === "1Pill2Nil") {
             this.sellValuePercentage = 50
             this.killBountyMultiplier = 0.50
         }

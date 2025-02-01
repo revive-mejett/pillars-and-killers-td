@@ -7,7 +7,7 @@ export type TowerData = {
     currentTargetingIndex: number
 }
 
-export type Difficulty = "Chill" | "Normal" | "Killer's Thrill"
+export type Difficulty = "Chill" | "Normal" | "Killer's Thrill" | "1Pill2Nil"
 
 
 export type GameSaveData = {
