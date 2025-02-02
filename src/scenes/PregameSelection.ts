@@ -20,6 +20,9 @@ export class PregameSelection extends Scene {
     mapSelectionContainer: PIXI.Container
     difficultySelectionContainer: PIXI.Container
     difficultyPanes: PIXI.Container[] = []
+
+    btnPrevDifficulties: PIXI.Container = new PIXI.Container()
+    btnNextDifficulties: PIXI.Container = new PIXI.Container()
     difficultyPaneSelectionStartIndex = 0
     selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined, difficulty: Difficulty | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined, difficulty: "Normal" }
     selectedMapTitle: string | undefined = undefined
@@ -63,67 +66,6 @@ export class PregameSelection extends Scene {
         this.createMapSelectionPane(800, 550, "Stairwell-O-Chaos");
 
         // this.createMapSelectionPane(800, 100, "blons");
-        this.createDifficultyPane(
-            0,
-            100,
-            "Chill",
-            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*75% pillar sellback value\n*Great for casual pillar builders\n[Note]: Beat Wave 100 on Normal or Killer's Thrill to continue on Endless!",
-            "0x00FF77",
-            "chillbg",
-            500,
-            200
-        )
-        this.createDifficultyPane(
-            410,
-            100,
-            "Normal",
-            "*400 starting money, 100 waves\n*Killers give normal bounty\n*60% pillar sellback value\n*For those who are skilled at slaying killers",
-            "0XFFFF00",
-            "normalbg",
-            400,
-            100
-        )
-        this.createDifficultyPane(
-            820,
-            100,
-            "Killer's Thrill",
-            "*250 starting money, 100 waves\nKillers only give 60% of their original bounty\n*50% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading",
-            "0xFF0066",
-            "killerthrillbg",
-            250,
-            75,
-            true
-        )
-        this.createDifficultyPane(
-            1230,
-            100,
-            "1Pill2Nil",
-            "*200 starting money, 110 waves\n50% kill bounty...\n*50% pillar sellback value...\n*No checkpoints, no saving...; Waves start automatically after each \"checkpoint\"\n*One pill to nil. Only for the experienced - not for the faint of heart",
-            "0x0077FF",
-            "1pill2nilbg",
-            200,
-            1,
-            true
-        )
-
-        this.updateDifficultyPaneVisibility();
-
-        const btnPrevDifficulties = UIHelper.createButton(0, 950, 200, 50, "Prev", 20, 0xFFFFFF);
-        this.difficultySelectionContainer.addChild(btnPrevDifficulties);
-        const btnNextDifficulties = UIHelper.createButton(1300, 950, 200, 50, "Next", 20, 0xFFFFFF);
-        this.difficultySelectionContainer.addChild(btnNextDifficulties);
-        btnPrevDifficulties.on("pointerdown", () => {
-            this.difficultyPaneSelectionStartIndex--
-            this.updatePrevNextDifficultyButtons(btnPrevDifficulties, btnNextDifficulties);
-            this.updateDifficultyPaneVisibility()
-        });
-        btnNextDifficulties.on("pointerdown", () => {
-            this.difficultyPaneSelectionStartIndex++
-            this.updatePrevNextDifficultyButtons(btnPrevDifficulties, btnNextDifficulties);
-            this.updateDifficultyPaneVisibility()
-        });
-
-        this.updatePrevNextDifficultyButtons(btnPrevDifficulties, btnNextDifficulties);
 
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
@@ -139,8 +81,87 @@ export class PregameSelection extends Scene {
         pillarsKillersVisual.y = 10
         pillarsKillersVisual.zIndex = 1
         this.container.addChild(pillarsKillersVisual)
+    }
 
+    private createDifficultyPanes() {
+        //clear existing difficulty pane
+        this.difficultySelectionContainer.removeChildren()
+        this.difficultyPaneSelectionStartIndex = 0
+        this.difficultyPanes = []
+        this.createDifficultyPane(
+            0,
+            100,
+            "Chill",
+            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*75% pillar sellback value\n*Great for casual pillar builders\n[Note]: Beat Wave 100 on Normal or Killer's Thrill to continue on Endless!",
+            "0x00FF77",
+            "chillbg",
+            500,
+            200,
+            false,
+            false
+        );
+        this.createDifficultyPane(
+            410,
+            100,
+            "Normal",
+            "*400 starting money, 100 waves\n*Killers give normal bounty\n*60% pillar sellback value\n*For those who are skilled at slaying killers",
+            "0XFFFF00",
+            "normalbg",
+            400,
+            100,
+            false,
+            false
+        );
+        this.createDifficultyPane(
+            820,
+            100,
+            "Killer's Thrill",
+            "*250 starting money, 100 waves\nKillers only give 60% of their original bounty\n*50% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading",
+            "0xFF0066",
+            "killerthrillbg",
+            250,
+            75,
+            false,
+            false //set to true if not ready, developer boolean
+        );
+        if (!this.selectedSaveData.mapTitle) {
+            return
+        }
+        let hasWonKillerThrill = false
 
+        if (gameDataManager.medalData && gameDataManager.medalData[this.selectedSaveData.mapTitle] && gameDataManager.medalData[this.selectedSaveData.mapTitle]["1Pill2Nil"]) {
+            hasWonKillerThrill = true
+        }
+        console.log("has won killer thrill ", hasWonKillerThrill)
+        this.createDifficultyPane(
+            1230,
+            100,
+            "1Pill2Nil",
+            "*200 starting money, 110 waves\n50% kill bounty...\n*50% pillar sellback value...\n*No checkpoints, no saving...; Waves start automatically after each \"checkpoint\"\n*One pill to nil. Only for the experienced - not for the faint of heart",
+            "0x0077FF",
+            "1pill2nilbg",
+            200,
+            1,
+            !hasWonKillerThrill,
+            false //set to true if not ready, developer boolean
+        );
+
+        this.btnPrevDifficulties = UIHelper.createButton(0, 950, 200, 50, "Prev", 20, 0xFFFFFF);
+        this.difficultySelectionContainer.addChild(this.btnPrevDifficulties);
+        this.btnNextDifficulties = UIHelper.createButton(1300, 950, 200, 50, "Next", 20, 0xFFFFFF);
+        this.difficultySelectionContainer.addChild(this.btnNextDifficulties);
+        this.btnPrevDifficulties.on("pointerdown", () => {
+            this.difficultyPaneSelectionStartIndex--
+            this.updatePrevNextDifficultyButtons(this.btnPrevDifficulties, this.btnNextDifficulties);
+            this.updateDifficultyPaneVisibility()
+        });
+        this.btnNextDifficulties.on("pointerdown", () => {
+            this.difficultyPaneSelectionStartIndex++
+            this.updatePrevNextDifficultyButtons(this.btnPrevDifficulties, this.btnNextDifficulties);
+            this.updateDifficultyPaneVisibility()
+        });
+
+        this.updatePrevNextDifficultyButtons(this.btnPrevDifficulties, this.btnNextDifficulties);
     }
 
     private updatePrevNextDifficultyButtons(btnPrevDifficulties: PIXI.Container<PIXI.DisplayObject>, btnNextDifficulties: PIXI.Container<PIXI.DisplayObject>) {
@@ -166,11 +187,9 @@ export class PregameSelection extends Scene {
             this.difficultyPanes[this.difficultyPaneSelectionStartIndex + 2].x = 920;
         }
 
-
-
     }
 
-    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, description: string, textColour: string, backgroundAsset: string, startingMoney: number, startingLives: number, isWIP?: boolean) {
+    private createDifficultyPane(paneXPos: number, paneYPos: number, difficulty: Difficulty, description: string, textColour: string, backgroundAsset: string, startingMoney: number, startingLives: number, isLocked: boolean, isWIP?: boolean) {
 
         if (!assetLoader.otherImages || !assetLoader.otherImages[backgroundAsset]) {
             return
@@ -226,13 +245,22 @@ export class PregameSelection extends Scene {
         const textDescription = UIHelper.createText(paneWidth/2, 650, description, 20, textColour, true, paneWidth);
         paneContainer.addChild(textDescription);
 
+
         if (!isWIP) {
-            const btnSelect = UIHelper.createButton(0, 800 - 50, paneWidth, 50, "Select", 30, 0x77FF77);
-            paneContainer.addChild(btnSelect)
-            btnSelect.on("pointerdown", () => {
-                this.selectedSaveData.difficulty = difficulty
-                eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
-            });
+            if (isLocked) {
+                const textLocked = UIHelper.createText(60, + 800 - 50 + textYOffset, "Locked!", 30, "0xFF0000", true);
+                paneContainer.addChild(textLocked);
+                const textUnlockInstructions = UIHelper.createText(250, + 800 - 50 + textYOffset, `Beat ${this.selectedSaveData.mapTitle} on Killer's Thrill to unlock!`, 20, "0x00FFFF", true, 250);
+                paneContainer.addChild(textUnlockInstructions);
+            } else {
+                const btnSelect = UIHelper.createButton(0, 800 - 50, paneWidth, 50, "Select", 30, 0x77FF77);
+                paneContainer.addChild(btnSelect)
+                btnSelect.on("pointerdown", () => {
+                    this.selectedSaveData.difficulty = difficulty
+                    eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+                });
+            }
+
         } else {
             const textComingSoon = UIHelper.createText(200, + 800 - 50 + textYOffset, "Coming soon!", 40, "0x777777", true);
             paneContainer.addChild(textComingSoon);
@@ -296,7 +324,11 @@ export class PregameSelection extends Scene {
             this.selectedSaveData.mapTitle = title
             this.mapSelectionContainer.visible = false
             this.difficultySelectionContainer.visible = true
-            // eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
+
+            //create the difficulty panes
+            this.createDifficultyPanes()
+            this.updateDifficultyPaneVisibility()
+            this.updatePrevNextDifficultyButtons(this.btnPrevDifficulties, this.btnNextDifficulties);
         });
 
     }
