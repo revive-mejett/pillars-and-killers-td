@@ -134,15 +134,25 @@ export class AssetLoader {
             "mainTitle" : "assets/images/td_title.png",
             "mainTitleImage" : "assets/images/pillars_killers_title_pic.png",
             "mainTitleBackground" : "assets/images/main_menu_background.png",
+
             "chillbg": "assets/images/chill_bg.png",
             "normalbg": "assets/images/normal_bg.png",
             "killerthrillbg": "assets/images/killerthrill_bg.png",
             "1pill2nilbg": "assets/images/1pill2nil_bg.png",
+
             "victoryChill" : "assets/images/victory_chill.png",
             "victoryNormal" : "assets/images/victory_normal.png",
             "victoryKillerThrill" : "assets/images/victory_killersthrill.png",
             "victory1Pill2Nil" : "assets/images/victory_1pill2nil.png",
+
+            "trophy_Chill":"assets/images/chill_trophy.png",
+            "trophy_Normal":"assets/images/normal_trophy.png",
+            "trophy_Killer's Thrill":"assets/images/killerthrill_trophy.png",
+            "trophy_1Pill2Nil":"assets/images/1pill2nil_trophy.png",
+            "trophy_Locked":"assets/images/medal_locked.png",
+
             "gameoverGraveyard" : "assets/images/gameover_rip.png",
+
             "tutorial1" : "assets/images/tutorial_1.png",
             "tutorial2" : "assets/images/tutorial_2.png",
             "tutorial3" : "assets/images/tutorial_3.png",

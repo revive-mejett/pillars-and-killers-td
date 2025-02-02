@@ -20,3 +20,12 @@ export type GameSaveData = {
     checkpointWave: number,
     difficulty?: Difficulty
 }
+
+export type MedalsSaveData = {
+    [key: string] : {
+        "Chill" : boolean,
+        "Normal" : boolean,
+        "Killer's Thrill" : boolean,
+        "1Pill2Nil" : boolean
+    }
+}
