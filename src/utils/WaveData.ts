@@ -1953,13 +1953,8 @@ const productionWaves = [
         [
             {
                 enemy: "Irresistible Phoenix",
-                count: 5,
-                spacingMillis: 3500
-            },
-            {
-                enemy: "256p 2152",
-                count: 4,
-                spacingMillis: 4500
+                count: 6,
+                spacingMillis: 2400
             },
             {
                 enemy: "Dashing Dasher",
@@ -1969,7 +1964,7 @@ const productionWaves = [
             {
                 enemy: "Irresistible Phoenix",
                 count: 6,
-                spacingMillis: 2800
+                spacingMillis: 2400
             }
         ]
     ),
@@ -1979,7 +1974,7 @@ const productionWaves = [
             {
                 enemy: "Challenger Deep Kraken",
                 count: 4,
-                spacingMillis: 8000
+                spacingMillis: 2000
             },
             {
                 enemy: "256p 2152",
@@ -1989,7 +1984,7 @@ const productionWaves = [
             {
                 enemy: "Jr. Rhombicosidodecahedron",
                 count: 7,
-                spacingMillis: 1800
+                spacingMillis: 1600
             }
         ]
     ),
@@ -1999,7 +1994,7 @@ const productionWaves = [
             {
                 enemy: "Challenger Deep Kraken",
                 count: 4,
-                spacingMillis: 5000
+                spacingMillis: 8000
             },
             {
                 enemy: "Enraged Eagle",
@@ -2013,7 +2008,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 86 placeholder wave
+    // wave 86
     new Wave(
         [
             {
@@ -2038,7 +2033,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 87 placeholder wave
+    // wave 87
     new Wave(
         [
             {
@@ -2068,7 +2063,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 88 placeholder wave
+    // wave 88
     new Wave(
         [
             {
@@ -2093,7 +2088,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 89 placeholder wave
+    // wave 89
     new Wave(
         [
             {
@@ -2108,7 +2103,7 @@ const productionWaves = [
             }
         ]
     ),
-    // wave 90 placeholder wave
+    // wave 90
     new Wave(
         [
             {

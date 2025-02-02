@@ -122,17 +122,16 @@ export class PregameSelection extends Scene {
             250,
             75,
             false,
-            false //set to true if not ready, developer boolean
+            true //set to true if not ready, developer boolean
         );
         if (!this.selectedSaveData.mapTitle) {
             return
         }
         let hasWonKillerThrill = false
 
-        if (gameDataManager.medalData && gameDataManager.medalData[this.selectedSaveData.mapTitle] && gameDataManager.medalData[this.selectedSaveData.mapTitle]["1Pill2Nil"]) {
+        if (gameDataManager.medalData && gameDataManager.medalData[this.selectedSaveData.mapTitle] && gameDataManager.medalData[this.selectedSaveData.mapTitle]["Killer's Thrill"]) {
             hasWonKillerThrill = true
         }
-        console.log("has won killer thrill ", hasWonKillerThrill)
         this.createDifficultyPane(
             1230,
             100,
@@ -143,7 +142,7 @@ export class PregameSelection extends Scene {
             200,
             1,
             !hasWonKillerThrill,
-            false //set to true if not ready, developer boolean
+            true //set to true if not ready, developer boolean
         );
 
         this.btnPrevDifficulties = UIHelper.createButton(0, 950, 200, 50, "Prev", 20, 0xFFFFFF);
