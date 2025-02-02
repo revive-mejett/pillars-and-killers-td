@@ -58,9 +58,9 @@ export class PregameSelection extends Scene {
         this.createMapSelectionPane(0, 100, "Walk in the Park");
         this.createMapSelectionPane(400, 100, "Death Walk");
         this.createMapSelectionPane(800, 100, "Rough Spiral")
-        this.createMapSelectionPane(0, 500, "Starry Night")
-        this.createMapSelectionPane(400, 500, "Medium French Vanilla")
-        this.createMapSelectionPane(800, 500, "Stairwell-O-Chaos");
+        this.createMapSelectionPane(0, 550, "Starry Night")
+        this.createMapSelectionPane(400, 550, "Medium French Vanilla")
+        this.createMapSelectionPane(800, 550, "Stairwell-O-Chaos");
 
         // this.createMapSelectionPane(800, 100, "blons");
         this.createDifficultyPane(
@@ -241,7 +241,16 @@ export class PregameSelection extends Scene {
     }
 
     private createMapSelectionPane(paneXPos: number, paneYPos: number, title: string) {
+
+        const imagesBundle = assetLoader.otherImages
+
+        if (!imagesBundle) {
+            throw new Error("Icons asset may have not loaded properly Akshan")
+        }
+
+
         const paneWidth = 300
+        const paneHeight = 425
 
         const paneContainer = new PIXI.Container();
         paneContainer.x = paneXPos;
@@ -251,7 +260,7 @@ export class PregameSelection extends Scene {
 
         const bgColour = new PIXI.Graphics();
         bgColour.beginFill(0x002222);
-        bgColour.drawRect(0, 0, paneWidth, 300);
+        bgColour.drawRect(0, 0, paneWidth, paneHeight);
         bgColour.endFill();
         paneContainer.addChild(bgColour);
 
@@ -267,11 +276,20 @@ export class PregameSelection extends Scene {
         }
 
         const mapCard = UIHelper.createMapCard(mapData, 200, 25)
+
+
+        //Listing all trophies aquired by the player
+        this.displayMedal(title, "Chill", 0, imagesBundle, paneContainer);
+        this.displayMedal(title, "Normal", 75, imagesBundle, paneContainer);
+        this.displayMedal(title, "Killer's Thrill", 150, imagesBundle, paneContainer);
+        this.displayMedal(title, "1Pill2Nil", 225, imagesBundle, paneContainer);
+
+
         paneContainer.addChild(mapCard)
         mapCard.x = 50
         mapCard.y = 40
 
-        const btnSelect = UIHelper.createButton(0, 250, 300, 50, "Select", 30, 0x77FF77);
+        const btnSelect = UIHelper.createButton(0, paneHeight - 50, 300, 50, "Select", 30, 0x77FF77);
         paneContainer.addChild(btnSelect)
 
         btnSelect.on("pointerdown", () => {
@@ -281,6 +299,25 @@ export class PregameSelection extends Scene {
             // eventDispatcher.fireEvent("gameStarted", this.selectedSaveData);
         });
 
+    }
+
+    private displayMedal(title: string, difficulty: Difficulty, xPosition: number, imagesBundle: { [key: string]: string; }, paneContainer: PIXI.Container<PIXI.DisplayObject>) {
+        const medalPadding = 2;
+        const medalYPos = 250;
+        const medalWidth = 75;
+        const medalHeight = 125;
+
+        let medalSprite;
+        if (gameDataManager.medalData && gameDataManager.medalData[title] && gameDataManager.medalData[title][difficulty]) {
+            medalSprite = PIXI.Sprite.from(imagesBundle[`trophy_${difficulty}`]);
+        } else {
+            medalSprite = PIXI.Sprite.from(imagesBundle["trophy_Locked"]);
+        }
+        medalSprite.x = medalPadding + xPosition;
+        medalSprite.y = medalYPos;
+        medalSprite.width = medalWidth;
+        medalSprite.height = medalHeight;
+        paneContainer.addChild(medalSprite);
     }
 
     private updateSaveFileList() {

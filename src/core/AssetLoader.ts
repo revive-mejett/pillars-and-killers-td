@@ -145,10 +145,11 @@ export class AssetLoader {
             "victoryKillerThrill" : "assets/images/victory_killersthrill.png",
             "victory1Pill2Nil" : "assets/images/victory_1pill2nil.png",
 
-            "trophyChill":"assets/images/chill_trophy.png",
-            "trophyNormal":"assets/images/normal_trophy.png",
-            "trophyKillerThrill":"assets/images/killerthrill_trophy.png",
-            "trophy1Pill2Nil":"assets/images/1pill2nil_trophy.png",
+            "trophy_Chill":"assets/images/chill_trophy.png",
+            "trophy_Normal":"assets/images/normal_trophy.png",
+            "trophy_Killer's Thrill":"assets/images/killerthrill_trophy.png",
+            "trophy_1Pill2Nil":"assets/images/1pill2nil_trophy.png",
+            "trophy_Locked":"assets/images/medal_locked.png",
 
             "gameoverGraveyard" : "assets/images/gameover_rip.png",
 
