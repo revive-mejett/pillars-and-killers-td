@@ -154,6 +154,7 @@ export class GameplayScene extends Scene {
                 if (this.hud && this.hud.nextWaveButton) {
                     this.hud.nextWaveButton.visible = false
                 }
+                gameDataManager.awardMedal(this.gamestate.mapName, this.gamestate.difficulty)
                 setTimeout(() => {
                     eventDispatcher.fireEvent("victory", this.gamestate?.difficulty)
                 }, 5000);
