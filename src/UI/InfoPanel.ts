@@ -11,6 +11,12 @@ import TowerData from "src/ts/types/TowerData"
 import { Wave } from "src/objects/Wave"
 import { countEnemyQuantityInWave } from "../utils/Calc"
 import { allEnemyData } from "../utils/EnemyData"
+import { IcePillar } from "../objects/pillars/IcePillar"
+import { CyroBlastPillar } from "../objects/pillars/CyroBlastPillar"
+import { PoisonIvyPillar } from "../objects/pillars/PoisonIvyPillar"
+import { DreadglassPillar } from "../objects/pillars/DreadglassPillar"
+import { EmberPillar } from "../objects/pillars/EmberPillar"
+import { MissilePillar } from "../objects/pillars/MissilePillar"
 
 const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
@@ -21,6 +27,11 @@ export class InfoPanel {
         if (!tower.upgrades) {
             throw new Error("Upgrades not provided")
         }
+
+        if (!assetLoader.icons) {
+            throw new Error("Assetloader icons is not defined - something went wrong")
+        }
+
         const padding = 5
         const isUpgradable = tower.level <= tower.upgrades.length
 
@@ -37,28 +48,63 @@ export class InfoPanel {
 
         const towerTitleText = UIHelper.createText(0 + padding, 0 + padding,`${tower.towerName}`, 20, "0xFFFFFF")
         infoPanel.addChild(towerTitleText)
-        const towerLevelText = UIHelper.createText(0 + padding, 50 + padding,`Lv. ${tower.level}`, 20, "0xC7C7FF")
+        const towerLevelText = UIHelper.createText(0 + padding, 30 + padding,`Lv. ${tower.level}`, 20, "0xC7C7FF")
         infoPanel.addChild(towerLevelText)
-        const towerDamageText = UIHelper.createText(0 + padding, 70 + padding,`damage/shot: ${tower.damage}`, 20, "0xFFC7C7")
+        const towerDamageText = UIHelper.createText(0 + padding, 50 + padding,`damage/shot: ${tower.damage}`, 20, "0xFFC7C7")
         infoPanel.addChild(towerDamageText)
-        const towerRangeText = UIHelper.createText(0 + padding, 90 + padding,`range: ${tower.range}`, 20, "0xC7FFFF")
+        const towerRangeText = UIHelper.createText(0 + padding, 70 + padding,`range: ${tower.range}`, 20, "0xC7FFFF")
         infoPanel.addChild(towerRangeText)
-        const towerFireRateText = UIHelper.createText(0 + padding, 110 + padding,`fire rate: ${tower.fireRate}`, 20, "0xFFC7FF")
+        const towerFireRateText = UIHelper.createText(0 + padding, 90 + padding,`fire rate: ${tower.fireRate}`, 20, "0xFFC7FF")
         infoPanel.addChild(towerFireRateText)
 
+        //if tower has splash radius
+        if ((tower instanceof CyroBlastPillar || tower instanceof EmberPillar || tower instanceof MissilePillar) && tower.impactRadius > 0) {
+            const splashRadiusText = UIHelper.createText(0 + padding, 110 + padding,`Splash radius: ${tower.impactRadius}`, 20, "0xFFE1C7")
+            infoPanel.addChild(splashRadiusText)
+        }
 
+
+        //special properties start here
+        let specialPropertyYpos = 130
+        const textYOffset = 10
+        if (tower instanceof IcePillar || tower instanceof CyroBlastPillar) {
+            const snailIcon = UIHelper.createIcon(assetLoader.icons.slowed, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(snailIcon)
+            const speedMultiplierText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,`Speed (x${tower.speedMultiplier})`, 20, "0xA9A9FF")
+            infoPanel.addChild(speedMultiplierText)
+            specialPropertyYpos += 40
+        }
+        if (tower instanceof PoisonIvyPillar) {
+            const oakIcon = UIHelper.createIcon(assetLoader.icons.poisonIved, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(oakIcon)
+            const extraDamageText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,`Extra damage (+${tower.extraDamage})`, 20, "0xA9FF00")
+            infoPanel.addChild(extraDamageText)
+            specialPropertyYpos += 40
+        }
+        if (tower instanceof DreadglassPillar) {
+            const dreadglassIcon = UIHelper.createIcon(assetLoader.icons.dreadglass, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(dreadglassIcon)
+            const resistanceReductionText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,`Resistance loss (-${tower.armourReduction})`, 20, "0xC70077")
+            infoPanel.addChild(resistanceReductionText)
+            specialPropertyYpos += 40
+        }
 
         const sellValue = Math.floor(tower.cost * sellValuePercentage/100)
 
-        const txtTogglePrevTargeting = UIHelper.createText(0 + padding, 200 + padding,"< Q", 20, "0x00FFFF")
+
+
+        //special targeting section
+        const targetingContainerYPos = 210
+
+        const txtTogglePrevTargeting = UIHelper.createText(0 + padding, targetingContainerYPos + padding,"< Q", 20, "0x00FFFF")
         infoPanel.addChild(txtTogglePrevTargeting)
 
-        const txtToggleNextTargeting = UIHelper.createText(200 + padding, 200 + padding,"E >", 20, "0x00FFFF")
+        const txtToggleNextTargeting = UIHelper.createText(200 + padding, targetingContainerYPos + padding,"E >", 20, "0x00FFFF")
         infoPanel.addChild(txtToggleNextTargeting)
 
         const currentTargetingContainer = new PIXI.Container()
         currentTargetingContainer.x = 30 + padding
-        currentTargetingContainer.y = 200 + padding
+        currentTargetingContainer.y = targetingContainerYPos + padding
 
         infoPanel.addChild(currentTargetingContainer)
         currentTargetingContainer.width = 500

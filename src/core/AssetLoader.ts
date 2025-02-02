@@ -47,6 +47,7 @@ export class AssetLoader {
             "heart" : "assets/images/heart_icon.png",
             "speedArrow" : "assets/images/speed_icon.png",
             "slowed" : "assets/images/slowed_icon.png",
+            "dreadglass" : "assets/images/dreadglass_icon.png",
             "poisonIved" : "assets/images/poison_ived_icon.png",
             "dmgResistance" : "assets/images/resistance_icon.png",
             "musicActive" : "assets/images/icon_sfx_music.png",
