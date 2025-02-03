@@ -52,7 +52,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: false,
             animationSpeed: 0.1
-        }
+        },
+        description: "He/she is only 2 weeks old! Don't ignore them though! They can deal 1 damage!"
     },
     "Little Sparrow": {
         atlasData: {
@@ -105,7 +106,8 @@ const allEnemyData: EnemyData = {
             isLooking: true,
             animationSpeed: 0.1,
             regen: 2
-        }
+        },
+        description: "Cute bird flying around! He/She is adorable!"
     },
     "Earthling Flake": {
         atlasData: {
@@ -158,7 +160,8 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.1,
             slowImmune: true
-        }
+        },
+        description: "You see them everyday, well at least in the winter! These can resist the frost as they are present in December, January, and February!"
     },
     "Quick Bonhomme": {
         atlasData: {
@@ -210,7 +213,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 1,
             isLooking: false,
             animationSpeed: 0.1
-        }
+        },
+        description: "These fast little guys can be a trouble if you don't have a lot of slowing pillars built."
     },
     "Stone Pricker": {
         atlasData: {
@@ -263,7 +267,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.1
-        }
+        },
+        description: "These can be tough although they are a bit slow due to their armour."
     },
     "4p 2024": {
         atlasData: {
@@ -310,7 +315,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: false,
             animationSpeed: 0.25
-        }
+        },
+        description: "A 4-pointed star just twinkling around. They aren't too big for a threat. However, you haven't met their older brothers and sisters yet!"
     },
     "Mean Triangle": {
         atlasData: {
@@ -351,7 +357,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.02
-        }
+        },
+        description: "They are just mean. They need to be focused down upon to kick them off the Earth."
     },
     "Brave Proxima Centauri": {
         atlasData: {
@@ -417,7 +424,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.05,
             regen: 0,
             armour: 12
-        }
+        },
+        description: "Taking this star down requires not only ice, but a taste of its own element."
     },
     "Toddler Sphere": {
         atlasData: {
@@ -476,7 +484,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0.05,
             isLooking: false,
             animationSpeed: 0.15
-        }
+        },
+        description: "He/She loves rolling around the track, hoping to reach the end someday and say: MAMA!!!!."
     },
     "Cute Crow": {
         atlasData: {
@@ -529,7 +538,8 @@ const allEnemyData: EnemyData = {
             isLooking: true,
             animationSpeed: 0.2,
             regen: 30
-        }
+        },
+        description: "Due to his/her cuteness, he/she simply adores flying around and he's/she's pretty healthy!"
     },
     "Polar Goldfish": {
         atlasData: {
@@ -582,7 +592,8 @@ const allEnemyData: EnemyData = {
             isLooking: true,
             animationSpeed: 0,
             slowImmune: true
-        }
+        },
+        description: "Due to its adaptability, it can withstand the sheer cold of a day on Antarctica."
     },
     "Fast Runner": {
         atlasData: {
@@ -634,7 +645,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 1.2,
             isLooking: false,
             animationSpeed: 0.12
-        }
+        },
+        description: "He/She loves Track and Field and finished 3rd on 100m! He/She is kinda speedy and it shows."
     },
     "Steel Warrior": {
         atlasData: {
@@ -687,7 +699,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.5
-        }
+        },
+        description: "He/She is well prepped with armour and ready to tackle against your pillars!"
     },
     "5p 2025": {
         atlasData: {
@@ -734,7 +747,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0.08,
             isLooking: false,
             animationSpeed: 0.5
-        }
+        },
+        description: "His/Her energy on the outside create a glittering aura just for him/her!"
     },
     "Angry Piranha": {
         atlasData: {
@@ -776,7 +790,8 @@ const allEnemyData: EnemyData = {
             isLooking: true,
             animationSpeed: 0,
             slowImmune: true
-        }
+        },
+        description: "This one's also slow immune and can bite you if it reaches the end. Don't mess with piranhas."
     },
     "Serious Sirius": {
         atlasData: {
@@ -843,7 +858,8 @@ const allEnemyData: EnemyData = {
             regen: 0,
             armour: 75,
             slowImmune: true
-        }
+        },
+        description: "If you're talking about a killer that's serious, this one is taking it REALLY seriously, without slowing down."
     },
     "Freshman Octahedron": {
         atlasData: {
@@ -926,7 +942,8 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.2,
             armour: 25
-        }
+        },
+        description: "He/She behaves as usual as a typical teenager, spinning around and messing around and maybe throwing wet toilet paper in washrooms. (S)he's bullied because of that unfortunately."
     },
     "Beautiful Peacock": {
         atlasData: {
@@ -980,7 +997,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.3,
             regen: 155,
             armour: 30
-        }
+        },
+        description: "Wow! Look at its beautiful wings! This gentlebird can regen its health as it tries its best enjoying things."
     },
     "Twilight Great White": {
         atlasData: {
@@ -1033,7 +1051,8 @@ const allEnemyData: EnemyData = {
             isLooking: true,
             animationSpeed: 0.077,
             slowImmune: true
-        }
+        },
+        description: "It can easily adapt to cold temperatures, and they do bite, granted. These guys/girls can slip past your pillars so try and stop them!"
     },
     "Dashing Dasher": {
         atlasData: {
@@ -1086,7 +1105,8 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.12,
             armour: 30
-        }
+        },
+        description: "These move unbelievably fast. You might see them on highways. They can cause havoc and can damage your BMW if you're not careful."
     },
     "Titanium Bruiser": {
         atlasData: {
@@ -1139,7 +1159,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.21
-        }
+        },
+        description: "They're built with strong metal; you need powerful weapons (pillars) to take these guys/girls down. Do your research!"
     },
     "12p 2028": {
         atlasData: {
@@ -1204,7 +1225,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 1,
             isLooking: false,
             animationSpeed: 0.2
-        }
+        },
+        description: "It's moving and shining! Is it brighter than the world's brightest flashlight? Perhaps! They are after your pillars too!"
     },
     "Furious Raven": {
         atlasData: {
@@ -1245,7 +1267,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0
-        }
+        },
+        description: "They are speedy as well as they are filled with fury!"
     },
     "Remorseless Rigel": {
         atlasData: {
@@ -1311,7 +1334,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.1,
             regen: 500,
             armour: 700
-        }
+        },
+        description: "This one has no remorse, and is great at travelling at a really fast speed for a celestial object."
     },
     "Sophomore Dodecahedron": {
         atlasData: {
@@ -1358,7 +1382,8 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.11,
             armour: 700
-        }
+        },
+        description: "He/she is maturing and he/she is strong and very healthy. He/she is trying to find a job and serve Iced Capps and donuts. Don't scream at him/her if the Iced Capp machine stops working. Treat everyone with respect!"
     },
     "Alluring Rooster": {
         atlasData: {
@@ -1412,7 +1437,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.18,
             regen: 1000,
             armour: 550
-        }
+        },
+        description: "This beautiful rooster is perseverant and travels at a decent speed"
     },
     "Neptunian Megalodon": {
         atlasData: {
@@ -1466,7 +1492,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.06,
             slowImmune: true,
             armour: 1200
-        }
+        },
+        description: "This legendary creature is very strong and immune to slow. It can take lots and lots of damage which can easily bypass your defenses."
     },
     "Kingda Ka Zipper": {
         atlasData: {
@@ -1519,7 +1546,8 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.10,
             armour: 1200
-        }
+        },
+        description: "It's travelling at 205 km/hr (128 mph). Arms down, head back, hold on! Exceedingly fast - one of the fastest killers on the planet!!!! So stupidly fast you will see it reach the end in just seconds."
     },
     "Obsidian Ripper": {
         atlasData: {
@@ -1572,7 +1600,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0.07,
             isLooking: false,
             animationSpeed: 0.07
-        }
+        },
+        description: "This heavily armoured behemoth can even endure the strongest bullets from your snipers."
     },
     "256p 2152": {
         atlasData: {
@@ -1637,7 +1666,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 1.2,
             isLooking: false,
             animationSpeed: 0.27
-        }
+        },
+        description: "Its power still has not been measured yet. However, it has the power to shut down the servers of YouTube, TikTok and Facebook, or any other PC."
     },
     "Enraged Eagle": {
         atlasData: {
@@ -1678,7 +1708,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0,
             isLooking: true,
             animationSpeed: 0.02
-        }
+        },
+        description: "He/she will fly through your restless pillars and it's also surprisingly armoured"
     },
     "Unforgiving Stephenson 2-18": {
         atlasData: {
@@ -1744,7 +1775,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.1,
             regen: 0,
             armour: 18000
-        }
+        },
+        description: "A red hypergiant star walks into a bar. He asks for water. You are the bartender and must give broken dreadglass! He is heavily damage resistant and can widthstand even the strongest of your pillars. ALMOST THERE ALMOST THERRRRREEE!!!"
     },
     "Jr. Rhombicosidodecahedron": {
         atlasData: {
@@ -1791,7 +1823,8 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.06,
             armour: 8500
-        }
+        },
+        description: "He/she has bills to pay, and is living from paycheck to paycheck. Money is the root of all evil isnt it?"
     },
     "Irresistible Phoenix": {
         atlasData: {
@@ -1845,7 +1878,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.1,
             regen: 12500,
             armour: 8000
-        }
+        },
+        description: "Is it a bird? Is it a plane? It's definitely not the latter! He/She will try his/her best as if he/she is living to 120."
     },
     "Challenger Deep Kraken": {
         atlasData: {
@@ -1899,7 +1933,8 @@ const allEnemyData: EnemyData = {
             animationSpeed: 0.04,
             slowImmune: true,
             armour: 12000
-        }
+        },
+        description: "Mythical creature. Who knows if this really exists?? Take a picture (or preferably a 4k video) if you see this."
     },
     "Near-Light Zoomer": {
         atlasData: {
@@ -1952,7 +1987,8 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.22,
             armour: 15000
-        }
+        },
+        description: "Someone had a crazy dream on January 16, 2024 and saw him/her..."
     },
     "Carbon Nanotube Annihilator": {
         atlasData: {
@@ -2005,7 +2041,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 1,
             isLooking: true,
             animationSpeed: 0.07
-        }
+        },
+        description: "He/she has one job: Annihilate"
     },
     "2^1024p 137632": {
         atlasData: {
@@ -2064,7 +2101,8 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 0.11,
             isLooking: false,
             animationSpeed: 0.25
-        }
+        },
+        description: "No description provided."
     },
     "Merciless Loch Ness": {
         atlasData: {
@@ -2106,7 +2144,8 @@ const allEnemyData: EnemyData = {
             isLooking: true,
             animationSpeed: 0.02,
             regen: 7500
-        }
+        },
+        description: "Zero mercy. A true killer."
     },
     "TON 618": {
         atlasData: {
@@ -2173,7 +2212,8 @@ const allEnemyData: EnemyData = {
             regen: 0,
             armour: 327500,
             slowImmune: false
-        }
+        },
+        description: ""
     }
 }
 

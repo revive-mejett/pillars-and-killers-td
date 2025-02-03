@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import { Scene } from "./Scene"
 import { UIHelper } from "../UI/UIHelper";
 import { EventDispatcher } from "../utils/EventDispatcher"
-import { EnemyClass, EnemyData } from "src/ts/types/EnemyData";
+import { EnemyClass } from "src/ts/types/EnemyData";
 import { AssetLoader } from "../core/AssetLoader";
 import { allEnemyData } from "../utils/EnemyData";
 
@@ -216,7 +216,11 @@ export class PillarKillerIndex extends Scene {
         this.enemyDetailPane.addChild(enemySprite)
 
         //Enemy(killer) title
-        const textEnemyClassTitle = UIHelper.createText(500, 25, enemy.stats.className, 40, "0xFFFFFF", true);
+        const textEnemyClassTitle = UIHelper.createText(500, 25, enemy.stats.className, 40, "0xFFC7C7", true);
         this.enemyDetailPane.addChild(textEnemyClassTitle);
+
+        //Enemy(killer) description
+        const textEnemyClassDescription= UIHelper.createText(300, 75, enemy.description, 20, "0xFFFFFF", false, 400);
+        this.enemyDetailPane.addChild(textEnemyClassDescription);
     }
 }
