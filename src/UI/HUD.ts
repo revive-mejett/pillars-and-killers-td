@@ -88,7 +88,7 @@ export class HUD {
         moneyContainer.addChild(moneySprite)
 
 
-        const moneyText = new Text(this.gamestate.money, new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFF00, align: "center"}))
+        const moneyText = new Text("", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFF00, align: "center"}))
         moneyText.x = 0 + moneySprite.width
         moneyText.y = (moneyContainer.height - moneyText.height) / 2;
         moneyContainer.addChild(moneyText)

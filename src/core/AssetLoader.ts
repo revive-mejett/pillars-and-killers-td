@@ -47,12 +47,17 @@ export class AssetLoader {
             "heart" : "assets/images/heart_icon.png",
             "speedArrow" : "assets/images/speed_icon.png",
             "slowed" : "assets/images/slowed_icon.png",
+            "dreadglass" : "assets/images/dreadglass_icon.png",
             "poisonIved" : "assets/images/poison_ived_icon.png",
             "dmgResistance" : "assets/images/resistance_icon.png",
             "musicActive" : "assets/images/icon_sfx_music.png",
             "musicMuted" : "assets/images/icon_sfx_music_muted.png",
             "sfxActive" : "assets/images/icon_sfx_volume.png",
-            "sfxMuted" : "assets/images/icon_sfx_volume_muted.png"
+            "sfxMuted" : "assets/images/icon_sfx_volume_muted.png",
+            "slowImmune" : "assets/images/slowimmune_icon.png",
+            "dreadglassResistant" : "assets/images/dreadglass_effective_reduction_icon.png",
+            "disablesPillars" : "assets/images/disablesPillars_icon.png",
+            "regenerating" : "assets/images/healthregen_icon.png"
         })
         Assets.addBundle("towers", {
             "basicPillarIcon" : "assets/images/basic_pillar.png",
