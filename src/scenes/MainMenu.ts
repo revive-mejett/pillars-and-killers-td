@@ -7,7 +7,7 @@ import * as PIXI from "pixi.js";
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
-const version = "V0.10.0"
+const version = "V0.11.0"
 
 export class MainMenu extends Scene {
     /**
