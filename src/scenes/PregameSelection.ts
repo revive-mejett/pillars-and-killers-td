@@ -16,13 +16,13 @@ const numberDifficultyPanes = 3
 export class PregameSelection extends Scene {
 
 
-    saveFilesListContainer : PIXI.Container
-    mapSelectionContainer: PIXI.Container
-    difficultySelectionContainer: PIXI.Container
+    saveFilesListContainer : PIXI.Container<PIXI.DisplayObject>
+    mapSelectionContainer: PIXI.Container<PIXI.DisplayObject>
+    difficultySelectionContainer: PIXI.Container<PIXI.DisplayObject>
     difficultyPanes: PIXI.Container[] = []
 
-    btnPrevDifficulties: PIXI.Container = new PIXI.Container()
-    btnNextDifficulties: PIXI.Container = new PIXI.Container()
+    btnPrevDifficulties: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
+    btnNextDifficulties: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     difficultyPaneSelectionStartIndex = 0
     selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined, difficulty: Difficulty | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined, difficulty: "Normal" }
     selectedMapTitle: string | undefined = undefined
@@ -59,8 +59,8 @@ export class PregameSelection extends Scene {
 
 
         this.createMapSelectionPane(0, 100, "Walk in the Park");
-        this.createMapSelectionPane(400, 100, "Death Walk");
-        this.createMapSelectionPane(800, 100, "Rough Spiral")
+        this.createMapSelectionPane(400, 100, "Rough Spiral")
+        this.createMapSelectionPane(800, 100, "Death Walk");
         this.createMapSelectionPane(0, 550, "Starry Night")
         this.createMapSelectionPane(400, 550, "Medium French Vanilla")
         this.createMapSelectionPane(800, 550, "Stairwell-O-Chaos");
@@ -145,9 +145,9 @@ export class PregameSelection extends Scene {
             true //set to true if not ready, developer boolean
         );
 
-        this.btnPrevDifficulties = UIHelper.createButton(0, 950, 200, 50, "Prev", 20, 0xFFFFFF);
+        this.btnPrevDifficulties = UIHelper.createButton(150, 950, 200, 50, "Prev", 20, 0xFFFFFF);
         this.difficultySelectionContainer.addChild(this.btnPrevDifficulties);
-        this.btnNextDifficulties = UIHelper.createButton(1300, 950, 200, 50, "Next", 20, 0xFFFFFF);
+        this.btnNextDifficulties = UIHelper.createButton(1100, 950, 200, 50, "Next", 20, 0xFFFFFF);
         this.difficultySelectionContainer.addChild(this.btnNextDifficulties);
         this.btnPrevDifficulties.on("pointerdown", () => {
             this.difficultyPaneSelectionStartIndex--

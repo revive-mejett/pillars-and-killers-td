@@ -12,6 +12,7 @@ import { AudioManager } from "../managers/AudioManager"
 import { Tutorial } from "../scenes/Tutorial"
 import { OffGameSettings } from "../scenes/OffGameSettings"
 import { Victory } from "../scenes/Victory"
+import { PillarKillerIndex } from "../scenes/PillarKillerIndex"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -83,6 +84,7 @@ export class Game {
         eventDispatcher.on("btnBackToMainMenuClick", () => this.toMainMenu())
         eventDispatcher.on("settingsClick", () => this.toOffGameSettings())
         eventDispatcher.on("tutorialClick", () => this.toTutorial())
+        eventDispatcher.on("pillerKillerIndexClick", () => this.toPillarKillerIndex())
     }
 
     run() {
@@ -157,5 +159,12 @@ export class Game {
         settingsScene.constructScene()
 
         this.sceneManager?.transitionScene(settingsScene)
+    }
+
+    private toPillarKillerIndex() {
+        const pillarKillerIndexScene = new PillarKillerIndex(this.app)
+        pillarKillerIndexScene.constructScene()
+
+        this.sceneManager?.transitionScene(pillarKillerIndexScene)
     }
 }
