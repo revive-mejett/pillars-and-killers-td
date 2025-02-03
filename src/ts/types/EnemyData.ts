@@ -43,6 +43,7 @@ type EnemyData = {
                 scale: string,
             }
         },
+        description: string,
         stats : EnemyStats
     }
 }

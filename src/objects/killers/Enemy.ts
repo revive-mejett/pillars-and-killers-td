@@ -99,7 +99,7 @@ export class Enemy extends Entity {
         this.sprite.visible = false //dont render when first init.
         this.sprite.anchor.set(0.5, 0.5)
         this.sprite.play()
-        
+
 
         this.rotationSpeed = stats.rotationSpeed
         this.isLooking = stats.isLooking

@@ -29,24 +29,29 @@ export class MainMenu extends Scene {
         background.zIndex = 1
 
         this.container.addChild(background)
-        const btnShift = 150
+        const btnShift = 50
 
 
-        const btnNewGame = UIHelper.createButton(btnShift,900,300,50, "New Game")
+        const btnNewGame = UIHelper.createButton(0 + btnShift,750,400,100, "Start")
         this.container.addChild(btnNewGame)
         btnNewGame.zIndex = 1
 
         btnNewGame.on("pointerdown", () => eventDispatcher.fireEvent("newGameClick"))
 
-        const btnSettings = UIHelper.createButton(400 + btnShift,900,300,50, "Settings")
+        const btnSettings = UIHelper.createButton(0 + btnShift,900,300,50, "Settings")
         btnSettings.zIndex = 1
         this.container.addChild(btnSettings)
         btnSettings.on("pointerdown", () => eventDispatcher.fireEvent("settingsClick"))
 
-        const btnTutorial = UIHelper.createButton(800 + btnShift,900,300,50, "Tutorial")
+        const btnTutorial = UIHelper.createButton(350 + btnShift,900,300,50, "Tutorial")
         btnTutorial.zIndex = 1
         this.container.addChild(btnTutorial)
         btnTutorial.on("pointerdown", () => eventDispatcher.fireEvent("tutorialClick"))
+
+        const btnPillarKillerIndex = UIHelper.createButton(700 + btnShift,900,300,50, "Killers Info")
+        btnPillarKillerIndex.zIndex = 1
+        this.container.addChild(btnPillarKillerIndex)
+        btnPillarKillerIndex.on("pointerdown", () => eventDispatcher.fireEvent("pillerKillerIndexClick"))
 
         const txtVersion = UIHelper.createText(0, 980, version, 20, "0X777777")
         txtVersion.zIndex = 2
