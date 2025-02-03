@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import { Scene } from "./Scene"
 import { UIHelper } from "../UI/UIHelper";
 import { EventDispatcher } from "../utils/EventDispatcher"
-import { EnemyClass } from "src/ts/types/EnemyData";
+import { EnemyClass, EnemyData } from "src/ts/types/EnemyData";
 import { AssetLoader } from "../core/AssetLoader";
 import { allEnemyData } from "../utils/EnemyData";
 
@@ -20,6 +20,8 @@ export class PillarKillerIndex extends Scene {
 
     btnPrevPageEnemies: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     btnNextPageEnemies: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
+
+    enemyDetailPane: PIXI.Container = new PIXI.Container()
 
 
     enemyClasses: EnemyClass[] = [
@@ -40,8 +42,11 @@ export class PillarKillerIndex extends Scene {
         this.container.sortableChildren = true
 
         this.enemyListContainer = new PIXI.Container()
+        this.enemyDetailPane = new PIXI.Container()
         this.container.addChild(this.enemyListContainer)
+        this.container.addChild(this.enemyDetailPane)
         this.enemyListContainer.zIndex = 2
+        this.enemyDetailPane.zIndex = 2
     }
 
     constructScene(): void {
@@ -68,9 +73,11 @@ export class PillarKillerIndex extends Scene {
         this.enemyClasses.forEach(enemyClass => this.createKillerOverviewPane(enemyClass));
 
 
-        this.btnPrevPageEnemies = UIHelper.createButton(150, 950, 200, 50, "Prev", 20, 0xFFFFFF);
+        const buttonsYPos = 350
+
+        this.btnPrevPageEnemies = UIHelper.createButton(0, buttonsYPos, 120, 75, "Prev", 20, 0xFFFFFF);
         this.enemyListContainer.addChild(this.btnPrevPageEnemies);
-        this.btnNextPageEnemies = UIHelper.createButton(1100, 950, 200, 50, "Next", 20, 0xFFFFFF);
+        this.btnNextPageEnemies = UIHelper.createButton(1250, buttonsYPos, 120, 75, "Next", 20, 0xFFFFFF);
         this.enemyListContainer.addChild(this.btnNextPageEnemies);
 
         this.btnPrevPageEnemies.on("pointerdown", () => {
@@ -105,7 +112,7 @@ export class PillarKillerIndex extends Scene {
 
 
         const paneWidth = 250;
-        const paneHeight = 300;
+        const paneHeight = 250;
         const paneContainer = new PIXI.Container();
         paneContainer.zIndex = 20;
 
@@ -135,6 +142,14 @@ export class PillarKillerIndex extends Scene {
         this.enemyListContainer.addChild(paneContainer);
         this.enemyPanes.push(paneContainer);
         paneContainer.visible = false;
+
+        //view description
+        const btnViewDescription = UIHelper.createButton(0, paneHeight - 20, paneWidth, 50, "View Description", 20, 0xFFFFFF);
+        paneContainer.addChild(btnViewDescription);
+
+        btnViewDescription.on("pointerdown", () => {
+            this.createEnemyDescriptionPane(className, spritesheet)
+        });
     }
 
     private updatePrevNextDifficultyButtons(btnPrevDifficulties: PIXI.Container<PIXI.DisplayObject>, btnNextDifficulties: PIXI.Container<PIXI.DisplayObject>) {
@@ -150,9 +165,58 @@ export class PillarKillerIndex extends Scene {
         for (let i = 0; i < numberKillerPanes; i++) {
             if (this.enemyPanes[this.enemyPanesStartIndex + i]) {
                 this.enemyPanes[this.enemyPanesStartIndex + i].visible = true;
-                this.enemyPanes[this.enemyPanesStartIndex + i].x = 50 + (300 * (i % 4));
-                this.enemyPanes[this.enemyPanesStartIndex + i].y = 100 + (i >= 4 ? 350 : 0);
+                this.enemyPanes[this.enemyPanesStartIndex + i].x = 150 + (275 * (i % 4));
+                this.enemyPanes[this.enemyPanesStartIndex + i].y = 100 + (i >= 4 ? 300 : 0);
             }
         }
+    }
+
+
+    private createEnemyDescriptionPane(className: EnemyClass , spritesheet : PIXI.Spritesheet) {
+
+        const enemy = allEnemyData[className]
+
+        if (!enemy) {
+            return
+        }
+
+
+        if (this.enemyDetailPane && this.enemyDetailPane.parent) {
+            this.container.removeChild(this.enemyDetailPane)
+        }
+
+        if (!spritesheet) {
+            throw new Error("spritesheet not loaded")
+        }
+
+        this.enemyDetailPane?.removeChildren()
+        this.enemyDetailPane?.destroy(true)
+
+        this.enemyDetailPane = new PIXI.Container()
+        this.container.addChild(this.enemyDetailPane)
+        this.enemyDetailPane.zIndex = 2
+
+        this.enemyDetailPane.x = 50
+        this.enemyDetailPane.y = 700
+
+        const bgColour = new PIXI.Graphics();
+        bgColour.beginFill(0x002222);
+        bgColour.drawRect(0, 0, 1300, 300);
+        bgColour.endFill();
+        this.enemyDetailPane.addChild(bgColour);
+
+        //Enemy(killer) sprite
+        const enemySprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
+        enemySprite.width = 250
+        enemySprite.height = 250
+        enemySprite.x = 50
+        enemySprite.y = 25
+        enemySprite.animationSpeed = enemy.stats.animationSpeed || 0.1
+        enemySprite.play()
+        this.enemyDetailPane.addChild(enemySprite)
+
+        //Enemy(killer) title
+        const textEnemyClassTitle = UIHelper.createText(500, 25, enemy.stats.className, 40, "0xFFFFFF", true);
+        this.enemyDetailPane.addChild(textEnemyClassTitle);
     }
 }
