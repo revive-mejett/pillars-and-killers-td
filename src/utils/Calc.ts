@@ -22,7 +22,7 @@ export function countEnemyQuantityInWave(wave: Wave) {
 
 export function formatMillionString(n : number) {
     const millions = n / 1_000_000
-    return millions.toFixed(2) + "M"
+    return millions.toFixed(1) + "M"
 }
 
 

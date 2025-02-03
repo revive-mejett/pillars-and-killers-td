@@ -9,7 +9,7 @@ import { Enemy } from "src/objects/killers/Enemy"
 import { HUD } from "./HUD"
 import TowerData from "src/ts/types/TowerData"
 import { Wave } from "src/objects/Wave"
-import { countEnemyQuantityInWave } from "../utils/Calc"
+import { countEnemyQuantityInWave, formatMillionString } from "../utils/Calc"
 import { allEnemyData } from "../utils/EnemyData"
 import { IcePillar } from "../objects/pillars/IcePillar"
 import { CyroBlastPillar } from "../objects/pillars/CyroBlastPillar"
@@ -264,21 +264,61 @@ export class InfoPanel {
         const damageText = UIHelper.createText(40 + padding, 160 + padding,`${enemy.damage}`, 20, "0xFF0000")
         infoPanel.addChild(damageText)
 
-        const killValueIcon = UIHelper.createIcon(assetLoader.icons.money, padding, 190 + padding, 0x000000, 40, 40)
+        const killValueIcon = UIHelper.createIcon(assetLoader.icons.money, 100 + padding, 150 + padding, 0x000000, 40, 40)
         infoPanel.addChild(killValueIcon)
-        const killValueText = UIHelper.createText(40 + padding, 200 + padding,`${Math.ceil(enemy.killValue * killBountyMultiplier)}`, 20, "0xFFFF00")
+        const killValueText = UIHelper.createText(140 + padding, 160 + padding,`${Math.ceil(enemy.killValue * killBountyMultiplier) >= 1_000_000 ? formatMillionString(Math.ceil(enemy.killValue * killBountyMultiplier)) : Math.ceil(enemy.killValue * killBountyMultiplier)}`, 20, "0xFFFF00")
         infoPanel.addChild(killValueText)
 
-        const slowedIndicator = UIHelper.createIcon(assetLoader.icons.slowed, padding, 250 + padding, 0x000000, 40, 40)
+        const slowedIndicator = UIHelper.createIcon(assetLoader.icons.slowed, 200 + padding, 200 + padding, 0x000000, 40, 40)
         infoPanel.addChild(slowedIndicator)
         slowedIndicator.visible = false
 
-        const poisonIvedIndicator = UIHelper.createIcon(assetLoader.icons.poisonIved, padding + 40, 250 + padding, 0x000000, 40, 40)
+        const poisonIvedIndicator = UIHelper.createIcon(assetLoader.icons.poisonIved, 200 + padding, 200 + padding + 40, 0x000000, 40, 40)
         infoPanel.addChild(poisonIvedIndicator)
         poisonIvedIndicator.visible = false
 
 
         const healthBar = new InfoPanelHealthBar(40, 110, 200, 5, enemy)
+
+        //special properties start here
+        let specialPropertyYpos = 190
+        const textYOffset = 10
+        if (enemy.slowImmune) {
+            const slowImmuneIcon = UIHelper.createIcon(assetLoader.icons.slowImmune, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(slowImmuneIcon)
+            const speedMultiplierText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,"Immune to Slow", 20, "0x0055FF")
+            infoPanel.addChild(speedMultiplierText)
+            specialPropertyYpos += 40
+        }
+        if (enemy.regen) {
+            const regenIcon = UIHelper.createIcon(assetLoader.icons.regenerating, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(regenIcon)
+            const regenText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,`Regen: ${enemy.regen.amount}`, 20, "0x00FF00")
+            infoPanel.addChild(regenText)
+            specialPropertyYpos += 40
+        }
+        if (enemy.enemyType === "EMP" && (enemy.enemyClassName === "12p 2028" || enemy.enemyClassName === "256p 2152" || enemy.enemyClassName === "2^1024p 137632")) {
+            const disablesPillarsIcon = UIHelper.createIcon(assetLoader.icons.disablesPillars, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(disablesPillarsIcon)
+            const dreadglassResistText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,"Disables Pillars", 20, "0x00FFFF")
+            infoPanel.addChild(dreadglassResistText)
+            specialPropertyYpos += 40
+        }
+        if (enemy.enemyType === "Boss") {
+            const dreadglassResistantIcon = UIHelper.createIcon(assetLoader.icons.dreadglassResistant, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(dreadglassResistantIcon)
+            const dreadglassResistText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,"Resists Dreadglass", 20, "0xFF00FF")
+            infoPanel.addChild(dreadglassResistText)
+            specialPropertyYpos += 40
+        }
+        //special property that TON 618 has
+        if (enemy.enemyClassName === "TON 618") {
+            const armourIcon = UIHelper.createIcon(assetLoader.icons.dmgResistance, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(armourIcon)
+            const minArmourText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,"Minimum: 10000", 20, "0xFF00FF")
+            infoPanel.addChild(minArmourText)
+            specialPropertyYpos += 40
+        }
 
         const onTick = () => {
             if (!enemy.isAlive) {
@@ -289,7 +329,7 @@ export class InfoPanel {
             const speedTxt = enemySpeedText.children[0] as PIXI.Text
             UIHelper.updateText(enemyHealthText.children[0] as PIXI.Text, `${enemy.health} / ${enemy.totalHealth}`)
             UIHelper.updateText(dmgResistanceText.children[0] as PIXI.Text, `${enemy.armour}`)
-            UIHelper.updateText(speedTxt, `${(enemy.speed * enemy.slowDebuffStats.speedMultiplier).toFixed(1)}`)
+            UIHelper.updateText(speedTxt, `${(enemy.speed * enemy.slowDebuffStats.speedMultiplier).toFixed(2)}`)
             speedTxt.style.fill = enemy.slowDebuffStats.timeLeft > 0 ? 0x7777FF : 0xFFFFFF
 
             slowedIndicator.visible = enemy.slowDebuffStats.timeLeft > 0
