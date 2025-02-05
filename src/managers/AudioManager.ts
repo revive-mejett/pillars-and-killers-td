@@ -103,7 +103,7 @@ export class AudioManager {
     }
 
     playKilledSound() {
-        this.playSound("assets/sounds/sfx/large-explosion-100420.mps", 0.25)
+        this.playSound("assets/sounds/sfx/killerKilled1.mp3", 0.25)
     }
     playBossKilledSound() {
         this.playSound("assets/sounds/sfx/supernova.mp3", 1)
