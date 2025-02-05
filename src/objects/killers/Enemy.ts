@@ -403,7 +403,12 @@ export class Enemy extends Entity {
 function enemyDied(enemy: Enemy) {
     enemy.isAlive = false
 
-    audioManager.playKilledSound()
+    if (enemy.enemyType === "Boss") {
+        audioManager.playBossKilledSound()
+    } else {
+        audioManager.playKilledSound()
+    }
+
 
     eventDispatcher.fireEvent("enemyDied")
     if (enemy.enemyClassName === "Brave Proxima Centauri") {
