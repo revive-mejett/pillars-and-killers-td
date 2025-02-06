@@ -43,18 +43,25 @@ export class MainMenu extends Scene {
         this.container.addChild(btnSettings)
         btnSettings.on("pointerdown", () => eventDispatcher.fireEvent("settingsClick"))
 
-        const btnTutorial = UIHelper.createButton(350 + btnShift,900,300,50, "Tutorial")
+        const btnTutorial = UIHelper.createButton(325 + btnShift,900,300,50, "Tutorial")
         btnTutorial.zIndex = 1
         this.container.addChild(btnTutorial)
         btnTutorial.on("pointerdown", () => eventDispatcher.fireEvent("tutorialClick"))
 
-        const btnPillarKillerIndex = UIHelper.createButton(700 + btnShift,900,300,50, "Killers Info")
+        const btnPillarKillerIndex = UIHelper.createButton(650 + btnShift,900,300,50, "Killers Info")
         btnPillarKillerIndex.zIndex = 1
         this.container.addChild(btnPillarKillerIndex)
         btnPillarKillerIndex.on("pointerdown", () => eventDispatcher.fireEvent("pillerKillerIndexClick"))
 
+        const btnCredits = UIHelper.createButton(975 + btnShift,900,300,50, "Credits")
+        btnCredits.zIndex = 1
+        this.container.addChild(btnCredits)
+        btnCredits.on("pointerdown", () => eventDispatcher.fireEvent("creditsClick"))
+
         const txtVersion = UIHelper.createText(0, 980, version, 20, "0X777777")
         txtVersion.zIndex = 2
         this.container.addChild(txtVersion)
+
+
     }
 }
