@@ -147,7 +147,7 @@ export class Enemy extends Entity {
     }
 
 
-    findAndAttackTower(delta: number) {
+    findAndAttackTower(delta: number, numberAttacks?: number) {
         if (!this.towers || !this.mapContainer) {
             return
         }
@@ -156,15 +156,34 @@ export class Enemy extends Entity {
             return this.checkTowerInRange(tower)
         })
 
-        const targetTower = towersInRange[Math.floor(Math.random() * this.towers.length)]
+        const mapContainer = this.mapContainer
+
+        let possibleNumberAttacks = numberAttacks || 1
 
 
+        if (towersInRange.length < possibleNumberAttacks) {
+            possibleNumberAttacks = towersInRange.length
+            towersInRange.forEach(targetTower => {
+                if (targetTower && !targetTower.isSold) {
+                    const emp = new EMPBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, targetTower, this)
+                    emp.render(mapContainer)
+                    emp.fireTower(delta)
+                }
+            })
+        } else {
+            //more towers in range than number of attacks
+            for (let i = 0; i < possibleNumberAttacks; i++) {
+                const randomEnemyIndex = Math.floor(Math.random() * this.towers.length)
 
-        if (targetTower && !targetTower.isSold) {
-            const emp = new EMPBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, targetTower, this)
-            emp.render(this.mapContainer)
-            emp.fireTower(delta)
+                const targetTower = towersInRange[randomEnemyIndex]
+                if (targetTower && !targetTower.isSold) {
+                    const emp = new EMPBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, targetTower, this)
+                    emp.render(this.mapContainer)
+                    emp.fireTower(delta)
+                }
+            }
         }
+
 
     }
 
@@ -319,8 +338,18 @@ export class Enemy extends Entity {
 
             //attack enemy once cooldown reaches 0
             if (this.empCooldown < 0) {
+
+                let numberAttacks = 1
+
+                if (this.enemyClassName === "256p 2152") {
+                    numberAttacks = 2
+                }
+
+                if (this.enemyClassName === "2^1024p 137632") {
+                    numberAttacks = 5
+                }
                 this.empCooldown = empCooldown
-                this.findAndAttackTower(deltaTime)
+                this.findAndAttackTower(deltaTime, numberAttacks)
             }
         }
     }
