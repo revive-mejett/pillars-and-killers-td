@@ -13,6 +13,7 @@ import { Tutorial } from "../scenes/Tutorial"
 import { OffGameSettings } from "../scenes/OffGameSettings"
 import { Victory } from "../scenes/Victory"
 import { PillarKillerIndex } from "../scenes/PillarKillerIndex"
+import { Credits } from "../scenes/Credits"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -85,6 +86,7 @@ export class Game {
         eventDispatcher.on("settingsClick", () => this.toOffGameSettings())
         eventDispatcher.on("tutorialClick", () => this.toTutorial())
         eventDispatcher.on("pillerKillerIndexClick", () => this.toPillarKillerIndex())
+        eventDispatcher.on("creditsClick", () => this.toCredits())
     }
 
     run() {
@@ -166,5 +168,11 @@ export class Game {
         pillarKillerIndexScene.constructScene()
 
         this.sceneManager?.transitionScene(pillarKillerIndexScene)
+    }
+
+    private toCredits() {
+        const creditsScene = new Credits(this.app)
+        creditsScene.constructScene()
+        this.sceneManager?.transitionScene(creditsScene)
     }
 }
