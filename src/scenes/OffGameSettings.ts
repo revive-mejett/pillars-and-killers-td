@@ -3,9 +3,9 @@ import { Scene } from "./Scene"
 import { UIHelper } from "../UI/UIHelper";
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { SettingsManager } from "../managers/SettingsManager";
-// import { AssetLoader } from "../core/AssetLoader";
+import { AssetLoader } from "../core/AssetLoader";
 
-
+const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 const settingsManager = new SettingsManager()
 
@@ -14,10 +14,10 @@ const handleWidth = 20
 
 export class OffGameSettings extends Scene {
 
-    sliderHandleSfx : PIXI.Graphics
+    sliderHandleSfx: PIXI.Graphics
     sfxVolumeText: PIXI.Container = new PIXI.Container()
 
-    sliderHandleMusic : PIXI.Graphics
+    sliderHandleMusic: PIXI.Graphics
     musicVolumeText: PIXI.Container = new PIXI.Container()
 
     boundSfxSliderDrag = this.onSfxSliderDrag.bind(this)
@@ -26,7 +26,7 @@ export class OffGameSettings extends Scene {
     /**
      *
      */
-    constructor(app : PIXI.Application) {
+    constructor(app: PIXI.Application) {
         super(app)
         this.container.sortableChildren = true
         this.sliderHandleSfx = new PIXI.Graphics()
@@ -36,6 +36,17 @@ export class OffGameSettings extends Scene {
     constructScene(): void {
         const txtTitle = UIHelper.createText(650, 50, "Settings", 50, "0xFFFFFF", true);
         this.container.addChild(txtTitle);
+
+        if (!assetLoader.otherImages) {
+            throw new Error("Asset images not properly loaded")
+        }
+        const background = PIXI.Sprite.from(assetLoader.otherImages.mainTitleBackground)
+        background.x = 0
+        background.y = 0
+        background.zIndex = -1
+        background.alpha = 0.1
+
+        this.container.addChild(background)
 
 
         const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
@@ -147,13 +158,13 @@ export class OffGameSettings extends Scene {
         const local = this.container.toLocal(e.global)
         const leftPos = 10
         const rightPos = sliderWidth - handleWidth
-        this.sliderHandleSfx.x = Math.max(leftPos, Math.min(local.x - handleWidth/2, rightPos))
+        this.sliderHandleSfx.x = Math.max(leftPos, Math.min(local.x - handleWidth / 2, rightPos))
 
         const normalizedRight = rightPos - 10
         const normalizedHandlePos = this.sliderHandleSfx.x - 10
 
-        let newVolume = normalizedHandlePos/normalizedRight
-        newVolume = Math.floor(newVolume*10)/10
+        let newVolume = normalizedHandlePos / normalizedRight
+        newVolume = Math.floor(newVolume * 10) / 10
         settingsManager.sfxVolumeMultiplier = newVolume
         const textObj = this.sfxVolumeText.children[0] as PIXI.Text
         textObj.text = newVolume.toFixed(1)
@@ -163,13 +174,13 @@ export class OffGameSettings extends Scene {
         const local = this.container.toLocal(e.global)
         const leftPos = 10
         const rightPos = sliderWidth - handleWidth
-        this.sliderHandleMusic.x = Math.max(leftPos, Math.min(local.x - handleWidth/2, rightPos))
+        this.sliderHandleMusic.x = Math.max(leftPos, Math.min(local.x - handleWidth / 2, rightPos))
 
         const normalizedRight = rightPos - 10
         const normalizedHandlePos = this.sliderHandleMusic.x - 10
 
-        let newVolume = normalizedHandlePos/normalizedRight
-        newVolume = Math.floor(newVolume*10)/10
+        let newVolume = normalizedHandlePos / normalizedRight
+        newVolume = Math.floor(newVolume * 10) / 10
         settingsManager.musicVolumeMultiplier = newVolume
         const textObj = this.musicVolumeText.children[0] as PIXI.Text
         textObj.text = newVolume.toFixed(1)

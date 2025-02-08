@@ -74,13 +74,16 @@ export class PregameSelection extends Scene {
             eventDispatcher.fireEvent("btnBackToMainMenuClick");
         });
 
-        const pillarsKillersVisual = PIXI.Sprite.from(assetLoader.otherImages.mainTitleImage)
-        pillarsKillersVisual.width = 700
-        pillarsKillersVisual.height = 400
-        pillarsKillersVisual.x = 300
-        pillarsKillersVisual.y = 10
-        pillarsKillersVisual.zIndex = 1
-        this.container.addChild(pillarsKillersVisual)
+        if (!assetLoader.otherImages) {
+            throw new Error("Asset images not properly loaded")
+        }
+        const background = PIXI.Sprite.from(assetLoader.otherImages.mainTitleBackground)
+        background.x = 0
+        background.y = 0
+        background.zIndex = -1
+        background.alpha = 0.1
+
+        this.container.addChild(background)
     }
 
     private createDifficultyPanes() {
@@ -366,11 +369,11 @@ export class PregameSelection extends Scene {
         const file6Data = gameDataManager.file6Data;
 
         this.createSaveFilePane(100, 300, 1, file1Data);
-        this.createSaveFilePane(500, 300, 2, file2Data);
-        this.createSaveFilePane(900, 300, 3, file3Data);
+        this.createSaveFilePane(550, 300, 2, file2Data);
+        this.createSaveFilePane(1000, 300, 3, file3Data);
         this.createSaveFilePane(100, 650, 4, file4Data);
-        this.createSaveFilePane(500, 650, 5, file5Data);
-        this.createSaveFilePane(900, 650, 6, file6Data);
+        this.createSaveFilePane(550, 650, 5, file5Data);
+        this.createSaveFilePane(1000, 650, 6, file6Data);
     }
 
     private createSaveFilePane(paneXPos : number, paneYPos : number, fileNumber : 1 | 2 | 3 | 4 | 5 | 6, fileData : GameSaveData | null) {

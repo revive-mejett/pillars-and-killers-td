@@ -20,7 +20,7 @@ export class Tutorial extends Scene {
     /**
      *
      */
-    constructor(app : PIXI.Application) {
+    constructor(app: PIXI.Application) {
         super(app)
         this.container.sortableChildren = true
     }
@@ -28,6 +28,19 @@ export class Tutorial extends Scene {
     constructScene(): void {
         const txtTitle = UIHelper.createText(650, 50, "Tutorial", 50, "0xFFFFFF", true);
         this.container.addChild(txtTitle);
+
+
+        if (!assetLoader.otherImages) {
+            throw new Error("Asset images not properly loaded")
+        }
+        const background = PIXI.Sprite.from(assetLoader.otherImages.mainTitleBackground)
+        background.x = 0
+        background.y = 0
+        background.zIndex = -1
+        background.alpha = 0.1
+
+        this.container.addChild(background)
+
         this.btnPrev.x = 0
         this.btnPrev.y = 900
 
@@ -35,14 +48,16 @@ export class Tutorial extends Scene {
         this.btnNext.y = 900
 
 
-        this.buildPage("Killers on the loose!", "These are your enemies called \"Killers\". They are after you and your \"City\"! Your objective is to stop them from reaching the end of the path.", "tutorial1");
+        this.buildPage("Killers on the loose!",
+            "These are your enemies called \"Killers\". They are after you and your \"City\"! Your objective is to stop them from reaching the end of the path.",
+            "tutorial1", 0.95);
         this.buildPage("Pillars - Your Defense 1/2",
             [
                 "To stop them, you must build \"Pillars\" that attack killers. They cost money, depending on their strength.",
                 "Each pillar has its own purpose, where each may be used to beat all the killers. Some pillars have special attacks. For example, the Ice Pillar is capable of slowing killers down. Another pillar, called the Sniper Pillar which is orange in colour, is truly capable of shooting from a large distance!",
                 "Pillars can also be upgraded or sold. Upgrading them may improve their damage, range, attack speed, or even their special properties such as slow. Selling pillars return 60% of its total cost, including all bought upgrades."
             ],
-            "tutorial2");
+            "tutorial2", 0.85);
         this.buildPage("Pillars - Your Defense 2/2",
             [
                 "You start with a few pillars to begin with. However as the waves go by, you will need to rely on stronger ones.",
@@ -64,7 +79,7 @@ export class Tutorial extends Scene {
                 "You will encounter stronger killers the further you go in the later waves. The killers you meet later on will have more health, more damage (in other words, the number of lives you will lose upon reaching the end) and the most frightening, their armour/damage resistance.",
                 "Remember to upgrade your pillars, and research if you can!"
             ],
-            "tutorial5", 1.2);
+            "tutorial5", 1);
         this.buildPage("Checkpoints",
             [
                 "Every 20th wave, you will reach a checkpoint upon beating it. Checkpoints allow you to reload your progress from the end of the last wave.",
@@ -121,7 +136,7 @@ export class Tutorial extends Scene {
         page.addChild(pageLeftPane);
         const paneWidth = 700;
         const paneHeight = 800;
-        pageLeftPane.x = 0;
+        pageLeftPane.x = 10;
         pageLeftPane.y = 150;
 
         const bgColour = new PIXI.Graphics();
@@ -151,7 +166,7 @@ export class Tutorial extends Scene {
         page.addChild(pageRightPane);
         const paneWidthRight = 800;
         const paneHeightRight = 700;
-        pageRightPane.x = 700;
+        pageRightPane.x = 710;
         pageRightPane.y = 150;
 
         const bgColourRight = new PIXI.Graphics();

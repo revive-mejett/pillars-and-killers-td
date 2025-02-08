@@ -220,11 +220,13 @@ export class Enemy extends Entity {
             return
         }
 
-        if (this.xToNextWaypoint !== 0) {
+        if ((this.xToNextWaypoint > 0 && this.direction === "EAST") || (this.xToNextWaypoint < 0 && this.direction === "WEST")) {
+            // console.log("x ", this.xToNextWaypoint, " y ", this.yToNextWaypoint, this.direction)
             this.position.x += (speed) * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
             this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }
-        else if (this.yToNextWaypoint !== 0) {
+        else if ((this.yToNextWaypoint > 0 && this.direction === "SOUTH") || (this.yToNextWaypoint < 0 && this.direction === "NORTH")) {
+            // console.log("x ", this.xToNextWaypoint, " y ", this.yToNextWaypoint, this.direction)
             this.position.y += (speed) * (this.yToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
             this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
         }

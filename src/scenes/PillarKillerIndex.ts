@@ -16,7 +16,7 @@ export class PillarKillerIndex extends Scene {
 
     enemyListContainer: PIXI.Container<PIXI.DisplayObject>
     enemyPanes: PIXI.Container[] = []
-    enemyPanesStartIndex : number = 0
+    enemyPanesStartIndex: number = 0
 
     btnPrevPageEnemies: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     btnNextPageEnemies: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
@@ -52,6 +52,17 @@ export class PillarKillerIndex extends Scene {
     constructScene(): void {
         const txtTitle = UIHelper.createText(650, 50, "Killers Index", 50, "0xFFFFFF", true);
         this.container.addChild(txtTitle);
+
+        if (!assetLoader.otherImages) {
+            throw new Error("Asset images not properly loaded")
+        }
+        const background = PIXI.Sprite.from(assetLoader.otherImages.mainTitleBackground)
+        background.x = 0
+        background.y = 0
+        background.zIndex = -1
+        background.alpha = 0.1
+
+        this.container.addChild(background)
 
         this.createKillerOverviewPanes();
 
@@ -125,7 +136,7 @@ export class PillarKillerIndex extends Scene {
 
 
         //Enemy(killer) title
-        const textEnemyClassTitle = UIHelper.createText(paneWidth/2, 20, enemy.stats.className, 20, "0xFFFFFF", true);
+        const textEnemyClassTitle = UIHelper.createText(paneWidth / 2, 20, enemy.stats.className, 20, "0xFFFFFF", true);
         paneContainer.addChild(textEnemyClassTitle);
 
 
@@ -172,7 +183,7 @@ export class PillarKillerIndex extends Scene {
     }
 
 
-    private createEnemyDescriptionPane(className: EnemyClass , spritesheet : PIXI.Spritesheet) {
+    private createEnemyDescriptionPane(className: EnemyClass, spritesheet: PIXI.Spritesheet) {
 
         const enemy = allEnemyData[className]
 
@@ -197,7 +208,7 @@ export class PillarKillerIndex extends Scene {
         this.enemyDetailPane.zIndex = 2
 
         this.enemyDetailPane.x = 50
-        this.enemyDetailPane.y = 700
+        this.enemyDetailPane.y = 690
 
         const bgColour = new PIXI.Graphics();
         bgColour.beginFill(0x002222);
@@ -209,7 +220,7 @@ export class PillarKillerIndex extends Scene {
         const enemySprite = new PIXI.AnimatedSprite(spritesheet.animations.enemy)
         enemySprite.width = 250
         enemySprite.height = 250
-        enemySprite.x = 50
+        enemySprite.x = 25
         enemySprite.y = 25
         enemySprite.animationSpeed = enemy.stats.animationSpeed || 0.1
         enemySprite.play()
@@ -220,7 +231,7 @@ export class PillarKillerIndex extends Scene {
         this.enemyDetailPane.addChild(textEnemyClassTitle);
 
         //Enemy(killer) description
-        const textEnemyClassDescription= UIHelper.createText(300, 75, enemy.description, 20, "0xFFFFFF", false, 400);
+        const textEnemyClassDescription = UIHelper.createText(300, 75, enemy.description, 20, "0xFFFFFF", false, 400);
         this.enemyDetailPane.addChild(textEnemyClassDescription);
     }
 }
