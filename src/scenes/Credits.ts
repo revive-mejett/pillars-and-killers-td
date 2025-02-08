@@ -27,6 +27,17 @@ export class Credits extends Scene {
         const txtTitle = UIHelper.createText(650, 50, "Credits", 50, "0xFFFFFF", true);
         this.container.addChild(txtTitle);
 
+        if (!assetLoader.otherImages) {
+            throw new Error("Asset images not properly loaded")
+        }
+        const background = PIXI.Sprite.from(assetLoader.otherImages.mainTitleBackground)
+        background.x = 0
+        background.y = 0
+        background.zIndex = -1
+        background.alpha = 0.1
+
+        this.container.addChild(background)
+
         const xPadding = 100
         const headingSize = 40
         const contentYOffset = 40

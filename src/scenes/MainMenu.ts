@@ -7,7 +7,20 @@ import * as PIXI from "pixi.js";
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
+
+
 const version = "V1.0.0"
+const patchNotesTextContent = `
+    * February 9, 2025 - 1.0.0\n
+    - Pillars V.S. Killers released - enjoy building pillars!\n
+    \n
+    * February 7, 2025 - 0.11.0\n
+    - Add special property info on pillars (e.g slow, poison ivy) and killers (e.g slow immune)\n
+    - buff "256p 2152" and "2^1024p 137632" EMP enemy attacks\n
+    - buff TON 618 speed slightly\n
+    - Added trophies that correspond to the difficulties beaten for each map
+`
+
 
 export class MainMenu extends Scene {
     /**
@@ -58,9 +71,38 @@ export class MainMenu extends Scene {
         this.container.addChild(btnCredits)
         btnCredits.on("pointerdown", () => eventDispatcher.fireEvent("creditsClick"))
 
+
+        //Version text
         const txtVersion = UIHelper.createText(0, 980, version, 20, "0X777777")
         txtVersion.zIndex = 2
         this.container.addChild(txtVersion)
+
+
+        //patch notes pane
+        const patchNotesContainer = new PIXI.Container()
+        const patchNotesPaneWidth = 500
+        const patchNotesPaneHeight = 700
+
+        patchNotesContainer.x = 700
+        patchNotesContainer.y = 20
+        patchNotesContainer.zIndex = 2
+        patchNotesContainer.visible = false
+        const bgPatchNotesContainer = new PIXI.Graphics()
+        bgPatchNotesContainer.beginFill(0x111111)
+        bgPatchNotesContainer.drawRect(0, 0, patchNotesPaneWidth, patchNotesPaneHeight)
+        bgPatchNotesContainer.endFill()
+        patchNotesContainer.addChild(bgPatchNotesContainer)
+
+        const txtPatchNotes = UIHelper.createText(0, 0, patchNotesTextContent, 20, "0XFFFF00", false, patchNotesPaneWidth)
+        txtPatchNotes.zIndex = 2
+
+        patchNotesContainer.addChild(txtPatchNotes)
+        this.container.addChild(patchNotesContainer)
+        const btnPatchNotes = UIHelper.createButton(1200, 20, 200, 40, "1.0.0 notes", 30, 0xFFFF00)
+        btnPatchNotes.zIndex = 2
+        this.container.addChild(btnPatchNotes)
+
+        btnPatchNotes.on("pointerdown", () => patchNotesContainer.visible = !patchNotesContainer.visible)
 
 
     }
