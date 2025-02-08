@@ -55,7 +55,7 @@ export class Credits extends Scene {
         const txtImagesHeading = UIHelper.createText(xPadding, 650, "Images", headingSize, "0xC7FFFF");
         this.container.addChild(txtImagesHeading);
         this.createBulletPointRow(xPadding, 690, "All Killer / Pillar images are original creations designed specifically for Pillars V.S. Killers")
-        this.createBulletPointRow(xPadding, 730, "All icons and other images such as backgrounds (except for the couple - that will be replaced) are original artwork.")
+        this.createBulletPointRow(xPadding, 730, "All icons and other images such as backgrounds (except for the couple - that will be replaced)\n are original artwork or recreations inspired from other artwork.")
 
 
         const txtCopyright = UIHelper.createText(0, 950, `${new Date().getFullYear()} Kyle Veloso`, 20, "0X777777")
