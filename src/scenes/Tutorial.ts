@@ -75,6 +75,7 @@ export class Tutorial extends Scene {
             "tutorial4", 1.2);
         this.buildPage("The Killers 2/2",
             [
+                "This is fast-paced and you CANNOT pause during waves unless you are at a checkpoint (more on the next page).",
                 "As your defence advances, so do the killers too!",
                 "You will encounter stronger killers the further you go in the later waves. The killers you meet later on will have more health, more damage (in other words, the number of lives you will lose upon reaching the end) and the most frightening, their armour/damage resistance.",
                 "Remember to upgrade your pillars, and research if you can!"
@@ -97,7 +98,7 @@ export class Tutorial extends Scene {
 
 
 
-        const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
+        const btnBackToMain = UIHelper.createButton(50, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
         btnBackToMain.on("pointerdown", () => {
             eventDispatcher.fireEvent("btnBackToMainMenuClick");
