@@ -510,7 +510,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Puffs out heat seeking rockets that explodes and deals area damage. This pillar is your beat weapon against hordes of killers."
                     },
                     tileColour: 0x222222,
-                    flameColour: 0xAAAAAA,
+                    flameColour: 0xC2C2C4,
                     fireballWidth: 6,
                     soundPitch: 2.3
                 },

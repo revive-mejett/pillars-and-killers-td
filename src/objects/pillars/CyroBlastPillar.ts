@@ -88,7 +88,7 @@ export class CyroBlastPillar extends Tower {
 
                 //spawn a beam
                 if (this.targetedEnemy) {
-                    const beam = new CyroBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, this.speedMultiplier, 0xC7C7FF, this.beamWidth, this.soundPitch, this.impactRadius)
+                    const beam = new CyroBeam(this.getCenterPosition().x, this.getCenterPosition().y, 5, 5, this.targetedEnemy, this.damage, this.speedMultiplier, 0xC777FF, this.beamWidth, this.soundPitch, this.impactRadius)
                     beam.render(gameplaySceneContainer)
                     beam.fire(gameplayScene.app.ticker.deltaTime, gameplayScene.enemiesPresent)
                 }

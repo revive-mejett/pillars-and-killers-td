@@ -49,7 +49,7 @@ export class OffGameSettings extends Scene {
         this.container.addChild(background)
 
 
-        const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
+        const btnBackToMain = UIHelper.createButton(50, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
         btnBackToMain.on("pointerdown", () => {
             eventDispatcher.fireEvent("btnBackToMainMenuClick");

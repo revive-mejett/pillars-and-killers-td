@@ -3,6 +3,7 @@ import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import { GlowFilter } from "pixi-filters";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -21,10 +22,18 @@ export class Dreadglass extends Projectile {
         this.soundPitch = soundPitch
         this.armourReduction = armourReduction
 
+        const factor = 0.3 * width
+        let points = [0, 10, 8, 10, 12, 2, 10, 18]
+        points = points.map(value => value * factor - this.width * factor)
+
         this.graphics = new PIXI.Graphics()
         this.graphics.beginFill(this.colour)
-        this.graphics.drawRect(0, 0, this.width, this.height)
+        this.graphics.drawPolygon(points)
         this.graphics.endFill()
+
+        this.graphics.filters = [
+            new GlowFilter({innerStrength : 0.1, outerStrength: 3, color: 0x7700FF}) as unknown as PIXI.Filter
+        ]
     }
 
     fire(deltaTime : number) {
@@ -99,6 +108,8 @@ export class Dreadglass extends Projectile {
         }
         this.graphics.x = this.x
         this.graphics.y = this.y
+
+        this.graphics.rotation += 2 * 0.05
     }
 
 

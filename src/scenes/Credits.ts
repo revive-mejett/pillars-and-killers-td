@@ -66,15 +66,15 @@ export class Credits extends Scene {
         const txtImagesHeading = UIHelper.createText(xPadding, 650, "Images", headingSize, "0xC7FFFF");
         this.container.addChild(txtImagesHeading);
         this.createBulletPointRow(xPadding, 690, "All Killer / Pillar images are original creations designed specifically for Pillars V.S. Killers")
-        this.createBulletPointRow(xPadding, 730, "All icons and other images such as backgrounds (except for the couple - that will be replaced)\n are original artwork or recreations inspired from other artwork.")
+        this.createBulletPointRow(xPadding, 730, "Icons and other images such as backgrounds are original artwork or recreations \n inspired from other artwork or sourced from Pixabay.")
 
 
-        const txtCopyright = UIHelper.createText(0, 950, `${new Date().getFullYear()} Kyle Veloso`, 20, "0X777777")
+        const txtCopyright = UIHelper.createText(0, 980, `${new Date().getFullYear()} Kyle Veloso`, 20, "0X777777")
         txtCopyright.zIndex = 2
         this.container.addChild(txtCopyright)
 
 
-        const btnBackToMain = UIHelper.createButton(0, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
+        const btnBackToMain = UIHelper.createButton(50, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
         btnBackToMain.on("pointerdown", () => {
             eventDispatcher.fireEvent("btnBackToMainMenuClick");

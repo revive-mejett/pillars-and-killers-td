@@ -83,6 +83,31 @@ export class CyroBeam extends Projectile {
             this.graphics.lineStyle(beamWidth, this.colour)
             this.graphics.moveTo(beamOriginPosition.x, beamOriginPosition.y)
             this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
+
+            if (this.impactRadius > 0) {
+                const points = [
+                    new PIXI.Point(Math.cos(0),Math.sin(0)),
+                    new PIXI.Point(Math.cos(Math.PI/4),Math.sin(Math.PI/4)),
+                    new PIXI.Point(Math.cos(Math.PI/2),Math.sin(Math.PI/2)),
+                    new PIXI.Point(Math.cos(3 *Math.PI/4),Math.sin(3 * Math.PI/4)),
+                    new PIXI.Point(Math.cos(Math.PI),Math.sin(Math.PI)),
+                    new PIXI.Point(Math.cos(5 * Math.PI/4),Math.sin(5 * Math.PI/4)),
+                    new PIXI.Point(Math.cos(3 * Math.PI/2),Math.sin(3 * Math.PI/2)),
+                    new PIXI.Point(Math.cos(7 *Math.PI/4),Math.sin(7 *Math.PI/4)),
+                    new PIXI.Point(Math.cos(0),Math.sin(0)),
+                ]
+
+                const minFactor = 5
+                const maxFactor = 25
+
+                points.forEach(point => {
+                    point.x *= maxFactor - Math.floor((Math.random() * (maxFactor - minFactor)))
+                    point.y *= maxFactor - Math.floor((Math.random() * (maxFactor - minFactor)))
+                    point.x += enemyCenterPosition.x
+                    point.y += enemyCenterPosition.y
+                })
+                this.graphics.drawPolygon(points)
+            }
         }
 
     }
