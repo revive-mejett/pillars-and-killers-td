@@ -94,7 +94,7 @@ export class CyroBeam extends Projectile {
                     new PIXI.Point(Math.cos(5 * Math.PI/4),Math.sin(5 * Math.PI/4)),
                     new PIXI.Point(Math.cos(3 * Math.PI/2),Math.sin(3 * Math.PI/2)),
                     new PIXI.Point(Math.cos(7 *Math.PI/4),Math.sin(7 *Math.PI/4)),
-                    new PIXI.Point(Math.cos(0),Math.sin(0)),
+                    new PIXI.Point(Math.cos(0),Math.sin(0))
                 ]
 
                 const minFactor = 5
