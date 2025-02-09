@@ -41,7 +41,7 @@ export class InfoPanel {
 
         if (tower.assetIcon) {
             const currentTowerIcon = UIHelper.createIcon(tower.assetIcon, padding, padding, 0x000000)
-            currentTowerIcon.x = 160
+            currentTowerIcon.x = 165
             infoPanel.addChild(currentTowerIcon)
         }
 
@@ -235,7 +235,7 @@ export class InfoPanel {
 
         const currentEnemyIcon = UIHelper.createAnimatedIcon(enemy.spritesheet, padding, padding, 0x000000, 80, 80, enemy.animationSpeed)
         infoPanel.addChild(currentEnemyIcon)
-        currentEnemyIcon.x = 160
+        currentEnemyIcon.x = 165
 
         const enemyNickText = UIHelper.createText(0 + padding, 5 + padding,`${enemy.nick}`, 20, "0xFFFFFF")
         infoPanel.addChild(enemyNickText)
@@ -278,7 +278,7 @@ export class InfoPanel {
         poisonIvedIndicator.visible = false
 
 
-        const healthBar = new InfoPanelHealthBar(40, 110, 200, 5, enemy)
+        const healthBar = new InfoPanelHealthBar(45, 110, 200, 5, enemy)
 
         //special properties start here
         let specialPropertyYpos = 190
