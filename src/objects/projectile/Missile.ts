@@ -4,6 +4,7 @@ import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import { GlowFilter } from "pixi-filters";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -15,22 +16,26 @@ export class Missile extends Projectile {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, soundPitch: number, impactRadius: number) {
+    constructor(x: number, y: number, width: number, height: number, targetEnemy: Enemy, damage: number, colour: number, soundPitch: number, impactRadius: number) {
         super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 0.6
 
         this.graphics = new PIXI.Graphics()
         this.graphics.beginFill(this.colour)
-        this.graphics.drawCircle(0,0,this.width/2)
+        this.graphics.drawCircle(0, 0, this.width / 2)
         this.graphics.endFill()
+
+        this.graphics.filters = [
+            new GlowFilter({ color: 0xFFFF00, innerStrength: 0.1, outerStrength: impactRadius/10 }) as unknown as PIXI.Filter
+        ]
 
         this.impactRadius = impactRadius
         this.soundPitch = soundPitch
     }
 
-    fire(deltaTime : number, enemies : Enemy[]) {
+    fire(deltaTime: number, enemies: Enemy[]) {
 
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/missile_whoosh.mp3", maxSources: 6, towerName: "Missile Pillar", volume: 0.5, speed: this.soundPitch})
+        eventDispatcher.fireEvent("towerAttackSoundPlay", { path: "assets/sounds/sfx/missile_whoosh.mp3", maxSources: 6, towerName: "Missile Pillar", volume: 0.5, speed: this.soundPitch })
 
         const onTick = () => {
             if (!this.targetEnemy || !this.targetEnemy.isAlive) {
@@ -71,22 +76,22 @@ export class Missile extends Projectile {
     }
 
 
-    onImpact(enemies : Enemy[], impactPosition : Position) {
+    onImpact(enemies: Enemy[], impactPosition: Position) {
 
-        eventDispatcher.fireEvent("towerAttackSoundPlay", {path: "assets/sounds/sfx/missile_boom.mp3", maxSources: 8, towerName: "Missile Pillar", volume: 1, speed: 1})
+        eventDispatcher.fireEvent("towerAttackSoundPlay", { path: "assets/sounds/sfx/missile_boom.mp3", maxSources: 8, towerName: "Missile Pillar", volume: 1, speed: 1 })
 
         enemies.forEach((enemy, i) => {
             const enemyPosition = enemy.getCenterPosition()
             const distanceToImpact = new Vector(enemyPosition.x - impactPosition.x, enemyPosition.y - impactPosition.y).magnitude()
 
             if (distanceToImpact <= this.impactRadius) {
-                enemy.takeDamage(Math.ceil(this.damage * ((this.impactRadius - distanceToImpact/2) / this.impactRadius)), i !== 0)
+                enemy.takeDamage(Math.ceil(this.damage * ((this.impactRadius - distanceToImpact / 2) / this.impactRadius)), i !== 0)
             }
         })
     }
 
-    private seekEnemy(enemies : Enemy[]) {
-        let bestEnemy : Enemy | undefined = undefined
+    private seekEnemy(enemies: Enemy[]) {
+        let bestEnemy: Enemy | undefined = undefined
         enemies.forEach(enemy => {
             // Check if the enemy is alive and within range
             if (enemy.isAlive) {
