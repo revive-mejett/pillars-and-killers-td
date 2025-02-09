@@ -11,6 +11,9 @@ export class LightningBolt extends Projectile {
     boltWidth: number;
     towerLevel: number
 
+    randomLightBoltPoint?: Position
+    randomLightBoltPoint2?: Position
+
     /**
      *
      */
@@ -65,9 +68,26 @@ export class LightningBolt extends Projectile {
     beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamWidth : number) {
 
         if (this.graphics) {
+
+            if (!this.randomLightBoltPoint) {
+                this.randomLightBoltPoint = {
+                    x: beamOriginPosition.x - beamWidth + Math.floor(Math.random() * 50) - 25,
+                    y: beamOriginPosition.y - beamWidth + Math.floor(Math.random() * 50) - 25
+                }
+            }
+            if (!this.randomLightBoltPoint2) {
+                this.randomLightBoltPoint2 = {
+                    x: beamOriginPosition.x - beamWidth + Math.floor(Math.random() * 100) - 50,
+                    y: beamOriginPosition.y - beamWidth + Math.floor(Math.random() * 100) - 50
+                }
+            }
+
+
             this.graphics.clear()
             this.graphics.lineStyle(beamWidth, this.colour)
             this.graphics.moveTo(beamOriginPosition.x - beamWidth, beamOriginPosition.y)
+            this.graphics.lineTo(this.randomLightBoltPoint.x, this.randomLightBoltPoint.y)
+            this.graphics.lineTo(this.randomLightBoltPoint2.x, this.randomLightBoltPoint2.y)
             this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
         }
 
