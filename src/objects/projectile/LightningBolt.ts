@@ -3,6 +3,7 @@ import { Enemy } from "../killers/Enemy";
 import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
+import { GlowFilter } from "pixi-filters";
 
 
 const eventDispatcher = new EventDispatcher()
@@ -89,6 +90,10 @@ export class LightningBolt extends Projectile {
             this.graphics.lineTo(this.randomLightBoltPoint.x, this.randomLightBoltPoint.y)
             this.graphics.lineTo(this.randomLightBoltPoint2.x, this.randomLightBoltPoint2.y)
             this.graphics.lineTo(enemyCenterPosition.x, enemyCenterPosition.y)
+
+            this.graphics.filters = [
+                new GlowFilter({color: 0xFFFFFF, innerStrength: 0.3, outerStrength: 1}) as unknown as PIXI.Filter
+            ]
         }
 
     }

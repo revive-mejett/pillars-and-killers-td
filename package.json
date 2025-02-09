@@ -23,6 +23,7 @@
   "dependencies": {
     "howler": "^2.2.4",
     "http-server": "^14.1.1",
+    "pixi-filters": "^5.3.0",
     "pixi-sound": "^3.0.5",
     "pixi.js": "^7.2.4"
   },
