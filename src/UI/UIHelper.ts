@@ -122,8 +122,10 @@ export class UIHelper {
 
     static createInfoPanelOutline(hexColour: number): PIXI.Graphics {
         const infoPanelOutline = new PIXI.Graphics()
+        infoPanelOutline.beginFill(0x000000)
         infoPanelOutline.lineStyle(3, hexColour)
         infoPanelOutline.drawRect(0, 0, 1000 * 0.25, 300)
+        infoPanelOutline.endFill()
         return infoPanelOutline
     }
 
