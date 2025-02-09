@@ -254,8 +254,9 @@ Killers come in various shapes and strengths. A good number of them has differen
 
 ![image](https://github.com/user-attachments/assets/c5db4996-d4d2-4bc8-8fed-095593c775b0)
 
-## Planned Release
-Planned release date: $${\color{green}December 25, 2024}$$ -- This is not exact, but a Christmas release would be epic!
+## Release Status
+- 1.0.0 (February 9, 2025) - Initial release with 6 maps, 10 pillars. Game is playable on Easy and Normal difficulties
+- 0.11.0 (February 7, 2025) - Addition of trophies and minor changes
 
 
 
