@@ -12,6 +12,8 @@ export class UIHelper {
 
 
     static createButton(x: number, y: number, width: number, height: number, text: string, fontSize?: number, textColour?: number, bgColour?: number): PIXI.Container {
+        const defaultColour = 0x0A0055
+        
         const buttonContainer = new PIXI.Container()
         buttonContainer.eventMode = "static"
         buttonContainer.x = x
@@ -19,7 +21,7 @@ export class UIHelper {
 
         const buttonBackground = new PIXI.Graphics()
         buttonContainer.addChild(buttonBackground)
-        buttonBackground.beginFill(bgColour || 0x003333)
+        buttonBackground.beginFill(bgColour || defaultColour)
         buttonBackground.drawRect(0, 0, width, height)
         buttonBackground.endFill()
 
@@ -32,13 +34,13 @@ export class UIHelper {
             audioManager.playSound("assets/sounds/sfx/btn_press.mp3", 0.4)
             buttonBackground.clear()
             buttonBackground.lineStyle(1, 0x00FFFF)
-            buttonBackground.beginFill(bgColour || 0x003333)
+            buttonBackground.beginFill(bgColour || defaultColour)
             buttonBackground.drawRect(0, 0, width, height)
             buttonBackground.endFill()
         })
         buttonContainer.on("mouseleave", () => {
             buttonBackground.clear()
-            buttonBackground.beginFill(bgColour || 0x003333)
+            buttonBackground.beginFill(bgColour || defaultColour)
             buttonBackground.drawRect(0, 0, width, height)
             buttonBackground.endFill()
         })

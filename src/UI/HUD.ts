@@ -30,6 +30,9 @@ export class HUD {
     tier3ResearchUI: PIXI.Container | undefined
     tier4ResearchUI: PIXI.Container | undefined
 
+    bgColor1: number = 0x110700
+    bgColor2: number = 0x332200
+    bgColor3: number = 0x221A00
 
     constructor(gamestate: GameState) {
         this.container = new PIXI.Container()
@@ -44,6 +47,17 @@ export class HUD {
         this.currentTowerSelectedIcon = undefined
 
         this.towerSelectionButtons = undefined
+
+        if (gamestate.difficulty === "Chill") {
+            this.bgColor1 = 0x001108
+            this.bgColor2 = 0x003328
+            this.bgColor3 = 0x00221A
+        }
+        if (gamestate.difficulty === "Normal") {
+            this.bgColor1 = 0x110700
+            this.bgColor2 = 0x332200
+            this.bgColor3 = 0x221A00
+        }
     }
 
     setup(container : PIXI.Container) {
@@ -52,7 +66,7 @@ export class HUD {
         this.container.y = 0
 
         const bgColor = new PIXI.Graphics()
-        bgColor.beginFill(0x000011)
+        bgColor.beginFill(this.bgColor1)
         bgColor.drawRect(0,0,1000 * 0.25,1000)
         bgColor.endFill()
         container.zIndex = 99999
@@ -75,7 +89,7 @@ export class HUD {
 
         const moneyContainerbg = new PIXI.Graphics()
         moneyContainer.addChild(moneyContainerbg)
-        moneyContainerbg.beginFill(0x003300)
+        moneyContainerbg.beginFill(this.bgColor2)
         moneyContainerbg.drawRect(0,0, this.container.width, 100)
         moneyContainerbg.endFill()
 
@@ -102,7 +116,7 @@ export class HUD {
 
         const livesContainerbg = new PIXI.Graphics()
         livesContainer.addChild(livesContainerbg)
-        livesContainerbg.beginFill(0x330000)
+        livesContainerbg.beginFill(this.bgColor3)
         livesContainerbg.drawRect(0,0, this.container.width, 100)
         livesContainerbg.endFill()
 
@@ -128,7 +142,7 @@ export class HUD {
 
         const waveNumContainerbg = new PIXI.Graphics()
         waveNumContainer.addChild(waveNumContainerbg)
-        waveNumContainerbg.beginFill(0x003333)
+        waveNumContainerbg.beginFill(0x0A0055)
         waveNumContainerbg.drawRect(0,0, this.container.width, 50)
         waveNumContainerbg.endFill()
 

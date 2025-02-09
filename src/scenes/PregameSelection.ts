@@ -210,7 +210,7 @@ export class PregameSelection extends Scene {
         paneContainer.zIndex = 20
 
         const bgColour = new PIXI.Graphics();
-        bgColour.beginFill(0x002222);
+        bgColour.beginFill(0x0F0033);
         bgColour.drawRect(0, 0, paneWidth, paneHeight);
         bgColour.endFill();
         paneContainer.addChild(bgColour);
@@ -234,12 +234,12 @@ export class PregameSelection extends Scene {
         const textDifficultyTitle = UIHelper.createText(paneWidth/2, 50, difficulty, 60, textColour, true);
         paneContainer.addChild(textDifficultyTitle);
 
-        const iconMoney = UIHelper.createIcon(iconBundle.money, moneyIconTextXOffset + padding , livesMoneyIconTextYPos, 0x002222, 80, 80);
+        const iconMoney = UIHelper.createIcon(iconBundle.money, moneyIconTextXOffset + padding , livesMoneyIconTextYPos, 0x0F0033, 80, 80);
         paneContainer.addChild(iconMoney);
         const txtStartingMoney = UIHelper.createText(moneyIconTextXOffset + textXOffset + padding, livesMoneyIconTextYPos + textYOffset, `x${startingMoney.toString()}`, 40, "0xFFFF00");
         paneContainer.addChild(txtStartingMoney);
 
-        const iconLives = UIHelper.createIcon(iconBundle.lives, livesIconTextXOffset + padding , livesMoneyIconTextYPos, 0x002222, 80, 80);
+        const iconLives = UIHelper.createIcon(iconBundle.lives, livesIconTextXOffset + padding , livesMoneyIconTextYPos, 0x0F0033, 80, 80);
         paneContainer.addChild(iconLives);
         const txtStartingLives = UIHelper.createText(livesIconTextXOffset + textXOffset + padding, livesMoneyIconTextYPos + textYOffset, `x${startingLives.toString()}`, 40, "0xFF0000");
         paneContainer.addChild(txtStartingLives);
@@ -289,7 +289,7 @@ export class PregameSelection extends Scene {
         this.mapSelectionContainer.addChild(paneContainer);
 
         const bgColour = new PIXI.Graphics();
-        bgColour.beginFill(0x002222);
+        bgColour.beginFill(0x0F0033);
         bgColour.drawRect(0, 0, paneWidth, paneHeight);
         bgColour.endFill();
         paneContainer.addChild(bgColour);
@@ -394,7 +394,7 @@ export class PregameSelection extends Scene {
 
         saveFileContainer.zIndex = 10
         const bgColour = new PIXI.Graphics();
-        bgColour.beginFill(0x002222);
+        bgColour.beginFill(0x0F0033);
         bgColour.drawRect(0, 0, paneWidth, 300);
         bgColour.endFill();
         saveFileContainer.addChild(bgColour);
@@ -425,12 +425,12 @@ export class PregameSelection extends Scene {
             const txtCheckpointWave = UIHelper.createText(0 + padding, 150, `Wave ${fileData.checkpointWave}`, 30, "0xFFFFFF");
             saveFileContainer.addChild(txtCheckpointWave);
 
-            const iconMoney = UIHelper.createIcon(iconBundle.money, 0 + padding, 180, 0x002222, 30, 30);
+            const iconMoney = UIHelper.createIcon(iconBundle.money, 0 + padding, 180, 0x0F0033, 30, 30);
             saveFileContainer.addChild(iconMoney);
             const txtMoney = UIHelper.createText(35 + padding, 180, `${fileData.money}`, 30, "0xFFFF00");
             saveFileContainer.addChild(txtMoney);
 
-            const iconLives = UIHelper.createIcon(iconBundle.lives, 0 + padding, 210, 0x002222, 30, 30);
+            const iconLives = UIHelper.createIcon(iconBundle.lives, 0 + padding, 210, 0x0F0033, 30, 30);
             saveFileContainer.addChild(iconLives);
             const txtLives = UIHelper.createText(35 + padding, 210, `${fileData.lives}`, 30, "0x00FF00");
             saveFileContainer.addChild(txtLives);
