@@ -1429,13 +1429,13 @@ const allEnemyData: EnemyData = {
             className: "Alluring Rooster",
             type: "Regen",
             health: 72000,
-            speed: 0.8,
+            speed: 1.3,
             damage: 10,
             killValue: 6200,
             rotationSpeed: 0,
             isLooking: true,
-            animationSpeed: 0.18,
-            regen: 1000,
+            animationSpeed: 0.15,
+            regen: 2200,
             armour: 550
         },
         description: "This beautiful rooster is perseverant and travels at a decent speed"
@@ -1592,7 +1592,7 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "Obsidian Ripper",
             type: "Armoured",
-            health: 140000,
+            health: 170000,
             speed: 0.7,
             damage: 10,
             killValue: 16500,
@@ -1658,11 +1658,11 @@ const allEnemyData: EnemyData = {
         "stats": {
             className: "256p 2152",
             type: "EMP",
-            health: 180000,
+            health: 250000,
             speed: 1,
             damage: 30,
             killValue: 22000,
-            armour: 3000,
+            armour: 7000,
             rotationSpeed: 1.2,
             isLooking: false,
             animationSpeed: 0.27
