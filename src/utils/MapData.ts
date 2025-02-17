@@ -2196,7 +2196,7 @@ allMaps.set("Heartbeat Onslaught", {
     mapInfo: {
         difficulty: 3,
         grassColour: 0x11000C,
-        grassSecondaryColour: 0x270033
+        grassSecondaryColour: 0x470077
     },
     waypoints: [
         {
