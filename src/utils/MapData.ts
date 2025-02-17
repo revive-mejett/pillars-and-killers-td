@@ -2192,6 +2192,171 @@ allMaps.set("Stairwell-O-Chaos", {
     ]
 })
 
+allMaps.set("Heartbeat Onslaught", {
+    mapInfo: {
+        difficulty: 3,
+        grassColour: 0x11000C,
+        grassSecondaryColour: 0x270033
+    },
+    waypoints: [
+        {
+            type: "start",
+            x: 0,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 2,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 2,
+            y: 14
+        },
+
+        {
+            type: "point",
+            x: 4,
+            y: 14
+        },
+
+        {
+            type: "point",
+            x: 4,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 6,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 6,
+            y: 21
+        },
+
+        {
+            type: "point",
+            x: 8,
+            y: 21
+        },
+
+        {
+            type: "point",
+            x: 8,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 10,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 10,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 1
+        },
+
+        {
+            type: "point",
+            x: 14,
+            y: 1
+        },
+
+        {
+            type: "point",
+            x: 14,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 12
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 21,
+            y: 7
+        },
+
+        {
+            type: "point",
+            x: 21,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 12
+        },
+
+        {
+            type: "end",
+            x: 24,
+            y: 12
+        }
+    ]
+})
+
 
 
 // TEST MAPS
