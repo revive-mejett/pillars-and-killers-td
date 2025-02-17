@@ -75,11 +75,11 @@ export class Tile extends Entity {
     }
 
     onTileSelect() {
-        // console.log(`\n{
-        //     type: "point",
-        //     x: ${this.x/this.width},
-        //     y: ${this.y/this.width}
-        // },`)
+        console.log(`\n{
+            type: "point",
+            x: ${this.x/this.width},
+            y: ${this.y/this.width}
+        },`)
         if (this.hasTower) {
             eventDispatcher.fireEvent("towerSelectAction", this.tower)
             eventDispatcher.fireEvent("tileTowerSelect", this)
