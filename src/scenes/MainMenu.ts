@@ -9,8 +9,11 @@ const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 
 
-const version = "V1.0.0"
+const version = "1.1.0"
 const patchNotesTextContent = `
+    * February 17, 2025 - 1.1.0\n
+    - New Map! Heartbeat Onslaught\n
+    \n
     * February 9, 2025 - 1.0.0\n
     - Pillars V.S. Killers released - enjoy building pillars!\n
     \n
@@ -73,7 +76,7 @@ export class MainMenu extends Scene {
 
 
         //Version text
-        const txtVersion = UIHelper.createText(0, 980, version, 20, "0X777777")
+        const txtVersion = UIHelper.createText(0, 980, "V" + version, 20, "0X777777")
         txtVersion.zIndex = 2
         this.container.addChild(txtVersion)
 
@@ -98,7 +101,7 @@ export class MainMenu extends Scene {
 
         patchNotesContainer.addChild(txtPatchNotes)
         this.container.addChild(patchNotesContainer)
-        const btnPatchNotes = UIHelper.createButton(1200, 20, 200, 40, "1.0.0 notes", 30, 0xFFFF00)
+        const btnPatchNotes = UIHelper.createButton(1200, 20, 200, 40, `${version} notes`, 30, 0xFFFF00)
         btnPatchNotes.zIndex = 2
         this.container.addChild(btnPatchNotes)
 
