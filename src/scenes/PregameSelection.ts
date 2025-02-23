@@ -127,7 +127,7 @@ export class PregameSelection extends Scene {
             250,
             75,
             false,
-            true //set to true if not ready, developer boolean
+            false //set to true if not ready, developer boolean
         );
         if (!this.selectedSaveData.mapTitle) {
             return
@@ -147,7 +147,7 @@ export class PregameSelection extends Scene {
             200,
             1,
             !hasWonKillerThrill,
-            true //set to true if not ready, developer boolean
+            false //set to true if not ready, developer boolean
         );
 
         this.btnPrevDifficulties = UIHelper.createButton(150, 950, 200, 50, "Prev", 20, 0xFFFFFF);

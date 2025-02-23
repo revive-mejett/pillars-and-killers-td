@@ -58,6 +58,16 @@ export class HUD {
             this.bgColor2 = 0x332200
             this.bgColor3 = 0x221A00
         }
+        if (gamestate.difficulty === "Killer's Thrill") {
+            this.bgColor1 = 0x110002
+            this.bgColor2 = 0x60000C
+            this.bgColor3 = 0x350007
+        }
+        if (gamestate.difficulty === "1Pill2Nil") {
+            this.bgColor1 = 0x000022
+            this.bgColor2 = 0x0000FF
+            this.bgColor3 = 0x000099
+        }
     }
 
     setup(container : PIXI.Container) {

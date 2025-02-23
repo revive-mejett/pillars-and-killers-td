@@ -14,6 +14,7 @@ import { Enemy } from "src/objects/killers/Enemy";
 import { getTowerData } from "../utils/TowerStatsData";
 import { AudioManager } from "./AudioManager";
 import { formatMillionString } from "../utils/Calc";
+import { GlowFilter } from "pixi-filters";
 
 
 
@@ -104,6 +105,13 @@ export class UIManager {
             }
             if (this.gamestate.lives < 25) {
                 this.hud.livesText.style.fill = 0xFF0000
+            }
+
+            if (this.gamestate.difficulty === "1Pill2Nil") {
+                this.hud.livesText.style.fill = 0xFFFFFF
+                this.hud.livesText.filters = [
+                    new GlowFilter({innerStrength : 0.3, outerStrength: 3, color: 0xFF0000}) as unknown as PIXI.Filter
+                ]
             }
         }
     }

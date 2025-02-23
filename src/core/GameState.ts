@@ -6,7 +6,7 @@ import { calculateWaveValue } from "../utils/Calc"
 import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = false
+const developerTest = true
 const developerOffSet = 0
 
 
@@ -53,7 +53,7 @@ export class GameState {
                 this.lives = 100
             }
             if (this.difficulty === "Killer's Thrill") {
-                this.money = 300
+                this.money = 200
                 this.lives = 75
             }
             if (this.difficulty === "1Pill2Nil") {
@@ -61,25 +61,6 @@ export class GameState {
                 this.lives = 1
             }
         }
-
-        //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
-        if (developerTest) {
-            for (let i = 0; i < this.startWave || 0; i++) {
-                if (killerThrillWaves[i] && productionWaves[i]) {
-                    this.money += calculateWaveValue(productionWaves[i])
-                    // this.money += calculateWaveValue(killerThrillWaves[i])
-                } else {
-                    this.money += 20000
-                }
-            }
-        }
-
-
-        this.uiManager = undefined
-
-        eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
-        eventDispatcher.on("purchaseSuccessful1", this.debitMoney.bind(this))
-        eventDispatcher.on("moneyEarned", this.gainMoney.bind(this))
 
         if (this.difficulty === "Chill") {
             this.sellValuePercentage = 75
@@ -97,6 +78,29 @@ export class GameState {
             this.sellValuePercentage = 50
             this.killBountyMultiplier = 0.50
         }
+
+        //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
+        if (developerTest) {
+            for (let i = 0; i < this.startWave || 0; i++) {
+                if (killerThrillWaves[i] && productionWaves[i]) {
+                    // this.money += calculateWaveValue(productionWaves[i])
+                    this.money += calculateWaveValue(killerThrillWaves[i]) * this.killBountyMultiplier
+                } else {
+                    this.money += 20000
+                }
+            }
+        }
+
+
+
+
+        this.uiManager = undefined
+
+        eventDispatcher.on("enemyReachEnd", this.loseLives.bind(this))
+        eventDispatcher.on("purchaseSuccessful1", this.debitMoney.bind(this))
+        eventDispatcher.on("moneyEarned", this.gainMoney.bind(this))
+
+
 
     }
 

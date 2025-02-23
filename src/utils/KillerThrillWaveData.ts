@@ -420,6 +420,21 @@ const killerThrillWaves = [
                 count: 12,
                 spacingMillis: 300
             },
+            {
+                enemy: "Quick Bonhomme",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 5,
+                spacingMillis: 2000
+            },
         ]
     ),
     //wave 13
@@ -427,27 +442,27 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Quick Bonhomme",
-                count: 4,
+                count: 5,
                 spacingMillis: 100
             },
             {
                 enemy: "4p 2024",
-                count: 1,
+                count: 2,
                 spacingMillis: 5000
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 4,
+                count: 5,
                 spacingMillis: 100
             },
             {
                 enemy: "4p 2024",
-                count: 1,
+                count: 2,
                 spacingMillis: 8000
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 6,
+                count: 7,
                 spacingMillis: 800
             },
         ]
@@ -470,6 +485,11 @@ const killerThrillWaves = [
                 count: 2,
                 spacingMillis: 3000
             },
+            {
+                enemy: "4p 2024",
+                count: 7,
+                spacingMillis: 1000
+            },
         ]
     ),
     // wave 15
@@ -477,8 +497,8 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Mean Triangle",
-                count: 2,
-                spacingMillis: 800
+                count: 5,
+                spacingMillis: 1000
             },
             {
                 enemy: "Quick Bonhomme",
@@ -489,21 +509,56 @@ const killerThrillWaves = [
                 enemy: "4p 2024",
                 count: 4,
                 spacingMillis: 1600
-            }
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 2,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 4,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 2,
+                spacingMillis: 2100
+            },
         ]
     ),
     // wave 16
     new Wave(
         [
             {
+                enemy: "4p 2024",
+                count: 8,
+                spacingMillis: 1000
+            },
+            {
                 enemy: "Quick Bonhomme",
-                count: 15,
-                spacingMillis: 1200
+                count: 8,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 4,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 8,
+                spacingMillis: 100
             },
             {
                 enemy: "4p 2024",
-                count: 4,
-                spacingMillis: 400
+                count: 16,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 8,
+                spacingMillis: 100
             },
         ]
     ),
@@ -512,63 +567,78 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Mean Triangle",
-                count: 1,
-                spacingMillis: 3000
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 30,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 30,
+                spacingMillis: 600
             },
             {
                 enemy: "Stone Pricker",
-                count: 2,
-                spacingMillis: 300
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 2,
-                spacingMillis: 600
+                count: 12,
+                spacingMillis: 1400
             },
             {
                 enemy: "Mean Triangle",
-                count: 1,
-                spacingMillis: 3000
+                count: 10,
+                spacingMillis: 500
             },
-            {
-                enemy: "Quick Bonhomme",
-                count: 2,
-                spacingMillis: 600
-            },
-            {
-                enemy: "Mean Triangle",
-                count: 1,
-                spacingMillis: 3000
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 14,
-                spacingMillis: 1200
-            }
         ]
     ),
     // wave 18
     new Wave(
         [
             {
-                enemy: "4p 2024",
-                count: 10,
-                spacingMillis: 1340
-            },
-            {
-                enemy: "Mean Triangle",
-                count: 2,
-                spacingMillis: 10
-            },
-            {
                 enemy: "Quick Bonhomme",
+                count: 15,
+                spacingMillis: 500
+            },
+            {
+                enemy: "4p 2024",
                 count: 5,
-                spacingMillis: 1200
+                spacingMillis: 100
             },
             {
                 enemy: "Stone Pricker",
-                count: 7,
-                spacingMillis: 1500
+                count: 10,
+                spacingMillis: 1600
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 15,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 15,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 12,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 9,
+                spacingMillis: 400
             }
         ]
     ),
@@ -577,28 +647,38 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Quick Bonhomme",
-                count: 5,
-                spacingMillis: 1200
-            },
-            {
-                enemy: "Mean Triangle",
-                count: 2,
-                spacingMillis: 10
-            },
-            {
-                enemy: "4p 2024",
-                count: 2,
-                spacingMillis: 1000
+                count: 16,
+                spacingMillis: 800
             },
             {
                 enemy: "Mean Triangle",
                 count: 8,
-                spacingMillis: 1000
+                spacingMillis: 300
+            },
+            {
+                enemy: "4p 2024",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Earthling Flake",
+                count: 25,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Little Sparrow",
+                count: 1,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 16,
+                spacingMillis: 800
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 5,
-                spacingMillis: 1200
+                count: 20,
+                spacingMillis: 500
             },
         ]
     ),
