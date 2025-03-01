@@ -6,7 +6,7 @@ import { calculateWaveValue } from "../utils/Calc"
 import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = true
+const developerTest = false
 const developerOffSet = 0
 
 
@@ -14,7 +14,7 @@ export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 0
+    startWave: number = 35
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -67,15 +67,15 @@ export class GameState {
             this.killBountyMultiplier = 1.30
         }
         if (this.difficulty === "Normal") {
-            this.sellValuePercentage = 60
+            this.sellValuePercentage = 70
             this.killBountyMultiplier = 1
         }
         if (this.difficulty === "Killer's Thrill") {
-            this.sellValuePercentage = 60
+            this.sellValuePercentage = 65
             this.killBountyMultiplier = 0.50
         }
         if (this.difficulty === "1Pill2Nil") {
-            this.sellValuePercentage = 50
+            this.sellValuePercentage = 60
             this.killBountyMultiplier = 0.50
         }
 
@@ -106,6 +106,9 @@ export class GameState {
 
     loseLives(damage : number) {
 
+        if (developerTest) {
+            return
+        }
         this.lives -= damage
         if (this.lives <= 0) {
             this.lives = 0

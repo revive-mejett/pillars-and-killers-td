@@ -43,6 +43,7 @@ export class AssetLoader {
         })
         Assets.addBundle("icons", {
             "money" : "assets/images/money_icon.png",
+            "lives_old" : "assets/images/couple.png",
             "lives" : "assets/images/couple2.png",
             "lives_new" : "assets/images/rose.png",
             "heart" : "assets/images/heart_icon.png",

@@ -131,7 +131,7 @@ export class HUD {
         livesContainerbg.endFill()
 
 
-        const livesSprite = PIXI.Sprite.from(iconBundle.lives)
+        const livesSprite = PIXI.Sprite.from(iconBundle["lives"])
         livesSprite.height = 100
         livesSprite.width = 100
         livesSprite.x = 0
