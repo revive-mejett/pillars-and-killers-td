@@ -1226,79 +1226,244 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Freshman Octahedron",
+                count: 11,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 3,
+                spacingMillis: 250
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 13,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 5,
+                spacingMillis: 250
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 15,
+                spacingMillis: 1100
+            },
         ]
     ),
     // wave 42
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Freshman Octahedron",
+                count: 7,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Dashing Dasher",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1
+            },
+            {
+                enemy: "5p 2025",
+                count: 11,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 12,
+                spacingMillis: 1400
+            },
         ]
     ),
     // wave 43
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Beautiful Peacock",
+                count: 7,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Dashing Dasher",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 5,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 10,
+                spacingMillis: 300
+            },
         ]
     ),
     // wave 44
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Dashing Dasher",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 3,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 6,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 20,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 12,
+                spacingMillis: 2000
+            },
         ]
     ),
     // wave 45
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Fast Runner",
+                count: 28,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 3,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 28,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 15,
                 spacingMillis: 800
-            }
+            },
         ]
     ),
     // wave 46
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "12p 2028",
                 count: 1,
+                spacingMillis: 5
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 10,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 15,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 4000
+            },
         ]
     ),
     // wave 47
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "Twilight Great White",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 2000
+            },
         ]
     ),
     // wave 48
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Titanium Bruiser",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "12p 2028",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 20
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 10,
+                spacingMillis: 500
             }
         ]
     ),
@@ -1306,39 +1471,124 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Twilight Great White",
+                count: 7,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 7,
+                spacingMillis: 800
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 1500
+            },
         ]
     ),
     // wave 50
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Titanium Bruiser",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 3,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 14,
+                spacingMillis: 900
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 3,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 10,
+                spacingMillis: 350
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 2,
+                spacingMillis: 5000
+            },
         ]
     ),
     // wave 51
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 500
+            },
         ]
     ),
     // wave 52
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Dashing Dasher",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 3,
+                spacingMillis: 1600
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 20,
+                spacingMillis: 1111
             }
         ]
     ),
@@ -1346,70 +1596,290 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 1600
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 16,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 2600
+            },
+            {
+                enemy: "Fast Runner",
+                count: 40,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Furious Raven",
+                count: 2,
+                spacingMillis: 4000
+            },
         ]
     ),
     // wave 54
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Furious Raven",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 12,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 10,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 14,
+                spacingMillis: 600
+            },
         ]
     ),
     // wave 55
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 6,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 14,
+                spacingMillis: 1000
+            },
         ]
     ),
     // wave 56
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "Furious Raven",
+                count: 5,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 300
+            },
+            {
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 6,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 8,
+                spacingMillis: 1200
+            },
         ]
     ),
     // wave 57
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Furious Raven",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 8,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 10,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Little Sparrow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Cute Crow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Little Sparrow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Cute Crow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 10,
+                spacingMillis: 200
+            },
         ]
     ),
     // wave 58
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Furious Raven",
+                count: 12,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 3,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
         ]
     ),
     // wave 59
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "12p 2028",
+                count: 9,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 10,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Furious Raven",
+                count: 12,
+                spacingMillis: 1200
+            },
         ]
     ),
     // wave 60 boss =============================================
