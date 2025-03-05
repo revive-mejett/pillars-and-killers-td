@@ -1453,7 +1453,7 @@ const killerThrillWaves = [
             {
                 enemy: "Dashing Dasher",
                 count: 5,
-                spacingMillis: 2000
+                spacingMillis: 2500
             },
             {
                 enemy: "12p 2028",
@@ -1463,7 +1463,7 @@ const killerThrillWaves = [
             {
                 enemy: "Freshman Octahedron",
                 count: 10,
-                spacingMillis: 500
+                spacingMillis: 1500
             }
         ]
     ),
@@ -1473,22 +1473,22 @@ const killerThrillWaves = [
             {
                 enemy: "Twilight Great White",
                 count: 7,
-                spacingMillis: 800
+                spacingMillis: 1100
             },
             {
                 enemy: "12p 2028",
                 count: 2,
-                spacingMillis: 1500
+                spacingMillis: 5500
             },
             {
                 enemy: "Twilight Great White",
                 count: 7,
-                spacingMillis: 800
+                spacingMillis: 1300
             },
             {
                 enemy: "12p 2028",
                 count: 2,
-                spacingMillis: 1500
+                spacingMillis: 1900
             },
         ]
     ),
@@ -1508,7 +1508,7 @@ const killerThrillWaves = [
             {
                 enemy: "Twilight Great White",
                 count: 14,
-                spacingMillis: 900
+                spacingMillis: 1700
             },
             {
                 enemy: "Dashing Dasher",
@@ -1533,7 +1533,7 @@ const killerThrillWaves = [
             {
                 enemy: "12p 2028",
                 count: 5,
-                spacingMillis: 1400
+                spacingMillis: 4400
             },
             {
                 enemy: "Titanium Bruiser",
@@ -1583,7 +1583,7 @@ const killerThrillWaves = [
             {
                 enemy: "Titanium Bruiser",
                 count: 3,
-                spacingMillis: 1600
+                spacingMillis: 3600
             },
             {
                 enemy: "Twilight Great White",
@@ -1598,7 +1598,7 @@ const killerThrillWaves = [
             {
                 enemy: "Titanium Bruiser",
                 count: 4,
-                spacingMillis: 1600
+                spacingMillis: 2600
             },
             {
                 enemy: "Beautiful Peacock",
@@ -1608,7 +1608,7 @@ const killerThrillWaves = [
             {
                 enemy: "Titanium Bruiser",
                 count: 4,
-                spacingMillis: 2600
+                spacingMillis: 3600
             },
             {
                 enemy: "Fast Runner",
@@ -1618,7 +1618,7 @@ const killerThrillWaves = [
             {
                 enemy: "Furious Raven",
                 count: 2,
-                spacingMillis: 4000
+                spacingMillis: 2000
             },
         ]
     ),
