@@ -2621,59 +2621,214 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "256p 2152",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 7,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "256p 2152",
+                count: 3,
+                spacingMillis: 1000
+            },
         ]
     ),
     // wave 82
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "Obsidian Ripper",
+                count: 4,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 700
+            },
         ]
     ),
     // wave 83
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Challenger Deep Kraken",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 5,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 12,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 25,
+                spacingMillis: 250
+            },
         ]
     ),
     // wave 84
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Challenger Deep Kraken",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 12,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Near-Light Zoomer",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1000
+            },
         ]
     ),
     // wave 85
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "256p 2152",
+                count: 8,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "256p 2152",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 6,
+                spacingMillis: 4000
+            },
         ]
     ),
     // wave 86
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Irresistible Phoenix",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 3,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -2761,9 +2916,94 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Merciless Loch Ness",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 12,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 36,
+                spacingMillis: 333
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
             }
         ]
     ),
