@@ -1896,9 +1896,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Furious Raven",
+                count: 6,
+                spacingMillis: 600
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 7,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 7,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -1906,10 +1926,60 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Alluring Rooster",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 12,
+                spacingMillis: 1300
+            },
         ]
     ),
     // wave 63
@@ -1923,7 +1993,7 @@ const killerThrillWaves = [
             {
                 enemy: "Dashing Dasher",
                 count: 40,
-                spacingMillis: 5
+                spacingMillis: 25
             },
             {
                 enemy: "Sophomore Dodecahedron",
@@ -1933,7 +2003,7 @@ const killerThrillWaves = [
             {
                 enemy: "Dashing Dasher",
                 count: 40,
-                spacingMillis: 5
+                spacingMillis: 25
             },
             {
                 enemy: "Sophomore Dodecahedron",
@@ -1943,7 +2013,7 @@ const killerThrillWaves = [
             {
                 enemy: "Dashing Dasher",
                 count: 42,
-                spacingMillis: 5
+                spacingMillis: 25
             },
         ]
     ),
@@ -1951,19 +2021,69 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "Alluring Rooster",
+                count: 6,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "12p 2028",
+                count: 8,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 4,
+                spacingMillis: 3500
+            },
+            {
+                enemy: "12p 2028",
+                count: 8,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 5,
+                spacingMillis: 1000
+            },
         ]
     ),
     // wave 65
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 3,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -1971,19 +2091,74 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Furious Raven",
+                count: 10,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 6,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 10,
+                spacingMillis: 850
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Furious Raven",
+                count: 10,
+                spacingMillis: 300
+            },
         ]
     ),
     // wave 67
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "12p 2028",
+                count: 3,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 16,
+                spacingMillis: 1900
+            },
+            {
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 8,
+                spacingMillis: 2700
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 6,
+                spacingMillis: 2200
             }
         ]
     ),
@@ -1991,59 +2166,199 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 8,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 10,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 2200
+            },
         ]
     ),
     // wave 69
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
+            },
         ]
     ),
     // wave 70
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
-            }
+                enemy: "Kingda Ka Zipper",
+                count: 3,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 6,
+                spacingMillis: 550
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 1600
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 6,
+                spacingMillis: 550
+            },
         ]
     ),
     // wave 71
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 4000
+            },
         ]
     ),
     // wave 72
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 8,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1600
+            },
         ]
     ),
     // wave 73
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Sophomore Dodecahedron",
+                count: 10,
+                spacingMillis: 400
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 15,
+                spacingMillis: 650
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 5,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -2051,39 +2366,159 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Enraged Eagle",
+                count: 2,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 2,
+                spacingMillis: 1750
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 2,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 5,
+                spacingMillis: 2750
+            },
         ]
     ),
     // wave 75
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 5,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "256p 2152",
+                count: 3,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 2,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Furious Raven",
+                count: 15,
+                spacingMillis: 200
+            },
         ]
     ),
     // wave 76
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 5,
+                spacingMillis: 2000
+            },
         ]
     ),
     // wave 77
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Obsidian Ripper",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 15,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
+                spacingMillis: 500
             }
         ]
     ),
@@ -2091,20 +2526,85 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Enraged Eagle",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 12,
+                spacingMillis: 400
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Alluring Rooster",
                 count: 1,
-                spacingMillis: 800
-            }
+                spacingMillis: 400
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 8,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 8,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 14,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 14,
+                spacingMillis: 50
+            },
         ]
     ),
     // wave 79
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Enraged Eagle",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 16,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "256p 2152",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 7,
                 spacingMillis: 800
-            }
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 1000
+            },
         ]
     ),
     // wave 80 boss =============================================
