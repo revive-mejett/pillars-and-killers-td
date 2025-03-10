@@ -67,14 +67,32 @@ export class WaveManager {
 
         eventDispatcher.on("boss1Killed", () => {
             this.updateNextCheckpointWave(1)
+
+            if (difficulty === "1Pill2Nil") {
+                //this autoclicks the next wave button
+                eventDispatcher.fireEvent("nextWaveBtnClick")
+                return
+            }
             eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss2Killed", () => {
             this.updateNextCheckpointWave(2)
+
+            if (difficulty === "1Pill2Nil") {
+                //this autoclicks the next wave button
+                eventDispatcher.fireEvent("nextWaveBtnClick")
+                return
+            }
             eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss3Killed", () => {
             this.updateNextCheckpointWave(3)
+
+            if (difficulty === "1Pill2Nil") {
+                //this autoclicks the next wave button
+                eventDispatcher.fireEvent("nextWaveBtnClick")
+                return
+            }
             eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss4Killed", () => {
@@ -82,6 +100,12 @@ export class WaveManager {
                 eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: true})
             } else {
                 this.updateNextCheckpointWave(4)
+
+                if (difficulty === "1Pill2Nil") {
+                    //this autoclicks the next wave button
+                    eventDispatcher.fireEvent("nextWaveBtnClick")
+                    return
+                }
                 eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
             }
         })
