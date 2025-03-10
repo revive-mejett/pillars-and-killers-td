@@ -24,8 +24,7 @@ const patchNotesTextContent = `
     \n
     * February 7, 2025 - 0.11.0\n
     - Add special property info on pillars (e.g slow, poison ivy) and killers (e.g slow immune)\n
-    - buff "256p 2152" and "2^1024p 137632" EMP enemy attacks\n
-    - buff TON 618 speed slightly\n
+    - buffed "256p 2152" and "2^1024p 137632" EMP enemy attacks. buffed TON 618 speed slightly\n
     - Added trophies
 `
 
