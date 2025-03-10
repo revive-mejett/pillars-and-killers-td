@@ -416,6 +416,7 @@ export class PregameSelection extends Scene {
             if (difficulty === "1Pill2Nil") {
                 difficultyColour = "0x0077FF"
             }
+
             const miniMapIcon = UIHelper.createMapCard(allMaps.get(fileData.map)!, 300, 25)
             miniMapIcon.alpha = 0.5
             saveFileContainer.addChild(miniMapIcon)

@@ -46,8 +46,8 @@ export class InfoPanel {
         }
 
 
-        const towerTitleText = UIHelper.createText(0 + padding, 0 + padding,`${tower.towerName}`, 20, "0xFFFFFF")
-        infoPanel.addChild(towerTitleText)
+        const towerNickname = UIHelper.createText(0 + padding, 0 + padding,`${tower.nick || tower.towerName}`, 20, "0xFFFFFF")
+        infoPanel.addChild(towerNickname)
         const towerLevelText = UIHelper.createText(0 + padding, 30 + padding,`Lv. ${tower.level}`, 20, "0xC7C7FF")
         infoPanel.addChild(towerLevelText)
         const towerDamageText = UIHelper.createText(0 + padding, 50 + padding,`damage/shot: ${tower.damage}`, 20, "0xFFC7C7")

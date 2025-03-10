@@ -4,7 +4,8 @@ export type TowerData = {
     x: number,
     y: number,
     level: number,
-    currentTargetingIndex: number
+    currentTargetingIndex: number,
+    nick?: string
 }
 
 export type Difficulty = "Chill" | "Normal" | "Killer's Thrill" | "1Pill2Nil"

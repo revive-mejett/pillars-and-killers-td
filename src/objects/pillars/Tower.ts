@@ -12,6 +12,7 @@ import { TowerInfo } from "src/ts/interfaces/TowerInfo";
 import { AssetLoader } from "../../core/AssetLoader";
 import { FastTargetingStrategy, FirstTargetingStrategy, ITargetingStrategy, LastTargetingStrategy, StrongTargetingStrategy, WeakTargetingStrategy } from "../../utils/targeting/TargetingStrategy";
 import TargetingStrategy from "src/ts/types/TargetingStrategy";
+import { all1st } from "../../utils/Nicknames";
 
 const assetLoader = new AssetLoader()
 
@@ -45,6 +46,9 @@ export abstract class Tower extends Entity {
     //fields for targeting strategies
     currentTargetingIndex: number
     targetingStrategies: TargetingStrategy[]
+
+    //nickname
+    nick: string
 
 
 
@@ -94,6 +98,22 @@ export abstract class Tower extends Entity {
         this.targetingStrategies = ["1st", "Last", "Strong", "Weak", "Fastest"]
         this.currentTargetingIndex = 0
 
+        //nickname
+        this.nick = all1st[Math.floor(Math.random() * all1st.length)]
+
+        //set to random nickname
+        this.setNickname(undefined)
+
+    }
+
+    setNickname(nick: string  | undefined) {
+        if (!nick) {
+            //random nickname
+            this.nick = all1st[Math.floor(Math.random() * all1st.length)]
+        } else {
+            //from loaded data
+            this.nick = nick
+        }
     }
 
     // eslint-disable-next-line no-unused-vars
