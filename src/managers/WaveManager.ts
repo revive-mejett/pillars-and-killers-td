@@ -95,6 +95,8 @@ export class WaveManager {
             }
             eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
+
+        //If the player plays on Chill (Easy) mode, players only need to beat wave 80 (Unforgiving Stephenson-218) to win
         eventDispatcher.on("boss4Killed", () => {
             if (difficulty === "Chill") {
                 eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: true})
@@ -109,6 +111,9 @@ export class WaveManager {
                 eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
             }
         })
+
+        //If boss 5 (TON 618) is killed, save the game regardless of difficulty
+        //For 1Pill2Nil, this is the only time a player gets a checkpoint
         eventDispatcher.on("boss5Killed", () => {
             this.cooldownToNextWave = 0
             eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: false})
