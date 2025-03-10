@@ -26,7 +26,7 @@ const patchNotesTextContent = `
     - Add special property info on pillars (e.g slow, poison ivy) and killers (e.g slow immune)\n
     - buff "256p 2152" and "2^1024p 137632" EMP enemy attacks\n
     - buff TON 618 speed slightly\n
-    - Added trophies that correspond to the difficulties beaten for each map
+    - Added trophies
 `
 
 
