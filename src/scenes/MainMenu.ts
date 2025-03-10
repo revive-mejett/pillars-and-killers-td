@@ -9,8 +9,13 @@ const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 
 
-const version = "1.1.0"
+const version = "1.2.0"
 const patchNotesTextContent = `
+    * March 9, 2025 - 1.2.0\n
+    - Killer's Thrill and 1Pill2Nil released!
+    - Added an outline when a pillar is selected to avoid accidentally placing pillars
+    - Added Pillar Nicknames!
+    \n
     * February 17, 2025 - 1.1.0\n
     - New Map! Heartbeat Onslaught\n
     \n

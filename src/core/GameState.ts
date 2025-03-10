@@ -119,6 +119,11 @@ export class GameState {
         this.lives -= damage
         if (this.lives <= 0) {
             this.lives = 0
+            //handing saved data actions depending on difficulty
+            if (this.difficulty === "Killer's Thrill" || this.difficulty === "1Pill2Nil") {
+                gameDataManager.wipeSaveData(this.saveFileIndex)
+                console.log("delete save")
+            }
             eventDispatcher.fireEvent("defeat")
         }
         this.uiManager?.updateLives()
