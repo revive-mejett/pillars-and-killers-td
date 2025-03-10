@@ -1,12 +1,14 @@
 import { UIManager } from "src/managers/UIManager"
 import { EventDispatcher } from "../utils/EventDispatcher"
+import { GameDataManager } from "../managers/GameDataManager"
 import { Difficulty, GameSaveData } from "../ts/types/GameSaveData"
 import { productionWaves } from "../utils/WaveData"
 import { calculateWaveValue } from "../utils/Calc"
 import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 
 const eventDispatcher = new EventDispatcher()
-const developerTest = false
+const gameDataManager = new GameDataManager()
+const developerTest = true
 const developerOffSet = 0
 
 
@@ -14,7 +16,7 @@ export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 0
+    startWave: number = 19
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -37,6 +39,11 @@ export class GameState {
             this.mapName = savedData.map
             this.difficulty = savedData.difficulty || "Normal"
             this.saveFileIndex = savedData.saveFileIndex
+
+            //handing saved data actions depending on difficulty
+            if (this.difficulty === "Killer's Thrill" || this.difficulty === "1Pill2Nil") {
+                gameDataManager.wipeSaveData(this.saveFileIndex)
+            }
         } else {
             //new game
             this.saveFileIndex = fileNumber

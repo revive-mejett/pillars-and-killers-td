@@ -90,6 +90,7 @@ export class GameplayScene extends Scene {
 
 
 
+
         const gameplaySceneTicker: PIXI.Ticker = new Ticker()
         gameplaySceneTicker.autoStart = false
         gameplaySceneTicker.add(() => this.update())
