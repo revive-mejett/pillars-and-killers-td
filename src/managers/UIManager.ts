@@ -14,6 +14,7 @@ import { Enemy } from "src/objects/killers/Enemy";
 import { getTowerData } from "../utils/TowerStatsData";
 import { AudioManager } from "./AudioManager";
 import { formatMillionString } from "../utils/Calc";
+import { GlowFilter } from "pixi-filters";
 
 
 
@@ -105,6 +106,13 @@ export class UIManager {
             if (this.gamestate.lives < 25) {
                 this.hud.livesText.style.fill = 0xFF0000
             }
+
+            if (this.gamestate.difficulty === "1Pill2Nil") {
+                this.hud.livesText.style.fill = 0xFFFFFF
+                this.hud.livesText.filters = [
+                    new GlowFilter({innerStrength : 0.3, outerStrength: 3, color: 0xFF0000}) as unknown as PIXI.Filter
+                ]
+            }
         }
     }
 
@@ -122,7 +130,7 @@ export class UIManager {
         this.hud.waveNumText.x = (this.hud.waveNumText.parent.width - this.hud.waveNumText.width) / 2;
     }
 
-    setSelectedTowerType(towerType : string) {
+    setSelectedTowerType(towerType : string | undefined) {
         this.selectedTowerType = towerType
     }
 
@@ -134,8 +142,16 @@ export class UIManager {
             const towerTypeKey = buttonEntry[0]
             const towerButton = buttonEntry[1]
             towerButton.on("pointerdown", () => {
-                this.setSelectedTowerType(towerTypeKey)
-                this.hud.updateTowerDescriptionUI(getTowerData(towerTypeKey))
+                if (this.selectedTowerType === towerTypeKey) {
+                    this.setSelectedTowerType(undefined)
+                    this.hud.clearInfoPanel()
+                    this.hud.updateSelectedOutline(undefined)
+                } else {
+                    this.setSelectedTowerType(towerTypeKey)
+                    this.hud.updateTowerDescriptionUI(getTowerData(towerTypeKey))
+                    this.hud.updateSelectedOutline(towerTypeKey)
+                }
+
             })
         })
     }

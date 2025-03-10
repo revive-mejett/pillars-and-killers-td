@@ -109,7 +109,7 @@ export class PregameSelection extends Scene {
             410,
             100,
             "Normal",
-            "*400 starting money, 100 waves\n*Killers give normal bounty\n*60% pillar sellback value\n*For those who are skilled at slaying killers",
+            "*400 starting money, 100 waves\n*Killers give normal bounty\n*70% pillar sellback value\n*Standard gameplay",
             "0XFFFF00",
             "normalbg",
             400,
@@ -121,13 +121,13 @@ export class PregameSelection extends Scene {
             820,
             100,
             "Killer's Thrill",
-            "*250 starting money, 100 waves\nKillers only give 60% of their original bounty\n*50% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading",
+            "*250 starting money, 100 waves\n*Killers only give 55% of their original bounty\n*65% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading\n*For those who are skilled at slaying killers",
             "0xFF0066",
             "killerthrillbg",
             250,
             75,
             false,
-            true //set to true if not ready, developer boolean
+            false //set to true if not ready, developer boolean
         );
         if (!this.selectedSaveData.mapTitle) {
             return
@@ -141,13 +141,13 @@ export class PregameSelection extends Scene {
             1230,
             100,
             "1Pill2Nil",
-            "*200 starting money, 110 waves\n50% kill bounty...\n*50% pillar sellback value...\n*No checkpoints, no saving...; Waves start automatically after each \"checkpoint\"\n*One pill to nil. Only for the experienced - not for the faint of heart",
+            "*200 starting money, 100 waves\n50% kill bounty...\n*60% pillar sellback value...\n*No checkpoints, no saving...; Waves start automatically after each \"checkpoint\"\n*One pill to nil. Only for the experienced - not for the faint of heart",
             "0x0077FF",
             "1pill2nilbg",
             200,
             1,
             !hasWonKillerThrill,
-            true //set to true if not ready, developer boolean
+            false //set to true if not ready, developer boolean
         );
 
         this.btnPrevDifficulties = UIHelper.createButton(150, 950, 200, 50, "Prev", 20, 0xFFFFFF);
@@ -413,6 +413,10 @@ export class PregameSelection extends Scene {
             if (difficulty === "Killer's Thrill") {
                 difficultyColour = "0xFF0066"
             }
+            if (difficulty === "1Pill2Nil") {
+                difficultyColour = "0x0077FF"
+            }
+
             const miniMapIcon = UIHelper.createMapCard(allMaps.get(fileData.map)!, 300, 25)
             miniMapIcon.alpha = 0.5
             saveFileContainer.addChild(miniMapIcon)

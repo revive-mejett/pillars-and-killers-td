@@ -90,6 +90,7 @@ export class GameplayScene extends Scene {
 
 
 
+
         const gameplaySceneTicker: PIXI.Ticker = new Ticker()
         gameplaySceneTicker.autoStart = false
         gameplaySceneTicker.add(() => this.update())
@@ -128,7 +129,8 @@ export class GameplayScene extends Scene {
                     x: tower.x,
                     y: tower.y,
                     level: tower.level,
-                    currentTargetingIndex: tower.currentTargetingIndex
+                    currentTargetingIndex: tower.currentTargetingIndex,
+                    nick: tower.nick
                 })
             })
             const gameSaveData : GameSaveData = {

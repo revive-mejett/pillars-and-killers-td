@@ -24,7 +24,7 @@ const killerThrillWaves = [
                 enemy: "Infant Circle",
                 count: 16,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     //wave 2
@@ -49,7 +49,7 @@ const killerThrillWaves = [
                 enemy: "Little Sparrow",
                 count: 2,
                 spacingMillis: 2700
-            },
+            }
         ]
     ),
     //wave 3
@@ -84,7 +84,7 @@ const killerThrillWaves = [
                 enemy: "Infant Circle",
                 count: 25,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     //wave 4
@@ -144,7 +144,7 @@ const killerThrillWaves = [
                 enemy: "Little Sparrow",
                 count: 7,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     //wave 5
@@ -189,7 +189,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 1,
                 spacingMillis: 1
-            },
+            }
         ]
     ),
     //wave 6
@@ -249,7 +249,7 @@ const killerThrillWaves = [
                 enemy: "Infant Circle",
                 count: 22,
                 spacingMillis: 200
-            },
+            }
         ]
     ),
     //wave 7
@@ -279,7 +279,7 @@ const killerThrillWaves = [
                 enemy: "Earthling Flake",
                 count: 14,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     //wave 8
@@ -314,7 +314,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 1,
                 spacingMillis: 4000
-            },
+            }
         ]
     ),
     //wave 9
@@ -339,7 +339,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 6,
                 spacingMillis: 3000
-            },
+            }
         ]
     ),
     //wave 10
@@ -389,7 +389,7 @@ const killerThrillWaves = [
                 enemy: "Earthling Flake",
                 count: 7,
                 spacingMillis: 1500
-            },
+            }
         ]
     ),
     //wave 12
@@ -420,6 +420,21 @@ const killerThrillWaves = [
                 count: 12,
                 spacingMillis: 300
             },
+            {
+                enemy: "Quick Bonhomme",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 5,
+                spacingMillis: 2000
+            }
         ]
     ),
     //wave 13
@@ -427,29 +442,29 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Quick Bonhomme",
-                count: 4,
+                count: 5,
                 spacingMillis: 100
             },
             {
                 enemy: "4p 2024",
-                count: 1,
+                count: 2,
                 spacingMillis: 5000
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 4,
+                count: 5,
                 spacingMillis: 100
             },
             {
                 enemy: "4p 2024",
-                count: 1,
+                count: 2,
                 spacingMillis: 8000
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 6,
+                count: 7,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     // wave 14
@@ -470,6 +485,11 @@ const killerThrillWaves = [
                 count: 2,
                 spacingMillis: 3000
             },
+            {
+                enemy: "4p 2024",
+                count: 7,
+                spacingMillis: 1000
+            }
         ]
     ),
     // wave 15
@@ -477,8 +497,8 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Mean Triangle",
-                count: 2,
-                spacingMillis: 800
+                count: 5,
+                spacingMillis: 1000
             },
             {
                 enemy: "Quick Bonhomme",
@@ -489,6 +509,21 @@ const killerThrillWaves = [
                 enemy: "4p 2024",
                 count: 4,
                 spacingMillis: 1600
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 2,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 4,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 2,
+                spacingMillis: 2100
             }
         ]
     ),
@@ -496,15 +531,35 @@ const killerThrillWaves = [
     new Wave(
         [
             {
+                enemy: "4p 2024",
+                count: 8,
+                spacingMillis: 1000
+            },
+            {
                 enemy: "Quick Bonhomme",
-                count: 15,
-                spacingMillis: 1200
+                count: 8,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 4,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 8,
+                spacingMillis: 100
             },
             {
                 enemy: "4p 2024",
-                count: 4,
-                spacingMillis: 400
+                count: 16,
+                spacingMillis: 1000
             },
+            {
+                enemy: "Quick Bonhomme",
+                count: 8,
+                spacingMillis: 100
+            }
         ]
     ),
     // wave 17
@@ -512,38 +567,33 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Mean Triangle",
-                count: 1,
-                spacingMillis: 3000
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 30,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 30,
+                spacingMillis: 600
             },
             {
                 enemy: "Stone Pricker",
-                count: 2,
-                spacingMillis: 300
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 2,
-                spacingMillis: 600
+                count: 12,
+                spacingMillis: 1400
             },
             {
                 enemy: "Mean Triangle",
-                count: 1,
-                spacingMillis: 3000
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 2,
-                spacingMillis: 600
-            },
-            {
-                enemy: "Mean Triangle",
-                count: 1,
-                spacingMillis: 3000
-            },
-            {
-                enemy: "Quick Bonhomme",
-                count: 14,
-                spacingMillis: 1200
+                count: 10,
+                spacingMillis: 500
             }
         ]
     ),
@@ -551,24 +601,44 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "4p 2024",
-                count: 10,
-                spacingMillis: 1340
-            },
-            {
-                enemy: "Mean Triangle",
-                count: 2,
-                spacingMillis: 10
-            },
-            {
                 enemy: "Quick Bonhomme",
+                count: 15,
+                spacingMillis: 500
+            },
+            {
+                enemy: "4p 2024",
                 count: 5,
-                spacingMillis: 1200
+                spacingMillis: 100
             },
             {
                 enemy: "Stone Pricker",
-                count: 7,
-                spacingMillis: 1500
+                count: 10,
+                spacingMillis: 1600
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 15,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 15,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 12,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 9,
+                spacingMillis: 400
             }
         ]
     ),
@@ -577,29 +647,39 @@ const killerThrillWaves = [
         [
             {
                 enemy: "Quick Bonhomme",
-                count: 5,
-                spacingMillis: 1200
-            },
-            {
-                enemy: "Mean Triangle",
-                count: 2,
-                spacingMillis: 10
-            },
-            {
-                enemy: "4p 2024",
-                count: 2,
-                spacingMillis: 1000
+                count: 16,
+                spacingMillis: 800
             },
             {
                 enemy: "Mean Triangle",
                 count: 8,
-                spacingMillis: 1000
+                spacingMillis: 300
+            },
+            {
+                enemy: "4p 2024",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Earthling Flake",
+                count: 25,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Little Sparrow",
+                count: 1,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 16,
+                spacingMillis: 800
             },
             {
                 enemy: "Quick Bonhomme",
-                count: 5,
-                spacingMillis: 1200
-            },
+                count: 20,
+                spacingMillis: 500
+            }
         ]
     ),
     // wave 20 boss =============================================
@@ -616,9 +696,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Quick Bonhomme",
+                count: 15,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 12,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Cute Crow",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 18,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -626,9 +721,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Toddler Sphere",
+                count: 11,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 8,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 10,
+                spacingMillis: 600
             }
         ]
     ),
@@ -636,9 +746,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Cute Crow",
+                count: 5,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "4p 2024",
+                count: 20,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Polar Goldfish",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Cute Crow",
+                count: 11,
+                spacingMillis: 1100
             }
         ]
     ),
@@ -646,9 +771,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Toddler Sphere",
+                count: 11,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Fast Runner",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Cute Crow",
+                count: 16,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Fast Runner",
+                count: 2,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 25,
+                spacingMillis: 50
             }
         ]
     ),
@@ -656,9 +806,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Polar Goldfish",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 55,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 18,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Fast Runner",
+                count: 3,
+                spacingMillis: 2500
             }
         ]
     ),
@@ -666,9 +831,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Steel Warrior",
                 count: 1,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 10,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 25,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 15,
+                spacingMillis: 1600
             }
         ]
     ),
@@ -676,9 +856,19 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 2600
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 35,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 3000
             }
         ]
     ),
@@ -686,9 +876,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Fast Runner",
+                count: 3,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 3,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Fast Runner",
+                count: 8,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Cute Crow",
+                count: 15,
+                spacingMillis: 500
             }
         ]
     ),
@@ -696,9 +901,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Steel Warrior",
+                count: 2,
+                spacingMillis: 7000
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 25,
+                spacingMillis: 1350
+            },
+            {
+                enemy: "Fast Runner",
+                count: 3,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 2,
+                spacingMillis: 7000
             }
         ]
     ),
@@ -706,9 +926,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Angry Piranha",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 10,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 10,
+                spacingMillis: 0
             }
         ]
     ),
@@ -716,9 +951,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Steel Warrior",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 1,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Fast Runner",
+                count: 11,
+                spacingMillis: 2800
             }
         ]
     ),
@@ -726,9 +981,19 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Angry Piranha",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Cute Crow",
+                count: 12,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 3,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -736,9 +1001,49 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Fast Runner",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 1,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Fast Runner",
+                count: 1,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 1,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Fast Runner",
+                count: 1,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 1,
+                spacingMillis: 500
+            },
+            {
+                enemy: "5p 2025",
+                count: 12,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 4,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 200,
+                spacingMillis: 50
             }
         ]
     ),
@@ -746,9 +1051,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Cute Crow",
+                count: 40,
+                spacingMillis: 450
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 12,
+                spacingMillis: 150
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 130,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Fast Runner",
+                count: 8,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -756,9 +1076,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "5p 2025",
+                count: 6,
+                spacingMillis: 1600
+            },
+            {
+                enemy: "Polar Goldfish",
+                count: 20,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 5,
+                spacingMillis: 100
             }
         ]
     ),
@@ -766,9 +1101,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "5p 2025",
+                count: 8,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 65,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 16,
+                spacingMillis: 800
+            },
+            {
+                enemy: "5p 2025",
+                count: 12,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -776,9 +1126,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Fast Runner",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 7,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Fast Runner",
+                count: 4,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 20,
+                spacingMillis: 20
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 13,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 20,
+                spacingMillis: 20
             }
         ]
     ),
@@ -786,9 +1161,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Fast Runner",
+                count: 30,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "5p 2025",
+                count: 10,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Toddler Sphere",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 16,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -796,9 +1186,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Angry Piranha",
+                count: 28,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Fast Runner",
+                count: 26,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 7,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Cute Crow",
+                count: 15,
+                spacingMillis: 400
+            },
+            {
+                enemy: "5p 2025",
+                count: 7,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -816,9 +1226,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Freshman Octahedron",
+                count: 11,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 3,
+                spacingMillis: 250
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 13,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 5,
+                spacingMillis: 250
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 15,
+                spacingMillis: 1100
             }
         ]
     ),
@@ -826,9 +1261,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Freshman Octahedron",
+                count: 7,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Dashing Dasher",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "5p 2025",
+                count: 11,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 12,
+                spacingMillis: 1400
             }
         ]
     ),
@@ -836,9 +1286,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Beautiful Peacock",
+                count: 7,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Dashing Dasher",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 5,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 10,
+                spacingMillis: 300
             }
         ]
     ),
@@ -846,9 +1316,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Dashing Dasher",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 3,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 6,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 20,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 12,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -856,8 +1346,33 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Fast Runner",
+                count: 28,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 3,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 28,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 15,
                 spacingMillis: 800
             }
         ]
@@ -866,9 +1381,39 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "12p 2028",
                 count: 1,
+                spacingMillis: 5
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 10,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 15,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -876,9 +1421,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Twilight Great White",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -886,9 +1446,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Titanium Bruiser",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "12p 2028",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 20
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 10,
+                spacingMillis: 1500
             }
         ]
     ),
@@ -896,9 +1471,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Twilight Great White",
+                count: 7,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 5500
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 7,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 1900
             }
         ]
     ),
@@ -906,9 +1496,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Titanium Bruiser",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 3,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 14,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 3,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 10,
+                spacingMillis: 350
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 2,
+                spacingMillis: 5000
             }
         ]
     ),
@@ -916,9 +1531,44 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 4400
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 3,
+                spacingMillis: 500
             }
         ]
     ),
@@ -926,9 +1576,19 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Dashing Dasher",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 3,
+                spacingMillis: 3600
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 20,
+                spacingMillis: 1111
             }
         ]
     ),
@@ -936,9 +1596,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 2600
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 16,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 3600
+            },
+            {
+                enemy: "Fast Runner",
+                count: 40,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Furious Raven",
+                count: 2,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -946,9 +1626,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Furious Raven",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Twilight Great White",
+                count: 12,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 10,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 14,
+                spacingMillis: 600
             }
         ]
     ),
@@ -956,9 +1656,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 6,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 14,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -966,9 +1681,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Furious Raven",
+                count: 5,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 300
+            },
+            {
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 6,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 8,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -976,9 +1716,49 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Furious Raven",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 8,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 10,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Little Sparrow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Cute Crow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Little Sparrow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Cute Crow",
+                count: 10,
+                spacingMillis: 200
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 10,
+                spacingMillis: 200
             }
         ]
     ),
@@ -986,9 +1766,94 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Furious Raven",
+                count: 12,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 3,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 4,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 1,
+                spacingMillis: 1
             }
         ]
     ),
@@ -996,9 +1861,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "12p 2028",
+                count: 9,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 4,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 10,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Furious Raven",
+                count: 12,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -1016,9 +1896,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Furious Raven",
+                count: 6,
+                spacingMillis: 600
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 7,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 7,
+                spacingMillis: 1200
             }
         ]
     ),
@@ -1026,9 +1926,59 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Alluring Rooster",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 3,
+                spacingMillis: 700
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 10
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 12,
+                spacingMillis: 1300
             }
         ]
     ),
@@ -1043,7 +1993,7 @@ const killerThrillWaves = [
             {
                 enemy: "Dashing Dasher",
                 count: 40,
-                spacingMillis: 5
+                spacingMillis: 25
             },
             {
                 enemy: "Sophomore Dodecahedron",
@@ -1053,7 +2003,7 @@ const killerThrillWaves = [
             {
                 enemy: "Dashing Dasher",
                 count: 40,
-                spacingMillis: 5
+                spacingMillis: 25
             },
             {
                 enemy: "Sophomore Dodecahedron",
@@ -1063,17 +2013,37 @@ const killerThrillWaves = [
             {
                 enemy: "Dashing Dasher",
                 count: 42,
-                spacingMillis: 5
-            },
+                spacingMillis: 25
+            }
         ]
     ),
     // wave 64
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Alluring Rooster",
+                count: 6,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "12p 2028",
+                count: 8,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 4,
+                spacingMillis: 3500
+            },
+            {
+                enemy: "12p 2028",
+                count: 8,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 5,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -1081,9 +2051,39 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "12p 2028",
+                count: 2,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 3,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -1091,9 +2091,39 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Furious Raven",
+                count: 10,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 5,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 6,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 10,
+                spacingMillis: 850
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Furious Raven",
+                count: 10,
+                spacingMillis: 300
             }
         ]
     ),
@@ -1101,9 +2131,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "12p 2028",
+                count: 3,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 16,
+                spacingMillis: 1900
+            },
+            {
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 8,
+                spacingMillis: 2700
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 6,
+                spacingMillis: 2200
             }
         ]
     ),
@@ -1111,9 +2166,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 8,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 10,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 2200
             }
         ]
     ),
@@ -1121,9 +2191,39 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "12p 2028",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 1800
             }
         ]
     ),
@@ -1131,9 +2231,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Kingda Ka Zipper",
+                count: 3,
+                spacingMillis: 1800
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 6,
+                spacingMillis: 550
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 2,
+                spacingMillis: 1600
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 6,
+                spacingMillis: 550
             }
         ]
     ),
@@ -1141,9 +2261,49 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "12p 2028",
+                count: 10,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -1151,9 +2311,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 8,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1600
             }
         ]
     ),
@@ -1161,9 +2336,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Sophomore Dodecahedron",
+                count: 10,
+                spacingMillis: 400
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 15,
+                spacingMillis: 650
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 5,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -1171,9 +2366,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Enraged Eagle",
+                count: 2,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 2,
+                spacingMillis: 1750
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 2,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 5,
+                spacingMillis: 2750
             }
         ]
     ),
@@ -1181,9 +2401,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 5,
                 spacingMillis: 800
+            },
+            {
+                enemy: "256p 2152",
+                count: 3,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 2,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Furious Raven",
+                count: 15,
+                spacingMillis: 200
             }
         ]
     ),
@@ -1191,9 +2436,69 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Obsidian Ripper",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "256p 2152",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 5,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -1201,9 +2506,19 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Obsidian Ripper",
+                count: 6,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 15,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 12,
+                spacingMillis: 500
             }
         ]
     ),
@@ -1211,9 +2526,54 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Enraged Eagle",
+                count: 8,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 12,
+                spacingMillis: 400
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Alluring Rooster",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 400
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 8,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 8,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 14,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 14,
+                spacingMillis: 50
             }
         ]
     ),
@@ -1221,9 +2581,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Enraged Eagle",
+                count: 10,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 16,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "256p 2152",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 7,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -1241,9 +2621,49 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 3,
+                spacingMillis: 2200
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "256p 2152",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 11,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 5,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 40,
+                spacingMillis: 200
             }
         ]
     ),
@@ -1251,9 +2671,64 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Obsidian Ripper",
+                count: 14,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 4,
+                spacingMillis: 1100
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 5,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "256p 2152",
+                count: 10,
+                spacingMillis: 700
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 2,
+                spacingMillis: 700
+            },
+            {
+                enemy: "256p 2152",
+                count: 2,
+                spacingMillis: 700
             }
         ]
     ),
@@ -1261,9 +2736,24 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Challenger Deep Kraken",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 5,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 12,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 25,
+                spacingMillis: 250
             }
         ]
     ),
@@ -1271,9 +2761,44 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Challenger Deep Kraken",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 4,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 2800
+            },
+            {
+                enemy: "256p 2152",
+                count: 4,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 5,
+                spacingMillis: 5000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 4,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -1281,8 +2806,33 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "256p 2152",
+                count: 8,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "256p 2152",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 6,
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 25,
                 spacingMillis: 800
             }
         ]
@@ -1291,9 +2841,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Irresistible Phoenix",
+                count: 20,
+                spacingMillis: 2100
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 50,
+                spacingMillis: 300
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 1900
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 1900
             }
         ]
     ),
@@ -1301,9 +2871,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Near-Light Zoomer",
+                count: 3,
+                spacingMillis: 2700
+            },
+            {
+                enemy: "2^1024p 137632",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 4000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 10,
+                spacingMillis: 1350
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 4,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 12,
+                spacingMillis: 1100
             }
         ]
     ),
@@ -1311,9 +2901,34 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Carbon Nanotube Annihilator",
                 count: 1,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 3,
+                spacingMillis: 3200
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 1,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 4,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 7,
+                spacingMillis: 3600
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 25,
+                spacingMillis: 400
             }
         ]
     ),
@@ -1321,9 +2936,44 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Carbon Nanotube Annihilator",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 3,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 15,
+                spacingMillis: 1200
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 2,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 7,
+                spacingMillis: 3500
             }
         ]
     ),
@@ -1331,9 +2981,29 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Carbon Nanotube Annihilator",
+                count: 3,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 4,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 1,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "256p 2152",
+                count: 25,
+                spacingMillis: 800
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 4,
+                spacingMillis: 4000
             }
         ]
     ),
@@ -1341,9 +3011,39 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 2,
                 spacingMillis: 800
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 2,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 10,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 2,
+                spacingMillis: 800
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 25,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -1351,9 +3051,39 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "2^1024p 137632",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 4,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 8,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 10,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 1
             }
         ]
     ),
@@ -1361,9 +3091,44 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Neptunian Megalodon",
+                count: 20,
+                spacingMillis: 10
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 5,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 25,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 12,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 2,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 2,
+                spacingMillis: 5000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 4,
+                spacingMillis: 2400
             }
         ]
     ),
@@ -1371,9 +3136,49 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
-                count: 1,
-                spacingMillis: 800
+                enemy: "Near-Light Zoomer",
+                count: 4,
+                spacingMillis: 1500
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "12p 2028",
+                count: 30,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 3,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 15,
+                spacingMillis: 100
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 10,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 8,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 10,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 2,
+                spacingMillis: 3500
             }
         ]
     ),
@@ -1381,9 +3186,109 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Merciless Loch Ness",
+                count: 2,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 4,
+                spacingMillis: 3000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 12,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 36,
+                spacingMillis: 333
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 8,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "Irresistible Phoenix",
+                count: 15,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 8,
+                spacingMillis: 3700
             }
         ]
     ),
@@ -1391,8 +3296,83 @@ const killerThrillWaves = [
     new Wave(
         [
             {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 5,
+                spacingMillis: 2100
+            },
+            {
                 enemy: "Infant Circle",
                 count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 4,
+                spacingMillis: 900
+            },
+            {
+                enemy: "Neptunian Megalodon",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Steel Warrior",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Quick Bonhomme",
+                count: 1,
+                spacingMillis: 0
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 7,
+                spacingMillis: 3400
+            },
+            {
+                enemy: "Dashing Dasher",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Carbon Nanotube Annihilator",
+                count: 5,
+                spacingMillis: 1700
+            },
+            {
+                enemy: "5p 2025",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 3,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Alluring Rooster",
+                count: 1,
+                spacingMillis: 400
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 10,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 5,
+                spacingMillis: 3500
+            },
+            {
+                enemy: "256p 2152",
+                count: 15,
                 spacingMillis: 800
             }
         ]
@@ -1401,9 +3381,74 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "4p 2024",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "5p 2025",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "12p 2028",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "256p 2152",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 3,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "Cute Crow",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Little Sparrow",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 3,
+                spacingMillis: 2400
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 8,
+                spacingMillis: 3400
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 8,
+                spacingMillis: 2000
             }
         ]
     ),
@@ -1411,9 +3456,114 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Furious Raven",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "Stone Pricker",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 5,
+                spacingMillis: 600
+            },
+            {
+                enemy: "Obsidian Ripper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Beautiful Peacock",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 15,
+                spacingMillis: 1300
+            },
+            {
+                enemy: "Freshman Octahedron",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Mean Triangle",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Fast Runner",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 12,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Sophomore Dodecahedron",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 25,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Titanium Bruiser",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Angry Piranha",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Jr. Rhombicosidodecahedron",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 4,
+                spacingMillis: 2500
+            },
+            {
+                enemy: "Kingda Ka Zipper",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 15,
+                spacingMillis: 1400
+            },
+            {
+                enemy: "Enraged Eagle",
+                count: 1,
+                spacingMillis: 1
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 1000
             }
         ]
     ),
@@ -1421,9 +3571,44 @@ const killerThrillWaves = [
     new Wave(
         [
             {
-                enemy: "Infant Circle",
+                enemy: "Merciless Loch Ness",
+                count: 12,
+                spacingMillis: 2000
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 10,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Cute Crow",
                 count: 1,
-                spacingMillis: 800
+                spacingMillis: 1
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 3,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Challenger Deep Kraken",
+                count: 5,
+                spacingMillis: 500
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 5,
+                spacingMillis: 1200
             }
         ]
     ),

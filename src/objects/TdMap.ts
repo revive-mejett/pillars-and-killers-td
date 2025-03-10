@@ -92,6 +92,11 @@ class TdMap {
 
                 if (savedTowerData) {
                     const tower = TowerFactory.createTower(tile.x, tile.y, tile.width, tile.height, savedTowerData.towerType)
+
+                    //checks if data has a nickname
+                    if (savedTowerData.nick) {
+                        tower.setNickname(savedTowerData.nick)
+                    }
                     tower.presetLevel(savedTowerData.level)
                     tile.placeTowerOnTile(tower)
                     tower.setTileRef(tile)

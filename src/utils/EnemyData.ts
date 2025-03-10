@@ -1545,7 +1545,7 @@ const allEnemyData: EnemyData = {
             rotationSpeed: 1.4,
             isLooking: false,
             animationSpeed: 0.10,
-            armour: 1200
+            armour: 456
         },
         description: "It's travelling at 205 km/hr (128 mph). Arms down, head back, hold on! Exceedingly fast - one of the fastest killers on the planet!!!! So stupidly fast you will see it reach the end in just seconds."
     },

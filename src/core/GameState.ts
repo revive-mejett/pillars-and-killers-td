@@ -1,11 +1,13 @@
 import { UIManager } from "src/managers/UIManager"
 import { EventDispatcher } from "../utils/EventDispatcher"
+import { GameDataManager } from "../managers/GameDataManager"
 import { Difficulty, GameSaveData } from "../ts/types/GameSaveData"
 import { productionWaves } from "../utils/WaveData"
 import { calculateWaveValue } from "../utils/Calc"
 import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 
 const eventDispatcher = new EventDispatcher()
+const gameDataManager = new GameDataManager()
 const developerTest = false
 const developerOffSet = 0
 
@@ -37,6 +39,11 @@ export class GameState {
             this.mapName = savedData.map
             this.difficulty = savedData.difficulty || "Normal"
             this.saveFileIndex = savedData.saveFileIndex
+
+            //handing saved data actions depending on difficulty
+            if (this.difficulty === "Killer's Thrill" || this.difficulty === "1Pill2Nil") {
+                gameDataManager.wipeSaveData(this.saveFileIndex)
+            }
         } else {
             //new game
             this.saveFileIndex = fileNumber
@@ -53,7 +60,7 @@ export class GameState {
                 this.lives = 100
             }
             if (this.difficulty === "Killer's Thrill") {
-                this.money = 300
+                this.money = 250
                 this.lives = 75
             }
             if (this.difficulty === "1Pill2Nil") {
@@ -62,17 +69,36 @@ export class GameState {
             }
         }
 
+        if (this.difficulty === "Chill") {
+            this.sellValuePercentage = 75
+            this.killBountyMultiplier = 1.30
+        }
+        if (this.difficulty === "Normal") {
+            this.sellValuePercentage = 70
+            this.killBountyMultiplier = 1
+        }
+        if (this.difficulty === "Killer's Thrill") {
+            this.sellValuePercentage = 65
+            this.killBountyMultiplier = 0.55
+        }
+        if (this.difficulty === "1Pill2Nil") {
+            this.sellValuePercentage = 60
+            this.killBountyMultiplier = 0.50
+        }
+
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         if (developerTest) {
             for (let i = 0; i < this.startWave || 0; i++) {
                 if (killerThrillWaves[i] && productionWaves[i]) {
-                    this.money += calculateWaveValue(productionWaves[i])
-                    // this.money += calculateWaveValue(killerThrillWaves[i])
+                    // this.money += calculateWaveValue(productionWaves[i])
+                    this.money += calculateWaveValue(killerThrillWaves[i]) * this.killBountyMultiplier
                 } else {
                     this.money += 20000
                 }
             }
         }
+
+
 
 
         this.uiManager = undefined
@@ -81,30 +107,23 @@ export class GameState {
         eventDispatcher.on("purchaseSuccessful1", this.debitMoney.bind(this))
         eventDispatcher.on("moneyEarned", this.gainMoney.bind(this))
 
-        if (this.difficulty === "Chill") {
-            this.sellValuePercentage = 75
-            this.killBountyMultiplier = 1.30
-        }
-        if (this.difficulty === "Normal") {
-            this.sellValuePercentage = 60
-            this.killBountyMultiplier = 1
-        }
-        if (this.difficulty === "Killer's Thrill") {
-            this.sellValuePercentage = 60
-            this.killBountyMultiplier = 0.50
-        }
-        if (this.difficulty === "1Pill2Nil") {
-            this.sellValuePercentage = 50
-            this.killBountyMultiplier = 0.50
-        }
+
 
     }
 
     loseLives(damage : number) {
 
+        if (developerTest) {
+            return
+        }
         this.lives -= damage
         if (this.lives <= 0) {
             this.lives = 0
+            //handing saved data actions depending on difficulty
+            if (this.difficulty === "Killer's Thrill" || this.difficulty === "1Pill2Nil") {
+                gameDataManager.wipeSaveData(this.saveFileIndex)
+                console.log("delete save")
+            }
             eventDispatcher.fireEvent("defeat")
         }
         this.uiManager?.updateLives()

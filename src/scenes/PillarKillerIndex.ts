@@ -129,7 +129,7 @@ export class PillarKillerIndex extends Scene {
         paneContainer.zIndex = 20;
 
         const bgColour = new PIXI.Graphics();
-        bgColour.beginFill(0x002222);
+        bgColour.beginFill(0x0F0033);
         bgColour.drawRect(0, 0, paneWidth, paneHeight);
         bgColour.endFill();
         paneContainer.addChild(bgColour);
@@ -212,7 +212,7 @@ export class PillarKillerIndex extends Scene {
         this.enemyDetailPane.y = 690
 
         const bgColour = new PIXI.Graphics();
-        bgColour.beginFill(0x002222);
+        bgColour.beginFill(0x0F0033);
         bgColour.drawRect(0, 0, 1300, 300);
         bgColour.endFill();
         this.enemyDetailPane.addChild(bgColour);

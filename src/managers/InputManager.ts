@@ -66,17 +66,44 @@ export class InputManager {
         window.addEventListener("keydown", this.handleKeyPress)
     }
 
+    // hotkey handing
     onkeydown(e: KeyboardEvent) {
+
+        // hotkey handling for setting previous tower targeting strategy
         if ((e.key === "Q" || e.key === "q") && this.selectedTowerTile?.tower) {
             this.selectedTowerTile.tower.previousTargetingStrategy()
             this.uiManager.displaySelectedTowerInfo(this.selectedTowerTile.tower)
             audioManager.playSound("assets/sounds/sfx/btn_press.mp3", 0.2)
         }
+
+        // hotkey handling for setting next tower targeting strategy
         if ((e.key === "E" || e.key === "e") && this.selectedTowerTile?.tower) {
             this.selectedTowerTile.tower.nextTargetingStrategy()
             this.uiManager.displaySelectedTowerInfo(this.selectedTowerTile.tower)
             audioManager.playSound("assets/sounds/sfx/btn_press.mp3", 0.2)
         }
+
+
+        // hotkey handling for upgrading towers
+        if ((e.key === "U" || e.key === "u") && this.selectedTowerTile?.tower && this.selectedTowerTile?.tower.upgrades) {
+            const tower = this.selectedTowerTile?.tower
+            const isUpgradable = tower.level <= tower.upgrades!.length
+
+            if (isUpgradable) {
+                eventDispatcher.fireEvent("towerUpgradeAction", tower.tile)
+            }
+        }
+
+
+        // hotkey handling for selling towers
+        if ((e.key === "X" || e.key === "x") && this.selectedTowerTile?.tower) {
+            const tower = this.selectedTowerTile?.tower
+
+            tower.tile?.sellTower()
+            eventDispatcher.fireEvent("towerSellAction")
+        }
+
+
     }
 
 

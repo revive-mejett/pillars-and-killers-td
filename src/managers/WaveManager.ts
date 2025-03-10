@@ -67,24 +67,53 @@ export class WaveManager {
 
         eventDispatcher.on("boss1Killed", () => {
             this.updateNextCheckpointWave(1)
+
+            if (difficulty === "1Pill2Nil") {
+                //this autoclicks the next wave button
+                eventDispatcher.fireEvent("nextWaveBtnClick")
+                return
+            }
             eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss2Killed", () => {
             this.updateNextCheckpointWave(2)
+
+            if (difficulty === "1Pill2Nil") {
+                //this autoclicks the next wave button
+                eventDispatcher.fireEvent("nextWaveBtnClick")
+                return
+            }
             eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
         eventDispatcher.on("boss3Killed", () => {
             this.updateNextCheckpointWave(3)
+
+            if (difficulty === "1Pill2Nil") {
+                //this autoclicks the next wave button
+                eventDispatcher.fireEvent("nextWaveBtnClick")
+                return
+            }
             eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
         })
+
+        //If the player plays on Chill (Easy) mode, players only need to beat wave 80 (Unforgiving Stephenson-218) to win
         eventDispatcher.on("boss4Killed", () => {
             if (difficulty === "Chill") {
                 eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: true})
             } else {
                 this.updateNextCheckpointWave(4)
+
+                if (difficulty === "1Pill2Nil") {
+                    //this autoclicks the next wave button
+                    eventDispatcher.fireEvent("nextWaveBtnClick")
+                    return
+                }
                 eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
             }
         })
+
+        //If boss 5 (TON 618) is killed, save the game regardless of difficulty
+        //For 1Pill2Nil, this is the only time a player gets a checkpoint
         eventDispatcher.on("boss5Killed", () => {
             this.cooldownToNextWave = 0
             eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: false})
