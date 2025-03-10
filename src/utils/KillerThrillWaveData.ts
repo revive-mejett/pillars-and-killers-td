@@ -3157,7 +3157,7 @@ const killerThrillWaves = [
             },
             {
                 enemy: "Kingda Ka Zipper",
-                count: 100,
+                count: 15,
                 spacingMillis: 100
             },
             {
@@ -3482,7 +3482,7 @@ const killerThrillWaves = [
             },
             {
                 enemy: "2^1024p 137632",
-                count: 8,
+                count: 15,
                 spacingMillis: 1300
             },
             {
@@ -3501,13 +3501,18 @@ const killerThrillWaves = [
                 spacingMillis: 1
             },
             {
-                enemy: "Jr. Rhombicosidodecahedron",
-                count: 25,
+                enemy: "2^1024p 137632",
+                count: 5,
                 spacingMillis: 1000
             },
             {
                 enemy: "Merciless Loch Ness",
                 count: 12,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "2^1024p 137632",
+                count: 5,
                 spacingMillis: 1000
             },
             {
@@ -3518,7 +3523,7 @@ const killerThrillWaves = [
             {
                 enemy: "Near-Light Zoomer",
                 count: 25,
-                spacingMillis: 2000
+                spacingMillis: 1000
             },
             {
                 enemy: "Titanium Bruiser",
@@ -3538,12 +3543,17 @@ const killerThrillWaves = [
             {
                 enemy: "Merciless Loch Ness",
                 count: 4,
-                spacingMillis: 4000
+                spacingMillis: 2500
             },
             {
                 enemy: "Kingda Ka Zipper",
                 count: 1,
                 spacingMillis: 1
+            },
+            {
+                enemy: "Near-Light Zoomer",
+                count: 15,
+                spacingMillis: 1400
             },
             {
                 enemy: "Enraged Eagle",
@@ -3563,7 +3573,7 @@ const killerThrillWaves = [
             {
                 enemy: "Merciless Loch Ness",
                 count: 12,
-                spacingMillis: 4000
+                spacingMillis: 2000
             },
             {
                 enemy: "Near-Light Zoomer",
@@ -3592,8 +3602,13 @@ const killerThrillWaves = [
             },
             {
                 enemy: "Merciless Loch Ness",
-                count: 10,
-                spacingMillis: 4000
+                count: 5,
+                spacingMillis: 1000
+            },
+            {
+                enemy: "Merciless Loch Ness",
+                count: 5,
+                spacingMillis: 1200
             },
         ]
     ),
