@@ -130,7 +130,7 @@ export class UIManager {
         this.hud.waveNumText.x = (this.hud.waveNumText.parent.width - this.hud.waveNumText.width) / 2;
     }
 
-    setSelectedTowerType(towerType : string) {
+    setSelectedTowerType(towerType : string | undefined) {
         this.selectedTowerType = towerType
     }
 
@@ -142,8 +142,16 @@ export class UIManager {
             const towerTypeKey = buttonEntry[0]
             const towerButton = buttonEntry[1]
             towerButton.on("pointerdown", () => {
-                this.setSelectedTowerType(towerTypeKey)
-                this.hud.updateTowerDescriptionUI(getTowerData(towerTypeKey))
+                if (this.selectedTowerType === towerTypeKey) {
+                    this.setSelectedTowerType(undefined)
+                    this.hud.clearInfoPanel()
+                    this.hud.updateSelectedOutline(undefined)
+                } else {
+                    this.setSelectedTowerType(towerTypeKey)
+                    this.hud.updateTowerDescriptionUI(getTowerData(towerTypeKey))
+                    this.hud.updateSelectedOutline(towerTypeKey)
+                }
+
             })
         })
     }

@@ -24,7 +24,7 @@ export class HUD {
     exitButton: PIXI.Container | undefined
     infoPanel: PIXI.Container | undefined
     currentTowerSelectedIcon: undefined
-    towerSelectionButtons: {[key: string] : PIXI.Container<PIXI.DisplayObject>} | undefined
+    towerSelectionButtons: { [key: string]: PIXI.Container<PIXI.DisplayObject> } | undefined
 
     tier2ResearchUI: PIXI.Container | undefined
     tier3ResearchUI: PIXI.Container | undefined
@@ -33,6 +33,8 @@ export class HUD {
     bgColor1: number = 0x110700
     bgColor2: number = 0x332200
     bgColor3: number = 0x221A00
+
+    selectedOutlineContainer: PIXI.Container | undefined
 
     constructor(gamestate: GameState) {
         this.container = new PIXI.Container()
@@ -70,14 +72,14 @@ export class HUD {
         }
     }
 
-    setup(container : PIXI.Container) {
+    setup(container: PIXI.Container) {
         container.addChild(this.container)
         this.container.x = 1100
         this.container.y = 0
 
         const bgColor = new PIXI.Graphics()
         bgColor.beginFill(this.bgColor1)
-        bgColor.drawRect(0,0,1000 * 0.25,1000)
+        bgColor.drawRect(0, 0, 1000 * 0.25, 1000)
         bgColor.endFill()
         container.zIndex = 99999
         this.container.zIndex = 99999
@@ -100,7 +102,7 @@ export class HUD {
         const moneyContainerbg = new PIXI.Graphics()
         moneyContainer.addChild(moneyContainerbg)
         moneyContainerbg.beginFill(this.bgColor2)
-        moneyContainerbg.drawRect(0,0, this.container.width, 100)
+        moneyContainerbg.drawRect(0, 0, this.container.width, 100)
         moneyContainerbg.endFill()
 
 
@@ -112,7 +114,7 @@ export class HUD {
         moneyContainer.addChild(moneySprite)
 
 
-        const moneyText = new Text("", new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFF00, align: "center"}))
+        const moneyText = new Text("", new TextStyle({ fontFamily: "Times New Roman", fontSize: 40, fill: 0xFFFF00, align: "center" }))
         moneyText.x = 0 + moneySprite.width
         moneyText.y = (moneyContainer.height - moneyText.height) / 2;
         moneyContainer.addChild(moneyText)
@@ -127,7 +129,7 @@ export class HUD {
         const livesContainerbg = new PIXI.Graphics()
         livesContainer.addChild(livesContainerbg)
         livesContainerbg.beginFill(this.bgColor3)
-        livesContainerbg.drawRect(0,0, this.container.width, 100)
+        livesContainerbg.drawRect(0, 0, this.container.width, 100)
         livesContainerbg.endFill()
 
 
@@ -138,7 +140,7 @@ export class HUD {
         livesSprite.y = 0
         livesContainer.addChild(livesSprite)
 
-        const livesText = new Text(this.gamestate.lives, new TextStyle({fontFamily: "Times New Roman", fontSize: 40, fill: 0xFF00, align: "center"}))
+        const livesText = new Text(this.gamestate.lives, new TextStyle({ fontFamily: "Times New Roman", fontSize: 40, fill: 0xFF00, align: "center" }))
         livesText.x = 0 + livesSprite.width
         livesText.y = (livesContainer.height - livesText.height) / 2;
         livesContainer.addChild(livesText)
@@ -153,10 +155,10 @@ export class HUD {
         const waveNumContainerbg = new PIXI.Graphics()
         waveNumContainer.addChild(waveNumContainerbg)
         waveNumContainerbg.beginFill(0x0A0055)
-        waveNumContainerbg.drawRect(0,0, this.container.width, 50)
+        waveNumContainerbg.drawRect(0, 0, this.container.width, 50)
         waveNumContainerbg.endFill()
 
-        const waveNumText = new Text("Next Wave to begin!", new TextStyle({fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center"}))
+        const waveNumText = new Text("Next Wave to begin!", new TextStyle({ fontFamily: "Times New Roman", fontSize: 20, fill: 0xFFFFFF, align: "center" }))
         waveNumText.x = (waveNumContainer.width - waveNumText.width) / 2;
         waveNumText.y = (waveNumContainer.height - waveNumText.height) / 2;
         waveNumContainer.addChild(waveNumText)
@@ -167,9 +169,9 @@ export class HUD {
         const btnNextWave = UIHelper.createButton(0, 1000 - 100, this.container.width, 48, "Next Wave", 40, 0x00FFFF, 0x000077)
         this.container.addChild(btnNextWave)
 
-        const btnExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 30, this.container.width/2, 25, "Exit", 25, 0xFFFFFF, 0x330000)
+        const btnExit = UIHelper.createButton(0 + this.container.width / 2, 1000 - 30, this.container.width / 2, 25, "Exit", 25, 0xFFFFFF, 0x330000)
         this.container.addChild(btnExit)
-        const confirmExit = UIHelper.createButton(0 + this.container.width/2, 1000 - 30, this.container.width/2, 25, "Confirm?", 25, 0xFF7777, 0x770000)
+        const confirmExit = UIHelper.createButton(0 + this.container.width / 2, 1000 - 30, this.container.width / 2, 25, "Confirm?", 25, 0xFF7777, 0x770000)
         this.container.addChild(confirmExit)
         confirmExit.visible = false
 
@@ -241,12 +243,23 @@ export class HUD {
 
     //tower selection menu
     setUpTowerSelections() {
+
         this.towerSelectionButtons = {}
         const towerSpriteBundle = assetLoader.towers
         const towerSelectMenu = new PIXI.Container()
         towerSelectMenu.x = 0
         towerSelectMenu.y = 255
         this.container.addChild(towerSelectMenu)
+
+        this.selectedOutlineContainer = new PIXI.Container()
+        towerSelectMenu.addChild(this.selectedOutlineContainer)
+        const selectedOutline = new PIXI.Graphics()
+        selectedOutline.beginFill(0x000000, 0)
+        selectedOutline.lineStyle(2, 0x00FFFF)
+        selectedOutline.drawRect(0, 0, 80, 80)
+        selectedOutline.endFill()
+        this.selectedOutlineContainer.addChild(selectedOutline)
+        this.selectedOutlineContainer.visible = false
 
         if (!towerSpriteBundle) {
             throw new Error("Asset tower sprite bundle not loaded properly")
@@ -288,7 +301,7 @@ export class HUD {
         this.tier2ResearchUI = new PIXI.Container()
         towerSelectMenu.addChild(this.tier2ResearchUI)
         this.tier2ResearchUI.y = 85
-        const btnResearchTier2 = UIHelper.createButton(0,0,250,30, `Research Pillars: $${this.gamestate.tier2ResearchCost}`, 20, 0xFFFF00)
+        const btnResearchTier2 = UIHelper.createButton(0, 0, 250, 30, `Research Pillars: $${this.gamestate.tier2ResearchCost}`, 20, 0xFFFF00)
         this.tier2ResearchUI.addChild(btnResearchTier2)
         btnResearchTier2.on("pointerdown", () => {
             eventDispatcher.fireEvent("researchTier2Action")
@@ -297,7 +310,7 @@ export class HUD {
         this.tier3ResearchUI = new PIXI.Container()
         towerSelectMenu.addChild(this.tier3ResearchUI)
         this.tier3ResearchUI.y = 170
-        const btnResearchTier3 = UIHelper.createButton(0,0,250,30, `Research Pillars: $${this.gamestate.tier3ResearchCost}`, 20, 0xFFFF00)
+        const btnResearchTier3 = UIHelper.createButton(0, 0, 250, 30, `Research Pillars: $${this.gamestate.tier3ResearchCost}`, 20, 0xFFFF00)
         this.tier3ResearchUI.addChild(btnResearchTier3)
         btnResearchTier3.on("pointerdown", () => {
             eventDispatcher.fireEvent("researchTier3Action")
@@ -306,13 +319,75 @@ export class HUD {
         this.tier4ResearchUI = new PIXI.Container()
         towerSelectMenu.addChild(this.tier4ResearchUI)
         this.tier4ResearchUI.y = 255
-        const btnResearchTier4 = UIHelper.createButton(0,0,250,30, `Research Pillars: $${this.gamestate.tier4ResearchCost}`, 20, 0xFFFF00)
+        const btnResearchTier4 = UIHelper.createButton(0, 0, 250, 30, `Research Pillars: $${this.gamestate.tier4ResearchCost}`, 20, 0xFFFF00)
         this.tier4ResearchUI.addChild(btnResearchTier4)
         btnResearchTier4.on("pointerdown", () => {
             eventDispatcher.fireEvent("researchTier4Action")
         })
 
         this.updateTowerSelectionVisibility()
+    }
+
+    updateSelectedOutline(towerType: string | undefined) {
+
+        //if tower is deselected, make it invisible
+        if (!this.selectedOutlineContainer) {
+            return
+        }
+        if (towerType === undefined) {
+            this.selectedOutlineContainer.visible = false
+            this.selectedOutlineContainer.x = 0
+            this.selectedOutlineContainer.y = 0
+            return
+        }
+
+        //make the outline visible and move its position to the location of the button of the the corresponding selected tower type
+        this.selectedOutlineContainer.visible = true
+
+        switch (towerType) {
+        case "basic":
+            this.selectedOutlineContainer.x = 0
+            this.selectedOutlineContainer.y = 0
+            break;
+        case "ice":
+            this.selectedOutlineContainer.x = 85
+            this.selectedOutlineContainer.y = 0
+            break;
+        case "ember":
+            this.selectedOutlineContainer.x = 170
+            this.selectedOutlineContainer.y = 0
+            break;
+        case "poisonIvy":
+            this.selectedOutlineContainer.x = 0
+            this.selectedOutlineContainer.y = 85
+            break;
+        case "advanced":
+            this.selectedOutlineContainer.x = 85
+            this.selectedOutlineContainer.y = 85
+            break;
+        case "cyro":
+            this.selectedOutlineContainer.x = 170
+            this.selectedOutlineContainer.y = 85
+            break;
+        case "missile":
+            this.selectedOutlineContainer.x = 0
+            this.selectedOutlineContainer.y = 170
+            break;
+        case "lightning":
+            this.selectedOutlineContainer.x = 85
+            this.selectedOutlineContainer.y = 170
+            break;
+        case "dreadglass":
+            this.selectedOutlineContainer.x = 170
+            this.selectedOutlineContainer.y = 170
+            break;
+        case "ultimate":
+            this.selectedOutlineContainer.x = 170
+            this.selectedOutlineContainer.y = 255
+            break;
+        default:
+            break;
+        }
     }
 
     updateTowerSelectionVisibility() {
@@ -339,7 +414,7 @@ export class HUD {
         this.tier4ResearchUI.visible = this.gamestate.researchLevel === 3
     }
 
-    updateTowerDescriptionUI(towerData : TowerData) {
+    updateTowerDescriptionUI(towerData: TowerData) {
 
         this.clearInfoPanel()
 
