@@ -24,7 +24,7 @@ const killerThrillWaves = [
                 enemy: "Infant Circle",
                 count: 16,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     //wave 2
@@ -49,7 +49,7 @@ const killerThrillWaves = [
                 enemy: "Little Sparrow",
                 count: 2,
                 spacingMillis: 2700
-            },
+            }
         ]
     ),
     //wave 3
@@ -84,7 +84,7 @@ const killerThrillWaves = [
                 enemy: "Infant Circle",
                 count: 25,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     //wave 4
@@ -144,7 +144,7 @@ const killerThrillWaves = [
                 enemy: "Little Sparrow",
                 count: 7,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     //wave 5
@@ -189,7 +189,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 1,
                 spacingMillis: 1
-            },
+            }
         ]
     ),
     //wave 6
@@ -249,7 +249,7 @@ const killerThrillWaves = [
                 enemy: "Infant Circle",
                 count: 22,
                 spacingMillis: 200
-            },
+            }
         ]
     ),
     //wave 7
@@ -279,7 +279,7 @@ const killerThrillWaves = [
                 enemy: "Earthling Flake",
                 count: 14,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     //wave 8
@@ -314,7 +314,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 1,
                 spacingMillis: 4000
-            },
+            }
         ]
     ),
     //wave 9
@@ -339,7 +339,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 6,
                 spacingMillis: 3000
-            },
+            }
         ]
     ),
     //wave 10
@@ -389,7 +389,7 @@ const killerThrillWaves = [
                 enemy: "Earthling Flake",
                 count: 7,
                 spacingMillis: 1500
-            },
+            }
         ]
     ),
     //wave 12
@@ -434,7 +434,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 5,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     //wave 13
@@ -464,7 +464,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 7,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     // wave 14
@@ -489,7 +489,7 @@ const killerThrillWaves = [
                 enemy: "4p 2024",
                 count: 7,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     // wave 15
@@ -524,7 +524,7 @@ const killerThrillWaves = [
                 enemy: "Mean Triangle",
                 count: 2,
                 spacingMillis: 2100
-            },
+            }
         ]
     ),
     // wave 16
@@ -559,7 +559,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 8,
                 spacingMillis: 100
-            },
+            }
         ]
     ),
     // wave 17
@@ -594,7 +594,7 @@ const killerThrillWaves = [
                 enemy: "Mean Triangle",
                 count: 10,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     // wave 18
@@ -679,7 +679,7 @@ const killerThrillWaves = [
                 enemy: "Quick Bonhomme",
                 count: 20,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     // wave 20 boss =============================================
@@ -764,7 +764,7 @@ const killerThrillWaves = [
                 enemy: "Cute Crow",
                 count: 11,
                 spacingMillis: 1100
-            },
+            }
         ]
     ),
     //wave 24
@@ -824,7 +824,7 @@ const killerThrillWaves = [
                 enemy: "Fast Runner",
                 count: 3,
                 spacingMillis: 2500
-            },
+            }
         ]
     ),
     //wave 26
@@ -849,7 +849,7 @@ const killerThrillWaves = [
                 enemy: "Polar Goldfish",
                 count: 15,
                 spacingMillis: 1600
-            },
+            }
         ]
     ),
     //wave 27
@@ -894,7 +894,7 @@ const killerThrillWaves = [
                 enemy: "Cute Crow",
                 count: 15,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     //wave 29
@@ -919,7 +919,7 @@ const killerThrillWaves = [
                 enemy: "Steel Warrior",
                 count: 2,
                 spacingMillis: 7000
-            },
+            }
         ]
     ),
     //wave 30
@@ -944,7 +944,7 @@ const killerThrillWaves = [
                 enemy: "Toddler Sphere",
                 count: 10,
                 spacingMillis: 0
-            },
+            }
         ]
     ),
     //wave 31
@@ -1094,7 +1094,7 @@ const killerThrillWaves = [
                 enemy: "Fast Runner",
                 count: 5,
                 spacingMillis: 100
-            },
+            }
         ]
     ),
     //wave 36
@@ -1119,7 +1119,7 @@ const killerThrillWaves = [
                 enemy: "5p 2025",
                 count: 12,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     //wave 37
@@ -1209,7 +1209,7 @@ const killerThrillWaves = [
                 enemy: "5p 2025",
                 count: 7,
                 spacingMillis: 1200
-            },
+            }
         ]
     ),
     // wave 40 boss =============================================
@@ -1254,7 +1254,7 @@ const killerThrillWaves = [
                 enemy: "Freshman Octahedron",
                 count: 15,
                 spacingMillis: 1100
-            },
+            }
         ]
     ),
     // wave 42
@@ -1279,7 +1279,7 @@ const killerThrillWaves = [
                 enemy: "Freshman Octahedron",
                 count: 12,
                 spacingMillis: 1400
-            },
+            }
         ]
     ),
     // wave 43
@@ -1309,7 +1309,7 @@ const killerThrillWaves = [
                 enemy: "Fast Runner",
                 count: 10,
                 spacingMillis: 300
-            },
+            }
         ]
     ),
     // wave 44
@@ -1339,7 +1339,7 @@ const killerThrillWaves = [
                 enemy: "Beautiful Peacock",
                 count: 12,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 45
@@ -1374,7 +1374,7 @@ const killerThrillWaves = [
                 enemy: "Freshman Octahedron",
                 count: 15,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     // wave 46
@@ -1414,7 +1414,7 @@ const killerThrillWaves = [
                 enemy: "Dashing Dasher",
                 count: 4,
                 spacingMillis: 4000
-            },
+            }
         ]
     ),
     // wave 47
@@ -1439,7 +1439,7 @@ const killerThrillWaves = [
                 enemy: "12p 2028",
                 count: 2,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 48
@@ -1489,7 +1489,7 @@ const killerThrillWaves = [
                 enemy: "12p 2028",
                 count: 2,
                 spacingMillis: 1900
-            },
+            }
         ]
     ),
     // wave 50
@@ -1524,7 +1524,7 @@ const killerThrillWaves = [
                 enemy: "Titanium Bruiser",
                 count: 2,
                 spacingMillis: 5000
-            },
+            }
         ]
     ),
     // wave 51
@@ -1569,7 +1569,7 @@ const killerThrillWaves = [
                 enemy: "Beautiful Peacock",
                 count: 3,
                 spacingMillis: 500
-            },
+            }
         ]
     ),
     // wave 52
@@ -1619,7 +1619,7 @@ const killerThrillWaves = [
                 enemy: "Furious Raven",
                 count: 2,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 54
@@ -1649,7 +1649,7 @@ const killerThrillWaves = [
                 enemy: "Freshman Octahedron",
                 count: 14,
                 spacingMillis: 600
-            },
+            }
         ]
     ),
     // wave 55
@@ -1674,7 +1674,7 @@ const killerThrillWaves = [
                 enemy: "Dashing Dasher",
                 count: 14,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     // wave 56
@@ -1709,7 +1709,7 @@ const killerThrillWaves = [
                 enemy: "Dashing Dasher",
                 count: 8,
                 spacingMillis: 1200
-            },
+            }
         ]
     ),
     // wave 57
@@ -1759,7 +1759,7 @@ const killerThrillWaves = [
                 enemy: "Beautiful Peacock",
                 count: 10,
                 spacingMillis: 200
-            },
+            }
         ]
     ),
     // wave 58
@@ -1854,7 +1854,7 @@ const killerThrillWaves = [
                 enemy: "12p 2028",
                 count: 1,
                 spacingMillis: 1
-            },
+            }
         ]
     ),
     // wave 59
@@ -1879,7 +1879,7 @@ const killerThrillWaves = [
                 enemy: "Furious Raven",
                 count: 12,
                 spacingMillis: 1200
-            },
+            }
         ]
     ),
     // wave 60 boss =============================================
@@ -1979,7 +1979,7 @@ const killerThrillWaves = [
                 enemy: "Titanium Bruiser",
                 count: 12,
                 spacingMillis: 1300
-            },
+            }
         ]
     ),
     // wave 63
@@ -2014,7 +2014,7 @@ const killerThrillWaves = [
                 enemy: "Dashing Dasher",
                 count: 42,
                 spacingMillis: 25
-            },
+            }
         ]
     ),
     // wave 64
@@ -2044,7 +2044,7 @@ const killerThrillWaves = [
                 enemy: "Alluring Rooster",
                 count: 5,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     // wave 65
@@ -2124,7 +2124,7 @@ const killerThrillWaves = [
                 enemy: "Furious Raven",
                 count: 10,
                 spacingMillis: 300
-            },
+            }
         ]
     ),
     // wave 67
@@ -2184,7 +2184,7 @@ const killerThrillWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 5,
                 spacingMillis: 2200
-            },
+            }
         ]
     ),
     // wave 69
@@ -2224,7 +2224,7 @@ const killerThrillWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 4,
                 spacingMillis: 1800
-            },
+            }
         ]
     ),
     // wave 70
@@ -2254,7 +2254,7 @@ const killerThrillWaves = [
                 enemy: "Neptunian Megalodon",
                 count: 6,
                 spacingMillis: 550
-            },
+            }
         ]
     ),
     // wave 71
@@ -2304,7 +2304,7 @@ const killerThrillWaves = [
                 enemy: "256p 2152",
                 count: 1,
                 spacingMillis: 4000
-            },
+            }
         ]
     ),
     // wave 72
@@ -2329,7 +2329,7 @@ const killerThrillWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 5,
                 spacingMillis: 1600
-            },
+            }
         ]
     ),
     // wave 73
@@ -2394,7 +2394,7 @@ const killerThrillWaves = [
                 enemy: "Obsidian Ripper",
                 count: 5,
                 spacingMillis: 2750
-            },
+            }
         ]
     ),
     // wave 75
@@ -2429,7 +2429,7 @@ const killerThrillWaves = [
                 enemy: "Furious Raven",
                 count: 15,
                 spacingMillis: 200
-            },
+            }
         ]
     ),
     // wave 76
@@ -2499,7 +2499,7 @@ const killerThrillWaves = [
                 enemy: "Enraged Eagle",
                 count: 5,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 77
@@ -2574,7 +2574,7 @@ const killerThrillWaves = [
                 enemy: "Dashing Dasher",
                 count: 14,
                 spacingMillis: 50
-            },
+            }
         ]
     ),
     // wave 79
@@ -2604,7 +2604,7 @@ const killerThrillWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 10,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     // wave 80 boss =============================================
@@ -2664,7 +2664,7 @@ const killerThrillWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 40,
                 spacingMillis: 200
-            },
+            }
         ]
     ),
     // wave 82
@@ -2729,7 +2729,7 @@ const killerThrillWaves = [
                 enemy: "256p 2152",
                 count: 2,
                 spacingMillis: 700
-            },
+            }
         ]
     ),
     // wave 83
@@ -2754,7 +2754,7 @@ const killerThrillWaves = [
                 enemy: "Kingda Ka Zipper",
                 count: 25,
                 spacingMillis: 250
-            },
+            }
         ]
     ),
     // wave 84
@@ -2799,7 +2799,7 @@ const killerThrillWaves = [
                 enemy: "Irresistible Phoenix",
                 count: 4,
                 spacingMillis: 4000
-            },
+            }
         ]
     ),
     // wave 85
@@ -2834,7 +2834,7 @@ const killerThrillWaves = [
                 enemy: "Enraged Eagle",
                 count: 25,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     // wave 86
@@ -2864,7 +2864,7 @@ const killerThrillWaves = [
                 enemy: "Challenger Deep Kraken",
                 count: 3,
                 spacingMillis: 1900
-            },
+            }
         ]
     ),
     // wave 87
@@ -2929,7 +2929,7 @@ const killerThrillWaves = [
                 enemy: "Obsidian Ripper",
                 count: 25,
                 spacingMillis: 400
-            },
+            }
         ]
     ),
     // wave 89
@@ -2974,7 +2974,7 @@ const killerThrillWaves = [
                 enemy: "Near-Light Zoomer",
                 count: 7,
                 spacingMillis: 3500
-            },
+            }
         ]
     ),
     // wave 90
@@ -3004,7 +3004,7 @@ const killerThrillWaves = [
                 enemy: "2^1024p 137632",
                 count: 4,
                 spacingMillis: 4000
-            },
+            }
         ]
     ),
     // wave 91
@@ -3044,7 +3044,7 @@ const killerThrillWaves = [
                 enemy: "Jr. Rhombicosidodecahedron",
                 count: 25,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 92
@@ -3084,7 +3084,7 @@ const killerThrillWaves = [
                 enemy: "2^1024p 137632",
                 count: 1,
                 spacingMillis: 1
-            },
+            }
         ]
     ),
     // wave 93
@@ -3129,7 +3129,7 @@ const killerThrillWaves = [
                 enemy: "Near-Light Zoomer",
                 count: 4,
                 spacingMillis: 2400
-            },
+            }
         ]
     ),
     // wave 94
@@ -3179,7 +3179,7 @@ const killerThrillWaves = [
                 enemy: "2^1024p 137632",
                 count: 2,
                 spacingMillis: 3500
-            },
+            }
         ]
     ),
     // wave 95 LONG WAVE
@@ -3289,7 +3289,7 @@ const killerThrillWaves = [
                 enemy: "Near-Light Zoomer",
                 count: 8,
                 spacingMillis: 3700
-            },
+            }
         ]
     ),
     // wave 96 LONG WAVE
@@ -3374,7 +3374,7 @@ const killerThrillWaves = [
                 enemy: "256p 2152",
                 count: 15,
                 spacingMillis: 800
-            },
+            }
         ]
     ),
     // wave 97 LONG WAVE
@@ -3449,7 +3449,7 @@ const killerThrillWaves = [
                 enemy: "Challenger Deep Kraken",
                 count: 8,
                 spacingMillis: 2000
-            },
+            }
         ]
     ),
     // wave 98 LONG WAVE
@@ -3564,7 +3564,7 @@ const killerThrillWaves = [
                 enemy: "Challenger Deep Kraken",
                 count: 5,
                 spacingMillis: 1000
-            },
+            }
         ]
     ),
     // wave 99
@@ -3609,7 +3609,7 @@ const killerThrillWaves = [
                 enemy: "Merciless Loch Ness",
                 count: 5,
                 spacingMillis: 1200
-            },
+            }
         ]
     ),
     // wave 100 final boss =============================================
