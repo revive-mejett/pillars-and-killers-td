@@ -9,21 +9,20 @@ A 2D minimalistic styled Tower Defence game of **Pillars attacking Killers**. Th
 
 ## Planned Features
 - 40 Killers of varying strength. More info in **Planned Enemies (Killers)**
-- 11-12 different pillars to build, each with their purpose (ie. slow down, melt armour, AoE splash). More info in **Planned Pillars (Towers)**
-- 100 Waves to fight. Winning the game will require you to beat Wave 100: **TON 618**. This killer is slow, but will have insane amounts of HP, and insane armour.
-- Every 20th wave is a checkpoint. Checkpoints automatically save a player's progress once wave 20, 40 is beaten and can reload their progress. note: killer's thrill saves funtion differently
+- 10 different pillars to build, each with their purpose (ie. slow down, melt armour, AoE splash). More info in **Planned Pillars (Towers)**
+- 100 Waves to fight. On Normal+, winning the game will require you to beat Wave 100: **TON 618**. This killer is slow, but will have insane amounts of HP, and insane armour.
+- Every 20th wave is a checkpoint. Checkpoints automatically save a player's progress once wave 20, 40 is beaten and can reload their progress. note: killer's thrill saves funtion differently. 1Pill2Nil has no saving (except once for endless)
 - Researching new pillars/towers - Players will need to pay a research fee to unlock stronger pillars
 - Different maps to choose from in various difficulties
 - Endless mode (enemies getting exponentially tougher until you die)
 - Settings and vfx disabling
-- 3 difficulty levels: Chill (Easy), Normal (medium), Killer's Thrill (Hard)
+- 4 difficulty levels: Chill (Easy), Normal (medium), Killer's Thrill (Hard), 1Pill2Nil (EXTREME)
 - French translation (THIS IS GOING TO BE A CHALLENGE)
 
 These are not final, they can change as development progresses. 
 
 ## The Pillars
-TBD***
-Your defense. You depend on these pillars to prevent getting killed by the killers. Each pillar has its own purpose, and you may need to use different pillars to succeed.
+Your defense. You depend on these pillars to prevent getting killed by the killers. Each pillar has its own purpose, and you may need to use different pillars to succeed. More advanced pillars may require research.
 
 ## The Killers
 
@@ -247,8 +246,7 @@ Killers come in various shapes and strengths. A good number of them has differen
 
 
 ## Screenshots
-![image](https://github.com/user-attachments/assets/06ec96ac-bff7-4441-b89f-65506eb2f01e)
-![image](https://github.com/user-attachments/assets/259c52fb-6c79-4286-9343-239ab8cf9dd1)
+![image](https://github.com/user-attachments/assets/149d3108-0f4d-4529-82fc-9fdc5bafff21)
 ![image](https://github.com/user-attachments/assets/f6837c92-6c3a-4cab-8bfb-8c6d6687f631)
 ![Screenshot 2025-05-28 124225](https://github.com/user-attachments/assets/b6018725-cbeb-466c-a486-dc4ab1f17ed9)
 ![image](https://github.com/user-attachments/assets/d3b5e976-e5d7-4cb2-afba-9bb873712e51)
@@ -258,12 +256,14 @@ Killers come in various shapes and strengths. A good number of them has differen
 
 
 ## Release Status
+- 1.2.0 (March 9, 2025) - Release of Killer's Thrill (Hard) and 1Pill2Nil (EXTREME) mode with QoL changes
+- 1.1.0 (February 7, 2025) - New Map
 - 1.0.0 (February 9, 2025) - Initial release with 6 maps, 10 pillars. Game is playable on Easy and Normal difficulties
 - 0.11.0 (February 7, 2025) - Addition of trophies and minor changes
 
 
 
-## To run (NOTE: this is NOT yet officially released; the game is still in development)
+## To run locally
 1. Clone the respository.
 2. Navigate to the **pillars-and-killers-td** directory of the project, `npm i`
 3. `npm run build`
