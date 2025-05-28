@@ -1,5 +1,6 @@
 # Pillars V.S. Killers
-![pvk_banner_repo](https://github.com/user-attachments/assets/63742d48-98fc-468e-bdb4-9876251393f6)
+![Screenshot 2025-05-28 123308](https://github.com/user-attachments/assets/2ca552df-df46-485d-9042-ce97d4ad24b3)
+
 
 ## Overview
 In short, Pillars against Killers.
@@ -247,12 +248,12 @@ Killers come in various shapes and strengths. A good number of them has differen
 
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/06ec96ac-bff7-4441-b89f-65506eb2f01e)
-![Screenshot 2024-11-24 224542](https://github.com/user-attachments/assets/52d32710-f35e-4eaa-9bbb-4e3098e063d3)
-![Screenshot 2024-11-24 231540](https://github.com/user-attachments/assets/42b1044d-dad9-40cd-8930-1ed9123fc4bc)
-![Screenshot 2024-11-24 225737](https://github.com/user-attachments/assets/6f28b831-10e1-422f-b66f-47ee9a46063a)
-![Screenshot 2024-11-24 225842](https://github.com/user-attachments/assets/19f98176-b989-4b3e-8e23-0ac63ee8f04f)
+![image](https://github.com/user-attachments/assets/259c52fb-6c79-4286-9343-239ab8cf9dd1)
+![image](https://github.com/user-attachments/assets/f6837c92-6c3a-4cab-8bfb-8c6d6687f631)
+![Screenshot 2025-05-28 124225](https://github.com/user-attachments/assets/b6018725-cbeb-466c-a486-dc4ab1f17ed9)
+![Screenshot 2024-11-24 225737](https://github.com/user-attachments/assets/6f28b831-10e1-422f-b66f-47ee9a46063a) //grave
+![image](https://github.com/user-attachments/assets/78254ea4-d377-4ea2-8e3f-0516f0e4854d)
 
-![image](https://github.com/user-attachments/assets/c5db4996-d4d2-4bc8-8fed-095593c775b0)
 
 ## Release Status
 - 1.0.0 (February 9, 2025) - Initial release with 6 maps, 10 pillars. Game is playable on Easy and Normal difficulties
