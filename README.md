@@ -251,6 +251,7 @@ Killers come in various shapes and strengths. A good number of them has differen
 ![Screenshot 2025-05-28 124225](https://github.com/user-attachments/assets/b6018725-cbeb-466c-a486-dc4ab1f17ed9)
 ![image](https://github.com/user-attachments/assets/d3b5e976-e5d7-4cb2-afba-9bb873712e51)
 ![image](https://github.com/user-attachments/assets/78254ea4-d377-4ea2-8e3f-0516f0e4854d)
+![image](https://github.com/user-attachments/assets/3723da19-f061-421e-9791-60422d3b19e7)
 ![image](https://github.com/user-attachments/assets/fd73676d-a898-438b-b144-254fa45931aa)
 
 
