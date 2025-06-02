@@ -9,8 +9,11 @@ const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 
 
-const version = "1.2.0"
+const version = "1.3.0"
 const patchNotesTextContent = `
+    * June 2, 2025 - 1.3.0\n
+    - New Map: Null Camp! Harder than most maps.
+    \n
     * March 9, 2025 - 1.2.0\n
     - Killer's Thrill and 1Pill2Nil released!
     - Added an outline when a pillar is selected to avoid accidentally placing pillars
@@ -21,11 +24,6 @@ const patchNotesTextContent = `
     \n
     * February 9, 2025 - 1.0.0\n
     - Pillars V.S. Killers released - enjoy building pillars!\n
-    \n
-    * February 7, 2025 - 0.11.0\n
-    - Add special property info on pillars (e.g slow, poison ivy) and killers (e.g slow immune)\n
-    - buffed "256p 2152" and "2^1024p 137632" EMP enemy attacks. buffed TON 618 speed slightly\n
-    - Added trophies
 `
 
 
