@@ -2357,7 +2357,146 @@ allMaps.set("Heartbeat Onslaught", {
     ]
 })
 
+allMaps.set("Null Camp", {
+    mapInfo: {
+        difficulty: 2,
+        grassColour: 0x09070A,
+        grassSecondaryColour: 0x2C282C,
+    },
+    waypoints: [
+        {
+            type: "point",
+            x: 24,
+            y: 3
+        },
 
+        {
+            type: "point",
+            x: 12,
+            y: 3
+        },
+
+        {
+            type: "point",
+            x: 12,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 6,
+            y: 4
+        },
+
+        {
+            type: "point",
+            x: 6,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 1,
+            y: 6
+        },
+
+        {
+            type: "point",
+            x: 1,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 4,
+            y: 9
+        },
+
+        {
+            type: "point",
+            x: 4,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 15,
+            y: 15
+        },
+        
+        {
+            type: "point",
+            x: 15,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 13
+        },
+
+        {
+            type: "point",
+            x: 23,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 15
+        },
+
+        {
+            type: "point",
+            x: 19,
+            y: 17
+        },
+
+        {
+            type: "point",
+            x: 17,
+            y: 17
+        },
+
+        {
+            type: "point",
+            x: 13,
+            y: 17
+        },
+
+        {
+            type: "point",
+            x: 13,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 19
+        },
+
+        {
+            type: "point",
+            x: 9,
+            y: 21
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 21
+        },
+
+        {
+            type: "point",
+            x: 5,
+            y: 24
+        },
+    ]
+})
 
 // TEST MAPS
 allMaps.set("blons", {
