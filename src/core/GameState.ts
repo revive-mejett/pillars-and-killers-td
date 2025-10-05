@@ -10,13 +10,14 @@ const eventDispatcher = new EventDispatcher()
 const gameDataManager = new GameDataManager()
 const developerTest = false
 const developerOffSet = 0
+const developerMoneyOffSet = 9999999
 
 
 export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 0
+    startWave: number = 0 + developerOffSet
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -88,6 +89,8 @@ export class GameState {
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         if (developerTest) {
+            console.log("deve test")
+            this.money += developerMoneyOffSet
             for (let i = 0; i < this.startWave || 0; i++) {
                 if (killerThrillWaves[i] && productionWaves[i]) {
                     // this.money += calculateWaveValue(productionWaves[i])

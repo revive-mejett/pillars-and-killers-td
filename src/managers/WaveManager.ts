@@ -31,6 +31,7 @@ export class WaveManager {
     checkpointWaveBeaten: number
     bossPresent: boolean
     readonly bossWaves = [20, 40, 60, 80, 100]
+    difficulty: Difficulty
 
     /**
      *
@@ -47,6 +48,7 @@ export class WaveManager {
 
         this.cooldownToNextWave = 0
         this.delaySecondsToNextWave = 10
+        this.difficulty = difficulty
         this.loadWaves(difficulty)
 
         this.currentWave = startWave
@@ -66,49 +68,61 @@ export class WaveManager {
         this.isFreeplay = this.currentWave >= this.waves.length
 
         eventDispatcher.on("boss1Killed", () => {
+            this.bossPresent = false
+            if (this.difficulty === "1Pill2Nil") {
+                if (this.currentWave % 20 === 0) {
+                    this.delaySecondsToNextWave = 10
+                    this.cooldownToNextWave = 0
+                }
+                return
+            }
             this.updateNextCheckpointWave(1)
 
-            if (difficulty === "1Pill2Nil") {
-                //this autoclicks the next wave button
-                eventDispatcher.fireEvent("nextWaveBtnClick")
-                return
-            }
-            eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
+            eventDispatcher.fireEvent("saveProgess", { isVictory: false, deleteSave: false })
         })
         eventDispatcher.on("boss2Killed", () => {
+            this.bossPresent = false
+            if (this.difficulty === "1Pill2Nil") {
+                if (this.currentWave % 20 === 0) {
+                    this.delaySecondsToNextWave = 10
+                    this.cooldownToNextWave = 0
+                }
+                return
+            }
             this.updateNextCheckpointWave(2)
 
-            if (difficulty === "1Pill2Nil") {
-                //this autoclicks the next wave button
-                eventDispatcher.fireEvent("nextWaveBtnClick")
-                return
-            }
-            eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
+            eventDispatcher.fireEvent("saveProgess", { isVictory: false, deleteSave: false })
         })
         eventDispatcher.on("boss3Killed", () => {
-            this.updateNextCheckpointWave(3)
-
-            if (difficulty === "1Pill2Nil") {
-                //this autoclicks the next wave button
-                eventDispatcher.fireEvent("nextWaveBtnClick")
+            this.bossPresent = false
+            if (this.difficulty === "1Pill2Nil") {
+                if (this.currentWave % 20 === 0) {
+                    this.delaySecondsToNextWave = 10
+                    this.cooldownToNextWave = 0
+                }
                 return
             }
-            eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
+            this.updateNextCheckpointWave(3)
+
+            eventDispatcher.fireEvent("saveProgess", { isVictory: false, deleteSave: false })
         })
 
         //If the player plays on Chill (Easy) mode, players only need to beat wave 80 (Unforgiving Stephenson-218) to win
         eventDispatcher.on("boss4Killed", () => {
+            this.bossPresent = false
+            if (this.difficulty === "1Pill2Nil") {
+                if (this.currentWave % 20 === 0) {
+                    this.delaySecondsToNextWave = 10
+                    this.cooldownToNextWave = 0
+                }
+                return
+            }
             if (difficulty === "Chill") {
-                eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: true})
+                eventDispatcher.fireEvent("saveProgess", { isVictory: true, deleteSave: true })
             } else {
                 this.updateNextCheckpointWave(4)
 
-                if (difficulty === "1Pill2Nil") {
-                    //this autoclicks the next wave button
-                    eventDispatcher.fireEvent("nextWaveBtnClick")
-                    return
-                }
-                eventDispatcher.fireEvent("saveProgess", {isVictory: false, deleteSave: false})
+                eventDispatcher.fireEvent("saveProgess", { isVictory: false, deleteSave: false })
             }
         })
 
@@ -116,7 +130,7 @@ export class WaveManager {
         //For 1Pill2Nil, this is the only time a player gets a checkpoint
         eventDispatcher.on("boss5Killed", () => {
             this.cooldownToNextWave = 0
-            eventDispatcher.fireEvent("saveProgess", {isVictory: true, deleteSave: false})
+            eventDispatcher.fireEvent("saveProgess", { isVictory: true, deleteSave: false })
         })
 
         if (difficulty === "Chill") {
@@ -125,9 +139,16 @@ export class WaveManager {
         }
     }
 
-    private updateNextCheckpointWave(nextCheckpointIndex: number) {
+    private updateNextCheckpointWave(nextCheckpointIndex: number, addTime?: number) {
+
+        if (addTime) {
+            console.log("up[atre next cp wavwe")
+            this.delaySecondsToNextWave = addTime
+            console.log(this.delaySecondsToNextWave)
+        } else {
+            this.bossPresent = false
+        }
         this.cooldownToNextWave = 0
-        this.bossPresent = false
         this.checkpointWave = this.bossWaves[nextCheckpointIndex]
         if (this.checkpointWave > this.waves.length) {
             this.checkpointWave = this.waves.length
@@ -184,8 +205,31 @@ export class WaveManager {
         const map = this.map
 
         if (this.bossWaves.includes(this.currentWave)) {
-            // console.log("this is a boss wave.")
+
+
+
             this.bossPresent = true
+
+            if (this.difficulty === "1Pill2Nil") {
+
+                switch (this.currentWave) {
+                case 20:
+                    this.updateNextCheckpointWave(1, 50)
+                    break;
+                case 40:
+
+                    this.updateNextCheckpointWave(2, 20)
+                    break;
+                case 60:
+
+                    this.updateNextCheckpointWave(3, 60)
+                    break;
+                case 80:
+
+                    this.updateNextCheckpointWave(4, 120)
+                    break;
+                }
+            }
         }
 
         const enemyAssets = assetLoader.enemies
@@ -292,7 +336,7 @@ export class WaveManager {
                         }
                     } else {
                         wavePart = waveArray.waveParts[currentWavePartIndex]
-                        enemyData = {...allEnemyData[wavePart.enemy].stats}
+                        enemyData = { ...allEnemyData[wavePart.enemy].stats }
 
                         //after reaching max waves, buff all enemies expononentially
                         if (this.isFreeplay) {
@@ -321,7 +365,7 @@ export class WaveManager {
     generateWave() {
 
         // const bosses : EnemyClass[] = Object.values(allEnemyData).filter(enemy => enemy.stats.type === "Boss").map(enemy => enemy.stats.className) as EnemyClass[]
-        const enemyClasses : EnemyClass[] = Object.values(allEnemyData).filter(enemy => enemy.stats.type !== "Boss").map(enemy => enemy.stats.className) as EnemyClass[]
+        const enemyClasses: EnemyClass[] = Object.values(allEnemyData).filter(enemy => enemy.stats.type !== "Boss").map(enemy => enemy.stats.className) as EnemyClass[]
         // const enemies = ["Infant Circle"] as EnemyClass[]
 
         const numberWaveParts = Math.floor(Math.random() * 10) + 1

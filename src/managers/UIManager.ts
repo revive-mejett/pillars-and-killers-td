@@ -40,11 +40,13 @@ export class UIManager {
         this.selectedEnemyUpdateTicker = undefined
 
         eventDispatcher.on("nextWaveBtnClick", () => {
+            // console.log("boss present> " + this.gameplayScene.waveManager?.bossPresent)
+            // console.log("wave started> " + this.gameplayScene.waveManager?.wavesStarted)
+            // console.log("wave in progress> " +this.gameplayScene.waveManager?.waveInProgress)
             if (this.gameplayScene.waveManager?.bossPresent) {
                 return
             }
             if (this.gameplayScene.waveManager?.wavesStarted && !this.gameplayScene.waveManager.waveInProgress) {
-
                 this.gameplayScene.waveManager.cooldownToNextWave = 0
             } else {
                 if (this.gameplayScene.waveManager && this.gameplayScene.waveManager.currentWave >= this.gameplayScene.waveManager.waves.length) {
