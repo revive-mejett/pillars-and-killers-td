@@ -65,31 +65,30 @@ export class GameState {
                 this.lives = 75
             }
             if (this.difficulty === "1Pill2Nil") {
-                this.money = 200
+                this.money = 225
                 this.lives = 1
             }
         }
 
         if (this.difficulty === "Chill") {
-            this.sellValuePercentage = 75
+            this.sellValuePercentage = 80
             this.killBountyMultiplier = 1.30
         }
         if (this.difficulty === "Normal") {
-            this.sellValuePercentage = 70
+            this.sellValuePercentage = 75
             this.killBountyMultiplier = 1
         }
         if (this.difficulty === "Killer's Thrill") {
-            this.sellValuePercentage = 65
-            this.killBountyMultiplier = 0.55
+            this.sellValuePercentage = 70
+            this.killBountyMultiplier = 0.6
         }
         if (this.difficulty === "1Pill2Nil") {
-            this.sellValuePercentage = 60
-            this.killBountyMultiplier = 0.50
+            this.sellValuePercentage = 65
+            this.killBountyMultiplier = 0.55
         }
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         if (developerTest) {
-            console.log("deve test")
             this.money += developerMoneyOffSet
             for (let i = 0; i < this.startWave || 0; i++) {
                 if (killerThrillWaves[i] && productionWaves[i]) {
@@ -125,7 +124,6 @@ export class GameState {
             //handing saved data actions depending on difficulty
             if (this.difficulty === "Killer's Thrill" || this.difficulty === "1Pill2Nil") {
                 gameDataManager.wipeSaveData(this.saveFileIndex)
-                console.log("delete save")
             }
             eventDispatcher.fireEvent("defeat")
         }
