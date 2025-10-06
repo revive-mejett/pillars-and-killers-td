@@ -2203,14 +2203,14 @@ const allEnemyData: EnemyData = {
             className: "TON 618",
             type: "Boss",
             health: 175_571_777,
-            speed: 0.28,
+            speed: 0.3,
             damage: 99999,
             killValue: 1000000,
             rotationSpeed: 0.01,
             isLooking: false,
             animationSpeed: 0.05,
             regen: 0,
-            armour: 327500,
+            armour: 57500,
             slowImmune: false
         },
         description: ""

@@ -147,7 +147,7 @@ export class PregameSelection extends Scene {
             "1pill2nilbg",
             200,
             1,
-            false, //!hasWonKillerThrill, // force unlock for dev
+            !hasWonKillerThrill, // force unlock for dev
             false //set to true if not ready, developer boolean
         );
 
