@@ -417,7 +417,7 @@ const allEnemyData: EnemyData = {
             type: "Boss",
             health: 9500,
             speed: 0.5,
-            damage: 3333,
+            damage: 1000,
             killValue: 2000,
             rotationSpeed: 0.1,
             isLooking: false,
@@ -850,7 +850,7 @@ const allEnemyData: EnemyData = {
             type: "Boss",
             health: 77000,
             speed: 0.7,
-            damage: 5100,
+            damage: 1337,
             killValue: 5000,
             rotationSpeed: 0.15,
             isLooking: false,
@@ -1774,7 +1774,7 @@ const allEnemyData: EnemyData = {
             isLooking: false,
             animationSpeed: 0.1,
             regen: 0,
-            armour: 18000
+            armour: 14800
         },
         description: "A red hypergiant star walks into a bar. He asks for water. You are the bartender and must give broken dreadglass! He is heavily damage resistant and can widthstand even the strongest of your pillars. ALMOST THERE ALMOST THERRRRREEE!!!"
     },
@@ -2203,14 +2203,14 @@ const allEnemyData: EnemyData = {
             className: "TON 618",
             type: "Boss",
             health: 175_571_777,
-            speed: 0.28,
+            speed: 0.3,
             damage: 99999,
             killValue: 1000000,
             rotationSpeed: 0.01,
             isLooking: false,
             animationSpeed: 0.05,
             regen: 0,
-            armour: 327500,
+            armour: 57500,
             slowImmune: false
         },
         description: ""

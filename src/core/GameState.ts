@@ -10,13 +10,14 @@ const eventDispatcher = new EventDispatcher()
 const gameDataManager = new GameDataManager()
 const developerTest = false
 const developerOffSet = 0
+const developerMoneyOffSet = 0
 
 
 export class GameState {
     lives: number = 100
     money: number = 400
     uiManager?: UIManager
-    startWave: number = 0
+    startWave: number = 0 + developerOffSet
     mapName: string = "Walk in the Park"
     saveFileIndex: 1 | 2 | 3 | 4 | 5 | 6 = 1
     researchLevel: 1 | 2 | 3 | 4 = 1
@@ -64,30 +65,31 @@ export class GameState {
                 this.lives = 75
             }
             if (this.difficulty === "1Pill2Nil") {
-                this.money = 200
+                this.money = 225
                 this.lives = 1
             }
         }
 
         if (this.difficulty === "Chill") {
-            this.sellValuePercentage = 75
+            this.sellValuePercentage = 80
             this.killBountyMultiplier = 1.30
         }
         if (this.difficulty === "Normal") {
-            this.sellValuePercentage = 70
+            this.sellValuePercentage = 75
             this.killBountyMultiplier = 1
         }
         if (this.difficulty === "Killer's Thrill") {
-            this.sellValuePercentage = 65
-            this.killBountyMultiplier = 0.55
+            this.sellValuePercentage = 70
+            this.killBountyMultiplier = 0.6
         }
         if (this.difficulty === "1Pill2Nil") {
-            this.sellValuePercentage = 60
-            this.killBountyMultiplier = 0.50
+            this.sellValuePercentage = 65
+            this.killBountyMultiplier = 0.55
         }
 
         //adding all wave values till the current wave: 20 for dev purposes (using production waves only)
         if (developerTest) {
+            this.money += developerMoneyOffSet
             for (let i = 0; i < this.startWave || 0; i++) {
                 if (killerThrillWaves[i] && productionWaves[i]) {
                     // this.money += calculateWaveValue(productionWaves[i])
@@ -122,7 +124,6 @@ export class GameState {
             //handing saved data actions depending on difficulty
             if (this.difficulty === "Killer's Thrill" || this.difficulty === "1Pill2Nil") {
                 gameDataManager.wipeSaveData(this.saveFileIndex)
-                console.log("delete save")
             }
             eventDispatcher.fireEvent("defeat")
         }

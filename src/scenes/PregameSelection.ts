@@ -98,7 +98,7 @@ export class PregameSelection extends Scene {
             0,
             100,
             "Chill",
-            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*75% pillar sellback value\n*Great for casual pillar builders\n[Note]: Beat Wave 100 on Normal or Killer's Thrill to continue on Endless!",
+            "*500 starting money, 80 waves\n*Killers give +30% more than Normal\n*80% pillar sellback value\n*Great for casual pillar builders\n[Note]: Beat Wave 100 on Normal or Killer's Thrill to continue on Endless!",
             "0x00FF77",
             "chillbg",
             500,
@@ -110,7 +110,7 @@ export class PregameSelection extends Scene {
             410,
             100,
             "Normal",
-            "*400 starting money, 100 waves\n*Killers give normal bounty\n*70% pillar sellback value\n*Standard gameplay",
+            "*400 starting money, 100 waves\n*Killers give normal bounty\n*75% pillar sellback value\n*Standard gameplay",
             "0XFFFF00",
             "normalbg",
             400,
@@ -122,7 +122,7 @@ export class PregameSelection extends Scene {
             820,
             100,
             "Killer's Thrill",
-            "*250 starting money, 100 waves\n*Killers only give 55% of their original bounty\n*65% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading\n*For those who are skilled at slaying killers",
+            "*250 starting money, 100 waves\n*Killers only give 60% of their original bounty\n*70% pillar sellback value\n*Alternate wave set; waves have ++more killers\n*Volatile saves - you cannot go back if you quit upon loading\n*For those who are skilled at slaying killers",
             "0xFF0066",
             "killerthrillbg",
             250,
@@ -142,12 +142,12 @@ export class PregameSelection extends Scene {
             1230,
             100,
             "1Pill2Nil",
-            "*200 starting money, 100 waves\n50% kill bounty...\n*60% pillar sellback value...\n*No checkpoints, no saving...; Waves start automatically after each \"checkpoint\"\n*One pill to nil. Only for the experienced - not for the faint of heart",
+            "*225 starting money, 100 waves\n55% kill bounty...\n*65% pillar sellback value...\n*No checkpoints, no saving...; Waves start automatically after each \"checkpoint\"\n*One pill to nil. not for the faint of heart.",
             "0x0077FF",
             "1pill2nilbg",
-            200,
+            225,
             1,
-            !hasWonKillerThrill,
+            !hasWonKillerThrill, // set to false to force unlock for dev
             false //set to true if not ready, developer boolean
         );
 
