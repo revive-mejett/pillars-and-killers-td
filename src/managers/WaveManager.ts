@@ -142,9 +142,7 @@ export class WaveManager {
     private updateNextCheckpointWave(nextCheckpointIndex: number, addTime?: number) {
 
         if (addTime) {
-            console.log("up[atre next cp wavwe")
             this.delaySecondsToNextWave = addTime
-            console.log(this.delaySecondsToNextWave)
         } else {
             this.bossPresent = false
         }

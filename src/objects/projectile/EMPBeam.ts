@@ -34,7 +34,6 @@ export class EMPBeam extends Entity {
 
         let elapsedTime = 0
         if (!this.targetTower || this.targetTower.isSold) {
-            console.log("already sold")
             return
         }
 
