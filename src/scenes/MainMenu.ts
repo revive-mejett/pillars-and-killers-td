@@ -9,8 +9,12 @@ const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 
 
-const version = "1.3.0"
+const version = "1.3.1"
 const patchNotesTextContent = `
+    * October 5, 2025 - 1.3.1\n
+    - Nerfed ALL difficulties. Nerfed Stephenson 2-18 and TON 618.\n
+    - 1Pill2Nil changes: Enemies will spawn automatically as soon as a checkpoint wave is triggered.
+    \n
     * June 2, 2025 - 1.3.0\n
     - New Map: Null Camp! Harder than most maps.
     \n

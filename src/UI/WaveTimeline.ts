@@ -36,10 +36,29 @@ export class WaveTimeline {
         this.container.addChild(this.innerContainer)
 
         eventDispatcher.on("waveStarted", () => this.renderNextWaves())
-        eventDispatcher.on("boss1Killed", () => this.renderNextWaves())
-        eventDispatcher.on("boss2Killed", () => this.renderNextWaves())
-        eventDispatcher.on("boss3Killed", () => this.renderNextWaves())
+        eventDispatcher.on("boss1Killed", () => {
+
+            if (this.waveManager.difficulty === "1Pill2Nil") {
+                return
+            }
+            this.renderNextWaves()
+        })
+        eventDispatcher.on("boss2Killed", () => {
+            if (this.waveManager.difficulty === "1Pill2Nil") {
+                return
+            }
+            this.renderNextWaves()
+        })
+        eventDispatcher.on("boss3Killed", () => {
+            if (this.waveManager.difficulty === "1Pill2Nil") {
+                return
+            }
+            this.renderNextWaves()
+        })
         eventDispatcher.on("boss4Killed", () => {
+            if (this.waveManager.difficulty === "1Pill2Nil") {
+                return
+            }
             //chill mode has no waves past 80
             if (this.waveManager.bossWaves.find(wave => wave === 100)) {
                 this.renderNextWaves()
