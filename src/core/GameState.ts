@@ -8,7 +8,7 @@ import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 
 const eventDispatcher = new EventDispatcher()
 const gameDataManager = new GameDataManager()
-const developerTest = true
+const developerTest = false
 const developerOffSet = 0
 const developerMoneyOffSet = 0
 
