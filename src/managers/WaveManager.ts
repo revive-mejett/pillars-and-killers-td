@@ -204,6 +204,10 @@ export class WaveManager {
         this.currentWave++
         const map = this.map
 
+        if (this.delaySecondsToNextWave !== 10) {
+            this.delaySecondsToNextWave = 10
+        }
+
         if (this.bossWaves.includes(this.currentWave)) {
 
 
@@ -214,7 +218,7 @@ export class WaveManager {
 
                 switch (this.currentWave) {
                 case 20:
-                    this.updateNextCheckpointWave(1, 50)
+                    this.updateNextCheckpointWave(1, 60)
                     break;
                 case 40:
 
@@ -222,7 +226,7 @@ export class WaveManager {
                     break;
                 case 60:
 
-                    this.updateNextCheckpointWave(3, 60)
+                    this.updateNextCheckpointWave(3, 40)
                     break;
                 case 80:
 
