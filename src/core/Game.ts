@@ -38,7 +38,7 @@ export class Game {
         this.sceneManager = undefined
         //add to DOM
         const view = this.app.view
-        document.body.appendChild(view as HTMLCanvasElement)
+        document.querySelector(".game-container")!.appendChild(view as HTMLCanvasElement)
 
         eventDispatcher.on("gameStarted", this.initGameplay.bind(this))
     }
