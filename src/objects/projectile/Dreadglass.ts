@@ -51,13 +51,11 @@ export class Dreadglass extends Projectile {
             const bulletCenterPosition = this.getCenterPosition()
             const enemyCenterPosition = this.targetEnemy.getCenterPosition()
             const bulletEnemyVector = new Vector(enemyCenterPosition.x - bulletCenterPosition.x, enemyCenterPosition.y - bulletCenterPosition.y)
-            //move the bullet towards enemy in a tickwise fashion
-            this.x += bulletEnemyVector.normalize().x * deltaTime * this.speed
-            this.y += bulletEnemyVector.normalize().y * deltaTime * this.speed
-            this.updateSpritePosition()
+            const distanceToEnemy = bulletEnemyVector.magnitude()
+            const currentDelta = this.updateTicker?.deltaTime || deltaTime
+            const stepDistance = currentDelta * this.speed
 
-
-            if (bulletEnemyVector.magnitude() < 5) {
+            if (distanceToEnemy <= 5 || stepDistance >= distanceToEnemy) {
                 this.targetEnemy.takeDamage(this.damage)
 
                 this.reduceTargetArmour();
@@ -67,7 +65,14 @@ export class Dreadglass extends Projectile {
                     this.graphics.visible = false
                 }
                 this.cleanUpResources()
+                return
             }
+
+            // move the bullet towards enemy in a tickwise fashion
+            const direction = bulletEnemyVector.normalize()
+            this.x += direction.x * stepDistance
+            this.y += direction.y * stepDistance
+            this.updateSpritePosition()
         }
 
         this.updateTicker?.add(onTick)
