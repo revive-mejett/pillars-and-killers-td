@@ -458,16 +458,17 @@ export class HUD {
         icon.width = 38
         icon.height = 38
         icon.anchor.set(0.5, 0.5)
+        icon.x = -80
         popup.addChild(icon)
 
         const sign = type === "spend" ? "-" : "+"
-        const amountText = new Text(`${sign}$${Math.floor(amount)}`, new TextStyle({
+        const amountText = new Text(`${sign}${Math.floor(amount)}`, new TextStyle({
             fontFamily: "Times New Roman",
             fontSize: 26,
             fill: type === "spend" ? 0xFF8F8F : 0x8FFF8F,
             align: "left"
         }))
-        amountText.x = 24
+        amountText.x = -70
         amountText.y = -amountText.height / 2
         popup.addChild(amountText)
 

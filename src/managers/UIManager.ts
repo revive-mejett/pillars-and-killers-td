@@ -208,6 +208,7 @@ export class UIManager {
         }
 
         eventDispatcher.fireEvent("purchaseSuccessful1", upgradeCost)
+        this.hud.showMoneyGlidePopup("spend", upgradeCost)
         selectedTile.tower.upgrade()
 
         audioManager.playBuySound()
