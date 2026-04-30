@@ -35,6 +35,7 @@ export class HUD {
     bgColor3: number = 0x221A00
 
     selectedOutlineContainer: PIXI.Container | undefined
+    moneyPopupContainer: PIXI.Container | undefined
 
     constructor(gamestate: GameState) {
         this.container = new PIXI.Container()
@@ -49,6 +50,8 @@ export class HUD {
         this.currentTowerSelectedIcon = undefined
 
         this.towerSelectionButtons = undefined
+        this.selectedOutlineContainer = undefined
+        this.moneyPopupContainer = undefined
 
         if (gamestate.difficulty === "Chill") {
             this.bgColor1 = 0x001108
@@ -119,6 +122,11 @@ export class HUD {
         moneyText.y = (moneyContainer.height - moneyText.height) / 2;
         moneyContainer.addChild(moneyText)
         this.moneyText = moneyText
+
+        this.moneyPopupContainer = new PIXI.Container()
+        this.moneyPopupContainer.x = moneyContainer.x + this.container.width - 70
+        this.moneyPopupContainer.y = moneyContainer.y + 50
+        this.container.addChild(this.moneyPopupContainer)
 
         //add lives ui
         const livesContainer = new PIXI.Container()
@@ -433,6 +441,61 @@ export class HUD {
         this.container.addChild(this.infoPanel)
         this.infoPanel.x = 1
         this.infoPanel.y = 600
+    }
+
+    showMoneyGlidePopup(type: "spend" | "gain", amount: number) {
+        if (!this.moneyPopupContainer) {
+            return
+        }
+        const imageBundle = assetLoader.otherImages
+        if (!imageBundle) {
+            return
+        }
+
+        const popup = new PIXI.Container()
+        const iconAsset = type === "spend" ? imageBundle.spendMoney : imageBundle.gainMoney
+        const icon = PIXI.Sprite.from(iconAsset)
+        icon.width = 38
+        icon.height = 38
+        icon.anchor.set(0.5, 0.5)
+        popup.addChild(icon)
+
+        const sign = type === "spend" ? "-" : "+"
+        const amountText = new Text(`${sign}$${Math.floor(amount)}`, new TextStyle({
+            fontFamily: "Times New Roman",
+            fontSize: 26,
+            fill: type === "spend" ? 0xFF8F8F : 0x8FFF8F,
+            align: "left"
+        }))
+        amountText.x = 24
+        amountText.y = -amountText.height / 2
+        popup.addChild(amountText)
+
+        popup.alpha = 1
+        popup.scale.set(1)
+        this.moneyPopupContainer.addChild(popup)
+
+        let life = 48
+        const maxLife = life
+        const driftX = (Math.random() - 0.5) * 0.25
+        const driftY = -1.05 - Math.random() * 0.25
+
+        const animate = (delta: number) => {
+            life -= delta
+            popup.y += driftY * delta
+            popup.x += driftX * delta
+            popup.alpha = Math.max(0, life / maxLife)
+
+            if (life <= 0) {
+                PIXI.Ticker.shared.remove(animate)
+                if (popup.parent) {
+                    popup.parent.removeChild(popup)
+                }
+                popup.destroy({ children: true })
+            }
+        }
+
+        PIXI.Ticker.shared.add(animate)
     }
 }
 

@@ -75,6 +75,7 @@ export class UIManager {
         eventDispatcher.on("researchTier2Action", () => this.handleResearchAction(2, this.gamestate.tier2ResearchCost))
         eventDispatcher.on("researchTier3Action", () => this.handleResearchAction(3, this.gamestate.tier3ResearchCost))
         eventDispatcher.on("researchTier4Action", () => this.handleResearchAction(4, this.gamestate.tier4ResearchCost))
+        eventDispatcher.on("moneyEarned", this.handleMoneyEarnedPopup.bind(this))
 
         this.setTowerButtonClickListeners()
 
@@ -178,6 +179,7 @@ export class UIManager {
         }
 
         eventDispatcher.fireEvent("purchaseSuccessful1", towerCost)
+        this.hud.showMoneyGlidePopup("spend", towerCost)
         const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
         selectedTile.placeTowerOnTile(tower)
         tower.setTileRef(selectedTile)
@@ -233,6 +235,14 @@ export class UIManager {
         this.selectedEnemyUpdateTicker.autoStart = false
         const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud, this.selectedEnemyUpdateTicker, this.gamestate.killBountyMultiplier)
         hud.infoPanel?.addChild(selectedEnemyPanel)
+    }
+
+    private handleMoneyEarnedPopup(data: {source: "bounty" | "towerSell", money: number}) {
+        if (data.source !== "towerSell") {
+            return
+        }
+        const sellGain = Math.floor(data.money * this.gamestate.sellValuePercentage / 100)
+        this.hud.showMoneyGlidePopup("gain", sellGain)
     }
 
     cleanUpResources() {
