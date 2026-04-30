@@ -28,7 +28,7 @@ export class PoisonIvyPillar extends Tower {
 
     runTower(gameplayScene : GameplayScene) {
 
-        const gameplaySceneContainer = gameplayScene.mapContainer
+        const gameplaySceneContainer = gameplayScene.getEffectsContainer()
 
 
         let towerFireCycleTicker : PIXI.Ticker | undefined = new PIXI.Ticker()

@@ -33,7 +33,7 @@ export class CyroBlastPillar extends Tower {
     }
 
     runTower(gameplayScene : GameplayScene) : void {
-        const gameplaySceneContainer = gameplayScene.mapContainer
+        const gameplaySceneContainer = gameplayScene.getEffectsContainer()
 
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const towerRef = this
