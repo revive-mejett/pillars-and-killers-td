@@ -220,16 +220,89 @@ export class Enemy extends Entity {
             return
         }
 
-        if ((this.xToNextWaypoint > 0 && this.direction === "EAST") || (this.xToNextWaypoint < 0 && this.direction === "WEST")) {
-            // console.log("x ", this.xToNextWaypoint, " y ", this.yToNextWaypoint, this.direction)
-            this.position.x += (speed) * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
-            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
+        if (!this.direction) {
+            this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
+            this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
+            this.determineDirection()
         }
-        else if ((this.yToNextWaypoint > 0 && this.direction === "SOUTH") || (this.yToNextWaypoint < 0 && this.direction === "NORTH")) {
-            // console.log("x ", this.xToNextWaypoint, " y ", this.yToNextWaypoint, this.direction)
-            this.position.y += (speed) * (this.yToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier
-            this.distanceTravelled += Math.abs(speed * (this.xToNextWaypoint > 0 ? 1 : -1) * delta * this.slowDebuffStats.speedMultiplier)
+
+        // Total distance the enemy is allowed to travel this frame. We carry this
+        // budget across waypoints so corners don't cause progress loss or stalls.
+        let travelBudget = speed * delta * this.slowDebuffStats.speedMultiplier
+
+        // Safety cap to avoid any chance of an infinite loop on a malformed map.
+        let iterations = 0
+        const maxIterations = waypoints.length + 1
+
+        // Move along axis-aligned segments, advancing waypoints as we cross them.
+        // Looping here lets a single frame traverse multiple short segments
+        // (e.g. on tight corners) without the enemy briefly halting.
+        while (travelBudget > 0 && this.nextWayPointIndex < waypoints.length && iterations < maxIterations) {
+            iterations++
+
+            const targetX = waypoints[this.nextWayPointIndex].x * map.tileSize
+            const targetY = waypoints[this.nextWayPointIndex].y * map.tileSize
+
+            // Distance left to the next waypoint on each axis.
+            const dx = targetX - this.position.x
+            const dy = targetY - this.position.y
+
+            // If direction is unset (e.g. first frame after spawning, or after
+            // a duplicate waypoint), derive it from the current deltas.
+            if (!this.direction) {
+                this.xToNextWaypoint = dx
+                this.yToNextWaypoint = dy
+                this.determineDirection()
+            }
+
+            let remaining = 0
+            let axis: "x" | "y" | undefined
+            let sign = 0
+
+            if (this.direction === "EAST") {
+                axis = "x"
+                sign = 1
+                remaining = dx
+            } else if (this.direction === "WEST") {
+                axis = "x"
+                sign = -1
+                remaining = -dx
+            } else if (this.direction === "SOUTH") {
+                axis = "y"
+                sign = 1
+                remaining = dy
+            } else if (this.direction === "NORTH") {
+                axis = "y"
+                sign = -1
+                remaining = -dy
+            }
+
+            // If we're at or past the next waypoint along our travel axis
+            // (covers exact-landing and any small floating-point overshoot),
+            // advance without consuming any of the travel budget.
+            if (!axis || remaining <= 0) {
+                this.advanceToNextWaypoint(map)
+                continue
+            }
+
+            const step = Math.min(travelBudget, remaining)
+            if (axis === "x") {
+                this.position.x += sign * step
+            } else {
+                this.position.y += sign * step
+            }
+            this.distanceTravelled += step
+            travelBudget -= step
+
+            // Reached the waypoint exactly: advance and let any remaining budget
+            // continue along the next segment.
+            if (step >= remaining) {
+                this.advanceToNextWaypoint(map)
+            }
         }
+
+        this.xToNextWaypoint = (waypoints[Math.min(this.nextWayPointIndex, waypoints.length - 1)].x * map.tileSize - this.position.x)
+        this.yToNextWaypoint = (waypoints[Math.min(this.nextWayPointIndex, waypoints.length - 1)].y * map.tileSize - this.position.y)
 
         this.updateRotation(delta)
         this.tickDebuffs(delta)
@@ -239,41 +312,51 @@ export class Enemy extends Entity {
             this.tickEMP(delta)
         }
 
+        this.updateSpritePosition()
+    }
+
+    private advanceToNextWaypoint(map: TdMap) {
+        if (!map.waypoints) {
+            return
+        }
+        const waypoints = map.waypoints
+
+        this.nextWayPointIndex++
+
+        if (this.nextWayPointIndex >= waypoints.length) {
+            reachEnd(this)
+            return
+        }
+
+        // Snap to the waypoint we just hit so subsequent direction changes
+        // start from a clean axis-aligned position.
+        const reachedWaypoint = waypoints[this.nextWayPointIndex - 1]
+        this.position.x = reachedWaypoint.x * map.tileSize
+        this.position.y = reachedWaypoint.y * map.tileSize
+
         this.xToNextWaypoint = (waypoints[this.nextWayPointIndex].x * map.tileSize - this.position.x)
         this.yToNextWaypoint = (waypoints[this.nextWayPointIndex].y * map.tileSize - this.position.y)
 
-        if (!this.direction) {
-            this.determineDirection()
-        }
-
-        this.updateSpritePosition()
-
-        if (((this.direction === "EAST" && this.xToNextWaypoint < 0) || (this.direction === "WEST" && this.xToNextWaypoint > 0) || (this.direction === "NORTH" && this.yToNextWaypoint > 0) || (this.direction === "SOUTH" && this.yToNextWaypoint < 0)) && this.nextWayPointIndex < waypoints.length) {
-            this.nextWayPointIndex++
-
-
-            if (this.nextWayPointIndex === waypoints.length) {
-                reachEnd(this)
-            } else {
-                this.setDistancesToNext(map)
-
-                this.determineDirection();
-            }
-        }
+        this.determineDirection()
     }
 
     private determineDirection() {
-        if (this.xToNextWaypoint > 0 && this.yToNextWaypoint === 0) {
-            this.direction = "EAST";
+        // Pick the dominant axis so that small floating point drift on the
+        // perpendicular axis can't leave the enemy without a direction.
+        const absX = Math.abs(this.xToNextWaypoint)
+        const absY = Math.abs(this.yToNextWaypoint)
+
+        if (absX === 0 && absY === 0) {
+            // No distance to next waypoint (e.g. duplicate waypoint); leave
+            // direction unset so the caller can decide to skip ahead.
+            this.direction = undefined
+            return
         }
-        if (this.xToNextWaypoint < 0 && this.yToNextWaypoint === 0) {
-            this.direction = "WEST";
-        }
-        if (this.xToNextWaypoint === 0 && this.yToNextWaypoint < 0) {
-            this.direction = "NORTH";
-        }
-        if (this.xToNextWaypoint === 0 && this.yToNextWaypoint > 0) {
-            this.direction = "SOUTH";
+
+        if (absX >= absY) {
+            this.direction = this.xToNextWaypoint > 0 ? "EAST" : "WEST"
+        } else {
+            this.direction = this.yToNextWaypoint > 0 ? "SOUTH" : "NORTH"
         }
     }
 
