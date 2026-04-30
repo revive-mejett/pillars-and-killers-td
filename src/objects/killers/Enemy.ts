@@ -524,7 +524,7 @@ function enemyDied(enemy: Enemy) {
     }
 
 
-    eventDispatcher.fireEvent("enemyDied")
+    eventDispatcher.fireEvent("enemyDied", enemy)
     if (enemy.enemyClassName === "Brave Proxima Centauri") {
         eventDispatcher.fireEvent("boss1Killed")
     }
@@ -548,7 +548,7 @@ function reachEnd(enemy: Enemy) {
     enemy.isAlive = false
     audioManager.playSound("assets/sounds/sfx/live_lost_glass_smash.mp3", 0.7, 1)
     eventDispatcher.fireEvent("enemyReachEnd", enemy.damage)
-    eventDispatcher.fireEvent("enemyDied")
+    eventDispatcher.fireEvent("enemyDied", enemy)
     enemy.cleanUpResources()
 }
 

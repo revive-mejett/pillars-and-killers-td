@@ -19,6 +19,7 @@ import { allMaps } from "../utils/MapData"
 import { Difficulty, GameSaveData, TowerData } from "src/ts/types/GameSaveData"
 import { towerNameToKey } from "../utils/TowerStatsData"
 import { GameDataManager } from "../managers/GameDataManager"
+import { EnemyStatusEffectParticles } from "../objects/EnemyStatusEffectParticles";
 
 const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
@@ -36,6 +37,7 @@ export class GameplayScene extends Scene {
     healthBarManager?: HealthBarManager
     mapContainer: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     combatEffectsLayer?: CombatEffectsLayer
+    enemyStatusEffectParticles?: EnemyStatusEffectParticles
     waveTimeline: WaveTimeline | undefined
 
     fileNumber: 1 | 2 | 3 | 4 | 5 | 6
@@ -89,6 +91,7 @@ export class GameplayScene extends Scene {
 
         this.combatEffectsLayer = new CombatEffectsLayer()
         this.combatEffectsLayer.attachAbove(this.container, this.mapContainer)
+        this.enemyStatusEffectParticles = new EnemyStatusEffectParticles(this.getEffectsContainer())
 
         this.buildMap()
         this.inputManager = new InputManager(this.getEffectsContainer(), this.mapContainer, this.uiManager)
@@ -110,6 +113,7 @@ export class GameplayScene extends Scene {
         eventDispatcher.on("towerAttackSoundPlay", this.onTowerAttackSoundPlay.bind(this))
 
         eventDispatcher.on("enemyDied", this.updateEnemiesPresentList.bind(this))
+        eventDispatcher.on("enemyDied", this.onEnemyDied.bind(this))
 
 
         eventDispatcher.on("towerPlaced", this.addTowerToPresent.bind(this))
@@ -218,6 +222,7 @@ export class GameplayScene extends Scene {
             }
 
         })
+        this.enemyStatusEffectParticles?.update(this.enemiesPresent, this.app.ticker.deltaTime)
 
         this.towersPresent.forEach(tower => {
             if (this.enemiesPresent.length > 0) {
@@ -234,6 +239,12 @@ export class GameplayScene extends Scene {
 
     updateEnemiesPresentList() {
         this.enemiesPresent = this.enemiesPresent.filter(enemy => enemy.isAlive)
+    }
+
+    onEnemyDied(enemy?: Enemy) {
+        if (enemy && enemy.health <= 0) {
+            this.enemyStatusEffectParticles?.spawnKillBurst(enemy)
+        }
     }
 
     // updateProjectilesPresent() {
@@ -304,6 +315,8 @@ export class GameplayScene extends Scene {
 
         this.combatEffectsLayer?.cleanUpResources()
         this.combatEffectsLayer = undefined
+        this.enemyStatusEffectParticles?.cleanUpResources()
+        this.enemyStatusEffectParticles = undefined
 
         //clean up event listeners akshan
         eventDispatcher.clearListenersOfEvent("enemySpawn")
