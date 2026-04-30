@@ -28,6 +28,7 @@ export class UIManager {
     gameplayScene: GameplayScene;
     selectedTowerType?: string;
     selectedEnemyUpdateTicker?: PIXI.Ticker;
+    previousLives: number
 
     constructor(app : PIXI.Application, gamestate : GameState, gameplayScene :  GameplayScene, hud : HUD) {
         this.app = app
@@ -38,6 +39,7 @@ export class UIManager {
         this.selectedTowerType = undefined
 
         this.selectedEnemyUpdateTicker = undefined
+        this.previousLives = this.gamestate.lives
 
         eventDispatcher.on("nextWaveBtnClick", () => {
             // console.log("boss present> " + this.gameplayScene.waveManager?.bossPresent)
@@ -101,6 +103,8 @@ export class UIManager {
 
     updateLives() {
         if (this.hud && this.hud.livesText) {
+            const currentLives = this.gamestate.lives
+            const previousLives = this.previousLives
             this.hud.livesText.text = this.gamestate.lives
 
             if (this.gamestate.lives < 70) {
@@ -115,7 +119,16 @@ export class UIManager {
                 this.hud.livesText.filters = [
                     new GlowFilter({innerStrength : 0.3, outerStrength: 3, color: 0xFF0000}) as unknown as PIXI.Filter
                 ]
+                this.hud.setLowLivesBloodDripEnabled(false)
+            } else {
+                this.hud.livesText.filters = []
+                this.hud.setLowLivesBloodDripEnabled(currentLives <= 25)
+
+                if (currentLives < previousLives) {
+                    this.hud.showLivesBloodSplash(previousLives - currentLives)
+                }
             }
+            this.previousLives = currentLives
         }
     }
 

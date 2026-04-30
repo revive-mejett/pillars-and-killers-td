@@ -16,7 +16,7 @@ export class EnemyStatusEffectParticles {
     private readonly trailCooldownByEnemy = new WeakMap<Enemy, number>()
     private readonly slowColour = 0x3B82F6
     private readonly poisonIvyColour = 0x22C55E
-    private readonly killColour = 0x0000FF
+    private readonly killColour = 0xFF0000
 
     constructor(container: PIXI.Container<PIXI.DisplayObject>) {
         this.container = container

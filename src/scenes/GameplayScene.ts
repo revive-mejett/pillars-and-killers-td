@@ -20,6 +20,7 @@ import { Difficulty, GameSaveData, TowerData } from "src/ts/types/GameSaveData"
 import { towerNameToKey } from "../utils/TowerStatsData"
 import { GameDataManager } from "../managers/GameDataManager"
 import { EnemyStatusEffectParticles } from "../objects/EnemyStatusEffectParticles";
+import { CombatEffectsFactory } from "../objects/CombatEffectsFactory";
 
 const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
@@ -37,6 +38,7 @@ export class GameplayScene extends Scene {
     healthBarManager?: HealthBarManager
     mapContainer: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     combatEffectsLayer?: CombatEffectsLayer
+    combatEffectsFactory?: CombatEffectsFactory
     enemyStatusEffectParticles?: EnemyStatusEffectParticles
     waveTimeline: WaveTimeline | undefined
 
@@ -91,6 +93,7 @@ export class GameplayScene extends Scene {
 
         this.combatEffectsLayer = new CombatEffectsLayer()
         this.combatEffectsLayer.attachAbove(this.container, this.mapContainer)
+        this.combatEffectsFactory = new CombatEffectsFactory(this.getEffectsContainer())
         this.enemyStatusEffectParticles = new EnemyStatusEffectParticles(this.getEffectsContainer())
 
         this.buildMap()
@@ -242,6 +245,13 @@ export class GameplayScene extends Scene {
     }
 
     onEnemyDied(enemy?: Enemy) {
+        if (enemy && enemy.health <= 0 && enemy.enemyType === "Boss") {
+            const center = enemy.getCenterPosition()
+            this.combatEffectsFactory?.play("bossSupernova", {
+                x: center.x,
+                y: center.y
+            })
+        }
         if (enemy && enemy.health <= 0) {
             this.enemyStatusEffectParticles?.spawnKillBurst(enemy)
         }
@@ -305,6 +315,7 @@ export class GameplayScene extends Scene {
         this.waveManager?.cleanUpResources()
         this.waveManager = undefined
         // this.tdMap = null
+        this.hud?.cleanUpResources()
         this.hud = undefined
 
         this.gamestate?.cleanUpResources()
@@ -315,6 +326,8 @@ export class GameplayScene extends Scene {
 
         this.combatEffectsLayer?.cleanUpResources()
         this.combatEffectsLayer = undefined
+        this.combatEffectsFactory?.cleanUpResources()
+        this.combatEffectsFactory = undefined
         this.enemyStatusEffectParticles?.cleanUpResources()
         this.enemyStatusEffectParticles = undefined
 

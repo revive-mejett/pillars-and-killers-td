@@ -36,6 +36,10 @@ export class HUD {
 
     selectedOutlineContainer: PIXI.Container | undefined
     moneyPopupContainer: PIXI.Container | undefined
+    livesEffectsContainer: PIXI.Container | undefined
+    lowLivesDripEnabled: boolean
+    livesDripCooldown: number
+    livesEffectsTickFn?: (delta: number) => void
 
     constructor(gamestate: GameState) {
         this.container = new PIXI.Container()
@@ -52,6 +56,10 @@ export class HUD {
         this.towerSelectionButtons = undefined
         this.selectedOutlineContainer = undefined
         this.moneyPopupContainer = undefined
+        this.livesEffectsContainer = undefined
+        this.lowLivesDripEnabled = false
+        this.livesDripCooldown = 0
+        this.livesEffectsTickFn = undefined
 
         if (gamestate.difficulty === "Chill") {
             this.bgColor1 = 0x001108
@@ -154,6 +162,9 @@ export class HUD {
         livesContainer.addChild(livesText)
         this.livesText = livesText
 
+        this.livesEffectsContainer = new PIXI.Container()
+        livesContainer.addChild(this.livesEffectsContainer)
+
         //wave number ui
         const waveNumContainer = new PIXI.Container()
         waveNumContainer.x = 0
@@ -239,6 +250,127 @@ export class HUD {
 
         this.setUpTowerSelections()
 
+    }
+
+    showLivesBloodSplash(livesLost: number) {
+        if (!this.livesEffectsContainer || !this.livesText) {
+            return
+        }
+        const effectContainer = this.livesEffectsContainer
+        const centerX = this.livesText.x + this.livesText.width * 0.5
+        const centerY = this.livesText.y + this.livesText.height * 0.55
+        const dropletCount = Math.min(24, 8 + Math.max(0, livesLost) * 2)
+
+        for (let i = 0; i < dropletCount; i++) {
+            const droplet = new PIXI.Graphics()
+            const radius = 1.4 + Math.random() * 3.4
+            const colour = Math.random() < 0.35 ? 0xAA0000 : 0xCC0000
+            droplet.beginFill(colour)
+            droplet.drawCircle(0, 0, radius)
+            droplet.endFill()
+            droplet.x = centerX + (Math.random() - 0.5) * 12
+            droplet.y = centerY + (Math.random() - 0.5) * 10
+            effectContainer.addChild(droplet)
+
+            let life = 14 + Math.random() * 12
+            const maxLife = life
+            const vx = (Math.random() - 0.5) * 2.6
+            let vy = -1.4 - Math.random() * 1.2
+
+            const animate = (delta: number) => {
+                life -= delta
+                vy += 0.14 * delta
+                droplet.x += vx * delta
+                droplet.y += vy * delta
+                droplet.alpha = Math.max(0, life / maxLife)
+
+                if (life <= 0) {
+                    PIXI.Ticker.shared.remove(animate)
+                    if (droplet.parent) {
+                        droplet.parent.removeChild(droplet)
+                    }
+                    droplet.destroy()
+                }
+            }
+
+            PIXI.Ticker.shared.add(animate)
+        }
+    }
+
+    setLowLivesBloodDripEnabled(enabled: boolean) {
+        if (enabled === this.lowLivesDripEnabled) {
+            return
+        }
+        this.lowLivesDripEnabled = enabled
+
+        if (!enabled) {
+            if (this.livesEffectsTickFn) {
+                PIXI.Ticker.shared.remove(this.livesEffectsTickFn)
+                this.livesEffectsTickFn = undefined
+            }
+            this.livesDripCooldown = 0
+            return
+        }
+
+        this.livesDripCooldown = 0
+        this.livesEffectsTickFn = (delta: number) => {
+            if (!this.lowLivesDripEnabled || !this.livesText || !this.livesEffectsContainer) {
+                return
+            }
+            this.livesDripCooldown -= delta
+            if (this.livesDripCooldown > 0) {
+                return
+            }
+            this.livesDripCooldown = 4 + Math.random() * 3
+            this.spawnLivesDrip()
+        }
+        PIXI.Ticker.shared.add(this.livesEffectsTickFn)
+    }
+
+    private spawnLivesDrip() {
+        if (!this.livesEffectsContainer || !this.livesText) {
+            return
+        }
+
+        const effectContainer = this.livesEffectsContainer
+        const startX = this.livesText.x + Math.random() * this.livesText.width
+        const startY = this.livesText.y + this.livesText.height - 2
+        const drip = new PIXI.Graphics()
+        const radius = 1.2 + Math.random() * 1.4
+        drip.beginFill(0x880000)
+        drip.drawCircle(0, 0, radius)
+        drip.endFill()
+        drip.x = startX
+        drip.y = startY
+        effectContainer.addChild(drip)
+
+        let life = 22 + Math.random() * 16
+        const maxLife = life
+        const vx = (Math.random() - 0.5) * 0.15
+        let vy = 0.55 + Math.random() * 0.45
+
+        const animate = (delta: number) => {
+            life -= delta
+            vy += 0.03 * delta
+            drip.x += vx * delta
+            drip.y += vy * delta
+            drip.alpha = Math.max(0, life / maxLife)
+
+            if (life <= 0) {
+                PIXI.Ticker.shared.remove(animate)
+                if (drip.parent) {
+                    drip.parent.removeChild(drip)
+                }
+                drip.destroy()
+            }
+        }
+
+        PIXI.Ticker.shared.add(animate)
+    }
+
+    cleanUpResources() {
+        this.setLowLivesBloodDripEnabled(false)
+        this.livesEffectsContainer?.removeChildren()
     }
 
 

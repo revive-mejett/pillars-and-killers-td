@@ -82,7 +82,18 @@ export class MissilePillar extends Tower {
                     return
                 }
                 //spawn a bullet
-                const bullet = new Missile(this.getCenterPosition().x, this.getCenterPosition().y, this.fireballWidth, this.fireballWidth, this.targetedEnemy, this.damage, this.flameColour, this.soundPitch, this.impactRadius)
+                const bullet = new Missile(
+                    this.getCenterPosition().x,
+                    this.getCenterPosition().y,
+                    this.fireballWidth,
+                    this.fireballWidth,
+                    this.targetedEnemy,
+                    this.damage,
+                    this.flameColour,
+                    this.soundPitch,
+                    this.impactRadius,
+                    gameplayScene.combatEffectsFactory
+                )
                 bullet.render(gameplaySceneContainer)
                 bullet.fire(gameplayScene.app.ticker.deltaTime, gameplayScene.enemiesPresent)
 

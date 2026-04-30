@@ -5,6 +5,7 @@ import { Projectile } from "./Projectile";
 import * as PIXI from "pixi.js";
 import { EventDispatcher } from "../../utils/EventDispatcher";
 import { GlowFilter } from "pixi-filters";
+import { CombatEffectsFactory } from "../CombatEffectsFactory";
 
 const eventDispatcher = new EventDispatcher()
 
@@ -12,11 +13,12 @@ export class Missile extends Projectile {
     speed: number;
     impactRadius: number;
     soundPitch: number;
+    effectsFactory?: CombatEffectsFactory
 
     /**
      *
      */
-    constructor(x: number, y: number, width: number, height: number, targetEnemy: Enemy, damage: number, colour: number, soundPitch: number, impactRadius: number) {
+    constructor(x: number, y: number, width: number, height: number, targetEnemy: Enemy, damage: number, colour: number, soundPitch: number, impactRadius: number, effectsFactory?: CombatEffectsFactory) {
         super(x, y, width, height, targetEnemy, damage, colour);
         this.speed = 0.6
 
@@ -31,6 +33,7 @@ export class Missile extends Projectile {
 
         this.impactRadius = impactRadius
         this.soundPitch = soundPitch
+        this.effectsFactory = effectsFactory
     }
 
     fire(deltaTime: number, enemies: Enemy[]) {
@@ -84,6 +87,7 @@ export class Missile extends Projectile {
     onImpact(enemies: Enemy[], impactPosition: Position) {
 
         eventDispatcher.fireEvent("towerAttackSoundPlay", { path: "assets/sounds/sfx/missile_boom.mp3", maxSources: 8, towerName: "Missile Pillar", volume: 1, speed: 1 })
+        // Keep the original missile impact burst and layer the ring explosion on top.
         this.spawnImpactParticleBurst({
             x: impactPosition.x,
             y: impactPosition.y,
@@ -96,6 +100,11 @@ export class Missile extends Projectile {
             sizeMin: 1.5,
             sizeMax: 3.8,
             gravity: 0.02
+        })
+        this.effectsFactory?.play("rocketRadialExplosion", {
+            x: impactPosition.x,
+            y: impactPosition.y,
+            radius: this.impactRadius
         })
 
         enemies.forEach((enemy, i) => {
