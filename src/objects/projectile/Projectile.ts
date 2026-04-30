@@ -37,6 +37,76 @@ export abstract class Projectile extends Entity {
 
     abstract fire(deltaTime : number, enemies? : Enemy[]) : void
 
+    protected spawnImpactParticleBurst(config: {
+        x: number
+        y: number
+        colour: number
+        count: number
+        speedMin: number
+        speedMax: number
+        lifeMin: number
+        lifeMax: number
+        sizeMin: number
+        sizeMax: number
+        gravity?: number
+    }) {
+        if (!this.graphics?.parent) {
+            return
+        }
+        const parentContainer = this.graphics.parent
+        type ImpactParticle = { graphics: PIXI.Graphics, vx: number, vy: number, life: number, maxLife: number, gravity: number }
+        const particles: ImpactParticle[] = []
+
+        for (let i = 0; i < config.count; i++) {
+            const particle = new PIXI.Graphics()
+            const radius = config.sizeMin + Math.random() * (config.sizeMax - config.sizeMin)
+            particle.beginFill(config.colour)
+            particle.drawCircle(0, 0, radius)
+            particle.endFill()
+            particle.x = config.x
+            particle.y = config.y
+            particle.alpha = 1
+            parentContainer.addChild(particle)
+
+            const angle = Math.random() * Math.PI * 2
+            const speed = config.speedMin + Math.random() * (config.speedMax - config.speedMin)
+            const life = config.lifeMin + Math.random() * (config.lifeMax - config.lifeMin)
+            particles.push({
+                graphics: particle,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                life,
+                maxLife: life,
+                gravity: config.gravity || 0
+            })
+        }
+
+        const tick = (delta: number) => {
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const particle = particles[i]
+                particle.life -= delta
+                if (particle.life <= 0) {
+                    if (particle.graphics.parent) {
+                        particle.graphics.parent.removeChild(particle.graphics)
+                    }
+                    particle.graphics.destroy()
+                    particles.splice(i, 1)
+                    continue
+                }
+                particle.vy += particle.gravity * delta
+                particle.graphics.x += particle.vx * delta
+                particle.graphics.y += particle.vy * delta
+                particle.graphics.alpha = particle.life / particle.maxLife
+            }
+
+            if (particles.length === 0) {
+                PIXI.Ticker.shared.remove(tick)
+            }
+        }
+
+        PIXI.Ticker.shared.add(tick)
+    }
+
 
     render(parentContainer : PIXI.Container) {
         if (this.graphics) {
@@ -58,6 +128,7 @@ export abstract class Projectile extends Entity {
         this.graphics?.clear()
         this.graphics?.destroy(true)
         this.graphics = undefined;
+
         this.targetEnemy = undefined;
         this.updateTicker = undefined;
     }

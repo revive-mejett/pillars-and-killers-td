@@ -84,6 +84,19 @@ export class Missile extends Projectile {
     onImpact(enemies: Enemy[], impactPosition: Position) {
 
         eventDispatcher.fireEvent("towerAttackSoundPlay", { path: "assets/sounds/sfx/missile_boom.mp3", maxSources: 8, towerName: "Missile Pillar", volume: 1, speed: 1 })
+        this.spawnImpactParticleBurst({
+            x: impactPosition.x,
+            y: impactPosition.y,
+            colour: 0xFFD54A,
+            count: 22,
+            speedMin: 1.1,
+            speedMax: 3.4,
+            lifeMin: 20,
+            lifeMax: 36,
+            sizeMin: 1.5,
+            sizeMax: 3.8,
+            gravity: 0.02
+        })
 
         enemies.forEach((enemy, i) => {
             const enemyPosition = enemy.getCenterPosition()
