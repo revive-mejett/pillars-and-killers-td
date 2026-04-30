@@ -29,15 +29,13 @@ export class InputManager {
     /**
      *
      */
-    constructor(sceneContainer : PIXI.Container, mapContainer : PIXI.Container, uiManager: UIManager) {
+    constructor(overlayContainer : PIXI.Container, mapContainer : PIXI.Container, uiManager: UIManager) {
         this.uiManager = uiManager
 
-        //this container will contain the range circle, and tile outline and will be in tdmap
+        // this container will contain the cursor, range circle, and tile outlines
         this.gridContainer = new PIXI.Container()
-        this.gridContainer.x = 100
-        sceneContainer.sortableChildren = true
-        sceneContainer.zIndex = 10000
-        sceneContainer.addChild(this.gridContainer)
+        this.gridContainer.x = 0
+        overlayContainer.addChild(this.gridContainer)
 
         //mask for the grid to prevent range indicator from going off grid; crops it instead
         this.gridMask = new PIXI.Graphics()

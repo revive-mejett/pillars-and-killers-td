@@ -11,6 +11,7 @@ import * as PIXI from "pixi.js";
 import { Enemy } from "src/objects/killers/Enemy"
 import { Tower } from "src/objects/pillars/Tower"
 import { InputManager } from "../managers/InputManager"
+import { CombatEffectsLayer } from "../objects/CombatEffectsLayer";
 
 import { WaveTimeline } from "../UI/WaveTimeline"
 import { AudioManager } from "../managers/AudioManager";
@@ -34,6 +35,7 @@ export class GameplayScene extends Scene {
     towersPresent: Tower[]
     healthBarManager?: HealthBarManager
     mapContainer: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
+    combatEffectsLayer?: CombatEffectsLayer
     waveTimeline: WaveTimeline | undefined
 
     fileNumber: 1 | 2 | 3 | 4 | 5 | 6
@@ -80,10 +82,16 @@ export class GameplayScene extends Scene {
 
 
         this.mapContainer = new PIXI.Container()
+        this.mapContainer.zIndex = 1
+        this.container.sortableChildren = true
         this.container.addChild(this.mapContainer)
         this.mapContainer.x = 100
+
+        this.combatEffectsLayer = new CombatEffectsLayer()
+        this.combatEffectsLayer.attachAbove(this.container, this.mapContainer)
+
         this.buildMap()
-        this.inputManager = new InputManager(this.container, this.mapContainer, this.uiManager)
+        this.inputManager = new InputManager(this.getEffectsContainer(), this.mapContainer, this.uiManager)
 
         this.waveTimeline = new WaveTimeline(this.waveManager, this.hud)
         this.container.addChild(this.waveTimeline.container)
@@ -206,7 +214,7 @@ export class GameplayScene extends Scene {
             }
             if (enemy.enemyType === "EMP") {
                 enemy.towers = this.towersPresent
-                enemy.mapContainer = this.mapContainer
+                enemy.mapContainer = this.getEffectsContainer()
             }
 
         })
@@ -248,6 +256,13 @@ export class GameplayScene extends Scene {
         this.towersPresent = this.towersPresent.filter(tower => !tower.isSold)
     }
 
+    getEffectsContainer() {
+        if (this.combatEffectsLayer?.container) {
+            return this.combatEffectsLayer.container
+        }
+        return this.mapContainer
+    }
+
     playArmorSound(isBoss: boolean = false) {
 
 
@@ -286,6 +301,9 @@ export class GameplayScene extends Scene {
 
         this.inputManager?.cleanUpResources()
         this.inputManager = undefined
+
+        this.combatEffectsLayer?.cleanUpResources()
+        this.combatEffectsLayer = undefined
 
         //clean up event listeners akshan
         eventDispatcher.clearListenersOfEvent("enemySpawn")

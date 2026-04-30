@@ -30,7 +30,7 @@ export class EmberPillar extends Tower {
 
     runTower(gameplayScene : GameplayScene) : void {
 
-        const gameplaySceneContainer = gameplayScene.mapContainer
+        const gameplaySceneContainer = gameplayScene.getEffectsContainer()
 
 
         let towerFireCycleTicker : PIXI.Ticker | undefined = new PIXI.Ticker()
