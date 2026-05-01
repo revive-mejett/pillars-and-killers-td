@@ -22,6 +22,7 @@ export class WaveTimeline {
      */
     constructor(waveManager: WaveManager, hud: HUD) {
         this.container = new PIXI.Container()
+        this.container.zIndex = 100
         this.waveBlocks = []
         this.waveManager = waveManager
         this.hud = hud

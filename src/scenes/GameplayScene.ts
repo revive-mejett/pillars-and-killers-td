@@ -247,12 +247,15 @@ export class GameplayScene extends Scene {
     onEnemyDied(enemy?: Enemy) {
         if (enemy && enemy.health <= 0 && enemy.enemyType === "Boss") {
             const center = enemy.getCenterPosition()
+            const wm = this.waveManager
+            const bossWave = wm && wm.bossWaves.includes(wm.currentWave) ? wm.currentWave : undefined
             this.combatEffectsFactory?.play("bossSupernova", {
                 x: center.x,
-                y: center.y
+                y: center.y,
+                bossWave
             })
         }
-        if (enemy && enemy.health <= 0) {
+        if (enemy && enemy.health <= 0 && enemy.enemyType !== "Boss") {
             this.enemyStatusEffectParticles?.spawnKillBurst(enemy)
         }
     }

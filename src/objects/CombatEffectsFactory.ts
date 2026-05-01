@@ -6,6 +6,8 @@ type EffectPayload = {
     x: number
     y: number
     radius?: number
+    /** Boss wave (20 / 40 / 60 / 80 / 100) — drives explosion palette and intensity */
+    bossWave?: number
 }
 
 type Particle = {
@@ -89,26 +91,117 @@ export class CombatEffectsFactory {
     }
 
     private spawnBossSupernova(payload: EffectPayload) {
-        const radius = payload.radius || 240
+        const w = payload.bossWave
+        const radius = payload.radius ?? (w === 100 ? 320 : 240)
+
+        // Wave-specific rings + particles (defaults: cool blue if bossWave unknown)
+        type BossNovaStyle = {
+            ringOuter: number
+            ringInner: number
+            core: number
+            pickParticle: () => number
+            particleCount: number
+            speedMin: number
+            speedMax: number
+        }
+
+        const orangeRed: BossNovaStyle = {
+            ringOuter: 0xFF5533,
+            ringInner: 0xFF2200,
+            core: 0xFFAA66,
+            pickParticle: () => {
+                const r = Math.random()
+                if (r < 0.35) { return 0xFF3300 }
+                if (r < 0.7) { return 0xFF6600 }
+                return 0xFFAA44
+            },
+            particleCount: 52,
+            speedMin: 1.8,
+            speedMax: 5.5
+        }
+        const whiteBlast: BossNovaStyle = {
+            ringOuter: 0xF5F5F5,
+            ringInner: 0xDDDDEE,
+            core: 0xFFFFFF,
+            pickParticle: () => {
+                const r = Math.random()
+                if (r < 0.5) { return 0xFFFFFF }
+                if (r < 0.85) { return 0xE8E8F0 }
+                return 0xC8C8D8
+            },
+            particleCount: 52,
+            speedMin: 1.6,
+            speedMax: 5.2
+        }
+        const blueBlast: BossNovaStyle = {
+            ringOuter: 0xD8EEFF,
+            ringInner: 0x76B9FF,
+            core: 0xFFFFFF,
+            pickParticle: () => {
+                const r = Math.random()
+                if (r < 0.25) { return 0xFFFFFF }
+                if (r < 0.6) { return 0xB3DBFF }
+                return 0x6CA7FF
+            },
+            particleCount: 52,
+            speedMin: 1.8,
+            speedMax: 5.5
+        }
+        const redYellow: BossNovaStyle = {
+            ringOuter: 0xFFCC00,
+            ringInner: 0xFF2200,
+            core: 0xFFEE44,
+            pickParticle: () => {
+                const r = Math.random()
+                if (r < 0.33) { return 0xFF0000 }
+                if (r < 0.66) { return 0xFFEE00 }
+                return 0xFF8800
+            },
+            particleCount: 56,
+            speedMin: 2.0,
+            speedMax: 6.0
+        }
+        const finale: BossNovaStyle = {
+            ringOuter: 0xE8CCFF,
+            ringInner: 0x8866FF,
+            core: 0xFFFFFF,
+            pickParticle: () => {
+                const r = Math.random()
+                if (r < 0.2) { return 0xFFFFFF }
+                if (r < 0.45) { return 0xFFDD88 }
+                if (r < 0.7) { return 0xAA66FF }
+                return 0x66CCFF
+            },
+            particleCount: 200 + Math.floor(Math.random() * 48),
+            speedMin: 1.5,
+            speedMax: 7.2
+        }
+
+        let style: BossNovaStyle = blueBlast
+        if (w === 20) { style = orangeRed }
+        else if (w === 40) { style = whiteBlast }
+        else if (w === 60) { style = blueBlast }
+        else if (w === 80) { style = redYellow }
+        else if (w === 100) { style = finale }
 
         this.spawnRing(payload.x, payload.y, {
             startRadius: 6,
             endRadius: radius,
-            life: 30,
-            stroke: 5,
-            colour: 0xD8EEFF
+            life: w === 100 ? 36 : 30,
+            stroke: w === 100 ? 6 : 5,
+            colour: style.ringOuter
         })
         this.spawnRing(payload.x, payload.y, {
             startRadius: 3,
             endRadius: radius * 0.72,
-            life: 24,
-            stroke: 3,
-            colour: 0x76B9FF
+            life: w === 100 ? 28 : 24,
+            stroke: w === 100 ? 4 : 3,
+            colour: style.ringInner
         })
 
         const coreFlash = new PIXI.Graphics()
-        coreFlash.beginFill(0xFFFFFF)
-        coreFlash.drawCircle(0, 0, 20)
+        coreFlash.beginFill(style.core)
+        coreFlash.drawCircle(0, 0, w === 100 ? 28 : 20)
         coreFlash.endFill()
         coreFlash.x = payload.x
         coreFlash.y = payload.y
@@ -116,20 +209,18 @@ export class CombatEffectsFactory {
         this.container.addChild(coreFlash)
         this.rings.push({
             graphics: coreFlash,
-            life: 9,
-            maxLife: 9,
-            startRadius: 20,
-            endRadius: 56,
+            life: w === 100 ? 12 : 9,
+            maxLife: w === 100 ? 12 : 9,
+            startRadius: w === 100 ? 28 : 20,
+            endRadius: w === 100 ? 72 : 56,
             stroke: 0,
-            colour: 0xFFFFFF
+            colour: style.core
         })
 
-        const particleCount = 52
-        for (let i = 0; i < particleCount; i++) {
+        for (let i = 0; i < style.particleCount; i++) {
             const angle = Math.random() * Math.PI * 2
-            const speed = 1.8 + Math.random() * 5.5
-            const colourRoll = Math.random()
-            const colour = colourRoll < 0.25 ? 0xFFFFFF : colourRoll < 0.6 ? 0xB3DBFF : 0x6CA7FF
+            const speed = style.speedMin + Math.random() * (style.speedMax - style.speedMin)
+            const colour = style.pickParticle()
             this.spawnParticle(payload.x, payload.y, colour, Math.cos(angle) * speed, Math.sin(angle) * speed, 32 + Math.random() * 24, 0.02)
         }
     }
