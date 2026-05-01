@@ -288,7 +288,8 @@ export class WaveTimeline {
     private buildWaveStone(i: number, timeToWaveStart: number) {
         const currentWave = this.waveManager.waves[i]
         const waveNumber = i + 1
-        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
+        const interWaveDelaySeconds = this.waveManager.getDelaySecondsAfterWave(waveNumber)
+        const stoneHeight = (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000) / timeToYScaleFactor
 
 
         const waveStone = new PIXI.Graphics()
@@ -314,7 +315,7 @@ export class WaveTimeline {
         txtWaveNumber.rotation = -Math.PI/2
         this.innerContainer.addChild(txtWaveNumber)
 
-        timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
+        timeToWaveStart += (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000)
         return timeToWaveStart
     }
 
@@ -382,7 +383,8 @@ export class WaveTimeline {
         const currentWave = this.waveManager.extraWaves[i]
 
         const waveNumber = this.waveManager.currentWave + i + 1
-        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
+        const interWaveDelaySeconds = this.waveManager.getDelaySecondsAfterWave(waveNumber)
+        const stoneHeight = (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000) / timeToYScaleFactor
 
 
 
@@ -406,7 +408,7 @@ export class WaveTimeline {
         txtWaveNumber.rotation = -Math.PI/2
         this.innerContainer.addChild(txtWaveNumber)
 
-        timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
+        timeToWaveStart += (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000)
         return timeToWaveStart
     }
 }

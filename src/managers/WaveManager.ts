@@ -164,6 +164,25 @@ export class WaveManager {
         this.waves = waves
     }
 
+    getDelaySecondsAfterWave(waveNumber: number) {
+        if (this.difficulty !== "1Pill2Nil") {
+            return 10
+        }
+
+        switch (waveNumber) {
+        case 20:
+            return 60
+        case 40:
+            return 20
+        case 60:
+            return 40
+        case 80:
+            return 120
+        default:
+            return 10
+        }
+    }
+
     //run the waves
     sendWaves(gameplayScene: GameplayScene) {
         if (this.wavesStarted) {
@@ -201,10 +220,6 @@ export class WaveManager {
         this.waveInProgress = true
         this.currentWave++
         const map = this.map
-
-        if (this.delaySecondsToNextWave !== 10) {
-            this.delaySecondsToNextWave = 10
-        }
 
         if (this.bossWaves.includes(this.currentWave)) {
 
@@ -261,6 +276,7 @@ export class WaveManager {
         }
 
         //set the cooldown to next wave to the duration of the current wave
+        this.delaySecondsToNextWave = this.getDelaySecondsAfterWave(this.currentWave)
         this.cooldownToNextWave = waveArray.waveDurationMillis() + this.delaySecondsToNextWave * 1000
 
         let elapsedMS = 0
