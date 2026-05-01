@@ -10,12 +10,50 @@ const eventDispatcher = new EventDispatcher()
 const timelineWidth = 50
 const timeToYScaleFactor = 100
 
+type SmokeParticle = {
+    graphics: PIXI.Graphics
+    vx: number
+    vy: number
+    life: number
+    maxLife: number
+    drift: number
+    baseAlpha: number
+}
+
+function parseHexColour(s: string): number {
+    const n = parseInt(String(s).replace(/^0x/i, ""), 16)
+    return Number.isFinite(n) ? n : 0xe7e7e7
+}
+
+function mixColour(smoke: number, accent: number, t: number): number {
+    const ar = (smoke >> 16) & 0xff
+    const ag = (smoke >> 8) & 0xff
+    const ab = smoke & 0xff
+    const br = (accent >> 16) & 0xff
+    const bg = (accent >> 8) & 0xff
+    const bb = accent & 0xff
+    const r = Math.round(ar + (br - ar) * t)
+    const g = Math.round(ag + (bg - ag) * t)
+    const b = Math.round(ab + (bb - ab) * t)
+    return (r << 16) | (g << 8) | b
+}
+
 export class WaveTimeline {
     container: PIXI.Container<PIXI.DisplayObject>;
     waveManager: WaveManager;
     waveBlocks: PIXI.Container<PIXI.DisplayObject>[];
     innerContainer: PIXI.Container<PIXI.DisplayObject>;
     hud: HUD
+    private readonly particleLayer: PIXI.Container<PIXI.DisplayObject>
+    private readonly smokeParticles: SmokeParticle[] = []
+    private readonly smokeTickBound: (delta: number) => void
+    private smokeSpawnBudget = 0
+    private smokeBedLeft = 0
+    private smokeBedTop = 0
+    private smokeBedW = 0
+    private smokeBedH = 0
+    private smokeEffectAccent = 0xe7e7e7
+    private readonly onWaveStartedBound: () => void
 
     /**
      *
@@ -26,6 +64,9 @@ export class WaveTimeline {
         this.waveBlocks = []
         this.waveManager = waveManager
         this.hud = hud
+        this.smokeTickBound = this.tickSmokeParticles.bind(this)
+        this.onWaveStartedBound = () => this.onWaveStarted()
+
         const bg = new PIXI.Graphics()
         bg.lineStyle(1, 0x770000)
         bg.beginFill(0x111111)
@@ -36,7 +77,14 @@ export class WaveTimeline {
         this.innerContainer = new PIXI.Container()
         this.container.addChild(this.innerContainer)
 
-        eventDispatcher.on("waveStarted", () => this.renderNextWaves())
+        this.particleLayer = new PIXI.Container()
+        this.particleLayer.zIndex = 200
+        this.container.sortableChildren = true
+        this.container.addChild(this.particleLayer)
+
+        PIXI.Ticker.shared.add(this.smokeTickBound)
+
+        eventDispatcher.on("waveStarted", this.onWaveStartedBound)
         eventDispatcher.on("boss1Killed", () => {
 
             if (this.waveManager.difficulty === "1Pill2Nil") {
@@ -68,6 +116,136 @@ export class WaveTimeline {
 
         this.renderNextWaves()
 
+    }
+
+    cleanUpResources() {
+        PIXI.Ticker.shared.remove(this.smokeTickBound)
+        eventDispatcher.off("waveStarted", this.onWaveStartedBound)
+        this.smokeParticles.forEach(p => {
+            if (p.graphics.parent) {
+                p.graphics.parent.removeChild(p.graphics)
+            }
+            p.graphics.destroy()
+        })
+        this.smokeParticles.length = 0
+        this.smokeSpawnBudget = 0
+    }
+
+    private onWaveStarted() {
+        const waveIndex = this.waveManager.currentWave - 1
+        this.smokeEffectAccent = this.smokeAccentColour(waveIndex)
+        let captured = false
+
+        const first = this.innerContainer.children[0] as PIXI.DisplayObject | undefined
+        if (first) {
+            const lb = first.getLocalBounds()
+            const corners = [
+                { x: lb.x, y: lb.y },
+                { x: lb.x + lb.width, y: lb.y },
+                { x: lb.x, y: lb.y + lb.height },
+                { x: lb.x + lb.width, y: lb.y + lb.height }
+            ]
+            let minX = Infinity
+            let minY = Infinity
+            let maxX = -Infinity
+            let maxY = -Infinity
+            for (const c of corners) {
+                const g = first.toGlobal(c)
+                const l = this.particleLayer.toLocal(g)
+                minX = Math.min(minX, l.x)
+                minY = Math.min(minY, l.y)
+                maxX = Math.max(maxX, l.x)
+                maxY = Math.max(maxY, l.y)
+            }
+            this.smokeBedLeft = minX
+            this.smokeBedTop = minY
+            this.smokeBedW = Math.max(8, maxX - minX)
+            this.smokeBedH = Math.max(8, maxY - minY)
+            captured = this.smokeBedW > 0 && this.smokeBedH > 0
+        }
+
+        this.renderNextWaves()
+
+        if (!captured) {
+            return
+        }
+
+        this.smokeSpawnBudget = 32
+        this.spawnSmokeBurst(this.smokeBedLeft, this.smokeBedTop, this.smokeBedW, this.smokeBedH, this.smokeEffectAccent, 48)
+    }
+
+    private smokeAccentColour(waveIndex: number): number {
+        if (this.waveManager.isFreeplay || waveIndex < 0 || waveIndex >= this.waveManager.waves.length) {
+            return 0xff00ff
+        }
+        const { outlineColour } = this.determineWaveStoneColours(waveIndex)
+        return parseHexColour(outlineColour)
+    }
+
+    private spawnSmokeBurst(left: number, top: number, w: number, h: number, accent: number, count: number) {
+        const baseSmoke = 0x2a2a2a
+        for (let i = 0; i < count; i++) {
+            const x = left + Math.random() * w
+            const y = top + Math.random() * h
+            const colour = mixColour(baseSmoke, accent, 0.25 + Math.random() * 0.55)
+            const radius = 1.8 + Math.random() * 4.5
+            const graphics = new PIXI.Graphics()
+            graphics.beginFill(colour)
+            graphics.drawCircle(0, 0, radius)
+            graphics.endFill()
+            graphics.x = x
+            graphics.y = y
+            const baseAlpha = 0.38 + Math.random() * 0.42
+            graphics.alpha = baseAlpha
+            this.particleLayer.addChild(graphics)
+
+            const maxLife = 55 + Math.random() * 50
+            this.smokeParticles.push({
+                graphics,
+                vx: (Math.random() - 0.5) * 0.35,
+                vy: -0.25 - Math.random() * 0.85,
+                life: maxLife,
+                maxLife,
+                drift: (Math.random() - 0.5) * 0.012,
+                baseAlpha
+            })
+        }
+    }
+
+    private tickSmokeParticles(delta: number) {
+        if (this.smokeSpawnBudget > 0) {
+            const perFrame = 2 + Math.floor(Math.random() * 2)
+            for (let s = 0; s < perFrame && this.smokeSpawnBudget > 0; s++) {
+                this.spawnSmokeBurst(
+                    this.smokeBedLeft,
+                    this.smokeBedTop,
+                    this.smokeBedW,
+                    this.smokeBedH,
+                    this.smokeEffectAccent,
+                    1
+                )
+                this.smokeSpawnBudget--
+            }
+        }
+
+        for (let i = this.smokeParticles.length - 1; i >= 0; i--) {
+            const p = this.smokeParticles[i]
+            p.life -= delta
+            if (p.life <= 0) {
+                if (p.graphics.parent) {
+                    p.graphics.parent.removeChild(p.graphics)
+                }
+                p.graphics.destroy()
+                this.smokeParticles.splice(i, 1)
+                continue
+            }
+            p.vx += p.drift * delta
+            p.graphics.x += p.vx * delta
+            p.graphics.y += p.vy * delta
+            const t = p.life / p.maxLife
+            p.graphics.alpha = p.baseAlpha * t
+            p.graphics.scale.set(1 + (1 - t) * 0.75)
+        }
     }
 
     render() {

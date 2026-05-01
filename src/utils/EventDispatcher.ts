@@ -36,7 +36,7 @@ export class EventDispatcher {
             return
         }
         //add the event handler function to list of handlers
-        this.listeners[event].filter(callback => callback !== callbackToRemove)
+        this.listeners[event] = this.listeners[event].filter(callback => callback !== callbackToRemove)
     }
 
     fireEvent(event : string, data? : any) {

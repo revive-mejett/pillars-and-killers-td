@@ -312,6 +312,9 @@ export class GameplayScene extends Scene {
         this.towersPresent = []
         this.enemiesPresent = []
 
+        this.waveTimeline?.cleanUpResources()
+        this.waveTimeline = undefined
+
         this.uiManager?.cleanUpResources()
         this.uiManager = undefined
 
