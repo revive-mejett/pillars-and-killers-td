@@ -21,6 +21,7 @@ import { towerNameToKey } from "../utils/TowerStatsData"
 import { GameDataManager } from "../managers/GameDataManager"
 import { EnemyStatusEffectParticles } from "../objects/EnemyStatusEffectParticles";
 import { CombatEffectsFactory } from "../objects/CombatEffectsFactory";
+import { registerBossPhaseInvulnerabilityGate } from "../utils/BossPhaseInvulnerability";
 
 const audioManager = new AudioManager()
 const eventDispatcher = new EventDispatcher()
@@ -102,7 +103,10 @@ export class GameplayScene extends Scene {
         this.waveTimeline = new WaveTimeline(this.waveManager, this.hud)
         this.container.addChild(this.waveTimeline.container)
 
-
+        registerBossPhaseInvulnerabilityGate({
+            skipBossPhase: () => this.gamestate!.difficulty === "1Pill2Nil",
+            getEnemies: () => this.enemiesPresent
+        })
 
 
         const gameplaySceneTicker: PIXI.Ticker = new Ticker()
@@ -252,6 +256,7 @@ export class GameplayScene extends Scene {
             this.combatEffectsFactory?.play("bossSupernova", {
                 x: center.x,
                 y: center.y,
+                bossEnemyName: enemy.enemyClassName,
                 bossWave
             })
         }
@@ -309,6 +314,7 @@ export class GameplayScene extends Scene {
     }
 
     cleanUpResources() {
+        registerBossPhaseInvulnerabilityGate(null)
         this.towersPresent = []
         this.enemiesPresent = []
 

@@ -288,7 +288,9 @@ export class WaveTimeline {
     private buildWaveStone(i: number, timeToWaveStart: number) {
         const currentWave = this.waveManager.waves[i]
         const waveNumber = i + 1
-        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
+        const timelineDelaySeconds = this.getTimelineDelaySecondsForWave(waveNumber)
+        const interWaveDelaySeconds = this.waveManager.getDelaySecondsAfterWave(waveNumber)
+        const stoneHeight = (currentWave.waveDurationMillis() + timelineDelaySeconds * 1000) / timeToYScaleFactor
 
 
         const waveStone = new PIXI.Graphics()
@@ -314,7 +316,7 @@ export class WaveTimeline {
         txtWaveNumber.rotation = -Math.PI/2
         this.innerContainer.addChild(txtWaveNumber)
 
-        timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
+        timeToWaveStart += (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000)
         return timeToWaveStart
     }
 
@@ -375,6 +377,14 @@ export class WaveTimeline {
         return { outlineColour, colour };
     }
 
+    private getTimelineDelaySecondsForWave(waveNumber: number) {
+        // In 1Pill2Nil, checkpoint pause stays in game timing but boss stones keep their legacy visual height.
+        if (this.waveManager.difficulty === "1Pill2Nil" && this.waveManager.bossWaves.includes(waveNumber)) {
+            return 10
+        }
+        return this.waveManager.getDelaySecondsAfterWave(waveNumber)
+    }
+
     private buildWaveStoneFreeplay(i: number, timeToWaveStart: number) {
         if (!this.waveManager.extraWaves) {
             return
@@ -382,7 +392,9 @@ export class WaveTimeline {
         const currentWave = this.waveManager.extraWaves[i]
 
         const waveNumber = this.waveManager.currentWave + i + 1
-        const stoneHeight = (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000) / timeToYScaleFactor
+        const timelineDelaySeconds = this.getTimelineDelaySecondsForWave(waveNumber)
+        const interWaveDelaySeconds = this.waveManager.getDelaySecondsAfterWave(waveNumber)
+        const stoneHeight = (currentWave.waveDurationMillis() + timelineDelaySeconds * 1000) / timeToYScaleFactor
 
 
 
@@ -406,7 +418,7 @@ export class WaveTimeline {
         txtWaveNumber.rotation = -Math.PI/2
         this.innerContainer.addChild(txtWaveNumber)
 
-        timeToWaveStart += (currentWave.waveDurationMillis() + this.waveManager.delaySecondsToNextWave * 1000)
+        timeToWaveStart += (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000)
         return timeToWaveStart
     }
 }

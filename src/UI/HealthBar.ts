@@ -2,6 +2,7 @@ import { Color, Container, Graphics } from "pixi.js";
 import { Entity } from "../objects/Entity";
 import { Enemy } from "src/objects/killers/Enemy";
 import * as PIXI from "pixi.js";
+import { shouldBossIgnoreDamageFromAdds } from "../utils/BossPhaseInvulnerability";
 
 const yOffset = -5
 
@@ -68,6 +69,10 @@ export class HealthBar extends Entity {
 
     getBarColour() {
         //I spelt colour with a u because I am canadian!
+
+        if (shouldBossIgnoreDamageFromAdds(this.enemy)) {
+            return 0xffffff
+        }
 
         let red = 0
         let green = 0
