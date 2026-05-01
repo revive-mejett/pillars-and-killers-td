@@ -59,6 +59,19 @@ export class Dreadglass extends Projectile {
                 this.targetEnemy.takeDamage(this.damage)
 
                 this.reduceTargetArmour();
+                this.spawnImpactParticleBurst({
+                    x: this.targetEnemy.getCenterPosition().x,
+                    y: this.targetEnemy.getCenterPosition().y,
+                    colour: this.colour,
+                    count: 17,
+                    speedMin: 0.5,
+                    speedMax: 2,
+                    lifeMin: 10,
+                    lifeMax: 20,
+                    sizeMin: this.width / 1.8,
+                    sizeMax: this.width * 0.8,
+                    gravity: 0.01
+                })
 
                 this.hasHit = true
                 if (this.graphics) {
