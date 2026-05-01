@@ -58,9 +58,27 @@ export class LightningBolt extends Projectile {
             if (this.targetEnemy) {
                 enemyCenterPosition = this.targetEnemy.getCenterPosition()
                 this.beamPosition(beamOriginPosition, enemyCenterPosition, this.boltWidth * 1)
+
             }
 
         }
+        if (this.targetEnemy) {
+            enemyCenterPosition = this.targetEnemy.getCenterPosition()
+            this.spawnImpactParticleBurst({
+                x: enemyCenterPosition.x,
+                y: enemyCenterPosition.y,
+                colour: this.colour,
+                count: 10,
+                speedMin: 4.5,
+                speedMax: 6.5,
+                lifeMin: 5,
+                lifeMax: 20,
+                sizeMin: this.width / 1,
+                sizeMax: this.width * 1,
+                gravity: 0
+            })
+        }
+
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()
         this.targetEnemy?.takeDamage(this.damage)
