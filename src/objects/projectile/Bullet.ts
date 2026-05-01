@@ -42,7 +42,7 @@ export class Bullet extends Projectile {
 
         this.graphics = new PIXI.Graphics()
         this.graphics.beginFill(this.colour)
-        this.graphics.drawRect(0, 0, this.width, this.height)
+        this.graphics.drawCircle(0,0,this.width)
         this.graphics.endFill()
     }
 

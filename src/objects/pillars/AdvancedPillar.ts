@@ -84,11 +84,11 @@ export class AdvancedPillar extends Tower {
                     this.targetedEnemy,
                     this.damage,
                     12,
-                    0xFFFFFF,
+                    0xFF9900,
                     "assets/sounds/sfx/8bit_gun.mp3",
                     "Sniper Pillar",
                     {
-                        colour: 0xFFCC88,
+                        colour: 0xFFFF00,
                         radius: Math.max(1.8, this.bulletSize * 0.7),
                         maxLife: 10,
                         spawnInterval: 1.25

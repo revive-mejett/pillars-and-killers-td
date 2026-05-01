@@ -203,21 +203,38 @@ export class AssetLoader {
 
 
 
-    async loadEnemySpriteSheets() {
+    /**
+     * Parses enemy atlases in bounded parallel batches so work completes reliably
+     * (the previous forEach+async pattern did not await per-enemy parses).
+     */
+    // eslint-disable-next-line no-unused-vars -- `progress` documents the callback contract
+    async loadEnemySpriteSheets(onProgress?: (progress: number) => void) {
         const enemyClasses = Object.keys(allEnemyData)
+        const totalUnits = enemyClasses.length + 1
+        let doneUnits = 0
+        const report = () => {
+            doneUnits++
+            onProgress?.(doneUnits / totalUnits)
+        }
 
-        enemyClasses.forEach(async enemyClass => {
-            const atlasData = allEnemyData[enemyClass].atlasData
-            const enemyInfo = allEnemyData[enemyClass].stats
-            const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
-            await spritesheet.parse()
-            this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
-        })
+        const concurrency = 6
+        for (let i = 0; i < enemyClasses.length; i += concurrency) {
+            const slice = enemyClasses.slice(i, i + concurrency)
+            await Promise.all(slice.map(async enemyClass => {
+                const atlasData = allEnemyData[enemyClass].atlasData
+                const enemyInfo = allEnemyData[enemyClass].stats
+                const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
+                await spritesheet.parse()
+                this.spriteSheetEnemies?.set(enemyInfo.className, spritesheet)
+                report()
+            }))
+        }
 
         const atlasData = zappedAtlasData
-        const spritesheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
-        await spritesheet.parse()
-        this.spriteSheetZapped = spritesheet
+        const zappedSheet = new Spritesheet(Texture.from(atlasData.meta.image), atlasData)
+        await zappedSheet.parse()
+        this.spriteSheetZapped = zappedSheet
+        report()
     }
 
 

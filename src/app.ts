@@ -3,9 +3,9 @@ import { Game } from "./core/Game";
 
 
 
-window.onload = () => {
+window.onload = async () => {
     const game = new Game()
-    game.start()
+    await game.start()
 }
 
 

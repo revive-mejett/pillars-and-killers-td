@@ -9,19 +9,18 @@ const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 
 
-const version = "1.3.1"
+const version = "1.4.0"
 const patchNotesTextContent = `
+    * April 30, 2025 - 1.4.0\n
+    - Added particle effects to all pillars, enemies and projectiles.
+    - A few bug fixes and improvements.
+    \n
     * October 5, 2025 - 1.3.1\n
     - Nerfed ALL difficulties. Nerfed Stephenson 2-18 and TON 618.\n
     - 1Pill2Nil changes: Enemies will spawn automatically as soon as a checkpoint wave is triggered.
     \n
     * June 2, 2025 - 1.3.0\n
     - New Map: Null Camp! Harder than most maps.
-    \n
-    * March 9, 2025 - 1.2.0\n
-    - Killer's Thrill and 1Pill2Nil released!
-    - Added an outline when a pillar is selected to avoid accidentally placing pillars
-    - Added Pillar Nicknames - Nicknames shown in selected pillars!
     \n
     * February 17, 2025 - 1.1.0\n
     - New Map! Heartbeat Onslaught\n
