@@ -124,6 +124,7 @@ export class GameplayScene extends Scene {
 
 
         eventDispatcher.on("towerPlaced", this.addTowerToPresent.bind(this))
+        eventDispatcher.on("towerPlaced", this.onTowerPlaced.bind(this))
         eventDispatcher.on("towerSold", this.updateTowersPresent.bind(this))
         eventDispatcher.on("defeat", () => {
             gameplaySceneTicker.stop()
@@ -279,6 +280,15 @@ export class GameplayScene extends Scene {
 
     addTowerToPresent(tower: Tower) {
         this.towersPresent.push(tower)
+    }
+
+    onTowerPlaced(tower: Tower) {
+        const center = tower.getCenterPosition()
+        this.combatEffectsFactory?.play("towerPlacementDust", {
+            x: center.x,
+            y: center.y,
+            tileSize: tower.width
+        })
     }
 
     updateTowersPresent() {

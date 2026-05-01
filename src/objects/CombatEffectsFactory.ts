@@ -1,11 +1,12 @@
 import * as PIXI from "pixi.js";
 
-type EffectKey = "rocketRadialExplosion" | "bossSupernova"
+type EffectKey = "rocketRadialExplosion" | "bossSupernova" | "towerPlacementDust"
 
 type EffectPayload = {
     x: number
     y: number
     radius?: number
+    tileSize?: number
     /** Boss enemy `className` (e.g. "Brave Proxima Centauri") — drives blast palette */
     bossEnemyName?: string
     /** Fallback when name is missing — matches checkpoint wave numbers */
@@ -35,14 +36,17 @@ export class CombatEffectsFactory {
     private readonly container: PIXI.Container<PIXI.DisplayObject>
     private readonly particles: Particle[] = []
     private readonly rings: Ring[] = []
+    // eslint-disable-next-line no-unused-vars
     private readonly registry: Record<EffectKey, (payload: EffectPayload) => void>
+    // eslint-disable-next-line no-unused-vars
     private readonly updateFn: (delta: number) => void
 
     constructor(container: PIXI.Container<PIXI.DisplayObject>) {
         this.container = container
         this.registry = {
             rocketRadialExplosion: this.spawnRocketRadialExplosion.bind(this),
-            bossSupernova: this.spawnBossSupernova.bind(this)
+            bossSupernova: this.spawnBossSupernova.bind(this),
+            towerPlacementDust: this.spawnTowerPlacementDust.bind(this)
         }
         this.updateFn = this.tick.bind(this)
         PIXI.Ticker.shared.add(this.updateFn)
@@ -243,6 +247,34 @@ export class CombatEffectsFactory {
             const colour = style.pickParticle()
             this.spawnParticle(payload.x, payload.y, colour, Math.cos(angle) * speed, Math.sin(angle) * speed, 32 + Math.random() * 24, 0.02)
         }
+    }
+
+    private spawnTowerPlacementDust(payload: EffectPayload) {
+        const tileSize = payload.tileSize || 25
+        const dustCount = 14 + Math.floor(Math.random() * 5)
+        const dustColours = [0x9A8A74, 0x857662, 0xB2A28A, 0x6E6252]
+
+        for (let i = 0; i < dustCount; i++) {
+            const angle = Math.PI + (Math.random() - 0.5) * Math.PI
+            const speed = 0.6 + Math.random() * 1.8
+            const spread = (Math.random() - 0.5) * tileSize * 0.55
+            const life = 26 + Math.random() * 16
+            const colour = dustColours[Math.floor(Math.random() * dustColours.length)]
+            const startX = payload.x + spread
+            const startY = payload.y + tileSize * 0.35 + Math.random() * 3
+            const vx = Math.cos(angle) * speed
+            const vy = -0.35 - Math.random() * 1.15
+
+            this.spawnParticle(startX, startY, colour, vx, vy, life, 0.01)
+        }
+
+        this.spawnRing(payload.x, payload.y + tileSize * 0.35, {
+            startRadius: Math.max(8, tileSize * 0.28),
+            endRadius: tileSize * 0.95,
+            life: 16,
+            stroke: 2,
+            colour: 0x8C7C65
+        })
     }
 
     private spawnParticle(x: number, y: number, colour: number, vx: number, vy: number, life: number, gravity: number) {
