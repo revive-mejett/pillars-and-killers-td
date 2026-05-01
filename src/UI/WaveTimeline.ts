@@ -288,8 +288,9 @@ export class WaveTimeline {
     private buildWaveStone(i: number, timeToWaveStart: number) {
         const currentWave = this.waveManager.waves[i]
         const waveNumber = i + 1
+        const timelineDelaySeconds = this.getTimelineDelaySecondsForWave(waveNumber)
         const interWaveDelaySeconds = this.waveManager.getDelaySecondsAfterWave(waveNumber)
-        const stoneHeight = (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000) / timeToYScaleFactor
+        const stoneHeight = (currentWave.waveDurationMillis() + timelineDelaySeconds * 1000) / timeToYScaleFactor
 
 
         const waveStone = new PIXI.Graphics()
@@ -376,6 +377,14 @@ export class WaveTimeline {
         return { outlineColour, colour };
     }
 
+    private getTimelineDelaySecondsForWave(waveNumber: number) {
+        // In 1Pill2Nil, checkpoint pause stays in game timing but boss stones keep their legacy visual height.
+        if (this.waveManager.difficulty === "1Pill2Nil" && this.waveManager.bossWaves.includes(waveNumber)) {
+            return 10
+        }
+        return this.waveManager.getDelaySecondsAfterWave(waveNumber)
+    }
+
     private buildWaveStoneFreeplay(i: number, timeToWaveStart: number) {
         if (!this.waveManager.extraWaves) {
             return
@@ -383,8 +392,9 @@ export class WaveTimeline {
         const currentWave = this.waveManager.extraWaves[i]
 
         const waveNumber = this.waveManager.currentWave + i + 1
+        const timelineDelaySeconds = this.getTimelineDelaySecondsForWave(waveNumber)
         const interWaveDelaySeconds = this.waveManager.getDelaySecondsAfterWave(waveNumber)
-        const stoneHeight = (currentWave.waveDurationMillis() + interWaveDelaySeconds * 1000) / timeToYScaleFactor
+        const stoneHeight = (currentWave.waveDurationMillis() + timelineDelaySeconds * 1000) / timeToYScaleFactor
 
 
 

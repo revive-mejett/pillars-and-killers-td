@@ -6,7 +6,9 @@ type EffectPayload = {
     x: number
     y: number
     radius?: number
-    /** Boss wave (20 / 40 / 60 / 80 / 100) — drives explosion palette and intensity */
+    /** Boss enemy `className` (e.g. "Brave Proxima Centauri") — drives blast palette */
+    bossEnemyName?: string
+    /** Fallback when name is missing — matches checkpoint wave numbers */
     bossWave?: number
 }
 
@@ -92,9 +94,9 @@ export class CombatEffectsFactory {
 
     private spawnBossSupernova(payload: EffectPayload) {
         const w = payload.bossWave
-        const radius = payload.radius ?? (w === 100 ? 320 : 240)
+        const name = payload.bossEnemyName
 
-        // Wave-specific rings + particles (defaults: cool blue if bossWave unknown)
+        // Wave-specific rings + particles (defaults: cool blue if boss unknown)
         type BossNovaStyle = {
             ringOuter: number
             ringInner: number
@@ -178,30 +180,48 @@ export class CombatEffectsFactory {
         }
 
         let style: BossNovaStyle = blueBlast
-        if (w === 20) { style = orangeRed }
+        let isFinale = false
+
+        if (name === "Brave Proxima Centauri") {
+            style = orangeRed
+        } else if (name === "Serious Sirius") {
+            style = whiteBlast
+        } else if (name === "Remorseless Rigel") {
+            style = blueBlast
+        } else if (name === "Unforgiving Stephenson 2-18") {
+            style = redYellow
+        } else if (name === "TON 618") {
+            style = finale
+            isFinale = true
+        } else if (w === 20) { style = orangeRed }
         else if (w === 40) { style = whiteBlast }
         else if (w === 60) { style = blueBlast }
         else if (w === 80) { style = redYellow }
-        else if (w === 100) { style = finale }
+        else if (w === 100) {
+            style = finale
+            isFinale = true
+        }
+
+        const radius = payload.radius ?? (isFinale ? 320 : 240)
 
         this.spawnRing(payload.x, payload.y, {
             startRadius: 6,
             endRadius: radius,
-            life: w === 100 ? 36 : 30,
-            stroke: w === 100 ? 6 : 5,
+            life: isFinale ? 36 : 30,
+            stroke: isFinale ? 6 : 5,
             colour: style.ringOuter
         })
         this.spawnRing(payload.x, payload.y, {
             startRadius: 3,
             endRadius: radius * 0.72,
-            life: w === 100 ? 28 : 24,
-            stroke: w === 100 ? 4 : 3,
+            life: isFinale ? 28 : 24,
+            stroke: isFinale ? 4 : 3,
             colour: style.ringInner
         })
 
         const coreFlash = new PIXI.Graphics()
         coreFlash.beginFill(style.core)
-        coreFlash.drawCircle(0, 0, w === 100 ? 28 : 20)
+        coreFlash.drawCircle(0, 0, isFinale ? 28 : 20)
         coreFlash.endFill()
         coreFlash.x = payload.x
         coreFlash.y = payload.y
@@ -209,10 +229,10 @@ export class CombatEffectsFactory {
         this.container.addChild(coreFlash)
         this.rings.push({
             graphics: coreFlash,
-            life: w === 100 ? 12 : 9,
-            maxLife: w === 100 ? 12 : 9,
-            startRadius: w === 100 ? 28 : 20,
-            endRadius: w === 100 ? 72 : 56,
+            life: isFinale ? 12 : 9,
+            maxLife: isFinale ? 12 : 9,
+            startRadius: isFinale ? 28 : 20,
+            endRadius: isFinale ? 72 : 56,
             stroke: 0,
             colour: style.core
         })

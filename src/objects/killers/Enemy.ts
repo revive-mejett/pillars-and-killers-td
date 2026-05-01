@@ -11,6 +11,7 @@ import { SlowDebuffStats, VulnerableDebuffStats } from "src/ts/types/DebuffStats
 import { Tower } from "../pillars/Tower";
 import { Vector } from "../../utils/Vector";
 import { EMPBeam } from "../projectile/EMPBeam";
+import { shouldBossIgnoreDamageFromAdds } from "../../utils/BossPhaseInvulnerability";
 
 const eventDispatcher = new EventDispatcher()
 const audioManager = new AudioManager()
@@ -440,6 +441,9 @@ export class Enemy extends Entity {
     takeDamage(damage: number, muteImpactSound: boolean = false) {
 
         if (!this.isAlive) {
+            return
+        }
+        if (shouldBossIgnoreDamageFromAdds(this)) {
             return
         }
         const damageReduction = this.armour
