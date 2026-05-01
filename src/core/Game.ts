@@ -14,6 +14,7 @@ import { OffGameSettings } from "../scenes/OffGameSettings"
 import { Victory } from "../scenes/Victory"
 import { PillarKillerIndex } from "../scenes/PillarKillerIndex"
 import { Credits } from "../scenes/Credits"
+import { LoadingScene } from "../scenes/LoadingScene"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
@@ -43,50 +44,72 @@ export class Game {
         eventDispatcher.on("gameStarted", this.initGameplay.bind(this))
     }
 
-    start() {
-        this.setup().then(() => this.run()).catch(error => console.error("Game failed to run", error))
+    async start() {
+        try {
+            assetLoader.bundleAssets()
+
+            this.app.stage.addChild(this.baseContainer)
+            const frame = new PIXI.Graphics()
+            frame.beginFill(0x000005)
+            frame.drawRect(0, 0, window.outerWidth, window.outerHeight)
+            frame.endFill()
+            this.baseContainer.addChild(frame)
+
+            const loading = new LoadingScene(this.app)
+            loading.constructScene()
+            this.baseContainer.addChild(loading.container)
+
+            await this.loadAssetsWithProgress(loading)
+
+            loading.container.destroy({ children: true })
+
+            this.sceneContainer = new PIXI.Container()
+            this.sceneManager = new SceneManager(this.sceneContainer)
+
+            const innerFrame = new PIXI.Graphics()
+            innerFrame.beginFill(0x000000)
+            innerFrame.drawRect(0, 0, sceneContainerWidth, sceneContainerHeight)
+            innerFrame.endFill()
+            this.sceneContainer.addChild(innerFrame)
+
+            this.baseContainer.addChild(this.sceneContainer)
+            this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width) / 2
+
+            eventDispatcher.on("newGameClick", () => this.toPregameSelection())
+            eventDispatcher.on("btnBackToMainMenuClick", () => this.toMainMenu())
+            eventDispatcher.on("settingsClick", () => this.toOffGameSettings())
+            eventDispatcher.on("tutorialClick", () => this.toTutorial())
+            eventDispatcher.on("pillerKillerIndexClick", () => this.toPillarKillerIndex())
+            eventDispatcher.on("creditsClick", () => this.toCredits())
+
+            this.run()
+        } catch (error) {
+            console.error("Game failed to run", error)
+        }
     }
 
-    async setup() {
-        assetLoader.bundleAssets()
-        await Promise.all(
-            [
-                assetLoader.loadEnemySprites(),
-                assetLoader.loadIconSprites(),
-                assetLoader.loadTowerSprites(),
-                assetLoader.loadOtherImagesSprites(),
-                assetLoader.loadEnemySpriteSheets(),
-                assetLoader.loadMapBackgroundImages()
-            ]
-        )
+    /**
+     * Loads texture bundles in parallel (wall time ≈ slowest bundle), then parses
+     * enemy sprite atlases in bounded batches with granular progress.
+     */
+    private async loadAssetsWithProgress(loading: LoadingScene): Promise<void> {
+        const bundleWeight = 0.36
+        const sheetWeight = 0.64
 
+        loading.setProgress(0, "Loading images & UI…")
+        await Promise.all([
+            assetLoader.loadEnemySprites(),
+            assetLoader.loadIconSprites(),
+            assetLoader.loadTowerSprites(),
+            assetLoader.loadOtherImagesSprites(),
+            assetLoader.loadMapBackgroundImages()
+        ])
+        loading.setProgress(bundleWeight, "Parsing enemy animations…")
 
-        this.app.stage.addChild(this.baseContainer)
-        const frame = new PIXI.Graphics()
-        frame.beginFill(0x000005)
-        frame.drawRect(0,0,window.outerWidth, window.outerHeight)
-        frame.endFill()
-
-        this.baseContainer.addChild(frame)
-
-        this.sceneContainer = new PIXI.Container()
-        this.sceneManager = new SceneManager(this.sceneContainer)
-
-        const innerFrame = new PIXI.Graphics()
-        innerFrame.beginFill(0x000000)
-        innerFrame.drawRect(0, 0, sceneContainerWidth, sceneContainerHeight)
-        innerFrame.endFill()
-        this.sceneContainer.addChild(innerFrame)
-
-        this.baseContainer.addChild(this.sceneContainer)
-        this.sceneContainer.x = (this.baseContainer.width - this.sceneContainer.width)/2
-
-        eventDispatcher.on("newGameClick", () => this.toPregameSelection())
-        eventDispatcher.on("btnBackToMainMenuClick", () => this.toMainMenu())
-        eventDispatcher.on("settingsClick", () => this.toOffGameSettings())
-        eventDispatcher.on("tutorialClick", () => this.toTutorial())
-        eventDispatcher.on("pillerKillerIndexClick", () => this.toPillarKillerIndex())
-        eventDispatcher.on("creditsClick", () => this.toCredits())
+        await assetLoader.loadEnemySpriteSheets(p => {
+            loading.setProgress(bundleWeight + sheetWeight * p)
+        })
+        loading.setProgress(1, "Ready")
     }
 
     run() {

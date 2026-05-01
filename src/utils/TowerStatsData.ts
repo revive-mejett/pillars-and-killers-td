@@ -33,7 +33,7 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                         description: "Cheap pillar good against weak killers. Decent hand pick for the early rounds."
                     },
                     tileColour: 0x222222,
-                    bulletSize: 2
+                    bulletSize: 3
                 },
                 upgrades: [{
                     range: 125,
@@ -63,13 +63,13 @@ function getTowerData<S extends TowerStats, I extends TowerInfo>(towerType: stri
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x004400,
-                    bulletSize: 2
+                    bulletSize: 3
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
                     asset: towerIcons.basicPillarTop,
                     tileColour: 0x000066,
-                    bulletSize: 3
+                    bulletSize: 4
                 },
                 {
                     assetIcon: towerIcons.basicPillarIcon,
