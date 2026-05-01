@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-type EffectKey = "rocketRadialExplosion" | "bossSupernova" | "towerPlacementDust"
+type EffectKey = "rocketRadialExplosion" | "bossSupernova" | "towerPlacementDust" | "towerUpgradePulse" | "towerSellDissolve"
 
 type EffectPayload = {
     x: number
@@ -46,7 +46,9 @@ export class CombatEffectsFactory {
         this.registry = {
             rocketRadialExplosion: this.spawnRocketRadialExplosion.bind(this),
             bossSupernova: this.spawnBossSupernova.bind(this),
-            towerPlacementDust: this.spawnTowerPlacementDust.bind(this)
+            towerPlacementDust: this.spawnTowerPlacementDust.bind(this),
+            towerUpgradePulse: this.spawnTowerUpgradePulse.bind(this),
+            towerSellDissolve: this.spawnTowerSellDissolve.bind(this)
         }
         this.updateFn = this.tick.bind(this)
         PIXI.Ticker.shared.add(this.updateFn)
@@ -255,25 +257,80 @@ export class CombatEffectsFactory {
         const dustColours = [0x9A8A74, 0x857662, 0xB2A28A, 0x6E6252]
 
         for (let i = 0; i < dustCount; i++) {
-            const angle = Math.PI + (Math.random() - 0.5) * Math.PI
-            const speed = 0.6 + Math.random() * 1.8
-            const spread = (Math.random() - 0.5) * tileSize * 0.55
+            const angle = Math.random() * Math.PI * 2
+            const speed = 0.5 + Math.random() * 1.4
             const life = 26 + Math.random() * 16
             const colour = dustColours[Math.floor(Math.random() * dustColours.length)]
-            const startX = payload.x + spread
-            const startY = payload.y + tileSize * 0.35 + Math.random() * 3
+            const spawnRadius = Math.random() * tileSize * 0.2
+            const startX = payload.x + Math.cos(angle) * spawnRadius
+            const startY = payload.y + Math.sin(angle) * spawnRadius
             const vx = Math.cos(angle) * speed
-            const vy = -0.35 - Math.random() * 1.15
+            const vy = Math.sin(angle) * speed
 
-            this.spawnParticle(startX, startY, colour, vx, vy, life, 0.01)
+            this.spawnParticle(startX, startY, colour, vx, vy, life, 0)
         }
 
-        this.spawnRing(payload.x, payload.y + tileSize * 0.35, {
+        this.spawnRing(payload.x, payload.y, {
             startRadius: Math.max(8, tileSize * 0.28),
             endRadius: tileSize * 0.95,
             life: 16,
             stroke: 2,
             colour: 0x8C7C65
+        })
+    }
+
+    private spawnTowerUpgradePulse(payload: EffectPayload) {
+        const tileSize = payload.tileSize || 25
+
+        this.spawnRing(payload.x, payload.y, {
+            startRadius: Math.max(5, tileSize * 0.2),
+            endRadius: tileSize * 0.95,
+            life: 40,
+            stroke: 3,
+            colour: 0x44FF88
+        })
+
+        this.spawnRing(payload.x, payload.y, {
+            startRadius: Math.max(3, tileSize * 0.12),
+            endRadius: tileSize * 0.65,
+            life: 40,
+            stroke: 3,
+            colour: 0xAAFFCC
+        })
+    }
+
+    private spawnTowerSellDissolve(payload: EffectPayload) {
+        const tileSize = payload.tileSize || 25
+        const particleCount = 26 + Math.floor(Math.random() * 8)
+        const dissolveColours = [0x3B3B3B, 0x5A5A5A, 0x767676, 0x949494]
+
+        for (let i = 0; i < particleCount; i++) {
+            const angle = Math.random() * Math.PI * 2
+            const spawnRadius = Math.random() * tileSize * 0.45
+            const startX = payload.x + Math.cos(angle) * spawnRadius
+            const startY = payload.y + Math.sin(angle) * spawnRadius
+            const driftSpeed = 0.2 + Math.random() * 0.55
+            const swirlSpeed = 0.15 + Math.random() * 0.5
+            const colour = dissolveColours[Math.floor(Math.random() * dissolveColours.length)]
+            const life = 16 + Math.random() * 14
+
+            this.spawnParticle(
+                startX,
+                startY,
+                colour,
+                Math.cos(angle) * swirlSpeed,
+                -driftSpeed,
+                life,
+                0.01
+            )
+        }
+
+        this.spawnRing(payload.x, payload.y, {
+            startRadius: Math.max(4, tileSize * 0.14),
+            endRadius: tileSize * 0.78,
+            life: 12,
+            stroke: 1,
+            colour: 0xB0B0B0
         })
     }
 

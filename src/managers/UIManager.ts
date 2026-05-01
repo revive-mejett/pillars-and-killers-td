@@ -225,7 +225,7 @@ export class UIManager {
         selectedTile.tower.upgrade()
 
         audioManager.playBuySound()
-        eventDispatcher.fireEvent("towerUpgraded")
+        eventDispatcher.fireEvent("towerUpgraded", selectedTile.tower)
 
         selectedTile.renderTower()
         this.displaySelectedTowerInfo(selectedTile.tower)

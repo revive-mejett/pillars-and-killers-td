@@ -125,7 +125,9 @@ export class GameplayScene extends Scene {
 
         eventDispatcher.on("towerPlaced", this.addTowerToPresent.bind(this))
         eventDispatcher.on("towerPlaced", this.onTowerPlaced.bind(this))
+        eventDispatcher.on("towerUpgraded", this.onTowerUpgraded.bind(this))
         eventDispatcher.on("towerSold", this.updateTowersPresent.bind(this))
+        eventDispatcher.on("towerSold", this.onTowerSold.bind(this))
         eventDispatcher.on("defeat", () => {
             gameplaySceneTicker.stop()
             if (this.waveManager) {
@@ -285,6 +287,27 @@ export class GameplayScene extends Scene {
     onTowerPlaced(tower: Tower) {
         const center = tower.getCenterPosition()
         this.combatEffectsFactory?.play("towerPlacementDust", {
+            x: center.x,
+            y: center.y,
+            tileSize: tower.width
+        })
+    }
+
+    onTowerUpgraded(tower: Tower) {
+        const center = tower.getCenterPosition()
+        this.combatEffectsFactory?.play("towerUpgradePulse", {
+            x: center.x,
+            y: center.y,
+            tileSize: tower.width
+        })
+    }
+
+    onTowerSold(tower?: Tower) {
+        if (!tower) {
+            return
+        }
+        const center = tower.getCenterPosition()
+        this.combatEffectsFactory?.play("towerSellDissolve", {
             x: center.x,
             y: center.y,
             tileSize: tower.width

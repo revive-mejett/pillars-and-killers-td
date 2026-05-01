@@ -41,10 +41,11 @@ export class Tile extends Entity {
             return
         }
 
+        const soldTower = this.tower
         this.tower.isSold = true
 
         eventDispatcher.fireEvent("moneyEarned", {source: "towerSell", money: this.tower.cost})
-        eventDispatcher.fireEvent("towerSold")
+        eventDispatcher.fireEvent("towerSold", soldTower)
 
         audioManager.playSound("assets/sounds/sfx/coin_drop.mp3", 1, 1)
         this.tower.cleanUpResources()
