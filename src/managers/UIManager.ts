@@ -28,6 +28,7 @@ export class UIManager {
     gameplayScene: GameplayScene;
     selectedTowerType?: string;
     selectedEnemyUpdateTicker?: PIXI.Ticker;
+    previousLives: number
 
     constructor(app : PIXI.Application, gamestate : GameState, gameplayScene :  GameplayScene, hud : HUD) {
         this.app = app
@@ -38,6 +39,7 @@ export class UIManager {
         this.selectedTowerType = undefined
 
         this.selectedEnemyUpdateTicker = undefined
+        this.previousLives = this.gamestate.lives
 
         eventDispatcher.on("nextWaveBtnClick", () => {
             // console.log("boss present> " + this.gameplayScene.waveManager?.bossPresent)
@@ -75,6 +77,7 @@ export class UIManager {
         eventDispatcher.on("researchTier2Action", () => this.handleResearchAction(2, this.gamestate.tier2ResearchCost))
         eventDispatcher.on("researchTier3Action", () => this.handleResearchAction(3, this.gamestate.tier3ResearchCost))
         eventDispatcher.on("researchTier4Action", () => this.handleResearchAction(4, this.gamestate.tier4ResearchCost))
+        eventDispatcher.on("moneyEarned", this.handleMoneyEarnedPopup.bind(this))
 
         this.setTowerButtonClickListeners()
 
@@ -100,6 +103,8 @@ export class UIManager {
 
     updateLives() {
         if (this.hud && this.hud.livesText) {
+            const currentLives = this.gamestate.lives
+            const previousLives = this.previousLives
             this.hud.livesText.text = this.gamestate.lives
 
             if (this.gamestate.lives < 70) {
@@ -114,7 +119,16 @@ export class UIManager {
                 this.hud.livesText.filters = [
                     new GlowFilter({innerStrength : 0.3, outerStrength: 3, color: 0xFF0000}) as unknown as PIXI.Filter
                 ]
+                this.hud.setLowLivesBloodDripEnabled(false)
+            } else {
+                this.hud.livesText.filters = []
+                this.hud.setLowLivesBloodDripEnabled(currentLives <= 25)
+
+                if (currentLives < previousLives) {
+                    this.hud.showLivesBloodSplash(previousLives - currentLives)
+                }
             }
+            this.previousLives = currentLives
         }
     }
 
@@ -178,6 +192,7 @@ export class UIManager {
         }
 
         eventDispatcher.fireEvent("purchaseSuccessful1", towerCost)
+        this.hud.showMoneyGlidePopup("spend", towerCost)
         const tower = TowerFactory.createTower(selectedTile.x, selectedTile.y, selectedTile.width, selectedTile.height, this.selectedTowerType)
         selectedTile.placeTowerOnTile(tower)
         tower.setTileRef(selectedTile)
@@ -206,6 +221,7 @@ export class UIManager {
         }
 
         eventDispatcher.fireEvent("purchaseSuccessful1", upgradeCost)
+        this.hud.showMoneyGlidePopup("spend", upgradeCost)
         selectedTile.tower.upgrade()
 
         audioManager.playBuySound()
@@ -233,6 +249,14 @@ export class UIManager {
         this.selectedEnemyUpdateTicker.autoStart = false
         const selectedEnemyPanel = InfoPanel.createEnemyStatsInfoPanel(enemy, hud, this.selectedEnemyUpdateTicker, this.gamestate.killBountyMultiplier)
         hud.infoPanel?.addChild(selectedEnemyPanel)
+    }
+
+    private handleMoneyEarnedPopup(data: {source: "bounty" | "towerSell", money: number}) {
+        if (data.source !== "towerSell") {
+            return
+        }
+        const sellGain = Math.floor(data.money * this.gamestate.sellValuePercentage / 100)
+        this.hud.showMoneyGlidePopup("gain", sellGain)
     }
 
     cleanUpResources() {

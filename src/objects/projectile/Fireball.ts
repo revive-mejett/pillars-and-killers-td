@@ -77,6 +77,19 @@ export class Fireball extends Projectile {
 
 
     onImpact(enemies: Enemy[], impactPosition: Position) {
+        this.spawnImpactParticleBurst({
+            x: impactPosition.x,
+            y: impactPosition.y,
+            colour: 0xFF8A00,
+            count: 16,
+            speedMin: 0.9,
+            speedMax: 2.7,
+            lifeMin: 16,
+            lifeMax: 28,
+            sizeMin: 1.2,
+            sizeMax: 3.2,
+            gravity: 0.015
+        })
 
         enemies.forEach((enemy, i) => {
             const enemyPosition = enemy.getCenterPosition()
