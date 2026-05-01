@@ -173,7 +173,7 @@ export class Enemy extends Entity {
         } else {
             //more towers in range than number of attacks
             for (let i = 0; i < possibleNumberAttacks; i++) {
-                const randomEnemyIndex = Math.floor(Math.random() * this.towers.length)
+                const randomEnemyIndex = Math.floor(Math.random() * towersInRange.length)
 
                 const targetTower = towersInRange[randomEnemyIndex]
                 if (targetTower && !targetTower.isSold) {
@@ -413,29 +413,27 @@ export class Enemy extends Entity {
     }
 
     tickEMP(deltaTime : number) {
-        if (!this.empCooldown) {
+        if (this.empCooldown === undefined) {
             return
         }
 
+        const empBefore = this.empCooldown
         this.empCooldown -= deltaTime
-        if (this.empCooldown > 0) {
-            this.empCooldown -= deltaTime
 
-            //attack enemy once cooldown reaches 0
-            if (this.empCooldown < 0) {
+        // Fire once when cooldown crosses from positive to non-positive (avoids double-tick bugs and spam if stuck negative)
+        if (empBefore > 0 && this.empCooldown <= 0) {
 
-                let numberAttacks = 1
+            let numberAttacks = 1
 
-                if (this.enemyClassName === "256p 2152") {
-                    numberAttacks = 2
-                }
-
-                if (this.enemyClassName === "2^1024p 137632") {
-                    numberAttacks = 5
-                }
-                this.empCooldown = empCooldown
-                this.findAndAttackTower(deltaTime, numberAttacks)
+            if (this.enemyClassName === "256p 2152") {
+                numberAttacks = 2
             }
+
+            if (this.enemyClassName === "2^1024p 137632") {
+                numberAttacks = 5
+            }
+            this.empCooldown = empCooldown
+            this.findAndAttackTower(deltaTime, numberAttacks)
         }
     }
 
