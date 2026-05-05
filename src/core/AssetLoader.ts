@@ -179,6 +179,29 @@ export class AssetLoader {
             "stairwellOChaos" : "assets/mapbg/stairwellochaos_pvk.png",
             "nullCamp" : "assets/mapbg/null_camp_pvk.webp"
         })
+
+        Assets.addBundle("sfx", {
+            "smallest_ball" : "assets/sounds/sfx/enemyspawns/smallest_ball.mp3",
+            "small_ball" : "assets/sounds/sfx/enemyspawns/small_ball.mp3",
+            "medium_ball" : "assets/sounds/sfx/enemyspawns/medium_ball.mp3",
+            "large_ball" : "assets/sounds/sfx/enemyspawns/large_ball.mp3",
+            "small_bird" : "assets/sounds/sfx/enemyspawns/small_bird.mp3",
+            "large_bird" : "assets/sounds/sfx/enemyspawns/large_bird.mp3",
+            "largest_bird" : "assets/sounds/sfx/enemyspawns/largest_bird.mp3",
+            "snowflake" : "assets/sounds/sfx/enemyspawns/snowflake.mp3",
+            "small_fish" : "assets/sounds/sfx/enemyspawns/small_fish.mp3",
+            "medium_fish" : "assets/sounds/sfx/enemyspawns/medium_fish.mp3",
+            "large_fish" : "assets/sounds/sfx/enemyspawns/large_fish.mp3",
+            "small_ship" : "assets/sounds/sfx/enemyspawns/small_ship.mp3",
+            "medium_ship" : "assets/sounds/sfx/enemyspawns/medium_ship.mp3",
+            "large_ship" : "assets/sounds/sfx/enemyspawns/large_ship.mp3",
+            "largest_ship" : "assets/sounds/sfx/enemyspawns/largest_ship.mp3",
+            "small_emp" : "assets/sounds/sfx/enemyspawns/small_emp.mp3",
+            "medium_emp" : "assets/sounds/sfx/enemyspawns/medium_emp.mp3",
+            "large_emp" : "assets/sounds/sfx/enemyspawns/large_emp.mp3",
+            "largest_emp" : "assets/sounds/sfx/enemyspawns/largest_emp.mp3",
+            "angry_bird" : "assets/sounds/sfx/enemyspawns/angry_bird.mp3"
+        })
     }
 
     async loadEnemySprites() {
@@ -199,6 +222,10 @@ export class AssetLoader {
 
     async loadOtherImagesSprites() {
         this.otherImages = await Assets.loadBundle("otherImages")
+    }
+
+    async loadSfxSprites() {
+        this.sfx = await Assets.loadBundle("sfx")
     }
 
 

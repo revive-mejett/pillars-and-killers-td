@@ -10,9 +10,11 @@ import { killerThrillWaves } from "../utils/KillerThrillWaveData"
 import { allEnemyData } from "../utils/EnemyData"
 import { EnemyClass, EnemyStats } from "src/ts/types/EnemyData"
 import { Difficulty } from "src/ts/types/GameSaveData"
+import { AudioManager } from "./AudioManager"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
+const audioManager = new AudioManager()
 
 
 export class WaveManager {
@@ -32,6 +34,8 @@ export class WaveManager {
     bossPresent: boolean
     readonly bossWaves = [20, 40, 60, 80, 100]
     difficulty: Difficulty
+    readonly enemySpawnSfxByClass: Partial<Record<EnemyClass, string>>
+    readonly enemySpawnSfxVolumeByFilename: Partial<Record<string, number>>
 
     /**
      *
@@ -49,6 +53,51 @@ export class WaveManager {
         this.cooldownToNextWave = 0
         this.delaySecondsToNextWave = 10
         this.difficulty = difficulty
+        this.enemySpawnSfxByClass = {
+            "Infant Circle": "smallest_ball",
+            "Toddler Sphere": "smallest_ball",
+            "Freshman Octahedron": "small_ball",
+            "Sophomore Dodecahedron": "medium_ball",
+            "Jr. Rhombicosidodecahedron": "large_ball",
+
+            "Little Sparrow": "small_bird",
+            "Cute Crow": "small_bird",
+            "Beautiful Peacock": "large_bird",
+            "Alluring Rooster": "large_bird",
+            "Irresistible Phoenix": "largest_bird",
+
+            "Earthling Flake": "snowflake",
+            "Polar Goldfish": "small_fish",
+            "Twilight Great White": "medium_fish",
+            "Neptunian Megalodon": "medium_fish",
+            "Challenger Deep Kraken": "large_fish",
+
+            "Stone Pricker": "small_ship",
+            "Steel Warrior": "small_ship",
+            "Titanium Bruiser": "medium_ship",
+            "Obsidian Ripper": "large_ship",
+            "Carbon Nanotube Annihilator": "largest_ship",
+
+            "4p 2024": "small_emp",
+            "5p 2025": "small_emp",
+            "12p 2028": "medium_emp",
+            "256p 2152": "large_emp",
+            "2^1024p 137632": "largest_emp",
+
+            "Furious Raven": "angry_bird",
+            "Enraged Eagle": "large_bird",
+            "Merciless Loch Ness": "large_fish"
+        }
+        this.enemySpawnSfxVolumeByFilename = {
+            smallest_ball: 0.65,
+            small_ball: 0.65,
+            medium_ball: 0.7,
+            large_ball: 0.72,
+            small_fish: 0.65,
+            medium_fish: 0.7,
+            large_fish: 0.75,
+            largest_emp: 0.75
+        }
         this.loadWaves(difficulty)
 
         this.currentWave = startWave
@@ -281,6 +330,7 @@ export class WaveManager {
 
         let elapsedMS = 0
         let enemiesSpawned = 0
+        const playedSpawnSoundEnemyClasses = new Set<EnemyClass>()
 
         let currentWavePartIndex = 0
         let wavePart = waveArray.waveParts[currentWavePartIndex]
@@ -326,6 +376,7 @@ export class WaveManager {
                 const spawnedEnemy = new Enemy(map.waypoints[0].x, map.waypoints[0].y, map.tileSize, map.tileSize, enemyData, spritesheet)
                 // spawnedEnemy.zIndex = 3
                 spawnedEnemy.spawn(gameplayScene.mapContainer)
+                this.playSpawnSoundForWavePartEnemy(wavePart.enemy as EnemyClass, playedSpawnSoundEnemyClasses)
                 if (this.currentWave === this.checkpointWave) {
                     //
                 }
@@ -371,6 +422,26 @@ export class WaveManager {
         eventDispatcher.fireEvent("waveStarted")
         return this.waves[waveIndex]
 
+    }
+
+    private playSpawnSoundForWavePartEnemy(enemyClass: EnemyClass, playedSpawnSoundEnemyClasses: Set<EnemyClass>) {
+        if (playedSpawnSoundEnemyClasses.has(enemyClass)) {
+            return
+        }
+
+        const enemyInfo = allEnemyData[enemyClass]
+        if (!enemyInfo || enemyInfo.stats.type === "Boss") {
+            return
+        }
+
+        const spawnSoundFilename = this.enemySpawnSfxByClass[enemyClass]
+        if (!spawnSoundFilename) {
+            return
+        }
+
+        playedSpawnSoundEnemyClasses.add(enemyClass)
+        const volume = this.enemySpawnSfxVolumeByFilename[spawnSoundFilename] ?? 0.45
+        audioManager.playSound(`assets/sounds/sfx/enemyspawns/${spawnSoundFilename}.mp3`, volume)
     }
 
 
