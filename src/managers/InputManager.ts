@@ -4,8 +4,10 @@ import { EventDispatcher } from "../utils/EventDispatcher";
 import { UIHelper } from "../UI/UIHelper";
 import { UIManager } from "./UIManager";
 import { AudioManager } from "./AudioManager";
+import { AssetLoader } from "../core/AssetLoader";
 const eventDispatcher = new EventDispatcher()
 const audioManager = new AudioManager()
+const assetLoader = new AssetLoader()
 
 
 export class InputManager {
@@ -21,6 +23,8 @@ export class InputManager {
 
     private rangeCircle : PIXI.Graphics | undefined = undefined
     private cyanOutline : PIXI.Graphics | undefined = undefined
+    private towerGhostSprite: PIXI.Sprite | undefined = undefined
+    private towerGhostTexturePath: string | undefined = undefined
     // private greenOutline : PIXI.Graphics | undefined = undefined
 
     private handleKeyPress = (e : KeyboardEvent) => this.onkeydown(e)
@@ -128,7 +132,7 @@ export class InputManager {
 
     update() {
         // Remove only non-persistent children
-        this.gridContainer.children.filter(child => child !== this.rangeCircle && child !== this.cyanOutline && child !== this.gridMask).forEach(child => {
+        this.gridContainer.children.filter(child => child !== this.rangeCircle && child !== this.cyanOutline && child !== this.gridMask && child !== this.towerGhostSprite).forEach(child => {
             if (child instanceof PIXI.Graphics) {
                 child.destroy();
             }
@@ -145,6 +149,8 @@ export class InputManager {
             const greenOutline = UIHelper.createOutline(this.hoveredTile.x, this.hoveredTile.y, this.hoveredTile.width, this.hoveredTile.height, 2, 0x00FF00)
             this.gridContainer.addChild(greenOutline)
         }
+
+        this.updateTowerGhostPreview()
 
         if (!this.selectedTowerTile?.tower) {
             this.towerRangeDrawn = false
@@ -173,6 +179,68 @@ export class InputManager {
         }
     }
 
+    private updateTowerGhostPreview() {
+        const selectedTowerType = this.uiManager.selectedTowerType
+        const hoveredTile = this.hoveredTile
+        const isValidPlacementTile = hoveredTile && hoveredTile.tileType === "grass" && !hoveredTile.hasTower
+
+        if (!selectedTowerType || !isValidPlacementTile) {
+            if (this.towerGhostSprite) {
+                this.towerGhostSprite.visible = false
+            }
+            return
+        }
+
+        const texturePath = this.getTowerGhostTexturePath(selectedTowerType)
+        if (!texturePath) {
+            if (this.towerGhostSprite) {
+                this.towerGhostSprite.visible = false
+            }
+            return
+        }
+
+        if (!this.towerGhostSprite || this.towerGhostTexturePath !== texturePath) {
+            this.towerGhostSprite?.destroy()
+            this.towerGhostSprite = PIXI.Sprite.from(texturePath)
+            this.towerGhostTexturePath = texturePath
+            this.towerGhostSprite.alpha = 0.5
+            this.gridContainer.addChild(this.towerGhostSprite)
+        }
+
+        this.towerGhostSprite.visible = true
+        this.towerGhostSprite.x = hoveredTile.x
+        this.towerGhostSprite.y = hoveredTile.y
+        this.towerGhostSprite.width = hoveredTile.width
+        this.towerGhostSprite.height = hoveredTile.height
+    }
+
+    private getTowerGhostTexturePath(towerType: string) {
+        const towerSpriteBundle = assetLoader.towers
+        if (!towerSpriteBundle) {
+            return undefined
+        }
+
+        const towerTypeToTextureKey: { [key: string]: string } = {
+            basic: "basicPillarIcon",
+            ice: "icePillar",
+            ember: "emberPillar",
+            poisonIvy: "poisonIvyPillar",
+            advanced: "advancedPillar",
+            cyro: "cyroBlastPillar",
+            missile: "missilePillar",
+            lightning: "lightningPillar",
+            dreadglass: "dreadglassPillar",
+            ultimate: "ultimatePillar"
+        }
+
+        const textureKey = towerTypeToTextureKey[towerType]
+        if (!textureKey) {
+            return undefined
+        }
+
+        return towerSpriteBundle[textureKey]
+    }
+
     private displayTowerRange() {
         if (!this.selectedTowerTile || !this.selectedTowerTile.tower) {
             return
@@ -193,6 +261,9 @@ export class InputManager {
         eventDispatcher.clearListenersOfEvent("tileHover")
         eventDispatcher.clearListenersOfEvent("tileUnhover")
         eventDispatcher.clearListenersOfEvent("tileTowerSelect")
+        this.towerGhostSprite?.destroy()
+        this.towerGhostSprite = undefined
+        this.towerGhostTexturePath = undefined
         window.removeEventListener("keydown", this.handleKeyPress)
     }
 }

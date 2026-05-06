@@ -93,9 +93,13 @@ export class WaveManager {
             small_ball: 0.65,
             medium_ball: 0.7,
             large_ball: 0.72,
-            small_fish: 0.65,
-            medium_fish: 0.7,
-            large_fish: 0.75,
+            small_fish: 0.78,
+            medium_fish: 0.82,
+            large_fish: 0.86,
+            small_ship: 0.78,
+            medium_ship: 0.82,
+            large_ship: 0.86,
+            largest_ship: 0.9,
             largest_emp: 0.75
         }
         this.loadWaves(difficulty)

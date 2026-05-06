@@ -157,6 +157,9 @@ export class UIManager {
         Object.entries(this.hud.towerSelectionButtons).forEach(buttonEntry => {
             const towerTypeKey = buttonEntry[0]
             const towerButton = buttonEntry[1]
+            towerButton.on("pointerover", () => {
+                audioManager.playSound("assets/sounds/sfx/btn_press.mp3", 0.2)
+            })
             towerButton.on("pointerdown", () => {
                 if (this.selectedTowerType === towerTypeKey) {
                     this.setSelectedTowerType(undefined)
