@@ -154,7 +154,7 @@ export class Enemy extends Entity {
         }
 
         const towersInRange = this.towers.filter(tower => {
-            return this.checkTowerInRange(tower)
+            return this.checkTowerInRange(tower) && !tower.immuneToDisable
         })
 
         const mapContainer = this.mapContainer
