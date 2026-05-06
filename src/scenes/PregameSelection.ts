@@ -5,13 +5,33 @@ import { GameDataManager } from "../managers/GameDataManager";
 import { EventDispatcher } from "../utils/EventDispatcher"
 import { AssetLoader } from "../core/AssetLoader";
 import { Difficulty, GameSaveData } from "src/ts/types/GameSaveData";
-import { allMaps } from "../utils/MapData";
+import { allMaps, mapSelectionOrder } from "../utils/MapData";
 
 const gameDataManager = new GameDataManager()
 const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
 
 const numberDifficultyPanes = 3
+
+/** Maps shown per page (4 columns × 2 rows), same layout as before pagination. */
+const numberMapPanesPerPage = 8
+
+const mapPaneSlotPositions: [number, number][] = [
+    [55, 100],
+    [380, 100],
+    [705, 100],
+    [1030, 100],
+    [55, 550],
+    [380, 550],
+    [705, 550],
+    [1030, 550]
+]
+
+/** Match `Game` scene width (1000 + 250) for side nav placement. */
+const pregameSceneWidth = 1400
+const mapNavButtonSize = { width: 46, height: 220 } as const
+const mapNavButtonFontSize = 40
+const mapNavMarginX = 4
 
 export class PregameSelection extends Scene {
 
@@ -20,10 +40,16 @@ export class PregameSelection extends Scene {
     mapSelectionContainer: PIXI.Container<PIXI.DisplayObject>
     difficultySelectionContainer: PIXI.Container<PIXI.DisplayObject>
     difficultyPanes: PIXI.Container[] = []
+    mapPanes: PIXI.Container[] = []
 
     btnPrevDifficulties: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     btnNextDifficulties: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
     difficultyPaneSelectionStartIndex = 0
+
+    btnPrevMaps: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
+    btnNextMaps: PIXI.Container<PIXI.DisplayObject> = new PIXI.Container()
+    mapPaneSelectionStartIndex = 0
+    txtMapPageLabel: PIXI.Container<PIXI.DisplayObject> | undefined
     selectedSaveData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData | undefined, mapTitle: string | undefined, difficulty: Difficulty | undefined} = { fileNumber : 1, gameData: undefined, mapTitle : undefined, difficulty: "Normal" }
     selectedMapTitle: string | undefined = undefined
     selectedDifficulty: Difficulty | undefined = undefined
@@ -58,18 +84,54 @@ export class PregameSelection extends Scene {
 
 
 
-        this.createMapSelectionPane(50, 100, "Walk in the Park");
-        this.createMapSelectionPane(375, 100, "Rough Spiral")
-        this.createMapSelectionPane(700, 100, "Heartbeat Onslaught")
-        this.createMapSelectionPane(1025, 100, "Death Walk");
-        this.createMapSelectionPane(50, 550, "Starry Night")
-        this.createMapSelectionPane(375, 550, "Medium French Vanilla")
-        this.createMapSelectionPane(700, 550, "Stairwell-O-Chaos");
-        this.createMapSelectionPane(1025, 550, "Null Camp");
+        this.mapPanes = []
+        mapSelectionOrder.forEach(title => {
+            if (!allMaps.has(title)) {
+                console.warn(`mapSelectionOrder references unknown map "${title}" — add it to MapData or remove from mapSelectionOrder.`)
+                return
+            }
+            this.createMapSelectionPane(title)
+        })
 
+        const mapNavY = (1000 - mapNavButtonSize.height) / 2
+        this.btnPrevMaps = UIHelper.createButton(
+            mapNavMarginX,
+            mapNavY,
+            mapNavButtonSize.width,
+            mapNavButtonSize.height,
+            "<",
+            mapNavButtonFontSize,
+            0xFFFFFF
+        )
+        this.mapSelectionContainer.addChild(this.btnPrevMaps)
+        this.btnNextMaps = UIHelper.createButton(
+            pregameSceneWidth - mapNavMarginX - mapNavButtonSize.width,
+            mapNavY,
+            mapNavButtonSize.width,
+            mapNavButtonSize.height,
+            ">",
+            mapNavButtonFontSize,
+            0xFFFFFF
+        )
+        this.mapSelectionContainer.addChild(this.btnNextMaps)
 
-        // this.createMapSelectionPane(800, 100, "blons");
+        this.txtMapPageLabel = UIHelper.createText(625, 920, "", 22, "0xCCCCCC", true)
+        this.mapSelectionContainer.addChild(this.txtMapPageLabel)
 
+        this.btnPrevMaps.on("pointerdown", () => {
+            this.mapPaneSelectionStartIndex = Math.max(0, this.mapPaneSelectionStartIndex - numberMapPanesPerPage)
+            this.updateMapPaneVisibility()
+            this.updatePrevNextMapButtons()
+        })
+        this.btnNextMaps.on("pointerdown", () => {
+            const maxStart = this.getMaxMapPaneStartIndex()
+            this.mapPaneSelectionStartIndex = Math.min(maxStart, this.mapPaneSelectionStartIndex + numberMapPanesPerPage)
+            this.updateMapPaneVisibility()
+            this.updatePrevNextMapButtons()
+        })
+
+        this.updateMapPaneVisibility()
+        this.updatePrevNextMapButtons()
 
         const btnBackToMain = UIHelper.createButton(50, 25, 200, 50, "Back to Main Menu", 20, 0xFFFFFF);
         this.container.addChild(btnBackToMain);
@@ -273,7 +335,42 @@ export class PregameSelection extends Scene {
 
     }
 
-    private createMapSelectionPane(paneXPos: number, paneYPos: number, title: string) {
+    private getMaxMapPaneStartIndex() {
+        if (this.mapPanes.length === 0) {
+            return 0
+        }
+        return Math.floor((this.mapPanes.length - 1) / numberMapPanesPerPage) * numberMapPanesPerPage
+    }
+
+    private updatePrevNextMapButtons() {
+        const maxStart = this.getMaxMapPaneStartIndex()
+        this.btnPrevMaps.visible = this.mapPaneSelectionStartIndex > 0
+        this.btnNextMaps.visible = this.mapPaneSelectionStartIndex < maxStart
+    }
+
+    private updateMapPaneVisibility() {
+        this.mapPanes.forEach((pane, i) => {
+            const slotIndex = i - this.mapPaneSelectionStartIndex
+            if (slotIndex >= 0 && slotIndex < numberMapPanesPerPage) {
+                pane.visible = true
+                const [x, y] = mapPaneSlotPositions[slotIndex]
+                pane.x = x
+                pane.y = y
+            } else {
+                pane.visible = false
+            }
+        })
+
+        const totalPages = Math.max(1, Math.ceil(this.mapPanes.length / numberMapPanesPerPage))
+        const currentPage = Math.floor(this.mapPaneSelectionStartIndex / numberMapPanesPerPage) + 1
+        if (this.txtMapPageLabel && this.txtMapPageLabel.children[0] instanceof PIXI.Text) {
+            const labelText = this.txtMapPageLabel.children[0] as PIXI.Text
+            labelText.text = `Page ${currentPage} / ${totalPages}`
+            this.txtMapPageLabel.visible = totalPages > 1
+        }
+    }
+
+    private createMapSelectionPane(title: string) {
 
         const imagesBundle = assetLoader.otherImages
 
@@ -286,10 +383,10 @@ export class PregameSelection extends Scene {
         const paneHeight = 425
 
         const paneContainer = new PIXI.Container();
-        paneContainer.x = paneXPos;
-        paneContainer.y = paneYPos;
+        paneContainer.visible = false
 
         this.mapSelectionContainer.addChild(paneContainer);
+        this.mapPanes.push(paneContainer)
 
         const bgColour = new PIXI.Graphics();
         bgColour.beginFill(0x0F0033);
@@ -481,8 +578,11 @@ export class PregameSelection extends Scene {
             saveFileContainer.addChild(btnNewGame);
             btnNewGame.on("pointerdown", () => {
                 this.selectedSaveData = {fileNumber: fileNumber, gameData : undefined, mapTitle: undefined, difficulty: undefined}
+                this.mapPaneSelectionStartIndex = 0
                 this.saveFilesListContainer.visible = false
                 this.mapSelectionContainer.visible = true
+                this.updateMapPaneVisibility()
+                this.updatePrevNextMapButtons()
             });
         }
 

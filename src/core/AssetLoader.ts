@@ -177,7 +177,9 @@ export class AssetLoader {
             "starryNight" : "assets/mapbg/starrynight_pvk.png",
             "mediumFrenchVanilla" : "assets/mapbg/Medium_French_Vanilla_pvk.jpg",
             "stairwellOChaos" : "assets/mapbg/stairwellochaos_pvk.png",
-            "nullCamp" : "assets/mapbg/null_camp_pvk.webp"
+            "nullCamp" : "assets/mapbg/null_camp_pvk.webp",
+            "testgrid" : "assets/mapbg/testgrid.png",
+            "SCS" : "assets/mapbg/SCS_pvk.webp"
         })
 
         Assets.addBundle("sfx", {

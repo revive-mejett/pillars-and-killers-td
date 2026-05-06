@@ -2898,6 +2898,115 @@ allMaps.set("Null Camp", {
     ]
 })
 
+// Skeleton: set grassColour, grassSecondaryColour, pathOpacity, grassOpacity, difficulty; replace waypoints (axis-aligned segments only).
+allMaps.set("La Lune", {
+    mapInfo: {
+        grassColour: 0x444444,
+        grassSecondaryColour: 0x666666,
+        grassOpacity: 1,
+        pathOpacity: 1,
+        difficulty: 4,
+    },
+    waypoints: [
+        { type: "start", x: 4, y: 21 },
+        { type: "point", x: 5, y: 21 },
+        { type: "point", x: 5, y: 22 },
+        { type: "point", x: 8, y: 22 },
+        { type: "point", x: 8, y: 23 },
+        { type: "point", x: 15, y: 23 },
+        { type: "point", x: 15, y: 22 },
+        { type: "point", x: 17, y: 22 },
+        { type: "point", x: 17, y: 21 },
+        { type: "point", x: 19, y: 21 },
+        { type: "point", x: 19, y: 18 },
+        { type: "point", x: 20, y: 18 },
+        { type: "point", x: 20, y: 15 },
+        { type: "point", x: 21, y: 15 },
+        { type: "point", x: 21, y: 14 },
+        { type: "point", x: 21, y: 9 },
+        { type: "point", x: 20, y: 9 },
+        { type: "point", x: 20, y: 6 },
+        { type: "point", x: 19, y: 6 },
+        { type: "point", x: 19, y: 3 },
+        { type: "point", x: 17, y: 3 },
+        { type: "point", x: 17, y: 2 },
+        { type: "point", x: 15, y: 2 },
+        { type: "point", x: 15, y: 1 },
+        { type: "point", x: 8, y: 1 },
+        { type: "point", x: 8, y: 2 },
+        { type: "point", x: 5, y: 2 },
+        { type: "point", x: 5, y: 3 },
+        { type: "point", x: 4, y: 3 },
+        { type: "point", x: 4, y: 5 },
+        { type: "point", x: 7, y: 5 },
+        { type: "point", x: 7, y: 4 },
+        { type: "point", x: 11, y: 4 },
+        { type: "point", x: 11, y: 5 },
+        { type: "point", x: 12, y: 5 },
+        { type: "point", x: 12, y: 7 },
+        { type: "point", x: 14, y: 7 },
+        { type: "point", x: 14, y: 9 },
+        { type: "point", x: 15, y: 9 },
+        { type: "point", x: 15, y: 15 },
+        { type: "point", x: 14, y: 15 },
+        { type: "point", x: 14, y: 17 },
+        { type: "point", x: 12, y: 17 },
+        { type: "point", x: 12, y: 19 },
+        { type: "point", x: 11, y: 19 },
+        { type: "point", x: 11, y: 20 },
+        { type: "point", x: 7, y: 20 },
+        { type: "point", x: 7, y: 19 },
+        { type: "end", x: 4, y: 19 }
+    ]
+})
+
+// Skeleton: replace mapInfo values and waypoints when ready.
+allMaps.set("SCS", {
+    mapInfo: {
+        bgColourMapKey: "SCS",
+        difficulty: 5,
+        grassColour: 0x000000,
+        grassSecondaryColour: 0x666666,
+        grassOpacity: 0.001,
+        pathOpacity: 1
+    },
+    waypoints: [
+        { type: "start", x: 12, y: 15 },
+        { type: "point", x: 10, y: 15 },
+        { type: "point", x: 10, y: 18 },
+        { type: "point", x: 23, y: 18 },
+        { type: "point", x: 23, y: 23 },
+        { type: "point", x: 2, y: 23 },
+        { type: "point", x: 2, y: 18 },
+        { type: "point", x: 14, y: 18 },
+        { type: "point", x: 14, y: 15 },
+        { type: "point", x: 21, y: 15 },
+        { type: "point", x: 21, y: 3 },
+        { type: "point", x: 3, y: 3 },
+        { type: "point", x: 3, y: 15 },
+        { type: "end", x: 13, y: 15 }
+    ],
+    blocked: [
+        { x: 3, y: 19 }, { x: 4, y: 19 }, { x: 5, y: 19 }, { x: 6, y: 19 }, { x: 7, y: 19 }, { x: 8, y: 19 }, { x: 9, y: 19 }, { x: 10, y: 19 }, { x: 11, y: 19 }, { x: 12, y: 19 }, { x: 13, y: 19 }, { x: 14, y: 19 }, { x: 15, y: 19 }, { x: 16, y: 19 }, { x: 17, y: 19 }, { x: 18, y: 19 }, { x: 19, y: 19 }, { x: 20, y: 19 }, { x: 21, y: 19 }, { x: 22, y: 19 },
+        { x: 3, y: 20 }, { x: 4, y: 20 }, { x: 5, y: 20 }, { x: 6, y: 20 }, { x: 7, y: 20 }, { x: 8, y: 20 }, { x: 9, y: 20 }, { x: 10, y: 20 }, { x: 11, y: 20 }, { x: 12, y: 20 }, { x: 13, y: 20 }, { x: 14, y: 20 }, { x: 15, y: 20 }, { x: 16, y: 20 }, { x: 17, y: 20 }, { x: 18, y: 20 }, { x: 19, y: 20 }, { x: 20, y: 20 }, { x: 21, y: 20 }, { x: 22, y: 20 },
+        { x: 3, y: 21 }, { x: 4, y: 21 }, { x: 5, y: 21 }, { x: 6, y: 21 }, { x: 7, y: 21 }, { x: 8, y: 21 }, { x: 9, y: 21 }, { x: 10, y: 21 }, { x: 11, y: 21 }, { x: 12, y: 21 }, { x: 13, y: 21 }, { x: 14, y: 21 }, { x: 15, y: 21 }, { x: 16, y: 21 }, { x: 17, y: 21 }, { x: 18, y: 21 }, { x: 19, y: 21 }, { x: 20, y: 21 }, { x: 21, y: 21 }, { x: 22, y: 21 },
+        { x: 3, y: 22 }, { x: 4, y: 22 }, { x: 5, y: 22 }, { x: 6, y: 22 }, { x: 7, y: 22 }, { x: 8, y: 22 }, { x: 9, y: 22 }, { x: 10, y: 22 }, { x: 11, y: 22 }, { x: 12, y: 22 }, { x: 13, y: 22 }, { x: 14, y: 22 }, { x: 15, y: 22 }, { x: 16, y: 22 }, { x: 17, y: 22 }, { x: 18, y: 22 }, { x: 19, y: 22 }, { x: 20, y: 22 }, { x: 21, y: 22 }, { x: 22, y: 22 },
+        { x: 4, y: 4 }, { x: 5, y: 4 }, { x: 6, y: 4 }, { x: 7, y: 4 }, { x: 8, y: 4 }, { x: 9, y: 4 }, { x: 10, y: 4 }, { x: 11, y: 4 }, { x: 12, y: 4 }, { x: 13, y: 4 }, { x: 14, y: 4 }, { x: 15, y: 4 }, { x: 16, y: 4 }, { x: 17, y: 4 }, { x: 18, y: 4 }, { x: 19, y: 4 }, { x: 20, y: 4 },
+        { x: 4, y: 5 }, { x: 5, y: 5 }, { x: 6, y: 5 }, { x: 7, y: 5 }, { x: 8, y: 5 }, { x: 9, y: 5 }, { x: 10, y: 5 }, { x: 11, y: 5 }, { x: 12, y: 5 }, { x: 13, y: 5 }, { x: 14, y: 5 }, { x: 15, y: 5 }, { x: 16, y: 5 }, { x: 17, y: 5 }, { x: 18, y: 5 }, { x: 19, y: 5 }, { x: 20, y: 5 },
+        { x: 4, y: 6 }, { x: 5, y: 6 }, { x: 6, y: 6 }, { x: 7, y: 6 }, { x: 8, y: 6 }, { x: 9, y: 6 }, { x: 10, y: 6 }, { x: 11, y: 6 }, { x: 12, y: 6 }, { x: 13, y: 6 }, { x: 14, y: 6 }, { x: 15, y: 6 }, { x: 16, y: 6 }, { x: 17, y: 6 }, { x: 18, y: 6 }, { x: 19, y: 6 }, { x: 20, y: 6 },
+        { x: 4, y: 7 }, { x: 5, y: 7 }, { x: 6, y: 7 }, { x: 7, y: 7 }, { x: 8, y: 7 }, { x: 9, y: 7 }, { x: 10, y: 7 }, { x: 11, y: 7 }, { x: 12, y: 7 }, { x: 13, y: 7 }, { x: 14, y: 7 }, { x: 15, y: 7 }, { x: 16, y: 7 }, { x: 17, y: 7 }, { x: 18, y: 7 }, { x: 19, y: 7 }, { x: 20, y: 7 },
+        { x: 4, y: 8 }, { x: 5, y: 8 }, { x: 6, y: 8 }, { x: 7, y: 8 }, { x: 8, y: 8 }, { x: 9, y: 8 }, { x: 10, y: 8 }, { x: 11, y: 8 }, { x: 12, y: 8 }, { x: 13, y: 8 }, { x: 14, y: 8 }, { x: 15, y: 8 }, { x: 16, y: 8 }, { x: 17, y: 8 }, { x: 18, y: 8 }, { x: 19, y: 8 }, { x: 20, y: 8 },
+        { x: 4, y: 9 }, { x: 5, y: 9 }, { x: 6, y: 9 }, { x: 7, y: 9 }, { x: 8, y: 9 }, { x: 9, y: 9 }, { x: 10, y: 9 }, { x: 11, y: 9 }, { x: 12, y: 9 }, { x: 13, y: 9 }, { x: 14, y: 9 }, { x: 15, y: 9 }, { x: 16, y: 9 }, { x: 17, y: 9 }, { x: 18, y: 9 }, { x: 19, y: 9 }, { x: 20, y: 9 },
+        { x: 4, y: 10 }, { x: 5, y: 10 }, { x: 6, y: 10 }, { x: 7, y: 10 }, { x: 8, y: 10 }, { x: 9, y: 10 }, { x: 10, y: 10 }, { x: 11, y: 10 }, { x: 12, y: 10 }, { x: 13, y: 10 }, { x: 14, y: 10 }, { x: 15, y: 10 }, { x: 16, y: 10 }, { x: 17, y: 10 }, { x: 18, y: 10 }, { x: 19, y: 10 }, { x: 20, y: 10 },
+        { x: 4, y: 11 }, { x: 5, y: 11 }, { x: 6, y: 11 }, { x: 7, y: 11 }, { x: 8, y: 11 }, { x: 9, y: 11 }, { x: 10, y: 11 }, { x: 11, y: 11 }, { x: 12, y: 11 }, { x: 13, y: 11 }, { x: 14, y: 11 }, { x: 15, y: 11 }, { x: 16, y: 11 }, { x: 17, y: 11 }, { x: 18, y: 11 }, { x: 19, y: 11 }, { x: 20, y: 11 },
+        { x: 4, y: 12 }, { x: 5, y: 12 }, { x: 6, y: 12 }, { x: 7, y: 12 }, { x: 8, y: 12 }, { x: 9, y: 12 }, { x: 10, y: 12 }, { x: 11, y: 12 }, { x: 12, y: 12 }, { x: 13, y: 12 }, { x: 14, y: 12 }, { x: 15, y: 12 }, { x: 16, y: 12 }, { x: 17, y: 12 }, { x: 18, y: 12 }, { x: 19, y: 12 }, { x: 20, y: 12 },
+        { x: 4, y: 13 }, { x: 5, y: 13 }, { x: 6, y: 13 }, { x: 7, y: 13 }, { x: 8, y: 13 }, { x: 9, y: 13 }, { x: 10, y: 13 }, { x: 11, y: 13 }, { x: 12, y: 13 }, { x: 13, y: 13 }, { x: 14, y: 13 }, { x: 15, y: 13 }, { x: 16, y: 13 }, { x: 17, y: 13 }, { x: 18, y: 13 }, { x: 19, y: 13 }, { x: 20, y: 13 },
+        { x: 4, y: 14 }, { x: 5, y: 14 }, { x: 6, y: 14 }, { x: 7, y: 14 }, { x: 8, y: 14 }, { x: 9, y: 14 }, { x: 10, y: 14 }, { x: 11, y: 14 }, { x: 12, y: 14 }, { x: 13, y: 14 }, { x: 14, y: 14 }, { x: 15, y: 14 }, { x: 16, y: 14 }, { x: 17, y: 14 }, { x: 18, y: 14 }, { x: 19, y: 14 }, { x: 20, y: 14 },
+        { x: 11, y: 16 }, { x: 12, y: 16 }, { x: 13, y: 16 },
+        { x: 11, y: 17 }, { x: 12, y: 17 }, { x: 13, y: 17 }
+    ]
+})
+
 // TEST MAPS
 allMaps.set("blons", {
     mapInfo: {
@@ -2919,6 +3028,22 @@ allMaps.set("blons", {
 
 
 
-export { allMaps }
+/** Keys must exist in `allMaps`. Order = map selection screen order (left-to-right, top-to-bottom per page). */
+const mapSelectionOrder: string[] = [
+    "Walk in the Park",
+    "Rough Spiral",
+    "Heartbeat Onslaught",
+    "Death Walk",
+    "Starry Night",
+    "Medium French Vanilla",
+    "Stairwell-O-Chaos",
+    "SCS",
+    "Xmas 2024",
+    "La Lune",
+    "Null Camp"
+    // Add new maps here, then `allMaps.set("Title", { ... })` above.
+]
+
+export { allMaps, mapSelectionOrder }
 
 
