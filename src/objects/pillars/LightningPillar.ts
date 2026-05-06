@@ -13,8 +13,10 @@ const eventDispatcher = new EventDispatcher()
 export class LightningPillar extends Tower {
 
     towerName: string;
-    // beamWidth: number;
+    /** Post-armour damage floor for lightning hits; scales with pillar level. */
+    minimumDamageOutput: number
 
+    private static readonly MIN_DAMAGE_BY_LEVEL = [50, 140, 270, 525, 1075] as const
 
     /**
      *
@@ -22,7 +24,16 @@ export class LightningPillar extends Tower {
     constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, TowerInfo>) {
         super(x, y, width, height, towerData);
         this.towerName = "Lightning Pillar"
-        // this.beamWidth = towerData.towerInfo.beamWidth
+        this.minimumDamageOutput = LightningPillar.minDamageForLevel(this.level)
+    }
+
+    private static minDamageForLevel(level: number) {
+        const idx = Math.min(Math.max(level, 1), LightningPillar.MIN_DAMAGE_BY_LEVEL.length) - 1
+        return LightningPillar.MIN_DAMAGE_BY_LEVEL[idx]
+    }
+
+    private syncMinimumDamageOutput() {
+        this.minimumDamageOutput = LightningPillar.minDamageForLevel(this.level)
     }
 
     runTower(gameplayScene : GameplayScene) : void {
@@ -82,7 +93,7 @@ export class LightningPillar extends Tower {
 
                 //spawn a beam
                 if (this.targetedEnemy) {
-                    const beam = new LightningBolt(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, 0x77FFFF, 4, this.level)
+                    const beam = new LightningBolt(this.getCenterPosition().x, this.getCenterPosition().y, 3, 3, this.targetedEnemy, this.damage, 0x77FFFF, 4, this.level, this.minimumDamageOutput)
                     beam.render(gameplaySceneContainer)
                     beam.fire(gameplayScene.app.ticker.deltaTime)
                 }
@@ -127,5 +138,7 @@ export class LightningPillar extends Tower {
             this.sprite.x = this.position?.x || 0
             this.sprite.y = this.position?.y || 0
         }
+
+        this.syncMinimumDamageOutput()
     }
 }

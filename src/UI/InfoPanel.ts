@@ -17,6 +17,8 @@ import { PoisonIvyPillar } from "../objects/pillars/PoisonIvyPillar"
 import { DreadglassPillar } from "../objects/pillars/DreadglassPillar"
 import { EmberPillar } from "../objects/pillars/EmberPillar"
 import { MissilePillar } from "../objects/pillars/MissilePillar"
+import { UltimatePillar } from "../objects/pillars/UltimatePillar"
+import { LightningPillar } from "../objects/pillars/LightningPillar"
 
 const eventDispatcher = new EventDispatcher()
 const assetLoader = new AssetLoader()
@@ -86,6 +88,23 @@ export class InfoPanel {
             infoPanel.addChild(dreadglassIcon)
             const resistanceReductionText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset,`Resistance loss (-${tower.armourReduction})`, 20, "0xC70077")
             infoPanel.addChild(resistanceReductionText)
+            specialPropertyYpos += 40
+        }
+        if (tower instanceof UltimatePillar) {
+            const disablesImmuneIcon = UIHelper.createIcon(assetLoader.icons.disablesPillars, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+            infoPanel.addChild(disablesImmuneIcon)
+            const disableImmuneText = UIHelper.createText(40 + padding, specialPropertyYpos + padding + textYOffset, "Invulnerable to disables", 20, "0x00FFFF")
+            infoPanel.addChild(disableImmuneText)
+            specialPropertyYpos += 40
+        }
+        if (tower instanceof LightningPillar) {
+            if (tower.assetIcon) {
+                const lightningIcon = UIHelper.createIcon(tower.assetIcon, padding, specialPropertyYpos + padding, 0x000000, 40, 40)
+                infoPanel.addChild(lightningIcon)
+            }
+            const textX = tower.assetIcon ? 40 + padding : padding
+            const minDamageLabel = UIHelper.createText(textX, specialPropertyYpos + padding + textYOffset, `Min damage: ${tower.minimumDamageOutput}`, 20, "0x77FFFF")
+            infoPanel.addChild(minDamageLabel)
             specialPropertyYpos += 40
         }
 

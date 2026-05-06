@@ -40,6 +40,8 @@ export abstract class Tower extends Entity {
 
     //is affected by EMP if cooldown is > 0
     disabledCooldown: number = 0
+    /** When true, EMP beams do not disable this tower (e.g. Ultimate Pillar). */
+    immuneToDisable: boolean
     zappedGraphics: PIXI.AnimatedSprite
 
 
@@ -93,6 +95,7 @@ export abstract class Tower extends Entity {
 
         //debuffs
         this.disabledCooldown = 0
+        this.immuneToDisable = false
 
         //targeting strategies
         this.targetingStrategies = ["1st", "Last", "Strong", "Weak", "Fastest"]
@@ -136,6 +139,9 @@ export abstract class Tower extends Entity {
     }
 
     disableTower() {
+        if (this.immuneToDisable) {
+            return
+        }
         this.disabledCooldown = 5000
         this.zappedGraphics.visible = true
         this.zappedGraphics.play()

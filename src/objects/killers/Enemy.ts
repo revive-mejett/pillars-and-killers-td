@@ -154,7 +154,7 @@ export class Enemy extends Entity {
         }
 
         const towersInRange = this.towers.filter(tower => {
-            return this.checkTowerInRange(tower)
+            return this.checkTowerInRange(tower) && !tower.immuneToDisable
         })
 
         const mapContainer = this.mapContainer
@@ -438,7 +438,7 @@ export class Enemy extends Entity {
         }
     }
 
-    takeDamage(damage: number, muteImpactSound: boolean = false) {
+    takeDamage(damage: number, muteImpactSound: boolean = false, minActualDamage?: number) {
 
         if (!this.isAlive) {
             return
@@ -453,6 +453,10 @@ export class Enemy extends Entity {
 
         if (actualDamage < 0) {
             actualDamage = 0
+        }
+
+        if (minActualDamage !== undefined) {
+            actualDamage = Math.max(actualDamage, minActualDamage)
         }
 
         const deflectedDamagePercent = Math.floor(damageReduction / damage * 100)

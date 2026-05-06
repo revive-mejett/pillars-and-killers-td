@@ -11,6 +11,7 @@ const eventDispatcher = new EventDispatcher()
 export class LightningBolt extends Projectile {
     boltWidth: number;
     towerLevel: number
+    minActualDamage?: number
 
     randomLightBoltPoint?: Position
     randomLightBoltPoint2?: Position
@@ -18,12 +19,13 @@ export class LightningBolt extends Projectile {
     /**
      *
      */
-    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, boltWidth : number, towerLevel: number) {
+    constructor(x : number, y : number, width : number, height : number, targetEnemy : Enemy, damage : number, colour : number, boltWidth : number, towerLevel: number, minActualDamage?: number) {
         super(x, y, width, height, targetEnemy, damage, colour);
 
         this.graphics = new PIXI.Graphics()
         this.boltWidth = boltWidth
         this.towerLevel = towerLevel
+        this.minActualDamage = minActualDamage
 
     }
 
@@ -81,7 +83,7 @@ export class LightningBolt extends Projectile {
 
         this.updateTicker?.add(onTick)
         this.updateTicker?.start()
-        this.targetEnemy?.takeDamage(this.damage)
+        this.targetEnemy?.takeDamage(this.damage, false, this.minActualDamage)
     }
 
     beamPosition(beamOriginPosition : Position, enemyCenterPosition : Position, beamWidth : number) {

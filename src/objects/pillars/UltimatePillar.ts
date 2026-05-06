@@ -20,6 +20,7 @@ export class UltimatePillar extends Tower {
     constructor(x : number, y : number, width : number, height : number, towerData : TowerData<TowerStats, UltimatePillarInfo>) {
         super(x, y, width, height, towerData);
         this.towerName = "Ultimate Pillar"
+        this.immuneToDisable = true
         this.beamWidth = towerData.towerInfo.beamWidth
         this.beamColour = towerData.towerInfo.beamColour
     }

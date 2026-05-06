@@ -37,7 +37,11 @@ export class EMPBeam extends Entity {
             return
         }
 
-        // TODO add code here to set towerDisabled true
+        if (this.targetTower.immuneToDisable) {
+            this.cleanUpResources()
+            return
+        }
+
         this.targetTower.disableTower()
         audioManager.playSound("assets/sounds/sfx/emp_zap.mp3", 0.08)
 
