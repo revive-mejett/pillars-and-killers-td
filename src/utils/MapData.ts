@@ -2898,6 +2898,71 @@ allMaps.set("Null Camp", {
     ]
 })
 
+// Skeleton: set grassColour, grassSecondaryColour, pathOpacity, grassOpacity, difficulty; replace waypoints (axis-aligned segments only).
+allMaps.set("La Lune", {
+    mapInfo: {
+        grassColour: 0x444444,
+        grassSecondaryColour: 0x666666,
+        grassOpacity: 1,
+        pathOpacity: 1,
+        difficulty: 4,
+    },
+    waypoints: [
+        { type: "start", x: 4, y: 21 },
+        { type: "point", x: 5, y: 21 },
+        { type: "point", x: 5, y: 22 },
+        { type: "point", x: 8, y: 22 },
+        { type: "point", x: 8, y: 23 },
+        { type: "point", x: 15, y: 23 },
+        { type: "point", x: 15, y: 22 },
+        { type: "point", x: 17, y: 22 },
+        { type: "point", x: 17, y: 21 },
+        { type: "point", x: 19, y: 21 },
+        { type: "point", x: 19, y: 18 },
+        { type: "point", x: 20, y: 18 },
+        { type: "point", x: 20, y: 15 },
+        { type: "point", x: 21, y: 15 },
+        { type: "point", x: 21, y: 14 },
+        { type: "point", x: 22, y: 14 },
+        { type: "point", x: 22, y: 11 },
+        { type: "point", x: 21, y: 11 },
+        { type: "point", x: 21, y: 9 },
+        { type: "point", x: 20, y: 9 },
+        { type: "point", x: 20, y: 6 },
+        { type: "point", x: 19, y: 6 },
+        { type: "point", x: 19, y: 3 },
+        { type: "point", x: 17, y: 3 },
+        { type: "point", x: 17, y: 2 },
+        { type: "point", x: 15, y: 2 },
+        { type: "point", x: 15, y: 1 },
+        { type: "point", x: 8, y: 1 },
+        { type: "point", x: 8, y: 2 },
+        { type: "point", x: 5, y: 2 },
+        { type: "point", x: 5, y: 3 },
+        { type: "point", x: 4, y: 3 },
+        { type: "point", x: 4, y: 5 },
+        { type: "point", x: 7, y: 5 },
+        { type: "point", x: 7, y: 4 },
+        { type: "point", x: 11, y: 4 },
+        { type: "point", x: 11, y: 5 },
+        { type: "point", x: 12, y: 5 },
+        { type: "point", x: 12, y: 7 },
+        { type: "point", x: 14, y: 7 },
+        { type: "point", x: 14, y: 9 },
+        { type: "point", x: 15, y: 9 },
+        { type: "point", x: 15, y: 15 },
+        { type: "point", x: 14, y: 15 },
+        { type: "point", x: 14, y: 17 },
+        { type: "point", x: 12, y: 17 },
+        { type: "point", x: 12, y: 19 },
+        { type: "point", x: 11, y: 19 },
+        { type: "point", x: 11, y: 20 },
+        { type: "point", x: 7, y: 20 },
+        { type: "point", x: 7, y: 19 },
+        { type: "end", x: 4, y: 19 }
+    ]
+})
+
 // TEST MAPS
 allMaps.set("blons", {
     mapInfo: {
@@ -2919,6 +2984,21 @@ allMaps.set("blons", {
 
 
 
-export { allMaps }
+/** Keys must exist in `allMaps`. Order = map selection screen order (left-to-right, top-to-bottom per page). */
+const mapSelectionOrder: string[] = [
+    "Walk in the Park",
+    "Rough Spiral",
+    "Heartbeat Onslaught",
+    "Death Walk",
+    "Starry Night",
+    "Medium French Vanilla",
+    "Stairwell-O-Chaos",
+    "Null Camp",
+    "Xmas 2024",
+    "La Lune"
+    // Add new maps here, then `allMaps.set("Title", { ... })` above.
+]
+
+export { allMaps, mapSelectionOrder }
 
 
