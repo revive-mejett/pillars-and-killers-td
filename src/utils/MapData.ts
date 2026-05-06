@@ -3037,10 +3037,10 @@ const mapSelectionOrder: string[] = [
     "Starry Night",
     "Medium French Vanilla",
     "Stairwell-O-Chaos",
-    "Null Camp",
+    "SCS",
     "Xmas 2024",
     "La Lune",
-    "SCS"
+    "Null Camp"
     // Add new maps here, then `allMaps.set("Title", { ... })` above.
 ]
 

@@ -102,8 +102,7 @@ export class Game {
             assetLoader.loadIconSprites(),
             assetLoader.loadTowerSprites(),
             assetLoader.loadOtherImagesSprites(),
-            assetLoader.loadMapBackgroundImages(),
-            assetLoader.loadSfxSprites()
+            assetLoader.loadMapBackgroundImages()
         ])
         loading.setProgress(bundleWeight, "Parsing enemy animations…")
 
