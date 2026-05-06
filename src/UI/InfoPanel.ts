@@ -103,7 +103,7 @@ export class InfoPanel {
                 infoPanel.addChild(lightningIcon)
             }
             const textX = tower.assetIcon ? 40 + padding : padding
-            const minDamageLabel = UIHelper.createText(textX, specialPropertyYpos + padding + textYOffset, `Min damage vs armour: ${tower.minimumDamageOutput}`, 20, "0x77FFFF")
+            const minDamageLabel = UIHelper.createText(textX, specialPropertyYpos + padding + textYOffset, `Min damage: ${tower.minimumDamageOutput}`, 20, "0x77FFFF")
             infoPanel.addChild(minDamageLabel)
             specialPropertyYpos += 40
         }
@@ -193,15 +193,6 @@ export class InfoPanel {
         towerDescriptionText.x = padding
         towerDescriptionText.y = 100
         infoPanel.addChild(towerDescriptionText)
-
-        if (towerData.towerInfo.info.title === "Ultimate Pillar" && assetLoader.icons) {
-            const generalTextYOffset = 10
-            const yRow = towerDescriptionText.y + towerDescriptionText.height + padding
-            const disablesImmuneIcon = UIHelper.createIcon(assetLoader.icons.disablesPillars, padding, yRow, 0x000000, 40, 40)
-            infoPanel.addChild(disablesImmuneIcon)
-            const disableImmuneText = UIHelper.createText(40 + padding, yRow + generalTextYOffset, "Invulnerable to disables", 20, "0x00FFFF")
-            infoPanel.addChild(disableImmuneText)
-        }
 
         return infoPanel
     }

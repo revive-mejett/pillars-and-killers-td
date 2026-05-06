@@ -16,7 +16,7 @@ export class LightningPillar extends Tower {
     /** Post-armour damage floor for lightning hits; scales with pillar level. */
     minimumDamageOutput: number
 
-    private static readonly MIN_DAMAGE_BY_LEVEL = [25, 55, 115, 185, 275] as const
+    private static readonly MIN_DAMAGE_BY_LEVEL = [50, 140, 270, 525, 1075] as const
 
     /**
      *
