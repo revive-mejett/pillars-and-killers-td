@@ -115,7 +115,7 @@ export class PregameSelection extends Scene {
         )
         this.mapSelectionContainer.addChild(this.btnNextMaps)
 
-        this.txtMapPageLabel = UIHelper.createText(625, 920, "", 22, "0xCCCCCC", true)
+        this.txtMapPageLabel = UIHelper.createText(625, 987, "", 22, "0xCCCCCC", true)
         this.mapSelectionContainer.addChild(this.txtMapPageLabel)
 
         this.btnPrevMaps.on("pointerdown", () => {
