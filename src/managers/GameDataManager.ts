@@ -1,4 +1,5 @@
 import { Difficulty, GameSaveData, MedalsSaveData } from "src/ts/types/GameSaveData"
+import { mapSelectionOrder } from "../utils/MapData"
 
 export class GameDataManager {
 
@@ -45,6 +46,23 @@ export class GameDataManager {
 
         //set the value to true (that means that the player has a medal for that difficulty)
         this.medalData[mapName][difficulty] = true
+        localStorage.setItem("medals", JSON.stringify(this.medalData))
+    }
+
+    awardAllMedals() {
+        if (!this.medalData) {
+            this.medalData = {}
+        }
+
+        mapSelectionOrder.forEach(mapName => {
+            this.medalData![mapName] = {
+                "Chill": true,
+                "Normal": true,
+                "Killer's Thrill": true,
+                "1Pill2Nil": true
+            }
+        })
+
         localStorage.setItem("medals", JSON.stringify(this.medalData))
     }
 

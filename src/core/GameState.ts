@@ -135,6 +135,11 @@ export class GameState {
         this.uiManager?.updateMoney()
     }
 
+    grantDeveloperCash() {
+        this.money = 99999999
+        this.uiManager?.updateMoney()
+    }
+
     gainMoney(data: {source: "bounty" | "towerSell", money: number}) {
         let modifiedGain = data.money
         if (data.source === "towerSell") {

@@ -193,6 +193,30 @@ export class GameplayScene extends Scene {
         }
     }
 
+    applyDeveloperCash() {
+        this.gamestate?.grantDeveloperCash()
+    }
+
+    applyDeveloperSetWave(waveNumber: number) {
+        if (!this.waveManager) {
+            return
+        }
+
+        this.waveManager.jumpToWave(waveNumber)
+        this.gamestate!.startWave = waveNumber
+        this.clearActiveEnemiesForDeveloperCheat()
+        this.uiManager?.updateWaveNumber()
+        this.waveTimeline?.renderNextWaves()
+    }
+
+    private clearActiveEnemiesForDeveloperCheat() {
+        this.enemiesPresent.forEach(enemy => {
+            enemy.isAlive = false
+            enemy.cleanUpResources()
+        })
+        this.enemiesPresent = []
+    }
+
     buildMap() {
         if (!this.mapContainer) {
             return

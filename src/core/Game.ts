@@ -15,10 +15,12 @@ import { Victory } from "../scenes/Victory"
 import { PillarKillerIndex } from "../scenes/PillarKillerIndex"
 import { Credits } from "../scenes/Credits"
 import { LoadingScene } from "../scenes/LoadingScene"
+import { DeveloperCheatCodeManager } from "../managers/DeveloperCheatCodeManager"
 
 const assetLoader = new AssetLoader()
 const eventDispatcher = new EventDispatcher()
 const audioManager = new AudioManager()
+const developerCheatCodeManager = new DeveloperCheatCodeManager()
 
 const sceneContainerWidth = 1000 + 250
 const sceneContainerHeight = 1000
@@ -82,6 +84,7 @@ export class Game {
             eventDispatcher.on("pillerKillerIndexClick", () => this.toPillarKillerIndex())
             eventDispatcher.on("creditsClick", () => this.toCredits())
 
+            developerCheatCodeManager.init()
             this.run()
         } catch (error) {
             console.error("Game failed to run", error)
@@ -124,6 +127,7 @@ export class Game {
     initGameplay(eventData: {fileNumber: 1 | 2 | 3 | 4 | 5 | 6, gameData : GameSaveData, mapTitle: string | undefined, difficulty: Difficulty | undefined}) {
         const gameplayScene = new GameplayScene(this.app, eventData.fileNumber, eventData.gameData, eventData.mapTitle, eventData.difficulty)
         gameplayScene.constructScene()
+        developerCheatCodeManager.setActiveGameplayScene(gameplayScene)
         this.sceneManager?.transitionScene(gameplayScene)
 
         eventDispatcher.on("mainMenuReturn", () => {
@@ -156,6 +160,7 @@ export class Game {
     }
 
     resetGameplayScene(gameplayScene : GameplayScene) {
+        developerCheatCodeManager.setActiveGameplayScene(undefined)
         gameplayScene?.cleanUpResources()
     }
 

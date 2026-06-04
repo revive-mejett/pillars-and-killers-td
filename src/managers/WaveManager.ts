@@ -487,6 +487,28 @@ export class WaveManager {
         return waveArr
     }
 
+    jumpToWave(waveNumber: number) {
+        const clampedWave = Math.max(1, Math.min(9999, Math.floor(waveNumber)))
+
+        this.waveTicker?.stop()
+        this.waveInProgress = false
+        this.bossPresent = false
+        this.cooldownToNextWave = 0
+
+        this.currentWave = clampedWave
+        this.isFreeplay = this.currentWave >= this.waves.length
+
+        this.checkpointWave = this.bossWaves.find(wave => wave > this.currentWave) || 0
+        if (this.checkpointWave > this.waves.length) {
+            this.checkpointWave = this.waves.length
+        }
+
+        const beatenBossWaves = this.bossWaves.filter(wave => wave < this.currentWave)
+        this.checkpointWaveBeaten = beatenBossWaves.length > 0
+            ? beatenBossWaves[beatenBossWaves.length - 1]
+            : 0
+    }
+
 
     cleanUpResources() {
         this.waveTicker?.stop()
